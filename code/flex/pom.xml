@@ -29,14 +29,8 @@
 			<plugin>
 				<groupId>info.flex-mojos</groupId>
 				<artifactId>flex-compiler-mojo</artifactId>
+				<version>${flex-mojos.version}</version>
 				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile-swf</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<sourceFile>mainAirdog.mxml</sourceFile>
 					<locales>
@@ -49,12 +43,7 @@
 
 	<!-- DEPENDENCIES -->
 	<dependencies>
-		<dependency>
-			<groupId>com.adobe.flex</groupId>
-			<artifactId>compiler</artifactId>
-			<version>${flex.sdk.version}</version>
-			<type>pom</type>
-		</dependency>
+
 		<dependency>
 			<groupId>com.adobe.flex.framework</groupId>
 			<artifactId>flex-framework</artifactId>
@@ -63,7 +52,7 @@
 		</dependency>
 	</dependencies>
 
-	<!-- REPOS 
+	<!-- REPOS -->
 	<repositories>
 		<repository>
 			<id>flex-mojos-repository</id>
@@ -85,7 +74,6 @@
 			</releases>
 		</repository>
 	</repositories>
-	-->
 	<pluginRepositories>
 		<pluginRepository>
 			<id>flex-mojos-repository</id>
