@@ -1,4 +1,4 @@
 Lenker som kan være nyttig under utvikling
 
-||*Beskrivelse*||*Lenke*||
+|| *Beskrivelse* || *Lenke* ||
 ||Maven for php|| [http://www.php-maven.org/]||
