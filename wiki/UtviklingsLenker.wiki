@@ -2,3 +2,4 @@ Lenker som kan være nyttig under utvikling
 
 || *Beskrivelse* || *Lenke* ||
 ||Maven for php|| [http://www.php-maven.org/]||
+||Maven for flex|| [http://code.google.com/p/flex-mojos/]||
