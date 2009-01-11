@@ -1,0 +1,3 @@
+#Lenker som kan være nyttig under utvikling
+
+Maven for php: [http://www.php-maven.org/]
