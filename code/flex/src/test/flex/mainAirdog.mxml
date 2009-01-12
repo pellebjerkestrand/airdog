@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+<mx:Script>
+	<![CDATA[
+		var number:Boolean = true;
+		function buttonFunc():void{
+			if(number){
+				button1.label='^_^';	
+			}
+			else{
+				button1.label='>.<';	
+			}
+			number = !number;
+		}
+	]]>
+</mx:Script>
+
+	<mx:HBox x="0" y="0" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" id="hbox1">
+		<mx:Button label="Click me!" click="{buttonFunc()}" id="button1" width="150" height="30"/>
+	</mx:HBox>
+	
+</mx:Application>
