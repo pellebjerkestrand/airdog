@@ -12,7 +12,9 @@
 
 	<scm>
 		<connection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</connection>
-		<developerConnection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</developerConnection>
+		<developerConnection>
+			scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web
+		</developerConnection>
 	</scm>
 
 	<properties>
@@ -54,6 +56,14 @@
 			<artifactId>flex-framework</artifactId>
 			<version>${flex.sdk.version}</version>
 			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>info.flex-mojos</groupId>
+			<artifactId>testing-support</artifactId>
+			<version>${flex-mojos.version}</version>
+			<type>swc</type>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
