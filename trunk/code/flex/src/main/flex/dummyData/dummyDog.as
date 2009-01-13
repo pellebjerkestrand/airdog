@@ -1,6 +1,6 @@
 // ActionScript file
-package dummyData{
-	
+package dummyData
+{
 	[Bindable]
     public class dummyDog
     {
@@ -10,5 +10,4 @@ package dummyData{
     	public var title:String;
         public var name:String;
     }
-	
 }
