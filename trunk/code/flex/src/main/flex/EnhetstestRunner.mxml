@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlexUnitTestRunnerApplication 
+   xmlns:mx="http://www.adobe.com/2006/mxml" 
+   xmlns="*"
+	testSuite="{ suite() }">
+	
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.domain.hund.HundTest;
+			import flexunit.framework.TestSuite;
+			
+			public static function suite() : TestSuite
+			{
+				var testSuite : TestSuite = new TestSuite();		
+				   
+				testSuite.addTestSuite( HundTest );
+				   
+				return testSuite;
+			}
+		]]>
+	</mx:Script>
+	
+</FlexUnitTestRunnerApplication>
