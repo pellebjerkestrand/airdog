@@ -4,4 +4,6 @@
 	layout="absolute" 
 	>
 	<mx:Button label="Tore sin knapp" verticalCenter="0" horizontalCenter="0" width="150" height="30"/>
+	<mx:HSlider x="184" y="334"/>
+	<mx:Label x="225.5" y="308" text="Egil sin slider"/>
 </mx:Application>
