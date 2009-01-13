@@ -2,8 +2,10 @@
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	layout="absolute" 
-	>
+	 xmlns:ns1="Modules.*">
 	<mx:Button label="Tore sin knapp" verticalCenter="0" horizontalCenter="0" width="150" height="30"/>
-	<mx:HSlider x="184" y="334"/>
-	<mx:Label x="225.5" y="308" text="Egil sin slider"/>
+	<mx:Label y="287" text="Farge på hund" horizontalCenter="-32"/>
+	<mx:ColorPicker x="263" y="287"/>
+	<ns1:TestDog x="235" y="98">
+	</ns1:TestDog>
 </mx:Application>
