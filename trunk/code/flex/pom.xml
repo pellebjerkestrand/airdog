@@ -10,6 +10,11 @@
 	<description>Flex pom for Airdog</description>
 	<url>http://code.google.com/p/airdog/</url>
 
+	<scm>
+		<connection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</connection>
+		<developerConnection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</developerConnection>
+	</scm>
+
 	<properties>
 		<flex.sdk.version>3.1.0.2710</flex.sdk.version>
 		<flex-mojos.version>2.0M10</flex-mojos.version>
