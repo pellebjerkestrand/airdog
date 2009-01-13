@@ -3,4 +3,5 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	layout="absolute" 
 	>
+	<mx:Button label="Tore sin knapp" verticalCenter="0" horizontalCenter="0" width="150" height="30"/>
 </mx:Application>
