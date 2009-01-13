@@ -8,9 +8,9 @@ SilkSvn eller lignende er nødvendig for senere når dere skal lage releaser for
 
 == Sjekke ut prosjektet ==
 Stå i katalogen du bruker som kildekodemappe for dine forskjellige prosjekt og kjør en av disse kommandoene:
-*Medlemmer*
+===Medlemmer===
 svn checkout https://airdog.googlecode.com/svn/ airdog --username your_name
-*Read-only*
+===Read-only===
 svn checkout http://airdog.googlecode.com/svn/trunk/ airdog-read-only
 
 == Flexprosjektet ==
