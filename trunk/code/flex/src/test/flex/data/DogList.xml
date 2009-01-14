@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- vilkårlige data -->
+<dogs>
+	<dog>
+		<huid>
+			02254/85
+		</huid>
+		<tittel>
+			CH
+		</tittel>
+		<navn>
+			Big Toffee
+		</navn>
+		<kjoenn>
+			H
+		</kjoenn>		
+	</dog>
+	<dog>
+		<huid>
+			09454/82
+		</huid>
+		<tittel>
+			
+		</tittel>
+		<navn>
+			ZIKA
+		</navn>
+		<kjoenn>
+			T
+		</kjoenn>		
+	</dog>
+	<dog>
+		<huid>
+			08954/85
+		</huid>
+		<tittel>
+			UCH
+		</tittel>
+		<navn>
+			Eilert
+		</navn>
+		<kjoenn>
+			H
+		</kjoenn>		
+	</dog>
+</dogs>
