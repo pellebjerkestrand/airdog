@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:ms="modules.*" 
+	width="800" height="600" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import com.airdog.domain.dog.*;
+			
+			[Bindable]
+			private var dogs:ArrayCollection;
+			private var d:DogList = new DogList();
+			
+			private function clicker():void
+			{
+				// dogs = d.getDogs();
+			}
+		]]>
+	</mx:Script>
+	<mx:Button label="Get List" click="{clicker()}" />
+	<ms:DogList dataProvider="{dogs}"/>
+	
+</mx:Application>
