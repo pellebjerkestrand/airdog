@@ -1,7 +1,5 @@
 package data
-{
-	import mx.controls.Image;
-	
+{	
 	[Bindable]
 	public class Dog
 	{
