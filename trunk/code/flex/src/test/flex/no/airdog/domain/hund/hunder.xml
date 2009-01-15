@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- vilkårlige data -->
+<hunder>
+	<hund>
+		<huid>02254/85</huid>
+		<tittel>CH</tittel>
+		<navn>Big Toffee</navn>
+		<kjoenn>Hann</kjoenn>
+		<bilde>no/airdog/domain/hund/Hund1.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>09454/82</huid>
+		<tittel></tittel>
+		<navn>ZIKA</navn>
+		<kjoenn>Tispe</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund2.jpg</bilde>		
+	</hund>
+	<hund>
+		<huid>08954/85</huid>
+		<tittel>UCH</tittel>
+		<navn>Reinert</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>3</huid>
+		<tittel>Miss</tittel>
+		<navn>Lone</navn>
+		<kjoenn>Tispe</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>4</huid>
+		<tittel>Monkey</tittel>
+		<navn>Egil</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>5</huid>
+		<tittel>Monkey</tittel>
+		<navn>Tore</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>6</huid>
+		<tittel>Monkey</tittel>
+		<navn>Pelle</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>7</huid>
+		<tittel>Monkey</tittel>
+		<navn>Hans Magnus</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>8</huid>
+		<tittel>Veileder</tittel>
+		<navn>Ole</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+	<hund>
+		<huid>9</huid>
+		<tittel>Veileder</tittel>
+		<navn>Erlend</navn>
+		<kjoenn>Hann</kjoenn>	
+		<bilde>no/airdog/domain/hund/Hund3.jpg</bilde>
+	</hund>
+</hunder>
