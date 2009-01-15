@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:ms="modules.*" 
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
 	width="800" height="600" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical">
 	
-	<mx:Model id="model" source="no/airdog/domain/hund/hunder.xml"/>
+	<mx:Model id="model" source="../../../resources/Hunder.xml"/>
 	
 	<mx:Component id="bildeRenderer">
         <mx:VBox 
