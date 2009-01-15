@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Container xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+		]]>
+	</mx:Script>
+
+	<mx:VBox 
+	    width="60" height="60"
+	    horizontalAlign="center" verticalAlign="middle">
+	        
+	    <mx:Image source="{'../assets/'+data.bilde}" width="50" height="50"
+	    	click="{Alert.show('Link til profil NYI', 'Titteltekst', mx.controls.Alert.OK)}"/>
+	</mx:VBox>
+</mx:Container>
