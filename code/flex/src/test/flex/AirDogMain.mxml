@@ -40,7 +40,7 @@
 			
 		</mx:HBox>
 		
-		<ms:DogList dataProvider="{dogs}" width="{hbox1.width}" y="{hbox1.height}" />
+		<mx:DataGrid dataProvider="{dogs}" width="{hbox1.width}" y="{hbox1.height}" />
 	</mx:Canvas>
 	
 </mx:Application>
