@@ -5,8 +5,8 @@
 	<packaging>swc</packaging>
 
 	<build>
-		<sourceDirectory>src\main</sourceDirectory>
-		<testSourceDirectory>src\test</testSourceDirectory>
+		<sourceDirectory>src/main/flex</sourceDirectory>
+		<testSourceDirectory>src/test/flex</testSourceDirectory>
 	</build>
 
 	<reporting>
