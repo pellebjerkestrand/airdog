@@ -1,114 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>no.airdog</groupId>
-	<artifactId>airdog-flex</artifactId>
-	<packaging>swf</packaging>
-	<version>0.1-SNAPSHOT</version>
-	<name>Airdog Flex</name>
-	<description>Flex pom for Airdog</description>
-	<url>http://code.google.com/p/airdog/</url>
 
-	<scm>
-		<connection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</connection>
-		<developerConnection>
-			scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web
-		</developerConnection>
-	</scm>
+	<parent>
+		<groupId>org.sonatype.flexmojos</groupId>
+		<artifactId>flex-super-pom</artifactId>
+		<version>%{flex-mojos.version}</version>
+	</parent>
 
-	<properties>
-		<flex.sdk.version>3.1.0.2710</flex.sdk.version>
-		<flex-mojos.version>2.0M10</flex-mojos.version>
-	</properties>
+	<groupId>com.adobe.samples</groupId>
+	<artifactId>calculator-api</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-	<issueManagement>
-		<system>Google Code</system>
-		<url>http://code.google.com/p/airdog/issues/</url>
-	</issueManagement>
+	<packaging>swc</packaging>
 
-
-	<!-- BUILD -->
 	<build>
-		<sourceDirectory>src/main/flex</sourceDirectory>
-		<testSourceDirectory>src/test/flex</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>info.flex-mojos</groupId>
-				<artifactId>flex-compiler-mojo</artifactId>
-				<version>${flex-mojos.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<sourceFile>mainAirdog.mxml</sourceFile>
-					<locales>
-						<param>en_US</param>
-					</locales>
-				</configuration>
-			</plugin>
-		</plugins>
+		<sourceDirectory>src\main</sourceDirectory>
+		<testSourceDirectory>src\test</testSourceDirectory>
 	</build>
 
-	<!-- DEPENDENCIES -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flex-maven-plugin</artifactId>
+				<version>%{flex-mojos.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
 	<dependencies>
-
 		<dependency>
-			<groupId>com.adobe.flex.framework</groupId>
-			<artifactId>flex-framework</artifactId>
-			<version>${flex.sdk.version}</version>
-			<type>pom</type>
-		</dependency>
-
-		<dependency>
-			<groupId>info.flex-mojos</groupId>
-			<artifactId>testing-support</artifactId>
-			<version>${flex-mojos.version}</version>
+			<groupId>com.adobe.flexunit</groupId>
+			<artifactId>flexunit</artifactId>
+			<version>0.85</version>
 			<type>swc</type>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<!-- REPOS -->
-	<repositories>
-		<repository>
-			<id>flex-mojos-repository</id>
-			<url>http://svn.sonatype.org/flexmojos/repository</url>
-			<releases></releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>codehaus-plugins</id>
-			<url>http://dist.codehaus.org/</url>
-			<layout>legacy</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>flex-mojos-repository</id>
-			<url>http://svn.sonatype.org/flexmojos/repository</url>
-			<releases></releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>codehaus-plugins</id>
-			<url>http://dist.codehaus.org/</url>
-			<layout>legacy</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</pluginRepository>
-	</pluginRepositories>
 
 </project>
