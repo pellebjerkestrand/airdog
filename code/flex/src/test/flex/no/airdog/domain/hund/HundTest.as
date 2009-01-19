@@ -4,7 +4,7 @@ package no.airdog.domain.hund
 
 	public class HundTest extends TestCase
 	{
-		public function testEquals() : void
+		public function testPass() : void
 		{
 			var hund1:Hund = new Hund();
 			var hund2:Hund = new Hund();
