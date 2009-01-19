@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.airdog</groupId>
+	<artifactId>airdog-flex</artifactId>
+	<packaging>swf</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>Airdog Flex</name>
+	<description>Flex pom for Airdog</description>
+	<url>http://code.google.com/p/airdog/</url>
 
-	<packaging>swc</packaging>
+	<scm>
+		<connection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</connection>
+		<developerConnection>
+			scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web
+		</developerConnection>
+	</scm>
+
+	<properties>
+		<flex.sdk.version>3.1.0.2710</flex.sdk.version>
+		<flex-mojos.version>2.0M10</flex-mojos.version>
+	</properties>
+
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/airdog/issues/</url>
+	</issueManagement>
 
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
@@ -12,9 +35,10 @@
 	<reporting>
 		<plugins>
 			<plugin>
-				<groupId>org.sonatype.flexmojos</groupId>
-				<artifactId>flex-maven-plugin</artifactId>
-				<version>%{flex-mojos.version}</version>
+				<groupId>info.flex-mojos</groupId>
+				<artifactId>flex-compiler-mojo</artifactId>
+				<version>${flex-mojos.version}</version>
+				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</reporting>
