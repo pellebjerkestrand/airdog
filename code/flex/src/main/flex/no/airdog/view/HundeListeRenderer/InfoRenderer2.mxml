@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+	<mx:Text text="{'Eier: '+data.eier}"/>
+	<mx:Text text="{'Kjønn: '+data.kjoenn}"/>
+	<mx:Text text="{'HUID: '+data.huid}"/>
+	<mx:Text text="{'Født: '+data.foedt}"/>
+</mx:HBox>

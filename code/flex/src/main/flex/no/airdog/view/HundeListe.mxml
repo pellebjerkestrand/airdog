@@ -4,6 +4,7 @@
 
 	<mx:Script>
  		<![CDATA[
+ 			import no.airdog.view.HundeListeRenderer.NavnRenderer2;
    			import mx.controls.dataGridClasses.DataGridColumn;
            	import mx.events.DataGridEvent;
            	import mx.controls.Alert;
@@ -11,7 +12,10 @@
            	import mx.rpc.events.ResultEvent;
 		   	import mx.collections.ArrayCollection;
 		   	import no.airdog.domain.Hund;
-		   
+		   	import mx.core.ClassFactory; 
+
+			private var counter:int = 0;
+			
 		   	public function onLoad():void 
 		   	{ 
 				//myRemote.getData();
@@ -32,6 +36,27 @@
            	{
                 Alert.show(event.fault.message, "Error");
            	}
+           	
+           	private function byttVisning():void
+           	{
+           		var navnRend1:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRenderer);
+           		var navnRend2:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRenderer2);
+           		var infoRend1:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.InfoRenderer);
+           		var infoRend2:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.InfoRenderer2);
+           		if (counter % 2 == 0)
+           		{
+           			col1.itemRenderer = navnRend2;
+           			col2.itemRenderer = infoRend2;
+           			grid1.rowHeight = 20;
+           		}
+           		else
+           		{
+           			col1.itemRenderer = navnRend1;
+           			col2.itemRenderer = infoRend1;
+           			grid1.rowHeight = 60;
+           		}	
+           		counter++;
+           	}
 		]]>
 	</mx:Script>
 	
@@ -43,11 +68,12 @@
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
+		<!--<mx:Button id="button1" label="Bytt visning" click="{byttVisning()}"/>-->
 		<mx:DataGrid id="grid1"
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
 			<mx:columns>
-				<mx:DataGridColumn headerText="Navn" itemRenderer="NavnRenderer" dataField="navn"/>
-				<mx:DataGridColumn headerText="Info" itemRenderer="InfoRenderer" sortable="false" width="420"/>
+				<mx:DataGridColumn id="col1" headerText="Navn" itemRenderer="no.airdog.view.HundeListeRenderer.NavnRenderer" dataField="navn"/>
+				<mx:DataGridColumn id="col2" headerText="Info" itemRenderer="no.airdog.view.HundeListeRenderer.InfoRenderer" sortable="false" width="420"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:Panel>
