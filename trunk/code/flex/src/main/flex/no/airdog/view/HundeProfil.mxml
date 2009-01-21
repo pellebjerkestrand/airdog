@@ -39,7 +39,7 @@
      	<mx:method name="getData" result="getDataListener(event)"/>
 	</mx:RemoteObject>
 	
-	<mx:Panel width="800" height="600" verticalAlign="top" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
+	<mx:Panel width="800" height="600" verticalAlign="top" paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
 		title="Story 'Vis Profil'">
 		
 		<mx:HBox width="100%">
@@ -54,7 +54,7 @@
 		</mx:HBox>
 		
 
-        <mx:TabNavigator id="tn" width="100%" height="100%">
+        <mx:TabNavigator id="tn" width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5">
 
             <mx:VBox label="Jaktprøver">
             	<mx:DataGrid id="jaktprover" />
