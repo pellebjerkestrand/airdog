@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+	<mx:Text text="{'Klasse: '+data.klasse}"/>
+	<mx:Text text="{'Stil: '+data.stil}"/>
+</mx:HBox>
