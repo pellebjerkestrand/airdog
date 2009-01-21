@@ -1,17 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
-	width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical" verticalAlign="middle">
+	width="100%" height="100%" initialize="onLoad()" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical" verticalAlign="middle" xmlns:hund="no.airdog.domain.hund.*" xmlns:domain="no.airdog.domain.*">
 
-	<mx:Model id="hunder" source="../assets/Hunder.xml"/>
+	<mx:Script>
+     <![CDATA[
+           import mx.controls.dataGridClasses.DataGridColumn;
+           import mx.events.DataGridEvent;
+           import mx.controls.Alert;
+           import mx.rpc.events.FaultEvent;
+           import mx.rpc.events.ResultEvent;
+		   import mx.collections.ArrayCollection;
+		   import no.airdog.domain.Hund;
+		   
+ 
+		   public function onLoad():void 
+		   { 
+				//myRemote.getData();
+				getTestData();
+	       } 
+           
+           private function getDataListener(event:ResultEvent):void 
+           {        
+				grid1.dataProvider = event.result as Array;
+           }
+           
+           private function getTestData(): void
+           {
+           		grid1.dataProvider = testData;
+           }
+           
+           private function faultListener(event:FaultEvent):void 
+           {
+                Alert.show(event.fault.message, "Error");
+           }
+]]>
+</mx:Script>
+
+	<mx:Array id="testData">
+		<domain:Hund navn="Rufus" tittel="woho1" kull="01232" kjonn="M" huid="1042221"/>
+		<domain:Hund navn="Rufus2" tittel="woho2" kull="01232" kjonn="M" huid="1042222"/>
+		<domain:Hund navn="Rufus3" tittel="woho1" kull="01232" kjonn="M" huid="1042223"/>
+		<domain:Hund navn="Rufus5" tittel="woho2" kull="01233" kjonn="F" huid="1042224"/>
+		<domain:Hund navn="Rufus4" tittel="woho2" kull="01233" kjonn="F" huid="1042225"/>
+	</mx:Array>
+	
+	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
+     	<mx:method name="getData" result="getDataListener(event)"/>
+	</mx:RemoteObject>
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
-		<mx:DataGrid id="grid1" dataProvider="{hunder.hund}"
-			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
+		<mx:DataGrid id="grid1"
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%">
 			<mx:columns>
-				<mx:DataGridColumn headerText="Bilde" itemRenderer="BildeRenderer" sortable="false" resizable="false" width="60"/>
-				<mx:DataGridColumn headerText="Navn" itemRenderer="NavnRenderer" dataField="{hunder.navn}"/>
-				<mx:DataGridColumn headerText="Info" itemRenderer="InfoRenderer" sortable="false"/>
+				<mx:DataGridColumn headerText="Navn" itemRenderer="NavnRenderer" dataField="navn"/>
+				<mx:DataGridColumn headerText="Kull" dataField="kull"/>
+				<mx:DataGridColumn headerText="Id" dataField="huid"/>
+				<mx:DataGridColumn headerText="Kjønn" dataField="kjonn"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:Panel>
