@@ -8,6 +8,7 @@
 			import mx.rpc.events.FaultEvent;
 			import mx.events.ItemClickEvent;
 			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
 		
 			public function onLoad():void 
 		   	{ 
@@ -17,17 +18,23 @@
 	       	
            	private function getDataListener(event:ResultEvent):void 
            	{        
-				//grid1.dataProvider = event.result as Array;
+           		profilbildet.source = "../assets/" + testData.hund[0].bilde;
+           		profilnavn.text = testData.hund[0].navn;
+           		profiltittel.text = testData.hund[0].tittel;
+           		profileier.text = "Jan";
            	}
            
            	private function getTestData(): void
            	{
-           		//grid1.dataProvider = testData.hund;
+           		profilbildet.source = "../assets/" + testData.hund[0].bilde;
+           		profilnavn.text = testData.hund[0].navn;
+           		profiltittel.text = testData.hund[0].tittel;
+           		profileier.text = "Jan";
            	}
            
            	private function faultListener(event:FaultEvent):void 
            	{
-                //Alert.show(event.fault.message, "Error");
+                Alert.show(event.fault.message, "Error");
            	}	       	
 			
 		]]>
@@ -43,12 +50,12 @@
 		title="Story 'Vis Profil'">
 		
 		<mx:HBox width="100%">
-			<mx:Image source="../assets/Hund1.jpg" width="150" height="150"/>
+			<mx:Image id="profilbildet" width="150" height="150"/>
 			
 			<mx:VBox>
-				<mx:Label text="Navnet til hunden" fontSize="30" />
-				<mx:Label text="Tittel: LolTest" />
-				<mx:Label text="Eier: Einar Skauen" />
+				<mx:Label id="profilnavn" fontSize="30" />
+				<mx:Label id="profiltittel" />
+				<mx:Label id="profileier" />
 			</mx:VBox>
 
 		</mx:HBox>
@@ -57,7 +64,7 @@
         <mx:TabNavigator id="tn" width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5">
 
             <mx:VBox label="Jaktprøver">
-            	<mx:DataGrid id="jaktprover" />
+            	<mx:DataGrid id="jaktprover" width="100%" />
             </mx:VBox>
             <mx:VBox label="Helse">
             	
