@@ -4,6 +4,7 @@
 
 	<mx:Script>
  		<![CDATA[
+ 			import no.airdog.controller.*;
  			import no.airdog.view.HundeListeRenderer.*;
    			import mx.controls.dataGridClasses.DataGridColumn;
            	import mx.events.DataGridEvent;
@@ -37,6 +38,7 @@
                 Alert.show(event.fault.message, "Error");
            	}
            	
+           	/*
            	//testing av dynamisk renderer
            	private function byttVisning():void
            	{
@@ -58,6 +60,7 @@
            		}	
            		counter++;
            	}
+           	*/
 		]]>
 	</mx:Script>
 	
@@ -74,10 +77,12 @@
 		-->
 		<mx:DataGrid id="grid1"
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
+			
 			<mx:columns>
 				<mx:DataGridColumn id="col1" headerText="Navn" itemRenderer="no.airdog.view.HundeListeRenderer.NavnRenderer" dataField="navn"/>
 				<mx:DataGridColumn id="col2" headerText="Info" itemRenderer="no.airdog.view.HundeListeRenderer.InfoRenderer" sortable="false" width="420"/>
 			</mx:columns>
+			
 		</mx:DataGrid>
 	</mx:Panel>
 	
