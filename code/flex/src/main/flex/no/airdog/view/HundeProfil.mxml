@@ -53,10 +53,20 @@
 		<mx:HBox width="100%">
 			<mx:Image id="profilbildet" width="150" height="150"/>
 			
-			<mx:VBox>
+			<mx:VBox width="100%">
 				<mx:Text id="profilnavn" fontSize="30" />
-				<mx:Text id="profiltittel" />
-				<mx:Text id="profileier" />
+				<mx:HBox width="100%">
+					<mx:Label text="Profil:"/>
+					<mx:Text id="profiltittel" />
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="Eier:"/>
+					<mx:Text id="profileier" />
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="Eier:"/>
+					<mx:Text id="profileier" />
+				</mx:HBox>
 			</mx:VBox>
 
 		</mx:HBox>
