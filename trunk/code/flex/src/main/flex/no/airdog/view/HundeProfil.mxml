@@ -67,7 +67,12 @@
             	
             	<mx:DataGrid id="grid1" width="100%">
 					<mx:columns>					
-						<mx:DataGridColumn id="col1" headerText="Klasse" itemRenderer="no.airdog.view.HundeProfilRenderer.JaktproveRenderer" dataField="ProveDato"/>
+						<mx:DataGridColumn id="col1" headerText="Nummer" dataField="ProeveNr"/>
+						<mx:DataGridColumn id="col2" headerText="Dato" dataField="ProveDato"/>
+						<mx:DataGridColumn id="col3" headerText="Premiegrad" dataField="Premiegrad"/>
+						<mx:DataGridColumn id="col4" headerText="Stil" dataField="Stil"/>
+						<mx:DataGridColumn id="col5" headerText="Egne Stand" dataField="EgneStand"/>
+						<mx:DataGridColumn id="col7" headerText="Makker Stand" dataField="MakkerStand"/>	
             		</mx:columns>
             	</mx:DataGrid>
             
