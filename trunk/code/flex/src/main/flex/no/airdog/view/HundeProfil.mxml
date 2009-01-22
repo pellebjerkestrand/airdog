@@ -14,12 +14,14 @@
 		   	{ 
 				//myRemote.getData();
 				getTestData();
+				           		
 	       	} 
 	       	
            	private function getDataListener(event:ResultEvent):void 
            	{        
 
            	}
+           	
            
            	private function getTestData(): void
            	{
@@ -27,6 +29,7 @@
            		profilnavn.text = testData.hund[0].navn;
            		profiltittel.text = testData.hund[0].tittel;
            		profileier.text = "Jan";
+           		grid1.dataProvider = testProve.JAKTPROVE;
            	}
            
            	private function faultListener(event:FaultEvent):void 
@@ -61,12 +64,15 @@
         <mx:TabNavigator id="tn" width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5">
 
             <mx:VBox label="Jaktprøver">
-            	<mx:DataGrid id="grid1" width="100%" itemRenderer="no.airdog.view.HundeProfilRenderer.JaktproveRenderer" dataProvider="{testProve.JAKTPROVE}">
+            	
+            	<mx:DataGrid id="grid1" width="100%">
 					<mx:columns>					
-						<mx:DataGridColumn id="col1" headerText="Klasse" itemRenderer="no.airdog.view.HundeListeRenderer.NavnRenderer" dataField="Klasse"/>
+						<mx:DataGridColumn id="col1" headerText="Klasse" itemRenderer="no.airdog.view.HundeProfilRenderer.JaktproveRenderer" dataField="ProveDato"/>
             		</mx:columns>
             	</mx:DataGrid>
+            
             </mx:VBox>
+            
             <mx:VBox label="Helse">
             	
             </mx:VBox>
