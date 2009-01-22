@@ -10,6 +10,8 @@
 		<RAID>305</RAID>
 		<SlippTid>70</SlippTid>
 		<EgneStand>0</EgneStand>
+		<EgneStoekk></EgneStoekk>
+		<TomStand></TomStand>
 		<MakkerStand>1</MakkerStand>
 		<MakkerStoekk>1</MakkerStoekk>
 		<JaktLyst>5</JaktLyst>
@@ -19,77 +21,25 @@
 		<Bredde>5</Bredde>
 		<Reviering>5</Reviering>
 		<Samarbeid>5</Samarbeid>
+		<Pres_Upresis></Pres_Upresis>
+		<Pres_NoeUpresis></Pres_NoeUpresis>
+		<Pres_Presis></Pres_Presis>
+		<Reis_Nekter></Reis_Nekter>
+		<Reis_Noelende></Reis_Noelende>
+		<Reis_Villig></Reis_Villig>
+		<Reis_Djerv></Reis_Djerv>
+		<Sek_Spontan></Sek_Spontan>
+		<Sek_Stjeler></Sek_Stjeler>
+		<App_IkkeGodkj></App_IkkeGodkj>
+		<App_Godkj></App_Godkj>
+		<Rapp_Spont></Rapp_Spont>
+		<Rapp_Innkalt></Rapp_Innkalt>
 		<Premiegrad>0</Premiegrad>
-		<CERTIFIKAT>5</CERTIFIKAT>
-		<locked>0</locked>
-		</JAKTPROVE>
-		<JAKTPROVE>
-		<ProeveNr>51-92213</ProeveNr>
-		<ProveDato>1992-02-23T00:00:00</ProveDato>
-		<PEID_Domm1>0185470</PEID_Domm1>
-		<Klasse>10</Klasse>
-		<PartiNr>S6</PartiNr>
-		<HUID>01818/11</HUID>
-		<RAID>305</RAID>
-		<SlippTid>70</SlippTid>
-		<EgneStand>0</EgneStand>
-		<MakkerStand>1</MakkerStand>
-		<MakkerStoekk>1</MakkerStoekk>
-		<JaktLyst>5</JaktLyst>
-		<Fart>5</Fart>
-		<Stil>4</Stil>
-		<Selvstendighet>6</Selvstendighet>
-		<Bredde>5</Bredde>
-		<Reviering>5</Reviering>
-		<Samarbeid>5</Samarbeid>
-		<Premiegrad>0</Premiegrad>
-		<CERTIFIKAT>5</CERTIFIKAT>
-		<locked>0</locked>
-		</JAKTPROVE>
-		<JAKTPROVE>
-		<ProeveNr>51-92213</ProeveNr>
-		<ProveDato>1992-02-23T00:00:00</ProveDato>
-		<PEID_Domm1>0185470</PEID_Domm1>
-		<Klasse>10</Klasse>
-		<PartiNr>S6</PartiNr>
-		<HUID>01818/11</HUID>
-		<RAID>305</RAID>
-		<SlippTid>70</SlippTid>
-		<EgneStand>0</EgneStand>
-		<MakkerStand>1</MakkerStand>
-		<MakkerStoekk>1</MakkerStoekk>
-		<JaktLyst>5</JaktLyst>
-		<Fart>5</Fart>
-		<Stil>4</Stil>
-		<Selvstendighet>6</Selvstendighet>
-		<Bredde>5</Bredde>
-		<Reviering>5</Reviering>
-		<Samarbeid>5</Samarbeid>
-		<Premiegrad>0</Premiegrad>
-		<CERTIFIKAT>5</CERTIFIKAT>
-		<locked>0</locked>
-		</JAKTPROVE>
-		<JAKTPROVE>
-		<ProeveNr>51-92213</ProeveNr>
-		<ProveDato>1992-02-23T00:00:00</ProveDato>
-		<PEID_Domm1>0185470</PEID_Domm1>
-		<Klasse>10</Klasse>
-		<PartiNr>S6</PartiNr>
-		<HUID>01818/11</HUID>
-		<RAID>305</RAID>
-		<SlippTid>70</SlippTid>
-		<EgneStand>0</EgneStand>
-		<MakkerStand>1</MakkerStand>
-		<MakkerStoekk>1</MakkerStoekk>
-		<JaktLyst>5</JaktLyst>
-		<Fart>5</Fart>
-		<Stil>4</Stil>
-		<Selvstendighet>6</Selvstendighet>
-		<Bredde>5</Bredde>
-		<Reviering>5</Reviering>
-		<Samarbeid>5</Samarbeid>
-		<Premiegrad>0</Premiegrad>
-		<CERTIFIKAT>5</CERTIFIKAT>
-		<locked>0</locked>
+		<Certifikat>5</Certifikat>
+		<OverStat></OverStat>
+		<Locked>0</Locked>
+		<EndretAv></EndretAv>
+		<Endret></Endret>
+		<Kritikk></Kritikk>
 	</JAKTPROVE>
 </dataroot>
