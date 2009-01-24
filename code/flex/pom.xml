@@ -2,11 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>info.flex-mojos</groupId>
-		<artifactId>flex-super-pom</artifactId>
-		<version>2.0M10</version>
-	</parent>
 	<groupId>no.airdog</groupId>
 	<artifactId>airdog-flex</artifactId>
 	<packaging>swf</packaging>
@@ -23,7 +18,8 @@
 	</scm>
 
 	<properties>
-		<flex.sdk.version>3.1.0.2710</flex.sdk.version>		
+		<flex.sdk.version>3.2.0.3958</flex.sdk.version>
+		<flex-mojos.version>2.0.3</flex-mojos.version>
 	</properties>
 
 	<issueManagement>
@@ -40,9 +36,20 @@
 			<plugin>
 				<groupId>info.flex-mojos</groupId>
 				<artifactId>flex-compiler-mojo</artifactId>
+				<version>${flex-mojos.version}</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile-swf</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<sourceFile>mainAirdog.mxml</sourceFile>
-					<debug>true</debug>
+					<locales>
+						<param>en_US</param>
+					</locales>
 					<warnings>
 						<changesInResolve>true</changesInResolve>
 						<deprecatedEventHandlerError>true</deprecatedEventHandlerError>
@@ -55,7 +62,25 @@
 
 	<!-- DEPENDENCIES -->
 	<dependencies>
-
+		<dependency>
+			<groupId>com.adobe.flex</groupId>
+			<artifactId>compiler</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>info.flex-mojos</groupId>
+			<artifactId>testing-support</artifactId>
+			<version>${flex-mojos.version}</version>
+			<type>swc</type>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- REPOS -->
@@ -68,17 +93,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>codehaus-plugins</id>
-			<url>http://dist.codehaus.org/</url>
-			<layout>legacy</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -88,17 +102,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>codehaus-plugins</id>
-			<url>http://dist.codehaus.org/</url>
-			<layout>legacy</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
 		</pluginRepository>
 	</pluginRepositories>
 
