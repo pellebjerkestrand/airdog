@@ -21,7 +21,7 @@ package no.airdog.controller
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i;
-				tempHund.navn = "<DOGNAEMLOL>";
+				tempHund.navn = "<NAVN>";
 				tempHund.tittel = "<TITTEL>";
 				hunder.addItem(tempHund);	
 			}
