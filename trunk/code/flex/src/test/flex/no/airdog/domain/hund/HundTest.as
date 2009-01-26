@@ -11,7 +11,7 @@ package no.airdog.domain.hund
 			var hund3:Hund = new Hund();
 			hund1.id = "huid";
 			hund2.id = "huid";
-			hund3.id = "crap";
+			hund3.id = "huid";
 			
 			assertTrue(hund1.equals(hund1));
 			assertTrue(hund1.equals(hund2));
