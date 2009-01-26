@@ -5,12 +5,17 @@ package no.airdog.domain.hund
 	[Bindable]
 	public class Hund implements Entity
 	{
-		/* huid */
 		private var huid : String;
+		private var navn : String;
 		
+		// huid	
 		public function get id():* { return huid; }
     	public function set id(value:*):void { huid = value; }
-
+		
+		// navn    	
+		public function get navn():* { return navn; }
+    	public function set navn(value:*):void { navn = value; }
+    	
 		public function equals( other:Entity ):Boolean
 		{
 			if (this == other) return true;
@@ -20,7 +25,6 @@ package no.airdog.domain.hund
 			} else if (!(id == other.id)) return false;
 			
 			return true;
-		}
-		
+		}	
 	}
 }

@@ -33,7 +33,7 @@
            		//hundeGrid.dataProvider = testData.hund;
            		var controllerTest:HundController = new HundController();
            		
-           		hundeGrid.dataProvider = controllerTest.alleHunder;
+           		hundeGrid.dataProvider = controllerTest.alleHunder as ArrayCollection;
            		test.text = controllerTest.alleHunder.length.toString();
            	}
            
