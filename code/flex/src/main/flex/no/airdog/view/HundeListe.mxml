@@ -31,6 +31,7 @@
            	private function getTestData(): void
            	{
            		hundeGrid.dataProvider = testData.hund;
+           		test.text = testData.hund;
            		//får ikke denne til å fungere
            		//var controllerTest:HundController;
            		//hundeGrid.dataProvider = controllerTest.alleHunder;
@@ -72,6 +73,8 @@
 	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
      	<mx:method name="getData" result="getDataListener(event)"/>
 	</mx:RemoteObject>
+	
+	<mx:Text id="test" />
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
