@@ -32,7 +32,9 @@
            	{
            		//hundeGrid.dataProvider = testData.hund;
            		var controllerTest:HundController = new HundController();
+           		
            		hundeGrid.dataProvider = controllerTest.alleHunder;
+           		test.text = controllerTest.alleHunder.length.toString();
            	}
            
            	private function faultListener(event:FaultEvent):void 
@@ -66,8 +68,8 @@
 		]]>
 	</mx:Script>
 	
-	<mx:Model id="testData" source="../assets/Hunder.xml"/>
-
+	<!-- <mx:Model id="testData" source="../assets/Hunder.xml"/> -->
+	<mx:Text id="test" />
 	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
      	<mx:method name="getData" result="getDataListener(event)"/>
 	</mx:RemoteObject>
