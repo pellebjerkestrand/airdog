@@ -14,15 +14,14 @@ package no.airdog.controller
 		
 		private function getDummyHunder():ArrayCollection
 		{
-			var xml:XML = new XML();
-			hunder = new ArrayCollection(mx.utils.ArrayUtil.toArray(xml));
+			hunder = new ArrayCollection();
 			
-			/*for (var i:int = 1; i <= 2; i++)
+			for (var i:int = 1; i <= 2; i++)
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i;
 				hunder.addItem(tempHund);
-			}*/			
+			}		
 			
 			return hunder;
 		}	
