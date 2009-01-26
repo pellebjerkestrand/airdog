@@ -6,15 +6,15 @@ package no.airdog.domain.hund
 	public class Hund implements Entity
 	{
 		private var huid : String;
-		private var navn : String;
+		private var _navn : String;
 		
 		// huid	
 		public function get id():* { return huid; }
     	public function set id(value:*):void { huid = value; }
 		
 		// navn    	
-		public function get navn():* { return navn; }
-    	public function set navn(value:*):void { navn = value; }
+		public function get navn():* { return _navn; }
+    	public function set navn(value:*):void { _navn = value; }
     	
 		public function equals( other:Entity ):Boolean
 		{
