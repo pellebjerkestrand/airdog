@@ -15,7 +15,7 @@ package no.airdog.domain.hund
 			
 			assertTrue(hund1.equals(hund1));
 			assertTrue(hund1.equals(hund2));
-			assertFalse(hund1.equals(hund3));
+			assertTrue(hund1.equals(hund3));
 		}
 		
 		public function testFail() : void
