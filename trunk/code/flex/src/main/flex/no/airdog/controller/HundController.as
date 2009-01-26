@@ -16,7 +16,7 @@ package no.airdog.controller
 		{
 			hunder = new ArrayCollection();
 			
-			for (var i:int = 0; i < 10; i++)
+			for (var i:int = 1; i <= 2; i++)
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i;

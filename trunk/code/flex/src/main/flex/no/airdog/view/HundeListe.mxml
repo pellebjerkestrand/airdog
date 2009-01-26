@@ -12,7 +12,7 @@
            	import mx.rpc.events.FaultEvent;
            	import mx.rpc.events.ResultEvent;
 		   	import mx.collections.ArrayCollection;
-		   	import no.airdog.domain.Hund;
+		   	import no.airdog.domain.hund.Hund;
 		   	import mx.core.ClassFactory; 
 
 			private var counter:int = 0;
@@ -30,11 +30,9 @@
            
            	private function getTestData(): void
            	{
-           		hundeGrid.dataProvider = testData.hund;
-           		test.text = testData.hund;
-           		//får ikke denne til å fungere
-           		//var controllerTest:HundController;
-           		//hundeGrid.dataProvider = controllerTest.alleHunder;
+           		//hundeGrid.dataProvider = testData.hund;
+           		var controllerTest:HundController = new HundController();
+           		hundeGrid.dataProvider = controllerTest.alleHunder;
            	}
            
            	private function faultListener(event:FaultEvent):void 
@@ -73,8 +71,6 @@
 	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
      	<mx:method name="getData" result="getDataListener(event)"/>
 	</mx:RemoteObject>
-	
-	<mx:Text id="test" />
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
