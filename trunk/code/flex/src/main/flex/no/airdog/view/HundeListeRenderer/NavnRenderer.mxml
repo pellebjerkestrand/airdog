@@ -6,7 +6,7 @@
 	    width="60" height="60" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 	    horizontalAlign="center" verticalAlign="middle">
 		        
-	    <mx:Image source="{'../assets/'+data.bilde}" width="50" height="50"/>
+	    <mx:Image source="{'assets/'+data.bilde}" width="50" height="50"/>
 	</mx:VBox>
 	
 	<mx:VBox 
