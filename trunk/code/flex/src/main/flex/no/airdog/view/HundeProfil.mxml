@@ -85,9 +85,18 @@
             </mx:VBox>
             
             <mx:VBox label="Helse">
-            	
+            		<mx:VBox>
+						<mx:Text text="{'HQ tall: '+data.hq}" id="hqtall"/>
+						<mx:Text text="{'Friskhet: '+data.frisk}" id="frisktall"/>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Text text="{'Data: data'}" id="data1"/>
+						<mx:Text text="{'Data: data'}" id="data2"/>
+					</mx:VBox>
             </mx:VBox>
-
+			<mx:VBox label="Ustilling">
+				
+			</mx:VBox>
 
         </mx:TabNavigator>
 		
