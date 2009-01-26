@@ -41,44 +41,20 @@
            	{
                 Alert.show(event.fault.message, "Error");
            	}
-           	
-           	/*
-           	//testing av dynamisk renderer
-           	private function byttVisning():void
-           	{
-           		var navnRend1:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRenderer);
-           		var navnRend2:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRenderer2);
-           		var infoRend1:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.InfoRenderer);
-           		var infoRend2:ClassFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.InfoRenderer2);
-           		if (counter % 2 == 0)
-           		{
-           			col1.itemRenderer = navnRend2;
-           			col2.itemRenderer = infoRend2;
-           			grid1.rowHeight = 20;
-           		}
-           		else
-           		{
-           			col1.itemRenderer = navnRend1;
-           			col2.itemRenderer = infoRend1;
-           			grid1.rowHeight = 60;
-           		}	
-           		counter++;
-           	}
-           	*/
 		]]>
 	</mx:Script>
 	
 	<!-- <mx:Model id="testData" source="../assets/Hunder.xml"/> -->
+	
 	<mx:Text id="test" />
+	
 	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
      	<mx:method name="getData" result="getDataListener(event)"/>
 	</mx:RemoteObject>
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
-		<!-- testing av dynamisk renderer
-		<mx:Button id="button1" label="Bytt visning" click="{byttVisning()}"/>
-		-->
+		
 		<mx:DataGrid id="hundeGrid"
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
 			
