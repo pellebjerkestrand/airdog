@@ -6,11 +6,16 @@ package no.airdog.domain.hund
 	public class Hund implements Entity
 	{
 		private var huid : String;
+		private var _tittel : String;
 		private var _navn : String;
 		
 		// huid	
 		public function get id():* { return huid; }
     	public function set id(value:*):void { huid = value; }
+		
+		//tittel
+		public function get tittel():* { return _tittel; }
+    	public function set tittel(value:*):void { _tittel = value; }
 		
 		// navn    	
 		public function get navn():* { return _navn; }

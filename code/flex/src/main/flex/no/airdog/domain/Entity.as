@@ -8,6 +8,9 @@ package no.airdog.domain
 		function get id():*;
     	function set id(value:*) : void;
     	
+    	function get tittel():*;
+    	function set tittel(value:*) : void;
+    	
     	function get navn():*;
     	function set navn(value:*) : void;
     	

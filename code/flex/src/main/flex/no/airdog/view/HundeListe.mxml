@@ -11,9 +11,7 @@
            	import mx.controls.Alert;
            	import mx.rpc.events.FaultEvent;
            	import mx.rpc.events.ResultEvent;
-		   	import mx.collections.ArrayCollection;
-		   	import no.airdog.domain.hund.Hund;
-		   	import mx.core.ClassFactory; 
+		   	import mx.collections.ArrayCollection; 
 
 			private var counter:int = 0;
 			
