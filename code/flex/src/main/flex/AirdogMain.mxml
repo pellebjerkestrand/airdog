@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	xmlns:controller="no.airdog.controller.*" 
+	xmlns:view="no.airdog.view.*" xmlns:mock="no.airdog.facade.mock.*">
+	
+	<!-- Controllere -->
+	<controller:HundController id="hundeController" facade="{facade}"/>
+	
+	<!-- Facade -->
+	<mock:MockAirdogFacade id="facade"/>
+	
+	<view:HundeListe controller="{hundeController}"/>
+	
+</mx:Application>

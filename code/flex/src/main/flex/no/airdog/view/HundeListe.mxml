@@ -1,53 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
-	width="100%" height="100%" initialize="onLoad()" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical" verticalAlign="middle" xmlns:hund="no.airdog.domain.hund.*" xmlns:domain="no.airdog.domain.*">
-
-	<mx:Script>
- 		<![CDATA[
- 			import no.airdog.controller.HundController;
- 			import no.airdog.view.HundeListeRenderer.*;
-   			import mx.controls.dataGridClasses.DataGridColumn;
-           	import mx.events.DataGridEvent;
-           	import mx.controls.Alert;
-           	import mx.rpc.events.FaultEvent;
-           	import mx.rpc.events.ResultEvent;
-		   	import mx.collections.ArrayCollection; 
-
-			private var counter:int = 0;
-			
-		   	public function onLoad():void 
-		   	{ 
-				//myRemote.getData();
-				getTestData();
-	       	} 
-           	
-           	private function getDataListener(event:ResultEvent):void 
-           	{
-				hundeGrid.dataProvider = event.result as Array;
-           	}
-           
-           	private function getTestData(): void
-           	{
-           		var controllerTest:HundController = new HundController();
-           		hundeGrid.dataProvider = controllerTest.alleHunder as ArrayCollection;
-           	}
-           
-           	private function faultListener(event:FaultEvent):void 
-           	{
-                Alert.show(event.fault.message, "Error");
-           	}
-		]]>
-	</mx:Script>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="100%" height="100%" 
+	xmlns:controller="no.airdog.controller.*">
 	
-	<mx:RemoteObject id="myRemote" destination="zend" source="MyService" showBusyCursor="true" fault="faultListener(event)">
-     	<mx:method name="getData" result="getDataListener(event)"/>
-	</mx:RemoteObject>
+	<controller:HundController id="controller"/>
 	
 	<mx:Panel width="800" height="600" verticalAlign="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
 		
 		<mx:DataGrid id="hundeGrid"
-			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60"
+			dataProvider="{controller.hunder}">
 			
 			<mx:columns>
 				<mx:DataGridColumn id="col1" headerText="Navn" itemRenderer="no.airdog.view.HundeListeRenderer.NavnRenderer" dataField="navn"/>
@@ -57,4 +20,4 @@
 		</mx:DataGrid>
 	</mx:Panel>
 	
-</mx:Application>
+</mx:VBox>

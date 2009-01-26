@@ -3,19 +3,28 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	
 	import no.airdog.domain.hund.Hund;
+	import no.airdog.facade.AirdogFacade;
 	
+	[Bindable]
 	public class HundController
 	{
-		private var hunder:ArrayCollection;
+		public var hunder:ArrayCollection;
 		
-		public function get alleHunder():ArrayCollection
+		public var facade:AirdogFacade;
+		
+		public function HundController()
 		{
-			return getDummyHunder();
+			hunder = getDummyHunder();
+		}
+		
+		public function getAlleHunder() : void
+		{
+			facade.getAlleHunder(onGetAlleHunder);
 		}
 		
 		private function getDummyHunder():ArrayCollection
 		{
-			hunder = new ArrayCollection();
+			var tmpCollection:ArrayCollection = new ArrayCollection();
 			
 			for (var i:int = 0; i < 10; i++)
 			{
@@ -24,10 +33,15 @@ package no.airdog.controller
 				tempHund.navn = "<NAVN " + i + ">";
 				tempHund.tittel = "<TITTEL " + i + ">";
 				tempHund.bilde = "Hund1.jpg";
-				hunder.addItem(tempHund);	
+				tmpCollection.addItem(tempHund);	
 			}
 			
-			return hunder;
-		}	
+			return tmpCollection;
+		}
+		
+		private function onGetAlleHunder(arrHunder:ArrayCollection) : void
+		{
+			hunder = arrHunder;
+		}
 	}
 }
