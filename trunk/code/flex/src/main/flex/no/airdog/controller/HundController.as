@@ -3,7 +3,7 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	import no.airdog.domain.hund.Hund;
 	
-	class HundController
+	public class HundController
 	{
 		private var hunder:ArrayCollection;
 		

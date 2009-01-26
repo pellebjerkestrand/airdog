@@ -4,7 +4,7 @@
 
 	<mx:Script>
  		<![CDATA[
- 			import no.airdog.controller.*;
+ 			import no.airdog.controller.HundController;
  			import no.airdog.view.HundeListeRenderer.*;
    			import mx.controls.dataGridClasses.DataGridColumn;
            	import mx.events.DataGridEvent;
@@ -25,12 +25,15 @@
            	
            	private function getDataListener(event:ResultEvent):void 
            	{
-				grid1.dataProvider = event.result as Array;
+				hundeGrid.dataProvider = event.result as Array;
            	}
            
            	private function getTestData(): void
            	{
-           		grid1.dataProvider = testData.hund;
+           		hundeGrid.dataProvider = testData.hund;
+           		//får ikke denne til å fungere
+           		//var controllerTest:HundController;
+           		//hundeGrid.dataProvider = controllerTest.alleHunder;
            	}
            
            	private function faultListener(event:FaultEvent):void 
@@ -75,7 +78,7 @@
 		<!-- testing av dynamisk renderer
 		<mx:Button id="button1" label="Bytt visning" click="{byttVisning()}"/>
 		-->
-		<mx:DataGrid id="grid1"
+		<mx:DataGrid id="hundeGrid"
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60">
 			
 			<mx:columns>
