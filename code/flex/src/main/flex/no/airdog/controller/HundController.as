@@ -17,7 +17,6 @@ package no.airdog.controller
 		
 		public function get alleHunder():ArrayCollection
 		{
-			//return getDummyHunder();
 			return getDummyHunder();
 		}
 		
