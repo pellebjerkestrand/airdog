@@ -20,6 +20,11 @@ package no.airdog.domain.hund
 		public function get navn():* { return _navn; }
     	public function set navn(value:*):void { _navn = value; }
     	
+    	/* bilde */
+		private var _bilde : String;    	
+		public function get bilde():* { return _bilde; }
+    	public function set bilde(value:*):void { _bilde = value; }
+    	
 		public function equals( other:Entity ):Boolean
 		{
 			if (this == other) return true;

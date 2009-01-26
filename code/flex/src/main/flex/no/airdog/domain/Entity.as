@@ -14,6 +14,9 @@ package no.airdog.domain
     	function get navn():*;
     	function set navn(value:*) : void;
     	
+    	function get bilde():*;
+    	function set bilde(value:*) : void;
+    	
 		function equals( other:Entity ) : Boolean;
 	}
 }

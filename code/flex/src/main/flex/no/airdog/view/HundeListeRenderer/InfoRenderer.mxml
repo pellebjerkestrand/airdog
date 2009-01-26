@@ -4,16 +4,16 @@
     horizontalAlign="left" verticalAlign="middle">
     <mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
     	<mx:VBox width="130" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-    		<mx:Text text="{'Eier: '+data.eier}"/>
-			<mx:Text text="{'Kjønn: '+data.kjoenn}"/>
+    		<mx:Text text="Eier: Eier"/>
+			<mx:Text text="Kjønn: Kjønn"/>
     	</mx:VBox>
     	<mx:VBox width="130" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-    		<mx:Text text="{'HUID: '+data.huid}"/>
-			<mx:Text text="{'Født: '+data.foedt}"/>
+    		<mx:Text text="HUID: {data.id}"/>
+			<mx:Text text="Født: Født"/>
     	</mx:VBox>
     	<mx:VBox width="130" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-    		<mx:Text text="{'MOAR: DATA'}"/>
-			<mx:Text text="{'MOAR: DATA'}"/>
+    		<mx:Text text="{'MORE: DATA'}"/>
+			<mx:Text text="{'MORE: DATA'}"/>
     	</mx:VBox>
     </mx:HBox>
 </mx:VBox>
