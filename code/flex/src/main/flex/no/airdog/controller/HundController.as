@@ -1,7 +1,7 @@
 package no.airdog.controller
 {
 	import mx.collections.ArrayCollection;
-	import no.airdog.domain.hund.Hund;
+	import mx.utils.ArrayUtil;
 	
 	public class HundController
 	{
@@ -14,14 +14,15 @@ package no.airdog.controller
 		
 		private function getDummyHunder():ArrayCollection
 		{
-			hunder = new ArrayCollection();
+			var xml:XML = new XML();
+			hunder = new ArrayCollection(mx.utils.ArrayUtil.toArray(xml));
 			
-			for (var i:int = 1; i <= 2; i++)
+			/*for (var i:int = 1; i <= 2; i++)
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i;
 				hunder.addItem(tempHund);
-			}
+			}*/			
 			
 			return hunder;
 		}	
