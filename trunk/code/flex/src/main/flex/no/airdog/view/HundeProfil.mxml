@@ -63,10 +63,6 @@
 					<mx:Label text="Eier:"/>
 					<mx:Text id="profileier" />
 				</mx:HBox>
-				<mx:HBox width="100%">
-					<mx:Label text="Eier:"/>
-					<mx:Text id="profileier" />
-				</mx:HBox>
 			</mx:VBox>
 
 		</mx:HBox>
