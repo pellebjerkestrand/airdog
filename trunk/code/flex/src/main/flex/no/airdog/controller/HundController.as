@@ -36,6 +36,7 @@ package no.airdog.controller
 				tempHund.foreldre = "<FORELDRE>";
 				tempHund.kjonn = "<KJØNN>";
 				tempHund.oppdretter = "<OPPDRETTER>";
+				tempHund.eier = "<EIER>";
 				tmpCollection.addItem(tempHund);	
 			}
 			

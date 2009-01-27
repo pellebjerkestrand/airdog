@@ -14,6 +14,7 @@ package no.airdog.domain.hund
 		public var foreldre : String;
 		public var oppdretter : String;
 		public var kjonn : String;
+		public var eier : String;
     	
 		public function equals( other:Hund ):Boolean
 		{
