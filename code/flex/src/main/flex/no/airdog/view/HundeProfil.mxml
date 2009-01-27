@@ -8,17 +8,17 @@
 		title="Story 'Vis Profil'">
 		
 		<mx:HBox width="100%">
-			<mx:Image id="profilbildet" width="150" height="150"/>
+			<mx:Image id="bilde" width="150" height="150"/>
 			
 			<mx:VBox width="100%">
-				<mx:Text id="profilnavn" fontSize="30" />
+				<mx:Text id="navn" fontSize="30" />
 				<mx:HBox width="100%">
 					<mx:Label text="Profil:"/>
-					<mx:Text id="profiltittel" />
+					<mx:Text id="tittel" />
 				</mx:HBox>
 				<mx:HBox width="100%">
 					<mx:Label text="Eier:"/>
-					<mx:Text id="profileier" />
+					<mx:Text id="eier" />
 				</mx:HBox>
 			</mx:VBox>
 
@@ -27,29 +27,11 @@
         <mx:TabNavigator id="tn" width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5" creationPolicy="all">
 
             <mx:VBox id="v1" label="Jaktprøver">
-            	
-            	<mx:DataGrid id="grid1" width="100%">
-					<mx:columns>					
-						<mx:DataGridColumn id="col1" headerText="Nummer" dataField="ProeveNr"/>
-						<mx:DataGridColumn id="col2" headerText="Dato" dataField="ProveDato"/>
-						<mx:DataGridColumn id="col3" headerText="Premiegrad" dataField="Premiegrad"/>
-						<mx:DataGridColumn id="col4" headerText="Stil" dataField="Stil"/>
-						<mx:DataGridColumn id="col5" headerText="Egne Stand" dataField="EgneStand"/>
-						<mx:DataGridColumn id="col7" headerText="Makker Stand" dataField="MakkerStand"/>	
-            		</mx:columns>
-            	</mx:DataGrid>
-            
+            	            
             </mx:VBox>
             
             <mx:VBox label="Helse">
-            		<mx:VBox>
-						<mx:Text text="{'HQ tall: '+data.hq}" id="hqtall"/>
-						<mx:Text text="{'Friskhet: '+data.frisk}" id="frisktall"/>
-					</mx:VBox>
-					<mx:VBox>
-						<mx:Text text="{'Data: data'}" id="data1"/>
-						<mx:Text text="{'Data: data'}" id="data2"/>
-					</mx:VBox>
+
             </mx:VBox>
 			<mx:VBox label="Ustilling">
 				
