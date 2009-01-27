@@ -33,6 +33,9 @@ package no.airdog.controller
 				tempHund.navn = "<NAVN " + i + ">";
 				tempHund.tittel = "<TITTEL " + i + ">";
 				tempHund.bilde = "Hund1.jpg";
+				tempHund.foreldre = "<FORELDRE>";
+				tempHund.kjonn = "<KJØNN>";
+				tempHund.oppdretter = "<OPPDRETTER>";
 				tmpCollection.addItem(tempHund);	
 			}
 			
