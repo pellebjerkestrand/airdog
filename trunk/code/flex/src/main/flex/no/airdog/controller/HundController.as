@@ -1,7 +1,6 @@
 package no.airdog.controller
 {
-	import mx.collections.ArrayCollection;
-	
+	import mx.collections.ArrayCollection;	
 	import no.airdog.domain.hund.Hund;
 	import no.airdog.facade.AirdogFacade;
 	
@@ -37,7 +36,7 @@ package no.airdog.controller
 				tempHund.kjonn = "<KJØNN>";
 				tempHund.oppdretter = "<OPPDRETTER>";
 				tempHund.eier = "<EIER>";
-				tmpCollection.addItem(tempHund);	
+				tmpCollection.addItem(tempHund);
 			}
 			
 			return tmpCollection;
