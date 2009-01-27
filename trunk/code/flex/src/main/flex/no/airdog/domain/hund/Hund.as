@@ -3,27 +3,15 @@ package no.airdog.domain.hund
 	import no.airdog.domain.Entity;
 
 	[Bindable]
-	public class Hund implements Entity
+	public class Hund
 	{		
-		/* huid */
 		private var huid : String;	
 		public function get id():* { return huid; }
     	public function set id(value:*):void { huid = value; }
-		
-		/* tittel */
-		private var _tittel : String;
-		public function get tittel():* { return _tittel; }
-    	public function set tittel(value:*):void { _tittel = value; }
-		
-		/* navn */
-		private var _navn : String;    	
-		public function get navn():* { return _navn; }
-    	public function set navn(value:*):void { _navn = value; }
     	
-    	/* bilde */
-		private var _bilde : String;    	
-		public function get bilde():* { return _bilde; }
-    	public function set bilde(value:*):void { _bilde = value; }
+		public var tittel : String;
+		public var navn : String;    	
+		public var bilde : String;
     	
 		public function equals( other:Entity ):Boolean
 		{
