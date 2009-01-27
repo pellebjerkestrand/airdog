@@ -4,7 +4,7 @@
 	
 	<controller:HundProfilController id="controller" />
 
-	<mx:Panel width="800" height="600" verticalAlign="top" paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
+	<mx:Panel width="800" height="600" paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
 		title="Story 'Vis Profil'">
 		
 		<mx:HBox width="100%">

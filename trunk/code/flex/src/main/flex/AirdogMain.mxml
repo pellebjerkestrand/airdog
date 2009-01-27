@@ -11,7 +11,10 @@
 	<!-- Facade -->
 	<mock:MockAirdogFacade id="facade"/>
 	
-	<view:HundeListe controller="{hundeController}"/>
-	<view:HundeProfil />
+	<mx:VBox>
+		<view:HundeListe controller="{hundeController}"/>
+		<view:HundeProfil />	
+	</mx:VBox>
+
 	
 </mx:Application>
