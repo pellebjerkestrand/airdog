@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
-		width="100%" height="100%" initialize="onLoad()" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" layout="vertical" verticalAlign="middle" xmlns:hund="no.airdog.domain.hund.*" xmlns:domain="no.airdog.domain.*" xmlns:itemRenderer="flexunit.flexui.controls.left.itemRenderer.*">
+		width="100%" height="100%">
 
 	<mx:Script>
 		<![CDATA[
@@ -21,7 +21,6 @@
            	{        
 
            	}
-           	
            
            	private function getTestData(): void
            	{
@@ -99,8 +98,6 @@
 			</mx:VBox>
 
         </mx:TabNavigator>
-		
-			
 		
 	</mx:Panel>
 	
