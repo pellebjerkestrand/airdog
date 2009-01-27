@@ -25,11 +25,11 @@ package no.airdog.controller
 		{
 			var tmpCollection:ArrayCollection = new ArrayCollection();
 			
-			for (var i:int = 0; i < 10; i++)
+			for (var i:int = 0; i < 100; i++)
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i;
-				tempHund.navn = "<NAVN " + i + ">";
+				tempHund.navn = "<NAVN " + i + ": TESTNAVN>";
 				tempHund.tittel = "<TITTEL " + i + ">";
 				tempHund.bilde = "Hund1.jpg";
 				tempHund.foreldre = "<FORELDRE>";
