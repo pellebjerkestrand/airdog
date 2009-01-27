@@ -46,7 +46,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<sourceFile>mainAirdog.mxml</sourceFile>
+					<sourceFile>AirdogMain.mxml</sourceFile>
 					<locales>
 						<param>en_US</param>
 					</locales>
