@@ -1,10 +1,12 @@
 package no.airdog.controller
 {
+	import no.airdog.domain.hund.Hund;
+	
 	[Bindable]
-	public class HundProfilController{
-		import no.airdog.domain.hund.Hund;
-		
-		public function HundProfilController(){
+	public class HundProfilController
+	{
+		public function HundProfilController()
+		{
 			var tempHund:Hund = new Hund();
 			tempHund.id = i;
 			tempHund.navn = "<NAVN " + i + ">";
