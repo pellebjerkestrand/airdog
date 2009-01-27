@@ -12,6 +12,9 @@ package no.airdog.domain.hund
 		public var tittel : String;
 		public var navn : String;    	
 		public var bilde : String;
+		public var foreldre : String;
+		public var oppdretter : String;
+		public var kjonn : String;
     	
 		public function equals( other:Entity ):Boolean
 		{
