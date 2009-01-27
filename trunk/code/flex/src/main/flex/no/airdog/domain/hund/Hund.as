@@ -1,6 +1,5 @@
 package no.airdog.domain.hund
 {
-	import no.airdog.domain.Entity;
 
 	[Bindable]
 	public class Hund
@@ -16,7 +15,7 @@ package no.airdog.domain.hund
 		public var oppdretter : String;
 		public var kjonn : String;
     	
-		public function equals( other:Entity ):Boolean
+		public function equals( other:Hund ):Boolean
 		{
 			if (this == other) return true;
 			if (other == null) return false;
