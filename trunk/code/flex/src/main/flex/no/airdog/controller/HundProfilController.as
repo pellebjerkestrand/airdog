@@ -2,23 +2,16 @@ package no.airdog.controller
 {
 	[Bindable]
 	public class HundProfilController{
-		
-		public var bilde:String
-		public var navn:String;
-		public var eier:String;
-		public var tittel:String;
-		public var foreldre:String;
-		public var oppdretter:String;
-		public var kjonn:String;
+		import no.airdog.domain.hund.Hund;
 		
 		public function HundProfilController(){
-			bilde = "Bilde";
-			navn = "Navn";
-			eier = "Eier";
-			tittel = "Tittel";
-			foreldre = "Foreldre";
-			oppdretter = "Oppdretter";
-			kjonn = "Kjønn";
+			var tempHund:Hund = new Hund();
+			tempHund.id = i;
+			tempHund.navn = "<NAVN " + i + ">";
+			tempHund.tittel = "<TITTEL " + i + ">";
+			tempHund.bilde = "Hund1.jpg";
+			tempHund.foreldre = "<FORELDRE>";
+			tempHund.kjonn = "<KJØNN>";
 			
 		  	/*profilbildet.source = "../assets/" + testData.hund[0].bilde;
 	   		profilnavn.text = testData.hund[0].navn;
