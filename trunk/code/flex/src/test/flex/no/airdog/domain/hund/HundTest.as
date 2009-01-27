@@ -13,7 +13,7 @@ package no.airdog.domain.hund
 			hund2.id = "huid";
 			hund3.id = "huid";
 			
-			assertFalse(hund1.equals(hund1));
+			assertTrue(hund1.equals(hund1));
 			assertTrue(hund1.equals(hund2));
 			assertTrue(hund1.equals(hund3));
 		}
