@@ -14,16 +14,15 @@ package no.airdog.controller
 	[Bindable]
 	public class HundController
 	{
- 		 private var ro:RemoteObject;
+ 		private var ro:RemoteObject;
         
 		public var hunder:ArrayCollection = new ArrayCollection();
-		
 		public var facade:AirdogFacade;
 		
 		public function HundController()
 		{
-			getAlleHunder2();
-			//getDummyHunder();
+			//getAlleHunder2();
+			getDummyHunder();
 		}
 		
 		public function getAlleHunder2():void
