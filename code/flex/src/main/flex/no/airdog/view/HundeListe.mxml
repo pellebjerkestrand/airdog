@@ -7,7 +7,7 @@
 	
 	<controller:HundController id="controller"/>
 	
-	<mx:Panel width="80%" height="80%" minWidth="800" minHeight="600" 
+	<mx:Panel width="90%" height="80%" minWidth="800" minHeight="600" 
 		paddingBottom="40" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
 		
