@@ -4,7 +4,7 @@
 	xmlns:controller="no.airdog.controller.*" 
 	xmlns:view="no.airdog.view.*" 
 	xmlns:mock="no.airdog.facade.mock.*"
-	layout="absolute" width="100%">
+	layout="vertical" width="100%">
 	
 	<mx:XML id="myMenuData">
         <root>
@@ -13,7 +13,7 @@
         </root>
     </mx:XML>
 	
-	<mx:HBox id="topbar" height="40" cornerRadius="5" backgroundColor="#87A9FF" borderStyle="solid" borderColor="#6A94FF" minWidth="790" horizontalCenter="0" top="0">
+	<mx:HBox id="topbar" height="40" cornerRadius="5" backgroundColor="#87A9FF" borderStyle="solid" borderColor="#6A94FF" minWidth="790">
 		<mx:Label text="AirDog" fontWeight="bold"/>
 		<mx:Label text="Pointerklub" fontStyle="italic"/>
 		<mx:TextInput width="152"/>
@@ -89,7 +89,7 @@
 	<!-- Facade -->
 	<mock:MockAirdogFacade id="facade"/>
 	
-	<view:HundeListe controller="{hundeController}" x="0" y="50"/>
-	<view:HundeProfil  x="0" y="656"/>	
+	<view:HundeListe controller="{hundeController}"/>
+	<view:HundeProfil/>	
 
 </mx:Application>
