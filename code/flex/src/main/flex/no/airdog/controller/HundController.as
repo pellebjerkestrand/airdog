@@ -22,6 +22,12 @@ package no.airdog.controller
 		
 		public function HundController()
 		{
+			getAlleHunder2();
+			//getDummyHunder();
+		}
+		
+		public function getAlleHunder2():void
+		{
 			var channelSet:ChannelSet = new ChannelSet();
 			
 			var amfChannel:AMFChannel = new AMFChannel();
@@ -55,7 +61,7 @@ package no.airdog.controller
 			facade.getAlleHunder(onGetAlleHunder);
 		}
 		
-		private function getDummyHunder():ArrayCollection
+		private function getDummyHunder():void
 		{
 			var tmpCollection:ArrayCollection = new ArrayCollection();
 			
@@ -73,7 +79,7 @@ package no.airdog.controller
 				tmpCollection.addItem(tempHund);
 			}
 			
-			return tmpCollection;
+			hunder = tmpCollection;
 		}
 		
 		private function onGetAlleHunder(arrHunder:ArrayCollection) : void
