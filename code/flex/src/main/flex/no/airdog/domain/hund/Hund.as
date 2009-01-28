@@ -1,6 +1,7 @@
 package no.airdog.domain.hund
 {
 
+	[RemoteClass(alias="AmfHund")]
 	[Bindable]
 	public class Hund
 	{		

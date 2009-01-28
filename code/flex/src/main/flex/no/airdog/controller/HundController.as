@@ -1,20 +1,54 @@
 package no.airdog.controller
 {
-	import mx.collections.ArrayCollection;	
+	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
+	import mx.messaging.ChannelSet;
+	import mx.messaging.channels.AMFChannel;
+	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.ResultEvent;
+	import mx.rpc.remoting.RemoteObject;
+	
 	import no.airdog.domain.hund.Hund;
 	import no.airdog.facade.AirdogFacade;
 	
 	[Bindable]
 	public class HundController
 	{
-		public var hunder:ArrayCollection;
+ 		 private var ro:RemoteObject;
+        
+		public var hunder:ArrayCollection = new ArrayCollection();
 		
 		public var facade:AirdogFacade;
 		
 		public function HundController()
 		{
-			hunder = getDummyHunder();
+			var channelSet:ChannelSet = new ChannelSet();
+			
+			var amfChannel:AMFChannel = new AMFChannel();
+			ro = new RemoteObject();
+			ro.addEventListener(ResultEvent.RESULT, onResult);
+			ro.addEventListener(FaultEvent.FAULT, onFault);
+			
+			amfChannel.uri = "http://localhost/helloamf/";
+			
+			channelSet.channels = [amfChannel];
+			
+			ro.channelSet = channelSet;
+			ro.source = "HundController";
+			ro.destination = "zend";
+			ro.getOperation("getAlleHunder").send();
 		}
+
+        public function onResult(event:ResultEvent):void 
+        {
+            hunder = new ArrayCollection(event.result as Array);
+        }
+
+        public function onFault(event:FaultEvent):void 
+        {
+         // Deal with event.fault.faultString, etc.
+            Alert.show(event.fault.faultString, 'Error');
+        }
 		
 		public function getAlleHunder() : void
 		{
