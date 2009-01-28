@@ -25,9 +25,13 @@
 					<!-- Bytt ut slik at denne etterhvert ligger i settings.xml og er spesifikk for hver bruker -->
 					<phpExe>C:/wamp/bin/php/php5.2.8/php.exe</phpExe>
 					<phpDocFilePath>C:/DEV/PHP/PhpDocumentor-1.4.2/phpdoc</phpDocFilePath>
-					<exclude>src/main/php/com/Zend/*</exclude>
-					<exclude>com/Zend/*</exclude>
 					<ignoreValidate>true</ignoreValidate>
+				    <excludeFromValidation>
+				        <item>src/main/php/com/*</item>
+				        <item>com/*</item>
+				   </excludeFromValidation>
+				   <exclude>com/*</exclude>
+				   <exclude>src/main/php/com/*</exclude>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -50,11 +54,7 @@
 				<configuration>
 					<!-- Bytt ut slik at denne etterhvert ligger i settings.xml og er spesifikk for hver bruker -->
 					<phpExe>C:/wamp/bin/php/php5.2.8/php.exe</phpExe>
-					
 					<phpDocFilePath>C:/DEV/PHP/PhpDocumentor-1.4.2/phpdoc</phpDocFilePath>
-					<exclude>src/main/php/com/Zend/*</exclude>
-					<exclude>com/Zend/*</exclude>
-					<ignoreValidate>true</ignoreValidate> 
 				</configuration>
 			</plugin>
 			<plugin>
