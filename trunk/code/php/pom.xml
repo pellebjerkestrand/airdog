@@ -25,7 +25,9 @@
 					<!-- Bytt ut slik at denne etterhvert ligger i settings.xml og er spesifikk for hver bruker -->
 					<phpExe>C:/wamp/bin/php/php5.2.8/php.exe</phpExe>
 					<phpDocFilePath>C:/DEV/PHP/PhpDocumentor-1.4.2/phpdoc</phpDocFilePath>
-					<ignoreValidate>false</ignoreValidate>
+					
+					<!-- Usikker om alt dette trengs -->
+					<ignoreValidate>true</ignoreValidate>
 				    <excludeFromValidation>
 				        <item>src/main/php/com/*</item>
 				        <item>com/*</item>
