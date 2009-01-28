@@ -1,5 +1,5 @@
 <?php
-include "c:/wamp/www/zend/Amf/Server.php";
+include "../../com/Zend/Amf/Server.php";
 include "HundController.php";
 
 $server = new Zend_Amf_Server();
