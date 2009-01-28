@@ -9,5 +9,12 @@ class HundControllerTest extends PHPUnit_Framework_TestCase
     	$hc = new HundController();
         $this->assertNotNull($hc->getAlleHunder());
     }
+    
+	function testGetAlleHunderEquals() 
+    {
+    	$hc = new HundController();
+    	$hc2 = new HundController();
+        $this->assertEquals($hc->getAlleHunder(), $hc2->getAlleHunder());
+    }
 }
 ?>
