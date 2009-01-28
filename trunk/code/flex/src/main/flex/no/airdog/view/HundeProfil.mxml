@@ -6,7 +6,7 @@
 	
 	<controller:HundProfilController id="controller" />
 
-	<mx:Panel width="80%" height="80%" minWidth="800" minHeight="600" 
+	<mx:Panel width="90%" height="80%" minWidth="800" minHeight="600" 
 		paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
 		title="Story 'Vis Profil'">
 		
