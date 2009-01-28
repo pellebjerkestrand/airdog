@@ -60,7 +60,7 @@
 		</plugins>
 	</build>
 
-	<!-- DEPENDENCIES -->
+	<!-- DEPENDENCIES  -->
 	<dependencies>
 		<dependency>
 			<groupId>com.adobe.flex</groupId>
