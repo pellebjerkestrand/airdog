@@ -3,11 +3,11 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:ac="com.arcadiocarballares.*"
 	xmlns:controller="no.airdog.controller.*"
-	width="95%" height="100%" horizontalAlign="center">
+	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center">
 	
 	<controller:HundController id="controller"/>
 	
-	<mx:Panel width="90%" height="80%" minWidth="800" minHeight="600" 
+	<mx:Panel width="100%" height="100%" 
 		paddingBottom="40" paddingLeft="0" paddingRight="0" paddingTop="0"
 		title="Story 'Alle hunder'" >
 		
