@@ -2,11 +2,11 @@
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controller="no.airdog.controller.*"
-	width="95%" height="100%" horizontalAlign="center">
+	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center">
 	
 	<controller:HundProfilController id="controller" />
 
-	<mx:Panel width="90%" height="80%" minWidth="800" minHeight="600" 
+	<mx:Panel width="100%" height="100%" 
 		paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
 		title="Story 'Vis Profil'">
 		
