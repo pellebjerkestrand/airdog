@@ -6,6 +6,14 @@
 	<packaging>php</packaging>
 	<name>Airdog php</name>
 	<version>0.1-SNAPSHOT</version>
+	
+	<scm>
+		<connection>scm:svn:https://airdog.googlecode.com/svn/trunk/code/php</connection>
+		<developerConnection>
+			scm:svn:https://airdog.googlecode.com/svn/trunk/code/php
+		</developerConnection>
+	</scm>	
+	
 	<build>
 		<plugins>
 			<plugin>
