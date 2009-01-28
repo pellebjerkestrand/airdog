@@ -25,6 +25,7 @@
 					<!-- Bytt ut slik at denne etterhvert ligger i settings.xml og er spesifikk for hver bruker -->
 					<phpExe>C:/wamp/bin/php/php5.2.8/php.exe</phpExe>
 					<phpDocFilePath>C:/DEV/PHP/PhpDocumentor-1.4.2/phpdoc</phpDocFilePath>
+					<exclude>src/main/php/com/Zend/*</exclude>
 				</configuration>
 			</plugin>
 		</plugins>
