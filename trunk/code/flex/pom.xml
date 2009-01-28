@@ -11,11 +11,11 @@
 	<url>http://code.google.com/p/airdog/</url>
 
 	<scm>
-		<connection>scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web</connection>
+		<connection>scm:svn:https://airdog.googlecode.com/svn/trunk/code/flex</connection>
 		<developerConnection>
-			scm:svn:http://mstsolutv19:8081/Subversion/gpsrepo/GPS_PSN_Calculator/trunk/flex-web
+			scm:svn:https://airdog.googlecode.com/svn/trunk/code/flex
 		</developerConnection>
-	</scm>
+	</scm>	
 
 	<properties>
 		<flex.sdk.version>3.2.0.3958</flex.sdk.version>
