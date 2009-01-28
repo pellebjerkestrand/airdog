@@ -1,6 +1,6 @@
 <?php
 include "../../com/Zend/Amf/Server.php";
-include "HundController.php";
+include "controller/HundController.php";
 
 $server = new Zend_Amf_Server();
 
