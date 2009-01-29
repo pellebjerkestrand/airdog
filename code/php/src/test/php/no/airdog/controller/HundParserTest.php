@@ -7,11 +7,11 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testGetHundArray() 
     {
     	$hp = new HundParser();
-    	$parseString = "323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart||||||H|21232123323||||";
+    	$parseString = "323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
         $pa = $hp->getHundArray($parseString);
         
-    	$this->assertEquals("323", $pa["raseId"]);
-    	$this->assertEquals("345453", $pa["kullId"]);
+    	$this->assertEquals("32", $pa["raseId"]);
+    	$this->assertEquals("34545", $pa["kullId"]);
     	$this->assertEquals("&15335/4354", $pa["hundId"]);
     	$this->assertEquals("Tittel", $pa["tittel"]);
     	$this->assertEquals("Hei&HŒHuden", $pa["navn"]);
@@ -19,17 +19,17 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("&213/57213270", $pa["hundMorId"]);
     	$this->assertEquals("1032332303067", $pa["idNr"]);
     	$this->assertEquals("Farge M/Svart", $pa["farge"]);
-    	$this->assertEquals("", $pa["fargeVariant"]);
-    	$this->assertEquals("", $pa["oyesykdom"]);
-    	$this->assertEquals("", $pa["hoftesykdom"]);
-    	$this->assertEquals("", $pa["haarlag"]);
-    	$this->assertEquals("", $pa["idMerke"]);
+    	$this->assertEquals("gra", $pa["fargeVariant"]);
+    	$this->assertEquals("ja", $pa["oyesykdom"]);
+    	$this->assertEquals("kanskje", $pa["hoftesykdom"]);
+    	$this->assertEquals("skallet", $pa["haarlag"]);
+    	$this->assertEquals("1337", $pa["idMerke"]);
     	$this->assertEquals("H", $pa["kjonn"]);
     	$this->assertEquals("21232123323", $pa["eierId"]);
-    	$this->assertEquals("", $pa["endretAv"]);
-    	$this->assertEquals("", $pa["endretDato"]);
-    	$this->assertEquals("", $pa["regDato"]);
-    	$this->assertEquals("", $pa["storrelse"]);
+    	$this->assertEquals("tore", $pa["endretAv"]);
+    	$this->assertEquals("idag", $pa["endretDato"]);
+    	$this->assertEquals("igar", $pa["regDato"]);
+    	$this->assertEquals("stor", $pa["storrelse"]);
     }
 }
 ?>
