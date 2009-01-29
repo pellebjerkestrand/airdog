@@ -35,7 +35,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testGetHundelisteArray()
     {
     	$parseString = '323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor
-        				323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor';
+        				3232|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra2|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor2';
     	
         $hp = new HundParser();
         $pa = $hp->getHundelisteArray($parseString);
@@ -44,9 +44,9 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("gra", $pa[0]["fargeVariant"]);		// Midten
     	$this->assertEquals("stor", $pa[0]["storrelse"]);		// Bunnen i arrayet
     	
-    	$this->assertEquals("323", $pa[1]["raseId"]);			// Toppen i arrayet
-    	$this->assertEquals("gra", $pa[1]["fargeVariant"]);		// Midten
-    	$this->assertEquals("stor", $pa[1]["storrelse"]);		// Bunnen i arrayet
+    	$this->assertEquals("3232", $pa[1]["raseId"]);			// Toppen i arrayet
+    	$this->assertEquals("gra2", $pa[1]["fargeVariant"]);		// Midten
+    	$this->assertEquals("stor2", $pa[1]["storrelse"]);		// Bunnen i arrayet
     }
 }
 ?>
