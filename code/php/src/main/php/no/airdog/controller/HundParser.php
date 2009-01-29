@@ -8,7 +8,7 @@ class HundParser
 	
 	public function getHundArray($enHund)
 	{
-		$hundArray = split("[|]", $enHund);
+		$hundArray = split('[|]', $enHund);
 		
 		return array (
 		"raseId" => $hundArray[0],
