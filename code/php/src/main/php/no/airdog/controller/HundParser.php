@@ -41,7 +41,7 @@ class HundParser
 		
 		for ($i = 0; $i < sizeof($array); $i++)
     	{
-    		$ret[] = getHundArray($array[$i]);
+    		$ret[] = $this->getHundArray($array[$i]);
     	}
     	
     	return $ret;
