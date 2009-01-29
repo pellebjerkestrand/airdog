@@ -1,28 +1,37 @@
 <?php
 
-$parseString = "323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart||||||H|21232123323||||";
-		
-list($RAID, $KUID, $HUID, $Tittel, $Navn,$HUIDFar,$HUIDMor,$IDNR,$FargeBeskrivelse,$FargeVariant,$AD,
-	$HD,$Haarlag,$IDMerk,$Kjoenn,$PEID,$EndretAv,$EndretDato,$RegDato,$Stoerrelse) = split('[|]', $parseString);
+class HundParser
+{
+	public function HundParser()
+	{
+	}
 	
-echo "Rase ID: $RAID<br>" .
-		"Kull ID: $KUID<br>" .
-		"Hunden ID: $HUID<br>" .
-		"Tittel: $Tittel<br>" .
-		"Navn: $Navn<br>" .
-		"RegNR til far: $HUIDFar<br>" .
-		"RegnNR til mor: $HUIDMor<br>" .
-		"Intern NKK greier: $IDNR<br>" .
-		"Fargen paa hunden: $FargeBeskrivelse<br>" .
-		"Mer farge: $FargeVariant<br>" .
-		"Oyesykdom $AD<br>" .
-		"Hoftesykdom: $HD<br>" .
-		"Haarlag: $Haarlag<br>" .
-		"ID Merke: $IDMerk<br>" .
-		"Kjonn: $Kjoenn<br>" .
-		"Eier nokkel: $PEID<br>" .
-		"Endret av: $EndretAv<br>" .
-		"Endret dato: $EndretDato<br>" .
-		"Registrert dato: $RegDato<br>" .
-		"Storrelse: $Stoerrelse";
+	public function getHundArray($tekst)
+	{
+		$array = split('[|]', $tekst);
+		
+		return array (
+		"raseId" => $array[0],
+		"kullId" => $array[1],
+		"hundId" => $array[2],
+		"tittel" => $array[3],
+		"navn" => $array[4],
+		"hundFarId" => $array[5],
+		"hundMorId" => $array[6],
+		"idNr" => $array[7],
+		"farge" => $array[8],
+		"fargeVariant" => $array[9],
+		"oyesykdom" => $array[10],
+		"hoftesykdom" => $array[11],
+		"haarlag" => $array[12],
+		"idMerke" => $array[13],
+		"kjonn" => $array[14],
+		"eierId" => $array[15],
+		"endretAv" => $array[16],
+		"endretDato" => $array[17],
+		"regDato" => $array[18],
+		"storrelse" => $array[19]
+		);
+	}
+}
 ?>
