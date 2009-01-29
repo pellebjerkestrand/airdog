@@ -6,9 +6,9 @@ class HundParser
 	{
 	}
 	
-	public function getHundArray($tekst)
+	public function getHundArray($enHund)
 	{
-		$array = split('[|]', $tekst);
+		$array = split("[|]", $enHund);
 		
 		return array (
 		"raseId" => $array[0],
@@ -32,6 +32,19 @@ class HundParser
 		"regDato" => $array[18],
 		"storrelse" => $array[19]
 		);
+	}
+	
+	public function getHundelisteArray($hundeliste)
+	{
+		$array = split("\r\n", $hundeliste);
+		$ret = array();
+		
+		for ($i = 0; $i < sizeof($array); $i++)
+    	{
+    		$ret[] = getHundArray($array[$i]);
+    	}
+    	
+    	return $ret;
 	}
 }
 ?>

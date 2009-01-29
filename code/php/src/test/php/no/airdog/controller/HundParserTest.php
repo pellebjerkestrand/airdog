@@ -31,5 +31,21 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("igar", $pa["regDato"]);
     	$this->assertEquals("stor", $pa["storrelse"]);
     }
+    
+    function testGetHundelisteArray()
+    {
+    	$hp = new HundParser();
+    	$parseString = "323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
+        $parseString += "\r\n323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
+    	$pa = $hp->getHundelisteArray($parseString);
+    	
+    	$this->assertEquals("323", $pa[0]["raseId"]);			// Toppen i arrayet
+    	$this->assertEquals("gra", $pa[0]["fargeVariant"]);		// Midten
+    	$this->assertEquals("stor", $pa[0]["storrelse"]);		// Bunnen i arrayet
+    	
+    	$this->assertEquals("323", $pa[1]["raseId"]);			// Toppen i arrayet
+    	$this->assertEquals("gra", $pa[1]["fargeVariant"]);		// Midten
+    	$this->assertEquals("stor", $pa[1]["storrelse"]);		// Bunnen i arrayet
+    }
 }
 ?>
