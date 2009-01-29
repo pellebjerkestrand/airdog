@@ -8,40 +8,40 @@ class HundParser
 	
 	public function getHundArray($enHund)
 	{
-		$array = split("[|]", $enHund);
+		$hundArray = split("[|]", $enHund);
 		
 		return array (
-		"raseId" => $array[0],
-		"kullId" => $array[1],
-		"hundId" => $array[2],
-		"tittel" => $array[3],
-		"navn" => $array[4],
-		"hundFarId" => $array[5],
-		"hundMorId" => $array[6],
-		"idNr" => $array[7],
-		"farge" => $array[8],
-		"fargeVariant" => $array[9],
-		"oyesykdom" => $array[10],
-		"hoftesykdom" => $array[11],
-		"haarlag" => $array[12],
-		"idMerke" => $array[13],
-		"kjonn" => $array[14],
-		"eierId" => $array[15],
-		"endretAv" => $array[16],
-		"endretDato" => $array[17],
-		"regDato" => $array[18],
-		"storrelse" => $array[19]
+		"raseId" => $hundArray[0],
+		"kullId" => $hundArray[1],
+		"hundId" => $hundArray[2],
+		"tittel" => $hundArray[3],
+		"navn" => $hundArray[4],
+		"hundFarId" => $hundArray[5],
+		"hundMorId" => $hundArray[6],
+		"idNr" => $hundArray[7],
+		"farge" => $hundArray[8],
+		"fargeVariant" => $hundArray[9],
+		"oyesykdom" => $hundArray[10],
+		"hoftesykdom" => $hundArray[11],
+		"haarlag" => $hundArray[12],
+		"idMerke" => $hundArray[13],
+		"kjonn" => $hundArray[14],
+		"eierId" => $hundArray[15],
+		"endretAv" => $hundArray[16],
+		"endretDato" => $hundArray[17],
+		"regDato" => $hundArray[18],
+		"storrelse" => $hundArray[19]
 		);
 	}
 	
 	public function getHundelisteArray($hundeliste)
 	{
-		$array = split("\r\n", $hundeliste);
+		$hundelisteArray = split("\r\n", $hundeliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($array); $i++)
+		for ($i = 0; $i < sizeof($hundelisteArray); $i++)
     	{
-    		$ret[] = $this->getHundArray($array[$i]);
+    		$ret[] = $this->getHundArray($hundelisteArray[$i]);
     	}
     	
     	return $ret;
