@@ -10,28 +10,31 @@ class HundParser
 	{
 		$hundArray = split('[|]', $enHund);
 		
-		return array (
-		"raseId" => $hundArray[0],
-		"kullId" => $hundArray[1],
-		"hundId" => $hundArray[2],
-		"tittel" => $hundArray[3],
-		"navn" => $hundArray[4],
-		"hundFarId" => $hundArray[5],
-		"hundMorId" => $hundArray[6],
-		"idNr" => $hundArray[7],
-		"farge" => $hundArray[8],
-		"fargeVariant" => $hundArray[9],
-		"oyesykdom" => $hundArray[10],
-		"hoftesykdom" => $hundArray[11],
-		"haarlag" => $hundArray[12],
-		"idMerke" => $hundArray[13],
-		"kjonn" => $hundArray[14],
-		"eierId" => $hundArray[15],
-		"endretAv" => $hundArray[16],
-		"endretDato" => $hundArray[17],
-		"regDato" => $hundArray[18],
-		"storrelse" => $hundArray[19]
-		);
+		if (sizeof($hundArray) == 20)
+		{
+			return array (
+			"raseId" => $hundArray[0],
+			"kullId" => $hundArray[1],
+			"hundId" => $hundArray[2],
+			"tittel" => $hundArray[3],
+			"navn" => $hundArray[4],
+			"hundFarId" => $hundArray[5],
+			"hundMorId" => $hundArray[6],
+			"idNr" => $hundArray[7],
+			"farge" => $hundArray[8],
+			"fargeVariant" => $hundArray[9],
+			"oyesykdom" => $hundArray[10],
+			"hoftesykdom" => $hundArray[11],
+			"haarlag" => $hundArray[12],
+			"idMerke" => $hundArray[13],
+			"kjonn" => $hundArray[14],
+			"eierId" => $hundArray[15],
+			"endretAv" => $hundArray[16],
+			"endretDato" => $hundArray[17],
+			"regDato" => $hundArray[18],
+			"storrelse" => $hundArray[19]
+			);
+		}
 	}
 	
 	public function getHundelisteArray($hundeliste)
