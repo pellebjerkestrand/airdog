@@ -40,6 +40,8 @@ class HundParserTest extends PHPUnit_Framework_TestCase
         $hp = new HundParser();
         $pa = $hp->getHundelisteArray($parseString);
     	
+        $this->assertEquals("2", sizeof($pa));
+        
     	$this->assertEquals("323", $pa[0]["raseId"]);			// Toppen i arrayet
     	$this->assertEquals("gra", $pa[0]["fargeVariant"]);		// Midten
     	$this->assertEquals("stor", $pa[0]["storrelse"]);		// Bunnen i arrayet
