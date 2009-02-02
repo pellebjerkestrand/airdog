@@ -8,7 +8,7 @@ class HundParser
 	
 	public function getHundArray($enHund)
 	{
-		$hundArray = split('[|]', $enHund);
+		$hundArray = split('[|]', trim($enHund));
 		
 		if (sizeof($hundArray) == 20)
 		{
