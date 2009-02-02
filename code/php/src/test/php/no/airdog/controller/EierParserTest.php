@@ -6,7 +6,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
 {
     function testGetEierArray() 
     {
-    $hp = new EierParser();
+    	$hp = new EierParser();
     	$parseString = "PETTER HANSEN|02033/89|348";
         $pa = $hp->getEierArray($parseString);
         
