@@ -33,6 +33,7 @@ class VeterinerParser
 	
 	public function getVeterinerlisteArray($veterinerliste)
 	{
+		$veterinerliste = str_replace("\r\n", "\n", $veterinerliste);
 		$veterinerlisteArray = split("\n", $veterinerliste);
 		$ret = array();
 		
