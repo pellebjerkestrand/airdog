@@ -56,7 +56,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new HundParser();
     	
-    	$pa = $hp->getHundelisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummydat.txt');
+    	$pa = $hp->getHundelisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hund.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -72,7 +72,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testValiderHundelisteFraFil()
     {
     	$hp = new HundParser();
-    	$this->assertTrue($hp->validerHundelisteFraFil(dirname(__FILE__).'\..\..\..\..\dummydat.txt'));
+    	$this->assertTrue($hp->validerHundelisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hund.dat'));
     }
     
     function testValiderHundeliste()
