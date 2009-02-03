@@ -21,7 +21,8 @@ class OppdrettParser
 	
 	public function getOppdrettlisteArray($oppdrettliste)
 	{
-		$oppdrettlisteArray = split("\r\n", "\n", $oppdrettliste);
+		$oppdrettliste = str_replace("\r\n", "\n", $oppdrettliste);
+		$oppdrettlisteArray = split("\n", $oppdrettliste);
 		$ret = array();
 		
 		for ($i = 0; $i < sizeof($oppdrettlisteArray); $i++)
