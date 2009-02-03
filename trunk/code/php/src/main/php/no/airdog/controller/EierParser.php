@@ -22,7 +22,8 @@ class EierParser
 	
 	public function getEierlisteArray($eierliste)
 	{
-		$eierlisteArray = split("\r\n", $eierliste);
+		$eierliste = str_replace("\r\n", "\n", $eierliste);
+		$eierlisteArray = split("\n", $eierliste);
 		$ret = array();
 		
 		for ($i = 0; $i < sizeof($eierlisteArray); $i++)

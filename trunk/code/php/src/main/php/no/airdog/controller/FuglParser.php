@@ -57,7 +57,8 @@ class FuglParser
 	
 	public function getFugllisteArray($fuglliste)
 	{
-		$fugllisteArray = split("\r\n", $fuglliste);
+		$fuglliste = str_replace("\r\n", "\n", $fuglliste);
+		$fugllisteArray = split("\n", $fuglliste);
 		$ret = array();
 		
 		for ($i = 0; $i < sizeof($fugllisteArray); $i++)

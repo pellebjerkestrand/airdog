@@ -32,7 +32,8 @@ class PersonParser
 	
 	public function getPersonlisteArray($personliste)
 	{
-		$personlisteArray = split("\r\n", $personliste);
+		$personliste = str_replace("\r\n", "\n", $personliste);
+		$personlisteArray = split("\n", $personliste);
 		$ret = array();
 		
 		for ($i = 0; $i < sizeof($personlisteArray); $i++)
