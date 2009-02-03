@@ -1,7 +1,4 @@
 <?php
-
-// VEID|PEID|Adresse1|Adresse2|Adresse3|Postnr|Telefon|Telefax|KlinikkNavn|RegDato|RegAv|EndretAv
-
 class VeterinerParser
 {
 	public function VeterinerParser()
@@ -45,5 +42,4 @@ class VeterinerParser
     	return $ret;
 	}
 }
-
 ?>
