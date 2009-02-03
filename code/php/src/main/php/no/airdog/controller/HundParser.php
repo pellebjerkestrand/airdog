@@ -43,12 +43,39 @@ class HundParser
 		$hundelisteArray = split("\n", $hundeliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($hundelisteArray); $i++)
+		// Hopper over den første linjen da denne inneholder kun tabellinformasjon.
+		for ($i = 1; $i < sizeof($hundelisteArray); $i++)
     	{
     		$ret[] = $this->getHundArray($hundelisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getHundelisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$hundeliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getHundelisteArray($hundeliste);
+	}
+	
+	public function validerHundelisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerHundeliste($innhold[0]);
+	}
+	
+	public function validerHundeliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "RAID|KUID|HUID|Tittel|Navn|HUIDFar|HUIDMor|IDNR|FargeBeskrivelse|FargeVariant|AD|HD|Haarlag|IDMerk|Kjoenn|PEID|EndretAv|EndretDato|RegDato|Stoerrelse")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>
