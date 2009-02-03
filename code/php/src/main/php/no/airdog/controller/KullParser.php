@@ -26,7 +26,8 @@ class KullParser
 	
 	public function getKulllisteArray($kullliste)
 	{
-		$kulllisteArray = split("\r\n", $kullliste);
+		$kullliste = str_replace("\r\n", "\n", $kullliste);
+		$kulllisteArray = split("\n", $kullliste);
 		$ret = array();
 		
 		for ($i = 0; $i < sizeof($kulllisteArray); $i++)
