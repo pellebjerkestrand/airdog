@@ -1,18 +1,18 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/Filvalider.php';
+require_once str_replace('.','/','no.airdog.controller').'/FilvaliderController.php';
 
-class FilvaliderTest extends PHPUnit_Framework_TestCase 
+class FilvaliderControllerTest extends PHPUnit_Framework_TestCase 
 {
     function testGetFiltypeFraFil() 
     {
-    	$fv = new Filvalider();
+    	$fv = new FilvaliderController();
     	$this->assertEquals("Eier", $fv->getFiltypeFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Eier.dat'));
     }
     
-	function testGetFiltype() 
+	function testGetFiltypeController() 
     {
-    	$fv = new Filvalider();
+    	$fv = new FilvaliderController();
     	$this->assertEquals("Eier", $fv->getFiltype("EIER|HUID|RAID"));
     	$this->assertEquals("Fugl", $fv->getFiltype("ProeveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID"));
     	$this->assertEquals("Hdsykdom", $fv->getFiltype("AvlestAv|Betaling|Diagnose|DiagnoseKode|EndretAv|HDID|HUID|IdMerket|IdMerkerKode|Kode|Lidelse|LidelseKode|PEID|RAID|RegAv|SekHoyre|SekHoyreKode|SekVenstre|SekVenstreKode|Sendes|VEID|RontgenDato|AvlestDato"));
