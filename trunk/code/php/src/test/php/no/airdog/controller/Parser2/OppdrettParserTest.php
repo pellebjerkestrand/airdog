@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/OppdrettParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/OppdrettParser.php';
 
 class OppdrettParserTest extends PHPUnit_Framework_TestCase 
 {
@@ -39,7 +39,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new OppdrettParser();
     	
-    	$pa = $hp->getOppdrettlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Oppdrett.dat');
+    	$pa = $hp->getOppdrettlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Oppdrett.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -55,7 +55,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     function testValiderOppdrettlisteFraFil()
     {
     	$hp = new OppdrettParser();
-    	$this->assertTrue($hp->validerOppdrettlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Oppdrett.dat'));
+    	$this->assertTrue($hp->validerOppdrettlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Oppdrett.dat'));
     }
     
     function testValiderOppdrettliste()

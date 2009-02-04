@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/EierParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/EierParser.php';
 
 class EierParserTest extends PHPUnit_Framework_TestCase 
 {
@@ -39,7 +39,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new EierParser();
     	
-    	$pa = $hp->getEierlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Eier.dat');
+    	$pa = $hp->getEierlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Eier.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -55,7 +55,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
     function testValiderEierlisteFraFil()
     {
     	$hp = new EierParser();
-    	$this->assertTrue($hp->validerEierlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Eier.dat'));
+    	$this->assertTrue($hp->validerEierlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Eier.dat'));
     }
     
     function testValiderEierliste()

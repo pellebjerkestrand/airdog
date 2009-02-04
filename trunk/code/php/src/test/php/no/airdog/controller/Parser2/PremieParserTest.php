@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/PremieParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/PremieParser.php';
 
 class PremieParserTest extends PHPUnit_Framework_TestCase 
 {
@@ -67,7 +67,7 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new PremieParser();
     	
-    	$pa = $hp->getPremielisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Premie.dat');
+    	$pa = $hp->getPremielisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Premie.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -83,7 +83,7 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     function testValiderPremielisteFraFil()
     {
     	$hp = new PremieParser();
-    	$this->assertTrue($hp->validerPremielisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Premie.dat'));
+    	$this->assertTrue($hp->validerPremielisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Premie.dat'));
     }
     
     function testValiderPremieliste()

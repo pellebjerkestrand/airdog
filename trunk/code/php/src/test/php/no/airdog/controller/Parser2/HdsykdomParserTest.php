@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/HdsykdomParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/HdsykdomParser.php';
 
 class OppdrettParserTest extends PHPUnit_Framework_TestCase 
 {
@@ -59,7 +59,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new HdsykdomParser();
     	
-    	$pa = $hp->getHdsykdomlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hdsykdom.dat');
+    	$pa = $hp->getHdsykdomlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hdsykdom.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -75,7 +75,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     function testValiderHdsykdomlisteFraFil()
     {
     	$hp = new HdsykdomParser();
-    	$this->assertTrue($hp->validerHdsykdomlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hdsykdom.dat'));
+    	$this->assertTrue($hp->validerHdsykdomlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hdsykdom.dat'));
     }
     
     function testValiderHdsykdomliste()

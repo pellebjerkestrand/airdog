@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/UtstillingParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/UtstillingParser.php';
 
 //UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|
 //UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato
@@ -54,7 +54,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new UtstillingParser();
     	
-    	$pa = $hp->getUtstillinglisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Utstilling.dat');
+    	$pa = $hp->getUtstillinglisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Utstilling.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -70,7 +70,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     function testValiderUtstillinglisteFraFil()
     {
     	$hp = new UtstillingParser();
-    	$this->assertTrue($hp->validerUtstillinglisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Utstilling.dat'));
+    	$this->assertTrue($hp->validerUtstillinglisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Utstilling.dat'));
     }
     
     function testValiderUtstillingliste()
