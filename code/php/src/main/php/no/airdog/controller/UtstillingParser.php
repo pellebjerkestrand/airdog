@@ -1,8 +1,5 @@
-
-
 <?php
-//UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|
-//UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato
+
 class UtstillingParser
 {
 	public function UtstillingParser()
@@ -16,21 +13,21 @@ class UtstillingParser
 		if (sizeof($utstillingArray) == 15)
 		{
 			return array (
-			"UTID" => $utstillingArray[0],
-			"KLID" => $utstillingArray[1],
-			"PEID" => $utstillingArray[2],
-			"RegDato" => $utstillingArray[3],
-			"RegAv" => $utstillingArray[4],
-			"Navn" => $utstillingArray[5],
-			"Adresse1" => $utstillingArray[6],
-			"Adresse2" => $utstillingArray[7],
-			"Postnr" => $utstillingArray[8],
-			"SpesialAdresse" => $utstillingArray[9],
-			"UtstillingDato" => $utstillingArray[10],
-			"UtstillingSted" => $utstillingArray[11],
-			"ArrangoerNavn1" => $utstillingArray[12],
-			"ArrangoerNavn2" => $utstillingArray[13],
-			"OverfoertDato" => $utstillingArray[14]
+			"utstillingId" => $utstillingArray[0],
+			"klasseId" => $utstillingArray[1],
+			"peId" => $utstillingArray[2],
+			"regDato" => $utstillingArray[3],
+			"regAv" => $utstillingArray[4],
+			"navn" => $utstillingArray[5],
+			"adresse1" => $utstillingArray[6],
+			"adresse2" => $utstillingArray[7],
+			"postNr" => $utstillingArray[8],
+			"spesialAdresse" => $utstillingArray[9],
+			"utstillingDato" => $utstillingArray[10],
+			"utstillingSted" => $utstillingArray[11],
+			"arrangoerNavn1" => $utstillingArray[12],
+			"arrangoerNavn2" => $utstillingArray[13],
+			"overfoertDato" => $utstillingArray[14]
 			);
 		}
 	}

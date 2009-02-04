@@ -13,21 +13,21 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	$parseString = "010001|036200|foo|22.11.1999|sb|GUSTAFSSON, ELLEN|MARKERUDLIA 2|foo|1490|foo|09.02.2000|SKEDSMOHALLEN|NORSK DOBERMANN KLUB|foo|22.03.2001";
         $pa = $hp->getUtstillingArray($parseString);
         
-    	$this->assertEquals("010001", $pa["UTID"]);
-    	$this->assertEquals("036200", $pa["KLID"]);
-    	$this->assertEquals("foo", $pa["PEID"]);
-    	$this->assertEquals("22.11.1999", $pa["RegDato"]);
-    	$this->assertEquals("sb", $pa["RegAv"]);
-    	$this->assertEquals("GUSTAFSSON, ELLEN", $pa["Navn"]);
-    	$this->assertEquals("MARKERUDLIA 2", $pa["Adresse1"]);
-    	$this->assertEquals("foo", $pa["Adresse2"]);
-    	$this->assertEquals("1490", $pa["Postnr"]);
-    	$this->assertEquals("foo", $pa["SpesialAdresse"]);
-    	$this->assertEquals("09.02.2000", $pa["UtstillingDato"]);
-    	$this->assertEquals("SKEDSMOHALLEN", $pa["UtstillingSted"]);
-    	$this->assertEquals("NORSK DOBERMANN KLUB", $pa["ArrangoerNavn1"]);
-    	$this->assertEquals("foo", $pa["ArrangoerNavn2"]);
-    	$this->assertEquals("22.03.2001", $pa["OverfoertDato"]);
+    	$this->assertEquals("010001", $pa["utstillingId"]);
+    	$this->assertEquals("036200", $pa["klasseId"]);
+    	$this->assertEquals("foo", $pa["peId"]);
+    	$this->assertEquals("22.11.1999", $pa["regDato"]);
+    	$this->assertEquals("sb", $pa["regAv"]);
+    	$this->assertEquals("GUSTAFSSON, ELLEN", $pa["navn"]);
+    	$this->assertEquals("MARKERUDLIA 2", $pa["adresse1"]);
+    	$this->assertEquals("foo", $pa["adresse2"]);
+    	$this->assertEquals("1490", $pa["postNr"]);
+    	$this->assertEquals("foo", $pa["spesialAdresse"]);
+    	$this->assertEquals("09.02.2000", $pa["utstillingDato"]);
+    	$this->assertEquals("SKEDSMOHALLEN", $pa["utstillingSted"]);
+    	$this->assertEquals("NORSK DOBERMANN KLUB", $pa["arrangoerNavn1"]);
+    	$this->assertEquals("foo", $pa["arrangoerNavn2"]);
+    	$this->assertEquals("22.03.2001", $pa["overfoertDato"]);
     }    
     
     function testGetUtstillingListeArray()
@@ -40,13 +40,13 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
         
         $this->assertEquals("2", sizeof($pa));
     	
-    	$this->assertEquals("100005", $pa[0]["UTID"]);			// Toppen i arrayet
-    	$this->assertEquals("foo", $pa[0]["Adresse1"]);				// Midten
-    	$this->assertEquals("foo", $pa[0]["OverfoertDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
+    	$this->assertEquals("foo", $pa[0]["adresse1"]);				// Midten
+    	$this->assertEquals("foo", $pa[0]["overfoertDato"]);			// Bunnen i arrayet
     	
-    	$this->assertEquals("100006", $pa[1]["UTID"]);			// Toppen i arrayet
-    	$this->assertEquals("SORLAND", $pa[1]["Adresse1"]);				// Midten
-    	$this->assertEquals("21.02.2010", $pa[1]["OverfoertDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
+    	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
+    	$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);			// Bunnen i arrayet
     }    
 }
 ?>
