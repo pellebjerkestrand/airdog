@@ -2,7 +2,7 @@
 if (isset($_FILES['Filedata'])) 
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
-	$upload_dir = dirname(__FILE__)."../temp_opplasting/";
+	$upload_dir = dirname(__FILE__)."./../temp_opplasting/";
 
 	$temp_navn = $_FILES['Filedata']['tmp_name'];
 	$fil_navn = $_FILES['Filedata']['name'];
