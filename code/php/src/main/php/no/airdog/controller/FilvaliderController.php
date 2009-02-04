@@ -1,15 +1,15 @@
 <?php
-require_once 'EierParser.php';
-require_once 'FuglParser.php';
-require_once 'HdsykdomParser.php';
-require_once 'HundParser.php';
-require_once 'KullParser.php';
-require_once 'OppdrettParser.php';
-require_once 'PersonParser.php';
-require_once 'PremieParser.php';
-require_once 'UtstillingParser.php';
-require_once 'VeterinerParser.php';
-require_once 'AasykdomParser.php';
+require_once 'parser/EierParser.php';
+require_once 'parser/FuglParser.php';
+require_once 'parser/HdsykdomParser.php';
+require_once 'parser/HundParser.php';
+require_once 'parser/KullParser.php';
+require_once 'parser/OppdrettParser.php';
+require_once 'parser/PersonParser.php';
+require_once 'parser/PremieParser.php';
+require_once 'parser/UtstillingParser.php';
+require_once 'parser/VeterinerParser.php';
+require_once 'parser/AasykdomParser.php';
 
 class FilvaliderController
 {

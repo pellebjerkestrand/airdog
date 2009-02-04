@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once str_replace('.','/','no.airdog.controller').'/PersonParser.php';
+require_once str_replace('.','/','no.airdog.controller.parser').'/PersonParser.php';
 
 class PersonParserTest extends PHPUnit_Framework_TestCase 
 {
@@ -49,7 +49,7 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new PersonParser();
     	
-    	$pa = $hp->getPersonlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Person.dat');
+    	$pa = $hp->getPersonlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Person.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -65,7 +65,7 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     function testValiderPersonlisteFraFil()
     {
     	$hp = new PersonParser();
-    	$this->assertTrue($hp->validerPersonlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Person.dat'));
+    	$this->assertTrue($hp->validerPersonlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Person.dat'));
     }
     
     function testValiderPersonliste()
