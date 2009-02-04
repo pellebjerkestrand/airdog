@@ -27,7 +27,8 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     
     function testGetPersonlisteArray()
     {
-    	$parseString = '2459201|Petter, Svein Hansen|En gate. 2 A|3. b|4 a|4323|N|348|lol|112|05.02.2008|22.09.1993|19.09.1949
+    	$parseString = 'PEID|Navn|Adresse1|Adresse2|Adresse3|Postnr|Landkode|RAID|Status|Telefon1|EndretDato|RegDato|Foedt
+    					2459201|Petter, Svein Hansen|En gate. 2 A|3. b|4 a|4323|N|348|lol|112|05.02.2008|22.09.1993|19.09.1949
     					2459202|Petter, Svein Hansen|En gate. 2 A|3. b|4 a|4323|N|349|lol|112|05.02.2008|22.09.1993|19.09.1950';
     	
         $hp = new PersonParser();
@@ -42,6 +43,39 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("2459202", $pa[1]["personId"]);			// Toppen i arrayet
     	$this->assertEquals("349", $pa[1]["raseId"]);				// Midten
     	$this->assertEquals("19.09.1950", $pa[1]["fodt"]);			// Bunnen i arrayet
+    }    
+    
+	function testGetPersonlisteArrayFraFil()
+    {	
+    	$hp = new PersonParser();
+    	
+    	$pa = $hp->getPersonlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Person.dat');
+    	
+        $this->assertEquals("2", sizeof($pa));
+        
+    	$this->assertEquals("2459201", $pa[0]["personId"]);			// Toppen i arrayet
+    	$this->assertEquals("348", $pa[0]["raseId"]);				// Midten
+    	$this->assertEquals("19.09.1949", $pa[0]["fodt"]);			// Bunnen i arrayet
+    	
+    	$this->assertEquals("2459202", $pa[1]["personId"]);			// Toppen i arrayet
+    	$this->assertEquals("349", $pa[1]["raseId"]);				// Midten
+    	$this->assertEquals("19.09.1950", $pa[1]["fodt"]);			// Bunnen i arrayet
+    }
+    
+    function testValiderPersonlisteFraFil()
+    {
+    	$hp = new PersonParser();
+    	$this->assertTrue($hp->validerPersonlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Person.dat'));
+    }
+    
+    function testValiderPersonliste()
+    {
+    	$hp = new PersonParser();
+    	
+    	$this->assertTrue($hp->validerPersonliste("PEID|Navn|Adresse1|Adresse2|Adresse3|Postnr|Landkode|RAID|Status|Telefon1|EndretDato|RegDato|Foedt"));
+    	$this->assertFalse($hp->validerPersonliste("PEID|Navn|Adresse1|Adresse3|Adresse3|Postnr|Landkode|RAID|Status|Telefon1|EndretDato|RegDato|Foedt"));
+    	$this->assertFalse($hp->validerPersonliste(""));
+    	$this->assertFalse($hp->validerPersonliste("false"));
     }    
 }
 ?>

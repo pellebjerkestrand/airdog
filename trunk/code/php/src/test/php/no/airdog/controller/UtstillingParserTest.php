@@ -30,23 +30,57 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("22.03.2001", $pa["overfoertDato"]);
     }    
     
-    function testGetUtstillingListeArray()
+    function testGetUtstillinglisteArray()
     {
-    	$parseString = '100005|111100|3033819|07.11.1999|sb|BYRBØKKEN, TOVE|foo|foo|2739|foo|16.01.2010|VINSTRAHALLEN|POINTER HUNDEKLUBB|foo|foo
+    	$parseString = 'UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato
+    					100005|111100|3033819|07.11.1999|sb|BYRBØKKEN, TOVE|foo|foo|2739|foo|16.01.2010|VINSTRAHALLEN|POINTER HUNDEKLUBB|foo|foo
 						100006|014100|2594871|03.11.1999|sb|PETTERSEN, TORILL|SORLAND|foo|3538|foo|16.01.2010|GLOMMA, DAL|NORSK POLAREHUNDKLUBB|foo|21.02.2010';
     	
         $hp = new UtstillingParser();
-        $pa = $hp->getUtstillingListeArray($parseString);
+        $pa = $hp->getUtstillinglisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	
     	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
-    	$this->assertEquals("foo", $pa[0]["adresse1"]);				// Midten
+    	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
     	$this->assertEquals("foo", $pa[0]["overfoertDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
-    	$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);			// Bunnen i arrayet
+   		$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);		// Bunnen i arrayet
+    }    
+    
+	function testGetUtstillinglisteArrayFraFil()
+    {	
+    	$hp = new UtstillingParser();
+    	
+    	$pa = $hp->getUtstillinglisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Utstilling.dat');
+    	
+        $this->assertEquals("2", sizeof($pa));
+        
+    	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
+    	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
+    	$this->assertEquals("foo", $pa[0]["overfoertDato"]);			// Bunnen i arrayet
+    	
+    	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
+    	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
+   		$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);		// Bunnen i arrayet
+    }
+    
+    function testValiderUtstillinglisteFraFil()
+    {
+    	$hp = new UtstillingParser();
+    	$this->assertTrue($hp->validerUtstillinglisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Utstilling.dat'));
+    }
+    
+    function testValiderUtstillingliste()
+    {
+    	$hp = new UtstillingParser();
+    	
+    	$this->assertTrue($hp->validerUtstillingliste("UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato"));
+    	$this->assertFalse($hp->validerUtstillingliste("UTIT|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato"));
+    	$this->assertFalse($hp->validerUtstillingliste(""));
+    	$this->assertFalse($hp->validerUtstillingliste("false"));
     }    
 }
 ?>

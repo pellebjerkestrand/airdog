@@ -44,7 +44,8 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     
     function testGetPremielisteArray()
     {
-    	$parseString = '1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30
+    	$parseString = 'DOID|UTID|HUID|Katalognr|PEIDdommer|Klasse|Kjonn|RAID|IM|KIP|JK|JKK|UK|UKK|BK|BKK|AK|AKK|VK|CHK|CHKK|VTK|VTKK|HP|CK|CC|CA|BIK|BIR|BIM
+    					1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30
     					1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30';
     	
     	
@@ -60,6 +61,39 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("1", $pa[1]["DOID"]);			// Toppen i arrayet
     	$this->assertEquals("16", $pa[1]["BKK"]);			// Midten
     	$this->assertEquals("30", $pa[1]["BIM"]);			// Bunnen i arrayet
+    }    
+    
+	function testGetPremielisteArrayFraFil()
+    {	
+    	$hp = new PremieParser();
+    	
+    	$pa = $hp->getPremielisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Premie.dat');
+    	
+        $this->assertEquals("2", sizeof($pa));
+        
+    	$this->assertEquals("1", $pa[0]["DOID"]);			// Toppen i arrayet
+		$this->assertEquals("16", $pa[0]["BKK"]);			// Midten
+    	$this->assertEquals("30", $pa[0]["BIM"]);			// Bunnen i arrayet
+    	
+    	$this->assertEquals("1", $pa[1]["DOID"]);			// Toppen i arrayet
+    	$this->assertEquals("16", $pa[1]["BKK"]);			// Midten
+    	$this->assertEquals("30", $pa[1]["BIM"]);			// Bunnen i arrayet
+    }
+    
+    function testValiderPremielisteFraFil()
+    {
+    	$hp = new PremieParser();
+    	$this->assertTrue($hp->validerPremielisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Premie.dat'));
+    }
+    
+    function testValiderPremieliste()
+    {
+    	$hp = new PremieParser();
+    	
+    	$this->assertTrue($hp->validerPremieliste("DOID|UTID|HUID|Katalognr|PEIDdommer|Klasse|Kjonn|RAID|IM|KIP|JK|JKK|UK|UKK|BK|BKK|AK|AKK|VK|CHK|CHKK|VTK|VTKK|HP|CK|CC|CA|BIK|BIR|BIM"));
+    	$this->assertFalse($hp->validerPremieliste("DOIT|UTID|HUID|Katalognr|PEIDdommer|Klasse|Kjonn|RAID|IM|KIP|JK|JKK|UK|UKK|BK|BKK|AK|AKK|VK|CHK|CHKK|VTK|VTKK|HP|CK|CC|CA|BIK|BIR|BIM"));
+    	$this->assertFalse($hp->validerPremieliste(""));
+    	$this->assertFalse($hp->validerPremieliste("false"));
     }    
 }
 ?>
