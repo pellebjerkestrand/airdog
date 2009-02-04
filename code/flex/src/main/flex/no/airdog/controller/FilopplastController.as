@@ -8,7 +8,7 @@ package no.airdog.controller
 
     public class FilopplastController extends UIComponent
     {
-    	private const ADRESSE:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/HundController.php";
+    	private const ADRESSE:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php";
         private var fr:FileReference;
         private var pBar:ProgressBar;
 		private var bildeTyper:FileFilter;
