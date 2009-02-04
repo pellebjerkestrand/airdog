@@ -88,5 +88,6 @@
 	
 	<view:HundeListe controller="{hundeController}"/>
 	<view:HundeProfil/>	
+	<view:Filopplastning/>
 
 </mx:Application>
