@@ -1,11 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
 require_once str_replace('.','/','no.airdog.controller').'/AasykdomParser.php';
-			
-			//VEID|AAID|DiagnoseKode|IdMerkerKode|LidelseKode|SekHoyreKode|
-			//SekVenstreKode|EndretAv|RegAv|AvlestAv|Betaling|Diagnose|HUID|
-			//IdFeil|IdMerket|Kode|Lidelse|PEID|Purring|RAID|Retur|SekHoyre|
-			//SekVenstre|Sendes|AvlestDato|RontgenDato
 
 class AasykdomParserTest extends PHPUnit_Framework_TestCase 
 {
