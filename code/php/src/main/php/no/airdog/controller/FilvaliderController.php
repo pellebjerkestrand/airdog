@@ -11,9 +11,9 @@ require_once 'UtstillingParser.php';
 require_once 'VeterinerParser.php';
 require_once 'AasykdomParser.php';
 
-class Filvalider
+class FilvaliderController
 {
-	public function Filvalider()
+	public function FilvaliderController()
 	{
 	}
 	
