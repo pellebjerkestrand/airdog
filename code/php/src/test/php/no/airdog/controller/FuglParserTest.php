@@ -52,7 +52,8 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     
     function testGetFugllisteArray()
     {
-    	$parseString = '50-95042|01.04.1995|L1|4|1355668|2425066|20466/90|8|1|0|1|2|3|5|4|3|2|1|2|3|4|5|6|5|4|3|2|1|2|3|4|5|6|5|4|TA|13.05.1995|348
+    	$parseString = 'ProeveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID
+    					50-95042|01.04.1995|L1|4|1355668|2425066|20466/90|8|1|0|1|2|3|5|4|3|2|1|2|3|4|5|6|5|4|3|2|1|2|3|4|5|6|5|4|TA|13.05.1995|348
     					50-95044|01.04.1995|L1|4|1355668|2425066|20466/90|8|1|0|1|2|3|5|4|3|2|1|2|3|4|9|6|5|4|3|2|1|2|3|4|5|6|5|4|TA|13.05.1995|349';
     	
         $hp = new FuglParser();
@@ -67,6 +68,39 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("50-95044", $pa[1]["proveNr"]);				// Toppen i arrayet
     	$this->assertEquals("9", $pa[1]["presNoeUpresis"]);				// Midten
     	$this->assertEquals("349", $pa[1]["raseId"]);					// Bunnen i arrayet
+    }    
+    
+	function testGetFugllisteArrayFraFil()
+    {	
+    	$hp = new FuglParser();
+    	
+    	$pa = $hp->getFugllisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Fugl.dat');
+    	
+        $this->assertEquals("2", sizeof($pa));
+        
+    	$this->assertEquals("50-95042", $pa[0]["proveNr"]);				// Toppen i arrayet
+    	$this->assertEquals("5", $pa[0]["presNoeUpresis"]);				// Midten
+    	$this->assertEquals("348", $pa[0]["raseId"]);					// Bunnen i arrayet
+    	
+    	$this->assertEquals("50-95044", $pa[1]["proveNr"]);				// Toppen i arrayet
+    	$this->assertEquals("9", $pa[1]["presNoeUpresis"]);				// Midten
+    	$this->assertEquals("349", $pa[1]["raseId"]);					// Bunnen i arrayet
+    }
+    
+    function testValiderFugllisteFraFil()
+    {
+    	$hp = new FuglParser();
+    	$this->assertTrue($hp->validerFugllisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Fugl.dat'));
+    }
+    
+    function testValiderFuglliste()
+    {
+    	$hp = new FuglParser();
+    	
+    	$this->assertTrue($hp->validerFuglliste("ProeveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID"));
+    	$this->assertFalse($hp->validerFuglliste("ProveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID"));
+    	$this->assertFalse($hp->validerFuglliste(""));
+    	$this->assertFalse($hp->validerFuglliste("false"));
     }    
 }
 ?>

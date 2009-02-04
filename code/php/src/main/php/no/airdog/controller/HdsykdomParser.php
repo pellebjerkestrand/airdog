@@ -45,12 +45,38 @@ class HdsykdomParser
 		$hdsykdomlisteArray = split("\n", $hdsykdomliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($hdsykdomlisteArray); $i++)
+		for ($i = 1; $i < sizeof($hdsykdomlisteArray); $i++)
     	{
     		$ret[] = $this->getHdsykdomArray($hdsykdomlisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getHdsykdomlisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$hdsykdomliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getHdsykdomlisteArray($hdsykdomliste);
+	}
+	
+	public function validerHdsykdomlisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerHdsykdomliste($innhold[0]);
+	}
+	
+	public function validerHdsykdomliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "AvlestAv|Betaling|Diagnose|DiagnoseKode|EndretAv|HDID|HUID|IdMerket|IdMerkerKode|Kode|Lidelse|LidelseKode|PEID|RAID|RegAv|SekHoyre|SekHoyreKode|SekVenstre|SekVenstreKode|Sendes|VEID|RontgenDato|AvlestDato")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

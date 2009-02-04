@@ -61,12 +61,38 @@ class FuglParser
 		$fugllisteArray = split("\n", $fuglliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($fugllisteArray); $i++)
+		for ($i = 1; $i < sizeof($fugllisteArray); $i++)
     	{
     		$ret[] = $this->getFuglArray($fugllisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getFugllisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$fuglliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getFugllisteArray($fuglliste);
+	}
+	
+	public function validerFugllisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerFuglliste($innhold[0]);
+	}
+	
+	public function validerFuglliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "ProeveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

@@ -30,12 +30,38 @@ class KullParser
 		$kulllisteArray = split("\n", $kullliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($kulllisteArray); $i++)
+		for ($i = 1; $i < sizeof($kulllisteArray); $i++)
     	{
     		$ret[] = $this->getKullArray($kulllisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getKulllisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$kullliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getKulllisteArray($kullliste);
+	}
+	
+	public function validerKulllisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerKullliste($innhold[0]);
+	}
+	
+	public function validerKullliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "KUID|HUIDFar|HUIDMor|PEIDOppdretter|EndretDato|Foedt|RAID")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>
