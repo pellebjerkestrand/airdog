@@ -52,12 +52,38 @@ class PremieParser
 		$premielisteArray = split("\n", $premieliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($premielisteArray); $i++)
+		for ($i = 1; $i < sizeof($premielisteArray); $i++)
     	{
     		$ret[] = $this->getPremieArray($premielisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getPremielisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$kullliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getPremielisteArray($kullliste);
+	}
+	
+	public function validerPremielisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerPremieliste($innhold[0]);
+	}
+	
+	public function validerPremieliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "DOID|UTID|HUID|Katalognr|PEIDdommer|Klasse|Kjonn|RAID|IM|KIP|JK|JKK|UK|UKK|BK|BKK|AK|AKK|VK|CHK|CHKK|VTK|VTKK|HP|CK|CC|CA|BIK|BIR|BIM")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

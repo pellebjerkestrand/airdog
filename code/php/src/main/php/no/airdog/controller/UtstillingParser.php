@@ -33,7 +33,7 @@ class UtstillingParser
 	}
 
 	
-	public function getUtstillingListeArray($utstillingliste)
+	public function getUtstillinglisteArray($utstillingliste)
 	{
 			$utstillingliste = str_replace("\r\n", "\n", $utstillingliste);
 			$utstillingListeArray = split("\n", $utstillingliste);
@@ -41,12 +41,38 @@ class UtstillingParser
 			//$utstillingListeArray = split("\r\n", $utstillingliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($utstillingListeArray); $i++)
+		for ($i = 1; $i < sizeof($utstillingListeArray); $i++)
     	{
     		$ret[] = $this->getUtstillingArray($utstillingListeArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getUtstillinglisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$utstillingliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getUtstillinglisteArray($utstillingliste);
+	}
+	
+	public function validerUtstillinglisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerUtstillingliste($innhold[0]);
+	}
+	
+	public function validerUtstillingliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

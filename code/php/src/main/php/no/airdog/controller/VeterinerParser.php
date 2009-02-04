@@ -34,12 +34,38 @@ class VeterinerParser
 		$veterinerlisteArray = split("\n", $veterinerliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($veterinerlisteArray); $i++)
+		for ($i = 1; $i < sizeof($veterinerlisteArray); $i++)
     	{
     		$ret[] = $this->getVeterinerArray($veterinerlisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getVeterinerlisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$veterinerliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getVeterinerlisteArray($veterinerliste);
+	}
+	
+	public function validerVeterinerlisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerVeterinerliste($innhold[0]);
+	}
+	
+	public function validerVeterinerliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "VEID|PEID|Adresse1|Adresse2|Adresse3|Postnr|Telefon|Telefax|KlinikkNavn|RegDato|RegAv|EndretAv")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>
