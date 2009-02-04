@@ -26,12 +26,38 @@ class EierParser
 		$eierlisteArray = split("\n", $eierliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($eierlisteArray); $i++)
+		for ($i = 1; $i < sizeof($eierlisteArray); $i++)
     	{
     		$ret[] = $this->getEierArray($eierlisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getEierlisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$eierliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getEierlisteArray($eierliste);
+	}
+	
+	public function validerEierlisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerEierliste($innhold[0]);
+	}
+	
+	public function validerEierliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "EIER|HUID|RAID")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

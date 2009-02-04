@@ -25,12 +25,38 @@ class OppdrettParser
 		$oppdrettlisteArray = split("\n", $oppdrettliste);
 		$ret = array();
 		
-		for ($i = 0; $i < sizeof($oppdrettlisteArray); $i++)
+		for ($i = 1; $i < sizeof($oppdrettlisteArray); $i++)
     	{
     		$ret[] = $this->getOppdrettArray($oppdrettlisteArray[$i]);
     	}
     	
     	return $ret;
+	}
+	
+	public function getOppdrettlisteArrayFraFil($filnavn)
+	{
+		$handle = fopen($filnavn, "rb");
+		$kullliste = fread($handle, filesize($filnavn));
+		fclose($handle);
+
+		return $this->getOppdrettlisteArray($kullliste);
+	}
+	
+	public function validerOppdrettlisteFraFil($filnavn)
+	{
+		$innhold = file($filnavn);		
+		return $this->validerOppdrettliste($innhold[0]);
+	}
+	
+	public function validerOppdrettliste($innhold)
+	{
+		// Sjekker at første linje inneholder riktig tabellinformasjon
+		if (trim($innhold) == "KUID|Oppdretter|RAID")
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
 ?>

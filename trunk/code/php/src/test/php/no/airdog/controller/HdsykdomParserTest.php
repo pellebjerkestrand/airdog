@@ -37,7 +37,8 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     
     function testGetHdsykdomlisteArray()
     {
-    	$parseString = 'to|1222|A1221|1121|geir|12121221|2121/9933|Xh|||||1221|1221|121ggfd||||||1221|14.02.2000|23.02.2000
+    	$parseString = 'AvlestAv|Betaling|Diagnose|DiagnoseKode|EndretAv|HDID|HUID|IdMerket|IdMerkerKode|Kode|Lidelse|LidelseKode|PEID|RAID|RegAv|SekHoyre|SekHoyreKode|SekVenstre|SekVenstreKode|Sendes|VEID|RontgenDato|AvlestDato
+    					to|1222|A1221|1121|geir|12121221|2121/9933|Xh|||||1221|1221|121ggfd||||||1221|14.02.2000|23.02.2000
 						tre|12214|A12121|121|teir|122112|1212/212112|M|||||12112|12122|gfffl||||||12112|08.03.2000|09.03.2000';
     	
         $hp = new HdsykdomParser();
@@ -45,13 +46,46 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
         
         $this->assertEquals("2", sizeof($pa));
     	
-    	$this->assertEquals("to", $pa[0]["avlestAv"]);			// Toppen i arrayet
-    	$this->assertEquals("", $pa[0]["lidelse"]);				// Midten
+    	$this->assertEquals("to", $pa[0]["avlestAv"]);						// Toppen i arrayet
+    	$this->assertEquals("", $pa[0]["lidelse"]);							// Midten
     	$this->assertEquals("23.02.2000", $pa[0]["avlestDato"]);			// Bunnen i arrayet
     	
-    	$this->assertEquals("tre", $pa[1]["avlestAv"]);			// Toppen i arrayet
-    	$this->assertEquals("", $pa[1]["lidelse"]);				// Midten
+    	$this->assertEquals("tre", $pa[1]["avlestAv"]);						// Toppen i arrayet
+    	$this->assertEquals("", $pa[1]["lidelse"]);							// Midten
     	$this->assertEquals("09.03.2000", $pa[1]["avlestDato"]);			// Bunnen i arrayet
+    }    
+    
+	function testGetHdsykdomlisteArrayFraFil()
+    {	
+    	$hp = new HdsykdomParser();
+    	
+    	$pa = $hp->getHdsykdomlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hdsykdom.dat');
+    	
+        $this->assertEquals("2", sizeof($pa));
+        
+    	$this->assertEquals("to", $pa[0]["avlestAv"]);						// Toppen i arrayet
+    	$this->assertEquals("", $pa[0]["lidelse"]);							// Midten
+    	$this->assertEquals("23.02.2000", $pa[0]["avlestDato"]);			// Bunnen i arrayet
+    	
+    	$this->assertEquals("tre", $pa[1]["avlestAv"]);						// Toppen i arrayet
+    	$this->assertEquals("", $pa[1]["lidelse"]);							// Midten
+    	$this->assertEquals("09.03.2000", $pa[1]["avlestDato"]);			// Bunnen i arrayet
+    }
+    
+    function testValiderHdsykdomlisteFraFil()
+    {
+    	$hp = new HdsykdomParser();
+    	$this->assertTrue($hp->validerHdsykdomlisteFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Hdsykdom.dat'));
+    }
+    
+    function testValiderHdsykdomliste()
+    {
+    	$hp = new HdsykdomParser();
+    	
+    	$this->assertTrue($hp->validerHdsykdomliste("AvlestAv|Betaling|Diagnose|DiagnoseKode|EndretAv|HDID|HUID|IdMerket|IdMerkerKode|Kode|Lidelse|LidelseKode|PEID|RAID|RegAv|SekHoyre|SekHoyreKode|SekVenstre|SekVenstreKode|Sendes|VEID|RontgenDato|AvlestDato"));
+    	$this->assertFalse($hp->validerHdsykdomliste("AvlestAv|Betalinger|Diagnose|DiagnoseKode|EndretAv|HDID|HUID|IdMerket|IdMerkerKode|Kode|Lidelse|LidelseKode|PEID|RAID|RegAv|SekHoyre|SekHoyreKode|SekVenstre|SekVenstreKode|Sendes|VEID|RontgenDato|AvlestDato"));
+    	$this->assertFalse($hp->validerHdsykdomliste(""));
+    	$this->assertFalse($hp->validerHdsykdomliste("false"));
     }    
 }
 ?>
