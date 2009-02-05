@@ -47,6 +47,15 @@ class HundDatabase
 		or die(mysql_error()); 
 	}
 	
+	public function finnesHund($hundId)
+	{
+		$hund = $this->hentHund($hundId);
+		if (isset($hund["hundId"]))
+			return true;
+		
+		return false;
+	}
+	
 	public function hentHund($hundId)
 	{
 		$resultat = mysql_query("SELECT * FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
