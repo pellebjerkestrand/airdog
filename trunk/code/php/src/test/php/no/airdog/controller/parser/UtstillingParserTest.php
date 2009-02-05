@@ -15,7 +15,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("010001", $pa["utstillingId"]);
     	$this->assertEquals("036200", $pa["klasseId"]);
-    	$this->assertEquals("foo", $pa["peId"]);
+    	$this->assertEquals("foo", $pa["personId"]);
     	$this->assertEquals("22.11.1999", $pa["regDato"]);
     	$this->assertEquals("sb", $pa["regAv"]);
     	$this->assertEquals("GUSTAFSSON, ELLEN", $pa["navn"]);
@@ -25,9 +25,9 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("foo", $pa["spesialAdresse"]);
     	$this->assertEquals("09.02.2000", $pa["utstillingDato"]);
     	$this->assertEquals("SKEDSMOHALLEN", $pa["utstillingSted"]);
-    	$this->assertEquals("NORSK DOBERMANN KLUB", $pa["arrangoerNavn1"]);
-    	$this->assertEquals("foo", $pa["arrangoerNavn2"]);
-    	$this->assertEquals("22.03.2001", $pa["overfoertDato"]);
+    	$this->assertEquals("NORSK DOBERMANN KLUB", $pa["arrangorNavn1"]);
+    	$this->assertEquals("foo", $pa["arrangorNavn2"]);
+    	$this->assertEquals("22.03.2001", $pa["overfortDato"]);
     }    
     
     function testGetUtstillinglisteArray()
@@ -43,11 +43,11 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
-    	$this->assertEquals("foo", $pa[0]["overfoertDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("foo", $pa[0]["overfortDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
-   		$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);		// Bunnen i arrayet
+   		$this->assertEquals("21.02.2010", $pa[1]["overfortDato"]);		// Bunnen i arrayet
     }    
     
 	function testGetUtstillinglisteArrayFraFil()
@@ -60,11 +60,11 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
-    	$this->assertEquals("foo", $pa[0]["overfoertDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("foo", $pa[0]["overfortDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
-   		$this->assertEquals("21.02.2010", $pa[1]["overfoertDato"]);		// Bunnen i arrayet
+   		$this->assertEquals("21.02.2010", $pa[1]["overfortDato"]);		// Bunnen i arrayet
     }
     
     function testValiderUtstillinglisteFraFil()

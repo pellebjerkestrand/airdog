@@ -39,7 +39,7 @@ class FuglParser
 			"reisNekter" => $fuglArray[23],
 			"reisNoelende" => $fuglArray[24],
 			"reisVillig" => $fuglArray[25],
-			"reidDjerv" => $fuglArray[26],
+			"reisDjerv" => $fuglArray[26],
 			"sokStjeler" => $fuglArray[27],
 			"sokSpontant" => $fuglArray[28],
 			"appIkkeGodkjent" => $fuglArray[29],

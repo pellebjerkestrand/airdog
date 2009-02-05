@@ -10,7 +10,7 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     	$parseString = "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30";
         $pa = $hp->getPremieArray($parseString);
         
-    	$this->assertEquals("1", $pa["DOID"]);
+    	$this->assertEquals("1", $pa["doID"]);
     	$this->assertEquals("2", $pa["utstillingId"]);
     	$this->assertEquals("3", $pa["hundId"]);
     	$this->assertEquals("4", $pa["katalogNr"]);
