@@ -3,8 +3,9 @@ package no.airdog.controller
     import flash.errors.IllegalOperationError;
     import flash.events.*;
     import flash.net.*;
-    import mx.core.UIComponent;
+    
     import mx.controls.*;
+    import mx.core.UIComponent;
 
     public class FilopplastController extends UIComponent
     {
@@ -14,7 +15,8 @@ package no.airdog.controller
 		private var bildeTyper:FileFilter;
 		private var tekstTyper:FileFilter;
 		private var alleTyper:Array;
-		private var maksfilStorrelse:Number;	 
+		private var maksfilStorrelse:Number;	
+		private var uploadtekst:TextArea; 
 
         public function FilopplastController()
         {
@@ -29,11 +31,12 @@ package no.airdog.controller
         	maksfilStorrelse = 50 * 1024;
         }
         
-        public function start(pbar:ProgressBar):void
+        public function start(pbar:ProgressBar, uploadtekst:TextArea):void
         {
+        	this.uploadtekst = uploadtekst;
            	this.pBar = pbar;
             fr = new FileReference();
-            
+
             lagEventListerner();
         }
                
@@ -44,6 +47,7 @@ package no.airdog.controller
             fr.addEventListener(ProgressEvent.PROGRESS, progressHandler);
             fr.addEventListener(Event.COMPLETE, completeHandler);
             fr.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+            fr.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, uploadCompleteHandler);
         }
 
         public function velgFil():void
@@ -104,7 +108,13 @@ package no.airdog.controller
         {
         	pBar.setProgress(100, 100);
    
-        	pBar.label = "Filen " + fr.name + " ble lastet opp"; 
+        	pBar.label = "Filen " + fr.name + " ble lastet opp";         	
+        }
+        
+        private function uploadCompleteHandler(event:DataEvent):void
+        {
+        	uploadtekst.visible = true;
+        	uploadtekst.text += event.data as String;
         }		
     }
 }
