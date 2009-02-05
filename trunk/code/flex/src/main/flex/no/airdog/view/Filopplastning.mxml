@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
 	 xmlns:controller="no.airdog.controller.*" width="100%">
-	<controller:FilopplastController id="controller" creationComplete="controller.start(pBar);" />
+	<controller:FilopplastController id="controller" creationComplete="controller.start(pBar,uploadtekst);" />
 	<mx:Panel width="50%"  verticalAlign="middle" horizontalAlign="center" id="opplastingPanel" title="Last opp fil" paddingTop="5" paddingRight="5" paddingLeft="5" paddingBottom="5">
 		<mx:Button id="lastOpp" label="Last opp" click="{controller.velgFil()}" width="90%" />
 		<mx:ProgressBar id="pBar" mode="manual" label="" width="90%"  labelPlacement="center" visible="false" trackHeight="10"/>
+		<mx:TextArea width="90%" height="200" id="uploadtekst" visible="false"/>
 	</mx:Panel>
 </mx:Canvas>
