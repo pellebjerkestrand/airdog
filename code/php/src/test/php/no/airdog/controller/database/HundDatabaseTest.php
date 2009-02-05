@@ -8,9 +8,98 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
     function testSettInnHund() 
     {
     	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));	
+    	$this->assertTrue(sizeof($hd->hentHund("TEST_ID")) > 0);	
+    	
+    	$hd->slettHund("TEST_ID");	
+    }
+    
+    function testOppdaterHund()
+    {
+    	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));
+
+		$hundArray["farge"] = "gul";
+		$this->assertTrue($hd->oppdaterHund($hundArray, "Tore"));
+		
+		$hund = $hd->hentHund("TEST_ID");
+    	$this->assertTrue(sizeof($hund) > 0);	
+    	$this->assertEquals("gul", $hund["farge"]);
+    	
+    	$hd->slettHund("TEST_ID");	
+    }
+    	
+    function testSlettHund()
+    {
+    	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));		
+    	
+    	$this->assertTrue($hd->slettHund("TEST_ID"));	
+    }
+    	
+    function testHentHund()
+    {
+    	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));	
+    	$this->assertTrue(sizeof($hd->hentHund("TEST_ID")) > 0);	
+    	
+    	$hd->slettHund("TEST_ID");	
+    }
+    	
+    function testHentHunder()
+    {
+    	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));	
+    	$this->assertTrue(sizeof($hd->hentHunder()) > 0);	
+    	
+    	$hd->slettHund("TEST_ID");	
+    }
+    
+    private function getTestHund()
+    {
     	$vt = new Verktoy();
     	
-    	$hundArray = array (
+    	return array (
 			"raseId" => "666",
 			"kullId" => "999999",
 			"hundId" => "TEST_ID",
@@ -32,36 +121,6 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
 			"regDato" => $vt->konverterDatTilDatabaseDato("10.01.2001"),
 			"storrelse" => "DIGER"
 		);
-			
-		if (sizeof($hd->hentHund("TEST_ID")) > 0)
-		{
-			$hd->slettHund("TEST_ID");
-		}
-			
-		$this->assertTrue($hd->settInnHund($hundArray));	
-    	$this->assertTrue(sizeof($hd->hentHund("TEST_ID")) > 0);	
-    	
-    	$hd->slettHund("TEST_ID");	
-    }
-    
-    function testOppdaterHund()
-    {
-    	
-    }
-    	
-    function testSlettHund()
-    {
-    	
-    }
-    	
-    function testHentHund()
-    {
-    	
-    }
-    	
-    function testHentHunder()
-    {
-    	
     }
 }
 ?>
