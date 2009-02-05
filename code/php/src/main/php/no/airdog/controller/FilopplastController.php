@@ -21,7 +21,7 @@ if (isset($_FILES['Filedata']))
 	    move_uploaded_file($temp_navn, $fil_stien);
 	    
 	    //Flex med alle browsere utenom IE har en bug der ekstern fil må returnere noe for å trigge event
-	    echo "flexfikstriks";
+	    echo "Filen ble lagt opp til: $fil_stien";
 	}
 }
 else
