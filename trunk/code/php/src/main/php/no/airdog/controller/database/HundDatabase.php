@@ -9,10 +9,8 @@ class HundDatabase
 	
 	public function settInnHund($hundArray)
 	{
-		if (sizeof($hundArray) != 20)
-		{
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20.";
-		}
+		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
+		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "") { return "hundId-verdien mangler."; }
 		
 		mysql_query("INSERT INTO hund (raseId, kullId, hundId, tittel, navn, hundFarId, hundMorId, idNr, farge, 
 				   fargeVariant, oyesykdom, hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, endretDato, regDato, storrelse) 
@@ -28,10 +26,8 @@ class HundDatabase
 	
 	public function oppdaterHund($hundArray, $endretAv)
 	{
-		if (sizeof($hundArray) != 20)
-		{
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20.";
-		}
+		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
+		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "") { return "hundId-verdien mangler."; }
 		
 		mysql_query("UPDATE hund SET raseId='".$hundArray["raseId"]."', kullId='".$hundArray["kullId"]."', tittel='".$hundArray["tittel"]."', navn='".$hundArray["navn"]."', hundFarId='".$hundArray["hundFarId"]."', hundMorId='".$hundArray["hundMorId"]."', idNr='".$hundArray["idNr"]."', farge='".$hundArray["farge"]."', 
 				fargeVariant='".$hundArray["fargeVariant"]."', oyesykdom='".$hundArray["oyesykdom"]."', hoftesykdom='".$hundArray["hoftesykdom"]."', haarlag='".$hundArray["haarlag"]."', idMerke='".$hundArray["idMerke"]."', kjonn='".$hundArray["kjonn"]."', eierId='".$hundArray["eierId"]."', 
