@@ -18,7 +18,7 @@ class HdsykdomParser
 			"diagnoseKode" => $hdsykdomArray[3],
 			"endretAv" => $hdsykdomArray[4],
 			"hofteDyId" => $hdsykdomArray[5],
-			"hundeId" => $hdsykdomArray[6],
+			"hundId" => $hdsykdomArray[6],
 			"idmerket" => $hdsykdomArray[7],
 			"idmerketkode" => $hdsykdomArray[8],
 			"kode" => $hdsykdomArray[9],

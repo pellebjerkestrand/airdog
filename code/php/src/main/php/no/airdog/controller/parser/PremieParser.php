@@ -12,7 +12,7 @@ class PremieParser
 		if (sizeOf($premieArray) == 30)
 		{
 			return array (
-			"DOID" => $premieArray[0],				//what does this field mean?
+			"doId" => $premieArray[0],				//what does this field mean?
 			"utstillingId" => $premieArray[1],
 			"hundId" => $premieArray[2],
 			"katalogNr" => $premieArray[3],

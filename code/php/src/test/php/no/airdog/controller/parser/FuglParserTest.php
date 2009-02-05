@@ -36,7 +36,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("5", $pa["reisNekter"]);
     	$this->assertEquals("4", $pa["reisNoelende"]);
     	$this->assertEquals("3", $pa["reisVillig"]);
-    	$this->assertEquals("2", $pa["reidDjerv"]);
+    	$this->assertEquals("2", $pa["reisDjerv"]);
     	$this->assertEquals("1", $pa["sokStjeler"]);
     	$this->assertEquals("2", $pa["sokSpontant"]);
     	$this->assertEquals("3", $pa["appIkkeGodkjent"]);

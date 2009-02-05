@@ -16,7 +16,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("1", $pa["diagnoseKode"]);
     	$this->assertEquals("hundsomharnr", $pa["endretAv"]);
     	$this->assertEquals("223321", $pa["hofteDyId"]);
-    	$this->assertEquals("231212855/9128", $pa["hundeId"]);
+    	$this->assertEquals("231212855/9128", $pa["hundId"]);
     	$this->assertEquals("i", $pa["idmerket"]);
     	$this->assertEquals("", $pa["idmerketkode"]);
     	$this->assertEquals("", $pa["kode"]);
