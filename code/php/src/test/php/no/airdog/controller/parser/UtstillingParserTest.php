@@ -43,7 +43,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
-    	$this->assertEquals("foo", $pa[0]["overfortDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("foo", $pa[0]["overfortDato"]);				// Bunnen i arrayet
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
@@ -60,7 +60,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("100005", $pa[0]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("foo", $pa[0]["adresse1"]);					// Midten
-    	$this->assertEquals("foo", $pa[0]["overfortDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("foo", $pa[0]["overfortDato"]);				// Bunnen i arrayet
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
