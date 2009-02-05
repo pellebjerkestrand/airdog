@@ -33,9 +33,9 @@ class HundDatabase
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20.";
 		}
 		
-		mysql_query("UPDATE hund SET raseId='".$hundArray[""]."', kullId='".$hundArray[""]."', tittel='".$hundArray[""]."', navn='".$hundArray[""]."', hundFarId='".$hundArray[""]."', hundMorId='".$hundArray[""]."', idNr='".$hundArray[""]."', farge='".$hundArray[""]."', 
-				fargeVariant='".$hundArray[""]."', oyesykdom='".$hundArray[""]."', hoftesykdom='".$hundArray[""]."', haarlag='".$hundArray[""]."', idMerke='".$hundArray[""]."', kjonn='".$hundArray[""]."', eierId='".$hundArray[""]."', 
-				endretAv='".$hundArray[""]."', endretDato='".$hundArray[""]."', regDato='".$hundArray[""]."', storrelse='".$hundArray[""]."' 
+		mysql_query("UPDATE hund SET raseId='".$hundArray["raseId"]."', kullId='".$hundArray["kullId"]."', tittel='".$hundArray["tittel"]."', navn='".$hundArray["navn"]."', hundFarId='".$hundArray["hundFarId"]."', hundMorId='".$hundArray["hundMorId"]."', idNr='".$hundArray["idNr"]."', farge='".$hundArray["farge"]."', 
+				fargeVariant='".$hundArray["fargeVariant"]."', oyesykdom='".$hundArray["oyesykdom"]."', hoftesykdom='".$hundArray["hoftesykdom"]."', haarlag='".$hundArray["haarlag"]."', idMerke='".$hundArray["idMerke"]."', kjonn='".$hundArray["kjonn"]."', eierId='".$hundArray["eierId"]."', 
+				endretAv='".$hundArray["endretAv"]."', endretDato='".$hundArray["endretDato"]."', regDato='".$hundArray["regDato"]."', storrelse='".$hundArray["storrelse"]."' 
 			WHERE hundId='".$hundArray["hundId"]."' LIMIT 1") 
 		or die(mysql_error()); 
 		return true;
@@ -43,7 +43,7 @@ class HundDatabase
 	
 	public function slettHund($hundId)
 	{
-		mysql_query("DELETE FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
+		return mysql_query("DELETE FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
 		or die(mysql_error()); 
 	}
 	
