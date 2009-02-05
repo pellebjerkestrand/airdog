@@ -95,10 +95,29 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($hd->settInnHund($hundArray));	
 		
 		$hund = $hd->hentHund("TEST_ID");
+		$testHund = $this->getTestHund();
 		
-    	$this->assertEquals("TEST_ID", $hund["hundId"]);	
-    	$this->assertEquals("999999", $hund["kullId"]);
-    	
+    	$this->assertEquals($testHund["hundId"], $hund["hundId"]);	
+    	$this->assertEquals($testHund["raseId"], $hund["raseId"]);	
+    	$this->assertEquals($testHund["kullId"], $hund["kullId"]);	
+    	$this->assertEquals($testHund["tittel"], $hund["tittel"]);	
+    	$this->assertEquals($testHund["navn"], $hund["navn"]);	
+    	$this->assertEquals($testHund["hundFarId"], $hund["hundFarId"]);	
+    	$this->assertEquals($testHund["hundMorId"], $hund["hundMorId"]);	
+    	$this->assertEquals($testHund["idNr"], $hund["idNr"]);	
+    	$this->assertEquals($testHund["farge"], $hund["farge"]);	
+    	$this->assertEquals($testHund["fargeVariant"], $hund["fargeVariant"]);	
+    	$this->assertEquals($testHund["oyesykdom"], $hund["oyesykdom"]);	
+    	$this->assertEquals($testHund["hoftesykdom"], $hund["hoftesykdom"]);	
+    	$this->assertEquals($testHund["haarlag"], $hund["haarlag"]);	
+    	$this->assertEquals($testHund["idMerke"], $hund["idMerke"]);	
+    	$this->assertEquals($testHund["kjonn"], $hund["kjonn"]);	
+    	$this->assertEquals($testHund["eierId"], $hund["eierId"]);	
+    	$this->assertEquals($testHund["endretAv"], $hund["endretAv"]);	
+    	$this->assertEquals($testHund["endretDato"], $hund["endretDato"]);	
+    	$this->assertEquals($testHund["regDato"], $hund["regDato"]);	
+    	$this->assertEquals($testHund["storrelse"], $hund["storrelse"]);	
+			
     	$hd->slettHund("TEST_ID");	
     }
     	

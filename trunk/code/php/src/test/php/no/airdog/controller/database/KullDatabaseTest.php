@@ -95,8 +95,15 @@ class KullDatabaseTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($hd->settInnKull($kullArray));	
 		
 		$kull = $hd->hentKull("TESTID");
+		$testKull = $this->getTestKull();
 		
-    	$this->assertEquals("TESTID", $kull["kullId"]);	
+    	$this->assertEquals($testKull["kullId"], $kull["kullId"]);	
+    	$this->assertEquals($testKull["hundIdFar"], $kull["hundIdFar"]);	
+    	$this->assertEquals($testKull["hundIdMor"], $kull["hundIdMor"]);	
+    	$this->assertEquals($testKull["oppdretterId"], $kull["oppdretterId"]);	
+    	$this->assertEquals($testKull["endretDato"], $kull["endretDato"]);	
+    	$this->assertEquals($testKull["fodt"], $kull["fodt"]);	
+    	$this->assertEquals($testKull["raseId"], $kull["raseId"]);	
     	
     	$hd->slettKull("TESTID");	
     }
@@ -128,7 +135,7 @@ class KullDatabaseTest extends PHPUnit_Framework_TestCase
 			"hundIdMor" => "TEST_FAR",
 			"oppdretterId" => "999999",
 			"endretDato" => $vt->konverterDatTilDatabaseDato("10.01.2001"),
-			"fodt" => $vt->konverterDatTilDatabaseDato("10.01.2001"),
+			"fodt" => $vt->konverterDatTilDatabaseDato("10.01.2002"),
 			"raseId" => "385"
 		);
     }
