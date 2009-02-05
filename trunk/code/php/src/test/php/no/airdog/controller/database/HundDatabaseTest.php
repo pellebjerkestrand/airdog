@@ -60,6 +60,25 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertTrue($hd->slettHund("TEST_ID"));	
     }
+    
+    function testFinnesHund()
+    {
+    	$hd = new HundDatabase();
+    	
+    	$hundArray = $this->getTestHund();
+			
+		if (sizeof($hd->hentHund("TEST_ID")) > 0)
+		{
+			$hd->slettHund("TEST_ID");
+		}
+			
+		$this->assertTrue($hd->settInnHund($hundArray));	
+		
+    	$this->assertTrue($hd->finnesHund("TEST_ID"));	
+    	$this->assertFalse($hd->finnesHund("TEST_ID2"));	
+    	
+    	$hd->slettHund("TEST_ID");	
+    }
     	
     function testHentHund()
     {
@@ -73,7 +92,11 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
 		}
 			
 		$this->assertTrue($hd->settInnHund($hundArray));	
-    	$this->assertTrue(sizeof($hd->hentHund("TEST_ID")) > 0);	
+		
+		$hund = $hd->hentHund("TEST_ID");
+		
+    	$this->assertEquals("TEST_ID", $hund["hundId"]);	
+    	$this->assertEquals("999999", $hund["kullId"]);
     	
     	$hd->slettHund("TEST_ID");	
     }
