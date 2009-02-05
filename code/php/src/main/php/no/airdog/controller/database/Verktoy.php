@@ -27,5 +27,13 @@ class Verktoy
 	{
 		return mysql_query("DELETE FROM ".$tabell);
 	}
+	
+	// Inn: 10.01.2001
+	// Ut:	2001-01-10
+	public function konverterDatTilDatabaseDato($dato)
+	{
+		$datoArray = split('[.]', trim($dato));
+		return $datoArray[2]."-".$datoArray[1]."-".$datoArray[0];
+	}
 }
 ?>
