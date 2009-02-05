@@ -41,6 +41,7 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
 		$hund = $hd->hentHund("TEST_ID");
     	$this->assertTrue(sizeof($hund) > 0);	
     	$this->assertEquals("gul", $hund["farge"]);
+    	$this->assertEquals("Tore", $hund["manueltEndretAv"]);
     	
     	$hd->slettHund("TEST_ID");	
     }
