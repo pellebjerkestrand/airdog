@@ -6,20 +6,20 @@ package no.airdog.controller
 	{
 		public static function visLastOpp():void
 		{
-			Components.instance.session.navigasjonNr = 0;
-			Components.instance.session.navigasjonLaster = true;
+			Components.instance.session.hovedNavigasjon.nr = 0;
+			Components.instance.session.hovedNavigasjon.laster = true;
 		}
 		
 		public static function visHundeliste():void
 		{
-			Components.instance.session.navigasjonNr = 1;
-			Components.instance.session.navigasjonLaster = false;
+			Components.instance.session.hovedNavigasjon.nr = 1;
+			Components.instance.session.hovedNavigasjon.laster = false;
 		}
 		
 		public static function visHundNr(nr:int):void
 		{
 			Components.instance.session.hundprofil = Components.instance.session.hundeliste[nr];
-			Components.instance.session.navigasjonNr = 2;
+			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
 
 	}
