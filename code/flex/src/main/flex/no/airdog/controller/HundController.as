@@ -8,7 +8,7 @@ package no.airdog.controller
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.remoting.RemoteObject;
 	
-	import no.airdog.domain.hund.Hund;
+	//import no.airdog.domain.hund.Hund;
 	//import no.airdog.facade.AirdogFacade;
 	
 	[Bindable]
