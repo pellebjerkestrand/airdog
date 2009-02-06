@@ -1,8 +1,7 @@
 package no.airdog.controller
 {
-	import mx.controls.Label;
-	import mx.controls.ProgressBar;
 	import mx.collections.ArrayCollection;
+	import mx.controls.Label;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
@@ -14,7 +13,7 @@ package no.airdog.controller
         
         public function MockController()
         {
-        	var tmpCollection:ArrayCollection = Components.instance.session.hundeliste;
+        	var tmpCollection:ArrayCollection = new ArrayCollection();
 			
 			for (var i:int = 0; i < 100; i++)
 			{
@@ -29,6 +28,10 @@ package no.airdog.controller
 				tempHund.eier = "<EIER>";
 				tmpCollection.addItem(tempHund);
 			}
+			
+			Components.instance.session.hundeliste = tmpCollection;
+			
+			Components.instance.session.hundprofil = tmpCollection[0];
         }
 
 		public function setStatusLabel(text:String):void
@@ -49,6 +52,7 @@ package no.airdog.controller
 			Components.instance.session.datOpplastning.progressBar.setProgress(100,100);
 			Components.instance.session.datOpplastning.progressBar.label = "Ferdig (Mock)";
 			Components.instance.session.datOpplastning.ferdig = true;			
+			Components.instance.session.datOpplastning.startet = true;		
 		}
 	}
 }
