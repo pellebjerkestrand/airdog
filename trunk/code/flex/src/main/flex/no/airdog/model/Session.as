@@ -14,9 +14,6 @@ package no.airdog.model
         public var hundprofil:Hund;
         
         [Bindable]
-        public var navigasjonNr:int = 0;
-        
-        [Bindable]
-        public var navigasjonLaster:Boolean = false;
+        public var hovedNavigasjon:Navigasjon = new Navigasjon();
 	}
 }
