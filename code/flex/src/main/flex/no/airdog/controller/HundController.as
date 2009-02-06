@@ -9,7 +9,7 @@ package no.airdog.controller
 	import mx.rpc.remoting.RemoteObject;
 	
 	import no.airdog.domain.hund.Hund;
-	import no.airdog.facade.AirdogFacade;
+	//import no.airdog.facade.AirdogFacade;
 	
 	[Bindable]
 	public class HundController
@@ -17,7 +17,7 @@ package no.airdog.controller
  		private var ro:RemoteObject;
         
 		public var hunder:ArrayCollection = new ArrayCollection();
-		public var facade:AirdogFacade;
+		//public var facade:AirdogFacade;
 		
 		public function HundController()
 		{
@@ -55,10 +55,10 @@ package no.airdog.controller
             Alert.show(event.fault.faultString, 'Error');
         }
 		
-		public function getAlleHunder() : void
+		/*public function getAlleHunder() : void
 		{
 			facade.getAlleHunder(onGetAlleHunder);
-		}
+		}*/
 		
 		private function getDummyHunder():void
 		{
