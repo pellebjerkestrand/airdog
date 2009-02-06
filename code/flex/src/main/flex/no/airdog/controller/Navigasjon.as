@@ -18,6 +18,7 @@ package no.airdog.controller
 		
 		public static function visHundNr(nr:int):void
 		{
+			Components.instance.session.hundprofil = Components.instance.session.hundeliste[nr];
 			Components.instance.session.navigasjonNr = 2;
 		}
 
