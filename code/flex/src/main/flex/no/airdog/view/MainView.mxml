@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:services="no.airdog.services.*"
+    xmlns:view="no.airdog.view.*"
+    creationComplete="showInitialView()"
+    width="100%" height="100%" textAlign="center" verticalAlign="middle" horizontalAlign="center">
+	<mx:Script>
+        <![CDATA[
+            import no.airdog.services.Components;
+            
+            private function showInitialView():void
+            {
+            }
+            
+            private function doAction():void
+            {
+            }
+            
+            public function doServiceLogin():void
+            {
+            }
+            
+             public function doServiceLogout():void
+            {
+            }
+        ]]>
+    </mx:Script>
+    <mx:Label id="statusLabel" styleName="statusLabel" width="100%"/>
+    <view:DatOpplastning/>
+</mx:VBox>
