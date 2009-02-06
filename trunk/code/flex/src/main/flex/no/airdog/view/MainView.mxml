@@ -28,4 +28,5 @@
     <mx:Label id="statusLabel" styleName="statusLabel" width="100%"/>
     <view:DatOpplastning/>
     <view:HundeListe/>
+    <view:HundeProfil/>
 </mx:VBox>
