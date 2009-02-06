@@ -53,6 +53,7 @@ package no.airdog.controller
 			Components.instance.session.datOpplastning.progressBar.label = "Ferdig (Mock)";
 			Components.instance.session.datOpplastning.ferdig = true;			
 			Components.instance.session.datOpplastning.startet = true;		
+			Components.instance.session.datOpplastning.resultat = "Filen ble lastet opp.";
 		}
 	}
 }
