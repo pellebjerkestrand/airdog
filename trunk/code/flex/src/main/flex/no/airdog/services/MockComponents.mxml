@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Components xmlns="no.airdog.services.*"
+          xmlns:model="no.airdog.model.*"
+          xmlns:mx="http://www.adobe.com/2006/mxml"
+          xmlns:controller="no.airdog.controller.*"
+          creationComplete="controller=controllerImpl">
+
+    <controller:MockController id="controllerImpl"/>
+ 
+ </Components>

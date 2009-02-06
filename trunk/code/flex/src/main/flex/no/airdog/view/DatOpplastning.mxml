@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="test.view.*">
+    <mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Opplastning;
+			import no.airdog.services.Components;
+			
+			private function velgFil():void
+            {
+            	Components.instance.session.datOpplastning.progressBar = pBar;
+            	Components.instance.controller.lastOppDatFil();
+            }            
+            
+        ]]>
+    </mx:Script>
+    
+    <mx:Button label="Last opp" click="velgFil()" width="90%" />
+	<mx:ProgressBar id="pBar" mode="manual" width="90%" label="" labelPlacement="center" trackHeight="10" visible="{Components.instance.session.datOpplastning.startet}" />
+	<mx:TextArea id="pText" width="90%" height="200" text="{Components.instance.session.datOpplastning.resultat}" visible="{Components.instance.session.datOpplastning.ferdig}" />
+</mx:VBox>
