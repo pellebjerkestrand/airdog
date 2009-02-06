@@ -4,8 +4,12 @@
 	xmlns:ac="com.arcadiocarballares.*"
 	xmlns:controller="no.airdog.controller.*"
 	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center">
-	
-	<controller:HundController id="controller"/>
+	<mx:Script>
+        <![CDATA[
+			import no.airdog.services.Components;         
+            
+        ]]>
+    </mx:Script>
 	
 	<mx:Panel width="100%" height="100%" 
 		paddingBottom="40" paddingLeft="0" paddingRight="0" paddingTop="0"
@@ -13,15 +17,12 @@
 		
 		<ac:DataGridPaginated id="hundeGrid"			
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="60"
-			dataProvider="{controller.hunder}" page="25">
+			dataProvider="{Components.instance.session.hundeliste}" page="25">
 			
 			<ac:columns>
 				<mx:DataGridColumn id="col1" headerText="Navn" itemRenderer="no.airdog.view.HundeListeRenderer.NavnRenderer" dataField="navn"/>
 				<mx:DataGridColumn id="col2" headerText="Info" itemRenderer="no.airdog.view.HundeListeRenderer.InfoRenderer" sortable="false"/>
 			</ac:columns>
-			
 		</ac:DataGridPaginated>
-		
 	</mx:Panel>
-	
 </mx:VBox>

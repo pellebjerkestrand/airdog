@@ -5,7 +5,7 @@
     layout="absolute">
 	
 	<!-- <services:MainComponents id="components"/> -->
-	<services:MainComponents id="components"/>
+	<services:MockComponents id="components"/>
 	
 	<view:MainView/>
 </mx:Application>
