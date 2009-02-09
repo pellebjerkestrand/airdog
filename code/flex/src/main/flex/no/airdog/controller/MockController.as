@@ -49,11 +49,8 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			Components.instance.session.datOpplastning.progressBar.setProgress(100,100);
-			Components.instance.session.datOpplastning.progressBar.label = "Ferdig (Mock)";
-			Components.instance.session.datOpplastning.ferdig = true;			
-			Components.instance.session.datOpplastning.startet = true;		
-			Components.instance.session.datOpplastning.resultat = "Filen ble lastet opp.";
+			var datOpplaster:Filopplaster = new Filopplaster("http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php");
+			datOpplaster.velgFil();
 		}
 	}
 }
