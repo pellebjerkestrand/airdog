@@ -19,17 +19,17 @@ package no.airdog.controller
 			{
 				var tempHund:Hund = new Hund();
 				tempHund.id = i.toString();
-				tempHund.navn = "<NAVN " + i + ": TESTNAVN>";
-				tempHund.tittel = "<TITTEL " + i + ">";
+				tempHund.navn = "Navn" + i;
+				tempHund.tittel = "Tittel";
 				tempHund.bilde = "Hund1.jpg";
-				tempHund.foreldre = "<FORELDRE>";
-				tempHund.kjonn = "<KJØNN>";
-				tempHund.oppdretter = "<OPPDRETTER>";
-				tempHund.eier = "<EIER>";
+				tempHund.foreldre = "Foreldre";
+				tempHund.kjonn = "Kjonn";
+				tempHund.oppdretter = "Oppdretter";
+				tempHund.eier = "Eier";
 				tmpCollection.addItem(tempHund);
 			}
 			
-			Components.instance.session.hundeliste = tmpCollection;
+			Components.instance.session.hundeliste.provider = tmpCollection;
 			
 			Components.instance.session.hundprofil = tmpCollection[0];
         }
