@@ -16,7 +16,7 @@
 		title="Story 'Vis Profil'">
 		
 		<mx:HBox width="100%">
-			<mx:Image id="bilde" width="150" height="150" source="no/airdog/assets/{Components.instance.session.hundprofil.bilde}" />
+			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
 			
 			<mx:VBox width="100%">
 				<mx:Text id="navn" fontSize="30" text="{Components.instance.session.hundprofil.navn}" />
