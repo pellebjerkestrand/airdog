@@ -7,10 +7,7 @@ package no.airdog.controller
 	import no.airdog.services.Components;
 	
 	public class MockController implements IController
-	{
-		[Bindable]
-        public var statusLabel:Label;
-        
+	{     
         public function MockController()
         {
         	var tmpCollection:ArrayCollection = new ArrayCollection();
@@ -33,11 +30,6 @@ package no.airdog.controller
 			
 			Components.instance.session.hundprofil = tmpCollection[0];
         }
-
-		public function setStatusLabel(text:String):void
-		{
-			statusLabel.text = text + " (Mock)";
-		}
 		
 		public function login(username:String):void
 		{

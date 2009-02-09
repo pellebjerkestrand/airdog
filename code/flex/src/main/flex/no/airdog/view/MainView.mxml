@@ -29,14 +29,13 @@
             }
         ]]>
     </mx:Script>
-    <mx:HBox id="topbar" verticalAlign="middle" paddingLeft="10" height="40" cornerRadius="5" backgroundColor="#87A9FF" borderStyle="solid" borderColor="#6A94FF" width="90%" minWidth="800">
-    <mx:Button label="Last opp" click="visLastOpp()"/>
-    <mx:Button label="Hundeliste" click="visHundeliste()"/>
-    <mx:Button label="Vis hund nr 0" click="visHundNr(0)"/>
-    <mx:Label text="Laster siden..." visible="{Components.instance.session.hovedNavigasjon.laster}" fontWeight="bold"/>
+    <mx:HBox id="topbar" verticalAlign="middle" paddingLeft="10" height="40" cornerRadius="5" backgroundColor="#87A9FF" borderStyle="solid" borderColor="#6A94FF" width="90%">
+	    <mx:Button label="Last opp" click="visLastOpp()"/>
+	    <mx:Button label="Hundeliste" click="visHundeliste()"/>
+	    <mx:Button label="Vis hund nr 0" click="visHundNr(0)"/>
+	    <mx:Label text="Laster siden..." visible="{Components.instance.session.hovedNavigasjon.laster}" fontWeight="bold"/>
     </mx:HBox>
-    <mx:Label id="statusLabel" styleName="statusLabel" width="100%"/>
-    <mx:ViewStack width="90%" minWidth="800" height="100%" selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
+    <mx:ViewStack width="90%" height="100%" selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
 	    <view:DatOpplastning/>
 	    <view:HundeListe/>
 	    <view:HundeProfil/>
