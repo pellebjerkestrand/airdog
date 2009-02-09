@@ -5,15 +5,7 @@ package no.airdog.controller
 	import no.airdog.services.Components;
 	
 	public class Controller implements IController
-	{
-		[Bindable]
-        public var statusLabel:Label;
-
-		public function setStatusLabel(text:String):void
-		{
-			statusLabel.text = text;
-		}
-		
+	{	
 		public function login(username:String):void
 		{
 			Components.instance.amfService.login(username, "lol");

@@ -2,7 +2,8 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
-    layout="absolute">
+    layout="absolute"
+    minWidth="960">
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
