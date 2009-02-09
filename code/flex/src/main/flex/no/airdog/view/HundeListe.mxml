@@ -3,7 +3,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:ac="com.arcadiocarballares.*"
 	xmlns:controller="no.airdog.controller.*" 
-	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center">
+	width="90%" height="100%" minWidth="800" minHeight="500" horizontalAlign="center">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Hundeliste;
