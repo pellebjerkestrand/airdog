@@ -15,6 +15,6 @@
     		<mx:Text text="Kjønn: {data.kjonn}"/>
 			<mx:Text text="Rase: {data.rase}"/>
     		<mx:Text text="Id: {data.hundId}"/>
-			<mx:Text text="{'MORE: DATA'}"/>
+			<mx:Text text="Kull: {data.kullId}"/>
     </mx:HBox>
 </mx:HBox>
