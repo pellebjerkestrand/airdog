@@ -9,6 +9,9 @@ package no.airdog.controller
 	import no.airdog.model.Opplastning;
 	import no.airdog.services.Components;
     
+    /**
+    * Controller for filopplasteren
+    */
 	public class Filopplaster
 	{
 		private var adresse:String;
@@ -21,6 +24,10 @@ package no.airdog.controller
 		private var uploadtekst:TextArea; 
 		private var opplastning:Opplastning;
 		
+		/**
+		 * Kontruktør som mottar
+		 * @param urlAdresse - Adresse til filopplaster servicen på server
+		 */
 		public function Filopplaster(urlAdresse:String)
 		{
 			adresse = urlAdresse;
@@ -35,6 +42,9 @@ package no.airdog.controller
             lagEventListerner();
 		}
 		
+		/**
+		 * Setter restriksjoner for filtyper og størrelse på filen
+		 */
 		private function settFilrestriksjoner():void
         {
         	bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
@@ -42,7 +52,10 @@ package no.airdog.controller
         	alleTyper = new Array(bildeTyper, tekstTyper); 
         	maksfilStorrelse = 50 * 1024;
         }
-               
+        
+        /**
+        * Setter fr(FileReference) sine event lyttere
+        */       
         private function lagEventListerner():void
         {
        		fr.addEventListener(Event.SELECT, selectHandler);
@@ -53,6 +66,9 @@ package no.airdog.controller
             fr.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, uploadCompleteHandler);
         }
 
+		/**
+		 * Funksjonen brukes av view for å starte browsing etter fil
+		 */
         public function velgFil():void
         {
        		try
@@ -64,7 +80,12 @@ package no.airdog.controller
 				Alert.show( String(io.message), "feil fil format", 0);
 			}	
         }
-
+		
+		/**
+		 * Funksjonen sjekker om filstørrelsen er større en lovlig filstørrelse og viser
+		 * feilmelding hvis den er for stor.
+		 * Så prøver den å laste opp filen
+		 */
         private function selectHandler(event:Event):void
         { 
         	opplastning.startet = true;
@@ -88,18 +109,30 @@ package no.airdog.controller
 				"Filstørrelse feil", Alert.OK);
 			} 
         }
-
+		
+		/**
+		 * Når browsingen starter settes prosessbaren sin label
+		 */
         private function openHandler(event:Event):void
         {
             opplastning.progressBar.label = "Laster opp...";
         }
         
+        /**
+        * Ved feil med server oppkobling vil det kommer en boks som sier ifra
+        * Det vil også bli sagt ifra i prosessbaren sin label
+        */
        	private function ioErrorHandler( event:IOErrorEvent ):void 
 		{
 			Alert.show( "Kan ikke koble til server", "Server feil");
 			opplastning.progressBar.label = "Kan ikke koble til server";
 		}
-
+		
+		/**
+		 * Funksjonen blir kaldt når prosessen er startet og setter prosessbaren til å vise prosent ferdig
+		 * og vise antall KB ferdig av antall KB
+		 * Den setter også prosessbaren til å vise en økende bar
+		 */
         private function progressHandler(event:ProgressEvent):void
         {
             opplastning.progressBar.label = "Laster opp %3%% : " + Math.round( event.bytesLoaded / 1024 ) + " KB av " +
@@ -107,12 +140,19 @@ package no.airdog.controller
             opplastning.progressBar.setProgress(event.bytesLoaded, event.bytesTotal);
         }
         
+        /**
+        * Handleren setter progressbar til 100% og labelen til at filen ble lastet opp
+        */
         private function completeHandler(event:Event):void
         {
         	opplastning.progressBar.setProgress(100, 100);
         	opplastning.progressBar.label = "Filen " + fr.name + " ble lastet opp";         	
         }
         
+        /**
+        * Mottar data fra server og printer det ut
+        * Setter opplasningen til fullført
+        */
         private function uploadCompleteHandler(event:DataEvent):void
         {
         	opplastning.resultat += event.data as String;
