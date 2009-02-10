@@ -28,7 +28,7 @@
     	</mx:VBox>
     	<mx:VBox paddingBottom="0" paddingLeft="5" paddingRight="5" paddingTop="0">
     		<mx:Text text="Id: {data.hundId}"/>
-			<mx:Text text="{'MORE: DATA'}"/>
+			<mx:Text text="Kull: {data.kullId}"/>
     	</mx:VBox>
     </mx:HBox>
 </mx:HBox>

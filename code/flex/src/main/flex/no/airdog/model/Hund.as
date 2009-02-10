@@ -13,5 +13,6 @@ package no.airdog.model
 		public var eier : String;
 		public var kjonn : String;
 		public var rase : String;
+		public var kullId : String
 	}
 }
