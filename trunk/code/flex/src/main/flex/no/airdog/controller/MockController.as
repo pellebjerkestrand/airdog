@@ -25,7 +25,6 @@ package no.airdog.controller
 				tempHund.eier = "Eier";
 				tmpCollection.addItem(tempHund);
 			}
-			
 			Components.instance.session.hundeliste.provider = tmpCollection;
 			
 			Components.instance.session.hundprofil = tmpCollection[0];

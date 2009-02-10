@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml">
+        
+        <mx:RemoteObject
+                id="amfService"
+                destination="amfService"
+                endpoint="{rootPath}{messageBrokerPath}"
+                showBusyCursor="true" />
+                
+        <mx:Script>
+                [Bindable]
+                public var rootPath:String;
+                        
+                [Bindable]
+                private var messageBrokerPath:String = "messagebroker/amf";
+        </mx:Script>
+</Object>

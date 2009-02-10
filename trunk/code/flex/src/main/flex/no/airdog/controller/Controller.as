@@ -8,7 +8,7 @@ package no.airdog.controller
 	{	
 		public function login(username:String):void
 		{
-			Components.instance.amfService.login(username, "lol");
+			//Components.instance.amfService.login(username, "lol");
 		}
 		
 		public function logout():void

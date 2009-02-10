@@ -13,10 +13,10 @@ package no.airdog.services
         public var controller:IController;
         
         [Bindable]
-        public var session:Session = new Session();
+        public var session:Session;
         
         [Bindable]
-        public var amfService:IAmfService = new AmfService();
+        public var services:Services;
         
 		public function Components()
 		{
