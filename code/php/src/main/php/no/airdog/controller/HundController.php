@@ -2,7 +2,7 @@
 require_once "no/airdog/model/AmfHund.php";
 class HundController
 {
-	public function HundController()
+	public function __construct()
 	{
 	}
 
@@ -10,7 +10,7 @@ class HundController
     {
     	$ret = array();
     	
-    	for ($i = 0; $i < 1000; $i++)
+    	for ($i = 0; $i < 10; $i++)
     	{
 			$tmp = new AmfHund();
 			$tmp->id = $i;
@@ -26,4 +26,3 @@ class HundController
         return $ret;
     }
 }
-?>
