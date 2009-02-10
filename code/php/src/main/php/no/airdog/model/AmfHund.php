@@ -1,12 +1,14 @@
 <?php
 class AmfHund 
 {
-     public $id;
+     public $hundId;
      public $tittel;
      public $navn;
      public $bilde;
      public $foreldre;
      public $oppdretter;
      public $eier;
+     public $kjonn;
+     public $rase;
 }
 
