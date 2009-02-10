@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml">
+<Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:services="no.airdog.services.*">
         
         <mx:RemoteObject
                 id="amfService"
                 destination="amfService"
                 endpoint="{rootPath}{messageBrokerPath}"
                 showBusyCursor="true" />
+                
+        <services:AirdogService id="airdogService" service="{amfService}"/>
                 
         <mx:Script>
                 [Bindable]

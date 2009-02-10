@@ -5,7 +5,11 @@ package no.airdog.controller
 	import no.airdog.services.Components;
 	
 	public class Controller implements IController
-	{	
+	{			
+		public function Controller()
+		{
+		}
+		
 		public function login(username:String):void
 		{
 			//Components.instance.amfService.login(username, "lol");
