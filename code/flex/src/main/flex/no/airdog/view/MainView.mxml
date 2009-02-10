@@ -16,6 +16,7 @@
             private function visLastOpp():void
             {
             	Navigasjon.visLastOpp();
+            	Components.instance.controller.login("lol");
             }
             
             public function visHundeliste():void

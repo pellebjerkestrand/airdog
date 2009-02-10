@@ -32,6 +32,7 @@ package no.airdog.controller
 		
 		public function login(username:String):void
 		{
+			Components.instance.services.airdogService.login("test","test",null);
 		}
 		
 		public function logout():void

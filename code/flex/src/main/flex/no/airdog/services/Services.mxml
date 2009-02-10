@@ -2,12 +2,12 @@
 <Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:services="no.airdog.services.*">
         
         <mx:RemoteObject
-                id="amfService"
-                destination="amfService"
+                id="airdogAmfService"
+                destination="airdogAmfService"
                 endpoint="{rootPath}{messageBrokerPath}"
                 showBusyCursor="true" />
                 
-        <services:AirdogService id="airdogService" service="{amfService}"/>
+        <services:AirdogService id="airdogService" service="{airdogAmfService}"/>
                 
         <mx:Script>
                 [Bindable]
