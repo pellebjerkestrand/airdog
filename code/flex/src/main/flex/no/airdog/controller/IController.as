@@ -7,5 +7,6 @@ package no.airdog.controller
 		function login(username:String):void
 		function logout():void
 		function lastOppDatFil():void
+		function hundesok(soketekst:String):void
 	}
 }

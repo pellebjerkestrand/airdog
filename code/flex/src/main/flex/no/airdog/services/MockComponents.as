@@ -11,7 +11,7 @@ package no.airdog.services
 			component.session = new Session();
 			component.controller = new MockController();
 			component.services = new Services();
-			component.services.rootPath = "http://localhost";
+			component.services.rootPath = "http://158.36.203.155:8888/AirDog%20-%20PHP/src/main/php/no/airdog/";
 		}
 	}
 }

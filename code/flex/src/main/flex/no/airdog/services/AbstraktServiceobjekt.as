@@ -4,6 +4,7 @@ package no.airdog.services
     import mx.rpc.AsyncToken;
     import mx.rpc.IResponder;
     import mx.rpc.events.FaultEvent;
+    import mx.rpc.remoting.RemoteObject;
 
 	public class AbstraktServiceobjekt
 	{

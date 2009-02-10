@@ -13,8 +13,8 @@
     		<mx:Text text="Eier: {data.eier}"/>
 			<mx:Text text="Oppdretter: {data.oppdretter}"/>
     		<mx:Text text="Kjønn: {data.kjonn}"/>
-			<mx:Text text="Født: Født"/>
-    		<mx:Text text="{'MORE: DATA'}"/>
+			<mx:Text text="Rase: {data.rase}"/>
+    		<mx:Text text="Id: {data.hundId}"/>
 			<mx:Text text="{'MORE: DATA'}"/>
     </mx:HBox>
 </mx:HBox>

@@ -11,5 +11,10 @@ package no.airdog.services
         {
         	callServiceFunction(service.lol(), result, fault);
         }
+        
+        public function hundesok(soketekst:String, result:Function, fault:Function=null):void
+        {
+        	callServiceFunction(service.hundesok(soketekst), result, fault);
+        }
 	}
 }

@@ -24,10 +24,10 @@
     	</mx:VBox>
     	<mx:VBox paddingBottom="0" paddingLeft="5" paddingRight="5" paddingTop="0">
     		<mx:Text text="Kjønn: {data.kjonn}"/>
-			<mx:Text text="Født: Født"/>
+			<mx:Text text="Rase: {data.rase}"/>
     	</mx:VBox>
     	<mx:VBox paddingBottom="0" paddingLeft="5" paddingRight="5" paddingTop="0">
-    		<mx:Text text="{'MORE: DATA'}"/>
+    		<mx:Text text="Id: {data.hundId}"/>
 			<mx:Text text="{'MORE: DATA'}"/>
     	</mx:VBox>
     </mx:HBox>

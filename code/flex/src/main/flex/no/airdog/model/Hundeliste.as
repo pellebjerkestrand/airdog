@@ -1,18 +1,21 @@
 package no.airdog.model
 {
 	import mx.collections.ArrayCollection;
-	import mx.core.IFactory;
 	import mx.core.*;
-	
-	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 	public class Hundeliste
 	{
+		
+		public function Hundeliste(hoyde:int, itemRenderer:IFactory)
+		{
+			rendererHoyde = hoyde;
+			renderer = itemRenderer;
+		}
 
 		[Bindable]
-        public var storrelse:int = 60;
+        public var rendererHoyde:int;
         
         [Bindable]
-        public var renderer:IFactory = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererStor);
+        public var renderer:IFactory;
        
 		[Bindable]
 		public var provider:ArrayCollection;

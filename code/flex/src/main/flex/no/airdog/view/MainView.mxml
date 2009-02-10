@@ -47,7 +47,7 @@
     </mx:HBox>
     <mx:ViewStack width="90%" height="100%" selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
 	    <view:DatOpplastning/>
-	    <view:HundeListe/>
+	    <view:HundeSok/>
 	    <view:HundeProfil/>
     </mx:ViewStack>
 </mx:VBox>
