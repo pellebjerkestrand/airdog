@@ -83,7 +83,7 @@
 	<!-- Controllere -->
 	<controller:HundController id="hundeController"/>
 	
-	<view:HundeListe controller="{hundeController}"/>
+	<view:HundeSok controller="{hundeController}"/>
 	<view:HundeProfil/>	
 
 </mx:Application>

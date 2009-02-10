@@ -3,7 +3,7 @@
         
         <mx:RemoteObject
                 id="airdogAmfService"
-                destination="airdogAmfService"
+                destination="zend"
                 endpoint="{rootPath}{messageBrokerPath}"
                 showBusyCursor="true" />
                 
@@ -14,6 +14,6 @@
                 public var rootPath:String;
                         
                 [Bindable]
-                private var messageBrokerPath:String = "messagebroker/amf";
+                private var messageBrokerPath:String = "";
         </mx:Script>
 </Object>

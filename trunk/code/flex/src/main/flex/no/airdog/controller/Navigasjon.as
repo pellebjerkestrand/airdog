@@ -22,20 +22,20 @@ package no.airdog.controller
 		
 		public static function visHundNr(nr:int):void
 		{
-			Components.instance.session.hundprofil = Components.instance.session.hundeliste.provider[nr];
+			Components.instance.session.hundprofil = Components.instance.session.hundesokListe.provider[nr];
 			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
 		
 		public static function visStorHundeliste():void
 		{
-			Components.instance.session.hundeliste.renderer = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererStor);
-			Components.instance.session.hundeliste.storrelse = 60;
+			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererStor);
+			Components.instance.session.hundesokListe.rendererHoyde = 60;
 		}
 		
 		public static function visLitenHundeliste():void
 		{
-			Components.instance.session.hundeliste.renderer = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererLiten);
-			Components.instance.session.hundeliste.storrelse = 20;
+			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererLiten);
+			Components.instance.session.hundesokListe.rendererHoyde = 20;
 		}
 
 	}
