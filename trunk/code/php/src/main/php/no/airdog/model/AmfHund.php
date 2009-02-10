@@ -10,5 +10,6 @@ class AmfHund
      public $eier;
      public $kjonn;
      public $rase;
+     public $kullId;
 }
 

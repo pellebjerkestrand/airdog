@@ -22,6 +22,7 @@ class HundController
 			$tmp->eier = "eier$i";
 			$tmp->kjonn = "kjonn";
 			$tmp->rase = "torelervik";
+			$tmp->kullId = "PelleBjerkestrand";
 			$ret[] = $tmp;
 		}
     	
