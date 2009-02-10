@@ -53,6 +53,7 @@ package no.airdog.services
             {
                 var fault:FaultEvent = info as FaultEvent
                 trace(fault.fault.faultDetail);
+                Alert.show( String(fault.fault.faultDetail), "Ukjent feil", 0);
             }
         }
         
