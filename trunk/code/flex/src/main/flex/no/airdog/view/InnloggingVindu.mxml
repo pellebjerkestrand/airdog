@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:controls="flexunit.flexui.controls.*"
+	showCloseButton="true"
+	layout="vertical"
+	title="Innlogging" 
+	width="300" 
+	height="180"
+	close="vinduLukk(event)">
+
+<mx:Script>
+	<![CDATA[
+		import mx.events.CloseEvent;
+		import mx.managers.PopUpManager;
+		
+		private function vinduLukk(event:CloseEvent):void
+		{
+			PopUpManager.removePopUp(this);	
+		}
+		
+		private function loggInnKnapp():void
+		{
+			PopUpManager.removePopUp(this);
+		}
+	]]>
+</mx:Script>
+	
+<mx:VBox width="100%">
+	<mx:Text text="Skriv inn brukernavn og passord."/>
+	<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+	<mx:HBox width="100%">
+		<mx:VBox horizontalAlign="left">
+			<mx:Text text="Brukernavn"/>
+			<mx:Text text="Passord"/>
+		</mx:VBox>
+		<mx:VBox width="100%" horizontalAlign="right">
+			<mx:TextInput id="bruker" width="100%" />
+			<mx:TextInput id="passord" width="100%" displayAsPassword="true" />	
+		</mx:VBox>
+	</mx:HBox>
+
+	<mx:HBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle">
+		<mx:Button label="Logg inn" click="loggInnKnapp()" />
+	</mx:HBox>
+</mx:VBox>
+
+</mx:TitleWindow>
