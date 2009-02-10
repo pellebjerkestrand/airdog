@@ -9,4 +9,4 @@ class AmfHund
      public $oppdretter;
      public $eier;
 }
-?>
+
