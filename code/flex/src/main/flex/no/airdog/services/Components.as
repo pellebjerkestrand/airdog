@@ -17,5 +17,18 @@ package no.airdog.services
         
         [Bindable]
         public var amfService:IAmfService = new AmfService();
+        
+		public function Components()
+		{
+			super();
+            _instance = this;
+            dispatchEvent(new Event("instanceChanged"));
+		}
+
+		[Bindable("instanceChanged")]
+        public static function get instance():Components
+        {
+            return _instance;
+        }
 	}
 }
