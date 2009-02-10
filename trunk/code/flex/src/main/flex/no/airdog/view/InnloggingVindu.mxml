@@ -5,7 +5,7 @@
 	showCloseButton="true"
 	layout="vertical"
 	title="Innlogging" 
-	width="300" 
+	width="320" 
 	height="180"
 	close="vinduLukk(event)">
 
