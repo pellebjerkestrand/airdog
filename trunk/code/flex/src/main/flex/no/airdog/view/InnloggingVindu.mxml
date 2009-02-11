@@ -11,6 +11,7 @@
 
 <mx:Script>
 	<![CDATA[
+		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
 		import mx.managers.PopUpManager;
 		
@@ -21,7 +22,8 @@
 		
 		private function loggInnKnapp():void
 		{
-			PopUpManager.removePopUp(this);
+			Components.instance.controller.loggInn(bruker.text.toString(), passord.text.toString());
+			//PopUpManager.removePopUp(this);
 		}
 	]]>
 </mx:Script>

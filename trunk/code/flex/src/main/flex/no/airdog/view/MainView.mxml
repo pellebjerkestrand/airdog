@@ -19,7 +19,7 @@
             private function visLastOpp():void
             {
             	Navigasjon.visLastOpp();
-            	Components.instance.controller.login("lol");
+            	Components.instance.controller.loggInn("admin", "admin");
             }
             
             public function visHundeliste():void

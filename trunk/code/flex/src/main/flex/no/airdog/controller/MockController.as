@@ -3,6 +3,7 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.ResultEvent;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
@@ -16,16 +17,35 @@ package no.airdog.controller
 		
 		public function loggInn(brukernavn:String, passord:String):void
 		{
-			Components.instance.services.airdogService.loggInn("admin","admin", null, loggInnFaultEvent);
+			Components.instance.session.bruker.brukernavn = brukernavn;
+			Components.instance.session.bruker.passord = passord;
+			Components.instance.services.airdogService.loggInn(brukernavn, passord, loggInnResultEvent, loggInnFaultEvent);
 		}
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			Alert.show( String(event.fault.faultDetail), "Innloging misslyktes", 0);
+			Alert.show( event.fault.faultDetail.toString(), "Innlogging mislyktes", 0);
+			loggUt();
+		}
+		
+		private function loggInnResultEvent(event:Boolean):void
+		{
+			if (event)
+			{
+				Components.instance.session.bruker.innlogget = true;
+			}
+			else
+			{
+				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
+				loggUt();
+			}
 		}
 		
 		public function loggUt():void
 		{
+			Components.instance.session.bruker.brukernavn = "";
+			Components.instance.session.bruker.passord = "";
+			Components.instance.session.bruker.innlogget = false;
 		}
 		
 		public function lastOppDatFil():void

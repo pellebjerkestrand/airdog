@@ -18,5 +18,8 @@ package no.airdog.model
         [Bindable]
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
+        [Bindable]
+        public var bruker:Bruker = new Bruker();
+        
 	}
 }
