@@ -9,6 +9,7 @@
 			
 			public function set hundId(val:String):void
 			{
+				Components.instance.session.avkomListe = null;
 				Components.instance.controller.hentAvkom(val);
 			}
 			
