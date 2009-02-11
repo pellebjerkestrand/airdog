@@ -1,6 +1,6 @@
 package no.airdog.model
 {
-	[RemoteClass(alias="AmfHund")]
+	[RemoteClass(alias="AmfBruker")]
 	[Bindable]
 	public class Bruker
 	{		
