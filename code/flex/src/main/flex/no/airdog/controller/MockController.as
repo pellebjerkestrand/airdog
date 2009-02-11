@@ -32,7 +32,7 @@ package no.airdog.controller
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
-							"\nRoller: "+Components.instance.session.bruker.roller.toString(), 
+							"\nRoller: "+Components.instance.session.bruker.roller['admin'].toString(), 
 							"Innlogging lyktes", 0);
 			}
 			else
