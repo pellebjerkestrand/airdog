@@ -3,7 +3,6 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
-	import mx.rpc.events.ResultEvent;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
@@ -19,26 +18,32 @@ package no.airdog.controller
 		{
 			Components.instance.session.bruker.brukernavn = brukernavn;
 			Components.instance.session.bruker.passord = passord;
-			Components.instance.services.airdogService.loggInn(brukernavn, passord, loggInnResultEvent, loggInnFaultEvent);
+			Components.instance.services.airdogService.loggInn(Components.instance.session.bruker, loggInnResultEvent, loggInnFaultEvent);
+		}
+		
+		private function loggInnResultEvent(bruker:Bruker):void
+		{
+			if (bruker)
+			{	
+				Components.instance.session.bruker.innlogget = true;
+				
+				Alert.show( "bruker.toString(): "+bruker+
+							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
+							"\nPassord: "+Components.instance.session.bruker.passord+
+							"\nInnlogget: "+Components.instance.session.bruker.innlogget, 
+							"Innlogging lyktes", 0);
+			}
+			else
+			{
+				Alert.show( String(bruker), "Innlogging mislyktes", 0);
+				loggUt();
+			}
 		}
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			Alert.show( event.fault.faultDetail.toString(), "Innlogging mislyktes", 0);
+			Alert.show( "loggInnFaultEvent:\n"+event.fault.faultDetail.toString(), "Innlogging mislyktes", 0);
 			loggUt();
-		}
-		
-		private function loggInnResultEvent(event:Boolean):void
-		{
-			if (event)
-			{
-				Components.instance.session.bruker.innlogget = true;
-			}
-			else
-			{
-				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
-				loggUt();
-			}
 		}
 		
 		public function loggUt():void

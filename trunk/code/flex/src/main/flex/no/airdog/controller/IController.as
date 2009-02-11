@@ -4,7 +4,7 @@ package no.airdog.controller
 	
 	public interface IController
 	{
-		function loggInn(username:String, passord:String):void
+		function loggInn(brukernavn:String, passord:String):void
 		function loggUt():void
 		function lastOppDatFil():void
 		function hundesok(soketekst:String):void

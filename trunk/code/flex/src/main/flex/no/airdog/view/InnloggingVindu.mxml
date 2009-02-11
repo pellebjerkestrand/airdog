@@ -22,7 +22,7 @@
 		
 		private function loggInnKnapp():void
 		{
-			Components.instance.controller.loggInn(bruker.text.toString(), passord.text.toString());
+			Components.instance.controller.loggInn(bruker.text, passord.text);
 			//PopUpManager.removePopUp(this);
 		}
 	]]>
