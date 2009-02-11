@@ -26,7 +26,7 @@ package no.airdog.controller
 			if (bruker)
 			{	
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.roller = bruker.roller;
+				Components.instance.session.bruker.roller = new ArrayCollection(bruker.roller as Array);
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
