@@ -49,10 +49,18 @@
 		</mx:HBox>
 		<mx:DataGrid id="hundeGrid"			
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
-			dataProvider="{Components.instance.session.hundesokListe.provider}" itemClick="visHund(event)">
+			dataProvider="{Components.instance.session.hundesokListe.provider}" itemClick="visHund(event)" verticalAlign="middle">
 			
 			<mx:columns>
 				<mx:DataGridColumn headerText="Hunder" itemRenderer="{Components.instance.session.hundesokListe.renderer}" dataField="navn"/>
+				<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eier"/>
+				<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
+				<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
+				<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
+				<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
+				<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
+				<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
+				<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:Panel>
