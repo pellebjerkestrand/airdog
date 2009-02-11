@@ -21,21 +21,20 @@ package no.airdog.controller
 			Components.instance.services.airdogService.loggInn(Components.instance.session.bruker, loggInnResultEvent, loggInnFaultEvent);
 		}
 		
-		private function loggInnResultEvent(bruker:Bruker):void
+		private function loggInnResultEvent(bruker:Object):void
 		{
 			if (bruker)
 			{	
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.admin = bruker.admin;
-				Components.instance.session.bruker.superAdmin = bruker.superAdmin;
+				Components.instance.session.bruker.rolleliste = new ArrayCollection(bruker.rolleliste as Array);
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
-							"\nRoller: "+ Components.instance.session.bruker.admin + " : " +
-							Components.instance.session.bruker.superAdmin, 
+							"\nRoller: "+Components.instance.session.bruker.rolleliste.length, 
 							"Innlogging lyktes", 0);
+
 			}
 			else
 			{
