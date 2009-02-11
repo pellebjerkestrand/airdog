@@ -17,7 +17,7 @@
 		
 		private function vinduLukk(event:CloseEvent):void
 		{
-			PopUpManager.removePopUp(this);	
+			PopUpManager.removePopUp(this);
 		}
 		
 		private function loggInnKnapp():void
