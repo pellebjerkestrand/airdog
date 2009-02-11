@@ -11,9 +11,7 @@
         ]]>
     </mx:Script>
 	
-	<mx:Panel width="100%" height="100%" 
-		paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
-		title="Story 'Vis Profil'">
+	<mx:VBox width="100%" height="100%">
 		
 		<mx:HBox width="100%">
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
@@ -49,6 +47,6 @@
 
         </mx:TabNavigator>
 		
-	</mx:Panel>
+	</mx:VBox>
 	
 </mx:VBox>
