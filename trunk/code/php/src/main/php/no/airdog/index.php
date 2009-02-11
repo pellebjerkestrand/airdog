@@ -18,6 +18,7 @@ $server = new Zend_Amf_Server();
 $server->setClass("HundController");
 $server->setClass("BrukerController");
 $server->setClassMap("AmfHund", "AmfHund");
+$server->setClassMap("AmfBruker", "AmfBruker");
 
 echo($server->handle());
 
