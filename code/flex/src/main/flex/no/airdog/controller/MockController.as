@@ -44,7 +44,7 @@ package no.airdog.controller
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			Alert.show( "Klarer ikke å koble til server", "Innlogging mislyktes", 0);
+			Alert.show( "Klarer ikke å koble til server\n" + event.fault.message.toString(), "Innlogging mislyktes", 0);
 			loggUt();
 		}
 		
