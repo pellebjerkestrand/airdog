@@ -13,6 +13,7 @@
             
             private function showInitialView():void
             {
+            	innloggingSprettOppVindu();
             }
             
             private function visLastOpp():void
