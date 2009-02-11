@@ -1,7 +1,6 @@
 package no.airdog.controller
 {
 	import mx.controls.Label;
-	
 	import no.airdog.services.Components;
 	
 	public class Controller implements IController
@@ -12,7 +11,6 @@ package no.airdog.controller
 		
 		public function loggInn(brukernavn:String, passord:String):void
 		{
-			//Components.instance.amfService.loggInn(brukernavn, passord);
 		}
 		
 		public function loggUt():void

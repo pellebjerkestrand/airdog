@@ -9,7 +9,7 @@ package no.airdog.services
 	{
 		public function loggInn(brukernavn:String, passord:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.loggInn(), resultat, feil);
+        	callServiceFunction(service.loggInn(brukernavn, passord), resultat, feil);
         }
         
         public function hundesok(soketekst:String, resultat:Function, feil:Function=null):void
