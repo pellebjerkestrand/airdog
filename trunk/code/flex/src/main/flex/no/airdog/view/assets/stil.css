@@ -13,6 +13,7 @@ global
 	borderThicknessBottom: 10;
 	controlBarStyleName: panelControlBar;
 	statusStyleName: panelStatus;
+	backgroundAlpha: 1.0;
 	
 }
 Application
@@ -29,46 +30,64 @@ Application
 	fontSize: 12;
 	backgroundColor: #4CC6D8;
 	verticalGap: 3;
-	paddingLeft: 10;
-}
-
-
-
-
-TabBar.ToppMeny
-{
-	color: #333333;
-	selectedButtonStyleName: ToppMenySelectedButtonStyle;
-	horizontalGap: 0;
-	firstTabStyleName: tabBarFirstTab;
-	selectedTabTextStyleName: tabBarSelectedTabText;
-	
-}
-.ToppMenySelectedButtonStyle
-{
-	color: #D3009F;
-	fillAlphas: 1.0, 1.0;
-  	fillColors: #E6EEEE, #FFFFFF;
-
+	paddingTop: 30;
 }
 
 Button.UnderMeny
 {
 	textRollOverColor: #FF0000;
 	color: #0054A2;
-	fillColors: #FFFFFF, #F5F5F5, #FFFFFF, #FFFFFF;
+	fillColors: #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF;
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
 	leading: 0;
 	textAlign: left;
 	paddingTop: 2;
 	paddingBottom: 2;
-	paddingLeft: 15;
-	paddingRight: 15;
+	paddingLeft: 5;
+	paddingRight: 5;
+	fillAlphas: 0.91, 0.5, 1.0, 1.0;
+	horizontalGap: 2;
 }
 .tabBarSelectedTabText
 {
 	color: #EE0000;
 	fillAlphas: 1.0, 1.0;
   	fillColors: #E6EEEE, #FFFFFF;
+}
+.tabNavigator
+{
+	fillAlphas: 1.0, 1.0;
+	fillColors: #898989, #898989;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	backgroundColor: #FFFFFF;
+	fontSize: 18;
+	fontFamily: Arial;
+	horizontalGap: -1;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 10;
+	paddingBottom: 10;
+	backgroundAlpha: 1.0;
+	cornerRadius: 0;
+	tabStyleName: tabNavigatorTab;
+}
+.tabNavigatorSelectedTabText
+{
+	color: #8E0000;
+}
+.tabNavigatorTab
+{
+	cornerRadius: 7;
+	fillAlphas: 1.0, 0.38, 1.0, 1.0;
+	fillColors: #FFFFFF, #FFFFFF, #FFFFFF, #C7C7C7;
+	tabStyleName: tabNavigatorTab;
+	paddingLeft: 10;
+	paddingRight: 10;
+	fontSize: 18;
+	fontFamily: Arial;
+	color: #444444;
+	horizontalGap: -1;
+	paddingBottom: -2;
+	leading: 2;
 }
