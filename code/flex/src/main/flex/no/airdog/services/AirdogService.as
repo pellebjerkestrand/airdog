@@ -7,14 +7,14 @@ package no.airdog.services
     
 	public class AirdogService extends AbstraktServiceobjekt
 	{
-		public function login(username:String, password:String, result:Function, fault:Function=null):void
+		public function loggInn(brukernavn:String, passord:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.lol(), result, fault);
+        	callServiceFunction(service.loggInn(), resultat, feil);
         }
         
-        public function hundesok(soketekst:String, result:Function, fault:Function=null):void
+        public function hundesok(soketekst:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hundesok(soketekst), result, fault);
+        	callServiceFunction(service.hundesok(soketekst), resultat, feil);
         }
 	}
 }

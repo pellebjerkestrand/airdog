@@ -10,12 +10,12 @@ package no.airdog.controller
 		{
 		}
 		
-		public function login(username:String):void
+		public function loggInn(brukernavn:String, passord:String):void
 		{
-			//Components.instance.amfService.login(username, "lol");
+			//Components.instance.amfService.loggInn(brukernavn, passord);
 		}
 		
-		public function logout():void
+		public function loggUt():void
 		{
 		}
 		
