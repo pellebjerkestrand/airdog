@@ -3,5 +3,6 @@ class AmfBruker
 {
 	public $brukernavn;
 	public $passord;
-	public $roller;	
+	public $admin;
+	public $superAdmin;
 }

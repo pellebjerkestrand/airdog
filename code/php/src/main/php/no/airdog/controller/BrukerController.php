@@ -9,18 +9,14 @@ class BrukerController
 	public function loggInn($loggInnVO)
 	{
 		if($loggInnVO->brukernavn == "admin" && $loggInnVO->passord == "admin"){
+			
 			$adminVO = new AmfBruker();
-			
-			$roller = array();
-			
-			//TestArray
-			$roller["admin"] = true;
-			$roller["bruker"] = true;
-			
+
             $adminVO->brukernavn = $loggInnVO->brukernavn;
             $adminVO->passord = $loggInnVO->passord;
-            $adminVO->roller = $roller;
-            			
+            $adminVO->admin = true;
+            $adminVO->superAdmin = true;
+            		
 			return $adminVO;
 		}
 		else{
