@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once "no/airdog/model/AmfBruker.php";
+session_start();
 class BrukerController
 {
 	public function __construct()
