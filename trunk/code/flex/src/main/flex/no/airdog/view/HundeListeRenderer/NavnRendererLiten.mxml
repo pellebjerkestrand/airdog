@@ -5,16 +5,6 @@
 	<mx:HBox 
 	    width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 	    horizontalAlign="left" verticalAlign="middle">
-    	<mx:Text text="{data.navn}" fontSize="14" paddingBottom="0" paddingTop="0"/>
-    	<mx:Text text="{data.foreldre}"/>	
+    	<mx:Text text="{data.navn}" fontSize="12" paddingBottom="0" paddingTop="0" paddingLeft="5"/>
 	</mx:HBox>	
-
-	<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-    		<mx:Text text="Eier: {data.eier}"/>
-			<mx:Text text="Oppdretter: {data.oppdretter}"/>
-    		<mx:Text text="Kjønn: {data.kjonn}"/>
-			<mx:Text text="Rase: {data.rase}"/>
-    		<mx:Text text="Id: {data.hundId}"/>
-			<mx:Text text="Kull: {data.kullId}"/>
-    </mx:HBox>
 </mx:HBox>
