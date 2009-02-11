@@ -26,7 +26,7 @@
 	    <mx:Panel width="100%"
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 			title="Avkom med {avkomRepeater.currentItem.med}" >
-	    	<mx:DataGrid height="{avkomRepeater.currentItem.liste.length * 30 + 20}"			
+	    	<mx:DataGrid height="{avkomRepeater.currentItem.liste.length * 30 + 25}"			
 				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
 				dataProvider="{avkomRepeater.currentItem.liste}" itemClick="visHund(event)" verticalAlign="middle">
 				
