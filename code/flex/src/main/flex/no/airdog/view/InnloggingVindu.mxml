@@ -5,8 +5,8 @@
 	showCloseButton="true"
 	layout="vertical"
 	title="Innlogging" 
-	width="350" 
-	height="185"
+	width="412" 
+	height="249"
 	close="vinduLukk(event)">
 
 <mx:Script>
