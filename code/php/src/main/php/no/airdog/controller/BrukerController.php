@@ -7,7 +7,7 @@ class BrukerController
 	{
 	}
 	
-	public function loggInn(AmfBruker $loggInnVO)
+	public function loggInn($loggInnVO)
 	{
 		if($loggInnVO->brukernavn == "admin" && $loggInnVO->passord == "admin"){
 			$adminVO = new LoginVO();
