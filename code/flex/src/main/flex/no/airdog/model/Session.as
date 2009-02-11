@@ -1,8 +1,7 @@
 package no.airdog.model
 {
 	import mx.collections.ArrayCollection;
-	import mx.core.*;
-	
+	import mx.core.*;	
 	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 	
 	public class Session
@@ -23,7 +22,6 @@ package no.airdog.model
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
         [Bindable]
-        public var bruker:Bruker = new Bruker();
-        
+        public var bruker:Bruker = new Bruker();        
 	}
 }
