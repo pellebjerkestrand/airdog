@@ -1,0 +1,65 @@
+/* CSS file */
+
+global
+{
+	fontSize: 12;
+	fontFamily: Verdana;
+	leading: 2;
+	fontStyle: normal;
+	cornerRadius: 0;
+	roundedBottomCorners: false;
+	borderThicknessLeft: 7;
+	borderThicknessRight: 0;
+	borderThicknessBottom: 0;
+	controlBarStyleName: panelControlBar;
+	statusStyleName: panelStatus;
+	
+}
+Application
+{
+	color: #113841;
+	backgroundGradientAlphas: 1.0, 1.0;
+	backgroundGradientColors: #F5F5F5, #C7C7C7;
+}
+.TopBar
+{
+	horizontalAlign: center;
+	horizontalGap: 4;
+	verticalAlign: bottom;
+	fontSize: 12;
+	backgroundColor: #4CC6D8;
+	verticalGap: 3;
+	paddingLeft: 10;
+}
+
+
+
+
+TabBar.ToppMeny
+{
+	color: #333333;
+	selectedTabTextStyleName: tabBarSelectedTabText;
+	selectedButtonTextStyleName: "ToppMenySelectedButtonStyle";	
+}
+.ToppMenySelectedButtonStyle
+{
+	themeColor: #FFFFFF;
+	fillColors: #FFFFFF, #F5F5F5, #FFFFFF, #FFFFFF;
+	color: #D3009F;
+}
+
+Button.UnderMeny
+{
+	textRollOverColor: #FF0000;
+	color: #0054A2;
+	fillColors: #FFFFFF, #F5F5F5, #FFFFFF, #FFFFFF;
+	cornerRadius: 2;
+	borderColor: #E7E7E7;
+	themeColor: #FFFFFF;
+	leading: 0;
+	textAlign: left;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingLeft: 15;
+	paddingRight: 15;
+}

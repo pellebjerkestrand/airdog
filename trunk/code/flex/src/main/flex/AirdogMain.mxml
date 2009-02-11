@@ -9,4 +9,5 @@
 	<services:MockComponents id="components"/>
 	
 	<view:MainView/>
+	<mx:Style source="no/airdog/view/assets/stil.css"/>
 </mx:Application>
