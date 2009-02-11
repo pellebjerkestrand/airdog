@@ -14,17 +14,17 @@ package no.airdog.controller
         	var tmpCollection:ArrayCollection = new ArrayCollection();
         }
 		
-		public function login(username:String):void
+		public function loggInn(brukernavn:String, passord:String):void
 		{
-			Components.instance.services.airdogService.login("test","test", null, loginFaultEvent);
+			Components.instance.services.airdogService.loggInn("admin","admin", null, loggInnFaultEvent);
 		}
 		
-		private function loginFaultEvent(event:FaultEvent):void
+		private function loggInnFaultEvent(event:FaultEvent):void
 		{
 			Alert.show( String(event.fault.faultDetail), "Innloging misslyktes", 0);
 		}
 		
-		public function logout():void
+		public function loggUt():void
 		{
 		}
 		
