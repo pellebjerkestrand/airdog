@@ -5,8 +5,8 @@
 	showCloseButton="true"
 	layout="vertical"
 	title="Innlogging" 
-	width="412" 
-	height="287"
+	width="100%" 
+	height="100%"
 	close="vinduLukk(event)">
 
 <mx:Script>
@@ -22,29 +22,27 @@
 		
 		private function loggInnKnapp():void
 		{
-			Components.instance.controller.loggInn(bruker.text, passord.text);
+			Components.instance.controller.loggInn(brukernavn.text, passord.text);
 			//PopUpManager.removePopUp(this);
 		}
 	]]>
 </mx:Script>
-	
-<mx:VBox width="100%">
+
+<mx:Form defaultButton="{LoggInn}">
 	<mx:Text text="Skriv inn brukernavn og passord."/>
 	<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
-	<mx:HBox width="100%">
-		<mx:VBox horizontalAlign="left">
-			<mx:Text text="Brukernavn"/>
-			<mx:Text text="Passord"/>
-		</mx:VBox>
-		<mx:VBox width="100%" horizontalAlign="right">
-			<mx:TextInput id="bruker" width="100%" />
-			<mx:TextInput id="passord" width="100%" displayAsPassword="true" />	
-		</mx:VBox>
-	</mx:HBox>
+	
+	<mx:FormItem label="Brukernavn:">
+		<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+	</mx:FormItem>
+	
+	<mx:FormItem label="Passord:">
+		<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+	</mx:FormItem>
 
-	<mx:HBox width="100%" height="100%" horizontalAlign="right" verticalAlign="middle">
-		<mx:Button label="Logg inn" click="loggInnKnapp()" />
-	</mx:HBox>
-</mx:VBox>
+	<mx:FormItem horizontalAlign="right" width="100%">
+		<mx:Button id="LoggInn" label="Logg inn" click="loggInnKnapp()"/>
+	</mx:FormItem>
+</mx:Form>
 
 </mx:TitleWindow>
