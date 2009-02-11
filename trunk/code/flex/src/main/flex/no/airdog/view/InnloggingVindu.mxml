@@ -6,7 +6,7 @@
 	layout="vertical"
 	title="Innlogging" 
 	width="412" 
-	height="249"
+	height="287"
 	close="vinduLukk(event)">
 
 <mx:Script>
