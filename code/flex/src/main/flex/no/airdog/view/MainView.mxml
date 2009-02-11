@@ -39,6 +39,7 @@
             {
             	var vindu:InnloggingVindu = PopUpManager.createPopUp(this, InnloggingVindu, true) as InnloggingVindu;
             	PopUpManager.centerPopUp(vindu);
+            	vindu.isPopUp = false;
             }
         ]]>
     </mx:Script>
