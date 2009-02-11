@@ -8,5 +8,6 @@ package no.airdog.controller
 		function loggUt():void
 		function lastOppDatFil():void
 		function hundesok(soketekst:String):void
+		function hentAvkom(hundId:String):void
 	}
 }

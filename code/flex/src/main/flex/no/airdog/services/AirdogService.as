@@ -13,5 +13,10 @@ package no.airdog.services
         {
         	callServiceFunction(service.hundesok(soketekst), resultat, feil);
         }
+        
+        public function hentAvkom(hundId:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentAvkom(hundId), resultat, feil);
+        }
 	}
 }
