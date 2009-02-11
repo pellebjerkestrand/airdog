@@ -1,15 +1,12 @@
 package no.airdog.services
 {
-	import flash.events.DataEvent;
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	
-    
+	import no.airdog.model.Bruker;
+	  
 	public class AirdogService extends AbstraktServiceobjekt
 	{
-		public function loggInn(brukernavn:String, passord:String, resultat:Function, feil:Function=null):void
+		public function loggInn(bruker:Bruker, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.loggInn(brukernavn, passord), resultat, feil);
+        	callServiceFunction(service.loggInn(bruker), resultat, feil);
         }
         
         public function hundesok(soketekst:String, resultat:Function, feil:Function=null):void
