@@ -3,11 +3,17 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 05. Feb, 2009 14:45 PM
+-- Generert den: 11. Feb, 2009 10:57 AM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `airdog`
@@ -203,8 +209,9 @@ CREATE TABLE IF NOT EXISTS `hund` (
 --
 
 INSERT INTO `hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFarId`, `hundMorId`, `idNr`, `farge`, `fargeVariant`, `oyesykdom`, `hoftesykdom`, `haarlag`, `idMerke`, `kjonn`, `eierId`, `endretAv`, `endretDato`, `regDato`, `storrelse`, `manueltEndretAv`, `manueltEndretDato`) VALUES
-(348, '995225', '21336/92', '', 'SAJO', '40933/93', '12364/96', '1647277', 'HVIT/SORT', '', '', '', '', '', 'H', '3476708', 'BJ', '1999-11-17', '1999-11-17', '', '', '0000-00-00'),
-(0, '', '1337', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+(348, 'kullid', 'enFar', 'tittel', 'Far til en hund', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hundid', 'tittel', 'navn og sånt', 'enFar', 'enMor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -423,3 +430,4 @@ CREATE TABLE IF NOT EXISTS `veteriner` (
 --
 -- Dataark for tabell `veteriner`
 --
+
