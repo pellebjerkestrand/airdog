@@ -10,8 +10,16 @@ class BrukerController
 	{
 		if($loggInnVO->brukernavn == "admin" && $loggInnVO->passord == "admin"){
 			$adminVO = new AmfBruker();
+			
+			$rolle = array();
+			
+			//TestArray
+			$rolle["admin"] = true;
+			$rolle["bruker"] = true;
+			
             $adminVO->brukernavn = $loggInnVO->brukernavn;
             $adminVO->passord = $loggInnVO->passord;
+            $adminVO->rolle = $rolle;
             			
 			return $adminVO;
 		}

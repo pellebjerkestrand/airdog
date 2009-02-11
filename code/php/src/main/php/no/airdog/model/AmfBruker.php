@@ -2,5 +2,6 @@
 class AmfBruker
 {
 	public $brukernavn;
-	public $passord;	
+	public $passord;
+	public $roller;	
 }
