@@ -26,13 +26,15 @@ package no.airdog.controller
 			if (bruker)
 			{	
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.roller = new ArrayCollection(bruker.roller as Array);
+				Components.instance.session.bruker.admin = bruker.admin;
+				Components.instance.session.bruker.superAdmin = bruker.superAdmin;
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
-							"\nRoller: "+Components.instance.session.bruker.roller.length, 
+							"\nRoller: "+ Components.instance.session.bruker.admin + " : " +
+							Components.instance.session.bruker.superAdmin, 
 							"Innlogging lyktes", 0);
 			}
 			else
