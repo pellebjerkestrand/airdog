@@ -23,7 +23,7 @@ Application
 }
 .TopBar
 {
-	horizontalAlign: center;
+	horizontalAlign: left;
 	horizontalGap: 4;
 	verticalAlign: bottom;
 	fontSize: 12;
@@ -38,19 +38,18 @@ Application
 TabBar.ToppMeny
 {
 	color: #333333;
-	/*selectedButtonStyleName: "ToppMenySelectedButtonStyle";*/
+	selectedButtonStyleName: ToppMenySelectedButtonStyle;
 	horizontalGap: 0;
 	firstTabStyleName: tabBarFirstTab;
+	selectedTabTextStyleName: tabBarSelectedTabText;
 	
-}
-TabBar.ToppMeny:selectedIndex 
-{
-	fillColors: #FFFFFF, #FFFFFF;
 }
 .ToppMenySelectedButtonStyle
 {
-	fillColors: #FFFFFF, #FFFFFF;
 	color: #D3009F;
+	fillAlphas: 1.0, 1.0;
+  	fillColors: #E6EEEE, #FFFFFF;
+
 }
 
 Button.UnderMeny
@@ -59,7 +58,6 @@ Button.UnderMeny
 	color: #0054A2;
 	fillColors: #FFFFFF, #F5F5F5, #FFFFFF, #FFFFFF;
 	cornerRadius: 2;
-	borderColor: #E7E7E7;
 	themeColor: #FFFFFF;
 	leading: 0;
 	textAlign: left;
@@ -67,4 +65,10 @@ Button.UnderMeny
 	paddingBottom: 2;
 	paddingLeft: 15;
 	paddingRight: 15;
+}
+.tabBarSelectedTabText
+{
+	color: #EE0000;
+	fillAlphas: 1.0, 1.0;
+  	fillColors: #E6EEEE, #FFFFFF;
 }
