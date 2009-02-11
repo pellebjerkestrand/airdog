@@ -9,8 +9,8 @@ global
 	cornerRadius: 0;
 	roundedBottomCorners: false;
 	borderThicknessLeft: 7;
-	borderThicknessRight: 0;
-	borderThicknessBottom: 0;
+	borderThicknessRight: 5;
+	borderThicknessBottom: 10;
 	controlBarStyleName: panelControlBar;
 	statusStyleName: panelStatus;
 	
@@ -39,7 +39,9 @@ TabBar.ToppMeny
 {
 	color: #333333;
 	selectedTabTextStyleName: tabBarSelectedTabText;
-	selectedButtonTextStyleName: "ToppMenySelectedButtonStyle";	
+	selectedButtonTextStyleName: "ToppMenySelectedButtonStyle";
+	horizontalGap: 0;
+	firstTabStyleName: tabBarFirstTab;	
 }
 .ToppMenySelectedButtonStyle
 {
@@ -62,4 +64,9 @@ Button.UnderMeny
 	paddingBottom: 2;
 	paddingLeft: 15;
 	paddingRight: 15;
+}
+.tabBarFirstTab
+{
+	fillAlphas: 1.0, 1.0, 1.0, 1.0;
+	fillColors: #FFFFFF, #FFFFFF;
 }
