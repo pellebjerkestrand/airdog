@@ -2,7 +2,7 @@
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controller="no.airdog.controller.*"
-	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center">
+	width="90%" height="100%" minWidth="800" minHeight="600" horizontalAlign="center" xmlns:view="no.airdog.view.*">
 	
 	<mx:Script>
         <![CDATA[
@@ -34,6 +34,9 @@
         	width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5" 
         	creationPolicy="all">
 
+            <mx:VBox label="Avkom">
+          		<view:AvkomListe hundId="{Components.instance.session.hundprofil.hundId}" />
+            </mx:VBox>
             <mx:VBox id="v1" label="Jaktprøver">
             	            
             </mx:VBox>

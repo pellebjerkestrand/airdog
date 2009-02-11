@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+	<mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Hundeliste;
+        	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			
+			public function set hundId(val:String):void
+			{
+				Components.instance.controller.hentAvkom(val);
+			}
+			
+			public function visHund(event:Event):void
+			{
+				var dg:DataGrid = event.target as DataGrid;
+				if (dg.selectedItem != null)
+				{
+					Navigasjon.visHundNr(dg.selectedIndex);
+				}
+			}       
+        ]]>
+    </mx:Script>
+    <mx:Repeater id="avkomRepeater" dataProvider="{Components.instance.session.avkomListe}" >
+	    <mx:Panel width="100%"
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
+			title="Avkom med {avkomRepeater.currentItem.med}" >
+	    	<mx:DataGrid height="{avkomRepeater.currentItem.liste.length * 30 + 20}"			
+				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
+				dataProvider="{avkomRepeater.currentItem.liste}" itemClick="visHund(event)" verticalAlign="middle">
+				
+				<mx:columns>
+					<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
+					<mx:DataGridColumn headerText="Navn" dataField="navn"/>
+					<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
+					<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
+					<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
+					<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:Panel>
+    </mx:Repeater>
+    
+</mx:VBox>

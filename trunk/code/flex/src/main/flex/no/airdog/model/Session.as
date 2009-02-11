@@ -1,5 +1,6 @@
 package no.airdog.model
 {
+	import mx.collections.ArrayCollection;
 	import mx.core.*;
 	
 	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
@@ -14,6 +15,9 @@ package no.airdog.model
         
         [Bindable]
         public var hundprofil:Hund;
+        
+        [Bindable]
+        public var avkomListe:ArrayCollection = new ArrayCollection();
         
         [Bindable]
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
