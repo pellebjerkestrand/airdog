@@ -38,15 +38,18 @@ Application
 TabBar.ToppMeny
 {
 	color: #333333;
-	selectedTabTextStyleName: tabBarSelectedTabText;
-	selectedButtonTextStyleName: "ToppMenySelectedButtonStyle";
+	/*selectedButtonStyleName: "ToppMenySelectedButtonStyle";*/
 	horizontalGap: 0;
-	firstTabStyleName: tabBarFirstTab;	
+	firstTabStyleName: tabBarFirstTab;
+	
+}
+TabBar.ToppMeny:selectedIndex 
+{
+	fillColors: #FFFFFF, #FFFFFF;
 }
 .ToppMenySelectedButtonStyle
 {
-	themeColor: #FFFFFF;
-	fillColors: #FFFFFF, #F5F5F5, #FFFFFF, #FFFFFF;
+	fillColors: #FFFFFF, #FFFFFF;
 	color: #D3009F;
 }
 
@@ -64,9 +67,4 @@ Button.UnderMeny
 	paddingBottom: 2;
 	paddingLeft: 15;
 	paddingRight: 15;
-}
-.tabBarFirstTab
-{
-	fillAlphas: 1.0, 1.0, 1.0, 1.0;
-	fillColors: #FFFFFF, #FFFFFF;
 }
