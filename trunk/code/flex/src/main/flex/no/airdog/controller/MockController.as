@@ -35,14 +35,14 @@ package no.airdog.controller
 			}
 			else
 			{
-				Alert.show( String(bruker), "Innlogging mislyktes", 0);
+				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
 			}
 		}
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			Alert.show( "loggInnFaultEvent:\n"+event.fault.faultDetail.toString(), "Innlogging mislyktes", 0);
+			Alert.show( "Klarer ikke å koble til server", "Innlogging mislyktes", 0);
 			loggUt();
 		}
 		
