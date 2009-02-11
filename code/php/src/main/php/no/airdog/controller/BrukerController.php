@@ -7,15 +7,17 @@ class BrukerController
 	{
 	}
 	
-	public function loggInn($brukernavn, $passord)
+	public function loggInn(AmfBruker $loggInnVO)
 	{
-		if($brukernavn == "admin" && $passord == "admin"){
-			$_SESSION['bruker'] = 'admin';
-			$_SESSION['niva'] = 1;
-			return true;
+		if($loggInnVO->brukernavn == "admin" && $loggInnVO->passord == "admin"){
+			$adminVO = new LoginVO();
+            $adminVO->brukernavn = $loginVO->brukernavn;
+            $adminVO->passord = $loginVO->passord;
+            			
+			return $adminVO;
 		}
 		else{
-			return false;
+			throw new Exception("Feil brukernavn eller passord.");
 		}
 	}
 	
