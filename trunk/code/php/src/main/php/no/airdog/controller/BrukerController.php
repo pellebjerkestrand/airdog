@@ -16,7 +16,7 @@ class BrukerController
 			return $adminVO;
 		}
 		else{
-			return false;
+			return null;
 		}
 	}
 }
