@@ -12,9 +12,11 @@ if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
 
 require_once '../../com/Zend/Amf/Server.php';
 require_once 'controller/HundController.php';
+require_once 'controller/BrukerController.php';
 
 $server = new Zend_Amf_Server();
 $server->setClass("HundController");
+$server->setClass("BrukerController");
 $server->setClassMap("AmfHund", "AmfHund");
 
 echo($server->handle());

@@ -9,7 +9,14 @@ class BrukerController
 	
 	public function loggInn($brukernavn, $passord)
 	{
-		return true;
+		if($brukernavn == "admin" && $passord == "admin"){
+			$_SESSION['bruker'] = 'admin';
+			$_SESSION['niva'] = 1;
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
 	public function sjekkInnloggetStatus()

@@ -4,4 +4,3 @@ class AmfBruker
 	public $brukernavn;
 	public $passord;	
 }
-?>
