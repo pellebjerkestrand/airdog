@@ -1,5 +1,5 @@
 <?php
-class ConnectionHelper
+class Tilkobling_
 {
 	public function __construct() 
 	{
