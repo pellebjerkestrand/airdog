@@ -80,5 +80,15 @@ package no.airdog.controller
 		{
 			Components.instance.session.avkomListe = new ArrayCollection(event as Array);
 		}
+		
+		public function hentJaktprove(hundId:String):void
+		{
+			Components.instance.services.airdogService.hentJaktprove(hundId, hentJaktproveResultat);
+		}
+		
+		public function hentJaktproveResultat(event:Object):void
+		{
+			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+		}
 	}
 }
