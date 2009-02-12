@@ -26,13 +26,15 @@ package no.airdog.controller
 			if (bruker)
 			{	
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.rolleliste = new ArrayCollection(bruker.rolleliste as Array);
+				Components.instance.session.bruker.CURRENT_USER_ROLE = bruker["userRole"];
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
-							"\nRoller: "+Components.instance.session.bruker.rolleliste.length, 
+							"\nsession.bruker.CUR: "+Components.instance.session.bruker.CURRENT_USER_ROLE+
+							"\nPHP-objektet"+
+							"\nbruker[\"userRole\"]: "+bruker["userRole"], 
 							"Innlogging lyktes", 0);
 
 			}
