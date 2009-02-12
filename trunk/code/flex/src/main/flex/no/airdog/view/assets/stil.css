@@ -1,4 +1,10 @@
-/* CSS file */
+/* CSS file 
+
+kuler profile: 595241,B8AE9C,FFFFFF,ACCFCC,8A0917
+cool blues: 0A111F,263248,7E8AA2,E3E3E3,FF881D
+hallow summer: E7E9D1,D3D4AA,FCFAE6,444444,901808
+
+*/
 
 global
 {
@@ -14,13 +20,28 @@ global
 	controlBarStyleName: panelControlBar;
 	statusStyleName: panelStatus;
 	backgroundAlpha: 1.0;
+	color: #000000;
 	
 }
 Application
 {
 	color: #113841;
 	backgroundGradientAlphas: 1.0, 1.0;
-	backgroundGradientColors: #F5F5F5, #C7C7C7;
+	backgroundGradientColors: #333333, #444444;
+}
+.MainViewContainer
+{
+	verticalAlign: middle;
+	backgroundColor: #FCFAE6;	
+}
+VBox.mainView
+{
+	borderStyle: solid;
+	borderColor: #444444;
+	cornerRadius: 0;
+	verticalAlign: top;
+	borderThickness: 1;
+	
 }
 .TopBar
 {
@@ -28,14 +49,14 @@ Application
 	horizontalGap: 4;
 	verticalAlign: bottom;
 	fontSize: 12;
-	backgroundColor: #4CC6D8;
+	backgroundColor: #D3D4AA;
 	verticalGap: 3;
 	paddingTop: 30;
 }
 
 Button.UnderMeny
 {
-	textRollOverColor: #FF0000;
+	textRollOverColor: #901808;
 	color: #0054A2;
 	fillColors: #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF;
 	cornerRadius: 2;
@@ -46,12 +67,13 @@ Button.UnderMeny
 	paddingBottom: 2;
 	paddingLeft: 5;
 	paddingRight: 5;
-	fillAlphas: 0.91, 0.5, 1.0, 1.0;
+	fillAlphas: 0.83, 0.41, 1.0, 1.0;
 	horizontalGap: 2;
+	borderColor: #FFFFFF;
 }
 .tabBarSelectedTabText
 {
-	color: #EE0000;
+	color: #901808;
 	fillAlphas: 1.0, 1.0;
   	fillColors: #E6EEEE, #FFFFFF;
 }
@@ -61,7 +83,7 @@ Button.UnderMeny
 	fillColors: #898989, #898989;
 	selectedTabTextStyleName: tabNavigatorSelectedTabText;
 	backgroundColor: #FFFFFF;
-	fontSize: 18;
+	fontSize: 14;
 	fontFamily: Arial;
 	horizontalGap: -1;
 	paddingLeft: 5;
@@ -74,7 +96,7 @@ Button.UnderMeny
 }
 .tabNavigatorSelectedTabText
 {
-	color: #8E0000;
+	color: #8A0917;
 }
 .tabNavigatorTab
 {

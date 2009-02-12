@@ -8,6 +8,6 @@
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
 	
-	<view:MainView/>
+	<view:MainView styleName="MainViewContainer"/>
 	<mx:Style source="no/airdog/view/assets/stil.css"/>
 </mx:Application>
