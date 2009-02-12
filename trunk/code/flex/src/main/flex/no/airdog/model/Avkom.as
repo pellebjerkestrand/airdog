@@ -10,6 +10,6 @@ package no.airdog.model
 		public var medId:String;
 		
 		//Brukes ikke!
-		public var liste:ArrayCollection;	
+		public var liste:ArrayCollection;
 	}
 }

@@ -23,27 +23,22 @@ package no.airdog.controller
 		
 		private function loggInnResultEvent(bruker:Object):void
 		{
-			if (bruker)
+			if (bruker["brukerRolle"] != "gjest")
 			{	
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.CURRENT_USER_ROLE = bruker["userRole"];
+				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["brukerRolle"];
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
-							"\nsession.bruker.CUR: "+Components.instance.session.bruker.CURRENT_USER_ROLE+
-							"\nPHP-objektet"+
-							"\nbruker[\"userRole\"]: "+bruker["userRole"], 
+							"\nsession.bruker.rolle: "+Components.instance.session.bruker.GJELDENDE_BRUKERROLLE, 
 							"Innlogging lyktes", 0);
-
 			}
 			else
 			{
 				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
-				
-				
 			}
 		}
 		
