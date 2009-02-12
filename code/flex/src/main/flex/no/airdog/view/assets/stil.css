@@ -48,9 +48,8 @@ VBox.MainView
 	horizontalAlign: left;
 	horizontalGap: 4;
 	verticalAlign: bottom;
-	fontSize: 12;
+	fontSize: 10;
 	backgroundColor: #D3D4AA;
-	paddingTop: 30;
 }
 
 Button.UnderMeny

@@ -48,16 +48,14 @@
     </mx:Script>
 	
 		
-<mx:VBox styleName="MainViewContainer" width="100%" height="100%">    
-	<mx:HBox id="topbar" styleName="TopBar" width="100%">
-			
-		<mx:HBox width="100%" height="50" backgroundColor="white" verticalAlign="middle">
-				<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
-				<mx:TextInput id="sokefelt" enter="sok()"/>
-				<mx:Button label="Søk" icon="@Embed(source='assets/magnifier.png')" click="sok()"/>
-				<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/key__minus.png')"/>
-		</mx:HBox>
-			
+<mx:VBox styleName="MainViewContainer" width="100%" height="100%">    	
+	<mx:VBox id="topbar" styleName="TopBar" width="100%">
+		<mx:HBox verticalAlign="middle">
+			<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
+			<mx:TextInput id="sokefelt" enter="sok()"/>
+			<mx:Button label="Søk" icon="@Embed(source='assets/magnifier.png')" click="sok()"/>
+			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/key__minus.png')"/>
+		</mx:HBox>										
 		<mx:TabNavigator width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox label="Admin">
 		 		<mx:Button label="Last opp" click="visLastOpp()" styleName="UnderMeny">
@@ -73,7 +71,7 @@
 	  		</mx:HBox>
 		</mx:TabNavigator>
 			  
-	</mx:HBox>
+	</mx:VBox>
 	
 	<mx:ViewStack width="100%" height="100%" selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
 	    <view:DatOpplastning/>
