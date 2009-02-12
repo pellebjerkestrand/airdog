@@ -170,7 +170,7 @@ package no.airdog.view
         // kalles når AirDog kjøres     
         private function initProgressHandler(event:Event):void
         {
-        	if( !_IsInitComplete) // This seems to be called right at the end for some reason, so this stopps it if the app is already complete
+        	if( !_IsInitComplete)
         	{
             	_currentStatus = 'Starter AirDog';
             	trace(_currentStatus);
