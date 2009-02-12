@@ -28,21 +28,20 @@ Application
 {
 	color: #113841;
 	backgroundGradientAlphas: 1.0, 1.0;
-	backgroundGradientColors: #333333, #444444;
+	backgroundGradientColors: #444444, #444444;
 }
 .MainViewContainer
 {
-	verticalAlign: middle;
-	backgroundColor: #FCFAE6;	
-}
-VBox.mainView
-{
-	borderStyle: solid;
-	borderColor: #444444;
-	cornerRadius: 0;
+	backgroundColor: #FCFAE6;
 	verticalAlign: top;
-	borderThickness: 1;
-	
+	borderThickness: 3;
+	borderColor: #aabbaa;
+	borderStyle: solid;	
+}
+VBox.MainView
+{	
+	paddingLeft: 50;
+	paddingRight: 50;	
 }
 .TopBar
 {
@@ -51,7 +50,6 @@ VBox.mainView
 	verticalAlign: bottom;
 	fontSize: 12;
 	backgroundColor: #D3D4AA;
-	verticalGap: 3;
 	paddingTop: 30;
 }
 
@@ -113,4 +111,8 @@ Button.UnderMeny
 	horizontalGap: -1;
 	paddingBottom: -2;
 	leading: 2;
+}
+Button.SokKnapp
+{
+	icon: "@Embed(source='assets/magnifier.png')";
 }

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:services="no.airdog.services.*"
-    xmlns:view="no.airdog.view.*"
-    layout="absolute"
+    xmlns:view="no.airdog.view.*" layout="absolute"
     minWidth="960">
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
 	
-	<view:MainView styleName="MainViewContainer"/>
+	<view:MainView/>
 	<mx:Style source="no/airdog/view/assets/stil.css"/>
 </mx:Application>
