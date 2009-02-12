@@ -50,7 +50,7 @@ class LoggInnController {
 		$brukerRolle="";
 		
 		// Configure the instance with constructor parametersÉ
-		$autentisering = new Zend_Auth_Adapter_DbTable($this->database,'admin','username','password');
+		$autentisering = new Zend_Auth_Adapter_DbTable($this->database,'bruker','brukernavn','passord');
 		
 		$brk=htmlspecialchars($bruker->brukernavn);
 		$pass=htmlspecialchars($bruker->passord);
@@ -90,8 +90,8 @@ class LoggInnController {
 			case Zend_Auth_Result::SUCCESS:
 				//Her returnerers den autentiserte rollen, denne skal vi bruke til Zend_Acl
 				//getResultRowObject returnerer et stdClass objekt.
-				$r=$autentisering->getResultRowObject(array('role'));
-				$brukerRolle = $r->role;
+				$r=$autentisering->getResultRowObject(array('rolle'));
+				$brukerRolle = $r->rolle;
 			break;
 			
 			default:
