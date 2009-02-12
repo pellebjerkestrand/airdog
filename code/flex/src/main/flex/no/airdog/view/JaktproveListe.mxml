@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+	<mx:Script>
+        <![CDATA[
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			
+			public function set hundId(val:String):void
+			{
+				Components.instance.session.jaktproveListe = null;
+				Components.instance.controller.hentJaktprove(val);
+			}      
+        ]]>
+    </mx:Script>
+	<mx:DataGrid paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
+		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
+			<mx:DataGridColumn headerText="Dato" dataField="proveDato"/>
+			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
+			<mx:DataGridColumn headerText="ST" width="40" textAlign="right" dataField="slippTid"/>
+			<mx:DataGridColumn headerText="ES" width="40" textAlign="right" dataField="egneStand"/>
+			<mx:DataGridColumn headerText="MS" width="40" textAlign="right" dataField="makkerStand"/>
+			<mx:DataGridColumn headerText="ESø" width="40" textAlign="right" dataField="egneStokk"/>
+			<mx:DataGridColumn headerText="MSø" width="40" textAlign="right" dataField="makkerStokk"/>
+			<mx:DataGridColumn headerText="TS" width="40" textAlign="right" dataField="tomStand"/>
+			<mx:DataGridColumn headerText="JL" width="40" textAlign="right" dataField="jaktlyst"/>
+			<mx:DataGridColumn headerText="Fa" width="40" textAlign="right" dataField="fart"/>
+			<mx:DataGridColumn headerText="St" width="40" textAlign="right" dataField="stil"/>
+			<mx:DataGridColumn headerText="Ss" width="40" textAlign="right" dataField="selvstendighet"/>
+			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="bredde"/>
+			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="reviering"/>
+			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="samarbeid"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>

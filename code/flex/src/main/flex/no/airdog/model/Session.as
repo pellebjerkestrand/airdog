@@ -19,6 +19,9 @@ package no.airdog.model
         public var avkomListe:ArrayCollection = new ArrayCollection();
         
         [Bindable]
+        public var jaktproveListe:ArrayCollection = new ArrayCollection();
+        
+        [Bindable]
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
         [Bindable]

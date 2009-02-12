@@ -38,7 +38,7 @@
           		<view:AvkomListe hundId="{Components.instance.session.hundprofil.hundId}" />
             </mx:VBox>
             <mx:VBox id="v1" label="Jaktprøver">
-            	            
+            	<view:JaktproveListe hundId="{Components.instance.session.hundprofil.hundId}" />            
             </mx:VBox>
             
             <mx:VBox label="Helse">
