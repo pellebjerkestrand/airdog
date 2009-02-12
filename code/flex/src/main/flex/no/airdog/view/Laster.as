@@ -11,7 +11,7 @@ package no.airdog.view
     import flash.text.TextField;
     import flash.utils.Timer;
     import flash.utils.getTimer;
-    
+
     import mx.events.FlexEvent;
     import mx.preloaders.IPreloaderDisplay;
 
@@ -33,7 +33,7 @@ package no.airdog.view
         private var _backgroundColor	: uint = 0x000000;
         private var _stageHeight		: Number = 1;
         private var _stageWidth			: Number = 1;
-        private var _loadingBarColour	: uint = 0x3ea1ee;
+        private var _loadingBarColour	: uint = 0x8a0000;
         
         // Display elements
         private var _loadingBar 		: Rectangle;		// The loading bar that will be drawn
@@ -54,7 +54,7 @@ package no.airdog.view
 			// Load in your logo or loading image
 			loadingImage = new flash.display.Loader();       
 			loadingImage.contentLoaderInfo.addEventListener( Event.COMPLETE, loader_completeHandler);
-			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo150.png")); // This path needs to be relative to your swf on the server, you could use an absolute value if you are unsure
+			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo200clean.png")); // This path needs to be relative to your swf on the server, you could use an absolute value if you are unsure
         }
         
         private function loader_completeHandler(event:Event):void
@@ -63,34 +63,34 @@ package no.airdog.view
         	
         	// Draw the loading image
             addChild(loadingImage);
-            loadingImage.width = 150;
-            loadingImage.height= 150;
-            loadingImage.x = 400;
-            loadingImage.y = 100;
+            loadingImage.width = 200;
+            loadingImage.height= 200;
+            loadingImage.x = Math.round(parent.width / 2) - Math.round(loadingImage.width / 2);
+            loadingImage.y = Math.round(parent.height / 2) - Math.round(loadingImage.height / 2);
             
 			// Draw your loading bar in it's full state - x,y,width,height
-            _loadingBar = new Rectangle(400, 300, 200, 10);
+            _loadingBar = new Rectangle(loadingImage.x, (loadingImage.y + loadingImage.height + 5), loadingImage.width, 10);
             
             // Create a text area for your progress text
             progressText = new TextField(); 
-            progressText.x = 400;    
-            progressText.y = 310;
+            progressText.x = loadingImage.x;    
+            progressText.y = _loadingBar.y + 15;
             progressText.width = 200;
             progressText.height = 20;
-            progressText.textColor = 0x3ea1ee;
+            progressText.textColor = 0x8a0000;
             addChild(progressText);
 			
 			// Create a text area for your status text
             statusText = new TextField(); 
-            statusText.x = 400;    
-            statusText.y = 320;
+            statusText.x = loadingImage.x;    
+            statusText.y = progressText.y + 15;
             statusText.width = 200;
             statusText.height = 20;
-            statusText.textColor = 0x3ea1ee;
+            statusText.textColor = 0x8a0000;
             addChild(statusText);
             
             // The first change to this var will be Download Complete
-            _currentStatus = 'Downloading';	
+            _currentStatus = 'Laster';	//Downloading
             
 			// Start a timer to redraw your loading elements frequently
             _timer = new Timer(50);
@@ -104,7 +104,7 @@ package no.airdog.view
 			graphics.beginFill( _loadingBarColour , 1);
             graphics.drawRect(_loadingBar.x, _loadingBar.y, _loadingBar.width * _fractionLoaded, _loadingBar.height);
             graphics.endFill();
-            progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + 'KB of ' + (Math.round(_bytesExpected / 1024)) + 'KB downloaded';
+            progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + (Math.round(_bytesExpected / 1024)) + ' KB lastet';
             statusText.text = _currentStatus;
         }
         
@@ -169,7 +169,7 @@ package no.airdog.view
         // Called when the download is complete
         private function completeHandler(event:Event):void
         {
-        	_currentStatus = 'Download Completed';
+        	_currentStatus = 'Lastet ferdig';
         	trace(_currentStatus);
         }
     
@@ -178,7 +178,7 @@ package no.airdog.view
         {
         	if( !_IsInitComplete) // This seems to be called right at the end for some reason, so this stopps it if the app is already complete
         	{
-            	_currentStatus = 'Initilising Application';
+            	_currentStatus = 'Starter AirDog';
             	trace(_currentStatus);
          	}
         }
@@ -186,7 +186,7 @@ package no.airdog.view
         // Called when both download and initialisation are complete    
         private function initCompleteHandler(event:Event):void
         {
-        	_currentStatus = 'Initilisation Completed';
+        	_currentStatus = 'AirDog starter';
         	trace(_currentStatus);
             _IsInitComplete = true;
             
