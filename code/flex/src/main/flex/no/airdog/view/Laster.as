@@ -9,9 +9,10 @@ package no.airdog.view
     import flash.geom.Rectangle;
     import flash.net.URLRequest;
     import flash.text.TextField;
+    import flash.text.TextFormat;
     import flash.utils.Timer;
     import flash.utils.getTimer;
-
+    
     import mx.events.FlexEvent;
     import mx.preloaders.IPreloaderDisplay;
 
@@ -40,6 +41,7 @@ package no.airdog.view
         private var loadingImage 		: flash.display.Loader;
         private var progressText		: TextField;
         private var statusText			: TextField;
+        private var textFormat			: TextFormat;
         
         public function Laster()
         {
@@ -69,24 +71,29 @@ package no.airdog.view
             loadingImage.y = Math.round(parent.height / 2) - Math.round(loadingImage.height / 2);
             
 			// tegner lastestolpa - x,y,width,height
-            _loadingBar = new Rectangle(loadingImage.x, (loadingImage.y + loadingImage.height + 5), loadingImage.width, 10);
+            _loadingBar = new Rectangle(loadingImage.x, (loadingImage.y + loadingImage.height + 5), loadingImage.width, 12);
+            
+            // formatterer teksten
+            textFormat = new TextFormat();
+            textFormat.color = 0x8a0000;
+            textFormat.font = "Verdana";
             
             // lager tekstfelt for progressText
             progressText = new TextField(); 
             progressText.x = loadingImage.x;    
             progressText.y = _loadingBar.y + 15;
-            progressText.width = 200;
+            progressText.width = loadingImage.width;
             progressText.height = 20;
-            progressText.textColor = 0x8a0000;
+            progressText.defaultTextFormat = textFormat;
             addChild(progressText);
 			
 			// lager tekstfelt for statusText
             statusText = new TextField(); 
             statusText.x = loadingImage.x;    
             statusText.y = progressText.y + 15;
-            statusText.width = 200;
+            statusText.width = loadingImage.width;
             statusText.height = 20;
-            statusText.textColor = 0x8a0000;
+            statusText.defaultTextFormat = textFormat;
             addChild(statusText);
             
             // endres først av completeHandler()
@@ -105,7 +112,7 @@ package no.airdog.view
             graphics.drawRect(_loadingBar.x, _loadingBar.y, _loadingBar.width * _fractionLoaded, _loadingBar.height);
             graphics.endFill();
             progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + 
-            					(Math.round(_bytesExpected / 1024)).toString() + ' KB lastet (' +
+            					(Math.round(_bytesExpected / 1024)).toString() + ' KB (' +
             					((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100) + "%)";
             statusText.text = _currentStatus;
         }
@@ -172,7 +179,7 @@ package no.airdog.view
         {
         	if( !_IsInitComplete)
         	{
-            	_currentStatus = 'Starter AirDog';
+            	_currentStatus = 'AirDog starter';
             	trace(_currentStatus);
          	}
         }
@@ -180,7 +187,7 @@ package no.airdog.view
         // kalles når nedlasting og kjøring er ferdig
         private function initCompleteHandler(event:Event):void
         {
-        	_currentStatus = 'AirDog starter';
+        	_currentStatus = 'AirDog klar';
         	trace(_currentStatus);
             _IsInitComplete = true;
             
