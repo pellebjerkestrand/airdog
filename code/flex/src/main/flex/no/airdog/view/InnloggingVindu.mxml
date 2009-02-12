@@ -62,7 +62,7 @@
 		</mx:FormItem>
 	
 		<mx:FormItem horizontalAlign="right" width="100%">
-			<mx:Button id="LoggInn" label="Logg inn" click="LoggInnKnapp()"/>
+			<mx:Button id="LoggInn" label="Logg inn" click="LoggInnKnapp()" icon="@Embed(source='assets/key__plus.png')"/>
 		</mx:FormItem>
 
 	</mx:Form>
