@@ -1,4 +1,4 @@
-//custom loading screen. placeholder
+//egen lasteskjerm
 package no.airdog.view
 {
     import flash.display.Loader;
@@ -17,26 +17,26 @@ package no.airdog.view
 
     public class Laster extends Sprite implements IPreloaderDisplay
     {
-        // Settings fiddle with these as you like
-        private var _minimumDuration:Number = 3000;   		// even if the preloader is done, take this long to "finish"
+    	// venter så lenge som det her (/1000) selv om lastinga er ferdig
+        private var _minimumDuration:Number = 3000;
 
-        // Implementation variables, used to make everything work properly
+        // implementasjonsvariabler så alt fungerer som det skal
         private var _IsInitComplete		: Boolean = false;
-        private var _timer 				: Timer;			// this is so we can redraw the progress bar
+        private var _timer 				: Timer;			// for å tegne lastestolpa
         private var _bytesLoaded 		: uint = 0;
-        private var _bytesExpected 		: uint = 1;			// we start at 1 to avoid division by zero errors.
-        private var _fractionLoaded 	: Number = 0;		// Will be used for the width of the loading bar
+        private var _bytesExpected 		: uint = 1;			// for å unngå deling på 0
+        private var _fractionLoaded 	: Number = 0;		// brukes til breden på lastestolpa
         private var _preloader			: Sprite;
-        private var _currentStatus		: String;			// The current stats of the application, downloaded, initilising etc
+        private var _currentStatus		: String;			// statusen: downloaded, initilising osv
         
-        // Display properties of the loader, these are set in the mx:Application tag
+        // visningsproperties, settes egentlig i mx:Application, men det funker ikke alltid
         private var _backgroundColor	: uint = 0x000000;
         private var _stageHeight		: Number = 1;
         private var _stageWidth			: Number = 1;
         private var _loadingBarColour	: uint = 0x8a0000;
         
-        // Display elements
-        private var _loadingBar 		: Rectangle;		// The loading bar that will be drawn
+        // elementer i visninga
+        private var _loadingBar 		: Rectangle;		// lastestolpa
         private var loadingImage 		: flash.display.Loader;
         private var progressText		: TextField;
         private var statusText			: TextField;
@@ -46,12 +46,12 @@ package no.airdog.view
             super();
         }
         
-        // Called when the appication is ready for the preloading screen
+        // kalles når applikasjonen er klar for lasteskjermen
         public function initialize():void
         {
         	drawBackground();
 
-			// Load in your logo or loading image
+			// laster logoen vår
 			loadingImage = new flash.display.Loader();       
 			loadingImage.contentLoaderInfo.addEventListener( Event.COMPLETE, loader_completeHandler);
 			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo200clean.png")); // This path needs to be relative to your swf on the server, you could use an absolute value if you are unsure
@@ -59,19 +59,19 @@ package no.airdog.view
         
         private function loader_completeHandler(event:Event):void
         {
-        	// At this stage we are sure the image has loaded so we can start drawing the progress bar and other info
+        	// logoen er ferdiglasta
         	
-        	// Draw the loading image
+        	// tegner loadingImage (logoen som er satt i funksjonen over)
             addChild(loadingImage);
             loadingImage.width = 200;
             loadingImage.height= 200;
             loadingImage.x = Math.round(parent.width / 2) - Math.round(loadingImage.width / 2);
             loadingImage.y = Math.round(parent.height / 2) - Math.round(loadingImage.height / 2);
             
-			// Draw your loading bar in it's full state - x,y,width,height
+			// tegner lastestolpa - x,y,width,height
             _loadingBar = new Rectangle(loadingImage.x, (loadingImage.y + loadingImage.height + 5), loadingImage.width, 10);
             
-            // Create a text area for your progress text
+            // lager tekstfelt for progressText
             progressText = new TextField(); 
             progressText.x = loadingImage.x;    
             progressText.y = _loadingBar.y + 15;
@@ -80,7 +80,7 @@ package no.airdog.view
             progressText.textColor = 0x8a0000;
             addChild(progressText);
 			
-			// Create a text area for your status text
+			// lager tekstfelt for statusText
             statusText = new TextField(); 
             statusText.x = loadingImage.x;    
             statusText.y = progressText.y + 15;
@@ -89,16 +89,16 @@ package no.airdog.view
             statusText.textColor = 0x8a0000;
             addChild(statusText);
             
-            // The first change to this var will be Download Complete
-            _currentStatus = 'Laster';	//Downloading
-            
-			// Start a timer to redraw your loading elements frequently
+            // endres først av completeHandler()
+            _currentStatus = 'Laster';
+
+			// timer for å tegne elementene ofte. ingen lastestolpe uten
             _timer = new Timer(50);
             _timer.addEventListener(TimerEvent.TIMER, timerHandler);
             _timer.start();
         }
         
-        // This is called repeatidly untill we are finished loading
+        // kalles flere ganger helt til lastinga er ferdig
         private function draw():void
         {
 			graphics.beginFill( _loadingBarColour , 1);
@@ -110,14 +110,14 @@ package no.airdog.view
         
         private function drawBackground():void
         {
-			// Draw the background using the background colour (set in the mx:Application MXML tag)
+			// tegner bakgrunnen
 			graphics.beginFill( _backgroundColor, 1);
  			graphics.drawRect( 0, 0, stageWidth, stageHeight);
 			graphics.endFill();
         }
         
         
-         // This code comes from DownloadProgressBar.  I have modified it to remove some unused event handlers.
+        // setter hendelseslyttere før resten av lasteren kjøres
         public function set preloader(value:Sprite):void
         {
             _preloader = value;
@@ -125,15 +125,11 @@ package no.airdog.view
             value.addEventListener(ProgressEvent.PROGRESS, progressHandler);    
             value.addEventListener(Event.COMPLETE, completeHandler);
             
-        //    value.addEventListener(RSLEvent.RSL_PROGRESS, rslProgressHandler);
-        //    value.addEventListener(RSLEvent.RSL_COMPLETE, rslCompleteHandler);
-        //    value.addEventListener(RSLEvent.RSL_ERROR, rslErrorHandler);
-            
             value.addEventListener(FlexEvent.INIT_PROGRESS, initProgressHandler);
             value.addEventListener(FlexEvent.INIT_COMPLETE, initCompleteHandler);
         }
 
-		// Getters and setters for values, most are set via the MXML in the mx:Application tag
+		// get og set for verdier. flesteparten settes i mx:Application
         public function set backgroundAlpha(alpha:Number):void{}
         public function get backgroundAlpha():Number { return 1; }
         
@@ -153,12 +149,10 @@ package no.airdog.view
         public function get stageWidth():Number { return _stageWidth; }
 
         //--------------------------------------------------------------------------
-        //
-        //  Event handlers
-        //
+        //  hendelseslyttere
         //--------------------------------------------------------------------------
         
-        // Called by the application as the download progresses.
+        // kalles mens lastinga pågår
         private function progressHandler(event:ProgressEvent):void
         {
             _bytesLoaded = event.bytesLoaded;
@@ -166,14 +160,14 @@ package no.airdog.view
             _fractionLoaded = Number(_bytesLoaded) / Number(_bytesExpected);
         }
         
-        // Called when the download is complete
+        // kalles når lastinga er ferdig
         private function completeHandler(event:Event):void
         {
         	_currentStatus = 'Lastet ferdig';
         	trace(_currentStatus);
         }
     
-        // Called by the application as the initilisation progresses.        
+        // kalles når AirDog kjøres     
         private function initProgressHandler(event:Event):void
         {
         	if( !_IsInitComplete) // This seems to be called right at the end for some reason, so this stopps it if the app is already complete
@@ -183,7 +177,7 @@ package no.airdog.view
          	}
         }
     
-        // Called when both download and initialisation are complete    
+        // kalles når nedlasting og kjøring er ferdig
         private function initCompleteHandler(event:Event):void
         {
         	_currentStatus = 'AirDog starter';
@@ -192,20 +186,20 @@ package no.airdog.view
             
         }
 
-        // Called as often as possible
+        // kalles så ofte som mulig
         private function timerHandler(event:Event):void
         {
             if ( _IsInitComplete && getTimer() > _minimumDuration )
             {    
-                // Everything is now ready, so we can tell the application to show the main application
-                // NOTE: If you have set a min duration, your application may already have started running
+                // alt er nå klart
+                // venter i _minimumDuration/1000 sekunder
                 _timer.stop();
                 _timer.removeEventListener(TimerEvent.TIMER,timerHandler);
                 dispatchEvent(new Event(Event.COMPLETE));
             }
             else
             {
-            	// Update the screen with the latest progress
+            	// tegner/oppdaterer skjermen med det siste som har skjedd
                 draw();
             }
         }
