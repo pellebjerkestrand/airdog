@@ -7,7 +7,7 @@
 	title="Innlogging" 
 	width="100%" 
 	height="100%"
-	close="vinduLukk(event)">
+	close="vinduLukk()">
 
 <mx:Script>
 	<![CDATA[
@@ -15,7 +15,7 @@
 		import mx.events.CloseEvent;
 		import mx.managers.PopUpManager;
             		
-		private function vinduLukk(event:CloseEvent):void
+		private function vinduLukk():void
 		{
 			PopUpManager.removePopUp(this);
 		}
@@ -26,7 +26,7 @@
 			
             if(Components.instance.session.bruker.innlogget == true)
             {
-            	PopUpManager.removePopUp(this);
+            	vinduLukk();
             }
             else
             {
