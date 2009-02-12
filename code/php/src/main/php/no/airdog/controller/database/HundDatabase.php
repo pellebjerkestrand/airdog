@@ -60,6 +60,14 @@ class HundDatabase
 		return $resultat;
 	}
 	
+	public function sokJaktprove($hundId)
+	{
+		$resultat = mysql_query("SELECT * FROM fugl WHERE hundId='".$hundId."'") 
+		or die(mysql_error());  
+
+		return $resultat;
+	}
+	
 	public function hentHund($hundId)
 	{
 		$resultat = mysql_query("SELECT * FROM hund WHERE hundId='".$hundId."' LIMIT 1") 

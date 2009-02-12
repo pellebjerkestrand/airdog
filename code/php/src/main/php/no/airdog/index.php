@@ -28,6 +28,7 @@ $server->setClass("LoggInnController");
 
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
+$server->setClassMap("AmfJaktprove", "AmfJaktprove");
 $server->setClassMap("AmfBruker","AmfBruker");
 
 //Bytt til true nŒr det skal lanseres
