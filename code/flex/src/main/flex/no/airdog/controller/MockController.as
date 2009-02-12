@@ -28,6 +28,7 @@ package no.airdog.controller
 				Components.instance.session.bruker.innlogget = true;
 				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["brukerRolle"];
 				
+				Components.instance.session.ristVindu = true;
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
@@ -37,13 +38,15 @@ package no.airdog.controller
 			}
 			else
 			{
-				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
+				Components.instance.session.ristVindu = true;
+				//Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
 			}
 		}
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
+			Components.instance.session.ristVindu = true;
 			Alert.show( "Klarer ikke å koble til server\n" + event.fault.message.toString(), "Innlogging mislyktes", 0);
 			loggUt();
 		}
@@ -89,6 +92,17 @@ package no.airdog.controller
 		public function hentJaktproveResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+		}
+		
+		public function visHund(hundId:String):void
+		{
+			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
+		}
+		
+		public function visHundResultat(event:Hund):void
+		{
+			Components.instance.session.hundprofil = event;
+			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
 	}
 }

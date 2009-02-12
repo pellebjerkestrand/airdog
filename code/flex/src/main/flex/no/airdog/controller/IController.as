@@ -10,5 +10,6 @@ package no.airdog.controller
 		function hundesok(soketekst:String):void
 		function hentAvkom(hundId:String):void
 		function hentJaktprove(hundId:String):void
+		function visHund(hundId:String):void
 	}
 }
