@@ -18,7 +18,8 @@
 				var dg:DataGrid = event.target as DataGrid;
 				if (dg.selectedItem != null)
 				{
-					Navigasjon.visHundNr(dg.selectedIndex);
+					//Navigasjon.visHundNr(dg.selectedIndex);
+					Components.instance.controller.visHund(dg.selectedItem.hundId);
 				}
 			}       
         ]]>
