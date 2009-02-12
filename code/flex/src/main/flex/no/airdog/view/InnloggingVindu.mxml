@@ -14,30 +14,41 @@
 		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
 		import mx.managers.PopUpManager;
-		
+            		
 		private function vinduLukk(event:CloseEvent):void
 		{
 			PopUpManager.removePopUp(this);
 		}
 		
-		private function loggInnKnapp():void
-		{
+        private function LoggInnKnapp():void 
+        {
 			Components.instance.controller.loggInn(brukernavn.text, passord.text);
-			//PopUpManager.removePopUp(this);
-		}
+			
+            if(Components.instance.session.bruker.innlogget == true)
+            {
+            	PopUpManager.removePopUp(this);
+            }
+            else
+            {
+            	rister.stop();
+				rister.duration = 55;
+				rister.play([this]);
+            }
+        } 
 	]]>
 </mx:Script>
-<mx:Sequence id="shakez0r">
-	<mx:Move xBy="10" duration="70"/>
-	<mx:Move xBy="-20" duration="70"/>
-	<mx:Move xBy="20" duration="70"/>
-	<mx:Move xBy="-20" duration="70"/>
-	<mx:Move xBy="20" duration="70"/>
-	<mx:Move xBy="-10" duration="70"/>
+
+<mx:Sequence id="rister">
+	<mx:Move xBy="-5"/>
+	<mx:Move xBy="10"/>
+	<mx:Move xBy="-10"/>
+	<mx:Move xBy="10"/>
+	<mx:Move xBy="-10"/>
+	<mx:Move xBy="5"/>
 </mx:Sequence>
 
 <mx:HBox>
-	<mx:Image source="no/airdog/view/assets/airdoglogo150.png" width="150" height="150" mouseDownEffect="{shakez0r}"/>
+	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo150.png" width="150" height="150"/>
 	<mx:Form defaultButton="{LoggInn}">
 		<mx:Text text="Skriv inn brukernavn og passord."/>
 		<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
@@ -51,8 +62,9 @@
 		</mx:FormItem>
 	
 		<mx:FormItem horizontalAlign="right" width="100%">
-			<mx:Button id="LoggInn" label="Logg inn" click="loggInnKnapp()" icon="@Embed(source='assets/key__plus.png')"/>
+			<mx:Button id="LoggInn" label="Logg inn" click="LoggInnKnapp()"/>
 		</mx:FormItem>
+
 	</mx:Form>
 </mx:HBox>
 
