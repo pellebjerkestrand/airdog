@@ -94,8 +94,7 @@ class HundDatabase
 		->limit(1);
 		
 		return $this->database->fetchRow($select);*/
-		
-		$resultat = mysql_query("SELECT * FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
+		$resultat = mysql_query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE hund.hundId='".$hundId."' LIMIT 1") 
 		or die(mysql_error());  
 
 		return mysql_fetch_array( $resultat );
