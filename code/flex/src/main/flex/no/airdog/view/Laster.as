@@ -1,3 +1,4 @@
+//custom loading screen. placeholder
 package no.airdog.view
 {
     import flash.display.Loader;
@@ -17,7 +18,7 @@ package no.airdog.view
     public class Laster extends Sprite implements IPreloaderDisplay
     {
         // Settings fiddle with these as you like
-        private var _minimumDuration:Number = 3000;   // even if the preloader is done, take this long to "finish"
+        private var _minimumDuration:Number = 3000;   		// even if the preloader is done, take this long to "finish"
 
         // Implementation variables, used to make everything work properly
         private var _IsInitComplete		: Boolean = false;
