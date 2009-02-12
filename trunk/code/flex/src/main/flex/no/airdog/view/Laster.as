@@ -17,7 +17,7 @@ package no.airdog.view
 
     public class Laster extends Sprite implements IPreloaderDisplay
     {
-    	// venter så lenge som det her (/1000) selv om lastinga er ferdig
+    	// venter så lenge som det her (millisekunder) selv om lastinga er ferdig
         private var _minimumDuration:Number = 3000;
 
         // implementasjonsvariabler så alt fungerer som det skal
@@ -25,11 +25,11 @@ package no.airdog.view
         private var _timer 				: Timer;			// for å tegne lastestolpa
         private var _bytesLoaded 		: uint = 0;
         private var _bytesExpected 		: uint = 1;			// for å unngå deling på 0
-        private var _fractionLoaded 	: Number = 0;		// brukes til breden på lastestolpa
+        private var _fractionLoaded 	: Number = 0;		// brukes til bredden på lastestolpa
         private var _preloader			: Sprite;
-        private var _currentStatus		: String;			// statusen: downloaded, initilising osv
+        private var _currentStatus		: String;			// statusen: laster, kjører osv
         
-        // visningsproperties, settes egentlig i mx:Application, men det funker ikke alltid
+        // visningsinstillinger, settes egentlig i mx:Application, men det funker ikke alltid
         private var _backgroundColor	: uint = 0x000000;
         private var _stageHeight		: Number = 1;
         private var _stageWidth			: Number = 1;
@@ -117,7 +117,7 @@ package no.airdog.view
         }
         
         
-        // setter hendelseslyttere før resten av lasteren kjøres
+        // setter lyttere før resten av lasteren kjøres
         public function set preloader(value:Sprite):void
         {
             _preloader = value;
@@ -148,9 +148,7 @@ package no.airdog.view
         public function set stageWidth(width:Number):void { _stageWidth = width; }
         public function get stageWidth():Number { return _stageWidth; }
 
-        //--------------------------------------------------------------------------
-        //  hendelseslyttere
-        //--------------------------------------------------------------------------
+        //  lyttere
         
         // kalles mens lastinga pågår
         private function progressHandler(event:ProgressEvent):void
