@@ -3,17 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 11. Feb, 2009 10:57 AM
+-- Generert den: 12. Feb, 2009 14:38 PM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `airdog`
@@ -64,6 +58,29 @@ CREATE TABLE IF NOT EXISTS `aasykdom` (
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur for tabell `bruker`
+--
+
+CREATE TABLE IF NOT EXISTS `bruker` (
+  `brukernavn` varchar(20) NOT NULL,
+  `passord` varchar(20) NOT NULL,
+  `fornavn` varchar(20) NOT NULL,
+  `etternavn` varchar(20) NOT NULL,
+  `rolle` varchar(20) NOT NULL,
+  PRIMARY KEY (`brukernavn`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `bruker`
+--
+
+INSERT INTO `bruker` (`brukernavn`, `passord`, `fornavn`, `etternavn`, `rolle`) VALUES
+('admin', 'password', 'admin', 'admin', 'admin'),
+('Super', 'password', 'Super', 'Super', 'Super');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur for tabell `eier`
 --
 
@@ -94,34 +111,34 @@ CREATE TABLE IF NOT EXISTS `fugl` (
   `dommerId1` varchar(7) NOT NULL,
   `dommerId2` varchar(7) NOT NULL,
   `hundId` varchar(9) NOT NULL,
-  `slippTid` int(2) NOT NULL,
-  `egneStand` int(1) NOT NULL,
-  `egneStokk` int(1) NOT NULL,
-  `tomStand` int(1) NOT NULL,
-  `makkerStand` int(1) NOT NULL,
-  `makkerStokk` int(1) NOT NULL,
-  `jaktlyst` int(1) NOT NULL,
-  `fart` int(1) NOT NULL,
-  `stil` int(1) NOT NULL,
-  `selvstendighet` int(1) NOT NULL,
-  `bredde` int(1) NOT NULL,
-  `reviering` int(1) NOT NULL,
-  `samarbeid` int(1) NOT NULL,
-  `presUpresis` int(1) NOT NULL,
-  `presNoeUpresis` int(1) NOT NULL,
-  `presPresis` int(1) NOT NULL,
-  `reisNekter` int(1) NOT NULL,
-  `reisNoelende` int(1) NOT NULL,
-  `reisVillig` int(1) NOT NULL,
-  `reisDjerv` int(1) NOT NULL,
-  `sokStjeler` int(1) NOT NULL,
-  `sokSpontant` int(1) NOT NULL,
-  `appIkkeGodkjent` int(1) NOT NULL,
-  `appGodkjent` int(1) NOT NULL,
-  `rappInnkalt` int(1) NOT NULL,
-  `rappSpont` int(1) NOT NULL,
-  `premiegrad` int(1) NOT NULL,
-  `certifikat` int(1) NOT NULL,
+  `slippTid` int(2) DEFAULT NULL,
+  `egneStand` int(1) DEFAULT NULL,
+  `egneStokk` int(1) DEFAULT NULL,
+  `tomStand` int(1) DEFAULT NULL,
+  `makkerStand` int(1) DEFAULT NULL,
+  `makkerStokk` int(1) DEFAULT NULL,
+  `jaktlyst` int(1) DEFAULT NULL,
+  `fart` int(1) DEFAULT NULL,
+  `stil` int(1) DEFAULT NULL,
+  `selvstendighet` int(1) DEFAULT NULL,
+  `bredde` int(1) DEFAULT NULL,
+  `reviering` int(1) DEFAULT NULL,
+  `samarbeid` int(1) DEFAULT NULL,
+  `presUpresis` int(1) DEFAULT NULL,
+  `presNoeUpresis` int(1) DEFAULT NULL,
+  `presPresis` int(1) DEFAULT NULL,
+  `reisNekter` int(1) DEFAULT NULL,
+  `reisNoelende` int(1) DEFAULT NULL,
+  `reisVillig` int(1) DEFAULT NULL,
+  `reisDjerv` int(1) DEFAULT NULL,
+  `sokStjeler` int(1) DEFAULT NULL,
+  `sokSpontant` int(1) DEFAULT NULL,
+  `appIkkeGodkjent` int(1) DEFAULT NULL,
+  `appGodkjent` int(1) DEFAULT NULL,
+  `rappInnkalt` int(1) DEFAULT NULL,
+  `rappSpont` int(1) DEFAULT NULL,
+  `premiegrad` int(1) DEFAULT NULL,
+  `certifikat` int(1) DEFAULT NULL,
   `regAv` varchar(32) NOT NULL,
   `regDato` date NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -133,6 +150,9 @@ CREATE TABLE IF NOT EXISTS `fugl` (
 -- Dataark for tabell `fugl`
 --
 
+INSERT INTO `fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`, `dommerId2`, `hundId`, `slippTid`, `egneStand`, `egneStokk`, `tomStand`, `makkerStand`, `makkerStokk`, `jaktlyst`, `fart`, `stil`, `selvstendighet`, `bredde`, `reviering`, `samarbeid`, `presUpresis`, `presNoeUpresis`, `presPresis`, `reisNekter`, `reisNoelende`, `reisVillig`, `reisDjerv`, `sokStjeler`, `sokSpontant`, `appIkkeGodkjent`, `appGodkjent`, `rappInnkalt`, `rappSpont`, `premiegrad`, `certifikat`, `regAv`, `regDato`, `raseId`, `manueltEndretAv`, `manueltEndretDato`) VALUES
+('50-94014', '2009-02-09', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00'),
+('50-94015', '2009-02-13', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -209,9 +229,10 @@ CREATE TABLE IF NOT EXISTS `hund` (
 --
 
 INSERT INTO `hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFarId`, `hundMorId`, `idNr`, `farge`, `fargeVariant`, `oyesykdom`, `hoftesykdom`, `haarlag`, `idMerke`, `kjonn`, `eierId`, `endretAv`, `endretDato`, `regDato`, `storrelse`, `manueltEndretAv`, `manueltEndretDato`) VALUES
-(348, 'kullid', 'enFar', 'tittel', 'Far til en hund', 'far', 'mor', '12432', 'grÃ¸nn', 'blÃ¥', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, 'kullid', 'hundid', 'tittel', 'navn og sÃ¥nt', 'enFar', 'enMor', '12432', 'grÃ¸nn', 'blÃ¥', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'grÃ¸nn', 'blÃ¥', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hundid', 'tittel', 'navn og sånt', 'enFar', 'enMor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
