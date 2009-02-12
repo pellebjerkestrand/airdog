@@ -104,7 +104,9 @@ package no.airdog.view
 			graphics.beginFill( _loadingBarColour , 1);
             graphics.drawRect(_loadingBar.x, _loadingBar.y, _loadingBar.width * _fractionLoaded, _loadingBar.height);
             graphics.endFill();
-            progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + (Math.round(_bytesExpected / 1024)) + ' KB lastet';
+            progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + 
+            					(Math.round(_bytesExpected / 1024)).toString() + ' KB lastet (' +
+            					((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100) + "%)";
             statusText.text = _currentStatus;
         }
         
