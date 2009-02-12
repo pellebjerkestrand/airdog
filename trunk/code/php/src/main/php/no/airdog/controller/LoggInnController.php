@@ -1,5 +1,5 @@
 <?php
-require_once 'no/airdog/controller/database/ConnectionHelper.php';
+require_once 'no/airdog/controller/database/Tilkobling_.php';
 require_once 'no/airdog/model/AmfBruker.php';
 require_once 'no/airdog/model/AmfBrukerRettigheter.php';
 require_once '../../com/Zend/Auth.php';
@@ -27,7 +27,7 @@ class LoggInnController {
 		
 		//Lager database tilkobling
 		try {
-			$tilkobling = new ConnectionHelper();
+			$tilkobling = new Tilkobling_();
 			$this->database = Zend_Db::factory('Mysqli',array(
 			'host' => $tilkobling->dbServer,
 			'dbname' => $tilkobling->dbNavn,

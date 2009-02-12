@@ -92,8 +92,7 @@ class HundController
      
     	$ret = array();
     	
-	   	while($rad = mysql_fetch_array($resultat))
-	   	{    	
+	   foreach($resultat as $rad) { 
 			$tmp = new AmfJaktprove();
 			$tmp->proveNr = $rad["proveNr"];
 			$tmp->proveDato = $rad["proveDato"];

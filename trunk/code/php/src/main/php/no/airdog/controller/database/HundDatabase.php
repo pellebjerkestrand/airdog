@@ -1,10 +1,27 @@
 <?php 
 require_once 'Tilkobling.php';
+require_once 'Tilkobling_.php';
 
 class HundDatabase
 {
-	public function HundDatabase()
-	{
+	private $database;
+	
+	/**
+	* @return avhengigheter
+	*/
+	public function __construct() {
+		//Lager database tilkobling
+		try {
+			$tilkobling = new Tilkobling_();
+			$this->database = Zend_Db::factory('Mysqli',array(
+			'host' => $tilkobling->dbServer,
+			'dbname' => $tilkobling->dbNavn,
+			'username' => $tilkobling->dbBrukernavn,
+			'password' => $tilkobling->dbPassord));
+		}
+		catch ( Zend_database_Exception $e){
+			return "Oppkobling feil: " . get_class($e) . "\n Melding: " . $e->getMessage() . "\n";
+		}
 	}
 	
 	public function settInnHund($hundArray)
@@ -53,7 +70,7 @@ class HundDatabase
 	}
 	
 	public function sokHund($soketekst)
-	{
+	{	
 		$resultat = mysql_query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE (hund.hundId LIKE '%".$soketekst."%' OR hund.navn LIKE '%".$soketekst."%')") 
 		or die(mysql_error());  
 
@@ -62,14 +79,22 @@ class HundDatabase
 	
 	public function sokJaktprove($hundId)
 	{
-		$resultat = mysql_query("SELECT * FROM fugl WHERE hundId='".$hundId."'") 
-		or die(mysql_error());  
+		$select = $this->database->select()
+		->from('fugl') 
+		->where('hundId=?',$hundId); 
 
-		return $resultat;
+		return $this->database->fetchAll($select); 
 	}
 	
 	public function hentHund($hundId)
 	{
+		/*$select = $this->database->select()
+		->from('hund')
+		->where('hundId=?',$hundId)
+		->limit(1);
+		
+		return $this->database->fetchRow($select);*/
+		
 		$resultat = mysql_query("SELECT * FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
 		or die(mysql_error());  
 
