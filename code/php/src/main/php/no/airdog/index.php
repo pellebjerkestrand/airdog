@@ -10,13 +10,10 @@ if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
 	ini_set("include_path", ini_get("include_path") . ":../../com/:../../no/:../../"); 
 }
 
-//ini_set("include_path", ini_get("include_path").PATH_SEPARATOR."../../com/:../../no/");
-
-
-require_once '../../com/Zend/Loader.php';
+require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
-require_once '../../com/Zend/Amf/Server.php';
+require_once 'Zend/Amf/Server.php';
 
 require_once 'controller/HundController.php';
 require_once 'controller/LoggInnController.php';
