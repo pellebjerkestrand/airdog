@@ -42,6 +42,8 @@ package no.airdog.controller
 			{
 				Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
+				
+				
 			}
 		}
 		

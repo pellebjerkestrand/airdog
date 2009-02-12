@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TitleWindow 
+<mx:TitleWindow
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
 	showCloseButton="true"
@@ -27,22 +27,33 @@
 		}
 	]]>
 </mx:Script>
+<mx:Sequence id="shakez0r">
+	<mx:Move xBy="10" duration="70"/>
+	<mx:Move xBy="-20" duration="70"/>
+	<mx:Move xBy="20" duration="70"/>
+	<mx:Move xBy="-20" duration="70"/>
+	<mx:Move xBy="20" duration="70"/>
+	<mx:Move xBy="-10" duration="70"/>
+</mx:Sequence>
 
-<mx:Form defaultButton="{LoggInn}">
-	<mx:Text text="Skriv inn brukernavn og passord."/>
-	<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+<mx:HBox>
+	<mx:Image source="no/airdog/view/assets/airdoglogo150.png" width="150" height="150" mouseDownEffect="{shakez0r}"/>
+	<mx:Form defaultButton="{LoggInn}">
+		<mx:Text text="Skriv inn brukernavn og passord."/>
+		<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+		
+		<mx:FormItem label="Brukernavn:">
+			<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Passord:">
+			<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+		</mx:FormItem>
 	
-	<mx:FormItem label="Brukernavn:">
-		<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
-	</mx:FormItem>
-	
-	<mx:FormItem label="Passord:">
-		<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
-	</mx:FormItem>
-
-	<mx:FormItem horizontalAlign="right" width="100%">
-		<mx:Button id="LoggInn" label="Logg inn" click="loggInnKnapp()"/>
-	</mx:FormItem>
-</mx:Form>
+		<mx:FormItem horizontalAlign="right" width="100%">
+			<mx:Button id="LoggInn" label="Logg inn" click="loggInnKnapp()"/>
+		</mx:FormItem>
+	</mx:Form>
+</mx:HBox>
 
 </mx:TitleWindow>
