@@ -60,19 +60,19 @@ class HundDatabase
 	}
 	
 	public function sokHund($soketekst)
-	{	
-//		$resultat = mysql_query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE (hund.hundId LIKE '%".$soketekst."%' OR hund.navn LIKE '%".$soketekst."%')") 
-//		or die(mysql_error());  
-//
-//		return $resultat;
-//		
-//		$select = $this->database->query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE (hund.hundId LIKE '%".$tekst."%' OR hund.navn LIKE '%".$tekst."%')");
+	{			
+//		SELECT hund.*, hundMor.navn AS hundMorNavn, hundFar.navn AS hundFarNavn FROM hund 
+//		LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId 
+//		LEFT JOIN hund AS hundFar ON hund.hundFarId = hundFar.hundId 
+//		WHERE (hund.hundId LIKE '%".$soketekst."%' OR hund.navn LIKE '%".$soketekst."%')
 		
 		$select = $this->database->select()
 		->from(array('h' => 'hund'))
-		->where('h.navn LIKE "%'.$soketekst.'%"')
-		->joinLeft(array('hMor' => 'hund'),
-		'h.hundMorId = hMor.hundId');
+//		->joinLeft(array('hMor' => 'hund'),
+//		'h.hundMorId = hMor.hundId')
+//		->joinLeft(array('hFar' => 'hund'),
+//		'h.hundFarId = hFar.hundId')
+		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
 		
 		return $this->database->fetchAll($select); 
 	}
