@@ -6,7 +6,7 @@ package no.airdog.controller
 	public interface IController
 	{
 		function visLoggInnVindu(parent:DisplayObject):void
-		function skjulLoggInnVindu():void
+		function fjernLoggInnVindu():void
 		function loggInn(brukernavn:String, passord:String):void
 		function loggUt():void
 		function lastOppDatFil():void
