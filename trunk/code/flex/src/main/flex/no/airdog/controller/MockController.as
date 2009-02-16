@@ -50,7 +50,7 @@ package no.airdog.controller
 		{			
 			if(bruker)
 			{	
-				if(bruker.toString() == "FAILURE_CREDENTIAL_INVALID")
+				if(bruker.toString() == "FEIL_BRUKERNAVN_PASSORD")
 				{
 					//Components.instance.session.ristVindu = true;
 					Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
