@@ -27,6 +27,7 @@ class LoggInnController {
 		
 		$tilkobling = new Tilkobling_();
 		$this->database = $tilkobling->getTilkobling();
+		
 	}
 	
 	/**
@@ -36,11 +37,14 @@ class LoggInnController {
 	* @return avhengigheter
 	*
 	*/
-	public function loggInn(AmfBruker $bruker) {
+	public function loggInn(AmfBruker $bruker) {		
 		$brukerRolle="";
 		
 		// Configure the instance with constructor parametersÉ
-		$autentisering = new Zend_Auth_Adapter_DbTable($this->database,'bruker','brukernavn','passord');
+		$autentisering = new Zend_Auth_Adapter_DbTable($this->database);
+		$autentisering->setTableName('bruker')
+			->setIdentityColumn('brukernavn')
+			->setCredentialColumn('passord');
 		
 		$brk=htmlspecialchars($bruker->brukernavn);
 		$pass=htmlspecialchars($bruker->passord);
