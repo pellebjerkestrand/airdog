@@ -36,6 +36,8 @@ package no.airdog.controller
         
         public function skjulLoggInnVindu():void
         {
+        	vindu.brukernavn.text = "";
+        	vindu.passord.text = "";
         	vindu.visible = false;
         }
 		
