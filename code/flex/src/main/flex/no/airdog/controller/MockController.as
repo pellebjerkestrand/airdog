@@ -1,17 +1,42 @@
 package no.airdog.controller
 {
+	import flash.display.DisplayObject;
+	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.managers.PopUpManager;
 	import mx.rpc.events.FaultEvent;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
+	import no.airdog.view.*;
 	
 	public class MockController implements IController
 	{     
+		private var vindu:InnloggingVindu;
+		
         public function MockController()
         {
         	var tmpCollection:ArrayCollection = new ArrayCollection();
+        }
+        
+        public function visLoggInnVindu(parent:DisplayObject):void
+        {
+        	if (vindu == null)
+        	{
+        		vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
+        		PopUpManager.centerPopUp(vindu);
+        		vindu.isPopUp = true;
+        	}
+        	else
+        	{
+        		vindu.visible = true;
+        	}
+        }
+        
+        public function skjulLoggInnVindu():void
+        {
+        	vindu.visible = false;
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -28,17 +53,18 @@ package no.airdog.controller
 				Components.instance.session.bruker.innlogget = true;
 				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["brukerRolle"];
 				
-				Components.instance.session.ristVindu = true;
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
 							"\nsession.bruker.rolle: "+Components.instance.session.bruker.GJELDENDE_BRUKERROLLE, 
 							"Innlogging lyktes", 0);
+							
+				skjulLoggInnVindu();
 			}
 			else
 			{
-				Components.instance.session.ristVindu = true;
+				vindu.ristVindu();
 				//Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
 			}
@@ -46,7 +72,7 @@ package no.airdog.controller
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			Components.instance.session.ristVindu = true;
+			vindu.ristVindu();
 			Alert.show( "Klarer ikke å koble til server\n" + event.fault.message.toString(), "Innlogging mislyktes", 0);
 			loggUt();
 		}

@@ -45,10 +45,7 @@
             
             private function innloggingSprettOppVindu():void
             {
-            	var vindu:InnloggingVindu = PopUpManager.createPopUp(this, InnloggingVindu, true) as InnloggingVindu;
-            	vindu.ristVindu	 = Components.instance.session.ristVindu;
-            	PopUpManager.centerPopUp(vindu);
-            	vindu.isPopUp = false;
+            	Components.instance.controller.visLoggInnVindu(this);
             }
         ]]>
     </mx:Script>

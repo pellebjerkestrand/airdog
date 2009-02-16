@@ -1,9 +1,12 @@
 package no.airdog.controller
 {
-	import mx.controls.Label;
+	import mx.rpc.events.ResultEvent;
+	import flash.display.DisplayObject;
 	
 	public interface IController
 	{
+		function visLoggInnVindu(parent:DisplayObject):void
+		function skjulLoggInnVindu():void
 		function loggInn(brukernavn:String, passord:String):void
 		function loggUt():void
 		function lastOppDatFil():void

@@ -13,34 +13,22 @@
 	<![CDATA[
 		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
-		import mx.managers.PopUpManager;
-            		
-		[Bindable]
-        public function set ristVindu(val:Boolean):void
-		{
-			if (val == true)
-			{
-//				rister.stop();
-//				rister.duration = 55;
-//				rister.play([this]);
-				vinduLukk();
-			}			
-		}   
 			
 		private function vinduLukk():void
 		{
-			PopUpManager.removePopUp(this);
+			Components.instance.controller.skjulLoggInnVindu();
 		}
 		
         private function LoggInnKnapp():void 
         {
-        	Components.instance.session.ristVindu = false;
 			Components.instance.controller.loggInn(brukernavn.text, passord.text);
-			
-            if(Components.instance.session.bruker.innlogget == true)
-            {
-            	vinduLukk();
-            }
+        }
+        
+        public function ristVindu():void
+        {
+        	rister.stop();
+			rister.duration = 55;
+			rister.play([this]);
         } 
 	]]>
 </mx:Script>
