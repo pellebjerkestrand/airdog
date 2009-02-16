@@ -72,17 +72,17 @@ class LoggInnController {
 			
 			case Zend_Auth_Result::FAILURE:
 				$brukerRolle = 'gjest';
-				return false;
+				return null;
 			break;
 			
 			case Zend_Auth_Result::FAILURE_IDENTITY_AMBIGUOUS:
 				$brukerRolle = 'gjest';
-				return false;
+				return null;
 			break;
 			
 			case Zend_Auth_Result::FAILURE_UNCATEGORIZED:
 				$brukerRolle = 'gjest';
-				return false;
+				return null;
 			break;
 			
 			case Zend_Auth_Result::SUCCESS:
