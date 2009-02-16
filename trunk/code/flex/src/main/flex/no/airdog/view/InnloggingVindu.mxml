@@ -2,30 +2,29 @@
 <mx:TitleWindow
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	showCloseButton="true"
 	layout="vertical"
 	title="Innlogging" 
 	width="100%" 
-	height="100%"
-	close="vinduLukk()">
+	height="100%">
 
 <mx:Script>
 	<![CDATA[
 		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
-			
-		private function vinduLukk():void
+		
+		private function avbryt():void
 		{
-			Components.instance.controller.skjulLoggInnVindu();
+			Components.instance.controller.fjernLoggInnVindu();
 		}
 		
-        private function LoggInnKnapp():void 
+        private function loggInn():void 
         {
 			Components.instance.controller.loggInn(brukernavn.text, passord.text);
         }
         
         public function ristVindu():void
         {
+        	melding.text = "Feil brukernavn/passord";
         	rister.stop();
 			rister.duration = 55;
 			rister.play([this]);
@@ -39,28 +38,35 @@
 	<mx:Move xBy="-10"/>
 	<mx:Move xBy="10"/>
 	<mx:Move xBy="-10"/>
+	<mx:Move xBy="10"/>
+	<mx:Move xBy="-10"/>
 	<mx:Move xBy="5"/>
 </mx:Sequence>
 
 <mx:HBox>
 	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo150.png" width="150" height="150"/>
-	<mx:Form defaultButton="{LoggInn}">
-		<mx:Text text="Skriv inn brukernavn og passord."/>
-		<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+	<mx:VBox>
+		<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
+		<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
+			<mx:Text text="Skriv inn brukernavn og passord."/>
+			<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+			
+			<mx:FormItem label="Brukernavn:">
+				<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Passord:">
+				<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+			</mx:FormItem>
 		
-		<mx:FormItem label="Brukernavn:">
-			<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
-		</mx:FormItem>
-		
-		<mx:FormItem label="Passord:">
-			<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
-		</mx:FormItem>
-	
-		<mx:FormItem horizontalAlign="right" width="100%">
-			<mx:Button id="LoggInn" label="Logg inn" click="LoggInnKnapp()" icon="@Embed(source='assets/key__plus.png')"/>
-		</mx:FormItem>
-
-	</mx:Form>
+			<mx:FormItem horizontalAlign="right" width="100%">
+				<mx:HBox>
+					<mx:Button id="avbrytKnapp" label="Avbryt" click="avbryt()" icon="@Embed(source='assets/key__minus.png')"/>
+					<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/key__plus.png')"/>
+				</mx:HBox>
+			</mx:FormItem>
+		</mx:Form>
+	</mx:VBox>
 </mx:HBox>
 
 </mx:TitleWindow>

@@ -22,21 +22,14 @@ package no.airdog.controller
         
         public function visLoggInnVindu(parent:DisplayObject):void
         {
-        	if (vindu == null)
-        	{
-        		vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
-        		PopUpManager.centerPopUp(vindu);
-        		vindu.isPopUp = false;
-        	}
-        	else
-        	{
-        		vindu.visible = true;
-        	}
+        	vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
+			PopUpManager.centerPopUp(vindu);
+    		vindu.isPopUp = false;
         }
         
-        public function skjulLoggInnVindu():void
+        public function fjernLoggInnVindu():void
         {
-        	vindu.visible = false;
+        	PopUpManager.removePopUp(vindu);
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -52,8 +45,6 @@ package no.airdog.controller
 			{	
 				if(bruker.toString() == "FEIL_BRUKERNAVN_PASSORD")
 				{
-					//Components.instance.session.ristVindu = true;
-					Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 					vindu.ristVindu();
 					loggUt();
 					return;
@@ -69,7 +60,7 @@ package no.airdog.controller
 							"\nsession.bruker.rolle: "+Components.instance.session.bruker.GJELDENDE_BRUKERROLLE, 
 							"Innlogging lyktes", 0);
 							
-				skjulLoggInnVindu();
+				fjernLoggInnVindu();
 			}
 			else
 			{
