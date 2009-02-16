@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
+	<!--SUPERMOCKUP-->
+	<mx:HBox>
+		<mx:Text text="Super" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:HBox>
+		<mx:Text text="Admin" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:HBox>
+		<mx:Text text="BrukerPluss" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:HBox>
+		<mx:Text text="Bruker" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:HBox>
+		<mx:Text text="Gjest" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:HBox>
+		<mx:Text text="Robot" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
+	</mx:HBox>
+	<mx:Button label="Ny Rolle" />
+	
+</mx:VBox>

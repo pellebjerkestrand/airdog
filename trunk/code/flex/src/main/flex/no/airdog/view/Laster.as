@@ -19,7 +19,7 @@ package no.airdog.view
     public class Laster extends Sprite implements IPreloaderDisplay
     {
     	// venter så lenge som det her (millisekunder) selv om lastinga er ferdig
-        private var _minimumDuration:Number = 3000;
+        private var _minimumDuration:Number = 0;
 
         // implementasjonsvariabler så alt fungerer som det skal
         private var _IsInitComplete		: Boolean = false;
