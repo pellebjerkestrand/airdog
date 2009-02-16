@@ -67,11 +67,11 @@ class HundDatabase
 //		WHERE (hund.hundId LIKE '%".$soketekst."%' OR hund.navn LIKE '%".$soketekst."%')
 		
 		$select = $this->database->select()
-		->from(array('h' => 'hund'))
-//		->joinLeft(array('hMor' => 'hund'),
-//		'h.hundMorId = hMor.hundId')
-//		->joinLeft(array('hFar' => 'hund'),
-//		'h.hundFarId = hFar.hundId')
+		->from(array('h' => 'hund'),array('h.*'))
+		->joinLeft(array('hMor' => 'hund'),
+		'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar' => 'hund'),
+		'h.hundFarId = hFar.hundId',array())
 		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
 		
 		return $this->database->fetchAll($select); 
