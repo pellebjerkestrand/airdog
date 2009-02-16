@@ -47,9 +47,18 @@ package no.airdog.controller
 		}
 		
 		private function loggInnResultEvent(bruker:Object):void
-		{
-			if (bruker["brukerRolle"] != "gjest")
+		{			
+			if(bruker)
 			{	
+				if(bruker.toString() == "FAILURE_CREDENTIAL_INVALID")
+				{
+					//Components.instance.session.ristVindu = true;
+					Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
+					vindu.ristVindu();
+					loggUt();
+					return;
+				}	
+				
 				Components.instance.session.bruker.innlogget = true;
 				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["brukerRolle"];
 				
@@ -65,7 +74,6 @@ package no.airdog.controller
 			else
 			{
 				vindu.ristVindu();
-				//Alert.show( "Feil brukernavn og/eller passord", "Innlogging mislyktes", 0);
 				loggUt();
 			}
 		}
