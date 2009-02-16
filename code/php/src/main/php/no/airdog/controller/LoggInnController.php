@@ -25,18 +25,8 @@ class LoggInnController {
 		//FŒr en instanse av Zend_Auth
 		$this->auth = Zend_Auth::getInstance();
 		
-		//Lager database tilkobling
-		try {
-			$tilkobling = new Tilkobling_();
-			$this->database = Zend_Db::factory('Mysqli',array(
-			'host' => $tilkobling->dbServer,
-			'dbname' => $tilkobling->dbNavn,
-			'username' => $tilkobling->dbBrukernavn,
-			'password' => $tilkobling->dbPassord));
-		}
-		catch ( Zend_database_Exception $e){
-			return "Oppkobling feil: " . get_class($e) . "\n Melding: " . $e->getMessage() . "\n";
-		}
+		$tilkobling = new Tilkobling_();
+		$this->database = $tilkobling->getTilkobling();
 	}
 	
 	/**

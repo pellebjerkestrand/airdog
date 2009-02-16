@@ -18,7 +18,6 @@ require_once 'Zend/Amf/Server.php';
 require_once 'controller/HundController.php';
 require_once 'controller/LoggInnController.php';
 
-
 $server = new Zend_Amf_Server();
 $server->setClass("HundController");
 $server->setClass("LoggInnController");

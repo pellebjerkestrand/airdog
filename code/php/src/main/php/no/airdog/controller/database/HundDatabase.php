@@ -10,18 +10,8 @@ class HundDatabase
 	* @return avhengigheter
 	*/
 	public function __construct() {
-		//Lager database tilkobling
-		try {
-			$tilkobling = new Tilkobling_();
-			$this->database = Zend_Db::factory('Mysqli',array(
-			'host' => $tilkobling->dbServer,
-			'dbname' => $tilkobling->dbNavn,
-			'username' => $tilkobling->dbBrukernavn,
-			'password' => $tilkobling->dbPassord));
-		}
-		catch ( Zend_database_Exception $e){
-			return "Oppkobling feil: " . get_class($e) . "\n Melding: " . $e->getMessage() . "\n";
-		}
+		$tilkobling = new Tilkobling_();
+		$this->database = $tilkobling->getTilkobling();
 	}
 	
 	public function settInnHund($hundArray)
