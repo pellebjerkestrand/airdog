@@ -66,7 +66,7 @@ class LoggInnController {
 		
 			case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
 				$brukerRolle = "gjest";
-				return "FAILURE_CREDENTIAL_INVALID";
+				return "FEIL_BRUKERNAVN_PASSORD";
 			break;
 			
 			case Zend_Auth_Result::FAILURE:
