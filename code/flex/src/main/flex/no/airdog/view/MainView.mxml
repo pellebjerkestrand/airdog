@@ -19,7 +19,7 @@
             
             private function showInitialView():void
             {
-            	Components.instance.controller.loggInn("", "");
+            	Components.instance.controller.loggInn("gjest", "gjest");
             }
             
             private function visLastOpp():void
