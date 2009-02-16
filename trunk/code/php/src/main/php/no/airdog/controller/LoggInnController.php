@@ -50,7 +50,7 @@ class LoggInnController {
 		$pass=htmlspecialchars($bruker->passord);
 		
 		if($brk == ""){
-			$autentisering->setIdentity('gjest')->setCredential('gjest');
+			return "FEIL_BRUKERNAVN_PASSORD";
 		}
 		else
 		{
