@@ -65,8 +65,8 @@ class HundDatabase
 //		or die(mysql_error());  
 //
 //		return $resultat;
-		
-		//$select = $this->database->query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE (hund.hundId LIKE '%".$tekst."%' OR hund.navn LIKE '%".$tekst."%')");
+//		
+//		$select = $this->database->query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE (hund.hundId LIKE '%".$tekst."%' OR hund.navn LIKE '%".$tekst."%')");
 		
 		$select = $this->database->select()
 		->from(array('h' => 'hund'))
@@ -88,12 +88,14 @@ class HundDatabase
 	
 	public function hentHund($hundId)
 	{
-		/*$select = $this->database->select()
+		/*
+		$select = $this->database->select()
 		->from('hund')
 		->where('hundId=?',$hundId)
 		->limit(1);
 		
-		return $this->database->fetchRow($select);*/
+		return $this->database->fetchRow($select);
+		*/
 		$resultat = mysql_query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE hund.hundId='".$hundId."' LIMIT 1") 
 		or die(mysql_error());  
 
