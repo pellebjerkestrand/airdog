@@ -37,6 +37,11 @@ package no.airdog.controller
 			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererLiten);
 			Components.instance.session.hundesokListe.rendererHoyde = 20;
 		}
+		
+		public static function visAdminRoller():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 3;
+		}
 
 	}
 }

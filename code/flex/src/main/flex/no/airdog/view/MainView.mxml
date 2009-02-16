@@ -38,6 +38,11 @@
             	Navigasjon.visHundNr(nr);
             }
             
+            public function visAdminRoller():void
+            {
+            	Navigasjon.visAdminRoller();
+            }
+            
             private function innloggingSprettOppVindu():void
             {
             	var vindu:InnloggingVindu = PopUpManager.createPopUp(this, InnloggingVindu, true) as InnloggingVindu;
@@ -59,6 +64,7 @@
 		</mx:HBox>										
 		<mx:TabNavigator width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox label="Admin">
+				<mx:Button label="Roller" click="visAdminRoller()" styleName="UnderMeny"/>
 		 		<mx:Button label="Last opp" click="visLastOpp()" styleName="UnderMeny">
 		 		</mx:Button>
 		 	</mx:HBox>
@@ -78,6 +84,7 @@
 	    <view:DatOpplastning/>
 	    <view:HundeSok/>
 	    <view:HundeProfil/>
+	    <view:Admin_Roller/>
     </mx:ViewStack>
 </mx:VBox>
 	
