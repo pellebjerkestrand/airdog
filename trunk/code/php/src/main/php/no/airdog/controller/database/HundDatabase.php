@@ -71,7 +71,7 @@ class HundDatabase
 		$select = $this->database->select()
 		->from(array('h' => 'hund'))
 		->where('h.navn LIKE "%'.$soketekst.'%"')
-		->LEFT_JOIN(array('hMor' => 'hund'),
+		->joinLeft(array('hMor' => 'hund'),
 		'h.hundMorId = hMor.hundId');
 		
 		return $this->database->fetchAll($select); 
