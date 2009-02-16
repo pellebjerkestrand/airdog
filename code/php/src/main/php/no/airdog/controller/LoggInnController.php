@@ -62,7 +62,7 @@ class LoggInnController {
 		switch ($resultat->getCode()) {
 			case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
 			$brukerRolle = "gjest";
-				return false;
+				return "FEIL_BRUKERNAVN_PASSORD";
 			break;
 		
 			case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
