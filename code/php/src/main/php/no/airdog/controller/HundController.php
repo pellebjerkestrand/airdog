@@ -15,27 +15,26 @@ class HundController
     	$hd = new HundDatabase();
     	$resultat = $hd->sokHund($soketekst);
 
-     
     	$ret = array();
     	
 	   	foreach($resultat as $rad)
 	   	{    	
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
-//			$tmp->tittel = $rad["tittel"];
-//			$tmp->navn = $rad["navn"];
-//			$tmp->bilde = "bilde";
-//			$tmp->morId = $rad["hundMorId"];
+			$tmp->tittel = $rad["tittel"];
+			$tmp->navn = $rad["navn"];
+			$tmp->bilde = "bilde";
+			$tmp->morId = $rad["hundMorId"];
 //			$tmp->morNavn = $rad["hundMorNavn"];
-//			$tmp->farId = $rad["hundFarId"];
+			$tmp->farId = $rad["hundFarId"];
 //			$tmp->farNavn = $rad["hundFarNavn"];
-//			$tmp->oppdretterId = "oppdretterId";
-//			$tmp->oppdretter = "oppdretter";
-//			$tmp->eierId = $rad["eierId"];
-//			$tmp->eier = "eier";
-//			$tmp->kjonn = $rad["kjonn"];
-//			$tmp->rase = $rad["raseId"];
-//			$tmp->kullId = $rad["kullId"];
+			$tmp->oppdretterId = "oppdretterId";
+			$tmp->oppdretter = "oppdretter";
+			$tmp->eierId = $rad["eierId"];
+			$tmp->eier = "eier";
+			$tmp->kjonn = $rad["kjonn"];
+			$tmp->rase = $rad["raseId"];
+			$tmp->kullId = $rad["kullId"];
 			$ret[] = $tmp;
 		}
     	
@@ -53,9 +52,9 @@ class HundController
 		$tmp->navn = $rad["navn"];
 		$tmp->bilde = "bilde";
 		$tmp->morId = $rad["hundMorId"];
-		$tmp->morNavn = $rad["hundMorNavn"];
+//		$tmp->morNavn = $rad["hundMorNavn"];
 		$tmp->farId = $rad["hundFarId"];
-		$tmp->farNavn = $rad["hundFarNavn"];
+//		$tmp->farNavn = $rad["hundFarNavn"];
 		$tmp->oppdretterId = "oppdretterId";
 		$tmp->oppdretter = "oppdretter";
 		$tmp->eierId = $rad["eierId"];
@@ -73,7 +72,6 @@ class HundController
     	$hd = new HundDatabase();
     	$resultat = $hd->sokHund("");
 
-     
     	$ret = array();
     	
 	   	while($rad = mysql_fetch_array($resultat))
@@ -84,9 +82,9 @@ class HundController
 			$tmp->navn = $rad["navn"];
 			$tmp->bilde = "bilde";
 			$tmp->morId = $rad["hundMorId"];
-			$tmp->morNavn = $rad["hundMorNavn"];
+//			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
-			$tmp->farNavn = $rad["hundFarNavn"];
+//			$tmp->farNavn = $rad["hundFarNavn"];
 			$tmp->oppdretterId = "oppdretterId";
 			$tmp->oppdretter = "oppdretter";
 			$tmp->eierId = $rad["eierId"];
@@ -115,7 +113,6 @@ class HundController
     	$hd = new HundDatabase();
     	$resultat = $hd->sokJaktprove($hundId);
 
-     
     	$ret = array();
     	
 	   foreach($resultat as $rad) { 
