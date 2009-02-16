@@ -11,6 +11,12 @@ class BrukerDatabase{
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
+	public function getDb()
+	{
+		return $this-database;
+	}
+	
 	
 }
 ?>
+		
