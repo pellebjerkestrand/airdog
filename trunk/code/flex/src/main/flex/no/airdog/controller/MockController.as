@@ -26,7 +26,7 @@ package no.airdog.controller
         	{
         		vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
         		PopUpManager.centerPopUp(vindu);
-        		vindu.isPopUp = true;
+        		vindu.isPopUp = false;
         	}
         	else
         	{
@@ -36,8 +36,6 @@ package no.airdog.controller
         
         public function skjulLoggInnVindu():void
         {
-        	vindu.brukernavn.text = "";
-        	vindu.passord.text = "";
         	vindu.visible = false;
         }
 		
