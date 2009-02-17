@@ -98,8 +98,10 @@ class HundDatabase
 	
 	public function hentHunder()
 	{
-		return mysql_query("SELECT * FROM hund") 
-		or die(mysql_error());  
+		$select = $this->database->select()
+		->from('hund',array('hund.*'));
+		
+		return $this->database-fetchRow($select);
 	}
 }
 ?>
