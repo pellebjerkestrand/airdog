@@ -47,8 +47,10 @@ class HundDatabase
 	
 	public function slettHund($hundId)
 	{
-		return mysql_query("DELETE FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
-		or die(mysql_error()); 
+		$delete = $this->database->delete('hund','hundId=?',$hundId);
+		
+//		return mysql_query("DELETE FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
+//		or die(mysql_error()); 
 	}
 	
 	public function finnesHund($hundId)
