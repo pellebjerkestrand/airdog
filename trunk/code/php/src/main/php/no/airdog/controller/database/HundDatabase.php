@@ -84,18 +84,16 @@ class HundDatabase
 	
 	public function hentHund($hundId)
 	{
-		/*
 		$select = $this->database->select()
-		->from('hund')
+		->from(array('h' => 'hund'),array('hundMorNavn'=>'hMor.navn','hundFarNavn'=>'hFar.navn','h.*'))
+		->joinLeft(array('hMor' => 'hund'),
+		'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar' => 'hund'),
+		'h.hundFarId = hFar.hundId',array())
 		->where('hundId=?',$hundId)
 		->limit(1);
 		
 		return $this->database->fetchRow($select);
-		*/
-		$resultat = mysql_query("SELECT hund.*, hundMor.navn as hundMorNavn, hundFar.navn as hundFarNavn FROM hund LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId LEFT JOIN hund as hundFar ON hund.hundFarId = hundFar.hundId WHERE hund.hundId='".$hundId."' LIMIT 1") 
-		or die(mysql_error());  
-
-		return mysql_fetch_array( $resultat );
 	}
 	
 	public function hentHunder()
