@@ -1,6 +1,7 @@
 <?php 
 require_once 'Tilkobling.php';
 require_once 'Tilkobling_.php';
+require_once '../../com/Zend/Log.php';
 
 class HundDatabase
 {
@@ -60,21 +61,16 @@ class HundDatabase
 	}
 	
 	public function sokHund($soketekst)
-	{			
-//		SELECT hund.*, hundMor.navn AS hundMorNavn, hundFar.navn AS hundFarNavn FROM hund 
-//		LEFT JOIN hund AS hundMor ON hund.hundMorId = hundMor.hundId 
-//		LEFT JOIN hund AS hundFar ON hund.hundFarId = hundFar.hundId 
-//		WHERE (hund.hundId LIKE '%".$soketekst."%' OR hund.navn LIKE '%".$soketekst."%')
-		
+	{					
 		$select = $this->database->select()
-		->from(array('h' => 'hund'),array('h.*'))
+		->from(array('h' => 'hund'),array('hundMorNavn'=>'hMor.navn','hundFarNavn'=>'hFar.navn','h.*'))
 		->joinLeft(array('hMor' => 'hund'),
 		'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar' => 'hund'),
 		'h.hundFarId = hFar.hundId',array())
 		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
-		
-		return $this->database->fetchAll($select); 
+	
+		return $this->database->fetchAll($select);
 	}
 	
 	public function sokJaktprove($hundId)
