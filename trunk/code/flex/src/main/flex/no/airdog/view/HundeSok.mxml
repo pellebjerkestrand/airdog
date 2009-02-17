@@ -2,7 +2,7 @@
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controller="no.airdog.controller.*" 
-	width="90%" height="100%" minWidth="800" minHeight="500" horizontalAlign="center">
+	width="100%" height="100%">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Hundeliste;
@@ -24,45 +24,27 @@
 			public function visLitenHundeliste():void
 			{
 				Navigasjon.visLitenHundeliste();
-			}
-			
-			public function sok():void
-			{
-				Components.instance.controller.hundesok(sokefelt.text);
-			}
-			            
+			}			            
         ]]>
     </mx:Script>
-	
-	<mx:Panel width="100%" height="100%" 
-		paddingBottom="40" paddingLeft="0" paddingRight="0" paddingTop="0"
-		title="Hundesøk" >
-		<mx:HBox width="100%" paddingLeft="5" paddingTop="5" paddingRight="5">
-			<mx:HBox horizontalAlign="left" width="100%">
-				<mx:TextInput id="sokefelt" width="200" textAlign="left" enter="sok()"/>
-				<mx:Button label="Søk" click="sok()"/>
-			</mx:HBox>
-			<mx:HBox horizontalAlign="right">
-				<mx:Label text="Visning" paddingTop="3"/>
-				<mx:Button label="Stor" click="visStorHundeliste()"/>
-				<mx:Button label="Liten" click="visLitenHundeliste()"/>
-			</mx:HBox>
-		</mx:HBox>
-		<mx:DataGrid id="hundeGrid"			
-			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
-			dataProvider="{Components.instance.session.hundesokListe.provider}" itemClick="visHund(event)" verticalAlign="middle">
-			
-			<mx:columns>
-				<mx:DataGridColumn headerText="Hunder" itemRenderer="{Components.instance.session.hundesokListe.renderer}" dataField="navn"/>
-				<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
-				<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
-				<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
-				<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
-				<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
-				<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
-				<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
-				<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
-			</mx:columns>
-		</mx:DataGrid>
-	</mx:Panel>
+	<mx:HBox>
+			<mx:LinkButton label="Liste med bilde" color="0x3380DD" textDecoration="underline" click="visStorHundeliste()" icon="@Embed(source='assets/key__plus.png')"/>
+			<mx:LinkButton label="Liste uten bilde" color="0x3380DD" textDecoration="underline" click="visLitenHundeliste()" icon="@Embed(source='assets/key__minus.png')"/>
+	</mx:HBox>
+	<mx:DataGrid id="hundeGrid"			
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
+		dataProvider="{Components.instance.session.hundesokListe.provider}" itemClick="visHund(event)" verticalAlign="middle">
+		
+		<mx:columns>
+			<mx:DataGridColumn headerText="Hunder" itemRenderer="{Components.instance.session.hundesokListe.renderer}" dataField="navn"/>
+			<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
+			<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
+			<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
+			<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
+			<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
+			<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
+			<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
+			<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
+		</mx:columns>
+	</mx:DataGrid>
 </mx:VBox>
