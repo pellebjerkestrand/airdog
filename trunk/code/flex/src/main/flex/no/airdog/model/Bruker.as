@@ -2,7 +2,6 @@ package no.airdog.model
 {
 	import mx.collections.ArrayCollection;
 	
-	//[RemoteClass(alias="AmfBruker")]
 	[RemoteClass(alias="AmfBruker")]
 	[Bindable]
 	public class Bruker
