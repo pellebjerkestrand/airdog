@@ -1,7 +1,6 @@
 <?php
 class AmfBruker
 {
-//public $_explicitType = ÔLoginVOÕ;
-public $brukernavn="";
-public $passord="";
+	public $brukernavn="";
+	public $passord="";
 }
