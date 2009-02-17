@@ -1,23 +1,20 @@
 <?php 
 require_once 'Tilkobling.php';
 require_once 'Tilkobling_.php';
-require_once '../../com/Zend/Log.php';
 
 class HundDatabase
 {
 	private $database;
-	
-	/**
-	* @return avhengigheter
-	*/
+
 	public function __construct() {
 		$tilkobling = new Tilkobling_();
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
+//	SQL->ZendDB
 	public function settInnHund($hundArray)
 	{
-		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
+		if (sizeof($hundArray) != 20) { return "Arrayet er av feil stÃ¸rrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
 		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "") { return "hundId-verdien mangler."; }
 		
 		mysql_query("INSERT INTO hund (raseId, kullId, hundId, tittel, navn, hundFarId, hundMorId, idNr, farge, 
@@ -32,10 +29,18 @@ class HundDatabase
 		return true;
 	}
 	
+//	SQL->ZendDB
 	public function oppdaterHund($hundArray, $endretAv)
 	{
-		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
-		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "") { return "hundId-verdien mangler."; }
+		if (sizeof($hundArray) != 20)
+		{ 
+			return "Arrayet er av feil stÃ¸rrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
+		}
+		
+		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
+		{ 
+			return "hundId-verdien mangler."; 
+		}
 		
 		mysql_query("UPDATE hund SET raseId='".$hundArray["raseId"]."', kullId='".$hundArray["kullId"]."', tittel='".$hundArray["tittel"]."', navn='".$hundArray["navn"]."', hundFarId='".$hundArray["hundFarId"]."', hundMorId='".$hundArray["hundMorId"]."', idNr='".$hundArray["idNr"]."', farge='".$hundArray["farge"]."', 
 				fargeVariant='".$hundArray["fargeVariant"]."', oyesykdom='".$hundArray["oyesykdom"]."', hoftesykdom='".$hundArray["hoftesykdom"]."', haarlag='".$hundArray["haarlag"]."', idMerke='".$hundArray["idMerke"]."', kjonn='".$hundArray["kjonn"]."', eierId='".$hundArray["eierId"]."', 
@@ -47,10 +52,15 @@ class HundDatabase
 	
 	public function slettHund($hundId)
 	{
-		$delete = $this->database->delete('hund','hundId=?',$hundId);
-		
 //		return mysql_query("DELETE FROM hund WHERE hundId='".$hundId."' LIMIT 1") 
-//		or die(mysql_error()); 
+//		or die(mysql_error());
+
+//		mÃ¥ testes!		
+		$slett = $this->database->delete()
+		->from('hund')
+		->where('hundId=?',$hundId);
+		
+		return $this->database->delete($slett);
 	}
 	
 	public function finnesHund($hundId)
@@ -65,11 +75,9 @@ class HundDatabase
 	public function sokHund($soketekst)
 	{					
 		$select = $this->database->select()
-		->from(array('h' => 'hund'),array('hundMorNavn'=>'hMor.navn','hundFarNavn'=>'hFar.navn','h.*'))
-		->joinLeft(array('hMor' => 'hund'),
-		'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar' => 'hund'),
-		'h.hundFarId = hFar.hundId',array())
+		->from(array('h'=>'hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->joinLeft(array('hMor'=>'hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'hund'),'h.hundFarId = hFar.hundId', array())
 		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
 	
 		return $this->database->fetchAll($select);
@@ -87,12 +95,10 @@ class HundDatabase
 	public function hentHund($hundId)
 	{
 		$select = $this->database->select()
-		->from(array('h' => 'hund'),array('hundMorNavn'=>'hMor.navn','hundFarNavn'=>'hFar.navn','h.*'))
-		->joinLeft(array('hMor' => 'hund'),
-		'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar' => 'hund'),
-		'h.hundFarId = hFar.hundId',array())
-		->where('hundId=?',$hundId)
+		->from(array('h'=>'hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->joinLeft(array('hMor'=>'hund'), 'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'hund'), 'h.hundFarId = hFar.hundId', array())
+		->where('hundId=?', $hundId)
 		->limit(1);
 		
 		return $this->database->fetchRow($select);
@@ -101,9 +107,9 @@ class HundDatabase
 	public function hentHunder()
 	{
 		$select = $this->database->select()
-		->from('hund',array('hund.*'));
+		->from('hund', array('hund.*'));
 		
-		return $this->database-fetchRow($select);
+		return $this->database->fetchAll($select);
 	}
 }
 ?>
