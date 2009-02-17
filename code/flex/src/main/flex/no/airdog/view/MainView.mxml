@@ -2,7 +2,8 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
-    creationComplete="showInitialView()" styleName="MainView" width="100%" height="100%">
+    creationComplete="showInitialView()" styleName="MainView"
+    width="100%" height="100%" minWidth="800" minHeight="500">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.controller.Navigasjon;
@@ -14,6 +15,7 @@
 
             public function sok():void
 			{
+				visHundeliste();
 				Components.instance.controller.hundesok(sokefelt.text);
 			}
             
@@ -25,11 +27,12 @@
             private function visLastOpp():void
             {
             	Navigasjon.visLastOpp();
-            	Components.instance.controller.loggInn("admin", "admin");
+            	//Components.instance.controller.loggInn("admin", "admin");
             }
             
             public function visHundeliste():void
             {
+            	tabs.selectedChild = hundertab;
             	Navigasjon.visHundeliste();
             }
             
@@ -60,19 +63,23 @@
 			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/key__minus.png')"/>
 			<mx:Text text="Velkommen, {Components.instance.session.bruker.brukernavn}"/>
 		</mx:HBox>										
-		<mx:TabNavigator width="100%" height="80" styleName="tabNavigator">
-			<mx:HBox label="Admin">
+		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
+			<mx:HBox id="admintab" label="Admin">
+				<mx:Button label="Brukere" styleName="UnderMeny"/>
 				<mx:Button label="Roller" click="visAdminRoller()" styleName="UnderMeny"/>
-		 		<mx:Button label="Last opp" click="visLastOpp()" styleName="UnderMeny">
+		 		<mx:Button label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny">
 		 		</mx:Button>
 		 	</mx:HBox>
-	   		<mx:HBox label="Hunder">
+	   		<mx:HBox id="hundertab" label="Hunder">
 	   			<mx:Button label="Hundeliste" click="visHundeliste()" styleName="UnderMeny"/>
 	   			<mx:Button label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny"/>
 	   		</mx:HBox>
-	  		<mx:HBox label="Diverse">
-	  			<mx:Button label="Logg inn" click="innloggingSprettOppVindu()" styleName="UnderMeny"/>
-	  			<mx:Label text="Laster siden..." visible="{Components.instance.session.hovedNavigasjon.laster}" fontWeight="bold"/>
+	  		<mx:HBox id="divtab" label="Diverse">
+	  			<mx:Button label="Div1" icon="@Embed(source='assets/key__minus.png')" styleName="UnderMeny"/>
+	  			<mx:Button label="Div2" styleName="UnderMeny"/>
+	  			<mx:Button label="Div3" styleName="UnderMeny"/>
+	  			<mx:Button label="Div4" styleName="UnderMeny"/>
+	  			<mx:Button label="Div5" styleName="UnderMeny"/>
 	  		</mx:HBox>
 		</mx:TabNavigator>
 			  

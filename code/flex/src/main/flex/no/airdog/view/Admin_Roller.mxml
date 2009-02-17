@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
-	<!--SUPERMOCKUP-->
-	<mx:HBox>
-		<mx:Text text="Super" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:HBox>
-		<mx:Text text="Admin" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:HBox>
-		<mx:Text text="BrukerPluss" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:HBox>
-		<mx:Text text="Bruker" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:HBox>
-		<mx:Text text="Gjest" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:HBox>
-		<mx:Text text="Robot" width="100"/><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox /><mx:CheckBox />
-	</mx:HBox>
-	<mx:Button label="Ny Rolle" />
-	
-</mx:VBox>
+<mx:Grid xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:GridRow>
+		<mx:GridItem></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:Text text="Se" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:Text text="Gjøre" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:Text text="Ting" fontWeight="bold"/></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Text text="Super" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Text text="Admin" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Text text="BrukerPluss" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Text text="Bruker" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Text text="Gjest" fontWeight="bold"/></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+		<mx:GridItem horizontalAlign="center"><mx:CheckBox /></mx:GridItem>
+	</mx:GridRow>
+	<mx:GridRow>
+		<mx:GridItem><mx:Button label="Ny Rolle" /></mx:GridItem>
+	</mx:GridRow>
+</mx:Grid>
