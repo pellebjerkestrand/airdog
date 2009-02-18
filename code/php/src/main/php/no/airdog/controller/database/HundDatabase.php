@@ -96,7 +96,9 @@ class HundDatabase
 		$hundArray["manueltEndretAv"] = $endretAv;
 		$hundArray["manueltEndretDato"] = NOW();
 		
-		$this->database->update('hund', $hundArray, "idNr = ".$hundArray["idNr"]);
+		$hvor = $this->database->quoteInto("idNr = ?", $hundArray["idNr"]);
+		
+		$this->database->update('hund', $hundArray, $hvor);
 		
 		return true;
 	}
@@ -104,7 +106,9 @@ class HundDatabase
 	public function slettHund($hundId)
 	{
 //		må testes!
-		$this->database->delete('hund', 'hundId = '."$hundId");
+		$hvor = $this->database->quoteInto("hundId = ?", $hundId);
+
+		$this->database->delete('hund', $hvor);
 	}
 	
 	public function finnesHund($hundId)
