@@ -96,11 +96,10 @@ class HundDatabase
 	{
 		$select = $this->database->select()
 		->from(array('h'=>'hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-		->joinLeft(array('hMor'=>'hund'), 'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'hund'), 'h.hundFarId = hFar.hundId', array())
-		->where('hundId=?', $hundId)
-		->limit(1);
-		
+		->joinLeft(array('hMor'=>'hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'hund'),'h.hundFarId = hFar.hundId', array())
+		->where('h.hundId=?',$hundId);
+	
 		return $this->database->fetchRow($select);
 	}
 	
