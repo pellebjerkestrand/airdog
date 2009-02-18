@@ -28,7 +28,12 @@
         	rister.stop();
 			rister.duration = 55;
 			rister.play([this]);
-        } 
+        }
+        
+        private function gjest():void
+        {
+        	Components.instance.controller.loggInn("gjest", "gjest");
+        }
 	]]>
 </mx:Script>
 
@@ -62,6 +67,7 @@
 			<mx:FormItem horizontalAlign="right" width="100%">
 				<mx:HBox>
 					<mx:Button id="avbrytKnapp" label="Avbryt" click="avbryt()" icon="@Embed(source='assets/key__minus.png')"/>
+					<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/key__plus.png')"/>
 					<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/key__plus.png')"/>
 				</mx:HBox>
 			</mx:FormItem>

@@ -14,7 +14,7 @@ class HundDatabase
 //	SQL->ZendDB
 	public function settInnHund($hundArray)
 	{
-		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray)." forventet 20."; }
+		if (sizeof($hundArray) != 20) { return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; }
 		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "") { return "hundId-verdien mangler."; }
 		
 		mysql_query("INSERT INTO hund (raseId, kullId, hundId, tittel, navn, hundFarId, hundMorId, idNr, farge, 

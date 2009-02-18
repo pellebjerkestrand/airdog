@@ -21,13 +21,12 @@
             
             private function showInitialView():void
             {
-            	Components.instance.controller.loggInn("gjest", "gjest");
+            	innloggingSprettOppVindu();
             }
             
             private function visLastOpp():void
             {
             	Navigasjon.visLastOpp();
-            	//Components.instance.controller.loggInn("admin", "admin");
             }
             
             public function visHundeliste():void
