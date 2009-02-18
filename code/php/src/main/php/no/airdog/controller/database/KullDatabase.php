@@ -9,7 +9,7 @@ class KullDatabase
 	
 	public function settInnKull($kullArray)
 	{
-		if (sizeof($kullArray) != 7) { return "Arrayet er av feil størrelse. Fikk ".sizeof($kullArray)." forventet 7."; }
+		if (sizeof($kullArray) != 7) { return "Arrayet er av feil stÃ¸rrelse. Fikk ".sizeof($kullArray)." forventet 7."; }
 		if (!isset($kullArray["kullId"]) || $kullArray["kullId"] == "") { return "kullId-verdien mangler."; }
 		
 		mysql_query("INSERT INTO kull (kullId, hundIdFar, hundIdMor, oppdretterId, endretDato, fodt, raseId) 
@@ -22,7 +22,7 @@ class KullDatabase
 	
 	public function oppdaterKull($kullArray, $endretAv)
 	{
-		if (sizeof($kullArray) != 7) { return "Arrayet er av feil størrelse. Fikk ".sizeof($kullArray)." forventet 7."; }
+		if (sizeof($kullArray) != 7) { return "Arrayet er av feil stÃ¸rrelse. Fikk ".sizeof($kullArray)." forventet 7."; }
 		if (!isset($kullArray["kullId"]) || $kullArray["kullId"] == "") { return "kullId-verdien mangler."; }
 		
 		mysql_query("UPDATE kull SET hundIdFar='".$kullArray["hundIdFar"]."', hundIdMor='".$kullArray["hundIdMor"]."', oppdretterId='".$kullArray["oppdretterId"]."', endretDato='".$kullArray["endretDato"]."', 
