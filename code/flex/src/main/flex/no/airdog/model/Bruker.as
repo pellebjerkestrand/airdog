@@ -6,7 +6,7 @@ package no.airdog.model
 	[Bindable]
 	public class Bruker
 	{		
-		public var brukernavn:String;
+		public var epost:String;
 		public var passord:String;
 		public var innlogget:Boolean = false;
 		public var GJELDENDE_BRUKERROLLE:String="";
