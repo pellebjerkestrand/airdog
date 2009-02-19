@@ -7,15 +7,10 @@
 		<![CDATA[
 			import no.airdog.controller.*;
 			import no.airdog.services.Components;
-			
-			public function LTest():void
-			{
-				testlabel.text = "Components.instance.session.bruker.rettigheter: " + Components.instance.session.bruker.rettigheter.length.toString();
-			}
 		]]>
 	</mx:Script>
+	<mx:Label text="Roller"/>
 	<mx:DataGrid dataProvider="{Components.instance.session.bruker.roller}"/>
+	<mx:Label text="Rettigheter"/>
 	<mx:DataGrid dataProvider="{Components.instance.session.bruker.rettigheter}"/>
-	<mx:Button id="lengthtest" label="LengthTest" click="LTest()"/>
-	<mx:Label id="testlabel" text="Components.instance.session.bruker.rettigheter: "/>
 </mx:VBox>
