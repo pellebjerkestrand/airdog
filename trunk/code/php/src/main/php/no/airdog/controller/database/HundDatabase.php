@@ -5,7 +5,7 @@ require_once 'Tilkobling_.php';
 class HundDatabase
 {
 	private $database;
-
+	
 	public function __construct() {
 		$tilkobling = new Tilkobling_();
 		$this->database = $tilkobling->getTilkobling();
