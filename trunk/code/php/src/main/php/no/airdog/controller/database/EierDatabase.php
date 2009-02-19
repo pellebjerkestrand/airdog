@@ -3,6 +3,8 @@ require_once 'Tilkobling.php';
 
 class EierDatabase
 {
+	private $database;
+	
 	public function EierDatabase()
 	{
 	}
@@ -13,10 +15,17 @@ class EierDatabase
 		{
 			return "Arrayet er av feil størrelse.";
 		}
+		if (!isset($eierArray["eier"]) || $eierArray["eier"] == "")
+		{
+			return "eiers id mangler";
+		}
 		
-		mysql_query("INSERT INTO eier (eier, hundId, raseId) ".
-					"VALUES('".$eierArray["eier"]."', '".$eierArray["hundId"]."', '".$eierArray["raseId"]."') ") 
-					or die(mysql_error());  
+		//mysql_query("INSERT INTO eier (eier, hundId, raseId) ".
+		//			"VALUES('".$eierArray["eier"]."', '".$eierArray["hundId"]."', '".$eierArray["raseId"]."') ") 
+		//			or die(mysql_error());
+
+		$this->database->insert('eier', $eierArray);
+		
 		return true;
 	}
 	
@@ -26,8 +35,19 @@ class EierDatabase
 		{
 			return "Arrayet er av feil størrelse.";
 		}
+		if (!isset($eierArray["eier"]) || $eierArray["eier"] == "")
+		{
+			return "eiers id mangler";
+		}
+		if (!isset($endretAv) || $endretAv == "")
+		{
+			return "endret av bruker mangler";
+		}
 		
-		mysql_query("UPDATE eier SET hundId='22' WHERE age='21'") or die(mysql_error()); 
+		//mysql_query("UPDATE eier SET hundId='22' WHERE age='21'") or die(mysql_error());
+
+		$this->database->update('eier', $eierArray);
+		
 		return true;
 	}
 }
