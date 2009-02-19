@@ -45,6 +45,11 @@
             	Navigasjon.visAdminRoller();
             }
             
+            public function visACL():void
+            {
+            	Navigasjon.visACL();
+            }
+            
             private function innloggingSprettOppVindu():void
             {
             	Components.instance.controller.visLoggInnVindu(this);
@@ -84,6 +89,9 @@
 	  			<mx:Button label="Div4" styleName="UnderMeny"/>
 	  			<mx:Button label="Div5" styleName="UnderMeny"/>
 	  		</mx:HBox>
+	  		<mx:HBox id="devtab" label="Development">
+	  			<mx:Button label="ACL" click="visACL()"/>
+	  		</mx:HBox>
 		</mx:TabNavigator>
 			  
 	</mx:VBox>
@@ -93,6 +101,7 @@
 	    <view:HundeSok/>
 	    <view:HundeProfil/>
 	    <view:Admin_Roller/>
+	    <view:Dev_ACL/>
     </mx:ViewStack>
 </mx:VBox>
 	

@@ -42,6 +42,10 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = 3;
 		}
-
+		
+		public static function visACL():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 4;
+		}
 	}
 }

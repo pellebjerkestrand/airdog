@@ -129,5 +129,15 @@ package no.airdog.controller
 			Components.instance.session.hundprofil = event;
 			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
+		
+		public function hentBrukersRettigheter(brukerEpost:String):void
+		{
+			Components.instance.services.airdogService.hentBrukersRettigheter(brukerEpost, hentBrukersRettigheterResultat);
+		}
+		
+		public function hentBrukersRettigheterResultat(event:Object):void
+		{
+			Components.instance.session.rettigheter = new Array(event as Array);
+		}
 	}
 }

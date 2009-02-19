@@ -1,6 +1,5 @@
 package no.airdog.controller
 {
-	import mx.rpc.events.ResultEvent;
 	import flash.display.DisplayObject;
 	
 	public interface IController
@@ -14,5 +13,6 @@ package no.airdog.controller
 		function hentAvkom(hundId:String):void
 		function hentJaktprove(hundId:String):void
 		function visHund(hundId:String):void
+		function hentBrukersRettigheter(brukersEpost:String):void
 	}
 }
