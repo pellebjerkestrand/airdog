@@ -34,8 +34,6 @@ class ACLController extends Zend_Acl
 	}
 }
 
-
-		
 //		//Setter opp en Akksess kontroll liste (acl)
 //		$acl = new Zend_Acl();
 //		
