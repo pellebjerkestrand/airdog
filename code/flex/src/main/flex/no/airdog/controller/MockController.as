@@ -132,7 +132,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRoller(brukerEpost:String):void
 		{
-			Components.instance.services.airdogService.hentBrukersRoller(brukerEpost, hentBrukersRettigheterResultat);
+			Components.instance.services.airdogService.hentBrukersRoller(brukerEpost, hentBrukersRollerResultat);
 		}
 		
 		public function hentBrukersRollerResultat(event:Object):void
