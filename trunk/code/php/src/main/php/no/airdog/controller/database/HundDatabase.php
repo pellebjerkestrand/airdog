@@ -69,6 +69,10 @@ class HundDatabase
 		{ 
 			return "hundId-verdien mangler."; 
 		}
+		if (!isset($endretAv) || $endretAv == "")
+		{
+			return "endret av bruker mangler";
+		}
 		
 //		mysql_query("UPDATE hund " .
 //					"SET raseId='".$hundArray["raseId"]."', " .
