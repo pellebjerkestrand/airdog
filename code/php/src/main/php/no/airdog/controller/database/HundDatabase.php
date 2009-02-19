@@ -169,4 +169,3 @@ class HundDatabase
 		return $this->database->fetchAll($select);
 	}
 }
-?>
