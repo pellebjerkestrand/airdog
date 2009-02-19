@@ -8,20 +8,14 @@
 			import no.airdog.controller.*;
 			import no.airdog.services.Components;
 			
-			public function ACLTest():void
-			{
-				Components.instance.controller.hentBrukersRettigheter("la@la.la");
-			}
-			
 			public function LTest():void
 			{
-				testlabel.text = "Components.instance.session.rettigheter: " + Components.instance.session.rettigheter.length.toString();
+				testlabel.text = "Components.instance.session.bruker.rettigheter: " + Components.instance.session.bruker.rettigheter.length.toString();
 			}
 		]]>
 	</mx:Script>
-	<mx:Button id="acltest" label="ACLTest" click="ACLTest()"/>
-	<mx:DataGrid dataProvider="{Components.instance.session.rettigheter}"/>
+	<mx:DataGrid dataProvider="{Components.instance.session.bruker.rettigheter}"/>
 	
 	<mx:Button id="lengthtest" label="LengthTest" click="LTest()"/>
-	<mx:Label id="testlabel" text="Components.instance.session.rettigheter: "/>
+	<mx:Label id="testlabel" text="Components.instance.session.bruker.rettigheter: "/>
 </mx:VBox>

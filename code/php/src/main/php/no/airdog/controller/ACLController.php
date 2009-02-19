@@ -8,6 +8,14 @@ class ACLController extends Zend_Acl
 		//maek acl lists: do want!
 	}
 	
+	public function hentBrukersRoller($brukerEpost)
+	{
+		$db = new ACLDatabase();
+		
+		return $db->hentRoller($brukerEpost);
+	}
+	
+	
 	//brukers roller + alle roller/rettigheter = brukers rettigheter
 	public function hentBrukersRettigheter($brukerEpost)
 	{
