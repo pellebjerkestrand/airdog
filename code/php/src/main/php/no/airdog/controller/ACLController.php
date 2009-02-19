@@ -1,5 +1,6 @@
 <?php
 require_once "no/airdog/controller/database/ACLDatabase.php";
+require_once 'no/airdog/model/AmfBrukerRettigheter.php';
 
 class ACLController extends Zend_Acl
 {
@@ -20,20 +21,44 @@ class ACLController extends Zend_Acl
 	public function hentBrukersRettigheter($brukerEpost)
 	{
 		$db = new ACLDatabase();
-		
-		$roller = $db->hentRoller($brukerEpost);	//i can has ass.array: AD_bruker_epost AD_rolle_navn
-		$rettigheter = $db->hentRettigheter();		//i can has ass.array: AD_rettighet_navn AD_rolle_navn
-		
-		$brukersRettigheter = array();
-		
-		//populere $brukersRettigheter med AD_rettighet_navn
-		//der $roller.AD_rolle_navn == $rettigheter.AD_rolle_navn
-		//do want!
-		
-		return $brukersRettigheter;
+		//FUNGERER PELLE:)
+		return $db->hentRettigheter($brukerEpost);
 	}
 }
 
+
+//
+//                //Loop roles and put them in an assoc array by ID
+//                $roleArray = array();
+//                foreach($roles as $r)
+//                {
+//                        $role = new Zend_Acl_Role($r['name']);
+//
+//                        //If inherit_name isn't null, have the role
+//                        //inherit from that, otherwise no inheriting
+//                        if($r['inherit_name'] !== null)
+//                                $this->addRole($role,$r['inherit_name']);
+//                        else
+//                                $this->addRole($role);
+//
+//                        $roleArray[$r['id']] = $role;
+//                }
+//
+//                foreach($resources as $r)
+//                {
+//                        $resource = new Zend_Acl_Resource($r['name']);
+//
+//                        $role = $roleArray[$r['role_id']];
+//
+//                        $this->add($resource);
+//                        $this->allow($role,$resource);
+//                }
+
+
+
+
+
+		
 //		//Setter opp en Akksess kontroll liste (acl)
 //		$acl = new Zend_Acl();
 //		

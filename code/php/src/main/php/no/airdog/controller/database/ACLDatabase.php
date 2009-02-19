@@ -26,10 +26,11 @@ class ACLDatabase
 	}
 	
 	//assosiativ array av alle rolle/rettighet-par
-	public function hentRettigheter()
+	public function hentRettigheter($brukerEpost)
 	{
 		$hent = $this->database->select()
-		->from(array('rr'=>'AD_rolle_rettighet_link', array('rr.*')));
+		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'rr.AD_rolle_navn', 'rr.AD_rettighet_navn'))
+		->joinLeft(array('rr'=>'AD_rolle_rettighet_link'),'a.AD_rolle_navn = rr.AD_rolle_navn', array());
 		
 		return $this->database->fetchAll($hent);
 	}

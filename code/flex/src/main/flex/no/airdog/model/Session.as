@@ -26,9 +26,6 @@ package no.airdog.model
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
         [Bindable]
-        public var bruker:Bruker = new Bruker();  
-        
-        [Bindable]
-        public var rettigheter:ArrayCollection = new ArrayCollection();     
+        public var bruker:Bruker = new Bruker();   
 	}
 }
