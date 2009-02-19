@@ -137,7 +137,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRettigheterResultat(event:Object):void
 		{
-			Components.instance.session.rettigheter = new Array(event as Array);
+			Components.instance.session.rettigheter = new ArrayCollection(event as Array);
 		}
 	}
 }

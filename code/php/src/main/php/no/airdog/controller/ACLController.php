@@ -5,27 +5,23 @@ class ACLController extends Zend_Acl
 {
 	public function __construct()
 	{
+		//maek acl lists: do want!
 	}
 	
-	//kombinerer/filtrerer brukers roller og alle roller/rettigheter til en array av brukers rettigheter
+	//brukers roller + alle roller/rettigheter = brukers rettigheter
 	public function hentBrukersRettigheter($brukerEpost)
 	{
 		$db = new ACLDatabase();
 		
-		$roller = $db->hentRoller($brukerEpost);
-		$rettigheter = $db->hentRettigheter();
+		$roller = $db->hentRoller($brukerEpost);	//i can has ass.array: AD_bruker_epost AD_rolle_navn
+		$rettigheter = $db->hentRettigheter();		//i can has ass.array: AD_rettighet_navn AD_rolle_navn
 		
 		$brukersRettigheter = array();
 		
-		foreach($rettigheter as $rettighet)
-		{
-			for($i = 0; sizeof($roller) > $i; $i++)
-			{
-				if($rettighet["AD_rolle_navn"] == $roller[$i])
-				{
-					$brukersRettigheter = $rettighet["AD_rettighet_navn"];
-				}
-			}
-		}
+		//populere $brukersRettigheter med AD_rettighet_navn
+		//der $roller.AD_rolle_navn == $rettigheter.AD_rolle_navn
+		//do want!
+		
+		return $brukersRettigheter;
 	}
 }
