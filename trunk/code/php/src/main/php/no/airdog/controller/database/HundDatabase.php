@@ -1,13 +1,13 @@
 <?php 
 require_once 'Tilkobling.php';
-require_once 'Tilkobling_.php';
 
 class HundDatabase
 {
 	private $database;
 	
-	public function __construct() {
-		$tilkobling = new Tilkobling_();
+	public function __construct()
+	{
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
 	

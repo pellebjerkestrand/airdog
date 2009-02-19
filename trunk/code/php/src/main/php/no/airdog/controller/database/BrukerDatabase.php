@@ -1,5 +1,6 @@
 <?php
-require_once 'Tilkobling_.php';
+require_once 'Tilkobling.php';
+
 class BrukerDatabase{
 	private $database;
 	
@@ -7,16 +8,12 @@ class BrukerDatabase{
 	* @return avhengigheter
 	*/
 	public function __construct() {
-		$tilkobling = new Tilkobling_();
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
 	public function getDb()
 	{
 		return $this-database;
-	}
-	
-	
+	}	
 }
-?>
-		
