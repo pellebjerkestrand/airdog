@@ -24,7 +24,11 @@ class HundDatabase
 			return "hundId-verdien mangler."; 
 		}
 		
-//		mysql_query("INSERT INTO hund (raseId, kullId, hundId, tittel, navn, hundFarId, hundMorId, idNr, farge, fargeVariant, oyesykdom, hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, endretDato, regDato, storrelse) " . 
+//		mysql_query("INSERT INTO hund (
+//raseId, kullId, hundId, tittel, navn, hundFarId, 
+//hundMorId, idNr, farge, fargeVariant, oyesykdom, 
+//hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, 
+//endretDato, regDato, storrelse) " . 
 //					"VALUES('".$hundArray["raseId"]."', " .
 //							"'".$hundArray["kullId"]."', " .
 //							"'".$hundArray["hundId"]."', " .
@@ -48,7 +52,7 @@ class HundDatabase
 //		or die(mysql_error());
 		
 //		må testes!
-		$this->database->insert('hunder', $hundArray);  
+		$this->database->insert('hunder', $hundArray);
 			
 		return true;
 	}
