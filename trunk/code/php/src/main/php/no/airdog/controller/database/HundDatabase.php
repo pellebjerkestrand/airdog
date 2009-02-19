@@ -23,34 +23,34 @@ class HundDatabase
 		{ 
 			return "hundId-verdien mangler."; 
 		}
-		
-//		mysql_query("INSERT INTO hund (
-//raseId, kullId, hundId, tittel, navn, hundFarId, 
-//hundMorId, idNr, farge, fargeVariant, oyesykdom, 
-//hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, 
-//endretDato, regDato, storrelse) " . 
-//					"VALUES('".$hundArray["raseId"]."', " .
-//							"'".$hundArray["kullId"]."', " .
-//							"'".$hundArray["hundId"]."', " .
-//							"'".$hundArray["tittel"]."', " .
-//							"'".$hundArray["navn"]."', " .
-//							"'".$hundArray["hundFarId"]."', " .
-//							"'".$hundArray["hundMorId"]."', " .
-//							"'".$hundArray["idNr"]."', " .
-//							"'".$hundArray["farge"]."', " .
-//							"'".$hundArray["fargeVariant"]."', " .
-//							"'".$hundArray["oyesykdom"]."', " .
-//							"'".$hundArray["hoftesykdom"]."', " . 
-//							"'".$hundArray["haarlag"]."', " .
-//							"'".$hundArray["idMerke"]."', " .
-//							"'".$hundArray["kjonn"]."', " .
-//							"'".$hundArray["eierId"]."', " . 
-//							"'".$hundArray["endretAv"]."', " .
-//							"'".$hundArray["endretDato"]."', " .
-//							"'".$hundArray["regDato"]."', " .
-//							"'".$hundArray["storrelse"]."') ") 
-//		or die(mysql_error());
-		
+/*	
+		mysql_query("INSERT INTO hund (
+					raseId, kullId, hundId, tittel, navn, hundFarId, 
+					hundMorId, idNr, farge, fargeVariant, oyesykdom, 
+					hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, 
+					endretDato, regDato, storrelse) " . 
+					"VALUES('".$hundArray["raseId"]."', " .
+							"'".$hundArray["kullId"]."', " .
+							"'".$hundArray["hundId"]."', " .
+							"'".$hundArray["tittel"]."', " .
+							"'".$hundArray["navn"]."', " .
+							"'".$hundArray["hundFarId"]."', " .
+							"'".$hundArray["hundMorId"]."', " .
+							"'".$hundArray["idNr"]."', " .
+							"'".$hundArray["farge"]."', " .
+							"'".$hundArray["fargeVariant"]."', " .
+							"'".$hundArray["oyesykdom"]."', " .
+							"'".$hundArray["hoftesykdom"]."', " . 
+							"'".$hundArray["haarlag"]."', " .
+							"'".$hundArray["idMerke"]."', " .
+							"'".$hundArray["kjonn"]."', " .
+							"'".$hundArray["eierId"]."', " . 
+							"'".$hundArray["endretAv"]."', " .
+							"'".$hundArray["endretDato"]."', " .
+							"'".$hundArray["regDato"]."', " .
+							"'".$hundArray["storrelse"]."') ") 
+		or die(mysql_error());
+*/	
 //		må testes!
 		$this->database->insert('hunder', $hundArray);
 			
@@ -73,33 +73,34 @@ class HundDatabase
 		{
 			return "endret av bruker mangler";
 		}
-		
-//		mysql_query("UPDATE hund " .
-//					"SET raseId='".$hundArray["raseId"]."', " .
-//						"kullId='".$hundArray["kullId"]."', " .
-//						"tittel='".$hundArray["tittel"]."', " .
-//						"navn='".$hundArray["navn"]."', " .
-//						"hundFarId='".$hundArray["hundFarId"]."', " .
-//						"hundMorId='".$hundArray["hundMorId"]."', " .
-//						"idNr='".$hundArray["idNr"]."', " .
-//						"farge='".$hundArray["farge"]."', " .
-//						"fargeVariant='".$hundArray["fargeVariant"]."', " .
-//						"oyesykdom='".$hundArray["oyesykdom"]."', " .
-//						"hoftesykdom='".$hundArray["hoftesykdom"]."', " .
-//						"haarlag='".$hundArray["haarlag"]."', " .
-//						"idMerke='".$hundArray["idMerke"]."', " .
-//						"kjonn='".$hundArray["kjonn"]."', " .
-//						"eierId='".$hundArray["eierId"]."', " . 
-//						"endretAv='".$hundArray["endretAv"]."', " .
-//						"endretDato='".$hundArray["endretDato"]."', " .
-//						"regDato='".$hundArray["regDato"]."', " .
-//						"storrelse='".$hundArray["storrelse"]."', " .
-//						"manueltEndretAv='".$endretAv."', " .
-//						"manueltEndretDato=NOW()" . 
-//						"WHERE hundId='".$hundArray["hundId"]."' " .
-//						"LIMIT 1") 
-//		or die(mysql_error());
-		
+
+/*		
+		mysql_query("UPDATE hund " .
+					"SET raseId='".$hundArray["raseId"]."', " .
+						"kullId='".$hundArray["kullId"]."', " .
+						"tittel='".$hundArray["tittel"]."', " .
+						"navn='".$hundArray["navn"]."', " .
+						"hundFarId='".$hundArray["hundFarId"]."', " .
+						"hundMorId='".$hundArray["hundMorId"]."', " .
+						"idNr='".$hundArray["idNr"]."', " .
+						"farge='".$hundArray["farge"]."', " .
+						"fargeVariant='".$hundArray["fargeVariant"]."', " .
+						"oyesykdom='".$hundArray["oyesykdom"]."', " .
+						"hoftesykdom='".$hundArray["hoftesykdom"]."', " .
+						"haarlag='".$hundArray["haarlag"]."', " .
+						"idMerke='".$hundArray["idMerke"]."', " .
+						"kjonn='".$hundArray["kjonn"]."', " .
+						"eierId='".$hundArray["eierId"]."', " . 
+						"endretAv='".$hundArray["endretAv"]."', " .
+						"endretDato='".$hundArray["endretDato"]."', " .
+						"regDato='".$hundArray["regDato"]."', " .
+						"storrelse='".$hundArray["storrelse"]."', " .
+						"manueltEndretAv='".$endretAv."', " .
+						"manueltEndretDato=NOW()" . 
+						"WHERE hundId='".$hundArray["hundId"]."' " .
+						"LIMIT 1") 
+		or die(mysql_error());
+*/
 //		må testes!	
 		$hundArray["manueltEndretAv"] = $endretAv;
 		$hundArray["manueltEndretDato"] = NOW();
