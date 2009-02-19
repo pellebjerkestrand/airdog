@@ -11,6 +11,7 @@ class ACLDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
+	//array av alle roller en bruker har
 	public function hentRolleArray($brukerEpost)
 	{	
 		$hent = $this->database->select()
@@ -29,6 +30,7 @@ class ACLDatabase
 		return $rolleArray;
 	}
 	
+	//assosiativ array av alle rolle/rettighet-par
 	public function hentRettighetArray()
 	{
 		$hent = $this->database->select()
@@ -46,6 +48,7 @@ class ACLDatabase
 		return $rettighetArray;
 	}
 	
+	//kombinerer/filtrerer brukers roller og alle roller/rettigheter til en array av brukers rettigheter
 	public function hentBrukersRettighetArray($brukerEpost)
 	{
 		$roller = hentRolleArray($brukerEpost);
