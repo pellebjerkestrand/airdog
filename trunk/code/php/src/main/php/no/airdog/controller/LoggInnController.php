@@ -1,5 +1,5 @@
 <?php
-require_once 'no/airdog/controller/database/Tilkobling_.php';
+require_once 'no/airdog/controller/database/Tilkobling.php';
 require_once 'no/airdog/model/AmfBruker.php';
 require_once 'no/airdog/model/AmfBrukerRettigheter.php';
 require_once '../../com/Zend/Auth.php';
@@ -22,10 +22,10 @@ class LoggInnController {
 	*/
 	public function __construct() {
 		
-		//FŒr en instanse av Zend_Auth
+		//Fï¿½r en instanse av Zend_Auth
 		$this->auth = Zend_Auth::getInstance();
 		
-		$tilkobling = new Tilkobling_();
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 		
 	}
@@ -40,7 +40,7 @@ class LoggInnController {
 	public function loggInn(AmfBruker $bruker) {		
 		$brukerRolle="";
 		
-		// Configure the instance with constructor parametersÉ
+		// Configure the instance with constructor parametersï¿½
 		$autentisering = new Zend_Auth_Adapter_DbTable($this->database);
 		$autentisering->setTableName('bruker')
 			->setIdentityColumn('brukernavn')
@@ -102,7 +102,7 @@ class LoggInnController {
 		
 		//Legger til grupper i rolle registreret ved hjelp av Zend_Acl_Role
 		//Gjest arver ikke kontroll.
-		//Her er det viktig Œ riktig rekkef¿lge, fra den med minst rettigheter til den med mest
+		//Her er det viktig ï¿½ riktig rekkefï¿½lge, fra den med minst rettigheter til den med mest
 		$acl->addRole(new Zend_Acl_Role('gjest'));
 		$acl->addRole(new Zend_Acl_Role('admin'), 'gjest');
 		
@@ -113,10 +113,10 @@ class LoggInnController {
 		$acl->add(new Zend_Acl_Resource('seUI'));
 		$acl->add(new Zend_Acl_Resource('seLogg'));
 		
-		//Gjest har ikke lov til Œ se noenting
+		//Gjest har ikke lov til ï¿½ se noenting
 		$acl->allow('gjest', null, null);
 		
-		// admin arver fra gjest og fŒr disse
+		// admin arver fra gjest og fï¿½r disse
 		$acl->allow('admin', null, array('seUI','seLogg'));
 		
 		// Super arver ingenting, men har lov til alt

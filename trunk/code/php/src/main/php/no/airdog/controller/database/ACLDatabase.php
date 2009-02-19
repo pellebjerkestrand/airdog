@@ -15,7 +15,7 @@ class ACLDatabase
 	public function hentRoller($brukerEpost)
 	{	
 		$hent = $this->database->select()
-		->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn'))
+		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn'))
 		->where('a.AD_bruker_epost = "%'.$brukerEpost.'%"');
 		
 		$resultat = $this->database->fetchAll($hent);

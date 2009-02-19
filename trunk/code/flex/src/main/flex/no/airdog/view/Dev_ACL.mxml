@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:controller="no.airdog.controller.*"
+	width="100%" height="100%">
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.controller.*;
+			import no.airdog.services.Components;
+			
+			public function ACLTest():void
+			{
+				Components.instance.controller.hentBrukersRettigheter("la@la.la");
+			}
+			
+			public function LTest():void
+			{
+				testlabel.text = "Components.instance.session.rettigheter: " + Components.instance.session.rettigheter.length.toString();
+			}
+		]]>
+	</mx:Script>
+	<mx:Button id="acltest" label="ACLTest" click="ACLTest()"/>
+	<mx:DataGrid dataProvider="{Components.instance.session.rettigheter}"/>
+	
+	<mx:Button id="lengthtest" label="LengthTest" click="LTest()"/>
+	<mx:Label id="testlabel" text="Components.instance.session.rettigheter: "/>
+</mx:VBox>

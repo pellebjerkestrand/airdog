@@ -8,7 +8,7 @@ class ACLController extends Zend_Acl
 	}
 	
 	//kombinerer/filtrerer brukers roller og alle roller/rettigheter til en array av brukers rettigheter
-	public function hentBrukersRettighetArray($brukerEpost)
+	public function hentBrukersRettigheter($brukerEpost)
 	{
 		$db = new ACLDatabase();
 		
