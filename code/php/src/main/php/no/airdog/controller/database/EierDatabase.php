@@ -5,6 +5,11 @@ class EierDatabase
 {
 	private $database;
 	
+	public function __construct() {
+		$tilkobling = new Tilkobling_();
+		$this->database = $tilkobling->getTilkobling();
+	}
+	
 	public function EierDatabase()
 	{
 	}
