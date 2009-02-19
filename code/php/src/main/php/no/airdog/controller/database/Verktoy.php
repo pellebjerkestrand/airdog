@@ -36,4 +36,3 @@ class Verktoy
 		return $datoArray[2]."-".$datoArray[1]."-".$datoArray[0];
 	}
 }
-?>

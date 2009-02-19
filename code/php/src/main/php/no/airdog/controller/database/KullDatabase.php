@@ -6,7 +6,7 @@ class KullDatabase
 	private $database;
 	
 	public function __construct() {
-		$tilkobling = new Tilkobling_();
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
 		
@@ -18,7 +18,7 @@ class KullDatabase
 	{
 		if (sizeof($kullArray) != 7) 
 		{ 
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($kullArray)." forventet 7."; 
+			return "Arrayet er av feil stï¿½rrelse. Fikk ".sizeof($kullArray)." forventet 7."; 
 		}
 		if (!isset($kullArray["kullId"]) || $kullArray["kullId"] == "") 
 		{ 
@@ -90,4 +90,3 @@ class KullDatabase
 		or die(mysql_error());  
 	}
 }
-?>

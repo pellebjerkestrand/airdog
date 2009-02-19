@@ -6,7 +6,7 @@ class EierDatabase
 	private $database;
 	
 	public function __construct() {
-		$tilkobling = new Tilkobling_();
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
@@ -56,4 +56,3 @@ class EierDatabase
 		return true;
 	}
 }
-?>
