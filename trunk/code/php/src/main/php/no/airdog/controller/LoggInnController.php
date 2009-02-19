@@ -1,7 +1,6 @@
 <?php
 require_once 'no/airdog/controller/database/Tilkobling.php';
 require_once 'no/airdog/model/AmfBruker.php';
-require_once 'no/airdog/model/AmfBrukerRettigheter.php';
 
 /*
 * LoggInnController
@@ -35,10 +34,13 @@ class LoggInnController {
 	* @return avhengigheter
 	*
 	*/
-	public function loggInn(AmfBruker $bruker) {				
+	public function loggInn(AmfBruker $bruker) {
+	
 		// Configure the instance with constructor parameters�
 		$autentisering = new Zend_Auth_Adapter_DbTable($this->database);
-		$autentisering->setTableName('AD_bruker')
+		
+		$autentisering
+			->setTableName('AD_bruker')
 			->setIdentityColumn('epost')
 			->setCredentialColumn('passord');
 		
@@ -82,7 +84,6 @@ class LoggInnController {
 				$r = $autentisering->getResultRowObject();
 				$bruker->epost = $r->epost;
 				$bruker->passord = $r->passord;
-				
 				return $bruker;
 			break;
 			
@@ -90,5 +91,10 @@ class LoggInnController {
 				return "Noe skjedde feil! Hvis problemet vedvarer ta kontakt";
 			break;
 		}
+	}
+	
+	public function loggUt()
+	{
+		Zend_Auth::getInstance()->clearIdentity();
 	}
 }
