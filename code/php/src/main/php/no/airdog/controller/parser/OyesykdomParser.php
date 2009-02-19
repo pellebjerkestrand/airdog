@@ -75,7 +75,7 @@ class OyesykdomParser
 	
 	public function validerOyesykdomliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "OYID|HUID|VEID|OYEVET|LystDato|IdMerketKode|IdMerket|IdFeil|RAID|SendtEierDato|long_Annet|DiagnoseKode1|DiagnoseGrad1|DiagnoseKode2|DiagnoseGrad2|DiagnoseKode3|DiagnoseGrad3|RegAv|RegDato|EndretAv|EndretAv|PEID|SendtVetDato|SendtKlubbDato|long_Annet1|long_Annet2|Inaktiv")
 		{
 			return true;

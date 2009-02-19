@@ -55,7 +55,7 @@ class KullParser
 	
 	public function validerKullliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "KUID|HUIDFar|HUIDMor|PEIDOppdretter|EndretDato|Foedt|RAID")
 		{
 			return true;

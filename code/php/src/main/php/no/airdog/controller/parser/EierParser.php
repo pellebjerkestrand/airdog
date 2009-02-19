@@ -51,7 +51,7 @@ class EierParser
 	
 	public function validerEierliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "EIER|HUID|RAID")
 		{
 			return true;

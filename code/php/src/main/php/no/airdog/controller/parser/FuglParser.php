@@ -86,7 +86,7 @@ class FuglParser
 	
 	public function validerFuglliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "ProeveNr|ProveDato|PartiNr|Klasse|PEID_Domm1|PEID_Domm2|HUID|SlippTid|EgneStand|EgneStoekk|TomStand|MakkerStand|MakkerStoekk|JaktLyst|Fart|Stil|Selvstendighet|Bredde|Reviering|Samarbeid|Pres_Upresis|Pres_NoeUpresis|Pres_Presis|Reis_Nekter|Reis_Noelende|Reis_Villig|Reis_Djerv|Sek_Stjeler|Sek_Spontan|App_IkkeGodkj|App_Godkj|Rapp_Innkalt|Rapp_Spont|Premiegrad|CERTIFIKAT|RegAv|RegDato|RAID")
 		{
 			return true;

@@ -66,7 +66,7 @@ class UtstillingParser
 	
 	public function validerUtstillingliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato")
 		{
 			return true;
