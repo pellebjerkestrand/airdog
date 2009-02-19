@@ -79,7 +79,7 @@ class AasykdomParser
 	
 	public function validerAasykdomliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "VEID|AAID|DiagnoseKode|IdMerkerKode|LidelseKode|SekHoyreKode|SekVenstreKode|EndretAv|RegAv|AvlestAv|Betaling|Diagnose|HUID|IdFeil|IdMerket|Kode|Lidelse|PEID|Purring|RAID|Retur|SekHoyre|SekVenstre|Sendes|AvlestDato|RontgenDato")
 		{
 			return true;

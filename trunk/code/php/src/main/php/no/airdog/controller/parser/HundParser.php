@@ -43,7 +43,7 @@ class HundParser
 		$hundelisteArray = split("\n", $hundeliste);
 		$ret = array();
 		
-		// Hopper over den første linjen da denne inneholder kun tabellinformasjon.
+		// Hopper over den fÃ¸rste linjen da denne inneholder kun tabellinformasjon.
 		for ($i = 1; $i < sizeof($hundelisteArray); $i++)
     	{
     		$ret[] = $this->getHundArray($hundelisteArray[$i]);
@@ -69,7 +69,7 @@ class HundParser
 	
 	public function validerHundeliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "RAID|KUID|HUID|Tittel|Navn|HUIDFar|HUIDMor|IDNR|FargeBeskrivelse|FargeVariant|AD|HD|Haarlag|IDMerk|Kjoenn|PEID|EndretAv|EndretDato|RegDato|Stoerrelse")
 		{
 			return true;

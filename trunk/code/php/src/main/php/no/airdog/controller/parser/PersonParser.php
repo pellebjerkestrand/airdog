@@ -61,7 +61,7 @@ class PersonParser
 	
 	public function validerPersonliste($innhold)
 	{
-		// Sjekker at første linje inneholder riktig tabellinformasjon
+		// Sjekker at fÃ¸rste linje inneholder riktig tabellinformasjon
 		if (trim($innhold) == "PEID|Navn|Adresse1|Adresse2|Adresse3|Postnr|Landkode|RAID|Status|Telefon1|EndretDato|RegDato|Foedt")
 		{
 			return true;
