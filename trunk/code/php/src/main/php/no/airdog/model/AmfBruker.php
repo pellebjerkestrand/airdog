@@ -1,6 +1,6 @@
 <?php
 class AmfBruker
 {
-	public $brukernavn="";
+	public $epost="";
 	public $passord="";
 }

@@ -34,7 +34,7 @@ package no.airdog.controller
 		
 		public function loggInn(brukernavn:String, passord:String):void
 		{
-			Components.instance.session.bruker.brukernavn = brukernavn;
+			Components.instance.session.bruker.epost = brukernavn;
 			Components.instance.session.bruker.passord = passord;
 			Components.instance.services.airdogService.loggInn(Components.instance.session.bruker, loggInnResultEvent, loggInnFaultEvent);
 		}
@@ -51,10 +51,10 @@ package no.airdog.controller
 				}	
 				
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["brukerRolle"];
+				Components.instance.session.bruker.GJELDENDE_BRUKERROLLE = bruker["epost"];
 				
 				Alert.show( "bruker.toString(): "+bruker+
-							"\nBrukernavn: "+Components.instance.session.bruker.brukernavn+
+							"\nBrukernavn: "+Components.instance.session.bruker.epost+
 							"\nPassord: "+Components.instance.session.bruker.passord+
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget+
 							"\nsession.bruker.rolle: "+Components.instance.session.bruker.GJELDENDE_BRUKERROLLE, 
@@ -78,7 +78,7 @@ package no.airdog.controller
 		
 		public function loggUt():void
 		{
-			Components.instance.session.bruker.brukernavn = "";
+			Components.instance.session.bruker.epost = "";
 			Components.instance.session.bruker.passord = "";
 			Components.instance.session.bruker.innlogget = false;
 		}
