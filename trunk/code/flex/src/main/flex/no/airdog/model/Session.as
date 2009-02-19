@@ -29,6 +29,6 @@ package no.airdog.model
         public var bruker:Bruker = new Bruker();  
         
         [Bindable]
-        public var rettigheter:Array = new Array();     
+        public var rettigheter:ArrayCollection = new ArrayCollection();     
 	}
 }

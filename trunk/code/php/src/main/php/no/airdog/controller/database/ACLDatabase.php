@@ -7,6 +7,7 @@ class ACLDatabase
 	
 	public function __construct()
 	{
+		//i can has dbasecunecshun
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
@@ -14,20 +15,14 @@ class ACLDatabase
 	//array av alle roller en bruker har
 	public function hentRoller($brukerEpost)
 	{	
+		//superviktig med sanitering! tryner hvis ikke:'(
+		$hvor = $this->database->quoteInto('a.AD_bruker_epost = ?', $brukerEpost);
+		
 		$hent = $this->database->select()
-		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn'))
-		->where('a.AD_bruker_epost = "%'.$brukerEpost.'%"');
+		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'a.AD_bruker_epost'))
+		->where($hvor);
 		
-		$resultat = $this->database->fetchAll($hent);
-		
-		$rolleArray = array();
-		
-		foreach($resultat as $r)
-		{
-			$rolleArray[] = $r["AD_rolle_navn"];
-		}
-		
-		return $rolleArray;
+		return $this->database->fetchAll($hent);
 	}
 	
 	//assosiativ array av alle rolle/rettighet-par
@@ -36,15 +31,6 @@ class ACLDatabase
 		$hent = $this->database->select()
 		->from(array('rr'=>'AD_rolle_rettighet_link', array('rr.*')));
 		
-		$resultat = $this->database->fetchAll($hent);
-		
-		$rettighetArray = array();
-		
-		foreach($resultat as $r)
-		{
-			$rettighetArray[$r["AD_rolle_navn"]] = $r["AD_rettighet_navn"];
-		}
-		
-		return $rettighetArray;
+		return $this->database->fetchAll($hent);
 	}
 }
