@@ -7,15 +7,15 @@ class ACLDatabase
 	
 	public function __construct()
 	{
-		$tilkobling = new Tilkobling_();
+		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
 	//array av alle roller en bruker har
-	public function hentRolleArray($brukerEpost)
+	public function hentRoller($brukerEpost)
 	{	
 		$hent = $this->database->select()
-		->from(array('a'=>'AD_bruker_klubb_rolle_link'), 'a.AD_rolle_navn')
+		->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn'))
 		->where('a.AD_bruker_epost = "%'.$brukerEpost.'%"');
 		
 		$resultat = $this->database->fetchAll($hent);
@@ -31,10 +31,10 @@ class ACLDatabase
 	}
 	
 	//assosiativ array av alle rolle/rettighet-par
-	public function hentRettighetArray()
+	public function hentRettigheter()
 	{
 		$hent = $this->database->select()
-		->from(array('rr'=>'AD_rolle_rettighet_link', 'rr.*'));
+		->from(array('rr'=>'AD_rolle_rettighet_link', array('rr.*')));
 		
 		$resultat = $this->database->fetchAll($hent);
 		
@@ -46,25 +46,5 @@ class ACLDatabase
 		}
 		
 		return $rettighetArray;
-	}
-	
-	//kombinerer/filtrerer brukers roller og alle roller/rettigheter til en array av brukers rettigheter
-	public function hentBrukersRettighetArray($brukerEpost)
-	{
-		$roller = hentRolleArray($brukerEpost);
-		$rettigheter = hentRettighetArray();
-		
-		$brukersRettigheter = array();
-		
-		foreach($rettigheter as $rettighet)
-		{
-			for($i = 0; sizeof($roller) > $i; $i++)
-			{
-				if($rettighet["AD_rolle_navn"] == $roller[$i])
-				{
-					$brukersRettigheter = $rettighet["AD_rettighet_navn"];
-				}
-			}
-		}
 	}
 }
