@@ -80,10 +80,9 @@
 	   		<mx:HBox id="hundertab" label="Hunder">
 	   			<mx:Button label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny"/>
 	   			<mx:Button label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny"/>
-	   			<mx:Button label="Placeholder" styleName="UnderMeny"/>
-	   			<mx:Button label="Placeholder" styleName="UnderMeny"/>
-	   			<mx:Button label="Placeholder" styleName="UnderMeny"/>
-	   			<mx:Button label="Placeholder" styleName="UnderMeny"/>
+	   			<mx:Button label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()">
+	   				<mx:icon>@Embed(source='assets/ikoner/folder_horizontal.png')</mx:icon>
+	   			</mx:Button>
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
 	  			<mx:Button label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
