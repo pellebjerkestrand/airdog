@@ -70,9 +70,11 @@
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox id="admintab" label="Admin">
-				<mx:Button label="Brukere" styleName="UnderMeny"/>
-				<mx:Button label="Roller" click="visAdminRoller()" styleName="UnderMeny"/>
-		 		<mx:Button label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny">
+				<mx:Button label="Brukere" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
+				<mx:Button label="Roller" click="visAdminRoller()" styleName="UnderMeny">
+					<mx:icon>@Embed(source='assets/ikoner/users__exclamation.png')</mx:icon>
+				</mx:Button>
+		 		<mx:Button label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')">
 		 		</mx:Button>
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
