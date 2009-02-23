@@ -25,7 +25,7 @@ class ACLDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	//assosiativ array av alle rolle/rettighet-par
+	//array av rettighetene, som er satt til allow/true, til en bruker
 	public function hentRettigheter($brukerEpost)
 	{
 		$hent = $this->database->select()
