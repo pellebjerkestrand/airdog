@@ -12,6 +12,5 @@
 	{
 		function testLastZend()
 		{
-			$this->assertTrue(true);
 		}
 	}
