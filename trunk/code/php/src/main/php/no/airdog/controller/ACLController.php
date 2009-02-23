@@ -20,6 +20,8 @@ class ACLController extends Zend_Acl
 	//brukers roller + alle roller/rettigheter = brukers rettigheter
 	public function hentBrukersRettigheter($brukerEpost)
 	{
+		//SKAL RETURNERER ALLE MEN MED ET FELT ALLOWD ELLER DENINED
+		
 		$db = new ACLDatabase();
 		//FUNGERER PELLE:)
 		return $db->hentRettigheter($brukerEpost);
