@@ -52,6 +52,7 @@
             
             private function innloggingSprettOppVindu():void
             {
+            	Components.instance.controller.loggUt();
             	Components.instance.controller.visLoggInnVindu(this);
             }
         ]]>

@@ -96,5 +96,6 @@ class LoggInnController {
 	public function loggUt()
 	{
 		Zend_Auth::getInstance()->clearIdentity();
+		return true;
 	}
 }
