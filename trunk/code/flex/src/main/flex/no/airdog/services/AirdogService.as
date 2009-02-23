@@ -38,5 +38,10 @@ package no.airdog.services
         {
         	callServiceFunction(service.hentBrukersRettigheter(brukerEpost), resultat, feil);
         }
+        
+        public function loggUt(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.loggUt(), resultat, feil);
+        }
 	}
 }
