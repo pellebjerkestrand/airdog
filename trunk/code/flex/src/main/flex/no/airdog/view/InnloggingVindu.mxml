@@ -66,7 +66,7 @@
 		
 			<mx:FormItem horizontalAlign="right" width="100%">
 				<mx:HBox>
-					<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/ikoner/key__plus.png')"/>
+					<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/ikoner/user_silhouette.png')"/>
 					<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/ikoner/key__plus.png')"/>
 				</mx:HBox>
 			</mx:FormItem>
