@@ -16,7 +16,7 @@ class ACLDatabase
 	public function hentAlleRoller()
 	{
 		$hent = $this->database->select()
-		->from(array('r'=>'AD_rolle'), array('r.navn'));
+		->from(array('r'=>'AD_rolle'), array('r.navn', 'r.beskrivelse'));
 		
 		return $this->database->fetchAll($hent);
 	}
@@ -25,7 +25,7 @@ class ACLDatabase
 	public function hentAlleRettigheter()
 	{
 		$hent = $this->database->select()
-		->from(array('r'=>'AD_rettighet'), array('r.navn'));
+		->from(array('r'=>'AD_rettighet'), array('r.navn', 'r.beskrivelse'));
 		
 		return $this->database->fetchAll($hent);
 	}
