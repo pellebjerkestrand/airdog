@@ -7,3 +7,11 @@
 	
 	require_once 'Zend/Loader.php';
 	Zend_Loader::registerAutoload();
+	
+	class LastZend extends PHPUnit_Framework_TestCase 
+	{
+		function testLastZend()
+		{
+			$this->assertTrue(true);
+		}
+	}
