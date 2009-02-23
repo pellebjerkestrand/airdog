@@ -31,10 +31,13 @@ class ACLDatabase
 	}
 	
 	//rollene sine rettigheter
-	public function hentRollesRettigheter()
+	public function hentRollesRettigheter($rolle)
 	{
+		$hvor = $this->database->quoteInto('r.AD_rolle_navn=?', $rolle);
+		
 		$hent = $this->database->select()
-		->from(array('r'=>'AD_rolle_rettighet_link'), array('r.AD_rolle_navn', 'AD_rettighet_navn'));
+		->from(array('r'=>'AD_rolle_rettighet_link'), array('AD_rettighet_navn'))
+		->where($hvor);
 		
 		return $this->database->fetchAll($hent);
 	}
