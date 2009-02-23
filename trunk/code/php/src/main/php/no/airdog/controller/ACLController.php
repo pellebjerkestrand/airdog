@@ -3,12 +3,10 @@ require_once "no/airdog/controller/database/ACLDatabase.php";
 require_once 'no/airdog/model/AmfBrukerRettigheter.php';
 
 class ACLController extends Zend_Acl
-{
-	var $rolleArray;
-	
+{	
 	public function __construct()
 	{
-		$this->rolleArray = array();
+		
 	}
 	
 	public function lagRoller()
@@ -18,27 +16,38 @@ class ACLController extends Zend_Acl
         
         foreach($roller as $rolle)
         {
-        	$r = new Zend_Acl_Role($rolle['navn']);
-        	$this->addRole($rolle);
-        	
-        	$roleArray[$rolle['navn']] = $r['navn'];
-        }
-		
+        	$this->addRole(new Zend_Acl_Role($rolle['navn']));
+        }	
 	}
 	
 	public function lagRettigheter()
 	{
 		$db = new ACLDatabase();
-		$rettighet = $db->hentAlleRettigheter();
+		$rettigheter = $db->hentAlleRettigheter();
 		
-		foreach ($rettighet as $r){ 
-			$rettig = new Zend_Acl_Resource($r['navn']);
-			$this->add($rettig); 
-            
-            $rolle = $this->rolleArray[$r['navn']];
-            
-            $this->allow($rolle,$rettig); 
+		foreach ($rettigheter as $rettighet)
+		{ 
+			$this->add(new Zend_Acl_Resource($rettighet['navn']));  
         } 
+	}
+	
+	public function lagRollerRettigheter()
+	{
+		$db = new ACLDatabase();
+		$roller = $db->hentAlleRoller();
+		
+		foreach($roller as $rolle)
+		{
+			$rettigheter = $db->hentRollesRettigheter($rolle);
+			
+			if($rettigheter != null)
+			{
+				foreach ($rettigheter as $rettighet)
+				{
+					$this->allow($rolle['navn'], $rettighet['AD_rettighet_navn']);
+				}
+			}
+		}
 	}
 
 	
