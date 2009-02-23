@@ -64,8 +64,8 @@
 		<mx:HBox verticalAlign="middle">
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
 			<mx:TextInput id="sokefelt" enter="sok()"/>
-			<mx:Button label="Søk" icon="@Embed(source='assets/magnifier.png')" click="sok()"/>
-			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/key__minus.png')"/>
+			<mx:Button label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
+			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
 			<mx:Text text="Velkommen, {Components.instance.session.bruker.epost}"/>
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
@@ -84,7 +84,7 @@
 	   			<mx:Button label="Placeholder" styleName="UnderMeny"/>
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
-	  			<mx:Button label="Div1" icon="@Embed(source='assets/key__minus.png')" styleName="UnderMeny"/>
+	  			<mx:Button label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
 	  			<mx:Button label="Div2" styleName="UnderMeny"/>
 	  			<mx:Button label="Div3" styleName="UnderMeny"/>
 	  			<mx:Button label="Div4" styleName="UnderMeny"/>
