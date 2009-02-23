@@ -1,4 +1,5 @@
 <?php
+
 class Tilkobling
 {
 	private $dbServer;
