@@ -16,7 +16,7 @@ class ACLDatabase
 	public function hentRoller($brukerEpost)
 	{	
 		//superviktig med sanitering! tryner hvis ikke:'(
-		$hvor = $this->database->quoteInto('a.AD_bruker_epost = ?', $brukerEpost);
+		$hvor = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 		
 		$hent = $this->database->select()
 		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'a.AD_bruker_epost'))
@@ -28,10 +28,12 @@ class ACLDatabase
 	//array av rettighetene, som er satt til allow/true, til en bruker
 	public function hentRettigheter($brukerEpost)
 	{
+		$hvor = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
+		
 		$hent = $this->database->select()
 		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'rr.AD_rolle_navn', 'rr.AD_rettighet_navn'))
 		->joinLeft(array('rr'=>'AD_rolle_rettighet_link'),'a.AD_rolle_navn = rr.AD_rolle_navn', array())
-		->where('a.AD_bruker_epost=?', $brukerEpost);
+		->where($hvor);
 		
 		return $this->database->fetchAll($hent);
 	}
