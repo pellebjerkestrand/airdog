@@ -8,8 +8,6 @@ package no.airdog.model
 	{
 		public var med:String;
 		public var medId:String;
-		
-		//Brukes ikke!
 		public var liste:ArrayCollection;
 	}
 }
