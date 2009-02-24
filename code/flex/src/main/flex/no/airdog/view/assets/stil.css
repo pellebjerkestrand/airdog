@@ -24,9 +24,9 @@ global
 	color: #000000;
 	themeColor: #edf079;
 	
-	modalTransparencyBlur: 0;
-	modalTransparency: 0.9;
-	modalTransparencyColor: black;
+	modalTransparencyBlur: 4;
+	modalTransparency: 0.4;
+	modalTransparencyColor: #000;
 	modalTransparencyDuration: 50;	
 }
 Application
