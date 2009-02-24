@@ -75,18 +75,27 @@ class KullDatabase
 		return false;
 	}
 	
-	public function hentKull($kullId)
+	public function hentKullAvkom($kullId)
 	{
-		//$resultat = mysql_query("SELECT * FROM kull WHERE kullId='".$kullId."' LIMIT 1") 
-		//or die(mysql_error());  
-
-		
-		return mysql_fetch_array( $resultat );
+		$select = $this->database->select()
+		->from(array('h'=>'hund'), array('h.*'))
+		->where('h.kullId=?', $kullId);
+	
+		return $this->database->fetchAll($select);
 	}
 	
-	public function hentKuller()
+	public function hentAvkom($hundId)
 	{
-		return mysql_query("SELECT * FROM kull") 
-		or die(mysql_error());  
+		$select = $this->database->select()
+		->from(array('h'=>'hund'), array('h.*'))
+		->where('h.hundFarId=?', $hundId)
+		->orWhere('h.hundMorId=?', $hundId);
+	
+		return $this->database->fetchAll($select);
+	}
+	
+	public function hentKull($hundId)
+	{
+		
 	}
 }
