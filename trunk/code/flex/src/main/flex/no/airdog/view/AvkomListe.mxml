@@ -21,13 +21,22 @@
 					//Navigasjon.visHundNr(dg.selectedIndex);
 					Components.instance.controller.visHund(dg.selectedItem.hundId);
 				}
-			}       
+			}     
+			
+			public function visAvkomHund(event:Event, id:String):void
+			{
+				Components.instance.controller.visHund(id);
+			}     
         ]]>
     </mx:Script>
     <mx:Repeater id="avkomRepeater" dataProvider="{Components.instance.session.avkomListe}" >
-	    <mx:Panel width="100%"
-			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
-			title="Avkom med {avkomRepeater.currentItem.med}" >
+    	<mx:VBox width="100%">
+	    	<mx:HBox>
+	    		<mx:Label text="Avkom med"/>
+	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click='visAvkomHund(event, "{avkomRepeater.currentItem.medId}")'/>
+	    		<mx:Label text="Kull: {avkomRepeater.currentItem.kullId}"/>
+	    	</mx:HBox>
+    		
 	    	<mx:DataGrid height="{avkomRepeater.currentItem.liste.length * 30 + 25}"			
 				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
 				dataProvider="{avkomRepeater.currentItem.liste}" itemClick="visHund(event)" verticalAlign="middle">
@@ -45,7 +54,7 @@
 					<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
 				</mx:columns>
 			</mx:DataGrid>
-		</mx:Panel>
+		</mx:VBox>
     </mx:Repeater>
     
 </mx:VBox>
