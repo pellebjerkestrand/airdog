@@ -72,27 +72,15 @@ class KullDatabase
 		return false;
 	}
 	
-	public function hentKullAvkom($kullId)
-	{
-		$select = $this->database->select()
-		->from(array('h'=>'hund'), array('h.*'))
-		->where('h.kullId=?', $kullId);
-	
-		return $this->database->fetchAll($select);
-	}
-	
 	public function hentAvkom($hundId)
 	{
 		$select = $this->database->select()
-		->from(array('h'=>'hund'), array('h.*'))
+		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->joinLeft(array('hMor'=>'NKK_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'NKK_hund'),'h.hundFarId = hFar.hundId', array())
 		->where('h.hundFarId=?', $hundId)
 		->orWhere('h.hundMorId=?', $hundId);
 	
 		return $this->database->fetchAll($select);
-	}
-	
-	public function hentKull($hundId)
-	{
-		
 	}
 }

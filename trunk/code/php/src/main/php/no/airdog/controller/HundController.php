@@ -70,6 +70,7 @@ class HundController
     
     public function hentAvkom($hundId)
     {
+    	$avkomListe = array();
     	$kd = new KullDatabase();
     	
 	    $hundListe = $kd->hentAvkom($hundId);
@@ -82,56 +83,51 @@ class HundController
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
 			$tmp->bilde = "bilde";
-/*			$tmp->morId = $rad["hundMorId"];
+			$tmp->morId = $rad["hundMorId"];
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
 			$tmp->farNavn = $rad["hundFarNavn"];
-			$tmp->oppdretterId = "oppdretterId";
-			$tmp->oppdretter = "oppdretter";*/
 			$tmp->eierId = $rad["eierId"];
 			$tmp->eier = "eier";
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			$avkomHundListe[] = $tmp;
-		}
-    	
-    	$kullListe = $kd->hentKull($hundId);
-    	
-    	foreach($kullListe as $kull)
-    	{
-			$avkom = new AmfAvkom();
-			$avkom->med = "Rocky";
-			$avkom->medId = "xxx";
-			$avkom->kullId = "yyy";
-			$avkom->liste = array();
 			
-			foreach($avkomHundListe as $hund)
+			
+			$avkomFinnes = false;
+			
+			foreach($avkomListe as $avkom)
 			{
-				if ($hund["kullId"] == $avkom->kullId)
+				if ($avkom->kullId == $tmp->kullId && 
+				($avkom->medId == $tmp->morId || $avkom->medId == $tmp->farId))
 				{
-					$avkom->liste[] = $hund;
+					$avkomFinnes = true;
+					$avkom->liste[] = $tmp;
 				}
 			}
 			
-			$avkomListe[] = $avkom;
-    	}
-    	
-    	$avkom = new AmfAvkom();
-		$avkom->med = "";
-		$avkom->medId = "";
-		$avkom->kullId = "Ukjent";
-		$avkom->liste = array();
-		
-		foreach($avkomHundListe as $hund)
-		{
-			if ($hund["kullId"] == "")
+			if (!$avkomFinnes)
 			{
-				$avkom->liste[] = $hund;
+				$avkom = new AmfAvkom();
+				
+				if ($hundId == $tmp->morId)
+				{
+					$avkom->med = $tmp->farNavn;
+					$avkom->medId = $tmp->farId;
+				}
+				else
+				{
+					$avkom->med = $tmp->morNavn;
+					$avkom->medId = $tmp->morId;
+				}
+				$avkom->kullId = $tmp->kullId;
+				$avkom->liste = array();
+				
+				$avkom->liste[] = $tmp;
+				
+				$avkomListe[] = $avkom;
 			}
 		}
-		
-		$avkomListe[] = $avkom;
 
         return $avkomListe;
     }
