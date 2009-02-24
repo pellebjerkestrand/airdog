@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox
-	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:controls="flexunit.flexui.controls.*"
-	width="100%" height="100%">
+	xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.services.Components;
+			import mx.controls.*;
+			
+			private function settBrukersKlubb(event:Event):void
+			{
+				var knapp:Button = event.target as Button;
+				
+				Components.instance.controller.settBrukersKlubb(knapp.data.toString());
+			}
 		]]>
 	</mx:Script>
 
-	<mx:DataGrid dataProvider="{Components.instance.session.bruker.klubber}"/>
+	<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
+		<mx:Button id="knapp" label="{klubbListe.currentItem.AD_klubb_navn}" 
+			data="{klubbListe.currentItem.AD_klubb_navn}" 
+			click="settBrukersKlubb(event)"/>
+	</mx:Repeater>
 </mx:VBox>
