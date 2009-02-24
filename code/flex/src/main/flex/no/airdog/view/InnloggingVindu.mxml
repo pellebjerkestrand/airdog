@@ -50,28 +50,35 @@
 
 <mx:HBox>
 	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
-	<mx:VBox>
-		<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
-		<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
-			<mx:Text text="Skriv inn brukernavn og passord."/>
-			<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+	
+	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
+		<mx:VBox id="loggInnVBox">
+			<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
+			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
+				<mx:Text text="Skriv inn brukernavn og passord."/>
+				<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+				
+				<mx:FormItem label="Brukernavn:">
+					<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+				</mx:FormItem>
+				
+				<mx:FormItem label="Passord:">
+					<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+				</mx:FormItem>
 			
-			<mx:FormItem label="Brukernavn:">
-				<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
-			</mx:FormItem>
-			
-			<mx:FormItem label="Passord:">
-				<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
-			</mx:FormItem>
-		
-			<mx:FormItem horizontalAlign="right" width="100%">
-				<mx:HBox>
-					<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/ikoner/user_silhouette.png')"/>
-					<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/ikoner/key__plus.png')"/>
-				</mx:HBox>
-			</mx:FormItem>
-		</mx:Form>
-	</mx:VBox>
+				<mx:FormItem horizontalAlign="right" width="100%">
+					<mx:HBox>
+						<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/ikoner/user_silhouette.png')"/>
+						<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/ikoner/key__plus.png')"/>
+					</mx:HBox>
+				</mx:FormItem>
+			</mx:Form>
+		</mx:VBox>
+		<mx:VBox id="klubberVBox">
+			<mx:Repeater dataProvider="{Components.instance.session.bruker.klubber}"/>
+			<mx:Button id="avbrytKnapp" label="Lukk" click="avbryt()"/>
+		</mx:VBox>
+	</mx:ViewStack>
 </mx:HBox>
 
 </mx:TitleWindow>

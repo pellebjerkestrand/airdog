@@ -14,6 +14,7 @@ package no.airdog.controller
 	public class MockController implements IController
 	{     
 		private var vindu:InnloggingVindu;
+		private var klubb:KlubbVindu;
 		
         public function MockController()
         {
@@ -24,12 +25,18 @@ package no.airdog.controller
         {
         	vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
 			PopUpManager.centerPopUp(vindu);
+			PopUpManager.bringToFront(vindu);
     		vindu.isPopUp = false;
         }
         
         public function fjernLoggInnVindu():void
         {
         	PopUpManager.removePopUp(vindu);
+        }
+        
+        public function visKlubbVindu():void
+        {
+        	
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -58,7 +65,7 @@ package no.airdog.controller
 							"\nInnlogget: "+Components.instance.session.bruker.innlogget,
 							"Innlogging lyktes", 0);
 							
-				fjernLoggInnVindu();
+				hentBrukersKlubber();
 			}
 			else
 			{
@@ -138,14 +145,14 @@ package no.airdog.controller
 		public function hentBrukersKlubber():void
 		{
 			Components.instance.services.airdogService.hentBrukersKlubber(hentBrukersKlubberResultat);
-			
-			hentBrukersRettigheter();
-			hentBrukersRoller();
 		}
 		
 		public function hentBrukersKlubberResultat(event:Object):void
 		{
-			Components.instance.session.bruker.klubb = new ArrayCollection(event as Array);
+			Components.instance.session.bruker.klubber = new ArrayCollection(event as Array);
+			
+			hentBrukersRettigheter();
+			hentBrukersRoller();
 		}
 		
 		public function hentBrukersRoller():void
