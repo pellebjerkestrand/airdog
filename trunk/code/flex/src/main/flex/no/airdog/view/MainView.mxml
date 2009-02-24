@@ -66,7 +66,7 @@
 			<mx:TextInput id="sokefelt" enter="sok()"/>
 			<mx:Button label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
 			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
-			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost}"/>
+			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i klubb: {Components.instance.session.bruker.sattKlubb}"/>
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox id="admintab" label="Admin">
