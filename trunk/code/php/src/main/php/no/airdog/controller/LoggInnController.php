@@ -1,6 +1,6 @@
 <?php
-require_once 'no/airdog/controller/database/Tilkobling.php';
 require_once 'no/airdog/model/AmfBruker.php';
+require_once 'no/airdog/controller/ACLController.php';
 
 /*
 * LoggInnController
@@ -84,7 +84,12 @@ class LoggInnController {
 				$r = $autentisering->getResultRowObject();
 				$bruker->epost = $r->epost;
 				$bruker->passord = $r->passord;
-				return $bruker;
+				
+				$acl = new ACLController();
+				$acl->hentBrukersRettigheter($bruker->epost);
+				
+				
+				return $bruker; 
 			break;
 			
 			default:
