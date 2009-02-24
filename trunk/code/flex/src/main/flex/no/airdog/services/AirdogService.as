@@ -29,6 +29,15 @@ package no.airdog.services
         	callServiceFunction(service.hentHund(hundId), resultat, feil);
         }
         
+		public function hentBrukersKlubber(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(
+        		service.hentBrukersKlubber(
+        			Components.instance.session.bruker.epost,
+        			Components.instance.session.bruker.passord),
+        		resultat, feil);
+        }
+        
         public function hentBrukersRoller(resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(
