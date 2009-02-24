@@ -2,13 +2,13 @@
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
 	<mx:Script>
 	<![CDATA[
-		private function velg(klubb):void
+		private function velgKlubb(klubb):void
 		{
-			
+			Components.instance.controller.velgKlubb(klubb);
 		}
 	]]>
 </mx:Script>
 
-	<mx:Button label="Norsk Bretonklubb" value="breton" click="alert(this.value)" />
-	<mx:Button label="Norsk Pointer Klub" value="pointer" click="" />
+	<mx:Button id="breton" label="Norsk Bretonklubb" click="velgKlubb(this.id)" />
+	<mx:Button id="pointer" label="Norsk Pointer Klub" click="velgKlubb(this.id)" />
 </mx:HBox>
