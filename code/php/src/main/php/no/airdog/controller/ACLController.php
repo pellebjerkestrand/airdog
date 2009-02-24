@@ -11,7 +11,7 @@ class ACLController
 	public function hentBrukersKlubber($brukerEpost, $passord)
 	{
 		$db = new ACLDatabase();
-		return $db->hentBrukersRettigheter($brukerEpost, $passord);
+		return $db->hentBrukersKlubber($brukerEpost, $passord);
 	}
 	
 	public function hentBrukersRoller($brukerEpost, $passord, $klubb)
