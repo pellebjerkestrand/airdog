@@ -29,7 +29,7 @@
 			public function visAvkomHund(event:Event):void
 			{
 				var lb:LinkButton = event.target as LinkButton;
-				Components.instance.controller.visHund(lb.toolTip);
+				Components.instance.controller.visHund(lb.data.toString());
 			}     
         ]]>
     </mx:Script>
@@ -37,7 +37,7 @@
     	<mx:VBox width="100%" paddingBottom="20">
 	    	<mx:HBox>
 	    		<mx:Label text="Avkom med"/>
-	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click="visAvkomHund(event)" toolTip="{avkomRepeater.currentItem.medId}"/>
+	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click="visAvkomHund(event)" data="{avkomRepeater.currentItem.medId}"/>
 	    		<mx:Label text="Kull: {avkomRepeater.currentItem.kullId}"/>
 	    	</mx:HBox>
     		
