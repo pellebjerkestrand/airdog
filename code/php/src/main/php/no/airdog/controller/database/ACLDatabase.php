@@ -16,7 +16,7 @@ class ACLDatabase
 	public function hentAlleRoller()
 	{
 		$hent = $this->database->select()
-		->from(array('r'=>'AD_rolle'), array('r.navn', 'r.beskrivelse'));
+		->from(array('a'=>'AD_rolle'), array('a.navn'));
 		
 		return $this->database->fetchAll($hent);
 	}
@@ -49,7 +49,7 @@ class ACLDatabase
 		$hvor = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 		
 		$hent = $this->database->select()
-		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'a.AD_bruker_epost'))
+		->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn', 'a.AD_bruker_epost'))
 		->where($hvor);
 		
 		return $this->database->fetchAll($hent);
@@ -61,7 +61,7 @@ class ACLDatabase
 		$hvor = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 		
 		$hent = $this->database->select()
-		->from(array('a'=>'AD_bruker_rolle_link'), array('a.AD_rolle_navn', 'rr.AD_rolle_navn', 'rr.AD_rettighet_navn'))
+		->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn', 'rr.AD_rolle_navn', 'rr.AD_rettighet_navn'))
 		->joinLeft(array('rr'=>'AD_rolle_rettighet_link'),'a.AD_rolle_navn = rr.AD_rolle_navn', array())
 		->where($hvor);
 		
