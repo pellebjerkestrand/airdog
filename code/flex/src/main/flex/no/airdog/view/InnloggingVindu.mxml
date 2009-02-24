@@ -49,7 +49,7 @@
 </mx:Sequence>
 
 <mx:HBox>
-	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo150.png" width="150" height="150"/>
+	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
 	<mx:VBox>
 		<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
 		<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
