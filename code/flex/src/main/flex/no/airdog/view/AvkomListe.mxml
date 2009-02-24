@@ -2,6 +2,9 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
 	<mx:Script>
         <![CDATA[
+        	import mx.controls.LinkButton;
+        	import mx.controls.Label;
+        	import mx.controls.Alert;
         	import no.airdog.model.Hundeliste;
         	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 			import no.airdog.services.Components;      
@@ -23,17 +26,18 @@
 				}
 			}     
 			
-			public function visAvkomHund(event:Event, id:String):void
+			public function visAvkomHund(event:Event):void
 			{
-				Components.instance.controller.visHund(id);
+				var lb:LinkButton = event.target as LinkButton;
+				Components.instance.controller.visHund(lb.toolTip);
 			}     
         ]]>
     </mx:Script>
     <mx:Repeater id="avkomRepeater" dataProvider="{Components.instance.session.avkomListe}" >
-    	<mx:VBox width="100%">
+    	<mx:VBox width="100%" paddingBottom="20">
 	    	<mx:HBox>
 	    		<mx:Label text="Avkom med"/>
-	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click='visAvkomHund(event, "{avkomRepeater.currentItem.medId}")'/>
+	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click="visAvkomHund(event)" toolTip="{avkomRepeater.currentItem.medId}"/>
 	    		<mx:Label text="Kull: {avkomRepeater.currentItem.kullId}"/>
 	    	</mx:HBox>
     		
