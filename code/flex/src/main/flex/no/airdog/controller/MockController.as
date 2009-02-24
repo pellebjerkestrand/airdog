@@ -58,12 +58,6 @@ package no.airdog.controller
 				}	
 				
 				Components.instance.session.bruker.innlogget = true;
-				
-				Alert.show( "bruker.toString(): "+bruker+
-							"\nBrukernavn: "+Components.instance.session.bruker.epost+
-							"\nPassord: "+Components.instance.session.bruker.passord+
-							"\nInnlogget: "+Components.instance.session.bruker.innlogget,
-							"Innlogging lyktes", 0);
 							
 				hentBrukersKlubber();
 			}
