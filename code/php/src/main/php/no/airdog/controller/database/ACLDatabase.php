@@ -39,7 +39,23 @@ class ACLDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function hentRoller($brukerEpost, $passord, $klubb)
+	public function hentBrukersKlubber($brukerEpost, $passord)
+	{	
+		if(ValiderBruker::sjekkbruker($brukerEpost, $passord))
+		{		
+			$bruker = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
+			
+			$hent = $this->database->select()
+			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_klubb_navn'))
+			->where($bruker);
+			
+			return $this->database->fetchAll($hent);
+		}
+		
+		return null;
+	}
+	
+	public function hentBrukersRoller($brukerEpost, $passord, $klubb)
 	{	
 		if(ValiderBruker::sjekkbruker($brukerEpost, $passord))
 		{		
@@ -48,7 +64,8 @@ class ACLDatabase
 			
 			$hent = $this->database->select()
 			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn', 'a.AD_bruker_epost'))
-			->where($bruker);
+			->where($bruker)
+			->where($klubb);
 			
 			return $this->database->fetchAll($hent);
 		}
@@ -56,7 +73,7 @@ class ACLDatabase
 		return null;
 	}
 
-	public function hentRettigheter($brukerEpost, $passord, $klubb)
+	public function hentBrukersRettigheter($brukerEpost, $passord, $klubb)
 	{
 		if(ValiderBruker::sjekkBruker($brukerEpost, $passord))
 		{		
@@ -66,7 +83,8 @@ class ACLDatabase
 			$hent = $this->database->select()
 			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn', 'rr.AD_rolle_navn', 'rr.AD_rettighet_navn'))
 			->joinLeft(array('rr'=>'AD_rolle_rettighet_link'),'a.AD_rolle_navn = rr.AD_rolle_navn', array())
-			->where($bruker);
+			->where($bruker)
+			->where($klubb);
 			
 			return $this->database->fetchAll($hent);
 		}

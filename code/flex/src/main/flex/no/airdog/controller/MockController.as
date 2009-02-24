@@ -51,7 +51,6 @@ package no.airdog.controller
 				}	
 				
 				Components.instance.session.bruker.innlogget = true;
-				Components.instance.session.bruker.sattKlubb = "klubb";
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.epost+
@@ -60,9 +59,6 @@ package no.airdog.controller
 							"Innlogging lyktes", 0);
 							
 				fjernLoggInnVindu();
-				
-				hentBrukersRettigheter();
-				hentBrukersRoller();
 			}
 			else
 			{
@@ -137,6 +133,19 @@ package no.airdog.controller
 		{
 			Components.instance.session.hundprofil = event;
 			Components.instance.session.hovedNavigasjon.nr = 2;
+		}
+		
+		public function hentBrukersKlubber():void
+		{
+			Components.instance.services.airdogService.hentBrukersKlubber(hentBrukersKlubberResultat);
+			
+			hentBrukersRettigheter();
+			hentBrukersRoller();
+		}
+		
+		public function hentBrukersKlubberResultat(event:Object):void
+		{
+			Components.instance.session.bruker.klubb = new ArrayCollection(event as Array);
 		}
 		
 		public function hentBrukersRoller():void
