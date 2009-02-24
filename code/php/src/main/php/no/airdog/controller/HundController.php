@@ -3,6 +3,7 @@ require_once "no/airdog/model/AmfHund.php";
 require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/model/AmfJaktprove.php";
 require_once "no/airdog/controller/database/HundDatabase.php";
+require_once "no/airdog/controller/database/KullDatabase.php";
 
 class HundController
 {
@@ -69,46 +70,73 @@ class HundController
     
     public function hentAvkom($hundId)
     {
-    	$hd = new HundDatabase();
-    	$resultat = $hd->sokHund("");
-
-    	$ret = array();
+    	$kd = new KullDatabase();
     	
-	   	foreach($resultat as $rad)
+	    $hundListe = $kd->hentAvkom($hundId);
+	    $avkomHundListe = array();
+	    
+	    foreach($hundListe as $rad)
 	   	{    	
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
 			$tmp->bilde = "bilde";
-			$tmp->morId = $rad["hundMorId"];
+/*			$tmp->morId = $rad["hundMorId"];
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
 			$tmp->farNavn = $rad["hundFarNavn"];
 			$tmp->oppdretterId = "oppdretterId";
-			$tmp->oppdretter = "oppdretter";
+			$tmp->oppdretter = "oppdretter";*/
 			$tmp->eierId = $rad["eierId"];
 			$tmp->eier = "eier";
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			$ret[] = $tmp;
+			$avkomHundListe[] = $tmp;
 		}
     	
-		$avkomListe = array();
-		$avkom = new AmfAvkom();
-		$avkom->med = "Rocky";
-		$avkom->liste = $ret;
+    	$kullListe = $kd->hentKull($hundId);
+    	
+    	foreach($kullListe as $kull)
+    	{
+			$avkom = new AmfAvkom();
+			$avkom->med = "Rocky";
+			$avkom->medId = "xxx";
+			$avkom->kullId = "yyy";
+			$avkom->liste = array();
+			
+			foreach($avkomHundListe as $hund)
+			{
+				if ($hund["kullId"] == $avkom->kullId)
+				{
+					$avkom->liste[] = $hund;
+				}
+			}
+			
+			$avkomListe[] = $avkom;
+    	}
+    	
+    	$avkom = new AmfAvkom();
+		$avkom->med = "";
+		$avkom->medId = "";
+		$avkom->kullId = "Ukjent";
+		$avkom->liste = array();
+		
+		foreach($avkomHundListe as $hund)
+		{
+			if ($hund["kullId"] == "")
+			{
+				$avkom->liste[] = $hund;
+			}
+		}
 		
 		$avkomListe[] = $avkom;
-		$avkomListe[] = $avkom;
-		$avkomListe[] = $avkom;
-		$avkomListe[] = $avkom;
-		
+
         return $avkomListe;
     }
     
- public function hentJaktprove($hundId)
+ 	public function hentJaktprove($hundId)
     {
     	$hd = new HundDatabase();
     	$resultat = $hd->sokJaktprove($hundId);
