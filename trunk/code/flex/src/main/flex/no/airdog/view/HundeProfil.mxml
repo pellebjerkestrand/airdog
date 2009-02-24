@@ -41,14 +41,15 @@
             <mx:VBox id="v1" label="Jaktprøver">
             	<view:JaktproveListe hundId="{Components.instance.session.hundprofil.hundId}" />            
             </mx:VBox>
-            
             <mx:VBox label="Helse">
 
             </mx:VBox>
 			<mx:VBox label="Ustilling">
 				
 			</mx:VBox>
-
+			<mx:VBox label="Stamtre">
+				<view:Stamtavle/>
+			</mx:VBox>
         </mx:TabNavigator>
 		
 	</mx:VBox>

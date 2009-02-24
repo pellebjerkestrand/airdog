@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+		]]>
+	</mx:Script>
+	
+	<mx:HBox id="besteforeldre" backgroundColor="black" width="100%" horizontalAlign="center">
+		<mx:HBox id="farside">
+			<mx:HBox id="farfar" backgroundColor="blue">
+				<mx:Label text="farfar"/>	
+			</mx:HBox>
+			<mx:HBox id="farmor" backgroundColor="red">
+				<mx:Label text="farmor"/>	
+			</mx:HBox>
+		</mx:HBox>
+		<mx:HBox id="morside">
+			<mx:HBox id="morfar" backgroundColor="blue">
+				<mx:Label text="morfar"/>	
+			</mx:HBox>
+			<mx:HBox id="mormor" backgroundColor="red">
+				<mx:Label text="mormor"/>	
+			</mx:HBox>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox id="foreldre" backgroundColor="gray" width="100%" horizontalAlign="center">
+		<mx:HBox id="far" backgroundColor="blue">
+			<mx:Label text="far"/>
+		</mx:HBox>
+		<mx:HBox id="mor" backgroundColor="red">
+			<mx:Label text="mor"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox id="hund" backgroundColor="white" width="100%" horizontalAlign="center">
+	<mx:HBox backgroundColor="green">
+		<mx:Label text="hund"/>
+	</mx:HBox>
+	</mx:HBox>
+</mx:VBox>
