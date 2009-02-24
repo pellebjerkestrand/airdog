@@ -8,6 +8,7 @@ package no.airdog.model
 	{
 		public var med:String;
 		public var medId:String;
+		public var kullId:String;
 		public var liste:ArrayCollection;
 	}
 }
