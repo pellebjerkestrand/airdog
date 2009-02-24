@@ -9,10 +9,7 @@ class KullDatabase
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
-		
-	public function KullDatabase()
-	{
-	}
+
 	
 	public function settInnKull($kullArray)
 	{
