@@ -5,7 +5,7 @@
 	layout="vertical"
 	title="Innlogging" 
 	width="100%" 
-	height="100%">
+	height="100%" xmlns:view="no.airdog.view.*">
 
 <mx:Script>
 	<![CDATA[
@@ -52,7 +52,7 @@
 	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
 	
 	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
-		<mx:VBox id="loggInnVBox">
+		<mx:VBox>
 			<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
 			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
 				<mx:Text text="Skriv inn brukernavn og passord."/>
@@ -74,10 +74,7 @@
 				</mx:FormItem>
 			</mx:Form>
 		</mx:VBox>
-		<mx:VBox id="klubberVBox">
-			<mx:Repeater dataProvider="{Components.instance.session.bruker.klubber}"/>
-			<mx:Button id="avbrytKnapp" label="Lukk" click="avbryt()"/>
-		</mx:VBox>
+		<view:KlubbVindu/>
 	</mx:ViewStack>
 </mx:HBox>
 
