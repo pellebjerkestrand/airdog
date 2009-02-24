@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TitleWindow
+<mx:VBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	layout="vertical" 
 	width="100%" height="100%">
-	
-<mx:Script>
-	<![CDATA[
-		import no.airdog.services.Components;
-		import mx.events.CloseEvent;
-		
-		private function avbryt():void
-		{
-			//Components.instance.controller.fjernKlubbVindu();
-		}
-	]]>
-</mx:Script>
-	<mx:HBox>
-		<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="500" height="500"/>
-		<mx:Form id="klubbform" defaultButton="{avbrytknapp}" paddingTop="0">
-			<mx:FormItem label="Klubber" width="100%">
-				<mx:HBox>
-					<mx:Button id="avbrytknapp" label="avbryt" click="avbryt()"/>
-				</mx:HBox>
-			</mx:FormItem>
-		</mx:Form>
-	</mx:HBox>	
-</mx:TitleWindow>
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.services.Components;
+		]]>
+	</mx:Script>
+
+	<mx:DataGrid dataProvider="{Components.instance.session.bruker.klubber}"/>
+</mx:VBox>
