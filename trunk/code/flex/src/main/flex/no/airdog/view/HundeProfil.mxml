@@ -14,20 +14,30 @@
 	
 	<mx:VBox width="100%" height="100%">
 		
-		<mx:HBox width="100%">
+		<mx:HBox>
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
-			
-			<mx:VBox width="100%">
+			<mx:VBox>				
 				<mx:Text id="navn" fontSize="30" text="{Components.instance.session.hundprofil.navn}" />
-				<mx:HBox width="100%">
-					<mx:Label text="Tittel:"/>
-					<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" />
-				</mx:HBox>
-				<mx:HBox width="100%">
-					<mx:Label text="Eier:"/>
-					<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}" />
+				<mx:HBox>				
+					<mx:VBox>					
+						<mx:HBox>
+							<mx:Label text="Tittel:"/>
+							<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" />
+						</mx:HBox>
+						<mx:HBox>
+							<mx:Label text="Eier:"/>
+							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}" />
+						</mx:HBox>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:HBox>
+							<mx:Label text="Viltfinnerevne:"/>
+							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.eier}" />
+						</mx:HBox>
+					</mx:VBox>
 				</mx:HBox>
 			</mx:VBox>
+		
 
 		</mx:HBox>
 		
