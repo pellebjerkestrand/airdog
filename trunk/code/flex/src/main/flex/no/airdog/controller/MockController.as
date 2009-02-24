@@ -51,8 +51,7 @@ package no.airdog.controller
 				}	
 				
 				Components.instance.session.bruker.innlogget = true;
-				hentBrukersRettigheter(bruker["epost"]);
-				hentBrukersRoller(bruker["epost"]);
+				Components.instance.session.bruker.sattKlubb = "klubb";
 				
 				Alert.show( "bruker.toString(): "+bruker+
 							"\nBrukernavn: "+Components.instance.session.bruker.epost+
@@ -61,6 +60,9 @@ package no.airdog.controller
 							"Innlogging lyktes", 0);
 							
 				fjernLoggInnVindu();
+				
+				hentBrukersRettigheter();
+				hentBrukersRoller();
 			}
 			else
 			{
@@ -137,9 +139,9 @@ package no.airdog.controller
 			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
 		
-		public function hentBrukersRoller(brukerEpost:String):void
+		public function hentBrukersRoller():void
 		{
-			Components.instance.services.airdogService.hentBrukersRoller(brukerEpost, hentBrukersRollerResultat);
+			Components.instance.services.airdogService.hentBrukersRoller(hentBrukersRollerResultat);
 		}
 		
 		public function hentBrukersRollerResultat(event:Object):void
@@ -147,9 +149,9 @@ package no.airdog.controller
 			Components.instance.session.bruker.roller = new ArrayCollection(event as Array);
 		}
 		
-		public function hentBrukersRettigheter(brukerEpost:String):void
+		public function hentBrukersRettigheter():void
 		{
-			Components.instance.services.airdogService.hentBrukersRettigheter(brukerEpost, hentBrukersRettigheterResultat);
+			Components.instance.services.airdogService.hentBrukersRettigheter(hentBrukersRettigheterResultat);
 		}
 		
 		public function hentBrukersRettigheterResultat(event:Object):void

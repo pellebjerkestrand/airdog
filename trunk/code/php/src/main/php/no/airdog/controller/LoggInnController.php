@@ -85,8 +85,8 @@ class LoggInnController {
 				$bruker->epost = $r->epost;
 				$bruker->passord = $r->passord;
 				
-				$acl = new ACLController();
-				$acl->hentBrukersRettigheter($bruker->epost);
+				//$acl = new ACLController();
+				//$acl->hentBrukersRettigheter($bruker->epost);
 				
 				
 				return $bruker; 
