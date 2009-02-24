@@ -29,14 +29,24 @@ package no.airdog.services
         	callServiceFunction(service.hentHund(hundId), resultat, feil);
         }
         
-        public function hentBrukersRoller(brukerEpost:String, resultat:Function, feil:Function=null):void
+        public function hentBrukersRoller(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentBrukersRoller(brukerEpost), resultat, feil);
+        	callServiceFunction(
+        		service.hentBrukersRoller(
+        			Components.instance.session.bruker.epost,
+        			Components.instance.session.bruker.passord,
+        			Components.instance.session.bruker.sattKlubb),
+        		resultat, feil);
         }
         
-        public function hentBrukersRettigheter(brukerEpost:String, resultat:Function, feil:Function=null):void
+        public function hentBrukersRettigheter(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentBrukersRettigheter(brukerEpost), resultat, feil);
+        	callServiceFunction(
+        		service.hentBrukersRettigheter(
+        			Components.instance.session.bruker.epost,
+        			Components.instance.session.bruker.passord,
+        			Components.instance.session.bruker.sattKlubb),
+        		resultat, feil);
         }
         
         public function loggUt(resultat:Function, feil:Function=null):void

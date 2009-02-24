@@ -8,15 +8,15 @@ class ACLController
 
 	}
 	
-	public function hentBrukersRoller($brukerEpost)
+	public function hentBrukersRoller($brukerEpost, $passord, $klubb)
 	{
 		$db = new ACLDatabase();
-		return $db->hentRoller($brukerEpost);
+		return $db->hentRoller($brukerEpost, $passord, $klubb);
 	}
 
-	public function hentBrukersRettigheter($brukerEpost)
+	public function hentBrukersRettigheter($brukerEpost, $passord, $klubb)
 	{	
 		$db = new ACLDatabase();
-		return $db->hentRettigheter($brukerEpost);
+		return $db->hentRettigheter($brukerEpost, $passord, $klubb);
 	}
 }

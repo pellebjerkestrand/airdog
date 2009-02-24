@@ -13,7 +13,7 @@ package no.airdog.controller
 		function hentAvkom(hundId:String):void
 		function hentJaktprove(hundId:String):void
 		function visHund(hundId:String):void
-		function hentBrukersRettigheter(brukersEpost:String):void
-		function hentBrukersRoller(brukersEpost:String):void
+		function hentBrukersRettigheter():void
+		function hentBrukersRoller():void
 	}
 }
