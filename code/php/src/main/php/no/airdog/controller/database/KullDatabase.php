@@ -75,9 +75,12 @@ class KullDatabase
 	public function hentAvkom($hundId)
 	{
 		$select = $this->database->select()
-		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-		->joinLeft(array('hMor'=>'NKK_hund'),'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'NKK_hund'),'h.hundFarId = hFar.hundId', array())
+		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
+		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
+		->group('h.hundId')
 		->where('h.hundFarId=?', $hundId)
 		->orWhere('h.hundMorId=?', $hundId);
 	
