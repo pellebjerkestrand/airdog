@@ -19,5 +19,6 @@ package no.airdog.model
 		public var kjonn : String;
 		public var rase : String;
 		public var kullId : String
+		public var viltfinner : String;
 	}
 }

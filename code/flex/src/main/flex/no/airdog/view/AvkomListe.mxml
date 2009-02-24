@@ -50,6 +50,7 @@
 					<mx:DataGridColumn headerText="Navn" dataField="navn"/>
 					<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
 					<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="VF" dataField="viltfinner" />
 					<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
 					<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
 					<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
