@@ -3,7 +3,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
 	layout="vertical"
-	title="Innlogging" 
+	title="Innlogging"
 	width="100%" 
 	height="100%" xmlns:view="no.airdog.view.*">
 
@@ -48,10 +48,10 @@
 	<mx:Move xBy="5"/>
 </mx:Sequence>
 
-<mx:HBox>
+<mx:HBox width="100%">
 	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
 	
-	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
+	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}" width="350" height="100%">
 		<mx:VBox>
 			<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
 			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">

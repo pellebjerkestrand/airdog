@@ -6,7 +6,7 @@ package no.airdog.controller
 	{
 		function visLoggInnVindu(parent:DisplayObject):void
 		function fjernLoggInnVindu():void
-		function visKlubbVindu():void;
+		function settBrukersKlubb(klubb:String):void;
 		function loggInn(brukernavn:String, passord:String):void
 		function loggUt():void
 		function lastOppDatFil():void

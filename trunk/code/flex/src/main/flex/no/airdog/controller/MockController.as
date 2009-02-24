@@ -34,9 +34,13 @@ package no.airdog.controller
         	PopUpManager.removePopUp(vindu);
         }
         
-        public function visKlubbVindu():void
+        public function settBrukersKlubb(klubb:String):void
         {
+        	Components.instance.session.bruker.sattKlubb = klubb;
+        	fjernLoggInnVindu();
         	
+        	hentBrukersRettigheter();
+			hentBrukersRoller();
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -87,6 +91,8 @@ package no.airdog.controller
 			Components.instance.session.bruker.innlogget = false;
 			Components.instance.session.bruker.rettigheter = null;
 			Components.instance.session.bruker.roller = null;
+			Components.instance.session.bruker.klubber = null;
+			Components.instance.session.bruker.sattKlubb = "";
 		}
 		
 		public function lastOppDatFil():void
@@ -144,9 +150,6 @@ package no.airdog.controller
 		public function hentBrukersKlubberResultat(event:Object):void
 		{
 			Components.instance.session.bruker.klubber = new ArrayCollection(event as Array);
-			
-			hentBrukersRettigheter();
-			hentBrukersRoller();
 		}
 		
 		public function hentBrukersRoller():void
