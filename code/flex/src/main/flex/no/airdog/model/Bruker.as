@@ -9,6 +9,7 @@ package no.airdog.model
 		public var epost:String;
 		public var passord:String;
 		public var innlogget:Boolean = false;
+		public var klubb:String;
 		public var roller:ArrayCollection;
 		public var rettigheter:ArrayCollection;
 	}
