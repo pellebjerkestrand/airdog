@@ -24,12 +24,8 @@ class EierDatabase
 		{
 			return "eiers id mangler";
 		}
-		
-		//mysql_query("INSERT INTO eier (eier, hundId, raseId) ".
-		//			"VALUES('".$eierArray["eier"]."', '".$eierArray["hundId"]."', '".$eierArray["raseId"]."') ") 
-		//			or die(mysql_error());
 
-		$this->database->insert('eier', $eierArray);
+		$this->database->insert('NKK_eier', $eierArray);
 		
 		return true;
 	}
@@ -48,10 +44,8 @@ class EierDatabase
 		{
 			return "endret av bruker mangler";
 		}
-		
-		//mysql_query("UPDATE eier SET hundId='22' WHERE age='21'") or die(mysql_error());
 
-		$this->database->update('eier', $eierArray);
+		$this->database->update('NKK_eier', $eierArray);
 		
 		return true;
 	}

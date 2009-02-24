@@ -7,17 +7,18 @@ class Tilkobling
 	private $dbBrukernavn;
 	private $dbPassord;
 	
-   public function __construct() 
-   {
-       $this->dbServer='localhost';
-       $this->dbNavn='airdog';
-       $this->dbBrukernavn ='root';
-       $this->dbPassord = '';
-   }
-   
-   public function getTilkobling(){
-   		//Lager database tilkobling
-		try {
+	public function __construct() 
+	{
+		$this->dbServer='localhost';
+		$this->dbNavn='airdog';
+		$this->dbBrukernavn ='root';
+		$this->dbPassord = '';
+	}
+
+	public function getTilkobling()
+	{
+		try 
+		{
 			$database = Zend_Db::factory('Mysqli',array(
 			'host' => $this->dbServer,
 			'dbname' => $this->dbNavn,
@@ -26,9 +27,9 @@ class Tilkobling
 			
 			return $database;
 		}
-		catch ( Zend_database_Exception $e){
-			return "Oppkobling feil: " . get_class($e) . "\n Melding: " . $e->getMessage() . "\n";
+		catch ( Zend_database_Exception $e)
+		{
+			return "Feil med tilkobling: " . get_class($e) . "\nMelding: " . $e->getMessage();
 		}
-   	
-   }
+	}
 }

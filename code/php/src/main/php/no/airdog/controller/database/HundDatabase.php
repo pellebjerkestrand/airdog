@@ -10,8 +10,8 @@ class HundDatabase
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
-	
-//	SQL->ZendDB
+
+	//må testes
 	public function settInnHund($hundArray)
 	{
 		if (sizeof($hundArray) != 20)
@@ -23,41 +23,13 @@ class HundDatabase
 		{ 
 			return "hundId-verdien mangler."; 
 		}
-/*	
-		mysql_query("INSERT INTO hund (
-					raseId, kullId, hundId, tittel, navn, hundFarId, 
-					hundMorId, idNr, farge, fargeVariant, oyesykdom, 
-					hoftesykdom, haarlag, idMerke, kjonn, eierId, endretAv, 
-					endretDato, regDato, storrelse) " . 
-					"VALUES('".$hundArray["raseId"]."', " .
-							"'".$hundArray["kullId"]."', " .
-							"'".$hundArray["hundId"]."', " .
-							"'".$hundArray["tittel"]."', " .
-							"'".$hundArray["navn"]."', " .
-							"'".$hundArray["hundFarId"]."', " .
-							"'".$hundArray["hundMorId"]."', " .
-							"'".$hundArray["idNr"]."', " .
-							"'".$hundArray["farge"]."', " .
-							"'".$hundArray["fargeVariant"]."', " .
-							"'".$hundArray["oyesykdom"]."', " .
-							"'".$hundArray["hoftesykdom"]."', " . 
-							"'".$hundArray["haarlag"]."', " .
-							"'".$hundArray["idMerke"]."', " .
-							"'".$hundArray["kjonn"]."', " .
-							"'".$hundArray["eierId"]."', " . 
-							"'".$hundArray["endretAv"]."', " .
-							"'".$hundArray["endretDato"]."', " .
-							"'".$hundArray["regDato"]."', " .
-							"'".$hundArray["storrelse"]."') ") 
-		or die(mysql_error());
-*/	
-//		må testes!
-		$this->database->insert('hunder', $hundArray);
+	
+		$this->database->insert('NKK_hund', $hundArray);
 			
 		return true;
 	}
-	
-//	SQL->ZendDB
+
+	//må testes
 	public function oppdaterHund($hundArray, $endretAv)
 	{
 		if (sizeof($hundArray) != 20)
@@ -74,50 +46,22 @@ class HundDatabase
 			return "endret av bruker mangler";
 		}
 
-/*		
-		mysql_query("UPDATE hund " .
-					"SET raseId='".$hundArray["raseId"]."', " .
-						"kullId='".$hundArray["kullId"]."', " .
-						"tittel='".$hundArray["tittel"]."', " .
-						"navn='".$hundArray["navn"]."', " .
-						"hundFarId='".$hundArray["hundFarId"]."', " .
-						"hundMorId='".$hundArray["hundMorId"]."', " .
-						"idNr='".$hundArray["idNr"]."', " .
-						"farge='".$hundArray["farge"]."', " .
-						"fargeVariant='".$hundArray["fargeVariant"]."', " .
-						"oyesykdom='".$hundArray["oyesykdom"]."', " .
-						"hoftesykdom='".$hundArray["hoftesykdom"]."', " .
-						"haarlag='".$hundArray["haarlag"]."', " .
-						"idMerke='".$hundArray["idMerke"]."', " .
-						"kjonn='".$hundArray["kjonn"]."', " .
-						"eierId='".$hundArray["eierId"]."', " . 
-						"endretAv='".$hundArray["endretAv"]."', " .
-						"endretDato='".$hundArray["endretDato"]."', " .
-						"regDato='".$hundArray["regDato"]."', " .
-						"storrelse='".$hundArray["storrelse"]."', " .
-						"manueltEndretAv='".$endretAv."', " .
-						"manueltEndretDato=NOW()" . 
-						"WHERE hundId='".$hundArray["hundId"]."' " .
-						"LIMIT 1") 
-		or die(mysql_error());
-*/
-//		må testes!	
 		$hundArray["manueltEndretAv"] = $endretAv;
 		$hundArray["manueltEndretDato"] = NOW();
 		
-		$hvor = $this->database->quoteInto("idNr = ?", $hundArray["idNr"]);
+		$hvor = $this->database->quoteInto('idNr = ?', $hundArray["idNr"]);
 		
-		$this->database->update('hund', $hundArray, $hvor);
+		$this->database->update('NKK_hund', $hundArray, $hvor);
 		
 		return true;
 	}
 	
+	//må testes
 	public function slettHund($hundId)
 	{
-//		må testes!
-		$hvor = $this->database->quoteInto("hundId = ?", $hundId);
+		$hvor = $this->database->quoteInto('hundId = ?', $hundId);
 
-		$this->database->delete('hund', $hvor);
+		$this->database->delete('NKK_hund', $hvor);
 	}
 	
 	public function finnesHund($hundId)
@@ -132,7 +76,7 @@ class HundDatabase
 	public function sokHund($soketekst)
 	{					
 		$select = $this->database->select()
-		->from(array('h'=>'hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
 		->joinLeft(array('hMor'=>'hund'),'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar'=>'hund'),'h.hundFarId = hFar.hundId', array())
 		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
@@ -143,7 +87,7 @@ class HundDatabase
 	public function sokJaktprove($hundId)
 	{
 		$select = $this->database->select()
-		->from('fugl') 
+		->from('NKK_fugl') 
 		->where('hundId=?',$hundId); 
 
 		return $this->database->fetchAll($select); 
@@ -152,7 +96,7 @@ class HundDatabase
 	public function hentHund($hundId)
 	{
 		$select = $this->database->select()
-		->from(array('h'=>'hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
 		->joinLeft(array('hMor'=>'hund'), 'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar'=>'hund'), 'h.hundFarId = hFar.hundId', array())
 		->where('h.hundId=?', $hundId)
@@ -164,7 +108,7 @@ class HundDatabase
 	public function hentHunder()
 	{
 		$select = $this->database->select()
-		->from('hund', array('hund.*'));
+		->from('NKK_hund', array('NKK_hund.*'));
 		
 		return $this->database->fetchAll($select);
 	}
