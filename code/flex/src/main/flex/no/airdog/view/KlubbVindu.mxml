@@ -12,7 +12,7 @@
 		
 		private function avbryt():void
 		{
-			Components.instance.controller.fjernKlubbVindu();
+			//Components.instance.controller.fjernKlubbVindu();
 		}
 	]]>
 </mx:Script>
