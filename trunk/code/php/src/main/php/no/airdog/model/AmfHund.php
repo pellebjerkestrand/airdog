@@ -16,4 +16,5 @@ class AmfHund
      public $kjonn;
      public $rase;
      public $kullId;
+     public $viltfinner;
 }

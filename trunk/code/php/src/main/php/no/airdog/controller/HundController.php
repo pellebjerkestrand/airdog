@@ -36,6 +36,7 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
+			$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
 			$ret[] = $tmp;
 		}
     	
@@ -63,6 +64,7 @@ class HundController
 		$tmp->kjonn = $rad["kjonn"];
 		$tmp->rase = $rad["raseId"];
 		$tmp->kullId = $rad["kullId"];
+		$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
 		$ret[] = $tmp;
 			
         return $tmp;
@@ -92,7 +94,7 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			
+			$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
 			
 			$avkomFinnes = false;
 			
