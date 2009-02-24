@@ -77,8 +77,8 @@ class HundDatabase
 	{					
 		$select = $this->database->select()
 		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-		->joinLeft(array('hMor'=>'hund'),'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hMor'=>'NKK_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'NKK_hund'),'h.hundFarId = hFar.hundId', array())
 		->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
 	
 		return $this->database->fetchAll($select);
@@ -97,8 +97,8 @@ class HundDatabase
 	{
 		$select = $this->database->select()
 		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-		->joinLeft(array('hMor'=>'hund'), 'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'hund'), 'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hMor'=>'NKK_hund'), 'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'NKK_hund'), 'h.hundFarId = hFar.hundId', array())
 		->where('h.hundId=?', $hundId)
 		->limit(1);
 		
