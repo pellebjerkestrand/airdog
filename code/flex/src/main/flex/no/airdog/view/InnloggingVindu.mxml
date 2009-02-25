@@ -57,7 +57,6 @@
 			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
 				<mx:Text text="Skriv inn brukernavn og passord."/>
 				<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
-				
 				<mx:FormItem label="Brukernavn:">
 					<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
 				</mx:FormItem>

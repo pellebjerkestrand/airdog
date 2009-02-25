@@ -41,7 +41,7 @@ class ACLDatabase
 	
 	public function hentBrukersKlubber($brukerEpost, $passord)
 	{	
-		if(ValiderBruker::sjekkbruker($brukerEpost, $passord))
+		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $passord))
 		{		
 			$bruker = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 			
@@ -57,7 +57,7 @@ class ACLDatabase
 	
 	public function hentBrukersRoller($brukerEpost, $passord, $klubb)
 	{	
-		if(ValiderBruker::sjekkbruker($brukerEpost, $passord))
+		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $passord))
 		{		
 			$bruker = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 			$klubb = $this->database->quoteInto('a.AD_klubb_navn=?', $klubb);
@@ -75,7 +75,7 @@ class ACLDatabase
 
 	public function hentBrukersRettigheter($brukerEpost, $passord, $klubb)
 	{
-		if(ValiderBruker::sjekkBruker($brukerEpost, $passord))
+		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $passord))
 		{		
 			$bruker = $this->database->quoteInto('a.AD_bruker_epost=?', $brukerEpost);
 			$klubb = $this->database->quoteInto('a.AD_klubb_navn=?', $klubb);
