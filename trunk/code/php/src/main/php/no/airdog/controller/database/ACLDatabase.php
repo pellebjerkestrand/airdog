@@ -19,8 +19,8 @@ class ACLDatabase
 			$bruker = $this->database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
 			
 			$hent = $this->database->select()
-			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('a.ad_klubb_id', 'b.navn', 'b.raseId'))
-			->join(array('b'=>'ad_klubb'),'a.ad_klubb_id = b.raseId', array())
+			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('b.navn', 'b.raseId'))
+			->join(array('b'=>'ad_klubb'),'a.ad_klubb_raseid = b.raseId', array())
 			->where($bruker);
 			
 			return $this->database->fetchAll($hent);
@@ -34,7 +34,7 @@ class ACLDatabase
 		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $brukerPassord))
 		{		
 			$bruker = $this->database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
-			$klubb = $this->database->quoteInto('a.ad_klubb_id=?', $klubbId);
+			$klubb = $this->database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
 			
 			$hent = $this->database->select()
 			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn'))
@@ -52,7 +52,7 @@ class ACLDatabase
 		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $passord))
 		{		
 			$bruker = $this->database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
-			$klubb = $this->database->quoteInto('a.ad_klubb_id=?', $klubbId);
+			$klubb = $this->database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
 			
 			$hent = $this->database->select()
 			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('a.ad_rolle_navn', 'rr.ad_rolle_navn', 'rr.ad_rettighet_navn'))
