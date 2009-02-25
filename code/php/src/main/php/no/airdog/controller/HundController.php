@@ -7,8 +7,11 @@ require_once "no/airdog/controller/database/KullDatabase.php";
 
 class HundController
 {
+	private $stamtre;
+	
 	public function __construct()
 	{
+		$this->stamtre = array();
 	}
 
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
@@ -72,20 +75,45 @@ class HundController
     
     public function hentStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
+    	lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId);
+    	
+    	return $this->stamtre;
+    }
+    
+    public function lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    {
 		$hd = new HundDatabase();	
 		$utgangspunkt = $hd->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
 		
-		if($utgangspunkt != null)
-		{
-			$tre = array();
-				
-			//gjør ting for å populere arrayen med hunder utgangspunktet stammer fra,
-			//slik at de kan hentes ut og vises som stamtre i frontend
+		if($utgangspunkt)
+		{	
+			$far = $hd->hentHund($utgangspunkt['hundFarId'], $brukerEpost, $brukerPassord, $klubbId);
+			$mor = $hd->hentHund($utgangspunkt['hundMorId'], $brukerEpost, $brukerPassord, $klubbId);
 			
-			return $tre;
+			if($far)
+			{
+				$this->stamtre[] = $far;
+				lagStamtre($utgangspunkt['hundFarId'], $brukerEpost, $brukerPassord, $klubbId);
+			}
+			else
+			{
+				$this->stamtre[] = null;
+			}
+
+			if($mor)
+			{
+				$this->stamtre[] = $mor;
+				lagStamtre($utgangspunkt['hundMorId'], $brukerEpost, $brukerPassord, $klubbId);
+			}
+			else
+			{
+				$this->stamtre[] = null;
+			}
+			
+			return;
 		}
 		
-		return null;
+		return;
     }
     
     public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)
