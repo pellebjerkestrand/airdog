@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 12. Feb, 2009 14:38 PM
+-- Generert den: 25. Feb, 2009 09:55 AM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -16,10 +16,164 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `aasykdom`
+-- Tabellstruktur for tabell `ad_bruker`
 --
 
-CREATE TABLE IF NOT EXISTS `aasykdom` (
+CREATE TABLE IF NOT EXISTS `ad_bruker` (
+  `epost` varchar(50) NOT NULL,
+  `fornavn` varchar(30) NOT NULL,
+  `etternavn` varchar(30) NOT NULL,
+  `passord` varchar(50) NOT NULL,
+  PRIMARY KEY (`epost`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_bruker`
+--
+
+INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`) VALUES
+('test', 'test', 'test', 'test'),
+('gjest', 'gjest', 'gjest', 'gjest'),
+('frank', 'frank', 'frank', 'frank');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_bruker_klubb_rolle_link`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
+  `AD_rolle_navn` varchar(50) NOT NULL,
+  `AD_bruker_epost` varchar(50) NOT NULL,
+  `AD_klubb_id` int(3) NOT NULL,
+  KEY `AD_rolle_navn` (`AD_rolle_navn`),
+  KEY `AD_bruker_epost` (`AD_bruker_epost`),
+  KEY `AD_klubb_navn` (`AD_klubb_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_bruker_klubb_rolle_link`
+--
+
+INSERT INTO `ad_bruker_klubb_rolle_link` (`AD_rolle_navn`, `AD_bruker_epost`, `AD_klubb_id`) VALUES
+('admin', 'frank', 0),
+('gjest', 'gjest', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_bruker_rolle_link`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_bruker_rolle_link` (
+  `AD_rolle_navn` varchar(50) NOT NULL,
+  `AD_bruker_epost` varchar(50) NOT NULL,
+  KEY `AD_rolle_navn` (`AD_rolle_navn`),
+  KEY `AD_bruker_epost` (`AD_bruker_epost`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_bruker_rolle_link`
+--
+
+INSERT INTO `ad_bruker_rolle_link` (`AD_rolle_navn`, `AD_bruker_epost`) VALUES
+('rolle1', 'la@la.la'),
+('rolle2', 'la@la.la'),
+('rolle3', 'la@la.la');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_klubb`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_klubb` (
+  `navn` varchar(50) NOT NULL,
+  `beskrivelse` varchar(50) DEFAULT NULL,
+  `raseId` int(3) NOT NULL,
+  PRIMARY KEY (`raseId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_klubb`
+--
+
+INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseId`) VALUES
+('klubb', 'klubb', 1),
+('klubben', 'klubben', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_rettighet`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_rettighet` (
+  `navn` varchar(50) NOT NULL,
+  `beskrivelse` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_rettighet`
+--
+
+INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
+('rettighet1', 'rettighet1'),
+('rettighet2', 'rettighet2'),
+('rettighet3', 'rettighet3'),
+('rettighet4', 'rettighet4');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_rolle`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_rolle` (
+  `navn` varchar(50) NOT NULL,
+  `beskrivelse` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_rolle`
+--
+
+INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
+('admin', 'admin'),
+('gjest', 'gjest');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_rolle_rettighet_link`
+--
+
+CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
+  `AD_rolle_navn` varchar(50) NOT NULL,
+  `AD_rettighet_navn` varchar(50) NOT NULL,
+  KEY `AD_rolle_navn` (`AD_rolle_navn`),
+  KEY `AD_rettighet_navn` (`AD_rettighet_navn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `ad_rolle_rettighet_link`
+--
+
+INSERT INTO `ad_rolle_rettighet_link` (`AD_rolle_navn`, `AD_rettighet_navn`) VALUES
+('gjest', 'rettighet1'),
+('admin', 'rettighet1'),
+('admin', 'rettighet2'),
+('admin', 'rettighet4');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `nkk_aasykdom`
+--
+
+CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `veId` varchar(4) NOT NULL,
   `aaId` varchar(7) NOT NULL,
   `diagnoseKode` int(1) NOT NULL,
@@ -51,17 +205,17 @@ CREATE TABLE IF NOT EXISTS `aasykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `aasykdom`
+-- Dataark for tabell `nkk_aasykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `bruker`
+-- Tabellstruktur for tabell `nkk_bruker`
 --
 
-CREATE TABLE IF NOT EXISTS `bruker` (
+CREATE TABLE IF NOT EXISTS `nkk_bruker` (
   `brukernavn` varchar(20) NOT NULL,
   `passord` varchar(20) NOT NULL,
   `fornavn` varchar(20) NOT NULL,
@@ -71,20 +225,21 @@ CREATE TABLE IF NOT EXISTS `bruker` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `bruker`
+-- Dataark for tabell `nkk_bruker`
 --
 
-INSERT INTO `bruker` (`brukernavn`, `passord`, `fornavn`, `etternavn`, `rolle`) VALUES
+INSERT INTO `nkk_bruker` (`brukernavn`, `passord`, `fornavn`, `etternavn`, `rolle`) VALUES
 ('admin', 'password', 'admin', 'admin', 'admin'),
+('gjest', 'gjest', 'gjest', 'gjest', 'gjest'),
 ('Super', 'password', 'Super', 'Super', 'Super');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `eier`
+-- Tabellstruktur for tabell `nkk_eier`
 --
 
-CREATE TABLE IF NOT EXISTS `eier` (
+CREATE TABLE IF NOT EXISTS `nkk_eier` (
   `eier` varchar(64) NOT NULL,
   `hundId` varchar(9) NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -93,17 +248,17 @@ CREATE TABLE IF NOT EXISTS `eier` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `eier`
+-- Dataark for tabell `nkk_eier`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `fugl`
+-- Tabellstruktur for tabell `nkk_fugl`
 --
 
-CREATE TABLE IF NOT EXISTS `fugl` (
+CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `proveNr` varchar(8) NOT NULL,
   `proveDato` date NOT NULL,
   `partiNr` varchar(3) NOT NULL,
@@ -147,20 +302,20 @@ CREATE TABLE IF NOT EXISTS `fugl` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `fugl`
+-- Dataark for tabell `nkk_fugl`
 --
 
-INSERT INTO `fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`, `dommerId2`, `hundId`, `slippTid`, `egneStand`, `egneStokk`, `tomStand`, `makkerStand`, `makkerStokk`, `jaktlyst`, `fart`, `stil`, `selvstendighet`, `bredde`, `reviering`, `samarbeid`, `presUpresis`, `presNoeUpresis`, `presPresis`, `reisNekter`, `reisNoelende`, `reisVillig`, `reisDjerv`, `sokStjeler`, `sokSpontant`, `appIkkeGodkjent`, `appGodkjent`, `rappInnkalt`, `rappSpont`, `premiegrad`, `certifikat`, `regAv`, `regDato`, `raseId`, `manueltEndretAv`, `manueltEndretDato`) VALUES
+INSERT INTO `nkk_fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`, `dommerId2`, `hundId`, `slippTid`, `egneStand`, `egneStokk`, `tomStand`, `makkerStand`, `makkerStokk`, `jaktlyst`, `fart`, `stil`, `selvstendighet`, `bredde`, `reviering`, `samarbeid`, `presUpresis`, `presNoeUpresis`, `presPresis`, `reisNekter`, `reisNoelende`, `reisVillig`, `reisDjerv`, `sokStjeler`, `sokSpontant`, `appIkkeGodkjent`, `appGodkjent`, `rappInnkalt`, `rappSpont`, `premiegrad`, `certifikat`, `regAv`, `regDato`, `raseId`, `manueltEndretAv`, `manueltEndretDato`) VALUES
 ('50-94014', '2009-02-09', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00'),
 ('50-94015', '2009-02-13', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `hdsykdom`
+-- Tabellstruktur for tabell `nkk_hdsykdom`
 --
 
-CREATE TABLE IF NOT EXISTS `hdsykdom` (
+CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   `avlestAv` varchar(16) NOT NULL,
   `betaling` int(1) NOT NULL,
   `diagnose` varchar(3) NOT NULL,
@@ -189,17 +344,17 @@ CREATE TABLE IF NOT EXISTS `hdsykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `hdsykdom`
+-- Dataark for tabell `nkk_hdsykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `hund`
+-- Tabellstruktur for tabell `nkk_hund`
 --
 
-CREATE TABLE IF NOT EXISTS `hund` (
+CREATE TABLE IF NOT EXISTS `nkk_hund` (
   `raseId` int(3) NOT NULL,
   `kullId` varchar(6) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -225,22 +380,25 @@ CREATE TABLE IF NOT EXISTS `hund` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `hund`
+-- Dataark for tabell `nkk_hund`
 --
 
-INSERT INTO `hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFarId`, `hundMorId`, `idNr`, `farge`, `fargeVariant`, `oyesykdom`, `hoftesykdom`, `haarlag`, `idMerke`, `kjonn`, `eierId`, `endretAv`, `endretDato`, `regDato`, `storrelse`, `manueltEndretAv`, `manueltEndretDato`) VALUES
-(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, 'kullid', 'hundid', 'tittel', 'navn og sånt', 'enFar', 'enMor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'grønn', 'blå', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFarId`, `hundMorId`, `idNr`, `farge`, `fargeVariant`, `oyesykdom`, `hoftesykdom`, `haarlag`, `idMerke`, `kjonn`, `eierId`, `endretAv`, `endretDato`, `regDato`, `storrelse`, `manueltEndretAv`, `manueltEndretDato`) VALUES
+(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, '', 'asaa', 'tittel', 'en hund', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `kull`
+-- Tabellstruktur for tabell `nkk_kull`
 --
 
-CREATE TABLE IF NOT EXISTS `kull` (
+CREATE TABLE IF NOT EXISTS `nkk_kull` (
   `kullId` varchar(6) NOT NULL,
   `hundIdFar` varchar(9) NOT NULL,
   `hundIdMor` varchar(9) NOT NULL,
@@ -253,17 +411,17 @@ CREATE TABLE IF NOT EXISTS `kull` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `kull`
+-- Dataark for tabell `nkk_kull`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `oppdrett`
+-- Tabellstruktur for tabell `nkk_oppdrett`
 --
 
-CREATE TABLE IF NOT EXISTS `oppdrett` (
+CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
   `kullId` varchar(6) NOT NULL,
   `oppdretter` varchar(64) NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -272,17 +430,17 @@ CREATE TABLE IF NOT EXISTS `oppdrett` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `oppdrett`
+-- Dataark for tabell `nkk_oppdrett`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `oyesykdom`
+-- Tabellstruktur for tabell `nkk_oyesykdom`
 --
 
-CREATE TABLE IF NOT EXISTS `oyesykdom` (
+CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   `oyId` varchar(7) NOT NULL,
   `hundId` varchar(9) NOT NULL,
   `veterinerId` varchar(4) NOT NULL,
@@ -315,17 +473,17 @@ CREATE TABLE IF NOT EXISTS `oyesykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `oyesykdom`
+-- Dataark for tabell `nkk_oyesykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `person`
+-- Tabellstruktur for tabell `nkk_person`
 --
 
-CREATE TABLE IF NOT EXISTS `person` (
+CREATE TABLE IF NOT EXISTS `nkk_person` (
   `personId` varchar(7) NOT NULL,
   `navn` varchar(64) NOT NULL,
   `adresse1` varchar(64) NOT NULL,
@@ -344,17 +502,17 @@ CREATE TABLE IF NOT EXISTS `person` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `person`
+-- Dataark for tabell `nkk_person`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `premie`
+-- Tabellstruktur for tabell `nkk_premie`
 --
 
-CREATE TABLE IF NOT EXISTS `premie` (
+CREATE TABLE IF NOT EXISTS `nkk_premie` (
   `doId` varchar(6) NOT NULL,
   `utstillingId` varchar(6) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -390,17 +548,17 @@ CREATE TABLE IF NOT EXISTS `premie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `premie`
+-- Dataark for tabell `nkk_premie`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `utstilling`
+-- Tabellstruktur for tabell `nkk_utstilling`
 --
 
-CREATE TABLE IF NOT EXISTS `utstilling` (
+CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
   `utstillingId` varchar(6) NOT NULL,
   `klasseId` varchar(6) NOT NULL,
   `personId` varchar(7) NOT NULL,
@@ -421,17 +579,17 @@ CREATE TABLE IF NOT EXISTS `utstilling` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `utstilling`
+-- Dataark for tabell `nkk_utstilling`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `veteriner`
+-- Tabellstruktur for tabell `nkk_veteriner`
 --
 
-CREATE TABLE IF NOT EXISTS `veteriner` (
+CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `veterinerId` varchar(5) NOT NULL,
   `personId` varchar(7) NOT NULL,
   `adresse1` varchar(64) NOT NULL,
@@ -449,6 +607,6 @@ CREATE TABLE IF NOT EXISTS `veteriner` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `veteriner`
+-- Dataark for tabell `nkk_veteriner`
 --
 
