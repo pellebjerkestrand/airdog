@@ -1,4 +1,5 @@
 <?php
+require_once 'ValiderBruker.php';
 require_once "no/airdog/model/AmfHund.php";
 require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/model/AmfJaktprove.php";
@@ -68,6 +69,24 @@ class HundController
 		$ret[] = $tmp;
 			
         return $tmp;
+    }
+    
+    public function hentStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    {
+		$hd = new HundDatabase();	
+		$utgangspunkt = $hd->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
+		
+		if($utgangspunkt != null)
+		{
+			$tre = array();
+				
+			//gjør ting for å populere arrayen med hunder utgangspunktet stammer fra,
+			//slik at de kan hentes ut og vises som stamtre i frontend
+			
+			return $tre;
+		}
+		
+		return null;
     }
     
     public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)
