@@ -1,5 +1,4 @@
 <?php
-require_once 'ValiderBruker.php';
 require_once "no/airdog/model/AmfHund.php";
 require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/model/AmfJaktprove.php";
