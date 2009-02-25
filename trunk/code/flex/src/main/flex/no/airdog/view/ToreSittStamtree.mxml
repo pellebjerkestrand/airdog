@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" xmlns:view="no.airdog.view.*" horizontalAlign="center" verticalAlign="middle" cornerRadius="0">
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" xmlns:view="no.airdog.view.*" horizontalAlign="center" verticalAlign="middle" cornerRadius="0">
 	<mx:Script>
         <![CDATA[
+        	import mx.core.UIComponent;
         	import no.airdog.model.Hund;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
@@ -14,11 +15,8 @@
 			[Bindable]
 			private var hund:Hund;
 			
-			[Bindable]
-			private var hundMor:Hund;
-			
-			[Bindable]
-			private var hundFar:Hund;
+			private var hundMorView:ToreSittStamtree;
+			private var hundFarView:ToreSittStamtree;
 			
 			public function set hundId(val:String):void
 			{
@@ -72,29 +70,29 @@
 			
 			private function morResultat(event:Object):void
 			{
-				hundMor = event as Hund;
+				var hundMor:Hund = event as Hund;
 				
 				if (hundMor != null && hundMor.navn != null && _dybde != 1)
 				{
-					var x:ToreSittStamtree = new ToreSittStamtree();
-					x.dybde = _dybde - 1;
-					x.hundId = hundMor.hundId;
+					hundMorView = new ToreSittStamtree();
+					hundMorView.dybde = _dybde - 1;
+					hundMorView.hundId = hundMor.hundId;
 					
-					stamtree.addChildAt(x, stamtree.numChildren);
+					stamtree.addChildAt(hundMorView, stamtree.numChildren);	
 				}
 			}
 			
 			private function farResultat(event:Object):void
 			{
-				hundFar = event as Hund;
+				var hundFar:Hund = event as Hund;
 				
 				if (hundFar != null && hundFar.navn != null && _dybde != 1)
 				{
-					var x:ToreSittStamtree = new ToreSittStamtree();
-					x.dybde = _dybde - 1;
-					x.hundId = hundFar.hundId;
+					hundFarView = new ToreSittStamtree();
+					hundFarView.dybde = _dybde - 1;
+					hundFarView.hundId = hundFar.hundId;
 					
-					stamtree.addChildAt(x, 0);
+					stamtree.addChildAt(hundFarView, 0);
 				}
 			}
 			
@@ -103,20 +101,47 @@
 				Components.instance.controller.visHund(_hundId);
 			}
 			
-			private function mouseOver(event:Event):void
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
 			{
-				this.setStyle("backgroundColor", "#E7E9D1");
-			}
-			
-			private function mouseOut(event:Event):void
-			{
-				this.setStyle("backgroundColor", null);
+				graphics.clear();
+				
+				super.updateDisplayList(unscaledWidth, unscaledHeight);
+				var toreParent:ToreSittStamtree = this.parentDocument as ToreSittStamtree;
+				
+				if (hundMorView != null && hundMorView.hundKnapp != null)
+				{
+					var hundKnappRectangle:Rectangle = hundKnapp.getRect(this);
+					var HundTargetRectangle:Rectangle = hundMorView.hundKnapp.getRect(this);
+					
+					if (HundTargetRectangle.left > 0)
+					{
+						graphics.moveTo(hundKnappRectangle.left + hundKnappRectangle.width, hundKnappRectangle.top + (hundKnappRectangle.height / 2));
+						graphics.lineStyle(3,0xD3D4AA);
+						graphics.lineTo(HundTargetRectangle.left, HundTargetRectangle.top + (HundTargetRectangle.height / 2));
+					}
+				}
+				
+				if (hundFarView != null && hundFarView.hundKnapp != null)
+				{
+					var hundKnappRectangle:Rectangle = hundKnapp.getRect(this);
+					var HundTargetRectangle:Rectangle = hundFarView.hundKnapp.getRect(this);
+					
+					if (HundTargetRectangle.left > 0)
+					{
+						graphics.moveTo(hundKnappRectangle.left + hundKnappRectangle.width, hundKnappRectangle.top + (hundKnappRectangle.height / 2));
+						graphics.lineStyle(3,0xD3D4AA);
+						graphics.lineTo(HundTargetRectangle.left, HundTargetRectangle.top + (HundTargetRectangle.height / 2));
+					}
+				}
+				
+				if (toreParent != null)
+				{
+					toreParent.invalidateDisplayList();
+				}
 			}
         ]]>
     </mx:Script>
-	<mx:HBox verticalAlign="middle">
-		<mx:Button label="{hund.navn}" width="250" click="visHund(event)" mouseOver="mouseOver(event)" mouseOut="mouseOut(event)" />
-		<mx:VBox id="stamtree">
-		</mx:VBox>
-	</mx:HBox>
-</mx:VBox>
+	<mx:Button id="hundKnapp" label="{hund.navn}" width="190" click="visHund(event)" />
+	<mx:VBox id="stamtree">
+	</mx:VBox>
+</mx:HBox>
