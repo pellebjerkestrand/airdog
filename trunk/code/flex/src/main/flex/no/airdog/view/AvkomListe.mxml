@@ -48,15 +48,18 @@
 				<mx:columns>
 					<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
 					<mx:DataGridColumn headerText="Navn" dataField="navn"/>
-					<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
-					<mx:DataGridColumn width="100" textAlign="center" headerText="Oppdretter" dataField="oppdretter"/>
-					<mx:DataGridColumn width="50" textAlign="center" headerText="VF" dataField="viltfinner" />
-					<mx:DataGridColumn width="150" textAlign="center" headerText="Far" dataField="farNavn"/>
-					<mx:DataGridColumn width="150" textAlign="center" headerText="Mor" dataField="morNavn"/>
-					<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
-					<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
+					<mx:DataGridColumn width="100" textAlign="center" headerText="Reg.nr" dataField="idNr" />
 					<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
-					<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
+					<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
+					<mx:DataGridColumn width="50" textAlign="center" headerText="HD" dataField="hd" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Start" dataField="start" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="JL" dataField="jl" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="VF" dataField="vf" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Selv" dataField="selv" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Søk" dataField="sok" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Rev" dataField="rev" />
+					<mx:DataGridColumn width="50" textAlign="center" headerText="Sam" dataField="sam" />
+					<mx:DataGridColumn width="100" textAlign="center" headerText="Beste pl." dataField="bestPl" />
 				</mx:columns>
 			</mx:DataGrid>
 		</mx:VBox>

@@ -19,6 +19,17 @@ package no.airdog.model
 		public var kjonn : String;
 		public var rase : String;
 		public var kullId : String
-		public var viltfinner : String;
+		
+		public var idNr : String;
+		public var hq : String;
+		public var hd : String;
+		public var start : String;
+		public var jl : String;
+		public var vf : String;
+		public var selv : String;
+		public var sok : String;
+		public var rev : String;
+		public var sam : String;
+		public var bestPl : String;
 	}
 }

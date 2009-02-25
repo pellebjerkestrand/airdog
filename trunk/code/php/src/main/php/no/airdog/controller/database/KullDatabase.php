@@ -72,18 +72,35 @@ class KullDatabase
 		return false;
 	}
 	
-	public function hentAvkom($hundId)
+	public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		$select = $this->database->select()
-		->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
-		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
-		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
-		->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
-		->group('h.hundId')
-		->where('h.hundFarId=?', $hundId)
-		->orWhere('h.hundMorId=?', $hundId);
-	
-		return $this->database->fetchAll($select);
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$select = $this->database->select()
+			->from(array('h'=>'NKK_hund'), array(
+				'h.*', 
+				'hundMorNavn'=>'hMor.navn', 
+				'hundFarNavn'=>'hFar.navn',
+				'start' => 'AVG(hFugl.slipptid)',
+				'jl' => 'AVG(hFugl.jaktlyst)',
+				'selv' => 'AVG(hFugl.selvstendighet)',
+				'sok' => 'AVG(bredde)',
+				'vf' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
+				'rev' => 'AVG(reviering)',
+				'sam' => 'AVG(samarbeid)',
+				'bestPlUk' => 'MIN(hFugl.premiegrad)',
+				'bestPlAk' => '("0")',
+			))
+			->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
+			->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
+			->joinLeft(array('hFugl' => 'nkk_fugl'), 'h.hundId = hFugl.hundId', array())
+			->where($this->database->quoteInto('h.hundFarId=?', $hundId) . ' OR ' . $this->database->quoteInto('h.hundMorId=?', $hundId))
+			->where('h.raseId=?', $klubbId)
+			->group('h.hundId');
+		
+			return $this->database->fetchAll($select);
+		}
+		
+		return null;
 	}
 }

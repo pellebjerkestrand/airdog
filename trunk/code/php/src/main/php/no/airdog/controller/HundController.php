@@ -37,7 +37,7 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
+			$tmp->vf = sprintf("%.1f", $rad["vf"]);
 			$ret[] = $tmp;
 		}
     	
@@ -65,7 +65,7 @@ class HundController
 		$tmp->kjonn = $rad["kjonn"];
 		$tmp->rase = $rad["raseId"];
 		$tmp->kullId = $rad["kullId"];
-		$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
+		$tmp->vf = sprintf("%.1f", $rad["vf"]);
 		$ret[] = $tmp;
 			
         return $tmp;
@@ -113,7 +113,44 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			$tmp->viltfinner = sprintf("%.1f", $rad["vf"]);
+			$tmp->idNr = $rad["idNr"];
+			
+			$tmp->hd = $rad["hoftesykdom"];
+			
+			if ($rad["start"] >> 0)
+				$tmp->start = sprintf("%u", $rad["start"]);
+				
+			if ($rad["jl"] >> 0)	
+				$tmp->jl = sprintf("%.1f", $rad["jl"]);
+			
+			if ($rad["selv"] >> 0)	
+				$tmp->selv = sprintf("%.1f", $rad["selv"]);
+			
+			if ($rad["sok"] >> 0)	
+				$tmp->sok = sprintf("%.1f", $rad["sok"]);
+			
+			if ($rad["vf"] >> 0)	
+				$tmp->vf = sprintf("%.1f", $rad["vf"]);
+			
+			if ($rad["rev"] >> 0)	
+				$tmp->rev = sprintf("%.1f", $rad["rev"]);
+			
+			if ($rad["sam"] >> 0)	
+				$tmp->sam = sprintf("%.1f", $rad["sam"]);
+			
+			
+			if (sprintf("%u", $rad["bestPlUk"]) >> 0 && sprintf("%u", $rad["bestPlUk"]) << sprintf("%u", $rad["bestPlAk"]))
+			{
+				$tmp->bestPl = sprintf("%u", $rad["bestPlUk"]); // . ". UK";
+			}
+			else if (sprintf("%u", $rad["bestPlAk"]) >> 0)
+			{
+				$tmp->bestPl = sprintf("%u", $rad["bestPlAk"]) . ". AK";
+			}
+			else
+			{
+				$tmp->bestPl = "-";
+			}
 			
 			$avkomFinnes = false;
 			
