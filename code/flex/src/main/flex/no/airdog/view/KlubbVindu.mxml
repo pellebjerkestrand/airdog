@@ -10,14 +10,20 @@
 			{
 				var knapp:Button = event.target as Button;
 				
-				Components.instance.controller.settBrukersKlubb(knapp.data.toString());
+				Components.instance.controller.settBrukersKlubb(knapp.label, knapp.data.toString());
+			}
+			
+			private function tilbake(event:Event):void
+			{
+				Components.instance.controller.loggUt();
 			}
 		]]>
 	</mx:Script>
 
+	<mx:Button label="Tilbake" click="tilbake(event)"/>
 	<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
-		<mx:Button id="knapp" label="{klubbListe.currentItem.AD_klubb_navn}" 
-			data="{klubbListe.currentItem.AD_klubb_navn}" 
+		<mx:Button id="knapp" label="{klubbListe.currentItem.navn}" 
+			data="{klubbListe.currentItem.raseId}" 
 			click="settBrukersKlubb(event)"/>
 	</mx:Repeater>
 </mx:VBox>

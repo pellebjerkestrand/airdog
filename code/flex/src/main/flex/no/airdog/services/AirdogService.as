@@ -3,7 +3,7 @@ package no.airdog.services
 	import no.airdog.model.Bruker;
 	  
 	public class AirdogService extends AbstraktServiceobjekt
-	{
+	{		
 		public function loggInn(bruker:Bruker, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.loggInn(bruker), resultat, feil);
@@ -11,22 +11,42 @@ package no.airdog.services
         
         public function hundesok(soketekst:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hundesok(soketekst), resultat, feil);
+        	callServiceFunction(service.hundesok(
+        		soketekst,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
         }
         
         public function hentAvkom(hundId:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentAvkom(hundId), resultat, feil);
+        	callServiceFunction(service.hentAvkom(
+        		hundId,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
         }
         
         public function hentJaktprove(hundId:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentJaktprove(hundId), resultat, feil);
+        	callServiceFunction(service.hentJaktprove(
+        		hundId,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
         }
         
         public function hentHund(hundId:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentHund(hundId), resultat, feil);
+        	callServiceFunction(service.hentHund(
+        		hundId,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
         }
         
 		public function hentBrukersKlubber(resultat:Function, feil:Function=null):void
@@ -44,7 +64,7 @@ package no.airdog.services
         		service.hentBrukersRoller(
         			Components.instance.session.bruker.epost,
         			Components.instance.session.bruker.passord,
-        			Components.instance.session.bruker.sattKlubb),
+        			Components.instance.session.bruker.sattKlubbId),
         		resultat, feil);
         }
         
@@ -54,13 +74,13 @@ package no.airdog.services
         		service.hentBrukersRettigheter(
         			Components.instance.session.bruker.epost,
         			Components.instance.session.bruker.passord,
-        			Components.instance.session.bruker.sattKlubb),
+        			Components.instance.session.bruker.sattKlubbId),
         		resultat, feil);
         }
         
         public function loggUt(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.loggUt(), resultat, feil);
+        	callServiceFunction(service.loggUt(), resultat, resultat);
         }
 	}
 }
