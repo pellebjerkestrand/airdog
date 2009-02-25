@@ -26,7 +26,7 @@ class ValiderBruker
 		if($this->validerBruker($database, $brukerEpost, $brukerPassord))
 		{
 			$brk = $database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
-			$klb = $database->quoteInto('a.ad_klubb_id=?', $klubbId);
+			$klb = $database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
 			
 			$hent = $database->select()
 			->from(array('a' => 'ad_bruker_klubb_rolle_link'), array('rr.ad_rettighet_navn'))
