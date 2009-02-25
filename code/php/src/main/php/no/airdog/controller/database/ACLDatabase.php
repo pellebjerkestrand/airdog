@@ -37,7 +37,7 @@ class ACLDatabase
 			$klubb = $this->database->quoteInto('a.ad_klubb_id=?', $klubbId);
 			
 			$hent = $this->database->select()
-			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('a.ad_rolle_navn', 'a.ad_bruker_epost'))
+			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('a.AD_rolle_navn'))
 			->where($bruker)
 			->where($klubb);
 			
