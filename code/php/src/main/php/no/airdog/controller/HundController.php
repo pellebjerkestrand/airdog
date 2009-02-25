@@ -43,10 +43,10 @@ class HundController
         return $ret;
     }
     
-	public function hentHund($hundId)
+	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$hd = new HundDatabase();
-    	$rad = $hd->hentHund($hundId);
+    	$rad = $hd->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
 
 		$tmp = new AmfHund();
 		$tmp->hundId = $rad["hundId"];
@@ -70,12 +70,12 @@ class HundController
         return $tmp;
     }
     
-    public function hentAvkom($hundId)
+    public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$avkomListe = array();
     	$kd = new KullDatabase();
     	
-	    $hundListe = $kd->hentAvkom($hundId);
+	    $hundListe = $kd->hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId);
 	    $avkomHundListe = array();
 	    
 	    foreach($hundListe as $rad)
@@ -134,10 +134,10 @@ class HundController
         return $avkomListe;
     }
     
- 	public function hentJaktprove($hundId)
+ 	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$hd = new HundDatabase();
-    	$resultat = $hd->sokJaktprove($hundId);
+    	$resultat = $hd->sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId);
 
     	$ret = array();
     	
