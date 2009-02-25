@@ -34,7 +34,7 @@ package no.airdog.controller
         	PopUpManager.removePopUp(vindu);
         }
         
-        public function settBrukersKlubb(klubb:String):void
+        public function settBrukersKlubb(klubb:String, klubbId:String):void
         {
         	Components.instance.session.bruker.sattKlubb = klubb;
         	fjernLoggInnVindu();
@@ -93,6 +93,7 @@ package no.airdog.controller
 			Components.instance.session.bruker.roller = null;
 			Components.instance.session.bruker.klubber = null;
 			Components.instance.session.bruker.sattKlubb = "";
+			Components.instance.session.bruker.sattKlubbId = "";
 		}
 		
 		public function lastOppDatFil():void

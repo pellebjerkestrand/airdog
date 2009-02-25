@@ -10,6 +10,7 @@ package no.airdog.model
 		public var passord:String;
 		public var innlogget:Boolean = false;
 		public var sattKlubb:String;
+		public var sattKlubbId:String;
 		public var klubber:ArrayCollection;
 		public var roller:ArrayCollection;
 		public var rettigheter:ArrayCollection;
