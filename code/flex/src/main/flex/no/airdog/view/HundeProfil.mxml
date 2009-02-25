@@ -57,7 +57,7 @@
             </mx:VBox>
             
             <mx:VBox label="Stamtavle">
-				<view:Stamtavle/>
+				<view:ToreSittStamtree width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="5" />
 			</mx:VBox>
 			
 			<mx:VBox label="Ustilling">				
