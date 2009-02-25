@@ -16,7 +16,7 @@
             public function sok():void
 			{
 				visHundeliste();
-				Components.instance.controller.hundesok(sokefelt.text);
+				Components.instance.controller.sokHund(sokefelt.text);
 			}
             
             private function showInitialView():void

@@ -11,10 +11,10 @@ class HundController
 	{
 	}
 
-	public function hundesok($soketekst)
+	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$hd = new HundDatabase();
-    	$resultat = $hd->sokHund($soketekst);
+    	$resultat = $hd->sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId);
 
     	$ret = array();
     	
