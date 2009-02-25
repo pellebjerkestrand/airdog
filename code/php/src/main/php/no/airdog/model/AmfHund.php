@@ -16,5 +16,16 @@ class AmfHund
      public $kjonn;
      public $rase;
      public $kullId;
-     public $viltfinner;
+     
+     public $idNr;
+	 public $hq;
+	 public $hd;
+	 public $start;
+	 public $jl;
+	 public $vf;
+	 public $selv;
+	 public $sok;
+	 public $rev;
+	 public $sam;
+	 public $bestPl;
 }
