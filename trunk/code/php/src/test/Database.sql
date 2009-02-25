@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.7.1
+-- version 3.1.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 25, 2009 at 10:41 AM
--- Server version: 5.0.41
--- PHP Version: 5.2.6
+-- Vert: localhost
+-- Generert den: 25. Feb, 2009 11:41 AM
+-- Tjenerversjon: 5.1.30
+-- PHP-Versjon: 5.2.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,36 +16,38 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_bruker`
+-- Tabellstruktur for tabell `ad_bruker`
 --
 
 DROP TABLE IF EXISTS `ad_bruker`;
-CREATE TABLE `ad_bruker` (
+CREATE TABLE IF NOT EXISTS `ad_bruker` (
   `epost` varchar(50) NOT NULL,
   `fornavn` varchar(30) NOT NULL,
   `etternavn` varchar(30) NOT NULL,
   `passord` varchar(50) NOT NULL,
-  PRIMARY KEY  (`epost`)
+  `superadmin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`epost`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_bruker`
+-- Dataark for tabell `ad_bruker`
 --
 
-INSERT INTO `ad_bruker` VALUES('test', 'test', 'test', 'test');
-INSERT INTO `ad_bruker` VALUES('gjest', 'gjest', 'gjest', 'gjest');
-INSERT INTO `ad_bruker` VALUES('frank', 'frank', 'frank', 'frank');
+INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
+('tore', 'Tore', 'Lervik', 'tore', 1),
+('gjest', 'gjest', 'gjest', 'gjest', 0),
+('frank', 'frank', 'frank', 'frank', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_bruker_klubb_rolle_link`
+-- Tabellstruktur for tabell `ad_bruker_klubb_rolle_link`
 --
 
 DROP TABLE IF EXISTS `ad_bruker_klubb_rolle_link`;
-CREATE TABLE `ad_bruker_klubb_rolle_link` (
-  `ad_rolle_navn` varchar(50) NOT NULL default '',
-  `ad_bruker_epost` varchar(50) NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
+  `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
+  `ad_bruker_epost` varchar(50) NOT NULL DEFAULT '',
   `ad_klubb_raseid` int(3) NOT NULL,
   KEY `AD_rolle_navn` (`ad_rolle_navn`),
   KEY `AD_bruker_epost` (`ad_bruker_epost`),
@@ -53,106 +55,111 @@ CREATE TABLE `ad_bruker_klubb_rolle_link` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_bruker_klubb_rolle_link`
+-- Dataark for tabell `ad_bruker_klubb_rolle_link`
 --
 
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'frank', 0);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'gjest', 1);
+INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `ad_klubb_raseid`) VALUES
+('admin', 'frank', 2),
+('gjest', 'gjest', 1),
+('admin', 'gjest', 2),
+('gjest', 'gjest', 306),
+('gjest', 'gjest', 348);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_klubb`
+-- Tabellstruktur for tabell `ad_klubb`
 --
 
 DROP TABLE IF EXISTS `ad_klubb`;
-CREATE TABLE `ad_klubb` (
+CREATE TABLE IF NOT EXISTS `ad_klubb` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(50) default NULL,
+  `beskrivelse` varchar(50) DEFAULT NULL,
   `raseid` int(3) NOT NULL,
-  PRIMARY KEY  (`raseid`)
+  PRIMARY KEY (`raseid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_klubb`
+-- Dataark for tabell `ad_klubb`
 --
 
-INSERT INTO `ad_klubb` VALUES('klubb', 'klubb', 1);
-INSERT INTO `ad_klubb` VALUES('klubben', 'klubben', 2);
+INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
+('klubb', 'klubb', 1),
+('Test klubb', 'En testklubb', 2),
+('Norsk Breton Klubb', NULL, 306),
+('Norsk Pointer Klubb', NULL, 348);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rettighet`
+-- Tabellstruktur for tabell `ad_rettighet`
 --
 
 DROP TABLE IF EXISTS `ad_rettighet`;
-CREATE TABLE `ad_rettighet` (
+CREATE TABLE IF NOT EXISTS `ad_rettighet` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(250) default NULL,
-  PRIMARY KEY  (`navn`)
+  `beskrivelse` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_rettighet`
+-- Dataark for tabell `ad_rettighet`
 --
 
-INSERT INTO `ad_rettighet` VALUES('rettighet1', 'rettighet1');
-INSERT INTO `ad_rettighet` VALUES('rettighet2', 'rettighet2');
-INSERT INTO `ad_rettighet` VALUES('rettighet3', 'rettighet3');
-INSERT INTO `ad_rettighet` VALUES('rettighet4', 'rettighet4');
+INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
+('lese', 'Utføre handlinger som ikke endrer på databasen');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rolle`
+-- Tabellstruktur for tabell `ad_rolle`
 --
 
 DROP TABLE IF EXISTS `ad_rolle`;
-CREATE TABLE `ad_rolle` (
+CREATE TABLE IF NOT EXISTS `ad_rolle` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(50) default NULL,
-  PRIMARY KEY  (`navn`)
+  `beskrivelse` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_rolle`
+-- Dataark for tabell `ad_rolle`
 --
 
-INSERT INTO `ad_rolle` VALUES('admin', 'admin');
-INSERT INTO `ad_rolle` VALUES('gjest', 'gjest');
+INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
+('admin', 'admin'),
+('gjest', 'gjest');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rolle_rettighet_link`
+-- Tabellstruktur for tabell `ad_rolle_rettighet_link`
 --
 
 DROP TABLE IF EXISTS `ad_rolle_rettighet_link`;
-CREATE TABLE `ad_rolle_rettighet_link` (
-  `ad_rolle_navn` varchar(50) NOT NULL default '',
-  `ad_rettighet_navn` varchar(50) NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
+  `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
+  `ad_rettighet_navn` varchar(50) NOT NULL DEFAULT '',
   KEY `AD_rolle_navn` (`ad_rolle_navn`),
   KEY `AD_rettighet_navn` (`ad_rettighet_navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ad_rolle_rettighet_link`
+-- Dataark for tabell `ad_rolle_rettighet_link`
 --
 
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'rettighet1');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'rettighet1');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'rettighet2');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'rettighet4');
+INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
+('admin', 'lese'),
+('gjest', 'lese');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_aasykdom`
+-- Tabellstruktur for tabell `nkk_aasykdom`
 --
 
 DROP TABLE IF EXISTS `nkk_aasykdom`;
-CREATE TABLE `nkk_aasykdom` (
+CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `veId` varchar(4) NOT NULL,
   `aaId` varchar(7) NOT NULL,
   `diagnoseKode` int(1) NOT NULL,
@@ -184,42 +191,43 @@ CREATE TABLE `nkk_aasykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_aasykdom`
+-- Dataark for tabell `nkk_aasykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_bruker`
+-- Tabellstruktur for tabell `nkk_bruker`
 --
 
 DROP TABLE IF EXISTS `nkk_bruker`;
-CREATE TABLE `nkk_bruker` (
+CREATE TABLE IF NOT EXISTS `nkk_bruker` (
   `brukernavn` varchar(20) NOT NULL,
   `passord` varchar(20) NOT NULL,
   `fornavn` varchar(20) NOT NULL,
   `etternavn` varchar(20) NOT NULL,
   `rolle` varchar(20) NOT NULL,
-  PRIMARY KEY  (`brukernavn`)
+  PRIMARY KEY (`brukernavn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_bruker`
+-- Dataark for tabell `nkk_bruker`
 --
 
-INSERT INTO `nkk_bruker` VALUES('admin', 'password', 'admin', 'admin', 'admin');
-INSERT INTO `nkk_bruker` VALUES('gjest', 'gjest', 'gjest', 'gjest', 'gjest');
-INSERT INTO `nkk_bruker` VALUES('Super', 'password', 'Super', 'Super', 'Super');
+INSERT INTO `nkk_bruker` (`brukernavn`, `passord`, `fornavn`, `etternavn`, `rolle`) VALUES
+('admin', 'password', 'admin', 'admin', 'admin'),
+('gjest', 'gjest', 'gjest', 'gjest', 'gjest'),
+('Super', 'password', 'Super', 'Super', 'Super');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_eier`
+-- Tabellstruktur for tabell `nkk_eier`
 --
 
 DROP TABLE IF EXISTS `nkk_eier`;
-CREATE TABLE `nkk_eier` (
+CREATE TABLE IF NOT EXISTS `nkk_eier` (
   `eier` varchar(64) NOT NULL,
   `hundId` varchar(9) NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -228,18 +236,18 @@ CREATE TABLE `nkk_eier` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_eier`
+-- Dataark for tabell `nkk_eier`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_fugl`
+-- Tabellstruktur for tabell `nkk_fugl`
 --
 
 DROP TABLE IF EXISTS `nkk_fugl`;
-CREATE TABLE `nkk_fugl` (
+CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `proveNr` varchar(8) NOT NULL,
   `proveDato` date NOT NULL,
   `partiNr` varchar(3) NOT NULL,
@@ -247,34 +255,34 @@ CREATE TABLE `nkk_fugl` (
   `dommerId1` varchar(7) NOT NULL,
   `dommerId2` varchar(7) NOT NULL,
   `hundId` varchar(9) NOT NULL,
-  `slippTid` int(2) default NULL,
-  `egneStand` int(1) default NULL,
-  `egneStokk` int(1) default NULL,
-  `tomStand` int(1) default NULL,
-  `makkerStand` int(1) default NULL,
-  `makkerStokk` int(1) default NULL,
-  `jaktlyst` int(1) default NULL,
-  `fart` int(1) default NULL,
-  `stil` int(1) default NULL,
-  `selvstendighet` int(1) default NULL,
-  `bredde` int(1) default NULL,
-  `reviering` int(1) default NULL,
-  `samarbeid` int(1) default NULL,
-  `presUpresis` int(1) default NULL,
-  `presNoeUpresis` int(1) default NULL,
-  `presPresis` int(1) default NULL,
-  `reisNekter` int(1) default NULL,
-  `reisNoelende` int(1) default NULL,
-  `reisVillig` int(1) default NULL,
-  `reisDjerv` int(1) default NULL,
-  `sokStjeler` int(1) default NULL,
-  `sokSpontant` int(1) default NULL,
-  `appIkkeGodkjent` int(1) default NULL,
-  `appGodkjent` int(1) default NULL,
-  `rappInnkalt` int(1) default NULL,
-  `rappSpont` int(1) default NULL,
-  `premiegrad` int(1) default NULL,
-  `certifikat` int(1) default NULL,
+  `slippTid` int(2) DEFAULT NULL,
+  `egneStand` int(1) DEFAULT NULL,
+  `egneStokk` int(1) DEFAULT NULL,
+  `tomStand` int(1) DEFAULT NULL,
+  `makkerStand` int(1) DEFAULT NULL,
+  `makkerStokk` int(1) DEFAULT NULL,
+  `jaktlyst` int(1) DEFAULT NULL,
+  `fart` int(1) DEFAULT NULL,
+  `stil` int(1) DEFAULT NULL,
+  `selvstendighet` int(1) DEFAULT NULL,
+  `bredde` int(1) DEFAULT NULL,
+  `reviering` int(1) DEFAULT NULL,
+  `samarbeid` int(1) DEFAULT NULL,
+  `presUpresis` int(1) DEFAULT NULL,
+  `presNoeUpresis` int(1) DEFAULT NULL,
+  `presPresis` int(1) DEFAULT NULL,
+  `reisNekter` int(1) DEFAULT NULL,
+  `reisNoelende` int(1) DEFAULT NULL,
+  `reisVillig` int(1) DEFAULT NULL,
+  `reisDjerv` int(1) DEFAULT NULL,
+  `sokStjeler` int(1) DEFAULT NULL,
+  `sokSpontant` int(1) DEFAULT NULL,
+  `appIkkeGodkjent` int(1) DEFAULT NULL,
+  `appGodkjent` int(1) DEFAULT NULL,
+  `rappInnkalt` int(1) DEFAULT NULL,
+  `rappSpont` int(1) DEFAULT NULL,
+  `premiegrad` int(1) DEFAULT NULL,
+  `certifikat` int(1) DEFAULT NULL,
   `regAv` varchar(32) NOT NULL,
   `regDato` date NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -283,20 +291,21 @@ CREATE TABLE `nkk_fugl` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_fugl`
+-- Dataark for tabell `nkk_fugl`
 --
 
-INSERT INTO `nkk_fugl` VALUES('50-94014', '2009-02-09', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00');
-INSERT INTO `nkk_fugl` VALUES('50-94015', '2009-02-13', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00');
+INSERT INTO `nkk_fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`, `dommerId2`, `hundId`, `slippTid`, `egneStand`, `egneStokk`, `tomStand`, `makkerStand`, `makkerStokk`, `jaktlyst`, `fart`, `stil`, `selvstendighet`, `bredde`, `reviering`, `samarbeid`, `presUpresis`, `presNoeUpresis`, `presPresis`, `reisNekter`, `reisNoelende`, `reisVillig`, `reisDjerv`, `sokStjeler`, `sokSpontant`, `appIkkeGodkjent`, `appGodkjent`, `rappInnkalt`, `rappSpont`, `premiegrad`, `certifikat`, `regAv`, `regDato`, `raseId`, `manueltEndretAv`, `manueltEndretDato`) VALUES
+('50-94014', '2009-02-09', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00'),
+('50-94015', '2009-02-13', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 0, '', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_hdsykdom`
+-- Tabellstruktur for tabell `nkk_hdsykdom`
 --
 
 DROP TABLE IF EXISTS `nkk_hdsykdom`;
-CREATE TABLE `nkk_hdsykdom` (
+CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   `avlestAv` varchar(16) NOT NULL,
   `betaling` int(1) NOT NULL,
   `diagnose` varchar(3) NOT NULL,
@@ -325,18 +334,18 @@ CREATE TABLE `nkk_hdsykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_hdsykdom`
+-- Dataark for tabell `nkk_hdsykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_hund`
+-- Tabellstruktur for tabell `nkk_hund`
 --
 
 DROP TABLE IF EXISTS `nkk_hund`;
-CREATE TABLE `nkk_hund` (
+CREATE TABLE IF NOT EXISTS `nkk_hund` (
   `raseId` int(3) NOT NULL,
   `kullId` varchar(6) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -362,25 +371,26 @@ CREATE TABLE `nkk_hund` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_hund`
+-- Dataark for tabell `nkk_hund`
 --
 
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, '', 'asaa', 'tittel', 'en hund', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFarId`, `hundMorId`, `idNr`, `farge`, `fargeVariant`, `oyesykdom`, `hoftesykdom`, `haarlag`, `idMerke`, `kjonn`, `eierId`, `endretAv`, `endretDato`, `regDato`, `storrelse`, `manueltEndretAv`, `manueltEndretDato`) VALUES
+(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, '', 'asaa', 'tittel', 'en hund', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_kull`
+-- Tabellstruktur for tabell `nkk_kull`
 --
 
 DROP TABLE IF EXISTS `nkk_kull`;
-CREATE TABLE `nkk_kull` (
+CREATE TABLE IF NOT EXISTS `nkk_kull` (
   `kullId` varchar(6) NOT NULL,
   `hundIdFar` varchar(9) NOT NULL,
   `hundIdMor` varchar(9) NOT NULL,
@@ -393,18 +403,18 @@ CREATE TABLE `nkk_kull` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_kull`
+-- Dataark for tabell `nkk_kull`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_oppdrett`
+-- Tabellstruktur for tabell `nkk_oppdrett`
 --
 
 DROP TABLE IF EXISTS `nkk_oppdrett`;
-CREATE TABLE `nkk_oppdrett` (
+CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
   `kullId` varchar(6) NOT NULL,
   `oppdretter` varchar(64) NOT NULL,
   `raseId` int(3) NOT NULL,
@@ -413,18 +423,18 @@ CREATE TABLE `nkk_oppdrett` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_oppdrett`
+-- Dataark for tabell `nkk_oppdrett`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_oyesykdom`
+-- Tabellstruktur for tabell `nkk_oyesykdom`
 --
 
 DROP TABLE IF EXISTS `nkk_oyesykdom`;
-CREATE TABLE `nkk_oyesykdom` (
+CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   `oyId` varchar(7) NOT NULL,
   `hundId` varchar(9) NOT NULL,
   `veterinerId` varchar(4) NOT NULL,
@@ -457,18 +467,18 @@ CREATE TABLE `nkk_oyesykdom` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_oyesykdom`
+-- Dataark for tabell `nkk_oyesykdom`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_person`
+-- Tabellstruktur for tabell `nkk_person`
 --
 
 DROP TABLE IF EXISTS `nkk_person`;
-CREATE TABLE `nkk_person` (
+CREATE TABLE IF NOT EXISTS `nkk_person` (
   `personId` varchar(7) NOT NULL,
   `navn` varchar(64) NOT NULL,
   `adresse1` varchar(64) NOT NULL,
@@ -487,18 +497,18 @@ CREATE TABLE `nkk_person` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_person`
+-- Dataark for tabell `nkk_person`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_premie`
+-- Tabellstruktur for tabell `nkk_premie`
 --
 
 DROP TABLE IF EXISTS `nkk_premie`;
-CREATE TABLE `nkk_premie` (
+CREATE TABLE IF NOT EXISTS `nkk_premie` (
   `doId` varchar(6) NOT NULL,
   `utstillingId` varchar(6) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -534,18 +544,18 @@ CREATE TABLE `nkk_premie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_premie`
+-- Dataark for tabell `nkk_premie`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_utstilling`
+-- Tabellstruktur for tabell `nkk_utstilling`
 --
 
 DROP TABLE IF EXISTS `nkk_utstilling`;
-CREATE TABLE `nkk_utstilling` (
+CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
   `utstillingId` varchar(6) NOT NULL,
   `klasseId` varchar(6) NOT NULL,
   `personId` varchar(7) NOT NULL,
@@ -566,18 +576,18 @@ CREATE TABLE `nkk_utstilling` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_utstilling`
+-- Dataark for tabell `nkk_utstilling`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nkk_veteriner`
+-- Tabellstruktur for tabell `nkk_veteriner`
 --
 
 DROP TABLE IF EXISTS `nkk_veteriner`;
-CREATE TABLE `nkk_veteriner` (
+CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `veterinerId` varchar(5) NOT NULL,
   `personId` varchar(7) NOT NULL,
   `adresse1` varchar(64) NOT NULL,
@@ -595,5 +605,6 @@ CREATE TABLE `nkk_veteriner` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nkk_veteriner`
+-- Dataark for tabell `nkk_veteriner`
 --
+

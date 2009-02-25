@@ -2,8 +2,32 @@
 require_once 'Tilkobling.php';
 class ValiderBruker
 {	
+	public static function validerSuperadmin($database, $brukerEpost, $brukerPassord)
+	{
+		$brk = $database->quoteInto('epost=?', $brukerEpost);
+		$pass = $database->quoteInto('passord=?', $brukerPassord);
+		
+		$hent = $database->select()
+		->from('ad_bruker', array('ad_bruker.*'))
+		->where($brk)
+		->where($pass)
+		->where('superadmin=?', 1);
+		
+		if($database->fetchRow($hent) != null)
+		{
+			return true;
+		}
+		
+		return false;
+	}	
+	
 	public static function validerBrukeren($database, $brukerEpost, $brukerPassord)
 	{
+		if(ValiderBruker::validerSuperadmin($database, $brukerEpost, $brukerPassord))
+		{
+			return true;
+		}
+		
 		$brk = $database->quoteInto('epost=?', $brukerEpost);
 		$pass = $database->quoteInto('passord=?', $brukerPassord);
 		
@@ -23,6 +47,11 @@ class ValiderBruker
 	public static function validerBrukerRettighet($database, $brukerEpost, $brukerPassord, $klubbId, $rettighet)
 	{
 	
+		if(ValiderBruker::validerSuperadmin($database, $brukerEpost, $brukerPassord))
+		{
+			return true;
+		}
+		
 		if(ValiderBruker::validerBrukeren($database, $brukerEpost, $brukerPassord))
 		{
 			$brk = $database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);

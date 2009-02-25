@@ -85,7 +85,8 @@ class HundDatabase
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
 			->group('h.hundId')
-			->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"');
+			->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"')
+			->where('h.raseId=?', $klubbId);
 	
 			return $this->database->fetchAll($select);
 		}
