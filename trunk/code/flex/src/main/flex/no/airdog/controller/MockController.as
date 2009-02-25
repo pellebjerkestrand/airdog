@@ -103,9 +103,9 @@ package no.airdog.controller
 			datOpplaster.velgFil();
 		}
 		
-		public function hundesok(soketekst:String):void
+		public function sokHund(soketekst:String):void
 		{
-			Components.instance.services.airdogService.hundesok(soketekst, hundesokResultat);
+			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
 		}
 		
 		public function hundesokResultat(event:Object):void
