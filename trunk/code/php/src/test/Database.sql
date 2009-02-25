@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 25. Feb, 2009 09:55 AM
+-- Generert den: 25. Feb, 2009 10:18 AM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -19,6 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tabellstruktur for tabell `ad_bruker`
 --
 
+DROP TABLE IF EXISTS `ad_bruker`;
 CREATE TABLE IF NOT EXISTS `ad_bruker` (
   `epost` varchar(50) NOT NULL,
   `fornavn` varchar(30) NOT NULL,
@@ -42,6 +43,7 @@ INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`) VALUES
 -- Tabellstruktur for tabell `ad_bruker_klubb_rolle_link`
 --
 
+DROP TABLE IF EXISTS `ad_bruker_klubb_rolle_link`;
 CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
   `AD_rolle_navn` varchar(50) NOT NULL,
   `AD_bruker_epost` varchar(50) NOT NULL,
@@ -62,31 +64,10 @@ INSERT INTO `ad_bruker_klubb_rolle_link` (`AD_rolle_navn`, `AD_bruker_epost`, `A
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `ad_bruker_rolle_link`
---
-
-CREATE TABLE IF NOT EXISTS `ad_bruker_rolle_link` (
-  `AD_rolle_navn` varchar(50) NOT NULL,
-  `AD_bruker_epost` varchar(50) NOT NULL,
-  KEY `AD_rolle_navn` (`AD_rolle_navn`),
-  KEY `AD_bruker_epost` (`AD_bruker_epost`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `ad_bruker_rolle_link`
---
-
-INSERT INTO `ad_bruker_rolle_link` (`AD_rolle_navn`, `AD_bruker_epost`) VALUES
-('rolle1', 'la@la.la'),
-('rolle2', 'la@la.la'),
-('rolle3', 'la@la.la');
-
--- --------------------------------------------------------
-
---
 -- Tabellstruktur for tabell `ad_klubb`
 --
 
+DROP TABLE IF EXISTS `ad_klubb`;
 CREATE TABLE IF NOT EXISTS `ad_klubb` (
   `navn` varchar(50) NOT NULL,
   `beskrivelse` varchar(50) DEFAULT NULL,
@@ -108,6 +89,7 @@ INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseId`) VALUES
 -- Tabellstruktur for tabell `ad_rettighet`
 --
 
+DROP TABLE IF EXISTS `ad_rettighet`;
 CREATE TABLE IF NOT EXISTS `ad_rettighet` (
   `navn` varchar(50) NOT NULL,
   `beskrivelse` varchar(250) DEFAULT NULL,
@@ -130,6 +112,7 @@ INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
 -- Tabellstruktur for tabell `ad_rolle`
 --
 
+DROP TABLE IF EXISTS `ad_rolle`;
 CREATE TABLE IF NOT EXISTS `ad_rolle` (
   `navn` varchar(50) NOT NULL,
   `beskrivelse` varchar(50) DEFAULT NULL,
@@ -150,6 +133,7 @@ INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
 -- Tabellstruktur for tabell `ad_rolle_rettighet_link`
 --
 
+DROP TABLE IF EXISTS `ad_rolle_rettighet_link`;
 CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
   `AD_rolle_navn` varchar(50) NOT NULL,
   `AD_rettighet_navn` varchar(50) NOT NULL,
@@ -173,6 +157,7 @@ INSERT INTO `ad_rolle_rettighet_link` (`AD_rolle_navn`, `AD_rettighet_navn`) VAL
 -- Tabellstruktur for tabell `nkk_aasykdom`
 --
 
+DROP TABLE IF EXISTS `nkk_aasykdom`;
 CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `veId` varchar(4) NOT NULL,
   `aaId` varchar(7) NOT NULL,
@@ -215,6 +200,7 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
 -- Tabellstruktur for tabell `nkk_bruker`
 --
 
+DROP TABLE IF EXISTS `nkk_bruker`;
 CREATE TABLE IF NOT EXISTS `nkk_bruker` (
   `brukernavn` varchar(20) NOT NULL,
   `passord` varchar(20) NOT NULL,
@@ -239,6 +225,7 @@ INSERT INTO `nkk_bruker` (`brukernavn`, `passord`, `fornavn`, `etternavn`, `roll
 -- Tabellstruktur for tabell `nkk_eier`
 --
 
+DROP TABLE IF EXISTS `nkk_eier`;
 CREATE TABLE IF NOT EXISTS `nkk_eier` (
   `eier` varchar(64) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -258,6 +245,7 @@ CREATE TABLE IF NOT EXISTS `nkk_eier` (
 -- Tabellstruktur for tabell `nkk_fugl`
 --
 
+DROP TABLE IF EXISTS `nkk_fugl`;
 CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `proveNr` varchar(8) NOT NULL,
   `proveDato` date NOT NULL,
@@ -315,6 +303,7 @@ INSERT INTO `nkk_fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`
 -- Tabellstruktur for tabell `nkk_hdsykdom`
 --
 
+DROP TABLE IF EXISTS `nkk_hdsykdom`;
 CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   `avlestAv` varchar(16) NOT NULL,
   `betaling` int(1) NOT NULL,
@@ -354,6 +343,7 @@ CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
 -- Tabellstruktur for tabell `nkk_hund`
 --
 
+DROP TABLE IF EXISTS `nkk_hund`;
 CREATE TABLE IF NOT EXISTS `nkk_hund` (
   `raseId` int(3) NOT NULL,
   `kullId` varchar(6) NOT NULL,
@@ -390,7 +380,8 @@ INSERT INTO `nkk_hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFar
 (348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
 (348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
 (348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
-(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00'),
+(666, '999999', 'TEST_ID', 'Sir', 'En test hund laget av test klassen', 'TEST_MOR', 'TEST_FAR', '1234567', 'HVIT/SORT', 'GRÅ', 'A', 'A', '', 'M', 'H', '1234567', 'TL', '2001-01-10', '2001-01-10', 'DIGER', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -398,6 +389,7 @@ INSERT INTO `nkk_hund` (`raseId`, `kullId`, `hundId`, `tittel`, `navn`, `hundFar
 -- Tabellstruktur for tabell `nkk_kull`
 --
 
+DROP TABLE IF EXISTS `nkk_kull`;
 CREATE TABLE IF NOT EXISTS `nkk_kull` (
   `kullId` varchar(6) NOT NULL,
   `hundIdFar` varchar(9) NOT NULL,
@@ -421,6 +413,7 @@ CREATE TABLE IF NOT EXISTS `nkk_kull` (
 -- Tabellstruktur for tabell `nkk_oppdrett`
 --
 
+DROP TABLE IF EXISTS `nkk_oppdrett`;
 CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
   `kullId` varchar(6) NOT NULL,
   `oppdretter` varchar(64) NOT NULL,
@@ -440,6 +433,7 @@ CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
 -- Tabellstruktur for tabell `nkk_oyesykdom`
 --
 
+DROP TABLE IF EXISTS `nkk_oyesykdom`;
 CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   `oyId` varchar(7) NOT NULL,
   `hundId` varchar(9) NOT NULL,
@@ -483,6 +477,7 @@ CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
 -- Tabellstruktur for tabell `nkk_person`
 --
 
+DROP TABLE IF EXISTS `nkk_person`;
 CREATE TABLE IF NOT EXISTS `nkk_person` (
   `personId` varchar(7) NOT NULL,
   `navn` varchar(64) NOT NULL,
@@ -512,6 +507,7 @@ CREATE TABLE IF NOT EXISTS `nkk_person` (
 -- Tabellstruktur for tabell `nkk_premie`
 --
 
+DROP TABLE IF EXISTS `nkk_premie`;
 CREATE TABLE IF NOT EXISTS `nkk_premie` (
   `doId` varchar(6) NOT NULL,
   `utstillingId` varchar(6) NOT NULL,
@@ -558,6 +554,7 @@ CREATE TABLE IF NOT EXISTS `nkk_premie` (
 -- Tabellstruktur for tabell `nkk_utstilling`
 --
 
+DROP TABLE IF EXISTS `nkk_utstilling`;
 CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
   `utstillingId` varchar(6) NOT NULL,
   `klasseId` varchar(6) NOT NULL,
@@ -589,6 +586,7 @@ CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
 -- Tabellstruktur for tabell `nkk_veteriner`
 --
 
+DROP TABLE IF EXISTS `nkk_veteriner`;
 CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `veterinerId` varchar(5) NOT NULL,
   `personId` varchar(7) NOT NULL,

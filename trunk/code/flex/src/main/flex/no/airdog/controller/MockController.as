@@ -37,6 +37,7 @@ package no.airdog.controller
         public function settBrukersKlubb(klubb:String, klubbId:String):void
         {
         	Components.instance.session.bruker.sattKlubb = klubb;
+        	Components.instance.session.bruker.sattKlubbId = klubbId;
         	fjernLoggInnVindu();
         	
         	hentBrukersRettigheter();
