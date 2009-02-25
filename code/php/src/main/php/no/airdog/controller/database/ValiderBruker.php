@@ -23,7 +23,7 @@ class ValiderBruker
 	public static function validerBrukerRettighet($database, $brukerEpost, $brukerPassord, $klubbId, $rettighet)
 	{
 	
-		if($this->validerBruker($database, $brukerEpost, $brukerPassord))
+		if(ValiderBruker::validerBrukeren($database, $brukerEpost, $brukerPassord))
 		{
 			$brk = $database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
 			$klb = $database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
