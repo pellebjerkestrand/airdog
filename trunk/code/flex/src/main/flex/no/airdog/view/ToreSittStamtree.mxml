@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" xmlns:view="no.airdog.view.*" horizontalAlign="center" verticalAlign="middle" cornerRadius="0">
+	<mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Hund;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			
+			import mx.controls.*;
+			
+			private var _hundId:String;
+			private var _dybde:int;
+			
+			[Bindable]
+			private var hund:Hund;
+			
+			[Bindable]
+			private var hundMor:Hund;
+			
+			[Bindable]
+			private var hundFar:Hund;
+			
+			public function set hundId(val:String):void
+			{
+				_hundId = val;
+				
+				while (stamtree != null && stamtree.numChildren > 0)
+				{             
+					stamtree.removeChildAt(0);         
+				}
+				
+				if (_dybde != 0 && _hundId != null)
+				{
+					hentHund();
+				}
+			}   
+			
+			public function set dybde(val:int):void
+			{
+				_dybde = val;
+				
+				if (_hundId != null)
+				{
+					hentHund();
+				}
+			}        
+			
+			private function hentHund():void
+			{
+				Components.instance.services.airdogService.hentHund(_hundId, hundResultat);
+			}
+			
+			private function hundResultat(event:Object):void
+			{
+				hund = event as Hund;
+				
+				if (hund != null)
+				{
+					if (hund.morId != null)
+					{
+						//Alert.show("omg " + hund.morId, hund.morId);
+						Components.instance.services.airdogService.hentHund(hund.morId, morResultat);
+					}
+					
+					if (hund.farId != null)
+					{
+						//Alert.show("omg " + hund.farId, hund.farId);
+						Components.instance.services.airdogService.hentHund(hund.farId, farResultat);
+					}
+				}
+			}
+			
+			private function morResultat(event:Object):void
+			{
+				hundMor = event as Hund;
+				
+				if (hundMor != null && hundMor.navn != null && _dybde != 1)
+				{
+					var x:ToreSittStamtree = new ToreSittStamtree();
+					x.dybde = _dybde - 1;
+					x.hundId = hundMor.hundId;
+					
+					stamtree.addChildAt(x, stamtree.numChildren);
+				}
+			}
+			
+			private function farResultat(event:Object):void
+			{
+				hundFar = event as Hund;
+				
+				if (hundFar != null && hundFar.navn != null && _dybde != 1)
+				{
+					var x:ToreSittStamtree = new ToreSittStamtree();
+					x.dybde = _dybde - 1;
+					x.hundId = hundFar.hundId;
+					
+					stamtree.addChildAt(x, 0);
+				}
+			}
+			
+			private function visHund(event:Event):void
+			{
+				Components.instance.controller.visHund(_hundId);
+			}
+			
+			private function mouseOver(event:Event):void
+			{
+				this.setStyle("backgroundColor", "#E7E9D1");
+			}
+			
+			private function mouseOut(event:Event):void
+			{
+				this.setStyle("backgroundColor", null);
+			}
+        ]]>
+    </mx:Script>
+	<mx:HBox verticalAlign="middle">
+		<mx:Button label="{hund.navn}" width="250" click="visHund(event)" mouseOver="mouseOver(event)" mouseOut="mouseOut(event)" />
+		<mx:VBox id="stamtree">
+		</mx:VBox>
+	</mx:HBox>
+</mx:VBox>
