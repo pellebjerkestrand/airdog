@@ -82,11 +82,6 @@ package no.airdog.controller
 		
 		public function loggUt():void
 		{
-			Components.instance.services.airdogService.loggUt(loggUtResultat);
-		}
-		
-		public function loggUtResultat(event:Object):void
-		{
 			Components.instance.session.bruker.epost = "";
 			Components.instance.session.bruker.passord = "";
 			Components.instance.session.bruker.innlogget = false;
@@ -95,6 +90,8 @@ package no.airdog.controller
 			Components.instance.session.bruker.klubber = null;
 			Components.instance.session.bruker.sattKlubb = "";
 			Components.instance.session.bruker.sattKlubbId = "";
+			
+			Components.instance.services.airdogService.loggUt(new Function());
 		}
 		
 		public function lastOppDatFil():void
