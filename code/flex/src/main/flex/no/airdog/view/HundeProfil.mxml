@@ -7,7 +7,14 @@
 	
 	<mx:Script>
         <![CDATA[
-			import no.airdog.services.Components;         
+			import no.airdog.services.Components;  
+			import mx.controls.Alert; 
+			
+			private function redigert(event:Event):void
+            {
+                Alert.show("Endret tekst til: " + event.target.text);
+            }
+      
             
         ]]>
     </mx:Script>
@@ -18,39 +25,50 @@
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
 			<mx:VBox>				
 				<mx:Text id="navn" fontSize="30" text="{Components.instance.session.hundprofil.navn}" />
-				<mx:HBox>	
+					
+						
+				<mx:HBox>						
 					<mx:VBox>					
-						<mx:Label text="Tittel:"/>
-						<mx:Label text="Far:"/>
-						<mx:Label text="Mor:"/>
-						<mx:Label text="Kull:"/>
-					</mx:VBox>	
-					<mx:VBox>					
-						<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" />
 						<mx:HBox>
-							<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" />
-							<mx:Text id="farId" text="{Components.instance.session.hundprofil.farId}" />
+							<mx:Label text="Tittel:"/>
+							<view:LabelEditor id="tittel" text="{Components.instance.session.hundprofil.tittel}" change="redigert(event);" styleName="labelEditorStyle"/>
 						</mx:HBox>
 						<mx:HBox>
-							<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
-							<mx:Text id="morId" text="{Components.instance.session.hundprofil.morId}" />
+							<mx:Label text="Navn:"/>
+							<view:LabelEditor text="{Components.instance.session.hundprofil.navn}" change="redigert(event);" styleName="labelEditorStyle"/>														
+							
+							
 						</mx:HBox>
-						<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
+						<mx:HBox>
+							<mx:Label text="Eier:"/>
+							<view:LabelEditor id="eier" text="{Components.instance.session.hundprofil.eier}" change="redigert(event);" styleName="labelEditorStyle"/>							
+						</mx:HBox>
 					</mx:VBox>
 					<mx:VBox>
 						<mx:HBox>
 							<mx:Label text="Viltfinnerevne:"/>
-							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />
+							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.eier}" />							
 						</mx:HBox>
-						<mx:HBox>
-							<mx:Label text="Farge:"/>
-							<mx:Text id="farge" text="{Components.instance.session.hundprofil.vf}" />
-						</mx:HBox>
-					</mx:VBox>
+						<mx:VBox>
+							<mx:HBox>
+								<mx:Label text="Far: "/>
+								<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" />
+								<mx:Text id="farId" text="({Components.instance.session.hundprofil.farId})" />
+							</mx:HBox>							
+							<mx:HBox>
+								<mx:Label text="Mor: "/>
+								<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
+								<mx:Text id="morId" text="({Components.instance.session.hundprofil.morId})" />	
+							</mx:HBox>
+							<mx:HBox>
+								<mx:Label text="Kull: "/>						
+								<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
+							</mx:HBox>
+						</mx:VBox>		
+											
+					</mx:VBox>					
 				</mx:HBox>
 			</mx:VBox>
-		
-
 		</mx:HBox>
 		
         <mx:TabNavigator id="tn" 

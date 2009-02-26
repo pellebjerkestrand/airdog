@@ -39,7 +39,7 @@ Application
 {
 	backgroundColor: #FCFAE6;
 	verticalAlign: top;
-	borderThickness: 3;
+	borderThickness: 4;
 	borderColor: #aabbaa;
 	borderStyle: solid;	
 }
@@ -119,3 +119,12 @@ Button.SokKnapp
 {
 	icon: "@Embed(source='assets/magnifier.png')";
 }
+
+.labelEditorStyle {
+    cornerRadius: 0;
+    backgroundColor: #FFFFFF;
+    border-style: none;
+    backgroundAlpha: 0;
+    textAlign: left;
+}
+

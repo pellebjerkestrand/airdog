@@ -75,8 +75,8 @@
 		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
-	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/magnifier.png')"/>
-	   			<mx:LinkButton label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny"/>
+	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
+	   			<mx:LinkButton label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
 				<mx:LinkButton label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
