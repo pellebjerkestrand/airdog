@@ -1,4 +1,6 @@
 <?php
+require_once "ImportParserController.php";
+
 if (isset($_FILES['Filedata'])) 
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
@@ -12,7 +14,6 @@ if (isset($_FILES['Filedata']))
 	
 	$fil_stien = $upload_dir.$fil_navn;
 
-	//Fjerner søppel
 	$fil_navn = str_replace("\\","",$fil_navn);
 	$fil_navn = str_replace("'","",$fil_navn);
 	
@@ -20,12 +21,13 @@ if (isset($_FILES['Filedata']))
 	{
 	    move_uploaded_file($temp_navn, $fil_stien);
 	    
-	    //Flex med alle browsere utenom IE har en bug der ekstern fil må returnere noe for å trigge event
-	    echo "Filen ble lagt opp til: $fil_stien";
+	    $ip = new importParserController();
+	    echo $ip->lagreDb($fil_stien);
+	    
+	    
 	}
 }
 else
 {
 	echo "Denne filen skal du ikke gå direkte til";
 }
-?>

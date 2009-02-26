@@ -10,10 +10,11 @@ require_once 'parser/PremieParser.php';
 require_once 'parser/UtstillingParser.php';
 require_once 'parser/VeterinerParser.php';
 require_once 'parser/AasykdomParser.php';
+require_once 'parser/OyesykdomParser.php';
 
 class FilvaliderController
 {
-	public function FilvaliderController()
+	public function __construct()
 	{
 	}
 	
@@ -42,6 +43,9 @@ class FilvaliderController
 		
 		$ep = new OppdrettParser();
 		if ($ep->validerOppdrettliste($innhold)) { return "Oppdrett"; }
+		
+		$ep = new OyesykdomParser();
+		if ($ep->validerOyesykdomliste($innhold)) { return "Oyesykdom"; }
 		
 		$ep = new PersonParser();
 		if ($ep->validerPersonliste($innhold)) { return "Person"; }
