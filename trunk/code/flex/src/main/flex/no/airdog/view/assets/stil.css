@@ -57,11 +57,11 @@ VBox.MainView
 	backgroundColor: #D3D4AA;
 }
 
-Button.UnderMeny
+.UnderMeny
 {
 	textRollOverColor: #901808;
 	color: #0054A2;
-	fillColors: #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF;
+	textDecoration: underline;
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
 	leading: 0;
@@ -70,7 +70,6 @@ Button.UnderMeny
 	paddingBottom: 2;
 	paddingLeft: 5;
 	paddingRight: 5;
-	fillAlphas: 0.83, 0.41, 1.0, 1.0;
 	horizontalGap: 2;
 	borderColor: #FFFFFF;
 }
