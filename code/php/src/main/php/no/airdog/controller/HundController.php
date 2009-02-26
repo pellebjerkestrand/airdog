@@ -1,4 +1,5 @@
 <?php
+require_once "no/airdog/model/AmfGenerell.php";
 require_once "no/airdog/model/AmfHund.php";
 require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/model/AmfJaktprove.php";
@@ -12,11 +13,11 @@ class HundController
 		$this->stamtre = array();
 	}
 
-	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
-    {
+	public function sokHund(AmfGenerell $sok)
+    {	
     	$hd = new HundDatabase();
-    	$resultat = $hd->sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId);
-
+    	$resultat = $hd->sokHund($sok->verdi, $sok->epost, $sok->passord, $sok->sattKlubbId);
+		
     	$ret = array();
     	
 	   	foreach($resultat as $rad)
