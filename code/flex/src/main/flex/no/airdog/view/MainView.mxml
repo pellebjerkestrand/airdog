@@ -70,25 +70,24 @@
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox id="admintab" label="Admin">
-				<mx:Button label="Brukere" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
-				<mx:Button label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__exclamation.png')"/>
-		 		<mx:Button label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')">
-		 		</mx:Button>
+				<mx:LinkButton label="Brukere" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
+				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__exclamation.png')"/>
+		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
-	   			<mx:Button label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny"/>
-	   			<mx:Button label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny"/>
-				<mx:Button label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
+	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/magnifier.png')"/>
+	   			<mx:LinkButton label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny"/>
+				<mx:LinkButton label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
-	  			<mx:Button label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
-	  			<mx:Button label="Div2" styleName="UnderMeny"/>
-	  			<mx:Button label="Div3" styleName="UnderMeny"/>
-	  			<mx:Button label="Div4" styleName="UnderMeny"/>
-	  			<mx:Button label="Div5" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Div2" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Div3" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Div4" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Div5" styleName="UnderMeny"/>
 	  		</mx:HBox>
 	  		<mx:HBox id="devtab" label="Development">
-	  			<mx:Button label="ACL" click="visACL()"/>
+	  			<mx:LinkButton label="ACL" click="visACL()"/>
 	  		</mx:HBox>
 		</mx:TabNavigator>
 			  
