@@ -28,8 +28,8 @@
         ]]>
     </mx:Script>
 	<mx:HBox>
-			<mx:LinkButton label="Liste med bilde" color="0x3380DD" textDecoration="underline" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/key__plus.png')"/>
-			<mx:LinkButton label="Liste uten bilde" color="0x3380DD" textDecoration="underline" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
+			<mx:LinkButton label="Liste med bilde" color="0x3380DD" textDecoration="underline" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
+			<mx:LinkButton label="Liste uten bilde" color="0x3380DD" textDecoration="underline" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
 	</mx:HBox>
 	<mx:DataGrid id="hundeGrid"			
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
