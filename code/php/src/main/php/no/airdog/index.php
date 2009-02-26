@@ -27,7 +27,6 @@ $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
 $server->setClassMap("AmfJaktprove", "AmfJaktprove");
 $server->setClassMap("AmfBruker","AmfBruker");
-$server->setClassMap("AmfGenerell","AmfGenerell");
 
 //Bytt til true når det skal lanseres
 $server->setProduction(false);
