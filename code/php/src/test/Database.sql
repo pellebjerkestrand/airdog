@@ -103,7 +103,7 @@ CREATE TABLE `ad_rettighet` (
 -- Dumping data for table `ad_rettighet`
 --
 
-INSERT INTO `ad_rettighet` VALUES('lese', 'Utf�re handlinger som ikke endrer p� databasen');
+INSERT INTO `ad_rettighet` VALUES('lese', 'Utf¯re handlinger som ikke endrer pÂ databasen');
 
 -- --------------------------------------------------------
 
@@ -369,15 +369,15 @@ CREATE TABLE `nkk_hund` (
 --
 
 INSERT INTO `nkk_hund` VALUES(348, 'kullid', '1337', 'tittel', 'Rocky', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, '', 'asaa', 'tittel', 'en hund�', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` VALUES(348, '', 'asaa', 'tittel', 'en hundå', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'enMor', 'tittel', 'mor sitt navn', '1337', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'enFar', 'tittel', 'Hancock', 'far', 'mor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', 'C', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'hms', 'tittel', 'hund nr 2', 'enFar', 'enMor', '12432', 'gr?nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 INSERT INTO `nkk_hund` VALUES(348, '', 'asaas', 'tittel', 'en hund3', '', 'enMor', '12432', 'gr?nn', 'bl', '', 'A', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'far', 'tittel', 'far', '', '', '12432', 'gr�nn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', '�se', 'tittel', '�se', '�semor', '�sefar', '12432', 'gr�nn', 'nl', '', 'B', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
-INSERT INTO `nkk_hund` VALUES(348, 'kullid', '���', 'tittel', '���', '�se', '�se', '12432', 'gr�nn', 'nl', '', 'B', '', '', '', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'far', 'tittel', 'far', '', '', '12432', 'grønn', 'bl', '', '', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'åse', 'tittel', 'åse', 'åsemor', 'åsefar', '12432', 'grønn', 'nl', '', 'B', '', '', 'H', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `nkk_hund` VALUES(348, 'kullid', 'æøå', 'tittel', 'æøå', 'åse', 'åse', '12432', 'grønn', 'nl', '', 'B', '', '', '', 'eierId', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -623,25 +623,25 @@ CREATE TABLE `test` (
 -- Dumping data for table `test`
 --
 
-INSERT INTO `test` VALUES('̴', '�', '', '');
-INSERT INTO `test` VALUES('̴', '�', '', '');
-INSERT INTO `test` VALUES('̴', '�', '''̴''', '');
-INSERT INTO `test` VALUES('̴', '�', '''̴''', '`̴`');
-INSERT INTO `test` VALUES('̴', '&#229;', '''̴''', '`̴`');
+INSERT INTO `test` VALUES('Ã¥', 'Œ', '', '');
+INSERT INTO `test` VALUES('Ã¥', 'Œ', '', '');
+INSERT INTO `test` VALUES('Ã¥', 'Œ', '''Ã¥''', '');
+INSERT INTO `test` VALUES('Ã¥', 'Œ', '''Ã¥''', '`Ã¥`');
+INSERT INTO `test` VALUES('Ã¥', '&#229;', '''Ã¥''', '`Ã¥`');
 INSERT INTO `test` VALUES('', '&#229;', '''''', '``');
 INSERT INTO `test` VALUES('', '&#229;', '''''', '``');
-INSERT INTO `test` VALUES('̴', '&#229;', '''̴''', '`̴`');
-INSERT INTO `test` VALUES('̴', '&#229;', '''̴''', '`̴`');
-INSERT INTO `test` VALUES('̴', '&#229;', '0', '`̴`');
-INSERT INTO `test` VALUES('̴', '&#229;', '''̴''', '`̴`');
-INSERT INTO `test` VALUES('�', '&#229;', '''�''', '`�`');
-INSERT INTO `test` VALUES('en hund�', '&#229;', '''en hund�''', '`en hund�`');
-INSERT INTO `test` VALUES('en hund�', '&#229;', '''DROP table droppes''', '`en hund�`');
-INSERT INTO `test` VALUES('DROP table droppes', '&#229;', '''DROP table droppes''', '`en hund�`');
-INSERT INTO `test` VALUES(';DROP table droppes', '&#229;', ''';DROP table droppes''', '`en hund�`');
-INSERT INTO `test` VALUES('x''; DROP TABLE dropper; --', '&#229;', '''x\\''; DROP TABLE dropper; --''', '`en hund�`');
-INSERT INTO `test` VALUES('x''; DROP TABLE droppes; --', '&#229;', '''x\\''; DROP TABLE droppes; --''', '`en hund�`');
-INSERT INTO `test` VALUES('x''; DROP TABLE droppes; --', '&#229;', '''x\\''; DROP TABLE droppes; --''', '`en hund�`');
-INSERT INTO `test` VALUES('x''; DROP TABLE `droppes`; --', '&#229;', '''x\\''; DROP TABLE `droppes`; --''', '`�`');
-INSERT INTO `test` VALUES('x''; DROP TABLE `test`; --', '&#229;', '''x\\''; DROP TABLE `test`; --''', '`�`');
-INSERT INTO `test` VALUES('�', '&#229;', '''x\\''; DROP TABLE `test`; --''', '`�`');
+INSERT INTO `test` VALUES('Ã¥', '&#229;', '''Ã¥''', '`Ã¥`');
+INSERT INTO `test` VALUES('Ã¥', '&#229;', '''Ã¥''', '`Ã¥`');
+INSERT INTO `test` VALUES('Ã¥', '&#229;', '0', '`Ã¥`');
+INSERT INTO `test` VALUES('Ã¥', '&#229;', '''Ã¥''', '`Ã¥`');
+INSERT INTO `test` VALUES('å', '&#229;', '''å''', '`å`');
+INSERT INTO `test` VALUES('en hundå', '&#229;', '''en hundå''', '`en hundå`');
+INSERT INTO `test` VALUES('en hundå', '&#229;', '''DROP table droppes''', '`en hundå`');
+INSERT INTO `test` VALUES('DROP table droppes', '&#229;', '''DROP table droppes''', '`en hundå`');
+INSERT INTO `test` VALUES(';DROP table droppes', '&#229;', ''';DROP table droppes''', '`en hundå`');
+INSERT INTO `test` VALUES('x''; DROP TABLE dropper; --', '&#229;', '''x\\''; DROP TABLE dropper; --''', '`en hundå`');
+INSERT INTO `test` VALUES('x''; DROP TABLE droppes; --', '&#229;', '''x\\''; DROP TABLE droppes; --''', '`en hundå`');
+INSERT INTO `test` VALUES('x''; DROP TABLE droppes; --', '&#229;', '''x\\''; DROP TABLE droppes; --''', '`en hundå`');
+INSERT INTO `test` VALUES('x''; DROP TABLE `droppes`; --', '&#229;', '''x\\''; DROP TABLE `droppes`; --''', '`å`');
+INSERT INTO `test` VALUES('x''; DROP TABLE `test`; --', '&#229;', '''x\\''; DROP TABLE `test`; --''', '`å`');
+INSERT INTO `test` VALUES('å', '&#229;', '''x\\''; DROP TABLE `test`; --''', '`å`');
