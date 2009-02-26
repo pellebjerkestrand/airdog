@@ -171,14 +171,14 @@ package no.airdog.controller
 			Components.instance.session.bruker.rettigheter = new ArrayCollection(event as Array);
 		}
 		
-		public function hentStamtre(hundId:String):void
+		public function hentStamtre(hundId:String, dybde:int):void
 		{
-			Components.instance.services.airdogService.hentStamtre(hundId, hentStamtreResultat);
+			Components.instance.services.airdogService.hentStamtre(hundId, dybde, hentStamtreResultat);
 		}
 		
 		public function hentStamtreResultat(event:Object):void
 		{
-			Components.instance.session.stamtre = new ArrayCollection(event as Array);
+			Components.instance.session.stamtre = event as Hund;
 		}
 	}
 }
