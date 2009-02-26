@@ -87,7 +87,7 @@
 	  			<mx:LinkButton label="Div5" styleName="UnderMeny"/>
 	  		</mx:HBox>
 	  		<mx:HBox id="devtab" label="Development">
-	  			<mx:LinkButton label="ACL" click="visACL()"/>
+	  			<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()"/>
 	  		</mx:HBox>
 		</mx:TabNavigator>
 			  
