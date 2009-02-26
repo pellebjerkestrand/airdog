@@ -170,5 +170,15 @@ package no.airdog.controller
 		{
 			Components.instance.session.bruker.rettigheter = new ArrayCollection(event as Array);
 		}
+		
+		public function hentStamtre(hundId:String):void
+		{
+			Components.instance.services.airdogService.hentStamtre(hundId, hentStamtreResultat);
+		}
+		
+		public function hentStamtreResultat(event:Object):void
+		{
+			Components.instance.session.stamtre = new ArrayCollection(event as Array);
+		}
 	}
 }

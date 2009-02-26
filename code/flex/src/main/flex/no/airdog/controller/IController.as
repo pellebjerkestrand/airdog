@@ -16,5 +16,6 @@ package no.airdog.controller
 		function visHund(hundId:String):void
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
+		function hentStamtre(hundId:String):void
 	}
 }
