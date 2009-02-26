@@ -93,7 +93,7 @@ class HundDatabase
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
+		{	
 			$select = $this->database->select()
 			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
 			'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
@@ -102,13 +102,14 @@ class HundDatabase
 			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
 			->group('h.hundId')
 			->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"')
+//			propesed fix for æøå. doesn't work:(
+//			->where('h.navn LIKE ? OR h.hundId LIKE ?', array($soketekst, $soketekst))
 			->where('h.raseId=?', $klubbId);
 	
 			return $this->database->fetchAll($select);
 		}
 		
 		return null;				
-
 	}
 	
 	public function sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)

@@ -1,5 +1,6 @@
 package no.airdog.services
 {
+	import no.airdog.model.AmfGenerell;
 	import no.airdog.model.Bruker;
 	  
 	public class AirdogService extends AbstraktServiceobjekt
@@ -9,14 +10,9 @@ package no.airdog.services
         	callServiceFunction(service.loggInn(bruker), resultat, feil);
         }
         
-        public function sokHund(soketekst:String, resultat:Function, feil:Function=null):void
+        public function sokHund(sok:AmfGenerell, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.sokHund(
-        		soketekst,
-        		Components.instance.session.bruker.epost,
-    			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
-			resultat, feil);
+        	callServiceFunction(service.sokHund(sok), resultat, feil);
         }
         
         public function hentAvkom(hundId:String, resultat:Function, feil:Function=null):void
