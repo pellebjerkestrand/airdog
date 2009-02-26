@@ -2,7 +2,7 @@
 
 class EierParser
 {
-	public function EierParser()
+	public function __construct()
 	{
 	}
 	
