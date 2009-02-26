@@ -102,21 +102,12 @@ package no.airdog.controller
 		
 		public function sokHund(soketekst:String):void
 		{
-			var sok:AmfGenerell = new AmfGenerell();
-			
-			sok.verdi = soketekst;
-			sok.passord = Components.instance.session.bruker.passord;
-			sok.epost = Components.instance.session.bruker.epost;
-			sok.sattKlubbId = Components.instance.session.bruker.sattKlubbId;
-			
-			Components.instance.services.airdogService.sokHund(sok, hundesokResultat);
+			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
 		}
 		
 		public function hundesokResultat(event:Object):void
 		{
 			Components.instance.session.hundesokListe.provider = new ArrayCollection(event as Array);
-//			var h:AmfGenerell = event as AmfGenerell;
-//			Alert.show(h.verdi, "debug", 0);
 		}
 		
 		public function hentAvkom(hundId:String):void

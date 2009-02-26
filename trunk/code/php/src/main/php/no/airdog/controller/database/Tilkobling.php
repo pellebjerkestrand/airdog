@@ -25,6 +25,8 @@ class Tilkobling
 			'username' => $this->dbBrukernavn,
 			'password' => $this->dbPassord));
 			
+			$database->query('SET NAMES UTF8');
+			
 			return $database;
 		}
 		catch ( Zend_database_Exception $e)

@@ -93,7 +93,16 @@ class HundDatabase
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{	
+		{ 
+						
+//			$soketeskt2 = "x'; DROP TABLE `test`; --";
+//			$n = array();
+//			$n["navn"] = $soketekst;
+//			$n["navnQ"] = "&#229;";
+//			$n["navnQu"] = $this->database->quoteInto('?', $soketeskt2, "STRING");
+//			$n["navnQuo"] = $this->database->quoteIdentifier($soketekst);
+//			$this->database->insert('test', $n);
+			
 			$select = $this->database->select()
 			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
 			'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
@@ -101,15 +110,15 @@ class HundDatabase
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
 			->group('h.hundId')
-			->where('h.navn LIKE "%'.$soketekst.'%" OR h.hundId LIKE "%'.$soketekst.'%"')
-//			propesed fix for æøå. doesn't work:(
-//			->where('h.navn LIKE ? OR h.hundId LIKE ?', array($soketekst, $soketekst))
+			->where('h.navn LIKE "%"?"%"', $soketekst)
+			->orWhere('h.hundId LIKE "%"?"%"', $soketekst)
 			->where('h.raseId=?', $klubbId);
 	
 			return $this->database->fetchAll($select);
 		}
 		
 		return null;				
+
 	}
 	
 	public function sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
