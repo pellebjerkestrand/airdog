@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" xmlns:view="no.airdog.view.*" horizontalAlign="center" verticalAlign="middle" cornerRadius="0">
+	<mx:Script>
+        <![CDATA[
+        	import mx.core.UIComponent;
+        	import no.airdog.model.Hund;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			
+			import mx.controls.*;
+			
+			private var _hundId:String;
+			private var _dybde:int;
+			
+			public function set hundId(val:String):void
+			{
+				_hundId = val;
+				
+				if (_dybde != 0 && _hundId != null)
+				{
+					hentHund();
+				}
+			}   
+			
+			public function set dybde(val:int):void
+			{
+				_dybde = val;
+				
+				if (_hundId != null)
+				{
+					hentHund();
+				}
+			}        
+			
+			private function hentHund():void
+			{
+				Components.instance.controller.hentStamtre(_hundId, _dybde);
+			}
+        ]]>
+    </mx:Script>
+    <view:StamtreHund hund="{Components.instance.session.stamtre}"/>
+</mx:HBox>

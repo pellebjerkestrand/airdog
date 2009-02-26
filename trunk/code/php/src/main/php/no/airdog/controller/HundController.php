@@ -7,8 +7,6 @@ require_once "no/airdog/controller/database/KullDatabase.php";
 
 class HundController
 {
-	private $stamtre;
-	
 	public function __construct()
 	{
 		$this->stamtre = array();
@@ -72,59 +70,29 @@ class HundController
         return $tmp;
     }
     
-    public function hentStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    public function hentStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	$this->lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId);
-    	
-    	$hd = new HundDatabase();
-    	
-    	return $this->stamtre;
+    	return $this->lagStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId);
     }
     
-    public function lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    public function lagStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	
-		$rad = $this->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
+		$hund = $this->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
 				
-		if($rad)
+		if($hund && $dybde > 0)
 		{	
-			//$this->stamtre[] = $rad;
-			
-			if($rad->farId)
+			if($hund->farId)
 			{
-				$far = $this->hentHund($rad->farId, $brukerEpost, $brukerPassord, $klubbId);
-			}
-			else
-			{
-				$far = null;
-			}
-			if($rad->farId)
-			{
-				$mor = $this->hentHund($rad->morId, $brukerEpost, $brukerPassord, $klubbId);
-			}
-			else
-			{
-				$mor = null;
-			}
-			
-			if($far)
-			{	
-				$this->stamtre[] = $far;
-				$this->lagStamtre($rad->farId, $brukerEpost, $brukerPassord, $klubbId);
+				$hund->far = $this->lagStamtre($hund->farId, $dybde - 1, $brukerEpost, $brukerPassord, $klubbId);
 			}
 
-			if($mor)
-			{	
-				$this->stamtre[] = $mor;
-				$this->lagStamtre($rad->morId, $brukerEpost, $brukerPassord, $klubbId);
+			if($hund->morId)
+			{
+				$hund->mor = $this->lagStamtre($hund->morId, $dybde - 1, $brukerEpost, $brukerPassord, $klubbId);
 			}
-			
-			return;
 		}
-		else
-		{
-			return;
-		}
+		
+		return $hund;
     }
     
     public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)

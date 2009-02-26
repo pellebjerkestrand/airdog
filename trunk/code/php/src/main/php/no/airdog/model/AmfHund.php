@@ -28,4 +28,7 @@ class AmfHund
 	 public $rev;
 	 public $sam;
 	 public $bestPl;
+	 
+	 public $mor;
+	 public $far;
 }

@@ -31,5 +31,8 @@ package no.airdog.model
 		public var rev : String;
 		public var sam : String;
 		public var bestPl : String;
+		
+		public var mor : Hund;
+		public var far : Hund;
 	}
 }
