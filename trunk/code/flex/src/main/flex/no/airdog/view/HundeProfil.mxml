@@ -18,21 +18,33 @@
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
 			<mx:VBox>				
 				<mx:Text id="navn" fontSize="30" text="{Components.instance.session.hundprofil.navn}" />
-				<mx:HBox>				
+				<mx:HBox>	
 					<mx:VBox>					
+						<mx:Label text="Tittel:"/>
+						<mx:Label text="Far:"/>
+						<mx:Label text="Mor:"/>
+						<mx:Label text="Kull:"/>
+					</mx:VBox>	
+					<mx:VBox>					
+						<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" />
 						<mx:HBox>
-							<mx:Label text="Tittel:"/>
-							<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" />
+							<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" />
+							<mx:Text id="farId" text="{Components.instance.session.hundprofil.farId}" />
 						</mx:HBox>
 						<mx:HBox>
-							<mx:Label text="Eier:"/>
-							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}" />
+							<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
+							<mx:Text id="morId" text="{Components.instance.session.hundprofil.morId}" />
 						</mx:HBox>
+						<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
 					</mx:VBox>
 					<mx:VBox>
 						<mx:HBox>
 							<mx:Label text="Viltfinnerevne:"/>
-							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.eier}" />
+							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />
+						</mx:HBox>
+						<mx:HBox>
+							<mx:Label text="Farge:"/>
+							<mx:Text id="farge" text="{Components.instance.session.hundprofil.vf}" />
 						</mx:HBox>
 					</mx:VBox>
 				</mx:HBox>
