@@ -68,52 +68,63 @@ class HundController
 		$tmp->rase = $rad["raseId"];
 		$tmp->kullId = $rad["kullId"];
 		$tmp->vf = sprintf("%.1f", $rad["vf"]);
-		$ret[] = $tmp;
 			
         return $tmp;
     }
     
     public function hentStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId);
+    	$this->lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId);
+    	
+    	$hd = new HundDatabase();
     	
     	return $this->stamtre;
     }
     
     public function lagStamtre($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-		$hd = new HundDatabase();	
-		$utgangspunkt = $hd->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
-		
-		if($utgangspunkt)
+    	
+		$rad = $this->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
+				
+		if($rad)
 		{	
-			$far = $hd->hentHund($utgangspunkt['hundFarId'], $brukerEpost, $brukerPassord, $klubbId);
-			$mor = $hd->hentHund($utgangspunkt['hundMorId'], $brukerEpost, $brukerPassord, $klubbId);
+			//$this->stamtre[] = $rad;
 			
-			if($far)
+			if($rad->farId)
 			{
-				$this->stamtre[] = $far;
-				lagStamtre($utgangspunkt['hundFarId'], $brukerEpost, $brukerPassord, $klubbId);
+				$far = $this->hentHund($rad->farId, $brukerEpost, $brukerPassord, $klubbId);
 			}
 			else
 			{
-				$this->stamtre[] = null;
+				$far = null;
+			}
+			if($rad->farId)
+			{
+				$mor = $this->hentHund($rad->morId, $brukerEpost, $brukerPassord, $klubbId);
+			}
+			else
+			{
+				$mor = null;
+			}
+			
+			if($far)
+			{	
+				$this->stamtre[] = $far;
+				$this->lagStamtre($rad->farId, $brukerEpost, $brukerPassord, $klubbId);
 			}
 
 			if($mor)
-			{
+			{	
 				$this->stamtre[] = $mor;
-				lagStamtre($utgangspunkt['hundMorId'], $brukerEpost, $brukerPassord, $klubbId);
-			}
-			else
-			{
-				$this->stamtre[] = null;
+				$this->lagStamtre($rad->morId, $brukerEpost, $brukerPassord, $klubbId);
 			}
 			
 			return;
 		}
-		
-		return;
+		else
+		{
+			return;
+		}
     }
     
     public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)

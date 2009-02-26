@@ -27,5 +27,8 @@ package no.airdog.model
         
         [Bindable]
         public var bruker:Bruker = new Bruker(); 
+        
+        [Bindable]
+        public var stamtre:ArrayCollection = new ArrayCollection();
 	}
 }
