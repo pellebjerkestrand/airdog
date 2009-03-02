@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" paddingLeft="4" paddingRight="4">
+	<mx:Script>
+        <![CDATA[
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+		
+			public function sok():void
+			{
+				Components.instance.controller.sokArsgjennomsnitt(hundNavn.text, hundAr.text);
+			}
+        ]]>
+    </mx:Script>
+    
+    <mx:VBox >
+    	<mx:HBox>
+    		<mx:Label text="Hund" width="50"/>
+    		<mx:TextInput id="hundNavn" enter="sok()"/>
+    	</mx:HBox>
+    	<mx:HBox>
+    		<mx:Label text="År" width="50"/>
+    		<mx:TextInput id="hundAr" enter="sok()"/>
+    	</mx:HBox>
+    	<mx:Button label="Søk" click="sok()"/>
+    </mx:VBox>
+	<mx:DataGrid paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
+		dataProvider="{Components.instance.session.arsgjennomsnitt}" verticalAlign="middle">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Huid" dataField="hundId"/>
+			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
+			<mx:DataGridColumn headerText="Far" dataField="hundFarNavn"/>
+			<mx:DataGridColumn headerText="Mor" dataField="hundMorNavn"/>
+			<mx:DataGridColumn headerText="Starter" width="60" textAlign="right" dataField="starter"/>
+			<mx:DataGridColumn headerText="Beste pl" width="70" textAlign="right" dataField="bestePl"/>
+			<mx:DataGridColumn headerText="ES" width="40" textAlign="right" dataField="es"/>
+			<mx:DataGridColumn headerText="MS" width="40" textAlign="right" dataField="ms"/>
+			<mx:DataGridColumn headerText="VF" width="40" textAlign="right" dataField="vf"/>
+			<mx:DataGridColumn headerText="ESø" width="40" textAlign="right" dataField="eso"/>
+			<mx:DataGridColumn headerText="MSø" width="40" textAlign="right" dataField="mso"/>
+			<mx:DataGridColumn headerText="TS" width="40" textAlign="right" dataField="ts"/>
+			<mx:DataGridColumn headerText="JL" width="40" textAlign="right" dataField="jl"/>
+			<mx:DataGridColumn headerText="Fa" width="40" textAlign="right" dataField="fa"/>
+			<mx:DataGridColumn headerText="St" width="40" textAlign="right" dataField="st"/>
+			<mx:DataGridColumn headerText="Ss" width="40" textAlign="right" dataField="ss"/>
+			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="sb"/>
+			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="rv"/>
+			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="sa"/>
+		</mx:columns>
+	</mx:DataGrid>	
+</mx:VBox>

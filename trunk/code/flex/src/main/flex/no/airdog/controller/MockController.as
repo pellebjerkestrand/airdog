@@ -91,6 +91,8 @@ package no.airdog.controller
 			Components.instance.session.bruker.sattKlubb = "";
 			Components.instance.session.bruker.sattKlubbId = "";
 			
+			Components.instance.session.hovedNavigasjon.nr = 1;
+			
 			Components.instance.services.airdogService.loggUt(new Function());
 		}
 		
@@ -180,6 +182,17 @@ package no.airdog.controller
 		{
 			Components.instance.session.stamtre = event as Hund;
 		}
+		
+		public function sokArsgjennomsnitt(hund:String, ar:String):void
+		{
+			Components.instance.services.airdogService.sokArsgjennomsnitt(hund, ar, sokArsgjennomsnittResultat);
+		}
+		
+		public function sokArsgjennomsnittResultat(event:Object):void
+		{
+			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
+		}
+		
 		
 		public function lagreJaktprove(jaktprove:Jaktprove):void
 		{

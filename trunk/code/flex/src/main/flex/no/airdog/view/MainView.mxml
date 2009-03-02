@@ -50,9 +50,15 @@
             	Navigasjon.visACL();
             }
             
+            public function visArsgjennomsnitt():void
+            {
+            	Navigasjon.visArsgjennomsnitt();
+            }
+            
             private function innloggingSprettOppVindu():void
             {
             	Components.instance.controller.loggUt();
+            	tabs.selectedIndex = 1;
             	Components.instance.controller.visLoggInnVindu(this);
             }
         ]]>
@@ -81,7 +87,7 @@
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
 	  			<mx:LinkButton label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
-	  			<mx:LinkButton label="Div2" styleName="UnderMeny"/>
+	  			<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()"/>
 	  			<mx:LinkButton label="Div3" styleName="UnderMeny"/>
 	  			<mx:LinkButton label="Div4" styleName="UnderMeny"/>
 	  			<mx:LinkButton label="Div5" styleName="UnderMeny"/>
@@ -99,6 +105,7 @@
 	    <view:HundeProfil/>
 	    <view:Admin_Roller/>
 	    <view:Dev_ACL/>
+	    <view:Arsgjennomsnitt/>
     </mx:ViewStack>
 </mx:VBox>
 	
