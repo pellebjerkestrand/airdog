@@ -1,6 +1,7 @@
 package no.airdog.services
 {
 	import no.airdog.model.Bruker;
+	import no.airdog.model.Hund;
 	import no.airdog.model.Jaktprove;
 	  
 	public class AirdogService extends AbstraktServiceobjekt
@@ -94,9 +95,14 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
-        public function redigerHund():void
+        public function redigerHund(hund:Hund, resultat:Function, feil:Function=null):void
         {
-        	
+        	callServiceFunction(service.redigerHund(
+        		hund,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);        	
         }
         
         
@@ -118,8 +124,7 @@ package no.airdog.services
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),
-        	resultat, feil);
-        	
+        	resultat, feil);        	
         }
 	}
 }

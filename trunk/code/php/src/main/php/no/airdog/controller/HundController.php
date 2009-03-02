@@ -68,6 +68,45 @@ class HundController
         return $tmp;
     }
     
+    public function redigerHund(AmfHund $hund, $brukerEpost, $brukerPassord, $klubbId)
+    {
+    	$ret = array();
+    	$ret['hundId'] = $hund->hundId;
+    	$ret['tittel'] = $hund->tittel; 
+    	$ret['navn'] = $hund->navn; 
+    	$ret['bilde'] = $hund->bilde; 
+    	$ret['morId'] = $hund->morId; 
+    	$ret['morNavn'] = $hund->morNavn; 
+    	$ret['farId'] = $hund->farNavn; 
+    	$ret['oppdretterId'] = $hund->oppdretterId; 
+    	$ret['oppdretter'] = $hund->oppdretter; 
+    	$ret['eierId'] = $hund->eierId; 
+    	$ret['eier'] = $hund->eier; 
+    	$ret['kjonn'] = $hund->kjonn; 
+    	$ret['rase'] = $hund->rase; 
+    	$ret['kullId'] = $hund->kullId; 
+    	
+    	$ret['idNr'] = $hund->IdNr; 
+    	$ret['hq'] = $hund->hq; 
+    	$ret['hd'] = $hund->hd;
+    	$ret['start'] = $hund->start; 
+    	$ret['jl'] = $hund->jl; 
+    	$ret['vf'] = $hund->vf; 
+    	$ret['selv'] = $hund->selv; 
+    	$ret['sok'] = $hund->sok; 
+    	$ret['rev'] = $hund->rev; 
+    	$ret['sam'] = $hund->sam;
+    	$ret['bestPl'] = $hund->bestPl; 
+    	
+    	$ret['mor'] = $hund->mor;
+    	$ret['far'] = $hund->far;    	
+    	
+    	$hd = new HundDatabase();
+    	$resultat = $hd->redigerHund($ret, $brukerEpost, $brukerPassord, $klubbId);
+    	
+    	return $resultat;
+    }
+    
     public function hentStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
     	return $this->lagStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId);
