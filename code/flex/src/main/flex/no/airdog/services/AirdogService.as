@@ -1,5 +1,7 @@
 package no.airdog.services
 {
+	import flash.events.FullScreenEvent;
+	
 	import no.airdog.model.Bruker;
 	import no.airdog.model.Jaktprove;
 	  
@@ -93,6 +95,10 @@ package no.airdog.services
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
+        }
+        public function redigerHund():void
+        {
+        	
         }
         
         
