@@ -1,7 +1,5 @@
 package no.airdog.services
 {
-	import flash.events.FullScreenEvent;
-	
 	import no.airdog.model.Bruker;
 	import no.airdog.model.Jaktprove;
 	  
@@ -113,9 +111,9 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function lagreJaktprove(jaktprove:Jaktprove, resultat:Function, feil:Function=null):void
+        public function redigerJaktprove(jaktprove:Jaktprove, resultat:Function, feil:Function=null):void
         {
-       		callServiceFunction(service.lagreJaktprove(
+       		callServiceFunction(service.redigerJaktprove(
         		jaktprove,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,

@@ -25,7 +25,7 @@
 							<mx:Label text="Tittel:"/>
 							<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
 						</mx:HBox>
-						<mx:HBox>
+						<mx:HBox>						
 							<mx:Label text="Navn:"/>
 							<mx:Text text="{Components.instance.session.hundprofil.navn}"/>				
 						</mx:HBox>

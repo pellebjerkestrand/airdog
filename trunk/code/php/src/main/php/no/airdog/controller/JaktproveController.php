@@ -7,10 +7,16 @@ class JaktproveController
 	{
 	}
 	
+	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		$hd = new JaktproveDatabase();
+    	$resultat = $hd->slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId);
+	}
+	
  	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$hd = new JaktproveDatabase();
-    	$resultat = $hd->sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId);
+    	$resultat = $hd->hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId);
 
     	$ret = array();
     	
@@ -62,7 +68,7 @@ class JaktproveController
         return $ret;
     }
     
-    public function lagreJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+    public function redigerJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$ret = array();
     	$ret['proveNr'] = $jaktprove->proveNr;   	

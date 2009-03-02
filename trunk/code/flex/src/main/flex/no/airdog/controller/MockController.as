@@ -202,12 +202,12 @@ package no.airdog.controller
 		}
 		
 		
-		public function lagreJaktprove(jaktprove:Jaktprove):void
+		public function redigerJaktprove(jaktprove:Jaktprove):void
 		{
-			Components.instance.services.airdogService.lagreJaktprove(jaktprove, lagreJaktproveResultat);
+			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
 		}
 		
-		public function lagreJaktproveResultat(event:Object):void
+		public function redigerJaktproveResultat(event:Object):void
 		{
 			
 		}

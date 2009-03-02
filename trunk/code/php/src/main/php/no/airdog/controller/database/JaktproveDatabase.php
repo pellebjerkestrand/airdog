@@ -11,7 +11,9 @@ class JaktproveDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function lagreJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+	
+	
+	public function redigerJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
 		{
@@ -23,7 +25,7 @@ class JaktproveDatabase
 		return null;
 	}
 	
-	public function sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
