@@ -16,23 +16,57 @@ class HundDatabase
 	public function settInnHund($hundArray, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			if (sizeof($hundArray) != 20)
-			{ 
-				return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
-			}
-			
-			if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
-			{ 
-				return "hundId-verdien mangler."; 
+		{			
+			if ($hundArray["raseId"] != $klubbId)
+			{
+				return "RaseID stemmer ikke.";
 			}
 		
-			$this->database->insert('NKK_hund', $hundArray);
-				
-			return true;
+			return $this->_settInnHund($hundArray);
 		}
 		
 		return false;
+	}
+	
+	public function settInnHundArray($hunderArray, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$resultat = "";
+			
+			foreach($hunderArray as $hundArray)
+			{
+				if ($hundArray["raseId"] != $klubbId)
+				{
+					$resultat = $resultat . "\nRaseID stemmer ikke.";
+				}
+				else
+				{
+					$resultat = $resultat . $this->_settInnHund($hundArray);
+				}
+			}
+			
+			return $resultat;
+		}
+		
+		return false;
+	}
+	
+	private function _settInnHund($hundArray)
+	{
+		if (sizeof($hundArray) != 20)
+		{ 
+			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
+		}
+		
+		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
+		{ 
+			return "hundId-verdien mangler."; 
+		}
+	
+		$this->database->insert('NKK_hund', $hundArray);
+			
+		return true;
 	}
 
 	//må testes
@@ -104,15 +138,13 @@ class HundDatabase
 //			$this->database->insert('test', $n);
 			
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
-			'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
+			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
 			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
-			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
-			->group('h.hundId')
-			->where('h.navn LIKE "%"?"%"', $soketekst)
-			->orWhere('h.hundId LIKE "%"?"%"', $soketekst)
-			->where('h.raseId=?', $klubbId);
+			->where('h.raseId=?', $klubbId)
+			->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
+			->limit(100, 0)
+			->order('h.navn ASC');
 	
 			return $this->database->fetchAll($select);
 		}
@@ -171,6 +203,22 @@ class HundDatabase
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
 			->group('h.hundId')
+			->where('h.hundId=?', $hundId)
+			->where('h.raseId=?', $klubbId)
+			->limit(1);
+			
+			return $this->database->fetchRow($select);
+		}
+		
+		return null;
+	}
+	
+	public function hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$select = $this->database->select()
+			->from(array('h'=>'NKK_hund'), array('h.*'))
 			->where('h.hundId=?', $hundId)
 			->where('h.raseId=?', $klubbId)
 			->limit(1);

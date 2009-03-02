@@ -60,7 +60,7 @@ package no.airdog.controller
 			hBox.addChild(vBox);
 			
 			button.name = "hundKnapp";
-			button.label = "(" + hund.kjonn + ") " + hund.navn;
+			button.label = hund.navn;
 			button.width = 190;
 			button.data = hund.hundId;
 			button.addEventListener(MouseEvent.CLICK, visHund);
