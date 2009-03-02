@@ -13,7 +13,6 @@ class importParserController
 	{
 		$valider = new FilvaliderController();
 		$filtype = $valider->getFiltypeFraFil($filSti);
-		$resultat = "";
 		
 		switch($filtype)
 		{
@@ -32,10 +31,7 @@ class importParserController
 			case "Hund":
 				$ep = new HundParser();
 				$hd = new HundDatabase();
-				
-				$resultat = $hd->settInnHundArray($ep->getHundelisteArrayFraFil($filSti), $epost, $passord, $klubbId);
-				
-				return $resultat;
+				return $hd->settInnHundArray($ep->getHundelisteArrayFraFil($filSti), $epost, $passord, $klubbId);
 				break;
 			case "Kull":
 				$ep = new KullParser();
@@ -74,6 +70,6 @@ class importParserController
 			
 		}
 		
-		return "En feil har oppst�tt";
+		return "En feil har oppstått";
 	}
 }
