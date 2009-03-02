@@ -201,13 +201,22 @@ package no.airdog.controller
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
 		}
 		
-		
 		public function redigerJaktprove(jaktprove:Jaktprove):void
 		{
 			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
 		}
 		
 		public function redigerJaktproveResultat(event:Object):void
+		{
+			
+		}
+		
+		public function slettJaktprove(jaktproveId:String):void
+		{
+			Components.instance.services.airdogService.slettJaktprove(jaktproveId, slettJaktproveResultat);
+		}
+		
+		public function slettJaktproveResultat(event:Object):void
 		{
 			
 		}
