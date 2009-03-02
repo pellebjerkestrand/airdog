@@ -46,7 +46,6 @@ class ValiderBruker
 	
 	public static function validerBrukerRettighet($database, $brukerEpost, $brukerPassord, $klubbId, $rettighet)
 	{
-	
 		if(ValiderBruker::validerSuperadmin($database, $brukerEpost, $brukerPassord))
 		{
 			return true;
@@ -56,10 +55,12 @@ class ValiderBruker
 		{
 			$brk = $database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
 			$klb = $database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
+			$rettighet = $database->quoteInto('rr.ad_rettighet_navn=?', $rettighet);
 			
 			$hent = $database->select()
 			->from(array('a' => 'ad_bruker_klubb_rolle_link'), array('rr.ad_rettighet_navn'))
 			->join(array('rr' => 'ad_rolle_rettighet_link'), 'rr.ad_rolle_navn = a.ad_rolle_navn', array())
+			->where($rettighet)
 			->where($brk)
 			->where($klb);
 			

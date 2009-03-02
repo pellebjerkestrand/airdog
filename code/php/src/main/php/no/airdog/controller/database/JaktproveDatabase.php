@@ -11,8 +11,6 @@ class JaktproveDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	
-	
 	public function redigerJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
@@ -22,7 +20,8 @@ class JaktproveDatabase
 			return $this->database->update('nkk_fugl', $jaktprove, $hvor);
 		}
 		
-		return null;
+		$errorCode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $errorCode));
 	}
 	
 	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
@@ -37,6 +36,7 @@ class JaktproveDatabase
 			return $this->database->fetchAll($select); 
 		}
 		
-		return null;
+		$errorCode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $errorCode));
 	}
 }
