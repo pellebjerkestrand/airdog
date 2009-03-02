@@ -20,8 +20,8 @@ class JaktproveDatabase
 			return $this->database->update('nkk_fugl', $jaktprove, $hvor);
 		}
 		
-		$errorCode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $errorCode));
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
 	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
@@ -36,7 +36,7 @@ class JaktproveDatabase
 			return $this->database->fetchAll($select); 
 		}
 		
-		$errorCode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $errorCode));
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 }
