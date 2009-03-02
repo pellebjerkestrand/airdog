@@ -22,7 +22,7 @@
 			private function slett(eventObj:CloseEvent):void {
 				if (eventObj.detail==Alert.OK) {
 					if (rediger.selectedIndex > -1) {
-						//localFeeds.removeItemAt(rediger.selectedIndex);
+						Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
 					}
 				}
 			}
@@ -46,7 +46,7 @@
 			
 			public function clickHandler(event:ItemClickEvent):void{
 				var objAlert:Alert = Alert.show(
-				"Vil du slette " + rediger.selectedItem.url, "Slette?", 
+				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
 				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
 			}
 		]]>
