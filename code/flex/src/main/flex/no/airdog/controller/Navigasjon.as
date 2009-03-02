@@ -47,5 +47,10 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = 4;
 		}
+		
+		public static function visArsgjennomsnitt():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 5;
+		}
 	}
 }

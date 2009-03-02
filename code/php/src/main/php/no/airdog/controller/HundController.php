@@ -193,4 +193,108 @@ class HundController
 
         return $avkomListe;
     }
+    
+ 	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    {
+    	$hd = new HundDatabase();
+    	$resultat = $hd->sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId);
+
+    	$ret = array();
+    	
+	   foreach($resultat as $rad) { 
+			$tmp = new AmfJaktprove();
+			$tmp->proveNr = $rad["proveNr"];
+			$tmp->proveDato = $rad["proveDato"];
+			$tmp->premiegrad = $rad["premiegrad"];
+			$tmp->slippTid = $rad["slippTid"];
+			$tmp->egneStand = $rad["egneStand"];
+			$tmp->makkerStand = $rad["makkerStand"];
+			$tmp->egneStokk = $rad["egneStokk"];
+			$tmp->makkerStokk = $rad["makkerStokk"];
+			$tmp->tomStand = $rad["tomStand"];
+			$tmp->jaktlyst = $rad["jaktlyst"];
+			$tmp->fart = $rad["fart"];
+			$tmp->stil = $rad["stil"];
+			$tmp->selvstendighet = $rad["selvstendighet"];
+			$tmp->bredde = $rad["bredde"];
+			$tmp->reviering = $rad["reviering"];
+			$tmp->samarbeid = $rad["samarbeid"];
+			$ret[] = $tmp;
+		}
+		
+        return $ret;
+    }
+    
+    public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
+    {
+    	$hd = new HundDatabase();
+    	$resultat = $hd->sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId);
+
+    	$ret = array();
+    	
+	   foreach($resultat as $rad) { 
+			$tmp = array();
+			$tmp["hundId"] = $rad["hundId"];
+			$tmp["navn"] = $rad["navn"];
+			$tmp["hundFarNavn"] = $rad["hundFarNavn"];
+			$tmp["hundFarId"] = $rad["hundFarId"];
+			$tmp["hundMorNavn"] = $rad["hundMorNavn"];
+			$tmp["hundMorId"] = $rad["hundMorId"];
+			
+			if ($rad["es"] >> 0)
+				$tmp["es"] = sprintf("%.1f", $rad["es"]);
+				
+			if ($rad["ms"] >> 0)
+				$tmp["ms"] = sprintf("%.1f", $rad["ms"]);
+				
+			if ($rad["vf"] >> 0)
+				$tmp["vf"] = sprintf("%.1f", $rad["vf"]);
+				
+			if ($rad["eso"] >> 0)
+				$tmp["eso"] = sprintf("%.1f", $rad["eso"]);
+				
+			if ($rad["mso"] >> 0)
+				$tmp["mso"] = sprintf("%.1f", $rad["mso"]);
+				
+			if ($rad["ts"] >> 0)
+				$tmp["ts"] = sprintf("%.1f", $rad["ts"]);
+			
+	   		if ($rad["starter"] >> 0)
+				$tmp["starter"] = sprintf("%u", $rad["starter"]);
+				
+			if ($rad["jl"] >> 0)
+				$tmp["jl"] = sprintf("%.1f", $rad["jl"]);
+				
+			if ($rad["fa"] >> 0)
+				$tmp["fa"] = sprintf("%.1f", $rad["fa"]);
+				
+			if ($rad["st"] >> 0)
+				$tmp["st"] = sprintf("%.1f", $rad["st"]);
+				
+			if ($rad["selv"] >> 0)
+				$tmp["ss"] = sprintf("%.1f", $rad["selv"]);
+				
+			if ($rad["sok"] >> 0)
+				$tmp["sb"] = sprintf("%.1f", $rad["sok"]);
+				
+			if ($rad["rev"] >> 0)
+				$tmp["rv"] = sprintf("%.1f", $rad["rev"]);
+				
+			if ($rad["sam"] >> 0)
+				$tmp["sa"] = sprintf("%.1f", $rad["sam"]);
+			
+			if (sprintf("%u", $rad["bestePl"]) >> 0)
+			{
+				$tmp["bestePl"] = sprintf("%u", $rad["bestePl"]);
+			}
+			else
+			{
+				$tmp["bestePl"] = "-";
+			}
+			
+			$ret[] = $tmp;
+		}
+		
+        return $ret;
+    }
 }

@@ -30,5 +30,8 @@ package no.airdog.model
         
         [Bindable]
         public var stamtre:Hund;
+        
+        [Bindable]
+        public var arsgjennomsnitt:ArrayCollection = new ArrayCollection();
 	}
 }

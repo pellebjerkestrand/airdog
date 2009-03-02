@@ -121,6 +121,60 @@ class HundDatabase
 
 	}
 	
+	public function sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$select = $this->database->select()
+			->from('NKK_fugl') 
+			->where('hundId=?',$hundId)
+			->where('raseId=?', $klubbId); 
+	
+			return $this->database->fetchAll($select); 
+		}
+		
+		return null;
+	}
+	
+	public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$select = $this->database->select()
+			->from(array('h'=>'NKK_hund'), array(
+				'h.*', 
+				'hundMorNavn'=>'hMor.navn', 
+				'hundFarNavn'=>'hFar.navn',
+				'starter' => 'COUNT(hFugl.hundId)',
+				'es' => 'AVG(hFugl.egneStand)',
+				'ms' => 'AVG(hFugl.makkerStand)',
+				'eso' => 'AVG(hFugl.egneStokk)',
+				'mso' => 'AVG(hFugl.makkerStokk)',
+				'ts' => 'AVG(hFugl.tomStand)',
+				'jl' => 'AVG(hFugl.jaktlyst)',
+				'fa' => 'AVG(hFugl.fart)',
+				'st' => 'AVG(hFugl.stil)',
+				'selv' => 'AVG(hFugl.selvstendighet)',
+				'sok' => 'AVG(bredde)',
+				'vf' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
+				'rev' => 'AVG(reviering)',
+				'sam' => 'AVG(samarbeid)',
+				'bestePl' => 'MIN(hFugl.premiegrad)'
+			))
+			->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
+			->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
+			->joinLeft(array('hFugl' => 'nkk_fugl'), 'h.hundId = hFugl.hundId', array())
+			->where('h.raseId=?', $klubbId)
+			->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $hund)
+			->where('hFugl.proveDato LIKE "%"?"%"', $ar)
+			->group('h.hundId');
+		
+			return $this->database->fetchAll($select);
+		}
+		
+		return null;
+	}
+	
 	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
