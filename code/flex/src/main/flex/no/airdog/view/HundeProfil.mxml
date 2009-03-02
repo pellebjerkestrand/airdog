@@ -24,14 +24,14 @@
 		<mx:HBox>
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
 			<mx:VBox>				
-				<mx:Text id="navn" fontSize="30" text="{Components.instance.session.hundprofil.navn}" />
+				<mx:Text id="navn" fontSize="25" text="{Components.instance.session.hundprofil.navn}" />
 					
 						
 				<mx:HBox>						
 					<mx:VBox>					
 						<mx:HBox>
 							<mx:Label text="Tittel:"/>
-							<view:LabelEditor id="tittel" text="{Components.instance.session.hundprofil.tittel}" change="redigert(event);" styleName="labelEditorStyle"/>
+							<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
 						</mx:HBox>
 						<mx:HBox>
 							<mx:Label text="Navn:"/>
@@ -41,13 +41,13 @@
 						</mx:HBox>
 						<mx:HBox>
 							<mx:Label text="Eier:"/>
-							<view:LabelEditor id="eier" text="{Components.instance.session.hundprofil.eier}" change="redigert(event);" styleName="labelEditorStyle"/>							
+							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}"/>							
 						</mx:HBox>
 					</mx:VBox>
 					<mx:VBox>
 						<mx:HBox>
 							<mx:Label text="Viltfinnerevne:"/>
-							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.eier}" />							
+							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />							
 						</mx:HBox>
 						<mx:VBox>
 							<mx:HBox>
