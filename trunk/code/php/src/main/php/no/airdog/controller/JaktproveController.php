@@ -109,8 +109,8 @@ class JaktproveController
     	$ret['regAv'] = $jaktprove->regAv;
     	$ret['regDato'] = $jaktprove->regDato; 	
     	$ret['raseId'] = $jaktprove->raseId;
-    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv; 	
-    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
+    	$ret['manueltEndretAv'] = $brukerEpost; 	
+    	$ret['manueltEndretDato'] = date("yyyy-mm-dd",time());
     	
     	$hd = new JaktproveDatabase();
     	$resultat = $hd->redigerJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);

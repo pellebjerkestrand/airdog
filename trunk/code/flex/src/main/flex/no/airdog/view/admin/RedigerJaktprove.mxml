@@ -55,45 +55,45 @@
 		<mx:columns>		
 			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
 			<mx:DataGridColumn headerText="Dato" dataField="proveDato"/>
-			<mx:DataGridColumn headerText="partiNr" dataField="partiNr"/>
-			<mx:DataGridColumn headerText="klasse" dataField="klasse"/>
-			<mx:DataGridColumn headerText="dommerId1" dataField="dommerId1"/>			
-			<mx:DataGridColumn headerText="dommerId2" dataField="dommerId2"/>
-			<mx:DataGridColumn headerText="hundId" dataField="hundId"/>
-			<mx:DataGridColumn headerText="ST" width="40" textAlign="right" dataField="slippTid"/>
-			<mx:DataGridColumn headerText="ES" width="40" textAlign="right" dataField="egneStand"/>
-			<mx:DataGridColumn headerText="ESø" width="40" textAlign="right" dataField="egneStokk"/>
-			<mx:DataGridColumn headerText="TS" width="40" textAlign="right" dataField="tomStand"/>
-			<mx:DataGridColumn headerText="MS" width="40" textAlign="right" dataField="makkerStand"/>
-			<mx:DataGridColumn headerText="MSø" width="40" textAlign="right" dataField="makkerStokk"/>
-			<mx:DataGridColumn headerText="JL" width="40" textAlign="right" dataField="jaktlyst"/>
-			<mx:DataGridColumn headerText="Fa" width="40" textAlign="right" dataField="fart"/>
-			<mx:DataGridColumn headerText="St" width="40" textAlign="right" dataField="stil"/>
-			<mx:DataGridColumn headerText="Ss" width="40" textAlign="right" dataField="selvstendighet"/>
-			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="bredde"/>
-			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="reviering"/>
-			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="samarbeid"/>
-			<mx:DataGridColumn headerText="presUpresis" width="40" textAlign="right" dataField="presUpresis"/>
-			<mx:DataGridColumn headerText="presNoeUpresis" width="40" textAlign="right" dataField="presNoeUpresis"/>
-			<mx:DataGridColumn headerText="presPresis" width="40" textAlign="right" dataField="presPresis"/>
-			<mx:DataGridColumn headerText="reisNekter" width="40" textAlign="right" dataField="reisNekter"/>
-			<mx:DataGridColumn headerText="reisNoelende" width="40" textAlign="right" dataField="reisNoelende"/>
-			<mx:DataGridColumn headerText="reisVillig" width="40" textAlign="right" dataField="reisVillig"/>
-			<mx:DataGridColumn headerText="reisDjerv" width="40" textAlign="right" dataField="reisDjerv"/>
-			<mx:DataGridColumn headerText="sokStjeler" width="40" textAlign="right" dataField="sokStjeler"/>
-			<mx:DataGridColumn headerText="sokSpontant" width="40" textAlign="right" dataField="sokSpontant"/>
-			<mx:DataGridColumn headerText="appIkkeGodkjent" width="40" textAlign="right" dataField="appIkkeGodkjent"/>
-			<mx:DataGridColumn headerText="appGodkjent" width="40" textAlign="right" dataField="appGodkjent"/>
-			<mx:DataGridColumn headerText="rappInnkalt" width="40" textAlign="right" dataField="rappInnkalt"/>
-			<mx:DataGridColumn headerText="rappSpont" width="40" textAlign="right" dataField="rappSpont"/>
-			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
-			<mx:DataGridColumn headerText="certifikat" width="40" textAlign="right" dataField="certifikat"/>
-			<mx:DataGridColumn headerText="regAv" width="40" textAlign="right" dataField="regAv"/>
-			<mx:DataGridColumn headerText="regDato" width="40" textAlign="right" dataField="regDato"/>
-			<mx:DataGridColumn headerText="raseId" width="40" textAlign="right" dataField="raseId"/>
-			<mx:DataGridColumn headerText="manueltEndretAv" width="40" textAlign="right" dataField="manueltEndretAv"/>
-			<mx:DataGridColumn headerText="manueltEndretDato" width="40" textAlign="right" dataField="manueltEndretDato"/>
-			<mx:DataGridColumn headerText="Admin" editable="false">
+			<mx:DataGridColumn headerText="Parti" dataField="partiNr"/>
+			<mx:DataGridColumn headerText="Klasse" dataField="klasse"/>
+			<mx:DataGridColumn headerText="Dommer1" dataField="dommerId1"/>			
+			<mx:DataGridColumn headerText="Dommer2" dataField="dommerId2"/>
+			<mx:DataGridColumn headerText="HID" dataField="hundId"/>
+			<mx:DataGridColumn headerText="ST" dataField="slippTid"/>
+			<mx:DataGridColumn headerText="ES" dataField="egneStand"/>
+			<mx:DataGridColumn headerText="ESø" dataField="egneStokk"/>
+			<mx:DataGridColumn headerText="TS" dataField="tomStand"/>
+			<mx:DataGridColumn headerText="MS" dataField="makkerStand"/>
+			<mx:DataGridColumn headerText="MSø" dataField="makkerStokk"/>
+			<mx:DataGridColumn headerText="JL" dataField="jaktlyst"/>
+			<mx:DataGridColumn headerText="Fa" dataField="fart"/>
+			<mx:DataGridColumn headerText="St" dataField="stil"/>
+			<mx:DataGridColumn headerText="Ss" dataField="selvstendighet"/>
+			<mx:DataGridColumn headerText="SB" dataField="bredde"/>
+			<mx:DataGridColumn headerText="Rv" dataField="reviering"/>
+			<mx:DataGridColumn headerText="Sa" dataField="samarbeid"/>
+			<mx:DataGridColumn headerText="PU" dataField="presUpresis"/>
+			<mx:DataGridColumn headerText="PNU" dataField="presNoeUpresis"/>
+			<mx:DataGridColumn headerText="PP" dataField="presPresis"/>
+			<mx:DataGridColumn headerText="RN" dataField="reisNekter"/>
+			<mx:DataGridColumn headerText="RNL" dataField="reisNoelende"/>
+			<mx:DataGridColumn headerText="RV" dataField="reisVillig"/>
+			<mx:DataGridColumn headerText="RD" dataField="reisDjerv"/>
+			<mx:DataGridColumn headerText="SS" dataField="sokStjeler"/>
+			<mx:DataGridColumn headerText="SSP" dataField="sokSpontant"/>
+			<mx:DataGridColumn headerText="AIG" dataField="appIkkeGodkjent"/>
+			<mx:DataGridColumn headerText="AG" dataField="appGodkjent"/>
+			<mx:DataGridColumn headerText="RI" dataField="rappInnkalt"/>
+			<mx:DataGridColumn headerText="RS" dataField="rappSpont"/>
+			<mx:DataGridColumn headerText="PG" dataField="premiegrad"/>
+			<mx:DataGridColumn headerText="CERT" dataField="certifikat"/>
+			<mx:DataGridColumn headerText="Reg. av" dataField="regAv"/>
+			<mx:DataGridColumn headerText="Reg. dato" dataField="regDato"/>
+			<mx:DataGridColumn headerText="Rase ID" dataField="raseId" editable="false"/>
+			<mx:DataGridColumn headerText="Endret av" dataField="manueltEndretAv" editable="false"/>
+			<mx:DataGridColumn headerText="Endret Dato" dataField="manueltEndretDato" editable="false"/>
+			<mx:DataGridColumn headerText="Slett" editable="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">
 						<mx:ButtonBar itemClick="outerDocument.clickHandler(event)" width="100%">
