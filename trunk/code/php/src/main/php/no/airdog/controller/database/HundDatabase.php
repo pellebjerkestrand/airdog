@@ -121,21 +121,6 @@ class HundDatabase
 
 	}
 	
-	public function sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
-	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from('NKK_fugl') 
-			->where('hundId=?',$hundId)
-			->where('raseId=?', $klubbId); 
-	
-			return $this->database->fetchAll($select); 
-		}
-		
-		return null;
-	}
-	
 	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))

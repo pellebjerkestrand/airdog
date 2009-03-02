@@ -180,5 +180,15 @@ package no.airdog.controller
 		{
 			Components.instance.session.stamtre = event as Hund;
 		}
+		
+		public function lagreJaktprove(jaktprove:Jaktprove):void
+		{
+			Components.instance.services.airdogService.lagreJaktprove(jaktprove, lagreJaktproveResultat);
+		}
+		
+		public function lagreJaktproveResultat(event:Object):void
+		{
+			
+		}
 	}
 }

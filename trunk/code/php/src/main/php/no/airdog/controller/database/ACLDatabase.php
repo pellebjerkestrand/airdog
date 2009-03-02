@@ -4,7 +4,6 @@ require_once 'Tilkobling.php';
 class ACLDatabase
 {
 	private $database;
-	private $valider;
 	
 	public function __construct()
 	{

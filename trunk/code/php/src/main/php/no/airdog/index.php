@@ -18,8 +18,10 @@ $server = new Zend_Amf_Server();
 require_once 'controller/HundController.php';
 require_once 'controller/LoggInnController.php';
 require_once 'controller/ACLController.php';
+require_once 'controller/JaktproveController.php';
 
 $server->setClass("HundController");
+$server->setClass("JaktproveController");
 $server->setClass("LoggInnController");
 $server->setClass("ACLController");
 

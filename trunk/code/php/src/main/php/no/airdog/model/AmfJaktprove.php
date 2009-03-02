@@ -1,15 +1,19 @@
 <?php
 class AmfJaktprove
 {
-    public $proveNr;
+	public $proveNr;
 	public $proveDato;
-	public $premiegrad;
+	public $partiNr;
+	public $klasse;
+	public $dommerId1;
+	public $dommerId2;
+	public $hundId;
 	public $slippTid;
 	public $egneStand;
-	public $makkerStand;
 	public $egneStokk;
-	public $makkerStokk;
 	public $tomStand;
+	public $makkerStand;
+	public $makkerStokk;
 	public $jaktlyst;
 	public $fart;
 	public $stil;
@@ -17,4 +21,24 @@ class AmfJaktprove
 	public $bredde;
 	public $reviering;
 	public $samarbeid;
+	public $presUpresis;
+	public $presNoeUpresis;
+	public $presPresis;
+	public $reisNekter;
+	public $reisNoelende;
+	public $reisVillig;
+	public $reisDjerv;
+	public $sokStjeler;
+	public $sokSpontant;
+	public $appIkkeGodkjent;
+	public $appGodkjent;
+	public $rappInnkalt;
+	public $rappSpont;
+	public $premiegrad;
+	public $certifikat;
+	public $regAv;
+	public $regDato;
+	public $raseId;
+	public $manueltEndretAv;
+	public $manueltEndretDato;
 }
