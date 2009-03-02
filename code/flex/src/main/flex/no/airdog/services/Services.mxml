@@ -5,7 +5,7 @@
                 id="airdogAmfService"
                 destination="zend"
                 endpoint="{rootPath}{messageBrokerPath}"
-                showBusyCursor="false" />
+                showBusyCursor="true" />
                 
         <services:AirdogService id="airdogService" service="{airdogAmfService}"/>
                 

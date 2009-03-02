@@ -35,7 +35,7 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->rase = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
-			$tmp->vf = sprintf("%.1f", $rad["vf"]);
+			//$tmp->vf = sprintf("%.1f", $rad["vf"]);
 			$ret[] = $tmp;
 		}
     	
@@ -65,6 +65,26 @@ class HundController
 		$tmp->kullId = $rad["kullId"];
 		$tmp->vf = sprintf("%.1f", $rad["vf"]);
 			
+        return $tmp;
+    }
+    
+	public function hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+    {
+    	$hd = new HundDatabase();
+    	$rad = $hd->hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
+
+    	$tmp = new AmfHund();
+    	
+    	if ($rad != null)
+    	{
+			$tmp->hundId = $rad["hundId"];
+			$tmp->tittel = $rad["tittel"];
+			$tmp->navn = $rad["navn"];
+			$tmp->bilde = "bilde";
+			$tmp->morId = $rad["hundMorId"];
+			$tmp->farId = $rad["hundFarId"];
+			$tmp->kjonn = $rad["kjonn"];
+    	}
         return $tmp;
     }
     
@@ -114,7 +134,7 @@ class HundController
     
     public function lagStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
-		$hund = $this->hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
+		$hund = $this->hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId);
 				
 		if($hund && $dybde > 0)
 		{	

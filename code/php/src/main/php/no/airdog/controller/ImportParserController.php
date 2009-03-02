@@ -9,67 +9,71 @@ class importParserController
 	{
 	}
 
-	public function lagreDb($filSti)
+	public function lagreDb($filSti, $epost, $passord, $klubbId)
 	{
 		$valider = new FilvaliderController();
 		$filtype = $valider->getFiltypeFraFil($filSti);
+		$resultat = "";
 		
 		switch($filtype)
 		{
 			case "Eier":
 				$ep = new EierParser();
-				$ep->getEierlisteArrayFraFil($filtype);
+				$ep->getEierlisteArrayFraFil($filSti);
 				break;
 			case "Fugl":
 				$ep = new FuglParser();
-				$ep->getFugllisteArrayFraFil($filtype);
+				$ep->getFugllisteArrayFraFil($filSti);
 				break;
 			case "Hdsykdom":
 				$ep = new HdsykdomParser();
-				$ep->getHdsykdomlisteArrayFraFil($filtype);
+				$ep->getHdsykdomlisteArrayFraFil($filSti);
 				break;
 			case "Hund":
 				$ep = new HundParser();
-				//$hd = new HundDatabase();
-				//return $hd->settInnHund($ep->getHundelisteArrayFraFil($filtype));
+				$hd = new HundDatabase();
+				
+				$resultat = $hd->settInnHundArray($ep->getHundelisteArrayFraFil($filSti), $epost, $passord, $klubbId);
+				
+				return $resultat;
 				break;
 			case "Kull":
 				$ep = new KullParser();
-				$ep->getKulllisteArrayFraFil($filtype);
+				$ep->getKulllisteArrayFraFil($filSti);
 				break;
 			case "Oppdrett":
 				$ep = new OppdrettParser();
-				$ep->getOppdrettlisteArrayFraFil($filtype);
+				$ep->getOppdrettlisteArrayFraFil($filSti);
 				break;
 			case "Person":
 				$ep = new PersonParser();
-				$ep->getPersonlisteArrayFraFil($filtype);
+				$ep->getPersonlisteArrayFraFil($filSti);
 				break;
 			case "Premie":	
 				$ep = new PremieParser();
-				$ep->getPremielisteArrayFraFil($filtype);
+				$ep->getPremielisteArrayFraFil($filSti);
 				break;
 			case "Utstilling":
 				$ep = new UtstillingParser();
-				$ep->getUtstillinglisteArrayFraFil($filtype);
+				$ep->getUtstillinglisteArrayFraFil($filSti);
 				break;
 			case "Veteriner":
 				$ep = new VeterinerParser();
-				$ep->getVeterinerlisteArrayFraFil($filtype);
+				$ep->getVeterinerlisteArrayFraFil($filSti);
 				break;
 			case "Aasykdom":
 				$ep = new AasykdomParser();
-				$ep->getAasykdomlisteArrayFraFil($filtype);
+				$ep->getAasykdomlisteArrayFraFil($filSti);
 				break;
 			case "Oyesykdom":
 				$ep = new OyesykdomParser();
-				$ep->getOyesykdomlisteArrayFraFil($filtype);
+				$ep->getOyesykdomlisteArrayFraFil($filSti);
 				break;
 			default:
 				return "Dette er en ukjent .dat fil";
 			
 		}
 		
-		return "En feil har oppstŒtt";
+		return "En feil har oppstï¿½tt";
 	}
 }

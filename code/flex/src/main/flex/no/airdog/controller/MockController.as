@@ -98,13 +98,25 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			var datOpplaster:Filopplaster = new Filopplaster("http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php");
+			var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
+			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
+			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
+			url += "klubbId=" + Components.instance.session.bruker.sattKlubbId;
+			
+			var datOpplaster:Filopplaster = new Filopplaster(url);
 			datOpplaster.velgFil();
 		}
 		
 		public function sokHund(soketekst:String):void
 		{
-			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
+			if (soketekst.length == 0)
+			{
+				Alert.show("Søkefeltet kan ikke være tomt.","Feilmelding");
+			}
+			else
+			{
+				Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
+			}
 		}
 		
 		public function hundesokResultat(event:Object):void
