@@ -194,37 +194,6 @@ class HundController
         return $avkomListe;
     }
     
- 	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
-    {
-    	$hd = new HundDatabase();
-    	$resultat = $hd->sokJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId);
-
-    	$ret = array();
-    	
-	   foreach($resultat as $rad) { 
-			$tmp = new AmfJaktprove();
-			$tmp->proveNr = $rad["proveNr"];
-			$tmp->proveDato = $rad["proveDato"];
-			$tmp->premiegrad = $rad["premiegrad"];
-			$tmp->slippTid = $rad["slippTid"];
-			$tmp->egneStand = $rad["egneStand"];
-			$tmp->makkerStand = $rad["makkerStand"];
-			$tmp->egneStokk = $rad["egneStokk"];
-			$tmp->makkerStokk = $rad["makkerStokk"];
-			$tmp->tomStand = $rad["tomStand"];
-			$tmp->jaktlyst = $rad["jaktlyst"];
-			$tmp->fart = $rad["fart"];
-			$tmp->stil = $rad["stil"];
-			$tmp->selvstendighet = $rad["selvstendighet"];
-			$tmp->bredde = $rad["bredde"];
-			$tmp->reviering = $rad["reviering"];
-			$tmp->samarbeid = $rad["samarbeid"];
-			$ret[] = $tmp;
-		}
-		
-        return $ret;
-    }
-    
     public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
     {
     	$hd = new HundDatabase();
