@@ -70,8 +70,6 @@ class JaktproveController
     
     public function redigerJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	$dato = date('Y-m-d');
-
     	$ret = array();
     	$ret['proveNr'] = $jaktprove->proveNr;   	
     	$ret['proveDato'] = $jaktprove->proveDato; 
@@ -112,7 +110,7 @@ class JaktproveController
     	$ret['regDato'] = $jaktprove->regDato; 	
     	$ret['raseId'] = $jaktprove->raseId;
     	$ret['manueltEndretAv'] = $brukerEpost; 	
-    	$ret['manueltEndretDato'] = $dato;
+    	$ret['manueltEndretDato'] = gmdate('Y-m-d');
     	
     	$hd = new JaktproveDatabase();
     	$resultat = $hd->redigerJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
