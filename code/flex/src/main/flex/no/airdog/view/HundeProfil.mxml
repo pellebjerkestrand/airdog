@@ -3,6 +3,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controller="no.airdog.controller.*"
 	xmlns:view="no.airdog.view.*"
+	xmlns:adminView="no.airdog.view.admin.*"
 	width="90%" height="100%">
 	
 	<mx:Script>
@@ -91,6 +92,9 @@
 			</mx:VBox>
 			
 			<mx:VBox label="Ustilling">				
+			</mx:VBox>
+			<mx:VBox label="Rediger Jaktprøve">
+				<adminView:RedigerJaktprove width="100%" hundId="{Components.instance.session.hundprofil.hundId}" />			
 			</mx:VBox>			
         </mx:TabNavigator>
 		

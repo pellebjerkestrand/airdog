@@ -2,6 +2,8 @@ package no.airdog.controller
 {
 	import flash.display.DisplayObject;
 	
+	import no.airdog.model.Jaktprove;
+	
 	public interface IController
 	{
 		function visLoggInnVindu(parent:DisplayObject):void
@@ -17,5 +19,6 @@ package no.airdog.controller
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
 		function hentStamtre(hundId:String, dybde:int):void
+		function lagreJaktprove(jaktprove:Jaktprove):void
 	}
 }
