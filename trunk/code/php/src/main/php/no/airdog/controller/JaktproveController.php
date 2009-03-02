@@ -113,7 +113,7 @@ class JaktproveController
     	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
     	
     	$hd = new JaktproveDatabase();
-    	$resultat = $hd->lagreJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
+    	$resultat = $hd->redigerJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
     	
     	return $resultat;
     }
