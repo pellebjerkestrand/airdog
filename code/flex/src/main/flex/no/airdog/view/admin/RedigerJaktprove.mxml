@@ -41,7 +41,7 @@
                     return;
                 
                 jaktprove[feltNavn] = nyVerdi;
-                Components.instance.controller.lagreJaktprove(jaktprove);
+                Components.instance.controller.redigerJaktprove(jaktprove);
             }
 			
 			public function clickHandler(event:ItemClickEvent):void{
