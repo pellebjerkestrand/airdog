@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">					
+	<mx:VBox>					
+		<mx:HBox>
+			<mx:Label text="Tittel:"/>
+			<mx:TextInput id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
+		</mx:HBox>
+		<mx:HBox>
+			<mx:Label text="Navn:"/>
+			<mx:TextInput text="{Components.instance.session.hundprofil.navn}" change="redigert(event);" styleName="labelEditorStyle"/>											
+		</mx:HBox>
+		<mx:HBox>
+			<mx:Label text="Eier:"/>
+			<mx:TextInput id="eier" text="{Components.instance.session.hundprofil.eier}"/>							
+		</mx:HBox>					
+		<mx:HBox>
+			<mx:Label text="Viltfinnerevne:"/>
+			<mx:TextInput id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />							
+		</mx:HBox>
+			<mx:HBox>
+				<mx:Label text="Far: "/>
+				<mx:TextInput id="far" text="{Components.instance.session.hundprofil.farNavn}" />
+				<mx:TextInput id="farId" text="({Components.instance.session.hundprofil.farId})" />
+			</mx:HBox>							
+			<mx:HBox>
+				<mx:Label text="Mor: "/>
+				<mx:TextInput id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
+				<mx:TextInput id="morId" text="({Components.instance.session.hundprofil.morId})" />	
+			</mx:HBox>
+			<mx:HBox>
+				<mx:Label text="Kull: "/>						
+				<mx:TextInput id="kull" text="{Components.instance.session.hundprofil.kullId}" />
+			</mx:HBox>
+			<mx:HBox>
+				<mx:Button label="Lagre"/> 
+				<mx:Button label="Avbryt"/>
+			</mx:HBox>
+		</mx:VBox>						
+</mx:VBox>
