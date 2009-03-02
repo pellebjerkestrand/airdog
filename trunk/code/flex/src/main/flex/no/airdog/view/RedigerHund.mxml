@@ -32,7 +32,7 @@
 				<mx:TextInput id="kull" text="{Components.instance.session.hundprofil.kullId}" />
 			</mx:HBox>
 			<mx:HBox>
-				<mx:Button label="Lagre"/> 
+				<mx:Button label="Lagre" click=""/> 
 				<mx:Button label="Avbryt"/>
 			</mx:HBox>
 		</mx:VBox>						

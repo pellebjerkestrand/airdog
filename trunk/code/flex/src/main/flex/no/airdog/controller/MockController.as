@@ -182,6 +182,14 @@ package no.airdog.controller
 		{
 			Components.instance.session.stamtre = event as Hund;
 		}
+		public function redigerHund(hundId:String):void
+		{
+//			Components.instance.services.airdogService.redigerHund(redigerHundResultat(hundId));
+		}
+		public function redigerHundResultat(event:Object):void
+		{
+			
+		}
 		
 		public function sokArsgjennomsnitt(hund:String, ar:String):void
 		{

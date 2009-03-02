@@ -4,6 +4,8 @@ package no.airdog.controller
 	
 	import no.airdog.model.Jaktprove;
 	
+	import mx.validators.ValidationResult;
+	
 	public interface IController
 	{
 		function visLoggInnVindu(parent:DisplayObject):void
@@ -19,6 +21,7 @@ package no.airdog.controller
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
 		function hentStamtre(hundId:String, dybde:int):void
+		function redigerHund(hundId:String):void 
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function lagreJaktprove(jaktprove:Jaktprove):void
 	}
