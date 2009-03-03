@@ -1,6 +1,7 @@
 <?php
 require_once "FilvaliderController.php";
 require_once "database/HundDatabase.php";
+require_once "database/JaktproveDatabase.php";
 
 class importParserController
 {
@@ -22,7 +23,8 @@ class importParserController
 				break;
 			case "Fugl":
 				$ep = new FuglParser();
-				$ep->getFugllisteArrayFraFil($filSti);
+				$hd = new JaktproveDatabase();
+				return $hd->settInnJaktproveArray($ep->getFugllisteArrayFraFil($filSti), $epost, $passord, $klubbId);
 				break;
 			case "Hdsykdom":
 				$ep = new HdsykdomParser();
