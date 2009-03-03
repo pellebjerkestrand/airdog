@@ -24,6 +24,17 @@ class JaktproveDatabase
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
+	public function leggInnJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
+		{			
+			return $this->database->insert('nkk_fugl', $jaktprove);
+		}
+		
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
 	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))

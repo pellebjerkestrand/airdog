@@ -232,5 +232,15 @@ package no.airdog.controller
 		{
 			
 		}
+		
+		public function leggInnJaktProve(jaktprove:Jaktprove):void
+		{
+			Components.instance.services.airdogService.leggInnJaktprove(jaktprove, leggInnJaktProveResultat);
+		}
+		
+		public function leggInnJaktProveResultat(event:Object):void
+		{
+		
+		}
 	}
 }
