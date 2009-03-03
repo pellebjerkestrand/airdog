@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" 
+	creationComplete="creationCompleteHandler()"
+	defaultButton="{lagre}">
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.model.Jaktprove;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			import mx.validators.Validator;
+            import mx.events.ValidationResultEvent;
+            import mx.controls.Alert;
+			
+			[Bindable]
+            public var godkjent:Boolean = false;
+
+            [Bindable]
+            public var tomt:Boolean = true;
+    
+            private var hvilkeKontroll:DisplayObject;
+                                  
+            private function validering(event:Event):void 
+            {                    
+                hvilkeKontroll = event.target as DisplayObject;    
+           
+                godkjent = true;            
+
+                tomt = (
+                	proveNr.text == "" 
+                	&& proveDato.text == ""
+                    && partiNr.text == ""); 
+
+
+                valider(proveNrValidator);                
+                valider(proveDatoValidator);
+                valider(partiNrValidator);
+            }
+            
+            private function valider(validerer:Validator):Boolean
+            {                
+	            var validererSource:DisplayObject = validerer.source as DisplayObject;
+	            
+	            var ikkeVisBoks:Boolean = (validererSource != hvilkeKontroll);
+	            
+	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
+	                            
+	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
+	             
+	            godkjent = godkjent && erValidert;
+	             
+	            return erValidert;
+             }
+              
+             private function creationCompleteHandler():void
+             {
+             	settFokus(); 
+             }
+            
+            private function leggInnJaktRes():void 
+            {
+            	var jaktprove:Jaktprove = new Jaktprove;
+            	
+            	jaktprove.proveNr = proveNr.text;
+				jaktprove.proveDato = proveDato.text;
+				jaktprove.partiNr = partiNr.text;
+				jaktprove.klasse = klasse.text;
+				jaktprove.dommerId1 = dommerId1.text;
+				jaktprove.dommerId2 = dommerId2.text;
+				jaktprove.hundId = hundid.text;
+				jaktprove.slippTid = slippTid.text;
+				jaktprove.egneStand = egneStand.text;
+				jaktprove.egneStokk = egneStokk.text;
+				jaktprove.tomStand = tomStand.text;
+				jaktprove.makkerStand = makkerStand.text;
+				jaktprove.makkerStokk = makkerStokk.text;
+				jaktprove.jaktlyst = jaktlyst.text;
+				jaktprove.fart = fart.text;
+				jaktprove.stil = stil.text;
+				jaktprove.selvstendighet = selvstendighet.text;
+				jaktprove.bredde = bredde.text;
+				jaktprove.reviering = reviering.text;
+				jaktprove.samarbeid = samarbeid.text;
+				jaktprove.presUpresis = presUpresis.text;
+				jaktprove.presNoeUpresis = presNoeUpresis.text;
+				jaktprove.presPresis = presPresis.text;
+				jaktprove.reisNekter = reisNekter.text;
+				jaktprove.reisNoelende = reisNoelende.text;
+				jaktprove.reisVillig = reisVillig.text;
+				jaktprove.reisDjerv = reisDjerv.text;
+				jaktprove.sokStjeler = sokStjeler.text;
+				jaktprove.sokSpontant = sokSpontant.text;
+				jaktprove.appIkkeGodkjent = appIkkeGodkjent.text;
+				jaktprove.appGodkjent = appGodkjent.text;
+				jaktprove.rappInnkalt = rappInnkalt.text;
+				jaktprove.rappSpont = rappSpont.text;
+				jaktprove.premiegrad = premiegrad.text;
+				jaktprove.certifikat = certifikat.text;
+				jaktprove.regAv = regAv.text;
+				jaktprove.regDato = regDato.text;
+				jaktprove.raseId = raseId.text;
+				jaktprove.manueltEndretAv = manueltEndretAv.text;
+				jaktprove.manueltEndretDato = manueltEndretDato.text;
+            	
+            	Components.instance.controller.leggInnJaktProve(jaktprove);
+            }
+            
+            private function clearFormHandler():void
+            {
+                proveNr.text = "";
+                proveDato.text = "";
+                partiNr.text = "";
+                
+                proveNr.errorString = "";
+                proveDato.errorString = "";
+                partiNr.errorString = "";
+                
+                tomt = true;
+                
+                settFokus();               
+            }
+            
+            private function settFokus():void
+            {
+                focusManager.setFocus(proveNr);
+            }
+        ]]>
+    </mx:Script>
+	
+    <mx:StringValidator 
+        id="proveNrValidator"
+        source="{proveNr}" 
+        property="text"
+        minLength="2" 
+    />
+    
+    <!-- Validate phone number -->
+    <mx:DateValidator 
+        id="proveDatoValidator"
+        source="{proveDato}" property="text"
+    />
+    
+    <!-- Validate email -->
+    <mx:StringValidator
+        id="partiNrValidator"
+        source="{partiNr}" property="text"
+    />
+	
+	<mx:Form>
+		<mx:HBox>
+			<mx:VBox>
+				<mx:FormItem label="Prøve Nr">
+					<mx:TextInput id="proveNr"
+						change="validering(event);"
+					/>	
+				</mx:FormItem>
+					
+				<mx:FormItem label="Dato">
+					<mx:TextInput id="proveDato"
+						change="validering(event);"
+					/>
+				</mx:FormItem>
+					
+				
+				<mx:FormItem label="Parti">
+					<mx:TextInput id="partiNr"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+				
+				
+				<mx:FormItem label="Klasse">
+					<mx:TextInput id="klasse"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Dommer1">
+					<mx:TextInput id="dommerId1"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Dommer2">			
+					<mx:TextInput id="dommerId2"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="HID">
+					<mx:TextInput id="hundid"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="ST">
+					<mx:TextInput id="slippTid"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+		
+				<mx:FormItem label="ES">
+					<mx:TextInput id="egneStand"
+						change="validering(event);" 
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="ESÀ">
+					<mx:TextInput id="egneStokk"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			
+			<mx:VBox>
+				<mx:FormItem label="TS">
+					<mx:TextInput id="tomStand"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="MS">
+					<mx:TextInput id="makkerStand"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="MSÀ">
+					<mx:TextInput id="makkerStokk"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="JL">
+					<mx:TextInput id="jaktlyst"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Fa" >
+					<mx:TextInput id="fart"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="St">
+					<mx:TextInput id="stil"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Ss" >
+					<mx:TextInput id="selvstendighet"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="SB" >
+					<mx:TextInput id="bredde"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+				
+				
+				<mx:FormItem label="Rv" >
+					<mx:TextInput id="reviering"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Sa" >
+					<mx:TextInput id="samarbeid"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			
+			<mx:VBox>
+				<mx:FormItem label="PU" >
+					<mx:TextInput id="presUpresis"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PNU" >
+					<mx:TextInput id="presNoeUpresis"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PP" >
+					<mx:TextInput id="presPresis"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RN">
+					<mx:TextInput id="reisNekter"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RNL">
+					<mx:TextInput id="reisNoelende"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RV" >
+					<mx:TextInput id="reisVillig"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RD">
+					<mx:TextInput id="reisDjerv"
+						change="validering(event);"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="SS" >
+					<mx:TextInput id="sokStjeler"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+
+				<mx:FormItem label="SSP" >
+					<mx:TextInput id="sokSpontant"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="AIG">
+					<mx:TextInput id="appIkkeGodkjent"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			<mx:VBox>	
+				<mx:FormItem label="AG" >
+					<mx:TextInput id="appGodkjent"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RI" >
+					<mx:TextInput id="rappInnkalt"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RS">
+					<mx:TextInput id="rappSpont"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PG">
+					<mx:TextInput id="premiegrad"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="CERT">
+					<mx:TextInput id="certifikat"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Reg. av">
+					<mx:TextInput id="regAv"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Reg. dato">
+					<mx:TextInput id="regDato"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Rase ID" >
+					<mx:TextInput id="raseId"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Endret av" >
+					<mx:TextInput id="manueltEndretAv"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Endret Dato" >
+					<mx:TextInput id="manueltEndretDato"
+						change="validering(event);"	
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+		</mx:HBox>		
+	</mx:Form>	
+	
+	<mx:ControlBar horizontalAlign="center">
+            <mx:Button 
+                id="lagre"
+                label="Lagre" 
+                enabled="{godkjent}" 
+                click="leggInnJaktRes()"
+            />
+            <mx:Button 
+                label="Tøm skjema" 
+                enabled="{!tomt}"
+                click="clearFormHandler();"
+            />
+	</mx:ControlBar>
+	
+</mx:VBox>

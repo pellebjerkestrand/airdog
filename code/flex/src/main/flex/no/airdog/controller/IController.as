@@ -1,6 +1,7 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
+	
 	import no.airdog.model.*;
 	
 	public interface IController
@@ -22,5 +23,6 @@ package no.airdog.controller
 		function redigerHund(hund:Hund):void 
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String):void
+		function leggInnJaktProve(jaktprove:Jaktprove):void
 	}
 }

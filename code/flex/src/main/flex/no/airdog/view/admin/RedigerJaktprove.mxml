@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%"
+	xmlns:adminView="no.airdog.view.admin.*">
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.model.Jaktprove;
@@ -51,6 +52,9 @@
 			}
 		]]>
 	</mx:Script>
+	
+	<adminView:LeggInnJaktprove/>
+	
 	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.jaktproveListe}" editable="true" itemEditEnd="lagre(event)">
 		<mx:columns>		
 			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
