@@ -107,7 +107,9 @@ CREATE TABLE IF NOT EXISTS `ad_rettighet` (
 --
 
 INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
-('lese', 'Utf¯re handlinger som ikke endrer pÂ databasen');
+('lese', 'Utf¯re handlinger som ikke endrer pÂ databasen'),
+('redigerHund', 'Endrer hundedata i databasen'),
+('redigerJaktprove', 'Endrer jaktprovedata i databasen');
 
 -- --------------------------------------------------------
 
