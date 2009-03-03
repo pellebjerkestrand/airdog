@@ -150,6 +150,8 @@ CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
 
 INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
 ('admin', 'lese'),
+('gjest', 'redigerHund'),
+('gjest', 'redigerJaktprove'),
 ('gjest', 'lese');
 
 -- --------------------------------------------------------
