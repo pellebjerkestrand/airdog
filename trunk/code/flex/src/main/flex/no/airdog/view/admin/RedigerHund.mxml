@@ -1,39 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">					
-	<mx:VBox>					
-		<mx:HBox>
-			<mx:Label text="Tittel:"/>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.model.Hund;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.rpc.events.FaultEvent;
+			import mx.formatters.DateFormatter;
+			import mx.resources.ResourceBundle;	   	
+			import mx.collections.*;
+			import mx.controls.*;
+			import mx.events.*;
+		
+		private var _hundId:String;	
+				
+		public function set hundId(val:String):void
+		{
+			_hundId = val;
+		}  
+			
+			private function slett(eventObj:CloseEvent):void {
+				if (eventObj.detail==Alert.OK) {
+					if (rediger.selectedIndex > -1) {
+						//Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
+					}
+				}
+			}
+			
+			private function lagre(event:DataGridEvent):void {
+                var dataGrid:DataGrid = event.target as DataGrid;
+                var kolonneIndex:Number = event.columnIndex;
+                var kolonne:DataGridColumn = dataGrid.columns[kolonneIndex];
+                
+                var nyVerdi:String = dataGrid.itemEditorInstance[kolonne.editorDataField];
+                var feltNavn:String = event.dataField;
+                
+                var hund:Hund = event.itemRenderer.data as Hund;
+                
+                if (nyVerdi == hund[feltNavn])
+                    return;
+                
+                hund[feltNavn] = nyVerdi;
+                Components.instance.controller.redigerHund(hund);
+            }
+			
+			public function clickHandler(event:ItemClickEvent):void{
+				var objAlert:Alert = Alert.show(
+				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
+				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+			}
+		]]>
+	</mx:Script>
+	<mx:Form>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="hundid" text="{Components.instance.session.hundprofil.hundId}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
 			<mx:TextInput id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
-		</mx:HBox>
-		<mx:HBox>
-			<mx:Label text="Navn:"/>
-			<mx:TextInput text="{Components.instance.session.hundprofil.navn}" change="redigert(event);" styleName="labelEditorStyle"/>											
-		</mx:HBox>
-		<mx:HBox>
-			<mx:Label text="Eier:"/>
-			<mx:TextInput id="eier" text="{Components.instance.session.hundprofil.eier}"/>							
-		</mx:HBox>					
-		<mx:HBox>
-			<mx:Label text="Viltfinnerevne:"/>
-			<mx:TextInput id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />							
-		</mx:HBox>
-			<mx:HBox>
-				<mx:Label text="Far: "/>
-				<mx:TextInput id="far" text="{Components.instance.session.hundprofil.farNavn}" />
-				<mx:TextInput id="farId" text="({Components.instance.session.hundprofil.farId})" />
-			</mx:HBox>							
-			<mx:HBox>
-				<mx:Label text="Mor: "/>
-				<mx:TextInput id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
-				<mx:TextInput id="morId" text="({Components.instance.session.hundprofil.morId})" />	
-			</mx:HBox>
-			<mx:HBox>
-				<mx:Label text="Kull: "/>						
-				<mx:TextInput id="kull" text="{Components.instance.session.hundprofil.kullId}" />
-			</mx:HBox>
-			<mx:HBox>
-				<mx:Button label="Lagre" click=""/> 
-				<mx:Button label="Avbryt"/>
-			</mx:HBox>
-		</mx:VBox>						
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="navn" text="{Components.instance.session.hundprofil.navn}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="morId" text="{Components.instance.session.hundprofil.morId}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">			
+			<mx:TextInput id="farId" text="{Components.instance.session.hundprofil.farId}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="idNr" text="{Components.instance.session.hundprofil.idNr}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="raseId" text="{Components.instance.session.hundprofil.raseId}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="farge" text="{Components.instance.session.hundprofil.farge}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="regDato" text="{Components.instance.session.hundprofil.regDato}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="manueltEndretDato" text="{Components.instance.session.hundprofil.manueltEndretDato}"/>
+		</mx:FormItem>
+		<mx:FormItem label="AIG">
+			<mx:TextInput id="hundNavn" text="{Components.instance.session.hundprofil.navn}"/>
+		</mx:FormItem>		
+	</mx:Form>
+	
+	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.hundprofil}" editable="true" itemEditEnd="lagre(event)">
+		<mx:columns>		
+			<mx:DataGridColumn headerText="Hund Id" dataField="hundId"/>
+			<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
+			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
+			<mx:DataGridColumn headerText="Mor Id" dataField="morId"/>			
+			<mx:DataGridColumn headerText="Far Id" dataField="farId"/>
+			<mx:DataGridColumn headerText="Id nr" dataField="idNr"/>
+			<mx:DataGridColumn headerText="Kjønn" dataField="kjonn"/>
+			<mx:DataGridColumn headerText="Rase id" dataField="raseId"/>
+			<mx:DataGridColumn headerText="Kull id" dataField="kullId"/>
+			<mx:DataGridColumn headerText="Farge" dataField="farge"/>
+			<mx:DataGridColumn headerText="Fargevariant" dataField="fargeVariant"/>
+			<mx:DataGridColumn headerText="Øyesykdom" dataField="oyesykdom"/>
+			<mx:DataGridColumn headerText="Hoftesykdom" dataField="hoftesykdom"/>
+			<mx:DataGridColumn headerText="Hårlag" dataField="haarlag"/>
+			<mx:DataGridColumn headerText="Id-merke" dataField="idMerke"/>
+			<mx:DataGridColumn headerText="Endret av" dataField="endretAv"/>
+			<mx:DataGridColumn headerText="Endret dato" dataField="endretDato"/>
+			<mx:DataGridColumn headerText="Reg dato" dataField="regDato"/>
+			<mx:DataGridColumn headerText="Størrelse" dataField="storrelse"/>
+			<mx:DataGridColumn headerText="Manuelt endret av" dataField="manueltEndretAv"/>
+			<mx:DataGridColumn headerText="Manuelt endret dato" dataField="manueltEndretDato"/>
+			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
+			<mx:DataGridColumn headerText="Slett" editable="false">
+				<mx:itemRenderer>
+					<mx:Component id="admin">
+						<mx:ButtonBar itemClick="outerDocument.clickHandler(event)" width="100%">
+							<mx:dataProvider>
+								<mx:Array>
+									<mx:String>Slett</mx:String>
+								</mx:Array>
+							</mx:dataProvider>
+						</mx:ButtonBar>					   	
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+		</mx:columns>
+	</mx:DataGrid>
 </mx:VBox>

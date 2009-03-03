@@ -266,24 +266,14 @@ class HundDatabase
 	
 	public function redigerHund($hund, $brukerEpost, $brukerPassord, $klubbId)
 	{
+				
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerHund"))
 		{
 			$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
 			
-			return $this->database->update('nkk_hund', $hund, hvor);
+			return $this->database->update('nkk_hund', $hund, $hvor);
 		}
-		return null;
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 }
-
-	//public function redigerJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
-	//{
-		//if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
-		//{
-			//$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']);			
-			
-		//	return $this->database->update('nkk_fugl', $jaktprove, $hvor);
-	//	}
-		
-	//	return null;
-//	}
