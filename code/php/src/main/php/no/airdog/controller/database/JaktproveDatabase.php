@@ -63,4 +63,78 @@ class JaktproveDatabase
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
+	
+	public function settInnJaktproveArray($jaktproveArray, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$resultat = "";
+			
+			foreach($jaktproveArray as $jaktarray)
+			{
+				if ($jaktarray["raseId"] != $klubbId)
+				{
+					$resultat .= "\nRaseID stemmer ikke.";
+				}
+				else
+				{
+					$resultat .= $this->_settInnJaktprove($jaktarray);
+				}
+			}
+			
+			return $resultat;
+		}
+		
+		return false;
+	}
+	
+	private function _settInnJaktprove($jaktarray)
+	{
+		$fp = fopen("debug.txt", "a");
+		fwrite($fp, $jaktarray["navn"] . "\r\n");
+		fclose($fp);
+		
+
+		if (sizeof($jaktarray) != 38)
+		{ 
+			return "Arrayet er av feil størrelse. Fikk ".sizeof($jaktarray).", forventet 38."; 
+		}
+		
+		if (!isset($jaktarray["proveNr"]) || $jaktarray["proveNr"] == "")
+		{ 
+			return "hundId-verdien mangler."; 
+		}
+
+		$dbJaktprove = $this->_hentJaktprove($jaktarray["proveNr"], $jaktarray["raseId"]);
+		
+		if ($dbJaktprove == null)
+		{
+			$this->database->insert('nkk_fugl', $jaktarray);
+		}
+		else if ($dbJaktprove["manueltEndretAv"] != "")
+		{
+			return "Manuelt endret, vil du overskrive???";
+		}
+		else
+		{
+			$hvor = $this->database->quoteInto('proveNr = ?', $jaktarray["proveNr"]).
+			$this->database->quoteInto('AND raseId = ?', $jaktarray["raseId"]).
+			$this->database->quoteInto('AND hundId = ?', $jaktarray["hundId"]);
+			$this->database->update('nkk_fugl', $jaktarray, $hvor);
+		}
+		
+		return true;
+	}
+	
+	private function _hentJaktprove($proveNr, $klubbId)
+	{
+			$select = $this->database->select()
+			->from('NKK_fugl') 
+			->where('proveNr=?',$proveNr)
+			->where('raseId=?', $klubbId)
+			->limit(1);
+	
+			return $this->database->fetchRow($select); 
+	}
+
 }
