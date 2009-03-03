@@ -90,11 +90,6 @@ class JaktproveDatabase
 	
 	private function _settInnJaktprove($jaktarray)
 	{
-		$fp = fopen("debug.txt", "a");
-		fwrite($fp, $jaktarray["navn"] . "\r\n");
-		fclose($fp);
-		
-
 		if (sizeof($jaktarray) != 38)
 		{ 
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($jaktarray).", forventet 38."; 

@@ -44,7 +44,6 @@
 			<mx:DataGridColumn width="50" textAlign="center" headerText="Id" dataField="hundId"/>
 			<mx:DataGridColumn width="50" textAlign="center" headerText="Kull" dataField="kullId"/>
 			<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
-			<mx:DataGridColumn width="50" textAlign="center" headerText="Rase" dataField="rase"/>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>
