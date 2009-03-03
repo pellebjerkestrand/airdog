@@ -1,4 +1,5 @@
 <?php
+require_once "no/airdog/controller/utf8Konverterer.php";
 
 class HundParser
 {
@@ -8,7 +9,7 @@ class HundParser
 	
 	public function getHundArray($enHund)
 	{
-		$hundArray = split('[|]', trim($enHund));
+		$hundArray = split('[|]', utf8Konverterer::cp1252_to_utf8(trim($enHund)));
 		
 		if (sizeof($hundArray) == 20)
 		{
@@ -42,7 +43,7 @@ class HundParser
 		$hundeliste = str_replace("\r\n", "\n", $hundeliste);
 		$hundelisteArray = split("\n", $hundeliste);
 		$ret = array();
-	
+		
 		// Hopper over den første linjen da denne inneholder kun tabellinformasjon.
 		for ($i = 1; $i < sizeof($hundelisteArray); $i++)
     	{

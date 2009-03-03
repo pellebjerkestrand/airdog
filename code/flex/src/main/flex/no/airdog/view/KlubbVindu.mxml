@@ -22,7 +22,7 @@
 
 	<mx:Button label="Tilbake" click="tilbake(event)"/>
 	<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
-		<mx:Button id="knapp" label="{klubbListe.currentItem.navn}" 
+		<mx:Button id="knapp" label="{klubbListe.currentItem.navn} ({klubbListe.currentItem.raseId})" 
 			data="{klubbListe.currentItem.raseId}" 
 			click="settBrukersKlubb(event)"/>
 	</mx:Repeater>

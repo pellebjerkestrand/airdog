@@ -35,9 +35,9 @@ package no.airdog.controller
 		
 		private function settFilrestriksjoner():void
         {
-        	bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
+        	//bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
         	tekstTyper = new FileFilter("Tekstfiler (*.dat)", "*.dat");
-        	alleTyper = new Array(bildeTyper, tekstTyper); 
+        	alleTyper = new Array(tekstTyper); 
         	maksfilStorrelse = 50 * 1024;
         }
                

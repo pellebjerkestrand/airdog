@@ -12,7 +12,7 @@ require_once "ImportParserController.php";
 if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["brukerPassord"]) && isset($_GET["klubbId"])) 
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
-	$upload_dir = dirname(__FILE__)."/temp_opplasting/";
+	$upload_dir = dirname(__FILE__)."/temp_opplastning/";
 
 	$temp_navn = $_FILES['Filedata']['tmp_name'];
 	$fil_navn = $_FILES['Filedata']['name'];
