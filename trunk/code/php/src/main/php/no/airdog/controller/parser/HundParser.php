@@ -12,29 +12,32 @@ class HundParser
 		
 		if (sizeof($hundArray) == 20)
 		{
-			return array (
-			"raseId" => $hundArray[0],
-			"kullId" => $hundArray[1],
-			"hundId" => $hundArray[2],
-			"tittel" => $hundArray[3],
-			"navn" => $hundArray[4],
-			"hundFarId" => $hundArray[5],
-			"hundMorId" => $hundArray[6],
-			"idNr" => $hundArray[7],
-			"farge" => $hundArray[8],
-			"fargeVariant" => $hundArray[9],
-			"oyesykdom" => $hundArray[10],
-			"hoftesykdom" => $hundArray[11],
-			"haarlag" => $hundArray[12],
-			"idMerke" => $hundArray[13],
-			"kjonn" => $hundArray[14],
-			"eierId" => $hundArray[15],
-			"endretAv" => $hundArray[16],
-			"endretDato" => $hundArray[17],
-			"regDato" => $hundArray[18],
-			"storrelse" => $hundArray[19]
-			);
+			$ret = array();
+			$ret["raseId"] = $hundArray[0];
+			$ret["kullId"] = $hundArray[1];
+			$ret["hundId"] = $hundArray[2];
+			$ret["tittel"] = $hundArray[3];
+			$ret["navn"] = $hundArray[4];
+			$ret["hundFarId"] = $hundArray[5];
+			$ret["hundMorId"] = $hundArray[6];
+			$ret["idNr"] = $hundArray[7];
+			$ret["farge"] = $hundArray[8];
+			$ret["fargeVariant"] = $hundArray[9];
+			$ret["oyesykdom"] = $hundArray[10];
+			$ret["hoftesykdom"] = $hundArray[11];
+			$ret["haarlag"] = $hundArray[12];
+			$ret["idMerke"] = $hundArray[13];
+			$ret["kjonn"] = $hundArray[14];
+			$ret["eierId"] = $hundArray[15];
+			$ret["endretAv"] = $hundArray[16];
+			$ret["endretDato"] = $hundArray[17];
+			$ret["regDato"] = $hundArray[18];
+			$ret["storrelse"] = $hundArray[19];
+			
+			return $ret;
 		}
+		
+		return null;
 	}
 	
 	public function getHundelisteArray($hundeliste)
@@ -42,7 +45,7 @@ class HundParser
 		$hundeliste = str_replace("\r\n", "\n", $hundeliste);
 		$hundelisteArray = split("\n", $hundeliste);
 		$ret = array();
-		
+	
 		// Hopper over den første linjen da denne inneholder kun tabellinformasjon.
 		for ($i = 1; $i < sizeof($hundelisteArray); $i++)
     	{
