@@ -38,11 +38,11 @@ class HundDatabase
 			{
 				if ($hundArray["raseId"] != $klubbId)
 				{
-					$resultat = $resultat . "\nRaseID stemmer ikke.";
+					$resultat .= "\nRaseID stemmer ikke.";
 				}
 				else
 				{
-					$resultat = $resultat . $this->_settInnHund($hundArray);
+					$resultat .= $this->_settInnHund($hundArray);
 				}
 			}
 			
@@ -54,6 +54,11 @@ class HundDatabase
 	
 	private function _settInnHund($hundArray)
 	{
+		$fp = fopen("debug.txt", "a");
+		fwrite($fp, $hundArray["navn"] . "\r\n");
+		fclose($fp);
+		
+
 		if (sizeof($hundArray) != 20)
 		{ 
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
@@ -63,9 +68,23 @@ class HundDatabase
 		{ 
 			return "hundId-verdien mangler."; 
 		}
-	
-		$this->database->insert('NKK_hund', $hundArray);
-			
+		
+		$dbHund = $this->_hentHund($hundArray["hundId"], $hundArray["raseId"]);
+		
+		if ($dbHund == null)
+		{
+			$this->database->insert('NKK_hund', $hundArray);
+		}
+		else if ($dbHund["manueltEndretAv"] != "")
+		{
+			return "Manuelt endret, vil du overskrive???";
+		}
+		else
+		{
+			$hvor = $this->database->quoteInto('hundId = ?', $hundArray["hundId"]) . $this->database->quoteInto('AND raseId = ?', $hundArray["raseId"]);
+			$this->database->update('NKK_hund', $hundArray, $hvor);
+		}
+		
 		return true;
 	}
 
@@ -127,23 +146,14 @@ class HundDatabase
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{ 
-						
-//			$soketeskt2 = "x'; DROP TABLE `test`; --";
-//			$n = array();
-//			$n["navn"] = $soketekst;
-//			$n["navnQ"] = "&#229;";
-//			$n["navnQu"] = $this->database->quoteInto('?', $soketeskt2, "STRING");
-//			$n["navnQuo"] = $this->database->quoteIdentifier($soketekst);
-//			$this->database->insert('test', $n);
-			
+		{ 			
 			$select = $this->database->select()
 			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
 			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 			->where('h.raseId=?', $klubbId)
 			->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
-			->limit(100, 0)
+			->limit(500, 0)
 			->order('h.navn ASC');
 	
 			return $this->database->fetchAll($select);
@@ -211,6 +221,17 @@ class HundDatabase
 		}
 		
 		return null;
+	}
+	
+	private function _hentHund($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+		->from(array('h'=>'NKK_hund'), array('h.*'))
+		->where('h.hundId=?', $hundId)
+		->where('h.raseId=?', $klubbId)
+		->limit(1);
+		
+		return $this->database->fetchRow($select);
 	}
 	
 	public function hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId)

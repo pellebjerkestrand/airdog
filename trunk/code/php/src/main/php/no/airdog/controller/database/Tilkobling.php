@@ -23,7 +23,8 @@ class Tilkobling
 			'host' => $this->dbServer,
 			'dbname' => $this->dbNavn,
 			'username' => $this->dbBrukernavn,
-			'password' => $this->dbPassord));
+			'password' => $this->dbPassord,
+    		'profiler' => true));
 			
 			$database->query('SET NAMES UTF8');
 			
