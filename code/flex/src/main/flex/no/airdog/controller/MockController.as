@@ -109,14 +109,7 @@ package no.airdog.controller
 		
 		public function sokHund(soketekst:String):void
 		{
-			if (soketekst.length == 0)
-			{
-				Alert.show("Søkefeltet kan ikke være tomt.","Feilmelding");
-			}
-			else
-			{
-				Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
-			}
+			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
 		}
 		
 		public function hundesokResultat(event:Object):void
