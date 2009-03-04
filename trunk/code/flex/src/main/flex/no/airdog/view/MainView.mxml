@@ -13,6 +13,7 @@
             import mx.managers.PopUpManager;
             import mx.events.ItemClickEvent;
         	import mx.controls.tabBarClasses.Tab;
+        	import mx.core.UIComponent;
 
             public function sok():void
 			{
@@ -62,6 +63,11 @@
             	tabs.selectedIndex = 1;
             	Components.instance.controller.visLoggInnVindu(this);
             }
+            
+            private function leggInnJaktprove():void
+            {
+            	Components.instance.controller.visLeggInnJaktproveVindu(UIComponent(this.parentApplication));
+            }
         ]]>
     </mx:Script>
 	
@@ -84,6 +90,7 @@
 				<mx:LinkButton label="Brukere" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
 				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__exclamation.png')"/>
 		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
+		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
 	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>

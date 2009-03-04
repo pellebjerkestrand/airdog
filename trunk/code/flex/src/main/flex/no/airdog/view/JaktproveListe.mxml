@@ -4,15 +4,38 @@
         <![CDATA[
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
+			import mx.events.*;
+			import mx.collections.*;
+			import mx.controls.*;
+			import mx.core.UIComponent;
 			
 			public function set hundId(val:String):void
 			{
 				Components.instance.session.jaktproveListe = null;
 				Components.instance.controller.hentJaktprove(val);
-			}      
+			} 
+ 			private function slett(eventObj:CloseEvent):void {
+				if (eventObj.detail==Alert.OK) {
+					if (jaktprover.selectedIndex > -1) {
+						Components.instance.controller.slettJaktprove(jaktprover.selectedItem.proveNr);
+					}
+				}
+			}
+			
+			public function adminKlikk(event:ItemClickEvent):void{
+				if (event.index == 0){
+					Components.instance.controller.visRedigerJaktproveVindu(UIComponent(this.parentApplication), jaktprover.selectedItem);
+				}
+				else
+				{
+					var objAlert:Alert = Alert.show(
+					"Vil du slette " + jaktprover.selectedItem.proveNr, "Slette?", 
+					Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+				}
+			}    
         ]]>
     </mx:Script>
-	<mx:DataGrid paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
+	<mx:DataGrid id="jaktprover" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
@@ -31,6 +54,20 @@
 			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="bredde"/>
 			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="reviering"/>
 			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="samarbeid"/>
+			<mx:DataGridColumn headerText="Admin">
+				<mx:itemRenderer>
+					<mx:Component id="admin">
+						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
+							<mx:dataProvider>
+								<mx:Array>
+									<mx:String>Rediger</mx:String>
+									<mx:String>Slett</mx:String>
+								</mx:Array>
+							</mx:dataProvider>
+						</mx:ButtonBar>					   	
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>

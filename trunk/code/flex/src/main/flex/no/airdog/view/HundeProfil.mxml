@@ -86,9 +86,6 @@
 						
 			<mx:VBox label="Ustilling">				
 			</mx:VBox>
-			<mx:VBox label="Rediger Jaktprøve">
-				<adminView:RedigerJaktprove width="100%" hundId="{Components.instance.session.hundprofil.hundId}" />			
-			</mx:VBox>
 			<mx:VBox label="Rediger Hund">
 				<adminView:RedigerHund width="100%" hundId="{Components.instance.session.hundprofil.hundId}" />			
 			</mx:VBox>

@@ -4,21 +4,53 @@ package no.airdog.controller
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.events.*;
 	import mx.managers.PopUpManager;
-	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.*;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
 	import no.airdog.view.*;
+	import no.airdog.view.admin.*;
 	
 	public class MockController implements IController
 	{     
 		private var vindu:InnloggingVindu;
 		private var klubb:KlubbVindu;
+		private var leggInnJaktproveVindu:LeggInnJaktprove;
+		private var redigerJaktproveVindu:RedigerJaktprove;
 		
         public function MockController()
         {
         	var tmpCollection:ArrayCollection = new ArrayCollection();
+        }
+        
+        public function visLeggInnJaktproveVindu(parent:DisplayObject):void
+        {
+    		leggInnJaktproveVindu = PopUpManager.createPopUp(parent, LeggInnJaktprove, true) as LeggInnJaktprove;
+        	PopUpManager.centerPopUp(leggInnJaktproveVindu);
+			PopUpManager.bringToFront(leggInnJaktproveVindu);
+			
+        }
+       
+        public function fjernLeggInnJaktproveVindu():void
+        {
+        	PopUpManager.removePopUp(leggInnJaktproveVindu);
+        }
+        
+        
+        public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
+        {
+        	Components.instance.session.jaktprove = jaktprove as Jaktprove;
+        	
+    		redigerJaktproveVindu = PopUpManager.createPopUp(parent, RedigerJaktprove, true) as RedigerJaktprove;
+        	PopUpManager.centerPopUp(redigerJaktproveVindu);
+			PopUpManager.bringToFront(redigerJaktproveVindu);
+        }
+       
+        public function fjernRedigerJaktproveVindu():void
+        {
+        	PopUpManager.removePopUp(redigerJaktproveVindu);
         }
         
         public function visLoggInnVindu(parent:DisplayObject):void
@@ -232,8 +264,91 @@ package no.airdog.controller
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
 		}
 		
-		public function redigerJaktprove(jaktprove:Jaktprove):void
+		public function redigerJaktprove(		    
+			proveNr:String,
+			proveDato:String,
+			partiNr:String,
+			klasse:String,
+			dommerId1:String,
+			dommerId2:String,
+			hundid:String,
+			slippTid:String,
+			egneStand:String,
+			egneStokk:String,
+			tomStand:String,
+			makkerStand:String,
+			makkerStokk:String,
+			jaktlyst:String,
+			fart:String,
+			stil:String,
+			selvstendighet:String,
+			bredde:String,
+			reviering:String,
+			samarbeid:String,
+			presUpresis:String,
+			presNoeUpresis:String,
+			presPresis:String,
+			reisNekter:String,
+			reisNoelende:String,
+			reisVillig:String,
+			reisDjerv:String,
+			sokStjeler:String,
+			sokSpontant:String,
+			appIkkeGodkjent:String,
+			appGodkjent:String,
+			rappInnkalt:String,
+			rappSpont:String,
+			premiegrad:String,
+			certifikat:String,
+			regAv:String,
+			regDato:String,
+			raseId:String,
+			manueltEndretAv:String,
+			manueltEndretDato:String
+		):void
 		{
+			var jaktprove:Jaktprove = new Jaktprove;
+			jaktprove.proveNr = proveNr;
+			jaktprove.proveDato = proveDato;
+			jaktprove.partiNr = partiNr;
+			jaktprove.klasse = klasse;
+			jaktprove.dommerId1 = dommerId1;
+			jaktprove.dommerId2 = dommerId2;
+			jaktprove.hundId = hundid;
+			jaktprove.slippTid = slippTid;
+			jaktprove.egneStand = egneStand;
+			jaktprove.egneStokk = egneStokk;
+			jaktprove.tomStand = tomStand;
+			jaktprove.makkerStand = makkerStand;
+			jaktprove.makkerStokk = makkerStokk;
+			jaktprove.jaktlyst = jaktlyst;
+			jaktprove.fart = fart;
+			jaktprove.stil = stil;
+			jaktprove.selvstendighet = selvstendighet;
+			jaktprove.bredde = bredde;
+			jaktprove.reviering = reviering;
+			jaktprove.samarbeid = samarbeid;
+			jaktprove.presUpresis = samarbeid;
+			jaktprove.presNoeUpresis = presNoeUpresis;
+			jaktprove.presPresis = presNoeUpresis;
+			jaktprove.reisNekter = reisNekter;
+			jaktprove.reisNoelende = reisNoelende;
+			jaktprove.reisVillig = reisVillig;
+			jaktprove.reisDjerv = reisDjerv;
+			jaktprove.sokStjeler = sokStjeler;
+			jaktprove.sokSpontant = sokSpontant;
+			jaktprove.appIkkeGodkjent = appIkkeGodkjent;
+			jaktprove.appGodkjent = appGodkjent;
+			jaktprove.rappInnkalt = rappInnkalt;
+			jaktprove.rappSpont = rappSpont;
+			jaktprove.premiegrad = premiegrad;
+			jaktprove.certifikat = certifikat;
+			jaktprove.regAv = regAv;
+			jaktprove.regDato = regDato;
+			jaktprove.raseId = raseId;
+			jaktprove.manueltEndretAv = manueltEndretAv;
+			jaktprove.manueltEndretDato = manueltEndretDato;
+			
 			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
 		}
 		
@@ -252,8 +367,91 @@ package no.airdog.controller
 			
 		}
 		
-		public function leggInnJaktProve(jaktprove:Jaktprove):void
+		public function leggInnJaktProve(
+		    proveNr:String,
+			proveDato:String,
+			partiNr:String,
+			klasse:String,
+			dommerId1:String,
+			dommerId2:String,
+			hundid:String,
+			slippTid:String,
+			egneStand:String,
+			egneStokk:String,
+			tomStand:String,
+			makkerStand:String,
+			makkerStokk:String,
+			jaktlyst:String,
+			fart:String,
+			stil:String,
+			selvstendighet:String,
+			bredde:String,
+			reviering:String,
+			samarbeid:String,
+			presUpresis:String,
+			presNoeUpresis:String,
+			presPresis:String,
+			reisNekter:String,
+			reisNoelende:String,
+			reisVillig:String,
+			reisDjerv:String,
+			sokStjeler:String,
+			sokSpontant:String,
+			appIkkeGodkjent:String,
+			appGodkjent:String,
+			rappInnkalt:String,
+			rappSpont:String,
+			premiegrad:String,
+			certifikat:String,
+			regAv:String,
+			regDato:String,
+			raseId:String,
+			manueltEndretAv:String,
+			manueltEndretDato:String
+		):void
 		{
+			var jaktprove:Jaktprove = new Jaktprove;
+			jaktprove.proveNr = proveNr;
+			jaktprove.proveDato = proveDato;
+			jaktprove.partiNr = partiNr;
+			jaktprove.klasse = klasse;
+			jaktprove.dommerId1 = dommerId1;
+			jaktprove.dommerId2 = dommerId2;
+			jaktprove.hundId = hundid;
+			jaktprove.slippTid = slippTid;
+			jaktprove.egneStand = egneStand;
+			jaktprove.egneStokk = egneStokk;
+			jaktprove.tomStand = tomStand;
+			jaktprove.makkerStand = makkerStand;
+			jaktprove.makkerStokk = makkerStokk;
+			jaktprove.jaktlyst = jaktlyst;
+			jaktprove.fart = fart;
+			jaktprove.stil = stil;
+			jaktprove.selvstendighet = selvstendighet;
+			jaktprove.bredde = bredde;
+			jaktprove.reviering = reviering;
+			jaktprove.samarbeid = samarbeid;
+			jaktprove.presUpresis = samarbeid;
+			jaktprove.presNoeUpresis = presNoeUpresis;
+			jaktprove.presPresis = presNoeUpresis;
+			jaktprove.reisNekter = reisNekter;
+			jaktprove.reisNoelende = reisNoelende;
+			jaktprove.reisVillig = reisVillig;
+			jaktprove.reisDjerv = reisDjerv;
+			jaktprove.sokStjeler = sokStjeler;
+			jaktprove.sokSpontant = sokSpontant;
+			jaktprove.appIkkeGodkjent = appIkkeGodkjent;
+			jaktprove.appGodkjent = appGodkjent;
+			jaktprove.rappInnkalt = rappInnkalt;
+			jaktprove.rappSpont = rappSpont;
+			jaktprove.premiegrad = premiegrad;
+			jaktprove.certifikat = certifikat;
+			jaktprove.regAv = regAv;
+			jaktprove.regDato = regDato;
+			jaktprove.raseId = raseId;
+			jaktprove.manueltEndretAv = manueltEndretAv;
+			jaktprove.manueltEndretDato = manueltEndretDato;
+			
 			Components.instance.services.airdogService.leggInnJaktprove(jaktprove, leggInnJaktProveResultat);
 		}
 		

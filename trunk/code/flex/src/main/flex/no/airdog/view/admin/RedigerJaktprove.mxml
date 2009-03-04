@@ -1,115 +1,571 @@
-<?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%"
-	xmlns:adminView="no.airdog.view.admin.*">
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:controls="flexunit.flexui.controls.*"
+	title="Legg inn jaktprøve"
+	height="100%"
+	width="100%" 
+	xmlns:include="no.airdog.view.admin.Include.*" 
+	creationComplete="creationCompleteHandler()"
+	defaultButton="{lagre}" 
+	layout="vertical">
+	
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.model.Jaktprove;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
-			import mx.controls.dataGridClasses.DataGridColumn;
-			import mx.rpc.events.FaultEvent;
-			import mx.formatters.DateFormatter;
-			import mx.resources.ResourceBundle;	   	
-			import mx.collections.*;
-			import mx.controls.*;
-			import mx.events.*;
-				
-			public function set hundId(val:String):void
-			{
-				Components.instance.session.jaktproveListe = null;
-				Components.instance.controller.hentJaktprove(val);
-			}   
+			import mx.validators.Validator;
+            import mx.events.ValidationResultEvent;
+            import mx.controls.Alert;
 			
-			private function slett(eventObj:CloseEvent):void {
-				if (eventObj.detail==Alert.OK) {
-					if (rediger.selectedIndex > -1) {
-						Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
-					}
-				}
-			}
-			
-			private function lagre(event:DataGridEvent):void {
-                var dataGrid:DataGrid = event.target as DataGrid;
-                var kolonneIndex:Number = event.columnIndex;
-                var kolonne:DataGridColumn = dataGrid.columns[kolonneIndex];
-                
-                var nyVerdi:String = dataGrid.itemEditorInstance[kolonne.editorDataField];
-                var feltNavn:String = event.dataField;
-                
-                var jaktprove:Jaktprove = event.itemRenderer.data as Jaktprove;
-                
-                if (nyVerdi == jaktprove[feltNavn])
-                    return;
-                
-                jaktprove[feltNavn] = nyVerdi;
-                Components.instance.controller.redigerJaktprove(jaktprove);
+			[Bindable]
+            public var godkjent:Boolean = false;
+
+            [Bindable]
+            public var tomt:Boolean = true;
+    
+            private var hvilkeKontroll:DisplayObject;
+                                  
+            private function validering(event:Event):void 
+            {                    
+                hvilkeKontroll = event.target as DisplayObject;    
+           
+                godkjent = true;            
+
+                tomt = (
+                	proveNr.text == "" 
+                	&& proveDato.text == ""
+                    && partiNr.text == ""); 
+
+
+                valider(proveNrValidator);                
+                valider(proveDatoValidator);
+                valider(partiNrValidator);
             }
-			
-			public function clickHandler(event:ItemClickEvent):void{
-				var objAlert:Alert = Alert.show(
-				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
-				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+            
+            private function valider(validerer:Validator):Boolean
+            {                
+	            var validererSource:DisplayObject = validerer.source as DisplayObject;
+	            
+	            var ikkeVisBoks:Boolean = (validererSource != hvilkeKontroll);
+	            
+	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
+	                            
+	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
+	             
+	            godkjent = godkjent && erValidert;
+	             
+	            return erValidert;
+             }
+              
+             private function creationCompleteHandler():void
+             {
+             	settFokus(); 
+             }
+            
+            private function lagreJaktprove():void 
+            {
+            	Components.instance.controller.redigerJaktprove(
+				    proveNr.text,
+					proveDato.text,
+					partiNr.text,
+					klasse.text,
+					dommerId1.text,
+					dommerId2.text,
+					hundid.text,
+					slippTid.text,
+					egneStand.text,
+					egneStokk.text,
+					tomStand.text,
+					makkerStand.text,
+					makkerStokk.text,
+					jaktlyst.text,
+					fart.text,
+					stil.text,
+					selvstendighet.text,
+					bredde.text,
+					reviering.text,
+					samarbeid.text,
+					presUpresis.text,
+					presNoeUpresis.text,
+					presPresis.text,
+					reisNekter.text,
+					reisNoelende.text,
+					reisVillig.text,
+					reisDjerv.text,
+					sokStjeler.text,
+					sokSpontant.text,
+					appIkkeGodkjent.text,
+					appGodkjent.text,
+					rappInnkalt.text,
+					rappSpont.text,
+					premiegrad.text,
+					certifikat.text,
+					regAv.text,
+					regDato.text,
+					raseId.text,
+					manueltEndretAv.text,
+					manueltEndretDato.text
+				);
+            }
+            
+            private function clearFormHandler():void
+            {
+           	proveNr.text = "";
+				proveDato.text = "";
+				partiNr.text = "";
+				klasse.text = "";
+				dommerId1.text = "";
+				dommerId2.text = "";
+				hundid.text = "";
+				slippTid.text = "";
+				egneStand.text = "";
+				egneStokk.text = "";
+				tomStand.text = "";
+				makkerStand.text = "";
+				makkerStokk.text = "";
+				jaktlyst.text = "";
+				fart.text = "";
+				stil.text = "";
+				selvstendighet.text = "";
+				bredde.text = "";
+				reviering.text = "";
+				samarbeid.text = "";
+				presUpresis.text = "";
+				presNoeUpresis.text = "";
+				presPresis.text = "";
+				reisNekter.text = "";
+				reisNoelende.text = "";
+				reisVillig.text = "";
+				reisDjerv.text = "";
+				sokStjeler.text = "";
+				sokSpontant.text = "";
+				appIkkeGodkjent.text = "";
+				appGodkjent.text = "";
+				rappInnkalt.text = "";
+				rappSpont.text = "";
+				premiegrad.text = "";
+				certifikat.text = "";
+				regAv.text = "";
+				regDato.text = "";
+				raseId.text = "";
+				manueltEndretAv.text = "";
+				manueltEndretDato.text = "";
+                
+            	proveNr.errorString = "";
+				proveDato.errorString = "";
+				partiNr.errorString = "";
+				klasse.errorString = "";
+				dommerId1.errorString = "";
+				dommerId2.errorString = "";
+				hundid.errorString = "";
+				slippTid.errorString = "";
+				egneStand.errorString = "";
+				egneStokk.errorString = "";
+				tomStand.errorString = "";
+				makkerStand.errorString = "";
+				makkerStokk.errorString = "";
+				jaktlyst.errorString = "";
+				fart.errorString = "";
+				stil.errorString = "";
+				selvstendighet.errorString = "";
+				bredde.errorString = "";
+				reviering.errorString = "";
+				samarbeid.errorString = "";
+				presUpresis.errorString = "";
+				presNoeUpresis.errorString = "";
+				presPresis.errorString = "";
+				reisNekter.errorString = "";
+				reisNoelende.errorString = "";
+				reisVillig.errorString = "";
+				reisDjerv.errorString = "";
+				sokStjeler.errorString = "";
+				sokSpontant.errorString = "";
+				appIkkeGodkjent.errorString = "";
+				appGodkjent.errorString = "";
+				rappInnkalt.errorString = "";
+				rappSpont.errorString = "";
+				premiegrad.errorString = "";
+				certifikat.errorString = "";
+				regAv.errorString = "";
+				regDato.errorString = "";
+				raseId.errorString = "";
+				manueltEndretAv.errorString = "";
+				manueltEndretDato.errorString = "";
+                
+                tomt = true;
+                
+                settFokus();                          
+            }
+            
+            private function settFokus():void
+            {
+                focusManager.setFocus(proveNr);
+            }
+            
+           	private function avbryt():void
+			{
+				Components.instance.controller.fjernRedigerJaktproveVindu();
 			}
-		]]>
-	</mx:Script>
+            
+        ]]>
+    </mx:Script>
+
+    <mx:StringValidator id="proveNrValidator" source="{proveNr}" property="text" minLength="2" />
+    <mx:DateValidator id="proveDatoValidator" 
+    	source ="{proveDato}" 
+    	property ="text" 
+    	inputFormat ="YYYY-MM-DD"
+    	allowedFormatChars ="-" 
+    	formatError = "Feil dato formatering"
+    	invalidCharError = "Det er kun lov å bruke - som skille tegn"
+    	wrongDayError = "Skriv inn riktig dag for måneden"
+    	wrongLengthError="Feil formatering"
+    	wrongMonthError="Skriv en måned mellom 1 og 12"
+   		wrongYearError="Skriv år mellom 0 og 9999."    	
+    />
+    <mx:StringValidator id="partiNrValidator" source="{partiNr}" property="text" />
 	
-	<adminView:LeggInnJaktprove/>
+	<mx:Form width="100%">
+		<mx:Accordion id="ac" creationPolicy="all">
+			<mx:VBox label="1">
+				<mx:FormItem label="Prøve Nr">
+					<mx:TextInput id="proveNr" 
+						change="validering(event);" 
+						text="{Components.instance.session.jaktprove.proveNr}"
+					/>	
+				</mx:FormItem>
+
+				<mx:FormItem label="Dato">
+    				<mx:DateField id="proveDato" 
+			            editable="true" 
+			            width="100" 
+			            formatString="YYYY-MM-DD"
+			            change="validering(event);" 
+			            text="{Components.instance.session.jaktprove.proveDato}"
+			        /> 
+				</mx:FormItem>
+					
+				<mx:FormItem label="Parti">
+					<mx:TextInput id="partiNr"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.partiNr}"	
+					/>
+				</mx:FormItem>
+				
+				
+				<mx:FormItem label="Klasse">
+					<mx:TextInput id="klasse"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.klasse}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Dommer1">
+					<mx:TextInput id="dommerId1"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.dommerId1}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Dommer2">			
+					<mx:TextInput id="dommerId2"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.dommerId2}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="HID">
+					<mx:TextInput id="hundid"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.hundId}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="ST">
+					<mx:TextInput id="slippTid"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.slippTid}"
+					/>
+				</mx:FormItem>
+		
+				<mx:FormItem label="ES">
+					<mx:TextInput id="egneStand"
+						change="validering(event);" 
+						text="{Components.instance.session.jaktprove.egneStand}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="ESÀ">
+					<mx:TextInput id="egneStokk"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.egneStokk}"
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			
+			<mx:VBox label="2">
+				<mx:FormItem label="TS">
+					<mx:TextInput id="tomStand"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.tomStand}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="MS">
+					<mx:TextInput id="makkerStand"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.makkerStand}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="MSÀ">
+					<mx:TextInput id="makkerStokk"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.makkerStokk}"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="JL">
+					<mx:TextInput id="jaktlyst"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.jaktlyst}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Fa" >
+					<mx:TextInput id="fart"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.fart}"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="St">
+					<mx:TextInput id="stil"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.stil}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Ss" >
+					<mx:TextInput id="selvstendighet"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.selvstendighet}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="SB" >
+					<mx:TextInput id="bredde"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.bredde}"
+					/>
+				</mx:FormItem>
+				
+				
+				<mx:FormItem label="Rv" >
+					<mx:TextInput id="reviering"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.reviering}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Sa" >
+					<mx:TextInput id="samarbeid"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.samarbeid}"
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			
+			<mx:VBox label="3">
+				<mx:FormItem label="PU" >
+					<mx:TextInput id="presUpresis"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.presUpresis}"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PNU" >
+					<mx:TextInput id="presNoeUpresis"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.presNoeUpresis}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PP" >
+					<mx:TextInput id="presPresis"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.presPresis}"
+					/>
+				</mx:FormItem>					
+				
+				<mx:FormItem label="RN">
+					<mx:TextInput id="reisNekter"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.reisNekter}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RNL">
+					<mx:TextInput id="reisNoelende"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.reisNoelende}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RV" >
+					<mx:TextInput id="reisVillig"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.reisVillig}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="RD">
+					<mx:TextInput id="reisDjerv"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.reisDjerv}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="SS" >
+					<mx:TextInput id="sokStjeler"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.sokStjeler}"
+					/>
+				</mx:FormItem>
+
+				<mx:FormItem label="SSP" >
+					<mx:TextInput id="sokSpontant"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.sokSpontant}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="AIG">
+					<mx:TextInput id="appIkkeGodkjent"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.appIkkeGodkjent}"
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+			<mx:VBox label="4">	
+				<mx:FormItem label="AG" >
+					<mx:TextInput id="appGodkjent"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.appGodkjent}"
+					/>
+				</mx:FormItem>
+						
+				<mx:FormItem label="RI" >
+					<mx:TextInput id="rappInnkalt"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.rappInnkalt}"
+					/>
+				</mx:FormItem>
+				
+				<mx:FormItem label="RS">
+					<mx:TextInput id="rappSpont"
+						change="validering(event);"
+						text="{Components.instance.session.jaktprove.rappSpont}"	
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="PG">
+					<mx:TextInput id="premiegrad"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.premiegrad}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="CERT">
+					<mx:TextInput id="certifikat"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.certifikat}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Reg. av">
+					<mx:TextInput id="regAv"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.regAv}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Reg. dato">
+					<mx:TextInput id="regDato"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.regDato}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Rase ID" >
+					<mx:TextInput id="raseId"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.raseId}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Endret av" >
+					<mx:TextInput id="manueltEndretAv"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.manueltEndretAv}"
+					/>
+				</mx:FormItem>
+			
+				
+				<mx:FormItem label="Endret Dato" >
+					<mx:TextInput id="manueltEndretDato"
+						change="validering(event);"	
+						text="{Components.instance.session.jaktprove.manueltEndretDato}"
+					/>
+				</mx:FormItem>
+			</mx:VBox>
+		
+		</mx:Accordion>	
+	</mx:Form>	
 	
-	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.jaktproveListe}" editable="true" itemEditEnd="lagre(event)">
-		<mx:columns>		
-			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
-			<mx:DataGridColumn headerText="Dato" dataField="proveDato"/>
-			<mx:DataGridColumn headerText="Parti" dataField="partiNr"/>
-			<mx:DataGridColumn headerText="Klasse" dataField="klasse"/>
-			<mx:DataGridColumn headerText="Dommer1" dataField="dommerId1"/>			
-			<mx:DataGridColumn headerText="Dommer2" dataField="dommerId2"/>
-			<mx:DataGridColumn headerText="HID" dataField="hundId"/>
-			<mx:DataGridColumn headerText="ST" dataField="slippTid"/>
-			<mx:DataGridColumn headerText="ES" dataField="egneStand"/>
-			<mx:DataGridColumn headerText="ESø" dataField="egneStokk"/>
-			<mx:DataGridColumn headerText="TS" dataField="tomStand"/>
-			<mx:DataGridColumn headerText="MS" dataField="makkerStand"/>
-			<mx:DataGridColumn headerText="MSø" dataField="makkerStokk"/>
-			<mx:DataGridColumn headerText="JL" dataField="jaktlyst"/>
-			<mx:DataGridColumn headerText="Fa" dataField="fart"/>
-			<mx:DataGridColumn headerText="St" dataField="stil"/>
-			<mx:DataGridColumn headerText="Ss" dataField="selvstendighet"/>
-			<mx:DataGridColumn headerText="SB" dataField="bredde"/>
-			<mx:DataGridColumn headerText="Rv" dataField="reviering"/>
-			<mx:DataGridColumn headerText="Sa" dataField="samarbeid"/>
-			<mx:DataGridColumn headerText="PU" dataField="presUpresis"/>
-			<mx:DataGridColumn headerText="PNU" dataField="presNoeUpresis"/>
-			<mx:DataGridColumn headerText="PP" dataField="presPresis"/>
-			<mx:DataGridColumn headerText="RN" dataField="reisNekter"/>
-			<mx:DataGridColumn headerText="RNL" dataField="reisNoelende"/>
-			<mx:DataGridColumn headerText="RV" dataField="reisVillig"/>
-			<mx:DataGridColumn headerText="RD" dataField="reisDjerv"/>
-			<mx:DataGridColumn headerText="SS" dataField="sokStjeler"/>
-			<mx:DataGridColumn headerText="SSP" dataField="sokSpontant"/>
-			<mx:DataGridColumn headerText="AIG" dataField="appIkkeGodkjent"/>
-			<mx:DataGridColumn headerText="AG" dataField="appGodkjent"/>
-			<mx:DataGridColumn headerText="RI" dataField="rappInnkalt"/>
-			<mx:DataGridColumn headerText="RS" dataField="rappSpont"/>
-			<mx:DataGridColumn headerText="PG" dataField="premiegrad"/>
-			<mx:DataGridColumn headerText="CERT" dataField="certifikat"/>
-			<mx:DataGridColumn headerText="Reg. av" dataField="regAv"/>
-			<mx:DataGridColumn headerText="Reg. dato" dataField="regDato"/>
-			<mx:DataGridColumn headerText="Rase ID" dataField="raseId" editable="false"/>
-			<mx:DataGridColumn headerText="Endret av" dataField="manueltEndretAv" editable="false"/>
-			<mx:DataGridColumn headerText="Endret Dato" dataField="manueltEndretDato" editable="false"/>
-			<mx:DataGridColumn headerText="Slett" editable="false">
-				<mx:itemRenderer>
-					<mx:Component id="admin">
-						<mx:ButtonBar itemClick="outerDocument.clickHandler(event)" width="100%">
-							<mx:dataProvider>
-								<mx:Array>
-									<mx:String>Slett</mx:String>
-								</mx:Array>
-							</mx:dataProvider>
-						</mx:ButtonBar>					   	
-					</mx:Component>
-				</mx:itemRenderer>
-			</mx:DataGridColumn>
-		</mx:columns>
-	</mx:DataGrid>
-</mx:VBox>
+	<mx:ControlBar horizontalAlign="center">
+            <mx:Button 
+                id="lagre"
+                label="Lagre" 
+                enabled="{godkjent}" 
+                click="lagreJaktprove()"
+            />
+            <mx:Button 
+                label="Tøm skjema" 
+                enabled="{!tomt}"
+                click="clearFormHandler()"
+            />
+            <mx:Button 
+            	label="Avbryt" 
+            	click="avbryt()" 
+            />
+	</mx:ControlBar>
+	
+</mx:TitleWindow>
