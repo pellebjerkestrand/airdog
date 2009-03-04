@@ -45,6 +45,7 @@
                 hund[feltNavn] = nyVerdi;
                 Components.instance.controller.redigerHund(hund);
             }
+            
 //            private function lol(event:Event):void {
 //            	
 //            	var tekstboks:TextInput = event.target as TextInput;
@@ -78,6 +79,7 @@
 //				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
 //				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
 //			}
+
 			public function sendSkjema(event:Event):void{
 				
 				var verdier:Object = hentSkjemaVerdier();
