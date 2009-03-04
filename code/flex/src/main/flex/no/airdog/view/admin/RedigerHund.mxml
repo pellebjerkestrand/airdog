@@ -84,19 +84,20 @@
 				
 				Components.instance.controller.redigerHund(verdier);				
 			}
+			
 			private function hentSkjemaVerdier () : Object
-				{
-				    var verdier : Object = new Object();				
-				    var skjemaFelt:Array = redigerHundSkjema.getChildren();
-				
-				    // looper tekstinput og legger til verdiene i verdier
-				    for (var i:int = 0; i < skjemaFelt.length; i++)
-				    {
-				        var formItem:Array = skjemaFelt[i].getChildren();
-				        verdier[formItem[0].name] = formItem[0].text;
-				    }
-				    return verdier;
-				}
+			{
+			    var verdier : Object = new Object();				
+			    var skjemaFelt:Array = redigerHundSkjema.getChildren();
+			
+			    // looper tekstinput og legger til verdiene i verdier
+			    for (var i:int = 0; i < skjemaFelt.length; i++)
+			    {
+			        var formItem:Array = skjemaFelt[i].getChildren();
+			        verdier[formItem[0].name] = formItem[0].text;
+			    }
+			    return verdier;
+			}
 		]]>
 	</mx:Script>
 	<mx:Form id="redigerHundSkjema">
