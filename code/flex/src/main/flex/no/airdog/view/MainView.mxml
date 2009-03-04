@@ -68,12 +68,16 @@
 		
 <mx:VBox styleName="MainViewContainer" width="100%" height="100%">    	
 	<mx:VBox id="topbar" styleName="TopBar" width="100%">
-		<mx:HBox verticalAlign="middle">
+		<mx:HBox verticalAlign="middle" width="100%">
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
-			<mx:TextInput id="sokefelt" enter="sok()"/>
-			<mx:Button label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
-			<mx:Button label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
-			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}"/>
+			<mx:HBox>
+				<mx:TextInput id="sokefelt" enter="sok()"/>
+				<mx:Button label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>	
+			</mx:HBox>			
+			<mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle">				
+				<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}"/>
+				<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
+			</mx:HBox>
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
 			<mx:HBox id="admintab" label="Admin">
