@@ -54,6 +54,10 @@
 								<mx:Label text="Kull: "/>						
 								<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
 							</mx:HBox>
+							<mx:HBox>
+								<mx:Label text="farge: "/>						
+								<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" />
+							</mx:HBox>
 						</mx:VBox>		
 											
 					</mx:VBox>					
@@ -77,7 +81,7 @@
             </mx:VBox>
             
             <mx:VBox label="Stamtavle">
-				<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="4" />
+				<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="4"/>
 			</mx:VBox>
 						
 			<mx:VBox label="Ustilling">				

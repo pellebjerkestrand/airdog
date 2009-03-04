@@ -71,8 +71,8 @@
 		<mx:HBox verticalAlign="middle" width="100%">
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
 			<mx:HBox>
-				<mx:TextInput id="sokefelt" enter="sok()"/>
-				<mx:Button label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>	
+				<mx:TextInput id="sokefelt" enter="sok()" cornerRadius="5"/>
+				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#000000"/>	
 			</mx:HBox>			
 			<mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle">				
 				<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}"/>

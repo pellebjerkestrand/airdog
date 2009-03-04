@@ -28,13 +28,27 @@ class HundController
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
 			$tmp->farNavn = $rad["hundFarNavn"];
+			$tmp->idNr = $rad["idNr"];
 			$tmp->oppdretterId = "oppdretterId";
 			$tmp->oppdretter = "oppdretter";
 			$tmp->eierId = $rad["eierId"];
 			$tmp->eier = "eier";
 			$tmp->kjonn = $rad["kjonn"];
-			$tmp->rase = $rad["raseId"];
+			$tmp->raseId = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
+			$tmp->farge = $rad["farge"];
+			$tmp->fargeVariant = $rad["fargeVariant"];
+			$tmp->oyesykdom = $rad["oyesykdom"];
+			$tmp->hoftesykdom = $rad["hoftesykdom"];
+			$tmp->haarlag = $rad["hoftesykdom"];
+			$tmp->idMerke = $rad["idMerke"];
+			$tmp->endretAv = $rad["endretAv"];
+			$tmp->endretDato = $rad["endretDato"];
+			$tmp->regDato = $rad["regDato"];
+			$tmp->storrelse = $rad["storrelse"];
+			$tmp->manueltEndretAv = $rad["manueltEndretAv"];
+			$tmp->manueltEndretDato = $rad["manueltEndretDato"];
+			
 			//$tmp->vf = sprintf("%.1f", $rad["vf"]);
 			$ret[] = $tmp;
 		}
@@ -61,7 +75,7 @@ class HundController
 		$tmp->eierId = $rad["eierId"];
 		$tmp->eier = "eier";
 		$tmp->kjonn = $rad["kjonn"];
-		$tmp->rase = $rad["raseId"];
+		$tmp->raseId = $rad["raseId"];
 		$tmp->kullId = $rad["kullId"];
 		$tmp->vf = sprintf("%.1f", $rad["vf"]);
 			
@@ -92,8 +106,7 @@ class HundController
     {
 	  	$ret = array();
     	$ret['raseId'] = $hund->raseId;
-    	$ret['kullId'] = $hund->kullId;
-    	
+    	$ret['kullId'] = $hund->kullId;    	
     	$ret['hundId'] = $hund->hundId;
     	$ret['tittel'] = $hund->tittel;    	 
     	$ret['navn'] = $hund->navn;    	
