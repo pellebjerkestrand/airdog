@@ -19,16 +19,7 @@
 		public function set hundId(val:String):void
 		{
 			_hundId = val;
-		}  
-			
-//			private function slett(eventObj:CloseEvent):void {
-//				if (eventObj.detail==Alert.OK) {
-//					if (rediger.selectedIndex > -1) {
-//						//Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
-//					}
-//				}
-//			}
-			
+		}  			
 			private function lagre(event:DataGridEvent):void {
                 var dataGrid:DataGrid = event.target as DataGrid;
                 var kolonneIndex:Number = event.columnIndex;
@@ -45,40 +36,6 @@
                 hund[feltNavn] = nyVerdi;
                 Components.instance.controller.redigerHund(hund);
             }
-            
-//            private function lol(event:Event):void {
-//            	
-//            	var tekstboks:TextInput = event.target as TextInput;
-//            	
-//            	if (tekstboks != null)
-//            	{             		
-//            		var hund:Hund;
-//            		var nyVerdi:String = tekstboks.text;
-//            		var feltNavn:String = tekstboks.name;
-//            		//Alert.show(feltNavn);
-//            		 
-//            		        		
-//            		//Components.instance.controller.redigerHund(hund);
-//            		
-//            		switch (feltNavn)
-//	           		{
-//            			
-//            			case 1: "hundId"
-//            				Alert.show('hundId');
-//            				//Shund.hundId = nyVerdi;
-//            				//Components.instance.controller.redigerHund(hund);
-//            				
-//            			break;
-//            		}           		
-//            		
-//            	}
-//            }
-			
-//			public function clickHandler(event:ItemClickEvent):void{
-//				var objAlert:Alert = Alert.show(
-//				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
-//				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
-//			}
 
 			public function sendSkjema(event:Event):void{
 				
@@ -170,45 +127,7 @@
 			<mx:TextInput id="manueltEndretDato" name="manueltEndretDato" text="{Components.instance.session.hundprofil.manueltEndretDato}"/>
 		</mx:FormItem>			
 	</mx:Form>
-	<mx:Button label="Ferdig" click="sendSkjema(event)"/>
+	<mx:Button label="Lagre" click="sendSkjema(event)"/>
 	
-<!--	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.hundprofil}" editable="true" itemEditEnd="lagre(event)">
-		<mx:columns>		
-			<mx:DataGridColumn headerText="Hund Id" dataField="hundId"/>
-			<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
-			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
-			<mx:DataGridColumn headerText="Mor Id" dataField="morId"/>			
-			<mx:DataGridColumn headerText="Far Id" dataField="farId"/>
-			<mx:DataGridColumn headerText="Id nr" dataField="idNr"/>
-			<mx:DataGridColumn headerText="Kjønn" dataField="kjonn"/>
-			<mx:DataGridColumn headerText="Rase id" dataField="raseId"/>
-			<mx:DataGridColumn headerText="Kull id" dataField="kullId"/>
-			<mx:DataGridColumn headerText="Farge" dataField="farge"/>
-			<mx:DataGridColumn headerText="Fargevariant" dataField="fargeVariant"/>
-			<mx:DataGridColumn headerText="Øyesykdom" dataField="oyesykdom"/>
-			<mx:DataGridColumn headerText="Hoftesykdom" dataField="hoftesykdom"/>
-			<mx:DataGridColumn headerText="Hårlag" dataField="haarlag"/>
-			<mx:DataGridColumn headerText="Id-merke" dataField="idMerke"/>
-			<mx:DataGridColumn headerText="Endret av" dataField="endretAv"/>
-			<mx:DataGridColumn headerText="Endret dato" dataField="endretDato"/>
-			<mx:DataGridColumn headerText="Reg dato" dataField="regDato"/>
-			<mx:DataGridColumn headerText="Størrelse" dataField="storrelse"/>
-			<mx:DataGridColumn headerText="Manuelt endret av" dataField="manueltEndretAv"/>
-			<mx:DataGridColumn headerText="Manuelt endret dato" dataField="manueltEndretDato"/>
-			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
-			<mx:DataGridColumn headerText="Slett" editable="false">
-				<mx:itemRenderer>
-					<mx:Component id="admin">
-						<mx:ButtonBar itemClick="outerDocument.clickHandler(event)" width="100%">
-							<mx:dataProvider>
-								<mx:Array>
-									<mx:String>Slett</mx:String>
-								</mx:Array>
-							</mx:dataProvider>
-						</mx:ButtonBar>					   	
-					</mx:Component>
-				</mx:itemRenderer>
-			</mx:DataGridColumn>
-		</mx:columns>
-	</mx:DataGrid> -->
+
 </mx:VBox>
