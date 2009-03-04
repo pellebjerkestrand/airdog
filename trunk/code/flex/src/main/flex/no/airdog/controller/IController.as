@@ -20,7 +20,7 @@ package no.airdog.controller
 		function hentBrukersRoller():void
 		function hentStamtre(hundId:String, dybde:int):void
 		function redigerJaktprove(jaktprove:Jaktprove):void
-		function redigerHund(hund:Hund):void 
+		function redigerHund(verdier:Object):void 
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String):void
 		function leggInnJaktProve(jaktprove:Jaktprove):void

@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
 	<mx:Script>
 		<![CDATA[
+			import mx.binding.utils.ChangeWatcher;
 			import no.airdog.model.Hund;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
@@ -20,13 +21,13 @@
 			_hundId = val;
 		}  
 			
-			private function slett(eventObj:CloseEvent):void {
-				if (eventObj.detail==Alert.OK) {
-					if (rediger.selectedIndex > -1) {
-						//Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
-					}
-				}
-			}
+//			private function slett(eventObj:CloseEvent):void {
+//				if (eventObj.detail==Alert.OK) {
+//					if (rediger.selectedIndex > -1) {
+//						//Components.instance.controller.slettJaktprove(rediger.selectedItem.proveNr);
+//					}
+//				}
+//			}
 			
 			private function lagre(event:DataGridEvent):void {
                 var dataGrid:DataGrid = event.target as DataGrid;
@@ -44,84 +45,131 @@
                 hund[feltNavn] = nyVerdi;
                 Components.instance.controller.redigerHund(hund);
             }
+//            private function lol(event:Event):void {
+//            	
+//            	var tekstboks:TextInput = event.target as TextInput;
+//            	
+//            	if (tekstboks != null)
+//            	{             		
+//            		var hund:Hund;
+//            		var nyVerdi:String = tekstboks.text;
+//            		var feltNavn:String = tekstboks.name;
+//            		//Alert.show(feltNavn);
+//            		 
+//            		        		
+//            		//Components.instance.controller.redigerHund(hund);
+//            		
+//            		switch (feltNavn)
+//	           		{
+//            			
+//            			case 1: "hundId"
+//            				Alert.show('hundId');
+//            				//Shund.hundId = nyVerdi;
+//            				//Components.instance.controller.redigerHund(hund);
+//            				
+//            			break;
+//            		}           		
+//            		
+//            	}
+//            }
 			
-			public function clickHandler(event:ItemClickEvent):void{
-				var objAlert:Alert = Alert.show(
-				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
-				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+//			public function clickHandler(event:ItemClickEvent):void{
+//				var objAlert:Alert = Alert.show(
+//				"Vil du slette " + rediger.selectedItem.proveNr, "Slette?", 
+//				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+//			}
+			public function sendSkjema(event:Event):void{
+				
+				var verdier:Object = hentSkjemaVerdier();
+				
+				Components.instance.controller.redigerHund(verdier);				
 			}
+			private function hentSkjemaVerdier () : Object
+				{
+				    var verdier : Object = new Object();				
+				    var skjemaFelt:Array = redigerHundSkjema.getChildren();
+				
+				    // looper tekstinput og legger til verdiene i verdier
+				    for (var i:int = 0; i < skjemaFelt.length; i++)
+				    {
+				        var formItem:Array = skjemaFelt[i].getChildren();
+				        verdier[formItem[0].name] = formItem[0].text;
+				    }
+				    return verdier;
+				}
 		]]>
 	</mx:Script>
-	<mx:Form>
-		<mx:FormItem label="AIG">
-			<mx:TextInput id="hundid" text="{Components.instance.session.hundprofil.hundId}"/>
+	<mx:Form id="redigerHundSkjema">
+		<mx:FormItem label="Hund id">
+			<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}"/>
 		</mx:FormItem>
-		<mx:FormItem label="AIG">
-			<mx:TextInput id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
+		<mx:FormItem label="Tittel">
+			<mx:TextInput id="tittel" name="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
 		</mx:FormItem>
-		<mx:FormItem label="AIG">
-			<mx:TextInput id="navn" text="{Components.instance.session.hundprofil.navn}"/>
+		<mx:FormItem label="Navn">
+			<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}"/>
 		</mx:FormItem>
-		<mx:FormItem label="AIG">
-			<mx:TextInput id="morId" text="{Components.instance.session.hundprofil.morId}"/>
+		<mx:FormItem label="Mors id">
+			<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">			
-			<mx:TextInput id="farId" text="{Components.instance.session.hundprofil.farId}"/>
+			<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="idNr" text="{Components.instance.session.hundprofil.idNr}"/>
+			<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
+			<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="raseId" text="{Components.instance.session.hundprofil.raseId}"/>
+			<mx:TextInput id="eierid" name="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
+			<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="farge" text="{Components.instance.session.hundprofil.farge}"/>
+			<mx:TextInput id="kullId" name="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
+			<mx:TextInput id="farge" name="farge" text="{Components.instance.session.hundprofil.farge}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
+			<mx:TextInput id="fargeVariant" name="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
+			<mx:TextInput id="oyesykdom" name="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
+			<mx:TextInput id="hoftesykdom" name="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
+			<mx:TextInput id="haarlag" name="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
+			<mx:TextInput id="idMerke" name="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>
+			<mx:TextInput id="endretAv" name="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="regDato" text="{Components.instance.session.hundprofil.regDato}"/>
+			<mx:TextInput id="endretDato" name="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
+			<mx:TextInput id="regDato" name="regDato" text="{Components.instance.session.hundprofil.regDato}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
+			<mx:TextInput id="storrelse" name="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="manueltEndretDato" text="{Components.instance.session.hundprofil.manueltEndretDato}"/>
+			<mx:TextInput id="manueltEndretAv" name="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
 		</mx:FormItem>
 		<mx:FormItem label="AIG">
-			<mx:TextInput id="hundNavn" text="{Components.instance.session.hundprofil.navn}"/>
-		</mx:FormItem>		
+			<mx:TextInput id="manueltEndretDato" name="manueltEndretDato" text="{Components.instance.session.hundprofil.manueltEndretDato}"/>
+		</mx:FormItem>			
 	</mx:Form>
+	<mx:Button label="Ferdig" click="sendSkjema(event)"/>
 	
-	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.hundprofil}" editable="true" itemEditEnd="lagre(event)">
+<!--	<mx:DataGrid id="rediger" dataProvider="{Components.instance.session.hundprofil}" editable="true" itemEditEnd="lagre(event)">
 		<mx:columns>		
 			<mx:DataGridColumn headerText="Hund Id" dataField="hundId"/>
 			<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
@@ -159,5 +207,5 @@
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
 		</mx:columns>
-	</mx:DataGrid>
+	</mx:DataGrid> -->
 </mx:VBox>
