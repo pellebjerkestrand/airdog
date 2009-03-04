@@ -33,5 +33,8 @@ package no.airdog.model
         
         [Bindable]
         public var arsgjennomsnitt:ArrayCollection = new ArrayCollection();
+        
+        [Bindable]
+        public var jaktprove:Jaktprove;
 	}
 }
