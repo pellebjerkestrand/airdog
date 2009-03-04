@@ -65,48 +65,96 @@
             
             private function lagreJaktprove():void 
             {
-            	Components.instance.controller.redigerJaktprove(
-				    proveNr.text,
-					proveDato.text,
-					partiNr.text,
-					klasse.text,
-					dommerId1.text,
-					dommerId2.text,
-					hundid.text,
-					slippTid.text,
-					egneStand.text,
-					egneStokk.text,
-					tomStand.text,
-					makkerStand.text,
-					makkerStokk.text,
-					jaktlyst.text,
-					fart.text,
-					stil.text,
-					selvstendighet.text,
-					bredde.text,
-					reviering.text,
-					samarbeid.text,
-					presUpresis.text,
-					presNoeUpresis.text,
-					presPresis.text,
-					reisNekter.text,
-					reisNoelende.text,
-					reisVillig.text,
-					reisDjerv.text,
-					sokStjeler.text,
-					sokSpontant.text,
-					appIkkeGodkjent.text,
-					appGodkjent.text,
-					rappInnkalt.text,
-					rappSpont.text,
-					premiegrad.text,
-					certifikat.text,
-					regAv.text,
-					regDato.text,
-					raseId.text,
-					manueltEndretAv.text,
-					manueltEndretDato.text
-				);
+            	if(Components.instance.session.jaktprove)
+            	{
+            		Components.instance.controller.redigerJaktprove(
+					    proveNr.text,
+						proveDato.text,
+						partiNr.text,
+						klasse.text,
+						dommerId1.text,
+						dommerId2.text,
+						hundid.text,
+						slippTid.text,
+						egneStand.text,
+						egneStokk.text,
+						tomStand.text,
+						makkerStand.text,
+						makkerStokk.text,
+						jaktlyst.text,
+						fart.text,
+						stil.text,
+						selvstendighet.text,
+						bredde.text,
+						reviering.text,
+						samarbeid.text,
+						presUpresis.text,
+						presNoeUpresis.text,
+						presPresis.text,
+						reisNekter.text,
+						reisNoelende.text,
+						reisVillig.text,
+						reisDjerv.text,
+						sokStjeler.text,
+						sokSpontant.text,
+						appIkkeGodkjent.text,
+						appGodkjent.text,
+						rappInnkalt.text,
+						rappSpont.text,
+						premiegrad.text,
+						certifikat.text,
+						regAv.text,
+						regDato.text,
+						raseId.text,
+						manueltEndretAv.text,
+						manueltEndretDato.text
+					);
+            	}
+            	else
+            	{
+            		Components.instance.controller.leggInnJaktProve(
+					    proveNr.text,
+						proveDato.text,
+						partiNr.text,
+						klasse.text,
+						dommerId1.text,
+						dommerId2.text,
+						hundid.text,
+						slippTid.text,
+						egneStand.text,
+						egneStokk.text,
+						tomStand.text,
+						makkerStand.text,
+						makkerStokk.text,
+						jaktlyst.text,
+						fart.text,
+						stil.text,
+						selvstendighet.text,
+						bredde.text,
+						reviering.text,
+						samarbeid.text,
+						presUpresis.text,
+						presNoeUpresis.text,
+						presPresis.text,
+						reisNekter.text,
+						reisNoelende.text,
+						reisVillig.text,
+						reisDjerv.text,
+						sokStjeler.text,
+						sokSpontant.text,
+						appIkkeGodkjent.text,
+						appGodkjent.text,
+						rappInnkalt.text,
+						rappSpont.text,
+						premiegrad.text,
+						certifikat.text,
+						regAv.text,
+						regDato.text,
+						raseId.text,
+						manueltEndretAv.text,
+						manueltEndretDato.text
+					);
+            	}
             }
             
             private function clearFormHandler():void
@@ -205,7 +253,7 @@
             
            	private function avbryt():void
 			{
-				Components.instance.controller.fjernRedigerJaktproveVindu();
+				Components.instance.controller.fjernJaktproveVindu();
 			}
             
         ]]>

@@ -107,8 +107,7 @@ package no.airdog.controller
 			manueltEndretDato:String
 		):void
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
-		function fjernLeggInnJaktproveVindu():void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
-		function fjernRedigerJaktproveVindu():void
+		function fjernJaktproveVindu():void
 	}
 }

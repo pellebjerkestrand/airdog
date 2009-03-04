@@ -17,8 +17,7 @@ package no.airdog.controller
 	{     
 		private var vindu:InnloggingVindu;
 		private var klubb:KlubbVindu;
-		private var leggInnJaktproveVindu:LeggInnJaktprove;
-		private var redigerJaktproveVindu:RedigerJaktprove;
+		private var jaktproveVindu:JaktproveVindu;
 		
         public function MockController()
         {
@@ -27,30 +26,25 @@ package no.airdog.controller
         
         public function visLeggInnJaktproveVindu(parent:DisplayObject):void
         {
-    		leggInnJaktproveVindu = PopUpManager.createPopUp(parent, LeggInnJaktprove, true) as LeggInnJaktprove;
-        	PopUpManager.centerPopUp(leggInnJaktproveVindu);
-			PopUpManager.bringToFront(leggInnJaktproveVindu);
+    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+        	PopUpManager.centerPopUp(jaktproveVindu);
+			PopUpManager.bringToFront(jaktproveVindu);
 			
-        }
-       
-        public function fjernLeggInnJaktproveVindu():void
-        {
-        	PopUpManager.removePopUp(leggInnJaktproveVindu);
-        }
-        
+        }      
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
         {
         	Components.instance.session.jaktprove = jaktprove as Jaktprove;
         	
-    		redigerJaktproveVindu = PopUpManager.createPopUp(parent, RedigerJaktprove, true) as RedigerJaktprove;
-        	PopUpManager.centerPopUp(redigerJaktproveVindu);
-			PopUpManager.bringToFront(redigerJaktproveVindu);
+    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+        	PopUpManager.centerPopUp(jaktproveVindu);
+			PopUpManager.bringToFront(jaktproveVindu);
         }
        
-        public function fjernRedigerJaktproveVindu():void
+        public function fjernJaktproveVindu():void
         {
-        	PopUpManager.removePopUp(redigerJaktproveVindu);
+        	Components.instance.session.jaktprove = null;
+        	PopUpManager.removePopUp(jaktproveVindu);
         }
         
         public function visLoggInnVindu(parent:DisplayObject):void
