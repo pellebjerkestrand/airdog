@@ -62,6 +62,8 @@ package no.airdog.controller
 			manueltEndretDato:String
 		):void
 		function redigerHund(verdier:Object):void 
+		function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
+		function lukkRedigerHundVindu():void
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String):void
 		function leggInnJaktProve(

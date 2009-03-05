@@ -18,6 +18,7 @@ package no.airdog.controller
 		private var vindu:InnloggingVindu;
 		private var klubb:KlubbVindu;
 		private var jaktproveVindu:JaktproveVindu;
+		private var redigerHundVindu:RedigerHundVindu;
 		
         public function MockController()
         {
@@ -215,7 +216,7 @@ package no.airdog.controller
 		}
 		public function redigerHund(verdier:Object):void
 		{
-			var hund:Hund = new Hund(); 
+			var hund:Hund = new Hund();
 			
 			hund.raseId = verdier['raseId'];
 			hund.kullId = verdier['kullId'];
@@ -239,14 +240,29 @@ package no.airdog.controller
 			hund.storrelse = verdier['storrelse'];
 			hund.manueltEndretAv = verdier['manueltEndretAv'];
 			hund.manueltEndretDato = verdier['manueltEndretDato'];
-						
-//		Alert.show(hund.eierId);
-			Components.instance.services.airdogService.redigerHund(hund, redigerHundResultat);
+			
+			Alert.show('Endret hunden '+hund.navn);
+			Components.instance.services.airdogService.redigerHund(hund, redigerHundResultat);			
+			
+			
+			
 		}
 		public function redigerHundResultat(event:Object):void
 		{
 			
 		}
+		public function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
+        {
+        	Components.instance.session.hundprofil = hund as Hund;
+        	
+    		redigerHundVindu = PopUpManager.createPopUp(parent, RedigerHundVindu, true) as RedigerHundVindu;
+        	PopUpManager.centerPopUp(redigerHundVindu);
+			PopUpManager.bringToFront(redigerHundVindu);
+        }
+        public function lukkRedigerHundVindu():void
+        {
+        	PopUpManager.removePopUp(redigerHundVindu);
+        }
 		
 		public function sokArsgjennomsnitt(hund:String, ar:String):void
 		{

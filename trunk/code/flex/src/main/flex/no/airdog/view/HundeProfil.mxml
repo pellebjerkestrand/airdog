@@ -8,7 +8,14 @@
 	
 	<mx:Script>
         <![CDATA[
-			import no.airdog.services.Components;  
+			import no.airdog.services.Components;
+			
+			import mx.core.UIComponent;
+			
+			public function visRedigerHundVindu():void{
+				
+					Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
+			}  
 		]]>
     </mx:Script>
 	
@@ -16,7 +23,7 @@
 		
 		<mx:HBox>
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
-			<mx:Button label="Rediger"/>
+			<mx:Button label="Rediger" click="visRedigerHundVindu()"/>
 			<mx:VBox>				
 				<mx:Text id="navn" fontSize="25" text="{Components.instance.session.hundprofil.navn}" />						
 				<mx:HBox>						
@@ -85,9 +92,6 @@
 			</mx:VBox>
 						
 			<mx:VBox label="Ustilling">				
-			</mx:VBox>
-			<mx:VBox label="Rediger Hund">
-				<adminView:RedigerHund width="100%" hundId="{Components.instance.session.hundprofil.hundId}" />			
 			</mx:VBox>
 		</mx:TabNavigator>
 		

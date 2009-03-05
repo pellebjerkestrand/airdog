@@ -1,0 +1,173 @@
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="Rediger hund"
+	height="100%"
+	width="500" 
+	defaultButton="{lagre}" 
+	layout="vertical">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.binding.utils.ChangeWatcher;
+			import no.airdog.model.Hund;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.rpc.events.FaultEvent;
+			import mx.formatters.DateFormatter;
+			import mx.resources.ResourceBundle;	   	
+			import mx.collections.*;
+			import mx.controls.*;
+			import mx.events.*;
+		
+		private var _hundId:String;	
+				
+		public function set hundId(val:String):void
+		{
+			_hundId = val;
+		}  	
+		public function sendSkjema(event:Event):void
+		{
+			var verdier:Object = hentSkjemaVerdier();			
+			Components.instance.controller.redigerHund(verdier);				
+		}
+		public function lukkRedigerHundVindu(event:Event):void{
+			Components.instance.controller.lukkRedigerHundVindu();
+		}
+		
+		private function hentSkjemaVerdier () : Object
+		{
+		    var verdier : Object = new Object();			    
+		    var skjemaGrupper:Array = skjemaer.getChildren();	
+		  	var skjemaFelt:Array;	    
+		   
+		   	// loop skjemagrupperinger og legg alle delskjemaverdier inn i verdier[]
+		    for(var y:int = 0; y < skjemaGrupper.length; y++)
+		    {
+		    	  
+		    	  var delSkjema:Array = skjemaGrupper[y].getChildren();//hvert skjema har barn
+		    	  
+		    	  for(var z:int = 0; z < delSkjema.length; z++)
+		    	  {		    	  		
+		    	  		var formItem:Array = delSkjema[z].getChildren();		    	  		
+		    	  		verdier[formItem[0].name] = formItem[0].text;    	  		
+		    	  }
+		    }	
+		    //ekstra felt for å få 'verdier as Hund;', funker ikke foreløpig
+		    verdier['morNavn'] = "";
+		    verdier['farNavn'] = "";
+		    verdier['oppdretterId'] = "";
+		    verdier['oppdretter'] = "";
+		    verdier['eier'] = "";
+		    verdier['hq'] = "";
+		    verdier['hd'] = "";
+		    verdier['start'] = "";
+		    verdier['jl'] = "";
+		    verdier['vf'] = "";
+		    verdier['selv'] = "";
+		    verdier['sok'] = "";
+		    verdier['rev'] = "";
+		    verdier['sam'] = "";
+		    verdier['bestPl'] = "";
+		    verdier['mor'] = "";
+		    verdier['far'] = "";		    
+		    
+		    return verdier;
+		}
+		]]>
+	</mx:Script>		
+	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
+		<mx:Form label="Hundedata">
+			<mx:FormItem label="Hund id">
+				<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Tittel">
+				<mx:TextInput id="tittel" name="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Navn">
+				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Mors id">
+				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Fars id">			
+				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Id nummer">
+				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Kjønn">
+				<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Eiers id">
+				<mx:TextInput id="eierid" name="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Rasens id">
+				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Kull id">
+				<mx:TextInput id="kullId" name="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Farge">
+				<mx:TextInput id="farge" name="farge" text="{Components.instance.session.hundprofil.farge}"/>
+			</mx:FormItem>
+			<mx:FormItem label="FargeVariant">
+				<mx:TextInput id="fargeVariant" name="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
+			</mx:FormItem>
+		</mx:Form>
+		<mx:Form label="Helse">
+			<mx:FormItem label="Øyesykdom">
+				<mx:TextInput id="oyesykdom" name="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Hoftesykdom">
+				<mx:TextInput id="hoftesykdom" name="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Hårlag">
+				<mx:TextInput id="haarlag" name="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Idmerke">
+				<mx:TextInput id="idMerke" name="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Størrelse">
+				<mx:TextInput id="storrelse" name="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
+			</mx:FormItem>					
+		</mx:Form>
+		<mx:Form label="Metadata">
+			<mx:FormItem label="Endret av">
+				<mx:TextInput id="endretav" name="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Endret dato">
+				<mx:DateField id="endretDato"
+					name="endretDato" 
+		            editable="true"		            
+		            formatString="YYYY-MM-DD" 
+		            text="{Components.instance.session.hundprofil.endretDato}"
+		        /> 
+				<!--<mx:TextInput id="endretDato" name="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>-->
+			</mx:FormItem>
+			<mx:FormItem label="Registrert dato">
+				<mx:DateField id="regdato" 
+					name="regDato"
+		            editable="true"		            
+		            formatString="YYYY-MM-DD"		          
+		            text="{Components.instance.session.hundprofil.regDato}"
+		        />
+			</mx:FormItem>			
+			<mx:FormItem label="Manuelt endret av">
+				<mx:TextInput id="manueltEndretAv" name="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Manuelt endret dato">
+				<mx:DateField id="manueltendretdato" 
+					name="manueltEndretDato"
+		            editable="true"		            
+		            formatString="YYYY-MM-DD"		          
+		            text="{Components.instance.session.hundprofil.manueltEndretDato}"
+		        />				
+			</mx:FormItem>	
+		</mx:Form>
+	</mx:Accordion>
+	<mx:ControlBar horizontalAlign="center">
+		<mx:Button id="lagre" label="Lagre" click="sendSkjema(event)"/>
+		<mx:Button id="lukk" label="Lukk" click="lukkRedigerHundVindu(event)"/>	
+	</mx:ControlBar>
+</mx:TitleWindow>

@@ -78,11 +78,11 @@
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png"/>
 			<mx:HBox>
 				<mx:TextInput id="sokefelt" enter="sok()" cornerRadius="5"/>
-				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#000000"/>	
+				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#22201E" fontSize="13"/>	
 			</mx:HBox>			
-			<mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle">				
+			<mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle" paddingRight="5">				
 				<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}"/>
-				<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
+				<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')" fontSize="13" color="#22201E"/>
 			</mx:HBox>
 		</mx:HBox>										
 		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
