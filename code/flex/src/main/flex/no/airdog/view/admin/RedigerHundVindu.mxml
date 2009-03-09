@@ -101,7 +101,7 @@
 	
 	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%" creationComplete="validateUs()">
 		<mx:Form label="Hundedata">
-			<mx:FormItem label="Hund id">
+			<mx:FormItem label="Hund-ID">
 				<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Tittel">
@@ -110,31 +110,31 @@
 			<mx:FormItem label="Navn">
 				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}" change="validateUs()"/>
 			</mx:FormItem>
-			<mx:FormItem label="Mors id">
+			<mx:FormItem label="Mors ID">
 				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}"/>
 			</mx:FormItem>
-			<mx:FormItem label="Fars id">			
+			<mx:FormItem label="Fars ID">			
 				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
 			</mx:FormItem>
-			<mx:FormItem label="Id nummer">
+			<mx:FormItem label="ID-nummer">
 				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Kjønn">
 				<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}" change="validateUs()"/>
 			</mx:FormItem>
-			<mx:FormItem label="Eiers id">
+			<mx:FormItem label="Eier-ID">
 				<mx:TextInput id="eierId" name="eierId" text="{Components.instance.session.hundprofil.eierId}" change="validateUs()"/>
 			</mx:FormItem>
-			<mx:FormItem label="Rasens id">
+			<mx:FormItem label="Rase-ID">
 				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}" change="validateUs()"/>
 			</mx:FormItem>
-			<mx:FormItem label="Kull id">
+			<mx:FormItem label="Kull-ID">
 				<mx:TextInput id="kullId" name="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Farge">
 				<mx:TextInput id="farge" name="farge" text="{Components.instance.session.hundprofil.farge}"/>
 			</mx:FormItem>
-			<mx:FormItem label="FargeVariant">
+			<mx:FormItem label="Fargevariant">
 				<mx:TextInput id="fargeVariant" name="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
 			</mx:FormItem>
 		</mx:Form>
@@ -148,7 +148,7 @@
 			<mx:FormItem label="Hårlag">
 				<mx:TextInput id="haarlag" name="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
 			</mx:FormItem>
-			<mx:FormItem label="Idmerke">
+			<mx:FormItem label="ID-merke">
 				<mx:TextInput id="idMerke" name="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Størrelse">
@@ -159,7 +159,7 @@
 			<mx:FormItem label="Endret av">
 				<mx:TextInput id="endretav" name="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
 			</mx:FormItem>
-			<mx:FormItem label="Endret dato">
+			<mx:FormItem label="Dato endret">
 				<mx:DateField id="endretDato"
 					name="endretDato" 
 		            editable="true"		            
@@ -168,7 +168,7 @@
 		        /> 
 				<!--<mx:TextInput id="endretDato" name="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>-->
 			</mx:FormItem>
-			<mx:FormItem label="Registrert dato">
+			<mx:FormItem label="Dato registrert">
 				<mx:DateField id="regdato" 
 					name="regDato"
 		            editable="true"		            
@@ -179,7 +179,7 @@
 			<mx:FormItem label="Manuelt endret av">
 				<mx:TextInput id="manueltEndretAv" name="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
 			</mx:FormItem>
-			<mx:FormItem label="Manuelt endret dato">
+			<mx:FormItem label="Dato manuelt endret">
 				<mx:DateField id="manueltendretdato" 
 					name="manueltEndretDato"
 		            editable="true"		            
