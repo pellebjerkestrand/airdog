@@ -53,7 +53,7 @@ class JaktproveDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from('NKK_fugl') 
+			->from('nkk_fugl') 
 			->where('hundId=?',$hundId)
 			->where('raseId=?', $klubbId); 
 	
@@ -124,7 +124,7 @@ class JaktproveDatabase
 	private function _hentJaktprove($proveNr, $klubbId)
 	{
 			$select = $this->database->select()
-			->from('NKK_fugl') 
+			->from('nkk_fugl') 
 			->where('proveNr=?',$proveNr)
 			->where('raseId=?', $klubbId)
 			->limit(1);

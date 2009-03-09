@@ -112,7 +112,7 @@ class HundDatabase
 			
 			$hvor = $this->database->quoteInto('idNr = ?', $hundArray["idNr"]);
 			
-			$this->database->update('NKK_hund', $hundArray, $hvor);
+			$this->database->update('nkk_hund', $hundArray, $hvor);
 			
 			return true;
 		}
@@ -127,7 +127,7 @@ class HundDatabase
 		{
 			$hvor = $this->database->quoteInto('hundId = ?', $hundId);
 	
-			$this->database->delete('NKK_hund', $hvor);
+			$this->database->delete('nkk_hund', $hvor);
 		}
 	}
 	
@@ -148,7 +148,7 @@ class HundDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{ 			
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+			->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
 			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 			->where('h.raseId=?', $klubbId)
@@ -168,7 +168,7 @@ class HundDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array(
+			->from(array('h'=>'nkk_hund'), array(
 				'h.*', 
 				'hundMorNavn'=>'hMor.navn', 
 				'hundFarNavn'=>'hFar.navn',
@@ -207,7 +207,7 @@ class HundDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
+			->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
 			'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
 			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
@@ -226,7 +226,7 @@ class HundDatabase
 	private function _hentHund($hundId, $klubbId)
 	{
 		$select = $this->database->select()
-		->from(array('h'=>'NKK_hund'), array('h.*'))
+		->from(array('h'=>'nkk_hund'), array('h.*'))
 		->where('h.hundId=?', $hundId)
 		->where('h.raseId=?', $klubbId)
 		->limit(1);
@@ -239,7 +239,7 @@ class HundDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array('h.*'))
+			->from(array('h'=>'nkk_hund'), array('h.*'))
 			->where('h.hundId=?', $hundId)
 			->where('h.raseId=?', $klubbId)
 			->limit(1);
@@ -255,7 +255,7 @@ class HundDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from('NKK_hund', array('NKK_hund.*'))
+			->from('nkk_hund', array('nkk_hund.*'))
 			->where('h.raseId=?', $klubbId);
 			
 			return $this->database->fetchAll($select);

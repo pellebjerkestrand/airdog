@@ -25,7 +25,7 @@ class EierDatabase
 			return "eiers id mangler";
 		}
 
-		$this->database->insert('NKK_eier', $eierArray);
+		$this->database->insert('nkk_eier', $eierArray);
 		
 		return true;
 	}
@@ -45,7 +45,7 @@ class EierDatabase
 			return "endret av bruker mangler";
 		}
 
-		$this->database->update('NKK_eier', $eierArray);
+		$this->database->update('nkk_eier', $eierArray);
 		
 		return true;
 	}

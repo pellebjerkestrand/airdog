@@ -77,7 +77,7 @@ class KullDatabase
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$select = $this->database->select()
-			->from(array('h'=>'NKK_hund'), array(
+			->from(array('h'=>'nkk_hund'), array(
 				'h.*', 
 				'hundMorNavn'=>'hMor.navn', 
 				'hundFarNavn'=>'hFar.navn',
