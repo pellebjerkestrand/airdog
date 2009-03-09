@@ -167,7 +167,7 @@
         ]]>
     </mx:Script>
 
-    <mx:StringValidator id="proveNrValidator" source="{proveNr}" property="text" minLength="2" />
+    <mx:StringValidator id="proveNrValidator" source="{proveNr}" property="text" minLength="2" tooShortError="Du må skrive minst {proveNrValidator.minLength} tegn" />
     <mx:DateValidator id="proveDatoValidator" 
     	source ="{proveDato}" 
     	property ="text" 
