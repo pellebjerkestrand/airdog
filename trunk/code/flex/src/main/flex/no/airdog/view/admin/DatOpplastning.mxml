@@ -16,5 +16,6 @@
     
     <mx:Button label="Last opp" click="velgFil()"/>
 	<mx:ProgressBar id="pBar" mode="manual" width="100%" label="" labelPlacement="center" trackHeight="10" visible="{Components.instance.session.datOpplastning.startet}" />
+	<mx:ProgressBar indeterminate="true" id="venterSQL" width="100%" label="Venter på SQL..." labelPlacement="center" visible="{Components.instance.session.datOpplastning.venterSQL}" />
 	<mx:TextArea id="pText" width="100%" height="200" text="{Components.instance.session.datOpplastning.resultat}" visible="{Components.instance.session.datOpplastning.ferdig}" />
 </mx:VBox>
