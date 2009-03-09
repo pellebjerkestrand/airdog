@@ -11,7 +11,6 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import no.airdog.model.Jaktprove;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
 			import mx.validators.Validator;
@@ -28,7 +27,7 @@
                                   
             private function validering(event:Event):void 
             {                    
-                hvilkeKontroll = event.target as DisplayObject;    
+                hvilkeKontroll = event.target as DisplayObject;   
            
                 godkjent = true;            
 
@@ -62,53 +61,48 @@
              {
              	settFokus(); 
              }
-            
+             
+             
+			private function formVerdier():Object
+			{
+				var verdier:Object = new Object();
+				var skjemaliste:Object = skjemaer.getChildren();	
+			
+				for(var i:int = 0; i < skjemaliste.length; i++)
+				{
+					var delSkjema:Object = skjemaliste[i].getChildren();
+					
+					for(var j:int = 0; j < delSkjema.length; j++)
+					{
+						var felt:Array = delSkjema[j].getChildren();
+						
+						for(var k:int = 0; k < felt.length; k++)
+						{
+							if(felt[k].toLocaleString().indexOf("TextInput") > -1 || felt[k].toLocaleString().indexOf("TextArea") > -1 ||
+							felt[k].toLocaleString().indexOf("DateField") > -1)
+							{
+								verdier[felt[k].id] = felt[k].text;
+							}
+							else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
+							{
+								verdier[felt[k].id] = felt[k].selected;
+							}
+							else if(felt[k].toLocaleString().indexOf("ComboBox") > -1)
+							{
+								verdier[felt[k].id] = felt[k].selectedLabel;
+							}
+						}	
+					}
+				}
+
+				return verdier;
+			}
+			            
             private function lagreJaktprove():void 
             {
             	if(Components.instance.session.jaktprove)
             	{
-            		Components.instance.controller.redigerJaktprove(
-					    proveNr.text,
-						proveDato.text,
-						partiNr.text,
-						klasse.text,
-						dommerId1.text,
-						dommerId2.text,
-						hundid.text,
-						slippTid.text,
-						egneStand.text,
-						egneStokk.text,
-						tomStand.text,
-						makkerStand.text,
-						makkerStokk.text,
-						jaktlyst.text,
-						fart.text,
-						stil.text,
-						selvstendighet.text,
-						bredde.text,
-						reviering.text,
-						samarbeid.text,
-						presUpresis.text,
-						presNoeUpresis.text,
-						presPresis.text,
-						reisNekter.text,
-						reisNoelende.text,
-						reisVillig.text,
-						reisDjerv.text,
-						sokStjeler.text,
-						sokSpontant.text,
-						appIkkeGodkjent.text,
-						appGodkjent.text,
-						rappInnkalt.text,
-						rappSpont.text,
-						premiegrad.text,
-						certifikat.text,
-						regAv.text,
-						regDato.text,
-						raseId.text,
-						manueltEndretAv.text,
-						manueltEndretDato.text
-					);
+            		Components.instance.controller.redigerJaktprove(formVerdier());
             	}
             	else
             	{
@@ -119,7 +113,7 @@
 						klasse.text,
 						dommerId1.text,
 						dommerId2.text,
-						hundid.text,
+						hundId.text,
 						slippTid.text,
 						egneStand.text,
 						egneStokk.text,
@@ -165,7 +159,7 @@
 				klasse.text = "";
 				dommerId1.text = "";
 				dommerId2.text = "";
-				hundid.text = "";
+				hundId.text = "";
 				slippTid.text = "";
 				egneStand.text = "";
 				egneStokk.text = "";
@@ -206,7 +200,7 @@
 				klasse.errorString = "";
 				dommerId1.errorString = "";
 				dommerId2.errorString = "";
-				hundid.errorString = "";
+				hundId.errorString = "";
 				slippTid.errorString = "";
 				egneStand.errorString = "";
 				egneStokk.errorString = "";
@@ -274,9 +268,9 @@
     />
     <mx:StringValidator id="partiNrValidator" source="{partiNr}" property="text" />
 	
-	<mx:Accordion id="ac" creationPolicy="all" width="100%">
+	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
 
-		<mx:Form label="1" width="100%" height="100%">
+		<mx:Form id="en" label="1" width="100%" height="100%">
 			<mx:FormItem label="Prøve nummer:">
 				<mx:TextInput id="proveNr" 
 					change="validering(event);" 
@@ -327,7 +321,7 @@
 		
 			
 			<mx:FormItem label="Hunde ID:">
-				<mx:TextInput id="hundid"
+				<mx:TextInput id="hundId"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.hundId}"
 				/>
@@ -357,7 +351,7 @@
 			</mx:FormItem>
 		</mx:Form>
 		
-		<mx:Form label="2" width="100%" height="100%">
+		<mx:Form id="toer" label="2" width="100%" height="100%">
 			<mx:FormItem label="Tom stand:">
 				<mx:TextInput id="tomStand"
 					change="validering(event);"	
@@ -438,7 +432,7 @@
 			</mx:FormItem>
 		</mx:Form>
 		
-		<mx:Form label="3" width="100%" height="100%">
+		<mx:Form id="tre" label="3" width="100%" height="100%">
 			<mx:FormItem label="Upresis:" >
 				<mx:TextInput id="presUpresis"
 					change="validering(event);"
@@ -516,7 +510,7 @@
 				/>
 			</mx:FormItem>
 		</mx:Form>
-		<mx:Form label="4" width="100%" height="100%">	
+		<mx:Form id="fire" label="4" width="100%" height="100%">	
 			<mx:FormItem label="App godkjent:" >
 				<mx:TextInput id="appGodkjent"
 					change="validering(event);"	
