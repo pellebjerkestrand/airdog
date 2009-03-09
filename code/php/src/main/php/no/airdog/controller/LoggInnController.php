@@ -40,7 +40,7 @@ class LoggInnController {
 		$autentisering = new Zend_Auth_Adapter_DbTable($this->database);
 		
 		$autentisering
-			->setTableName('AD_bruker')
+			->setTableName('ad_bruker')
 			->setIdentityColumn('epost')
 			->setCredentialColumn('passord');
 		

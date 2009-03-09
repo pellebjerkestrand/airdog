@@ -16,7 +16,7 @@ class ACLDatabase
 		if(ValiderBruker::validerSuperadmin($this->database, $brukerEpost, $brukerPassord))
 		{
 			$hent = $this->database->select()
-			->from(array('a'=>'ad_klubb'), array('a.navn', 'a.raseId'));
+			->from(array('a'=>'ad_klubb'), array('a.navn', 'a.raseid'));
 			
 			return $this->database->fetchAll($hent);
 		}
@@ -26,8 +26,8 @@ class ACLDatabase
 			$bruker = $this->database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);
 			
 			$hent = $this->database->select()
-			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('b.navn', 'b.raseId'))
-			->join(array('b'=>'ad_klubb'),'a.ad_klubb_raseid = b.raseId', array())
+			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('b.navn', 'b.raseid'))
+			->join(array('b'=>'ad_klubb'),'a.ad_klubb_raseid = b.raseid', array())
 			->where($bruker);
 			
 			return $this->database->fetchAll($hent);
@@ -44,7 +44,7 @@ class ACLDatabase
 			$klubb = $this->database->quoteInto('a.ad_klubb_raseid=?', $klubbId);
 			
 			$hent = $this->database->select()
-			->from(array('a'=>'AD_bruker_klubb_rolle_link'), array('navn' => 'a.AD_rolle_navn'))
+			->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('navn' => 'a.ad_rolle_navn'))
 			->where($bruker)
 			->where($klubb);
 			
