@@ -33,6 +33,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	    
 	    $ip = new importParserController();
 	    echo $ip->lagreDb($fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
+	    unlink($fil_stien);
 	}
 }
 else
