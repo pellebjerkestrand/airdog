@@ -28,52 +28,48 @@
 		}  	
 		public function sendSkjema(event:Event):void
 		{
-			var verdier:Object = hentSkjemaVerdier();			
+			var verdier:Object = formVerdier();			
 			Components.instance.controller.redigerHund(verdier);				
 		}
 		public function lukkRedigerHundVindu(event:Event):void{
 			Components.instance.controller.lukkRedigerHundVindu();
 		}
 		
-		private function hentSkjemaVerdier () : Object
+		private function formVerdier():Object
 		{
-		    var verdier : Object = new Object();			    
-		    var skjemaGrupper:Array = skjemaer.getChildren();	
-		  	var skjemaFelt:Array;	    
-		   
-		   	// loop skjemagrupperinger og legg alle delskjemaverdier inn i verdier[]
-		    for(var y:int = 0; y < skjemaGrupper.length; y++)
-		    {
-		    	  
-		    	  var delSkjema:Array = skjemaGrupper[y].getChildren();//hvert skjema har barn
-		    	  
-		    	  for(var z:int = 0; z < delSkjema.length; z++)
-		    	  {		    	  		
-		    	  		var formItem:Array = delSkjema[z].getChildren();		    	  		
-		    	  		verdier[formItem[0].name] = formItem[0].text;    	  		
-		    	  }
-		    }	
-		    //ekstra felt for å få 'verdier as Hund;', funker ikke foreløpig
-		    verdier['morNavn'] = "";
-		    verdier['farNavn'] = "";
-		    verdier['oppdretterId'] = "";
-		    verdier['oppdretter'] = "";
-		    verdier['eier'] = "";
-		    verdier['hq'] = "";
-		    verdier['hd'] = "";
-		    verdier['start'] = "";
-		    verdier['jl'] = "";
-		    verdier['vf'] = "";
-		    verdier['selv'] = "";
-		    verdier['sok'] = "";
-		    verdier['rev'] = "";
-		    verdier['sam'] = "";
-		    verdier['bestPl'] = "";
-		    verdier['mor'] = "";
-		    verdier['far'] = "";		    
-		    
-		    return verdier;
+			var verdier:Object = new Object();
+			var skjemaliste:Object = skjemaer.getChildren();	
+		
+			for(var i:int = 0; i < skjemaliste.length; i++)
+			{
+				var delSkjema:Object = skjemaliste[i].getChildren();
+				
+				for(var j:int = 0; j < delSkjema.length; j++)
+				{
+					var felt:Array = delSkjema[j].getChildren();
+					
+					for(var k:int = 0; k < felt.length; k++)
+					{
+						if(felt[k].toLocaleString().indexOf("TextInput") > -1 || felt[k].toLocaleString().indexOf("TextArea") > -1 ||
+						felt[k].toLocaleString().indexOf("DateField") > -1)
+						{
+							verdier[felt[k].name] = felt[k].text;
+						}
+						else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
+						{
+							verdier[felt[k].name] = felt[k].selected;
+						}
+						else if(felt[k].toLocaleString().indexOf("ComboBox") > -1)
+						{
+							verdier[felt[k].name] = felt[k].selectedLabel;
+						}
+					}	
+				}
+			}
+			Alert.show(verdier['navn']);
+			return verdier;
 		}
+		
 		]]>
 	</mx:Script>		
 	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
