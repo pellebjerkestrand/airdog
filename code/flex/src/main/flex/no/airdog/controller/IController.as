@@ -25,48 +25,7 @@ package no.airdog.controller
 		function lukkRedigerHundVindu():void
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String):void
-		function leggInnJaktProve(
-		    proveNr:String,
-			proveDato:String,
-			partiNr:String,
-			klasse:String,
-			dommerId1:String,
-			dommerId2:String,
-			hundid:String,
-			slippTid:String,
-			egneStand:String,
-			egneStokk:String,
-			tomStand:String,
-			makkerStand:String,
-			makkerStokk:String,
-			jaktlyst:String,
-			fart:String,
-			stil:String,
-			selvstendighet:String,
-			bredde:String,
-			reviering:String,
-			samarbeid:String,
-			presUpresis:String,
-			presNoeUpresis:String,
-			presPresis:String,
-			reisNekter:String,
-			reisNoelende:String,
-			reisVillig:String,
-			reisDjerv:String,
-			sokStjeler:String,
-			sokSpontant:String,
-			appIkkeGodkjent:String,
-			appGodkjent:String,
-			rappInnkalt:String,
-			rappSpont:String,
-			premiegrad:String,
-			certifikat:String,
-			regAv:String,
-			regDato:String,
-			raseId:String,
-			manueltEndretAv:String,
-			manueltEndretDato:String
-		):void
+		function leggInnJaktProve(verdier:Object):void
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
 		function fjernJaktproveVindu():void

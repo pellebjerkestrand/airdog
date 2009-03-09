@@ -106,134 +106,40 @@
             	}
             	else
             	{
-            		Components.instance.controller.leggInnJaktProve(
-					    proveNr.text,
-						proveDato.text,
-						partiNr.text,
-						klasse.text,
-						dommerId1.text,
-						dommerId2.text,
-						hundId.text,
-						slippTid.text,
-						egneStand.text,
-						egneStokk.text,
-						tomStand.text,
-						makkerStand.text,
-						makkerStokk.text,
-						jaktlyst.text,
-						fart.text,
-						stil.text,
-						selvstendighet.text,
-						bredde.text,
-						reviering.text,
-						samarbeid.text,
-						presUpresis.text,
-						presNoeUpresis.text,
-						presPresis.text,
-						reisNekter.text,
-						reisNoelende.text,
-						reisVillig.text,
-						reisDjerv.text,
-						sokStjeler.text,
-						sokSpontant.text,
-						appIkkeGodkjent.text,
-						appGodkjent.text,
-						rappInnkalt.text,
-						rappSpont.text,
-						premiegrad.text,
-						certifikat.text,
-						regAv.text,
-						regDato.text,
-						raseId.text,
-						manueltEndretAv.text,
-						manueltEndretDato.text
-					);
+            		Components.instance.controller.leggInnJaktProve(formVerdier());
             	}
             }
             
-            private function clearFormHandler():void
+            private function nullstillForm():void
             {
-           	proveNr.text = "";
-				proveDato.text = "";
-				partiNr.text = "";
-				klasse.text = "";
-				dommerId1.text = "";
-				dommerId2.text = "";
-				hundId.text = "";
-				slippTid.text = "";
-				egneStand.text = "";
-				egneStokk.text = "";
-				tomStand.text = "";
-				makkerStand.text = "";
-				makkerStokk.text = "";
-				jaktlyst.text = "";
-				fart.text = "";
-				stil.text = "";
-				selvstendighet.text = "";
-				bredde.text = "";
-				reviering.text = "";
-				samarbeid.text = "";
-				presUpresis.text = "";
-				presNoeUpresis.text = "";
-				presPresis.text = "";
-				reisNekter.text = "";
-				reisNoelende.text = "";
-				reisVillig.text = "";
-				reisDjerv.text = "";
-				sokStjeler.text = "";
-				sokSpontant.text = "";
-				appIkkeGodkjent.text = "";
-				appGodkjent.text = "";
-				rappInnkalt.text = "";
-				rappSpont.text = "";
-				premiegrad.text = "";
-				certifikat.text = "";
-				regAv.text = "";
-				regDato.text = "";
-				raseId.text = "";
-				manueltEndretAv.text = "";
-				manueltEndretDato.text = "";
-                
-            	proveNr.errorString = "";
-				proveDato.errorString = "";
-				partiNr.errorString = "";
-				klasse.errorString = "";
-				dommerId1.errorString = "";
-				dommerId2.errorString = "";
-				hundId.errorString = "";
-				slippTid.errorString = "";
-				egneStand.errorString = "";
-				egneStokk.errorString = "";
-				tomStand.errorString = "";
-				makkerStand.errorString = "";
-				makkerStokk.errorString = "";
-				jaktlyst.errorString = "";
-				fart.errorString = "";
-				stil.errorString = "";
-				selvstendighet.errorString = "";
-				bredde.errorString = "";
-				reviering.errorString = "";
-				samarbeid.errorString = "";
-				presUpresis.errorString = "";
-				presNoeUpresis.errorString = "";
-				presPresis.errorString = "";
-				reisNekter.errorString = "";
-				reisNoelende.errorString = "";
-				reisVillig.errorString = "";
-				reisDjerv.errorString = "";
-				sokStjeler.errorString = "";
-				sokSpontant.errorString = "";
-				appIkkeGodkjent.errorString = "";
-				appGodkjent.errorString = "";
-				rappInnkalt.errorString = "";
-				rappSpont.errorString = "";
-				premiegrad.errorString = "";
-				certifikat.errorString = "";
-				regAv.errorString = "";
-				regDato.errorString = "";
-				raseId.errorString = "";
-				manueltEndretAv.errorString = "";
-				manueltEndretDato.errorString = "";
+				var skjemaliste:Object = skjemaer.getChildren();	
+			
+				for(var i:int = 0; i < skjemaliste.length; i++)
+				{
+					var delSkjema:Object = skjemaliste[i].getChildren();
+					
+					for(var j:int = 0; j < delSkjema.length; j++)
+					{
+						var felt:Array = delSkjema[j].getChildren();
+						
+						for(var k:int = 0; k < felt.length; k++)
+						{
+							if(felt[k].toLocaleString().indexOf("TextInput") > -1 || felt[k].toLocaleString().indexOf("TextArea") > -1 ||
+							felt[k].toLocaleString().indexOf("DateField") > -1)
+							{
+								felt[k].text = "";
+							}
+							else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
+							{
+								felt[k].selected = false;
+							}
+							else if(felt[k].toLocaleString().indexOf("ComboBox") > -1)
+							{
+								felt[k].selectedLabel = false;
+							}
+						}	
+					}
+				}
                 
                 tomt = true;
                 
@@ -601,7 +507,7 @@
             <mx:Button 
                 label="Tøm skjema" 
                 enabled="{!tomt}"
-                click="clearFormHandler()"
+                click="nullstillForm()"
             />
             <mx:Button 
             	label="Avbryt" 
