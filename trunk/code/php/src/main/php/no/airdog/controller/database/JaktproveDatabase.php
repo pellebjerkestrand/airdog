@@ -1,6 +1,8 @@
 <?php
 require_once 'ValiderBruker.php';
 require_once 'Tilkobling.php';
+require_once 'no/airdog/controller/parser/FuglParser.php';
+
 class JaktproveDatabase
 {
 	private $database;
@@ -86,6 +88,21 @@ class JaktproveDatabase
 		}
 		
 		return false;
+	}
+	
+	public function settInnJaktproveFraFil($filsti, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		
+	}
+	
+	public function settInnJaktprove($jaktarray, $klubbId)
+	{
+		if ($jaktarray["raseId"] == $klubbId)
+		{
+			return $this->_settInnJaktprove($jaktarray);
+		}
+
+		return "RaseID " . $jaktarray["raseId"] . " stemmer ikke med klubbId $klubbId";
 	}
 	
 	private function _settInnJaktprove($jaktarray)
