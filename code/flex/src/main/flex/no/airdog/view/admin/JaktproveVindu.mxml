@@ -466,6 +466,7 @@
 		
 			<mx:FormItem label="Registert av:">
 				<mx:TextInput id="regAv"
+					enabled="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.regAv}"
 				/>
@@ -473,6 +474,7 @@
 			
 			<mx:FormItem label="Registrert dato:">
 				<mx:TextInput id="regDato"
+					enabled="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.regDato}"
 				/>
@@ -480,7 +482,7 @@
 			
 			<mx:FormItem label="Rase ID:" >
 				<mx:TextInput id="raseId"
-					editable="false"
+					enabled="false"
 					change="validering(event);"	
 					text="{Components.instance.session.bruker.sattKlubbId}"
 				/>
@@ -488,7 +490,7 @@
 			
 			<mx:FormItem label="Endret av" >
 				<mx:TextInput id="manueltEndretAv"
-					editable="false"
+					enabled="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.manueltEndretAv}"
 				/>
@@ -496,7 +498,7 @@
 		
 			<mx:FormItem label="Endret Dato" >
 				<mx:TextInput id="manueltEndretDato"
-					editable="false"
+					enabled="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.manueltEndretDato}"
 				/>
