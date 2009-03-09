@@ -11,8 +11,8 @@ class Tilkobling
 	{
 		$this->dbServer='localhost';
 		$this->dbNavn='airdog';
-		$this->dbBrukernavn ='root';
-		$this->dbPassord = '';
+		$this->dbBrukernavn ='airdog';
+		$this->dbPassord = 'air123dog';
 	}
 
 	public function getTilkobling()
