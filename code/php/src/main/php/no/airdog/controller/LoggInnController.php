@@ -1,25 +1,14 @@
 <?php
 require_once 'no/airdog/model/AmfBruker.php';
-require_once 'no/airdog/controller/ACLController.php';
+require_once 'no/airdog/controller/database/Tilkobling.php';
 
-/*
-* LoggInnController
-*
-* Sjekker bruker rettigheter og sjekker roller mot ACL.
-*
-* @return Aksess rettigheter
-*/
 class LoggInnController {
 	
 	private $database;
 	private $autentisering;
 	
-	/**
-	* @return avhengigheter
-	*/
 	public function __construct() {
 		
-		//F�r en instanse av Zend_Auth
 		$this->auth = Zend_Auth::getInstance();
 		
 		$tilkobling = new Tilkobling();
@@ -27,16 +16,8 @@ class LoggInnController {
 		
 	}
 	
-	/**
-	*
-	* Autensiterer brukeren
-	*
-	* @return avhengigheter
-	*
-	*/
 	public function loggInn(AmfBruker $bruker) {
 	
-		// Configure the instance with constructor parameters�
 		$autentisering = new Zend_Auth_Adapter_DbTable($this->database);
 		
 		$autentisering
@@ -79,16 +60,10 @@ class LoggInnController {
 			break;
 			
 			case Zend_Auth_Result::SUCCESS:
-				//Her returnerers den autentiserte rollen, denne skal vi bruke til Zend_Acl
-				//getResultRowObject returnerer et stdClass objekt.
 				$r = $autentisering->getResultRowObject();
 				$bruker->epost = $r->epost;
 				$bruker->passord = $r->passord;
-				
-				//$acl = new ACLController();
-				//$acl->hentBrukersRettigheter($bruker->epost);
-				
-				
+
 				return $bruker; 
 			break;
 			
