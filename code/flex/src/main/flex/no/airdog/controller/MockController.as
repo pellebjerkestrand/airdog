@@ -134,7 +134,7 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			var url:String = "http://localhost:8888/AirDog - PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
+			var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
 			url += "klubbId=" + Components.instance.session.bruker.sattKlubbId;
