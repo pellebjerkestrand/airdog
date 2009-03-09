@@ -81,7 +81,7 @@
 				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#22201E" fontSize="13"/>	
 			</mx:HBox>			
 			<mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle" paddingRight="5">				
-				<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}"/>
+				<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 				<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')" fontSize="13" color="#22201E"/>
 			</mx:HBox>
 		</mx:HBox>										

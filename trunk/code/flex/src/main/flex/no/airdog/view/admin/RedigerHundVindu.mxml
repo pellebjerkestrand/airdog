@@ -19,6 +19,7 @@
 			import mx.collections.*;
 			import mx.controls.*;
 			import mx.events.*;
+			import mx.validators.Validator;
 		
 		private var _hundId:String;	
 				
@@ -66,22 +67,48 @@
 					}	
 				}
 			}
-			Alert.show(verdier['navn']);
 			return verdier;
 		}
+		private function resetForm() :void
+		{
+			lagre.enabled = false;
+		}
+		private function validateUs() :void
+		{
+			lagre.enabled = (Validator.validateAll([valHundId, valNavn, valIdNr, valKjonn, valEierId, valRaseId]).length == 0);
+		}
+
 		
 		]]>
-	</mx:Script>		
-	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
+	</mx:Script>	
+	<mx:StringValidator id="valHundId" source="{hundid}" property="text" required="true" minLength="8" maxLength="8" 
+		tooShortError="Du må skrive minst {valHundId.minLength} tegn" 
+		tooLongError="Du kan kun skrive maks {valHundId.maxLength} tegn"/>
+	<mx:StringValidator id="valNavn" source="{navn}" property="text" required="true" minLength="2" 
+		tooShortError="Du må skrive minst {valNavn.minLength} tegn"/>
+	<mx:StringValidator id="valIdNr" source="{idNr}" property="text" required="true" minLength="7" 
+		tooShortError="Du må skrive minst {valIdNr.minLength} tegn" 
+		tooLongError="Du kan kun skrive maks {valIdNr.maxLength} tegn"/>
+	<mx:StringValidator id="valKjonn" source="{kjonn}" property="text" required="true" minLength="1" maxLength="1" 
+		tooShortError="Du må skrive minst {valKjonn.minLength} tegn" 
+		tooLongError="Du kan kun skrive maks {valKjonn.maxLength} tegn"/>
+	<mx:StringValidator id="valEierId" source="{eierId}" property="text" required="true" minLength="7" maxLength="7" 
+		tooShortError="Du må skrive minst {valEierId.minLength} tegn" 
+		tooLongError="Du kan kun skrive maks {valEierId.maxLength} tegn"/>
+	<mx:StringValidator id="valRaseId" source="{raseId}" property="text" required="true" minLength="3" maxLength="3" 
+		tooShortError="Du må skrive minst {valRaseId.minLength} tegn" 
+		tooLongError="Du kan kun skrive maks {valRaseId.maxLength} tegn"/>
+	
+	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%" creationComplete="validateUs()">
 		<mx:Form label="Hundedata">
 			<mx:FormItem label="Hund id">
-				<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}"/>
+				<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Tittel">
 				<mx:TextInput id="tittel" name="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Navn">
-				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}"/>
+				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Mors id">
 				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}"/>
@@ -90,16 +117,16 @@
 				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Id nummer">
-				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}"/>
+				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Kjønn">
-				<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
+				<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Eiers id">
-				<mx:TextInput id="eierid" name="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
+				<mx:TextInput id="eierId" name="eierId" text="{Components.instance.session.hundprofil.eierId}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Rasens id">
-				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}"/>
+				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Kull id">
 				<mx:TextInput id="kullId" name="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
