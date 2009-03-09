@@ -274,90 +274,49 @@ package no.airdog.controller
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
 		}
 		
-		public function redigerJaktprove(		    
-			proveNr:String,
-			proveDato:String,
-			partiNr:String,
-			klasse:String,
-			dommerId1:String,
-			dommerId2:String,
-			hundid:String,
-			slippTid:String,
-			egneStand:String,
-			egneStokk:String,
-			tomStand:String,
-			makkerStand:String,
-			makkerStokk:String,
-			jaktlyst:String,
-			fart:String,
-			stil:String,
-			selvstendighet:String,
-			bredde:String,
-			reviering:String,
-			samarbeid:String,
-			presUpresis:String,
-			presNoeUpresis:String,
-			presPresis:String,
-			reisNekter:String,
-			reisNoelende:String,
-			reisVillig:String,
-			reisDjerv:String,
-			sokStjeler:String,
-			sokSpontant:String,
-			appIkkeGodkjent:String,
-			appGodkjent:String,
-			rappInnkalt:String,
-			rappSpont:String,
-			premiegrad:String,
-			certifikat:String,
-			regAv:String,
-			regDato:String,
-			raseId:String,
-			manueltEndretAv:String,
-			manueltEndretDato:String
-		):void
+		public function redigerJaktprove(verdier:Object):void
 		{
 			var jaktprove:Jaktprove = new Jaktprove;
-			jaktprove.proveNr = proveNr;
-			jaktprove.proveDato = proveDato;
-			jaktprove.partiNr = partiNr;
-			jaktprove.klasse = klasse;
-			jaktprove.dommerId1 = dommerId1;
-			jaktprove.dommerId2 = dommerId2;
-			jaktprove.hundId = hundid;
-			jaktprove.slippTid = slippTid;
-			jaktprove.egneStand = egneStand;
-			jaktprove.egneStokk = egneStokk;
-			jaktprove.tomStand = tomStand;
-			jaktprove.makkerStand = makkerStand;
-			jaktprove.makkerStokk = makkerStokk;
-			jaktprove.jaktlyst = jaktlyst;
-			jaktprove.fart = fart;
-			jaktprove.stil = stil;
-			jaktprove.selvstendighet = selvstendighet;
-			jaktprove.bredde = bredde;
-			jaktprove.reviering = reviering;
-			jaktprove.samarbeid = samarbeid;
-			jaktprove.presUpresis = samarbeid;
-			jaktprove.presNoeUpresis = presNoeUpresis;
-			jaktprove.presPresis = presNoeUpresis;
-			jaktprove.reisNekter = reisNekter;
-			jaktprove.reisNoelende = reisNoelende;
-			jaktprove.reisVillig = reisVillig;
-			jaktprove.reisDjerv = reisDjerv;
-			jaktprove.sokStjeler = sokStjeler;
-			jaktprove.sokSpontant = sokSpontant;
-			jaktprove.appIkkeGodkjent = appIkkeGodkjent;
-			jaktprove.appGodkjent = appGodkjent;
-			jaktprove.rappInnkalt = rappInnkalt;
-			jaktprove.rappSpont = rappSpont;
-			jaktprove.premiegrad = premiegrad;
-			jaktprove.certifikat = certifikat;
-			jaktprove.regAv = regAv;
-			jaktprove.regDato = regDato;
-			jaktprove.raseId = raseId;
-			jaktprove.manueltEndretAv = manueltEndretAv;
-			jaktprove.manueltEndretDato = manueltEndretDato;
+			jaktprove.proveNr = verdier.proveNr;
+			jaktprove.proveDato = verdier.proveDato;
+			jaktprove.partiNr = verdier.partiNr;
+			jaktprove.klasse = verdier.klasse;
+			jaktprove.dommerId1 = verdier.dommerId1;
+			jaktprove.dommerId2 = verdier.dommerId2;
+			jaktprove.hundId = verdier.hundId;
+			jaktprove.slippTid = verdier.slippTid;
+			jaktprove.egneStand = verdier.egneStand;
+			jaktprove.egneStokk = verdier.egneStokk;
+			jaktprove.tomStand = verdier.tomStand;
+			jaktprove.makkerStand = verdier.makkerStand;
+			jaktprove.makkerStokk = verdier.makkerStokk;
+			jaktprove.jaktlyst = verdier.jaktlyst;
+			jaktprove.fart = verdier.fart;
+			jaktprove.stil = verdier.stil;
+			jaktprove.selvstendighet = verdier.selvstendighet;
+			jaktprove.bredde = verdier.bredde;
+			jaktprove.reviering = verdier.reviering;
+			jaktprove.samarbeid = verdier.samarbeid;
+			jaktprove.presUpresis = verdier.presUpresis;
+			jaktprove.presNoeUpresis = verdier.presNoeUpresis;
+			jaktprove.presPresis = verdier.presPresis;
+			jaktprove.reisNekter = verdier.reisNekter;
+			jaktprove.reisNoelende = verdier.reisNoelende;
+			jaktprove.reisVillig = verdier.reisVillig;
+			jaktprove.reisDjerv = verdier.reisDjerv;
+			jaktprove.sokStjeler = verdier.sokStjeler;
+			jaktprove.sokSpontant = verdier.sokSpontant;
+			jaktprove.appIkkeGodkjent = verdier.appIkkeGodkjent;
+			jaktprove.appGodkjent = verdier.appGodkjent;
+			jaktprove.rappInnkalt = verdier.rappInnkalt;
+			jaktprove.rappSpont = verdier.rappSpont;
+			jaktprove.premiegrad = verdier.premiegrad;
+			jaktprove.certifikat = verdier.certifikat;
+			jaktprove.regAv = verdier.regAv;
+			jaktprove.regDato = verdier.regDato;
+			jaktprove.raseId = verdier.raseId;
+			jaktprove.manueltEndretAv = verdier.manueltEndretAv;
+			jaktprove.manueltEndretDato = verdier.manueltEndretDato;
 			
 			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
 		}

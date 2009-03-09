@@ -19,48 +19,7 @@ package no.airdog.controller
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
 		function hentStamtre(hundId:String, dybde:int):void
-		function redigerJaktprove(
-		    proveNr:String,
-			proveDato:String,
-			partiNr:String,
-			klasse:String,
-			dommerId1:String,
-			dommerId2:String,
-			hundid:String,
-			slippTid:String,
-			egneStand:String,
-			egneStokk:String,
-			tomStand:String,
-			makkerStand:String,
-			makkerStokk:String,
-			jaktlyst:String,
-			fart:String,
-			stil:String,
-			selvstendighet:String,
-			bredde:String,
-			reviering:String,
-			samarbeid:String,
-			presUpresis:String,
-			presNoeUpresis:String,
-			presPresis:String,
-			reisNekter:String,
-			reisNoelende:String,
-			reisVillig:String,
-			reisDjerv:String,
-			sokStjeler:String,
-			sokSpontant:String,
-			appIkkeGodkjent:String,
-			appGodkjent:String,
-			rappInnkalt:String,
-			rappSpont:String,
-			premiegrad:String,
-			certifikat:String,
-			regAv:String,
-			regDato:String,
-			raseId:String,
-			manueltEndretAv:String,
-			manueltEndretDato:String
-		):void
+		function redigerJaktprove(verdier:Object):void
 		function redigerHund(verdier:Object):void 
 		function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
 		function lukkRedigerHundVindu():void
