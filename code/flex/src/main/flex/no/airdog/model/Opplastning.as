@@ -9,5 +9,6 @@ package no.airdog.model
 		public var progressBar:ProgressBar;
 		public var ferdig:Boolean;
 		public var startet:Boolean;
+		public var venterSQL:Boolean;
 	}
 }

@@ -78,7 +78,7 @@ package no.airdog.controller
 			    }
 			    catch (error:Error)
 			    {
-			        trace("Kunen ikke laste opp fil.");
+			        trace("Kunne ikke laste opp fil.");
 			    }
 			} 
 			else {
@@ -103,12 +103,19 @@ package no.airdog.controller
             opplastning.progressBar.label = "Laster opp %3%% : " + Math.round( event.bytesLoaded / 1024 ) + " KB av " +
 												   Math.round( event.bytesTotal / 1024 ) + " KB ";
             opplastning.progressBar.setProgress(event.bytesLoaded, event.bytesTotal);
+            
+            if(opplastning.progressBar.value == opplastning.progressBar.maximum)
+            {
+        		opplastning.progressBar.label = "Filen " + fr.name + " ble lastet opp"; 
+            	opplastning.venterSQL = true;
+            }
         }
 
         private function completeHandler(event:Event):void
         {
-        	opplastning.progressBar.setProgress(100, 100);
-        	opplastning.progressBar.label = "Filen " + fr.name + " ble lastet opp";         	
+        	opplastning.venterSQL = false; 
+        	opplastning.startet = false;
+	        opplastning.progressBar.setProgress(100, 100);
         }
 
         private function uploadCompleteHandler(event:DataEvent):void
