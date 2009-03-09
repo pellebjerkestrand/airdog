@@ -109,8 +109,8 @@ class JaktproveController
     	$ret['regAv'] = $jaktprove->regAv;
     	$ret['regDato'] = $jaktprove->regDato; 	
     	$ret['raseId'] = $jaktprove->raseId;
-    	$ret['manueltEndretAv'] = $brukerEpost; 	
-    	$ret['manueltEndretDato'] = gmdate('Y-m-d');
+    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv; 	
+    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
     	
     	$hd = new JaktproveDatabase();
     	$resultat = $hd->redigerJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
@@ -156,8 +156,8 @@ class JaktproveController
     	$ret['rappSpont'] = $jaktprove->rappSpont; 	
     	$ret['premiegrad'] = $jaktprove->premiegrad;
     	$ret['certifikat'] = $jaktprove->certifikat; 	
-    	$ret['regAv'] = $brukerEpost; 	
-    	$ret['regDato'] = gmdate('Y-m-d');
+    	$ret['regAv'] = $jaktprove->regAv; 	
+    	$ret['regDato'] = $jaktprove->regDato;
     	$ret['raseId'] = $jaktprove->raseId;
     	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv;
     	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;

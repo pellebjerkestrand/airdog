@@ -16,6 +16,7 @@
 			import mx.validators.Validator;
             import mx.events.ValidationResultEvent;
             import mx.controls.Alert;
+			import mx.formatters.DateFormatter;
 			
 			[Bindable]
             public var godkjent:Boolean = false;
@@ -35,7 +36,15 @@
                 	proveNr.text == "" 
                 	&& proveDato.text == ""
                     && partiNr.text == ""); 
-
+                    
+                if(Components.instance.session.jaktprove != null && !tomt)
+             	{
+            		var df:DateFormatter = new DateFormatter();
+					df.formatString = "YYYY-MM-DD";
+					
+					manueltEndretAv.text = Components.instance.session.bruker.epost
+             		manueltEndretDato.text = df.format(new Date());
+             	}
 
                 valider(proveNrValidator);                
                 valider(proveDatoValidator);
@@ -60,8 +69,7 @@
              private function creationCompleteHandler():void
              {
              	settFokus(); 
-             }
-             
+             } 
              
 			private function formVerdier():Object
 			{
@@ -175,8 +183,7 @@
     <mx:StringValidator id="partiNrValidator" source="{partiNr}" property="text" />
 	
 	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
-
-		<mx:Form id="en" label="1" width="100%" height="100%">
+		<mx:Form id="generelt" label="Generelt" width="100%" height="100%">
 			<mx:FormItem label="Prøve nummer:">
 				<mx:TextInput id="proveNr" 
 					change="validering(event);" 
@@ -193,7 +200,7 @@
 		            text="{Components.instance.session.jaktprove.proveDato}"
 		        /> 
 			</mx:FormItem>
-				
+			
 			<mx:FormItem label="Parti nummer:">
 				<mx:TextInput id="partiNr"
 					change="validering(event);"
@@ -201,14 +208,12 @@
 				/>
 			</mx:FormItem>
 			
-			
 			<mx:FormItem label="Klasse:">
 				<mx:TextInput id="klasse"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.klasse}"
 				/>
 			</mx:FormItem>
-		
 			
 			<mx:FormItem label="Dommer 1:">
 				<mx:TextInput id="dommerId1"
@@ -232,8 +237,10 @@
 					text="{Components.instance.session.jaktprove.hundId}"
 				/>
 			</mx:FormItem>
-		
-			
+		</mx:Form>
+
+		<mx:Form id="sum" label="Sum" width="100%" height="100%">
+
 			<mx:FormItem label="Slipp tid:">
 				<mx:TextInput id="slippTid"
 					change="validering(event);"	
@@ -249,22 +256,19 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Egne ståkk">
+			<mx:FormItem label="Egne støkk">
 				<mx:TextInput id="egneStokk"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.egneStokk}"
 				/>
 			</mx:FormItem>
-		</mx:Form>
-		
-		<mx:Form id="toer" label="2" width="100%" height="100%">
+			
 			<mx:FormItem label="Tom stand:">
 				<mx:TextInput id="tomStand"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.tomStand}"
 				/>
 			</mx:FormItem>
-		
 			
 			<mx:FormItem label="Makker stand:">
 				<mx:TextInput id="makkerStand"
@@ -274,13 +278,15 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Makker ståkk:">
+			<mx:FormItem label="Makker støkk:">
 				<mx:TextInput id="makkerStokk"
 					change="validering(event);"
 					text="{Components.instance.session.jaktprove.makkerStokk}"	
 				/>
 			</mx:FormItem>
+		</mx:Form>
 		
+		<mx:Form id="diverse" label="Diverse" width="100%" height="100%">
 			
 			<mx:FormItem label="Jaktlyst:">
 				<mx:TextInput id="jaktlyst"
@@ -314,7 +320,7 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Bredde:" >
+			<mx:FormItem label="Søkebredde:" >
 				<mx:TextInput id="bredde"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.bredde}"
@@ -336,9 +342,24 @@
 					text="{Components.instance.session.jaktprove.samarbeid}"
 				/>
 			</mx:FormItem>
+			
+			<mx:FormItem label="Premiegrad:">
+				<mx:TextInput id="premiegrad"
+					change="validering(event);"	
+					text="{Components.instance.session.jaktprove.premiegrad}"
+				/>
+			</mx:FormItem>
+		
+			
+			<mx:FormItem label="Certifikat:">
+				<mx:TextInput id="certifikat"
+					change="validering(event);"	
+					text="{Components.instance.session.jaktprove.certifikat}"
+				/>
+			</mx:FormItem>
 		</mx:Form>
 		
-		<mx:Form id="tre" label="3" width="100%" height="100%">
+		<mx:Form id="presisjon" label="Presisjon" width="100%" height="100%">
 			<mx:FormItem label="Upresis:" >
 				<mx:TextInput id="presUpresis"
 					change="validering(event);"
@@ -361,8 +382,10 @@
 					text="{Components.instance.session.jaktprove.presPresis}"
 				/>
 			</mx:FormItem>					
-			
-			<mx:FormItem label="Reis nekter:">
+		</mx:Form>
+		
+		<mx:Form id="reisning" label="Reisning" width="100%" height="100%">
+			<mx:FormItem label="Nekter:">
 				<mx:TextInput id="reisNekter"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.reisNekter}"
@@ -370,7 +393,7 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Reis noelende:">
+			<mx:FormItem label="Nølende:">
 				<mx:TextInput id="reisNoelende"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.reisNoelende}"
@@ -378,7 +401,7 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Reis villig:" >
+			<mx:FormItem label="Villig:" >
 				<mx:TextInput id="reisVillig"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.reisVillig}"
@@ -386,82 +409,67 @@
 			</mx:FormItem>
 		
 			
-			<mx:FormItem label="Reis djerv:">
+			<mx:FormItem label="Djerv:">
 				<mx:TextInput id="reisDjerv"
 					change="validering(event);"
 					text="{Components.instance.session.jaktprove.reisDjerv}"
 				/>
 			</mx:FormItem>
-		
-			
-			<mx:FormItem label="Søk stjeler:" >
+		</mx:Form>
+		<mx:Form id="sekundering" label="Sekundering" width="100%" height="100%">
+			<mx:FormItem label="Stjeler:" >
 				<mx:TextInput id="sokStjeler"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.sokStjeler}"
 				/>
 			</mx:FormItem>
 
-			<mx:FormItem label="Søk spontant:" >
+			<mx:FormItem label="Spontant:" >
 				<mx:TextInput id="sokSpontant"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.sokSpontant}"
 				/>
 			</mx:FormItem>
+		</mx:Form>
 		
-			
-			<mx:FormItem label="App ikke godkjent:">
+		<mx:Form id="apport" label="Apport" width="100%" height="100%">
+			<mx:FormItem label="Ikke godkjent:">
 				<mx:TextInput id="appIkkeGodkjent"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.appIkkeGodkjent}"
 				/>
 			</mx:FormItem>
-		</mx:Form>
-		<mx:Form id="fire" label="4" width="100%" height="100%">	
-			<mx:FormItem label="App godkjent:" >
+				
+			<mx:FormItem label="Godkjent:" >
 				<mx:TextInput id="appGodkjent"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.appGodkjent}"
 				/>
 			</mx:FormItem>
-					
-			<mx:FormItem label="Rapp innkalt:" >
+		</mx:Form>
+		<mx:Form id="rapport" label="Rapport" width="100%" height="100%">				
+			<mx:FormItem label="Innkalt:" >
 				<mx:TextInput id="rappInnkalt"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.rappInnkalt}"
 				/>
 			</mx:FormItem>
 			
-			<mx:FormItem label="Rapp spont:">
+			<mx:FormItem label="Spontan:">
 				<mx:TextInput id="rappSpont"
 					change="validering(event);"
 					text="{Components.instance.session.jaktprove.rappSpont}"	
 				/>
 			</mx:FormItem>
+		</mx:Form>
+		<mx:Form id="brukerinfo" label="Bruker informasjon" width="100%" height="100%">
 		
-			
-			<mx:FormItem label="Premiegrad:">
-				<mx:TextInput id="premiegrad"
-					change="validering(event);"	
-					text="{Components.instance.session.jaktprove.premiegrad}"
-				/>
-			</mx:FormItem>
-		
-			
-			<mx:FormItem label="Certifikat:">
-				<mx:TextInput id="certifikat"
-					change="validering(event);"	
-					text="{Components.instance.session.jaktprove.certifikat}"
-				/>
-			</mx:FormItem>
-		
-			
 			<mx:FormItem label="Registert av:">
 				<mx:TextInput id="regAv"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.regAv}"
 				/>
 			</mx:FormItem>
-		
 			
 			<mx:FormItem label="Registrert dato:">
 				<mx:TextInput id="regDato"
@@ -469,26 +477,26 @@
 					text="{Components.instance.session.jaktprove.regDato}"
 				/>
 			</mx:FormItem>
-		
 			
 			<mx:FormItem label="Rase ID:" >
 				<mx:TextInput id="raseId"
+					editable="false"
 					change="validering(event);"	
-					text="{Components.instance.session.jaktprove.raseId}"
+					text="{Components.instance.session.bruker.sattKlubbId}"
 				/>
 			</mx:FormItem>
-		
 			
 			<mx:FormItem label="Endret av" >
 				<mx:TextInput id="manueltEndretAv"
+					editable="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.manueltEndretAv}"
 				/>
 			</mx:FormItem>
 		
-			
 			<mx:FormItem label="Endret Dato" >
 				<mx:TextInput id="manueltEndretDato"
+					editable="false"
 					change="validering(event);"	
 					text="{Components.instance.session.jaktprove.manueltEndretDato}"
 				/>
