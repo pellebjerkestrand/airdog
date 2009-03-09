@@ -22,18 +22,21 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	$fil_type = $_FILES['Filedata']['type'];
 	//$fil_ext = $_FILES['Filedata']['extension'];
 	
-	$fil_stien = $upload_dir.$fil_navn;
+	$fil_stien = $upload_dir . basename($_FILES['Filedata']['name']); 
 
 	$fil_navn = str_replace("\\","",$fil_navn);
 	$fil_navn = str_replace("'","",$fil_navn);
 	
-	if ($fil_storrelse <= $MAKSSTORRELSE)
+	if ($fil_storrelse <= $MAKSSTORRELSE && move_uploaded_file($temp_navn, $fil_stien))
 	{
-	    move_uploaded_file($temp_navn, $fil_stien);
-	    
 	    $ip = new importParserController();
 	    echo $ip->lagreDb($fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
 	    unlink($fil_stien);
+	}
+	else
+	{
+		// Bør byttes ut med bedre informasjon.
+		echo "Klarte ikke laste opp filen til.";
 	}
 }
 else
