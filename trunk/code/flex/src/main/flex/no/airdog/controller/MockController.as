@@ -7,11 +7,13 @@ package no.airdog.controller
 	import mx.events.*;
 	import mx.managers.PopUpManager;
 	import mx.rpc.events.*;
+	import mx.formatters.DateFormatter;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
 	import no.airdog.view.*;
 	import no.airdog.view.admin.*;
+
 	
 	public class MockController implements IController
 	{     
@@ -27,6 +29,13 @@ package no.airdog.controller
         
         public function visLeggInnJaktproveVindu(parent:DisplayObject):void
         {
+        	Components.instance.session.jaktprove = new Jaktprove;
+        	Components.instance.session.jaktprove.regAv = Components.instance.session.bruker.epost;
+        	
+	        var df:DateFormatter = new DateFormatter();
+			df.formatString = "YYYY-MM-DD";
+        	Components.instance.session.jaktprove.regDato = df.format(new Date());
+        	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
