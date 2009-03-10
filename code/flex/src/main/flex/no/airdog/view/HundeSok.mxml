@@ -31,19 +31,25 @@
 			<mx:LinkButton label="Liste med bilde" color="0x3380DD" textDecoration="underline" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
 			<mx:LinkButton label="Liste uten bilde" color="0x3380DD" textDecoration="underline" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
 	</mx:HBox>
-	<mx:DataGrid id="hundeGrid"			
-		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
-		dataProvider="{Components.instance.session.hundesokListe.provider}" itemClick="visHund(event)" verticalAlign="middle">
+	<mx:DataGrid id="hundeGrid"			 
+		dataProvider="{Components.instance.session.hundesokListe.provider}" 
+		itemClick="visHund(event)"
+		rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+		width="100%" height="100%" verticalAlign="middle">
 		
 		<mx:columns>
-			<mx:DataGridColumn headerText="Hunder" itemRenderer="{Components.instance.session.hundesokListe.renderer}" dataField="navn"/>
-			<mx:DataGridColumn width="100" headerText="Eier" dataField="eierId"/>
+			<mx:DataGridColumn 
+				headerText="Hunder" 
+				itemRenderer="{Components.instance.session.hundesokListe.renderer}" 
+				dataField="navn"/>
+			<mx:DataGridColumn width="80" headerText="Eier" dataField="eierId"/>
 			<mx:DataGridColumn width="100" headerText="Oppdretter" dataField="oppdretter"/>
-			<mx:DataGridColumn width="150" headerText="Far" dataField="farNavn"/>
-			<mx:DataGridColumn width="150" headerText="Mor" dataField="morNavn"/>
-			<mx:DataGridColumn width="50" headerText="Id" dataField="hundId"/>
-			<mx:DataGridColumn width="50" headerText="Kull" dataField="kullId"/>
-			<mx:DataGridColumn width="50" headerText="Kjønn" dataField="kjonn"/>
+			<mx:DataGridColumn width="150" headerText="Far" dataField="farNavn" sortable="false"/>
+			<mx:DataGridColumn width="150" headerText="Mor" dataField="morNavn" sortable="false"/>
+			<!--<mx:DataGridColumn width="50" headerText="Id" dataField="hundId"/>-->
+			<!--<mx:DataGridColumn width="50" headerText="Kull" dataField="kullId"/>-->
+			<mx:DataGridColumn width="50" headerText="Kjønn" dataField="kjonn" sortable="false"/>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>
