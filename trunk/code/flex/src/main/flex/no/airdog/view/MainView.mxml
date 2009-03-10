@@ -68,6 +68,16 @@
             {
             	Components.instance.controller.visLeggInnJaktproveVindu(UIComponent(this.parentApplication));
             }
+            
+            public function visStorHundeliste():void
+			{
+				Navigasjon.visStorHundeliste();
+			}
+			
+			public function visLitenHundeliste():void
+			{
+				Navigasjon.visLitenHundeliste();
+			}
         ]]>
     </mx:Script>
 	
@@ -85,7 +95,7 @@
 				<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')" fontSize="13" color="#22201E"/>
 			</mx:HBox>
 		</mx:HBox>										
-		<mx:TabNavigator id="tabs" width="100%" height="80" styleName="tabNavigator">
+		<mx:TabNavigator id="tabs" width="100%" styleName="tabNavigator">
 			<mx:HBox id="admintab" label="Admin">
 				<mx:LinkButton label="Brukere" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
 				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__pencil.png')"/>
@@ -96,6 +106,8 @@
 	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
 	   			<mx:LinkButton label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
 				<mx:LinkButton label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
+				<mx:LinkButton label="Liste med bilde" styleName="UnderMeny" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
+				<mx:LinkButton label="Liste uten bilde" styleName="UnderMeny" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
 	   		</mx:HBox>
 	  		<mx:HBox id="divtab" label="Diverse">
 	  			<mx:LinkButton label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
@@ -107,10 +119,8 @@
 	  		<mx:HBox id="devtab" label="Development">
 	  			<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='assets/ikoner/key.png')"/>
 	  		</mx:HBox>
-		</mx:TabNavigator>
-			  
+		</mx:TabNavigator>	  
 	</mx:VBox>
-	
 	<mx:ViewStack width="100%" height="100%" selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
 	    <adminView:DatOpplastning/>
 	    <view:HundeSok/>
@@ -120,9 +130,4 @@
 	    <view:Arsgjennomsnitt/>
     </mx:ViewStack>
 </mx:VBox>
-	
-	
-	
-    
-    
 </mx:VBox>
