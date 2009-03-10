@@ -28,6 +28,8 @@
 				}
 				else
 				{
+					Alert.okLabel = "Ja"
+					Alert.cancelLabel = "Nei"
 					var objAlert:Alert = Alert.show(
 					"Vil du slette " + jaktprover.selectedItem.proveNr, "Slette?", 
 					Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
