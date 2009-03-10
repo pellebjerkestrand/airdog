@@ -30,7 +30,7 @@ class importParserController
 			$listeArray = split("\n", $liste);
 			
 			$ret = "";
-			
+			$size = sizeof($listeArray);
 			
 			switch($filtype)
 			{
@@ -41,7 +41,6 @@ class importParserController
 				case "Fugl":
 					$ep = new FuglParser();
 					$hd = new JaktproveDatabase();
-					$size = sizeof($listeArray);
 					
 					for ($i = 1; $i < $size; $i++)
 			    	{
@@ -56,7 +55,6 @@ class importParserController
 				case "Hund":
 					$ep = new HundParser();
 					$hd = new HundDatabase();
-					$size = sizeof($listeArray);
 					
 					for ($i = 1; $i < $size; $i++)
 			    	{

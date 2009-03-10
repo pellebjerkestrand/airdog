@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 	<mx:Script>
         <![CDATA[
 			import no.airdog.services.Components;      
@@ -37,7 +37,7 @@
 			}    
         ]]>
     </mx:Script>
-	<mx:DataGrid id="jaktprover" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
+	<mx:DataGrid id="jaktprover" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>

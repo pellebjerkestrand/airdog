@@ -28,11 +28,19 @@ package no.airdog.controller
 		{
 			while (this.numChildren > 0)
 			{             
-				this.removeChildAt(0);         
+				this.removeChildAt(0);        
 			}
 			
-			_box = leggTilHund(val);
-			this.addChild(_box);
+			if (val != null)
+			{
+				_box = leggTilHund(val);
+				this.addChild(_box);
+			}
+			else
+			{
+				_box = null;
+				this.invalidateDisplayList();
+			}
 		}
 			
 		private function visHund(event:Event):void

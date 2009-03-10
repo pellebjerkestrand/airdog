@@ -48,18 +48,11 @@
 	<mx:Move xBy="5"/>
 </mx:Sequence>
 
-<mx:Move id="visLogginn" xFrom="-340" xTo="0"/>
-<mx:Move id="gjemLogginn" xFrom="0" xTo="-340"/>
-<mx:Move id="visKlubb" xFrom="340" xTo="0" />
-<mx:Move id="gjemKlubb" xFrom="0" xTo="340" />
-
-
-
 <mx:HBox width="100%">
 	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
 
 	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}" width="350" height="100%">
-		<mx:VBox showEffect="visLogginn" hideEffect="gjemLogginn">
+		<mx:VBox>
 			<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
 			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
 				<mx:Text text="Skriv inn brukernavn og passord."/>
@@ -80,7 +73,7 @@
 				</mx:FormItem>
 			</mx:Form>
 		</mx:VBox>
-		<view:KlubbVindu showEffect="visKlubb" hideEffect="gjemKlubb"/>
+		<view:KlubbVindu/>
 	</mx:ViewStack>
 </mx:HBox>
 
