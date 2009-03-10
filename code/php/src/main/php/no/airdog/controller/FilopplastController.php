@@ -1,5 +1,8 @@
 <?php
 set_time_limit(600);
+ini_set('post_max_size', '50M');
+ini_set('upload_max_filesize', '50M');
+ini_set('LimitRequestBody ', '16777216');
 
 ini_set("include_path", ini_get("include_path") .
 	PATH_SEPARATOR . dirname(__FILE__) . '/../../../com/' .
@@ -22,7 +25,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	$fil_type = $_FILES['Filedata']['type'];
 	//$fil_ext = $_FILES['Filedata']['extension'];
 	
-	$fil_stien = $upload_dir . basename($_FILES['Filedata']['name']); 
+	$fil_stien = $upload_dir . $_FILES['Filedata']['name']; 
 
 	$fil_navn = str_replace("\\","",$fil_navn);
 	$fil_navn = str_replace("'","",$fil_navn);
@@ -36,7 +39,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	else
 	{
 		// Bør byttes ut med bedre informasjon.
-		echo "Klarte ikke laste opp filen til.";
+		echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
 	}
 }
 else

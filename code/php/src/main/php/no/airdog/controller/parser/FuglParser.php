@@ -12,7 +12,7 @@ class FuglParser
 		
 		if (sizeof($fuglArray) == 38)
 		{
-			return array (
+			$ret = array (
 			"proveNr" => $fuglArray[0],
 			"proveDato" => $fuglArray[1],
 			"partiNr" => $fuglArray[2],
@@ -52,6 +52,9 @@ class FuglParser
 			"regDato" => $fuglArray[36],
 			"raseId" => $fuglArray[37]
 			);
+			
+			unset($fuglArray);
+			return $ret;
 		}
 	}
 	
