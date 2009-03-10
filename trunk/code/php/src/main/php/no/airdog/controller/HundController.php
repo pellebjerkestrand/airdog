@@ -82,6 +82,7 @@ class HundController
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
 			$tmp->farNavn = $rad["hundFarNavn"];
+			$tmp->idNr = $rad["idNr"];
 			$tmp->oppdretterId = "oppdretterId";
 			$tmp->oppdretter = "oppdretter";
 			$tmp->eierId = $rad["eierId"];
@@ -89,6 +90,18 @@ class HundController
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->raseId = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
+			$tmp->farge = $rad["farge"];
+			$tmp->fargeVariant = $rad["fargeVariant"];
+			$tmp->oyesykdom = $rad["oyesykdom"];
+			$tmp->hoftesykdom = $rad["hoftesykdom"];
+			$tmp->haarlag = $rad["hoftesykdom"];
+			$tmp->idMerke = $rad["idMerke"];
+			$tmp->endretAv = $rad["endretAv"];
+			$tmp->endretDato = $rad["endretDato"];
+			$tmp->regDato = $rad["regDato"];
+			$tmp->storrelse = $rad["storrelse"];
+			$tmp->manueltEndretAv = $rad["manueltEndretAv"];
+			$tmp->manueltEndretDato = $rad["manueltEndretDato"];
 			$tmp->vf = sprintf("%.1f", $rad["vf"]);
 				
 	        return $tmp;
@@ -124,12 +137,12 @@ class HundController
 	    	$ret['manueltEndretDato'] = $hund->manueltEndretDato;
 	    	
 	    	$hd = new HundDatabase();
-	    	$resultat = $hd->oppdaterHund($ret);
 	    	
-	    	return true;
+	    	
+	    	return $resultat = $hd->redigerHund($ret);
 		}
-		
-		return false;
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
     public function hentStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)

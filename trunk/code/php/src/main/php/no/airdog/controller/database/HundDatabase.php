@@ -72,26 +72,6 @@ class HundDatabase
 		
 		return true;
 	}
-
-	//må testes
-	public function oppdaterHund($hundArray)
-	{
-		if (sizeof($hundArray) != 20)
-		{ 
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
-		}
-		
-		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
-		{ 
-			return "hundId-verdien mangler."; 
-		}
-
-		$hundArray["manueltEndretDato"] = NOW();
-		
-		$hvor = $this->database->quoteInto('hundId = ?', $hundArray["hundId"]);
-		
-		$this->database->update('nkk_hund', $hundArray, $hvor);
-	}
 	
 	//må testes
 	public function slettHund($hundId, $klubbId)
@@ -205,11 +185,10 @@ class HundDatabase
 		return $this->database->fetchAll($select);
 	}
 	
-	// oppdaterHund finnes allerede??
-//	public function redigerHund($hund, $brukerEpost, $brukerPassord, $klubbId)
-//	{
-//		$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
-//		
-//		return $this->database->update('nkk_hund', $hund, $hvor);
-//	}
+	public function redigerHund($hund)
+	{
+		$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
+		
+		return $this->database->update('nkk_hund', $hund, $hvor);
+	}
 }
