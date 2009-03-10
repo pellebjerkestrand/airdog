@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init()">
 	<mx:Script>
         <![CDATA[
 			import no.airdog.services.Components;      
@@ -8,6 +8,16 @@
 			import mx.collections.*;
 			import mx.controls.*;
 			import mx.core.UIComponent;
+			
+			private function init():void
+			{
+				if(Components.instance.session.bruker.rettigheter.getItemIndex("redigerJaktprove") != -1)
+				{
+					adminPanel.visible = true;
+				}
+
+				Alert.show(Components.instance.session.bruker.rettigheter.contains("lese").toString(),"",0);
+			}
 			
 			public function set hundId(val:String):void
 			{
@@ -56,7 +66,7 @@
 			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="bredde"/>
 			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="reviering"/>
 			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="samarbeid"/>
-			<mx:DataGridColumn headerText="Admin">
+			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">
 						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
