@@ -11,54 +11,38 @@ class HundDatabase
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
-
-	//må testes
-	public function settInnHund($hundArray, $brukerEpost, $brukerPassord, $klubbId)
+	
+	public function settInnHundArray($hunderArray, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{			
+		$resultat = "";
+		
+		foreach($hunderArray as $hundArray)
+		{
 			if ($hundArray["raseId"] != $klubbId)
 			{
-				return "RaseID stemmer ikke.";
+				$resultat .= "\nRaseID stemmer ikke.";
 			}
-		
-			return $this->_settInnHund($hundArray);
+			else
+			{
+				$resultat .= $this->_settInnHund($hundArray);
+			}
 		}
 		
-		return false;
+		return $resultat;
 	}
 	
-	public function settInnHundArray($hunderArray, $brukerEpost, $brukerPassord, $klubbId)
+	public function settInnHund($hundArray, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		if ($hundArray["raseId"] == $klubbId)
 		{
-			$resultat = "";
-			
-			foreach($hunderArray as $hundArray)
-			{
-				if ($hundArray["raseId"] != $klubbId)
-				{
-					$resultat .= "\nRaseID stemmer ikke.";
-				}
-				else
-				{
-					$resultat .= $this->_settInnHund($hundArray);
-				}
-			}
-			
-			return $resultat;
+			return $this->_settInnHund($hundArray);
 		}
-		
-		return false;
+
+		return "RaseID " . $hundArray["raseId"] . " stemmer ikke med klubbId $klubbId";
 	}
 	
 	private function _settInnHund($hundArray)
 	{
-		$fp = fopen("debug.txt", "a");
-		fwrite($fp, $hundArray["navn"] . "\r\n");
-		fclose($fp);
-		
-
 		if (sizeof($hundArray) != 20)
 		{ 
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
@@ -73,7 +57,7 @@ class HundDatabase
 		
 		if ($dbHund == null)
 		{
-			$this->database->insert('NKK_hund', $hundArray);
+			$this->database->insert('nkk_hund', $hundArray);
 		}
 		else if ($dbHund["manueltEndretAv"] != "")
 		{
@@ -82,148 +66,126 @@ class HundDatabase
 		else
 		{
 			$hvor = $this->database->quoteInto('hundId = ?', $hundArray["hundId"]) . $this->database->quoteInto('AND raseId = ?', $hundArray["raseId"]);
-			$this->database->update('NKK_hund', $hundArray, $hvor);
+			$this->database->update('nkk_hund', $hundArray, $hvor);
+			return "Oppdatert";
 		}
 		
 		return true;
 	}
 
 	//må testes
-	public function oppdaterHund($hundArray, $brukerEpost, $brukerPassord, $klubbId)
+	public function oppdaterHund($hundArray)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			if (sizeof($hundArray) != 20)
-			{ 
-				return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
-			}
-			
-			if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
-			{ 
-				return "hundId-verdien mangler."; 
-			}
-			if (!isset($brukerEpost) || $brukerEpost == "")
-			{
-				return "endret av bruker mangler";
-			}
-	
-			$hundArray["manueltEndretAv"] = $brukerEpost;
-			$hundArray["manueltEndretDato"] = NOW();
-			
-			$hvor = $this->database->quoteInto('idNr = ?', $hundArray["idNr"]);
-			
-			$this->database->update('nkk_hund', $hundArray, $hvor);
-			
-			return true;
+		if (sizeof($hundArray) != 20)
+		{ 
+			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
 		}
 		
-		return false;
+		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
+		{ 
+			return "hundId-verdien mangler."; 
+		}
+
+		$hundArray["manueltEndretDato"] = NOW();
+		
+		$hvor = $this->database->quoteInto('hundId = ?', $hundArray["hundId"]);
+		
+		$this->database->update('nkk_hund', $hundArray, $hvor);
 	}
 	
 	//må testes
-	public function slettHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function slettHund($hundId, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
 			$hvor = $this->database->quoteInto('hundId = ?', $hundId);
 	
 			$this->database->delete('nkk_hund', $hvor);
-		}
 	}
 	
-	public function finnesHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function finnesHund($hundId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$hund = $this->hentHund($hundId);
-			if (isset($hund["hundId"]))
-				return true;
-		}
+		$hund = $this->hentHund($hundId);
+		if (isset($hund["hundId"]))
+			return true;
 		
 		return false;
 	}
 	
-	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
-	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{ 			
-			$select = $this->database->select()
-			->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
-			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
-			->where('h.raseId=?', $klubbId)
-			->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
-			->limit(500, 0)
-			->order('h.navn ASC');
-	
-			return $this->database->fetchAll($select);
-		}
-		
-		return null;				
+	public function sokHund($soketekst, $klubbId)
+	{		
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->where('h.raseId=?', $klubbId)
+		->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
+		->limit(500, 0)
+		->order('h.navn ASC');
 
+		return $this->database->fetchAll($select);
 	}
 	
-	public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
+	public function sokArsgjennomsnitt($hund, $ar, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from(array('h'=>'nkk_hund'), array(
-				'h.*', 
-				'hundMorNavn'=>'hMor.navn', 
-				'hundFarNavn'=>'hFar.navn',
-				'starter' => 'COUNT(hFugl.hundId)',
-				'es' => 'AVG(hFugl.egneStand)',
-				'ms' => 'AVG(hFugl.makkerStand)',
-				'eso' => 'AVG(hFugl.egneStokk)',
-				'mso' => 'AVG(hFugl.makkerStokk)',
-				'ts' => 'AVG(hFugl.tomStand)',
-				'jl' => 'AVG(hFugl.jaktlyst)',
-				'fa' => 'AVG(hFugl.fart)',
-				'st' => 'AVG(hFugl.stil)',
-				'selv' => 'AVG(hFugl.selvstendighet)',
-				'sok' => 'AVG(bredde)',
-				'vf' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
-				'rev' => 'AVG(reviering)',
-				'sam' => 'AVG(samarbeid)',
-				'bestePl' => 'MIN(hFugl.premiegrad)'
-			))
-			->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
-			->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
-			->joinLeft(array('hFugl' => 'nkk_fugl'), 'h.hundId = hFugl.hundId', array())
-			->where('h.raseId=?', $klubbId)
-			->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $hund)
-			->where('hFugl.proveDato LIKE "%"?"%"', $ar)
-			->group('h.hundId');
-		
-			return $this->database->fetchAll($select);
-		}
-		
-		return null;
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array(
+			'h.*', 
+			'hundMorNavn'=>'hMor.navn', 
+			'hundFarNavn'=>'hFar.navn',
+			'starter' => 'COUNT(hFugl.hundId)',
+			'es' => 'AVG(hFugl.egneStand)',
+			'ms' => 'AVG(hFugl.makkerStand)',
+			'eso' => 'AVG(hFugl.egneStokk)',
+			'mso' => 'AVG(hFugl.makkerStokk)',
+			'ts' => 'AVG(hFugl.tomStand)',
+			'jl' => 'AVG(hFugl.jaktlyst)',
+			'fa' => 'AVG(hFugl.fart)',
+			'st' => 'AVG(hFugl.stil)',
+			'selv' => 'AVG(hFugl.selvstendighet)',
+			'sok' => 'AVG(bredde)',
+			'vf' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
+			'rev' => 'AVG(reviering)',
+			'sam' => 'AVG(samarbeid)',
+			'bestePl' => 'MIN(hFugl.premiegrad)'
+		))
+		->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hFugl' => 'nkk_fugl'), 'h.hundId = hFugl.hundId', array())
+		->where('h.raseId=?', $klubbId)
+		->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $hund)
+		->where('hFugl.proveDato LIKE "%"?"%"', $ar)
+		->group('h.hundId');
+	
+		return $this->database->fetchAll($select);
 	}
 	
-	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentHund($hundId, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
-			'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
-			->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
-			->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
-			->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
-			->group('h.hundId')
-			->where('h.hundId=?', $hundId)
-			->where('h.raseId=?', $klubbId)
-			->limit(1);
-			
-			return $this->database->fetchRow($select);
-		}
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*', 
+		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId', array())
+		->group('h.hundId')
+		->where('h.hundId=?', $hundId)
+		->where('h.raseId=?', $klubbId)
+		->limit(1);
 		
-		return null;
+		return $this->database->fetchRow($select);
 	}
 	
-	private function _hentHund($hundId, $klubbId)
+//	private function _hentHund($hundId, $klubbId)
+//	{
+//		$select = $this->database->select()
+//		->from(array('h'=>'nkk_hund'), array('h.*'))
+//		->where('h.hundId=?', $hundId)
+//		->where('h.raseId=?', $klubbId)
+//		->limit(1);
+//		
+//		return $this->database->fetchRow($select);
+//	}
+	
+	public function hentStamtreHund($hundId, $klubbId)
 	{
 		$select = $this->database->select()
 		->from(array('h'=>'nkk_hund'), array('h.*'))
@@ -234,46 +196,20 @@ class HundDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function hentStamtreHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentHunder($klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from(array('h'=>'nkk_hund'), array('h.*'))
-			->where('h.hundId=?', $hundId)
-			->where('h.raseId=?', $klubbId)
-			->limit(1);
-			
-			return $this->database->fetchRow($select);
-		}
+		$select = $this->database->select()
+		->from('nkk_hund', array('nkk_hund.*'))
+		->where('h.raseId=?', $klubbId);
 		
-		return null;
+		return $this->database->fetchAll($select);
 	}
 	
-	public function hentHunder($brukerEpost, $brukerPassord, $klubbId)
-	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from('nkk_hund', array('nkk_hund.*'))
-			->where('h.raseId=?', $klubbId);
-			
-			return $this->database->fetchAll($select);
-		}
-		
-		return null;
-	}
-	
-	public function redigerHund($hund, $brukerEpost, $brukerPassord, $klubbId)
-	{
-				
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerHund"))
-		{
-			$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
-			
-			return $this->database->update('nkk_hund', $hund, $hvor);
-		}
-		$feilkode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
-	}
+	// oppdaterHund finnes allerede??
+//	public function redigerHund($hund, $brukerEpost, $brukerPassord, $klubbId)
+//	{
+//		$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
+//		
+//		return $this->database->update('nkk_hund', $hund, $hvor);
+//	}
 }

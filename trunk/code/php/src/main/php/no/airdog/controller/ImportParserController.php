@@ -41,14 +41,14 @@ class importParserController
 				case "Fugl":
 					$ep = new FuglParser();
 					$hd = new JaktproveDatabase();
+					$size = sizeof($listeArray);
 					
-					for ($i = 1; $i < sizeof($listeArray); $i++)
+					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnJaktprove($ep->getFuglArray($listeArray[$i]), $klubbId);
 			    	}
 			    	
 			    	return $ret;
-					break;
 				case "Hdsykdom":
 					$ep = new HdsykdomParser();
 					$ep->getHdsykdomlisteArrayFraFil($filSti);
@@ -56,8 +56,14 @@ class importParserController
 				case "Hund":
 					$ep = new HundParser();
 					$hd = new HundDatabase();
-					return $hd->settInnHundArray($ep->getHundelisteArrayFraFil($filSti), $epost, $passord, $klubbId);
-					break;
+					$size = sizeof($listeArray);
+					
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$ret .= "\r" . $hd->settInnHund($ep->getHundArray($listeArray[$i]), $klubbId);
+			    	}
+			    	
+					return $ret;
 				case "Kull":
 					$ep = new KullParser();
 					$ep->getKulllisteArrayFraFil($filSti);

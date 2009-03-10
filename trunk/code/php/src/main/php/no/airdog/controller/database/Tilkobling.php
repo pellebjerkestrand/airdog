@@ -24,7 +24,7 @@ class Tilkobling
 			'dbname' => $this->dbNavn,
 			'username' => $this->dbBrukernavn,
 			'password' => $this->dbPassord,
-    		'profiler' => true));
+    		'profiler' => false));
 			
 			$database->query('SET NAMES UTF8');
 			

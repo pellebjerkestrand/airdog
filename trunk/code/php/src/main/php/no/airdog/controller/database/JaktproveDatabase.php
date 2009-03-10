@@ -117,7 +117,7 @@ class JaktproveDatabase
 			return "hundId-verdien mangler."; 
 		}
 
-		$dbJaktprove = $this->_hentJaktprove($jaktarray["proveNr"], $jaktarray["raseId"]);
+		$dbJaktprove = $this->_hentJaktprove($jaktarray["proveNr"], $jaktarray["hundId"], $jaktarray["raseId"]);
 		
 		if ($dbJaktprove == null)
 		{
@@ -133,16 +133,19 @@ class JaktproveDatabase
 			$this->database->quoteInto('AND raseId = ?', $jaktarray["raseId"]).
 			$this->database->quoteInto('AND hundId = ?', $jaktarray["hundId"]);
 			$this->database->update('nkk_fugl', $jaktarray, $hvor);
+
+			return "Oppdatert";
 		}
 		
 		return true;
 	}
 	
-	private function _hentJaktprove($proveNr, $klubbId)
+	private function _hentJaktprove($proveNr, $hundId, $klubbId)
 	{
 			$select = $this->database->select()
 			->from('nkk_fugl') 
 			->where('proveNr=?',$proveNr)
+			->where('hundId=?',$hundId)
 			->where('raseId=?', $klubbId)
 			->limit(1);
 	
