@@ -58,11 +58,18 @@
 						}
 						else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
 						{
-							verdier[felt[k].name] = felt[k].selected;
+							if(felt[k].selected)
+							{
+								verdier[felt[k].name] = felt[k].value;
+							}
+					
 						}
 						else if(felt[k].toLocaleString().indexOf("ComboBox") > -1)
 						{
-							verdier[felt[k].name] = felt[k].selectedLabel;
+							if(felt[k].selected)
+							{
+								verdier[felt[k].name] = felt[k].selectedLabel;
+							}
 						}
 					}	
 				}
@@ -75,29 +82,41 @@
 		}
 		private function validateUs() :void
 		{
-			lagre.enabled = (Validator.validateAll([valHundId, valNavn, valIdNr, valKjonn, valEierId, valRaseId]).length == 0);
+			lagre.enabled = (Validator.validateAll([valHundId, valNavn, valIdNr]).length == 0);
 		}
-
-		
+		private function erHann():Boolean{
+			if(Components.instance.session.hundprofil.kjonn == 'H')
+			{
+				return true;
+			}				
+			else{ 
+				return false;
+			}
+		}
+		private function erTispe():Boolean{
+			if(Components.instance.session.hundprofil.kjonn == 'T')
+			{
+				return true;
+			}				
+			else{ 
+				return false;
+			}
+		}
+		private function finnesHund(id:String):void{
+			
+		}
 		]]>
 	</mx:Script>	
-	<mx:StringValidator id="valHundId" source="{hundid}" property="text" required="true" minLength="8" maxLength="8" 
-		tooShortError="Du må skrive minst {valHundId.minLength} tegn" 
-		tooLongError="Du kan kun skrive maks {valHundId.maxLength} tegn"/>
+	<mx:StringValidator id="valHundId" source="{hundid}" property="text" required="true" 
+		requiredFieldError="Feltet er påkrevd"/>
 	<mx:StringValidator id="valNavn" source="{navn}" property="text" required="true" minLength="2" 
 		tooShortError="Du må skrive minst {valNavn.minLength} tegn"/>
 	<mx:StringValidator id="valIdNr" source="{idNr}" property="text" required="true" minLength="7" 
 		tooShortError="Du må skrive minst {valIdNr.minLength} tegn" 
 		tooLongError="Du kan kun skrive maks {valIdNr.maxLength} tegn"/>
-	<mx:StringValidator id="valKjonn" source="{kjonn}" property="text" required="true" minLength="1" maxLength="1" 
-		tooShortError="Du må skrive minst {valKjonn.minLength} tegn" 
-		tooLongError="Du kan kun skrive maks {valKjonn.maxLength} tegn"/>
 	<mx:StringValidator id="valEierId" source="{eierId}" property="text" required="true" minLength="7" maxLength="7" 
 		tooShortError="Du må skrive minst {valEierId.minLength} tegn" 
 		tooLongError="Du kan kun skrive maks {valEierId.maxLength} tegn"/>
-	<mx:StringValidator id="valRaseId" source="{raseId}" property="text" required="true" minLength="3" maxLength="3" 
-		tooShortError="Du må skrive minst {valRaseId.minLength} tegn" 
-		tooLongError="Du kan kun skrive maks {valRaseId.maxLength} tegn"/>
 	
 	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%" creationComplete="validateUs()">
 		<mx:Form label="Hundedata">
@@ -111,7 +130,7 @@
 				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Mors ID">
-				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}"/>
+				<mx:TextInput id="morId" name="morId" change="finnesHund(morId.text)" text="{Components.instance.session.hundprofil.morId}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Fars ID">			
 				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
@@ -120,10 +139,11 @@
 				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}" change="validateUs()"/>
 			</mx:FormItem>
 			<mx:FormItem label="Kjønn">
-				<mx:TextInput id="kjonn" name="kjonn" text="{Components.instance.session.hundprofil.kjonn}" change="validateUs()"/>
+				<mx:RadioButton selected="{erHann()}" groupName="kjonnValg" name="kjonn" id="radioHann" label="Hann" value="H"/>
+				<mx:RadioButton selected="{erTispe()}" groupName="kjonnValg" name="kjonn" id="radioTispe" label="Tispe" value="T"/>						
 			</mx:FormItem>
 			<mx:FormItem label="Eier-ID">
-				<mx:TextInput id="eierId" name="eierId" text="{Components.instance.session.hundprofil.eierId}" change="validateUs()"/>
+				<mx:TextInput id="eierId" name="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
 			</mx:FormItem>
 			<mx:FormItem label="Rase-ID">
 				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}" change="validateUs()"/>
