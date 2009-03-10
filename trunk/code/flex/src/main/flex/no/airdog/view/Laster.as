@@ -56,7 +56,7 @@ package no.airdog.view
 			// laster logoen vår
 			loadingImage = new flash.display.Loader();       
 			loadingImage.contentLoaderInfo.addEventListener( Event.COMPLETE, loader_completeHandler);
-			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo200clean.png")); // This path needs to be relative to your swf on the server, you could use an absolute value if you are unsure
+			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo200clean.png")); // denne stien bør være relativ. kun absolutt hvis det er supernødvendig 
         }
         
         private function loader_completeHandler(event:Event):void

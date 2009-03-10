@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()"
-	paddingBottom="0" paddingLeft="0" paddingRight="10" paddingTop="0" verticalAlign="middle" horizontalAlign="left" xmlns:HundeListeRenderer="no.airdog.view.HundeListeRenderer.*">
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:HundeListeRenderer="no.airdog.view.HundeListeRenderer.*"
+	creationComplete="init()"
+	paddingBottom="0" paddingLeft="0" paddingRight="10" paddingTop="0" 
+	verticalAlign="middle" horizontalAlign="left"
+	width="100%">
 	<mx:Script>
 		<![CDATA[
 			private function init():void

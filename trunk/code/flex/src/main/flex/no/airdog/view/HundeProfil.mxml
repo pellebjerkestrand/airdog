@@ -25,16 +25,12 @@
 			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
 			<mx:VBox>				
 				<mx:Button label="Rediger" click="visRedigerHundVindu()"/>
-				<mx:Text id="navn" fontSize="25" text="{Components.instance.session.hundprofil.navn}" />						
+				<mx:Text id="navn" fontSize="25" text="{Components.instance.session.hundprofil.tittel} {Components.instance.session.hundprofil.navn}" />						
 				<mx:HBox>						
 					<mx:VBox>					
-						<mx:HBox>
-							<mx:Label text="Tittel:"/>
-							<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
-						</mx:HBox>
 						<mx:HBox>						
-							<mx:Label text="Navn:"/>
-							<mx:Text text="{Components.instance.session.hundprofil.navn}"/>				
+							<mx:Label text="ID:"/>
+							<mx:Text text="{Components.instance.session.hundprofil.idNr}"/>				
 						</mx:HBox>
 						<mx:HBox>
 							<mx:Label text="Eier:"/>
@@ -62,7 +58,7 @@
 								<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
 							</mx:HBox>
 							<mx:HBox>
-								<mx:Label text="farge: "/>						
+								<mx:Label text="Farge: "/>						
 								<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" />
 							</mx:HBox>
 						</mx:VBox>		
