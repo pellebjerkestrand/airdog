@@ -231,39 +231,37 @@ package no.airdog.controller
 		{
 			var hund:Hund = new Hund();
 			
-			hund.raseId = verdier['raseId'];
-			hund.kullId = verdier['kullId'];
-			hund.hundId = verdier['hundId'];
-			hund.tittel = verdier['tittel'];
-			hund.navn = verdier['navn'];
-			hund.farId = verdier['farId'];
-			hund.morId = verdier['morId'];
-			hund.idNr = verdier['idNr'];
-			hund.farge = verdier['farge'];
-			hund.fargeVariant = verdier['fargeVariant'];
-			hund.oyesykdom = verdier['oyesykdom'];
-			hund.hoftesykdom = verdier['hoftesykdom'];
-			hund.haarlag = verdier['haarlag'];
-			hund.idMerke = verdier['idMerke'];
-			hund.kjonn = verdier['kjonn'];
-			hund.eierId = verdier['eierId'];
-			hund.endretAv = verdier['endretAv'];
-			hund.endretDato = verdier['endretDato'];
-			hund.regDato = verdier['regDato'];
-			hund.storrelse = verdier['storrelse'];
-			hund.manueltEndretAv = verdier['manueltEndretAv'];
-			hund.manueltEndretDato = verdier['manueltEndretDato'];
+			hund.raseId = verdier.raseId;
+			hund.kullId = verdier.kullId;
+			hund.hundId = verdier.hundId;
+			hund.tittel = verdier.tittel;
+			hund.navn = verdier.navn;
+			hund.farId = verdier.farId;
+			hund.morId = verdier.morId;
+			hund.idNr = verdier.idNr;
+			hund.farge = verdier.farge;
+			hund.fargeVariant = verdier.fargeVariant;
+			hund.oyesykdom = verdier.oyesykdom;
+			hund.hoftesykdom = verdier.hoftesykdom;
+			hund.haarlag = verdier.haarlag;
+			hund.idMerke = verdier.idMerke;
+			hund.kjonn = verdier.kjonn;
+			hund.eierId = verdier.eierId;
+			hund.endretAv = verdier.endretAv;
+			hund.endretDato = verdier.endretDato;
+			hund.regDato = verdier.regDato;
+			hund.storrelse = verdier.storrelse;
+			hund.manueltEndretAv = verdier.manueltEndretAv;
+			hund.manueltEndretDato = verdier.manueltEndretDato;
 			
-			Alert.show('Endret hunden '+hund.navn);
 			Components.instance.services.airdogService.redigerHund(hund, redigerHundResultat);			
-			
-			
-			
 		}
+		
 		public function redigerHundResultat(event:Object):void
 		{
 			
 		}
+		
 		public function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
         {
         	Components.instance.session.hundprofil = hund as Hund;
@@ -272,6 +270,7 @@ package no.airdog.controller
         	PopUpManager.centerPopUp(redigerHundVindu);
 			PopUpManager.bringToFront(redigerHundVindu);
         }
+        
         public function lukkRedigerHundVindu():void
         {
         	PopUpManager.removePopUp(redigerHundVindu);
