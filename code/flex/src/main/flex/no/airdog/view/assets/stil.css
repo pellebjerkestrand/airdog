@@ -45,10 +45,6 @@ Application
 }
 VBox.MainView
 {	
-	/*
-	paddingLeft: 50;
-	paddingRight: 50;
-	*/
 	paddingLeft: 0;
 	paddingRight: 0;	
 }
@@ -94,8 +90,8 @@ VBox.MainView
 	horizontalGap: -1;
 	paddingLeft: 5;
 	paddingRight: 5;
-	paddingTop: 10;
-	paddingBottom: 10;
+	paddingTop: 4;
+	paddingBottom: 4;
 	backgroundAlpha: 1.0;
 	cornerRadius: 0;
 	tabStyleName: tabNavigatorTab;

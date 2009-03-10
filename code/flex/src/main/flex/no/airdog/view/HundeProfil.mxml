@@ -38,8 +38,10 @@
 		<mx:HBox>
 			<mx:Image id="hundbilde" width="100" height="100"/>
 			<mx:VBox>
-				<mx:Text id="titel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
-				<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>						
+				<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
+				<mx:HBox>
+					<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/><mx:Button label="Rediger" click="visRedigerHundVindu()"/>
+				</mx:HBox>				
 				<mx:HBox>						
 					<mx:VBox>											
 						<mx:Label text="ID:"/>
@@ -78,7 +80,8 @@
 		</mx:HBox>
 		
         <mx:TabNavigator id="tn" 
-        	width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5">
+        	width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5" 
+        	creationPolicy="all">
         	
         	<mx:VBox id="v1" label="Jaktprøver">
             	<view:JaktproveListe hundId="{Components.instance.session.hundprofil.hundId}" />            
