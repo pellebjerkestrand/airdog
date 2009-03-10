@@ -45,8 +45,12 @@ Application
 }
 VBox.MainView
 {	
+	/*
 	paddingLeft: 50;
-	paddingRight: 50;	
+	paddingRight: 50;
+	*/
+	paddingLeft: 0;
+	paddingRight: 0;	
 }
 .TopBar
 {
