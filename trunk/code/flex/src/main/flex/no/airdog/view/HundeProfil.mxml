@@ -4,16 +4,30 @@
 	xmlns:controller="no.airdog.controller.*"
 	xmlns:view="no.airdog.view.*"
 	xmlns:adminView="no.airdog.view.admin.*"
+	creationComplete="init()"
 	width="90%" height="100%">
 	
 	<mx:Script>
         <![CDATA[
 			import no.airdog.services.Components;
-			
 			import mx.core.UIComponent;
 			
-			public function visRedigerHundVindu():void{
-				
+			private function init():void
+			{
+				if((Components.instance.session.hundprofil.bilde == "") || (Components.instance.session.hundprofil.bilde == null))
+				{
+					hundbilde.visible = true;
+					hundbilde.source = data.bilde;
+				}
+				else
+				{
+					hundbilde.visible = true;
+					hundbilde.source = 'no/airdog/view/assets/intetbilde.png';	
+				}
+			}
+			
+			public function visRedigerHundVindu():void
+			{	
 					Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
 			}  
 		]]>
@@ -22,47 +36,42 @@
 	<mx:VBox width="100%" height="100%">
 		
 		<mx:HBox>
-			<mx:Image id="bilde" width="150" height="150" source="no/airdog/view/assets/{Components.instance.session.hundprofil.bilde}" />
-			<mx:VBox>				
-				<mx:Button label="Rediger" click="visRedigerHundVindu()"/>
-				<mx:Text id="navn" fontSize="25" text="{Components.instance.session.hundprofil.tittel} {Components.instance.session.hundprofil.navn}" />						
+			<mx:Image id="hundbilde" width="100" height="100"/>
+			<mx:VBox>
+				<mx:Text id="titel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
+				<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>						
 				<mx:HBox>						
-					<mx:VBox>					
-						<mx:HBox>						
-							<mx:Label text="ID:"/>
-							<mx:Text text="{Components.instance.session.hundprofil.idNr}"/>				
-						</mx:HBox>
-						<mx:HBox>
-							<mx:Label text="Eier:"/>
-							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}"/>							
-						</mx:HBox>
+					<mx:VBox>											
+						<mx:Label text="ID:"/>
+						<mx:Label text="Eier:"/>
 					</mx:VBox>
 					<mx:VBox>
-						<mx:HBox>
-							<mx:Label text="Viltfinnerevne:"/>
-							<mx:Text id="viltFinnerEvne" text="{Components.instance.session.hundprofil.vf}" />							
-						</mx:HBox>
-						<mx:VBox>
-							<mx:HBox>
-								<mx:Label text="Far: "/>
-								<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" />
-								<mx:Text id="farId" text="({Components.instance.session.hundprofil.farId})" />
-							</mx:HBox>							
-							<mx:HBox>
-								<mx:Label text="Mor: "/>
-								<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" />
-								<mx:Text id="morId" text="({Components.instance.session.hundprofil.morId})" />	
-							</mx:HBox>
-							<mx:HBox>
-								<mx:Label text="Kull: "/>						
-								<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" />
-							</mx:HBox>
-							<mx:HBox>
-								<mx:Label text="Farge: "/>						
-								<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" />
-							</mx:HBox>
-						</mx:VBox>		
-											
+						<mx:Text text="{Components.instance.session.hundprofil.idNr}"/>
+						<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}"/>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Label text="Kull:"/>
+						<mx:Label text="VF:"/>						
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}"/>
+						<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}"/>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Label text="Far:"/>
+						<mx:Label text="Mor:"/>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}"/><!--<mx:Text id="farId" text="({Components.instance.session.hundprofil.farId})"/>-->
+						<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}"/><!--<mx:Text id="morId" text="({Components.instance.session.hundprofil.morId})"/>-->
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Label text="Farge:"/>
+						<mx:Label text="Kjønn:"/>
+					</mx:VBox>					
+					<mx:VBox>							
+						<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}"/>
+						<mx:Text id="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
 					</mx:VBox>					
 				</mx:HBox>
 			</mx:VBox>
