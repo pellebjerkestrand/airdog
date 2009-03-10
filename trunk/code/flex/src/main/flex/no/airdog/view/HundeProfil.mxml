@@ -11,10 +11,11 @@
         <![CDATA[
 			import no.airdog.services.Components;
 			import mx.core.UIComponent;
+			import mx.utils.StringUtil;
 			
 			private function init():void
 			{
-				if((Components.instance.session.hundprofil.bilde == "") || (Components.instance.session.hundprofil.bilde == null))
+				if((StringUtil.trim(Components.instance.session.hundprofil.bilde) == "") || (Components.instance.session.hundprofil.bilde == null))
 				{
 					hundbilde.visible = true;
 					hundbilde.source = data.bilde;
