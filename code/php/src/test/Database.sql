@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 03. Mar, 2009 12:46 PM
+-- Generert den: 10. Mar, 2009 14:38 PM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -84,8 +84,6 @@ CREATE TABLE IF NOT EXISTS `ad_klubb` (
 --
 
 INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
-('klubb', 'klubb', 1),
-('Test klubb', 'En testklubb', 2),
 ('Norsk Breton Klubb', NULL, 306),
 ('Norsk Pointer Klubb', NULL, 348);
 
@@ -107,9 +105,9 @@ CREATE TABLE IF NOT EXISTS `ad_rettighet` (
 --
 
 INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
-('lese', 'Utf¯re handlinger som ikke endrer pÂ databasen'),
-('redigerHund', 'Endrer hundedata i databasen'),
-('redigerJaktprove', 'Endrer jaktprovedata i databasen');
+('lese', 'Utføre handlinger som ikke endrer på databasen'),
+('redigerHund', NULL),
+('redigerJaktprove', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `klasse` int(1) NOT NULL,
   `dommerId1` varchar(7) NOT NULL,
   `dommerId2` varchar(7) NOT NULL,
-  `hundId` varchar(9) NOT NULL,
+  `hundId` varchar(17) NOT NULL,
   `slippTid` int(2) DEFAULT NULL,
   `egneStand` int(1) DEFAULT NULL,
   `egneStokk` int(1) DEFAULT NULL,
@@ -292,18 +290,13 @@ CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL,
-  PRIMARY KEY (`proveNr`,`hundId`,`raseId`)
+  KEY `proveNr` (`proveNr`,`proveDato`,`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dataark for tabell `nkk_fugl`
 --
 
-INSERT INTO `nkk_fugl` (`proveNr`, `proveDato`, `partiNr`, `klasse`, `dommerId1`, `dommerId2`, `hundId`, `slippTid`, `egneStand`, `egneStokk`, `tomStand`, `makkerStand`, `makkerStokk`, `jaktlyst`, `fart`, `stil`, `selvstendighet`, `bredde`, `reviering`, `samarbeid`, `presUpresis`, `presNoeUpresis`, `presPresis`, `reisNekter`, `reisNoelende`, `reisVillig`, `reisDjerv`, `sokStjeler`, `sokSpontant`, `appIkkeGodkjent`, `appGodkjent`, `rappInnkalt`, `rappSpont`, `premiegrad`, `certifikat`, `regAv`, `regDato`, `raseId`, `manueltEndretAv`, `manueltEndretDato`) VALUES
-('50-94014', '2009-02-09', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 348, '', '0000-00-00'),
-('50-94015', '2009-02-13', '', 0, '', '', '1337', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 348, '', '0000-00-00'),
-('50-94015', '2009-02-13', '', 1, '', '', 'asaa', 30, 2, 0, 0, 1, 1, 34, 3, 1, 2, 4, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, '', '0000-00-00', 348, '', '0000-00-00'),
-('50-94014', '2009-02-09', '', 2, '', '', 'asaa', 30, 3, 0, 0, 2, 2, 3, 5, 2, 3, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '', '0000-00-00', 348, '', '0000-00-00');
 
 -- --------------------------------------------------------
 

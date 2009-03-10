@@ -302,7 +302,7 @@ class HundController
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new HundDatabase();
-	    	$resultat = $hd->sokArsgjennomsnitt($hund, $ar);
+	    	$resultat = $hd->sokArsgjennomsnitt($hund, $ar, $klubbId);
 	
 	    	$ret = array();
 	    	

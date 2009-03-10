@@ -53,7 +53,7 @@ class HundDatabase
 			return "hundId-verdien mangler."; 
 		}
 		
-		$dbHund = $this->_hentHund($hundArray["hundId"], $hundArray["raseId"]);
+		$dbHund = $this->hentHund($hundArray["hundId"], $hundArray["raseId"]);
 		
 		if ($dbHund == null)
 		{

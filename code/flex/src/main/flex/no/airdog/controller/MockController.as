@@ -149,6 +149,7 @@ package no.airdog.controller
 		
 		public function sokHund(soketekst:String):void
 		{
+			Components.instance.session.hundesokListe.provider = new ArrayCollection();
 			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
 		}
 		
@@ -159,6 +160,7 @@ package no.airdog.controller
 		
 		public function hentAvkom(hundId:String):void
 		{
+			//Components.instance.session.avkomListe = new ArrayCollection();
 			Components.instance.services.airdogService.hentAvkom(hundId, hentAvkomResultat);
 		}
 		
@@ -169,6 +171,7 @@ package no.airdog.controller
 		
 		public function hentJaktprove(hundId:String):void
 		{
+			//Components.instance.session.jaktproveListe = new ArrayCollection();
 			Components.instance.services.airdogService.hentJaktprove(hundId, hentJaktproveResultat);
 		}
 		
@@ -179,6 +182,7 @@ package no.airdog.controller
 		
 		public function visHund(hundId:String):void
 		{
+			//Components.instance.session.hundprofil = null;
 			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
 		}
 		
@@ -190,6 +194,7 @@ package no.airdog.controller
 		
 		public function hentBrukersKlubber():void
 		{
+			//Components.instance.session.bruker.klubber = new ArrayCollection();
 			Components.instance.services.airdogService.hentBrukersKlubber(hentBrukersKlubberResultat);
 		}
 		
@@ -200,6 +205,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRoller():void
 		{
+			//Components.instance.session.bruker.roller = new ArrayCollection();
 			Components.instance.services.airdogService.hentBrukersRoller(hentBrukersRollerResultat);
 		}
 		
@@ -210,6 +216,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRettigheter():void
 		{
+			//Components.instance.session.bruker.rettigheter = new ArrayCollection();
 			Components.instance.services.airdogService.hentBrukersRettigheter(hentBrukersRettigheterResultat);
 		}
 		
@@ -220,6 +227,7 @@ package no.airdog.controller
 		
 		public function hentStamtre(hundId:String, dybde:int):void
 		{
+			Components.instance.session.stamtre = null;
 			Components.instance.services.airdogService.hentStamtre(hundId, dybde, hentStamtreResultat);
 		}
 		
@@ -227,6 +235,7 @@ package no.airdog.controller
 		{
 			Components.instance.session.stamtre = event as Hund;
 		}
+		
 		public function redigerHund(verdier:Object):void
 		{
 			var hund:Hund = new Hund();
@@ -278,6 +287,7 @@ package no.airdog.controller
 		
 		public function sokArsgjennomsnitt(hund:String, ar:String):void
 		{
+			Components.instance.session.arsgjennomsnitt = new ArrayCollection();
 			Components.instance.services.airdogService.sokArsgjennomsnitt(hund, ar, sokArsgjennomsnittResultat);
 		}
 		
