@@ -42,7 +42,7 @@
 		
 		private function formVerdier():Object
 		{
-			var verdier:Object = new Object();
+			var hund:Hund = new Hund();
 			var skjemaliste:Object = skjemaer.getChildren();	
 		
 			for(var i:int = 0; i < skjemaliste.length; i++)
@@ -58,13 +58,13 @@
 						if(felt[k].toLocaleString().indexOf("TextInput") > -1 || felt[k].toLocaleString().indexOf("TextArea") > -1 ||
 						felt[k].toLocaleString().indexOf("DateField") > -1)
 						{
-							verdier[felt[k].name] = felt[k].text;
+							hund[felt[k].name] = felt[k].text;
 						}
 						else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
 						{
 							if(felt[k].selected)
 							{
-								verdier[felt[k].name] = felt[k].value as String;
+								hund[felt[k].name] = felt[k].value as String;
 							}
 					
 						}
@@ -72,13 +72,13 @@
 						{
 							if(felt[k].selected)
 							{
-								verdier[felt[k].name] = felt[k].selectedLabel;
+								hund[felt[k].name] = felt[k].selectedLabel;
 							}
 						}
 					}	
 				}
 			}
-			return verdier;
+			return hund;
 		}
 		
 		private function resetForm():void
@@ -103,9 +103,11 @@
 			}
 		}
 		
-		private function finnesHund(id:String):void{
+		private function finnesHund(event:Event):void
+		{
 			
 		}
+		
 		]]>
 	</mx:Script>	
 	<mx:StringValidator 
@@ -153,10 +155,12 @@
 				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}" />
 			</mx:FormItem>
 			<mx:FormItem label="Mors ID">
-				<mx:TextInput id="morId" name="morId" change="finnesHund(morId.text)" text="{Components.instance.session.hundprofil.morId}"/>
+				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}" change="{finnesHund(event)}"/>
+				<mx:TextInput id="morNavn" name="morNavn" />
 			</mx:FormItem>
 			<mx:FormItem label="Fars ID">			
-				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}"/>
+				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}" change="{finnesHund(event)}"/>
+				<mx:TextInput id="farNavn" name="farNavn" />
 			</mx:FormItem>
 			<mx:FormItem label="ID-nummer">
 				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}" />

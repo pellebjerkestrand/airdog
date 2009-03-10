@@ -236,32 +236,8 @@ package no.airdog.controller
 			Components.instance.session.stamtre = event as Hund;
 		}
 		
-		public function redigerHund(verdier:Object):void
+		public function redigerHund(hund:Hund):void
 		{
-			var hund:Hund = new Hund();
-			
-			hund.raseId = verdier.raseId;
-			hund.kullId = verdier.kullId;
-			hund.hundId = verdier.hundId;
-			hund.tittel = verdier.tittel;
-			hund.navn = verdier.navn;
-			hund.farId = verdier.farId;
-			hund.morId = verdier.morId;
-			hund.idNr = verdier.idNr;
-			hund.farge = verdier.farge;
-			hund.fargeVariant = verdier.fargeVariant;
-			hund.oyesykdom = verdier.oyesykdom;
-			hund.hoftesykdom = verdier.hoftesykdom;
-			hund.haarlag = verdier.haarlag;
-			hund.idMerke = verdier.idMerke;
-			hund.kjonn = verdier.kjonn;
-			hund.eierId = verdier.eierId;
-			hund.endretAv = verdier.endretAv;
-			hund.endretDato = verdier.endretDato;
-			hund.regDato = verdier.regDato;
-			hund.storrelse = verdier.storrelse;
-			hund.manueltEndretAv = verdier.manueltEndretAv;
-			hund.manueltEndretDato = verdier.manueltEndretDato;
 			
 			Components.instance.services.airdogService.redigerHund(hund, redigerHundResultat);			
 		}
