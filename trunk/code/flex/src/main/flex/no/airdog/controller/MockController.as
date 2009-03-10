@@ -5,9 +5,9 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.events.*;
+	import mx.formatters.DateFormatter;
 	import mx.managers.PopUpManager;
 	import mx.rpc.events.*;
-	import mx.formatters.DateFormatter;
 	
 	import no.airdog.model.*;
 	import no.airdog.services.Components;
@@ -37,6 +37,8 @@ package no.airdog.controller
         	Components.instance.session.jaktprove.regDato = df.format(new Date());
         	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+    		jaktproveVindu.width = parent.width;
+    		jaktproveVindu.height = parent.height;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
 			
@@ -47,6 +49,8 @@ package no.airdog.controller
         	Components.instance.session.jaktprove = jaktprove as Jaktprove;
         	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+    		jaktproveVindu.width = parent.width * 0.80;
+    		jaktproveVindu.height = parent.height *  0.90;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
         }
