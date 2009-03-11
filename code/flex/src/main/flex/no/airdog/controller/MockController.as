@@ -122,14 +122,10 @@ package no.airdog.controller
 		
 		public function loggUt():void
 		{
-			Components.instance.session.bruker.epost = "";
-			Components.instance.session.bruker.passord = "";
-			Components.instance.session.bruker.innlogget = false;
-			Components.instance.session.bruker.rettigheter = null;
-			Components.instance.session.bruker.roller = null;
-			Components.instance.session.bruker.klubber = null;
-			Components.instance.session.bruker.sattKlubb = "";
-			Components.instance.session.bruker.sattKlubbId = "";
+			
+			Components.instance.session = new Session;
+			
+
 			
 			Components.instance.session.hovedNavigasjon.nr = 1;
 			
@@ -173,7 +169,7 @@ package no.airdog.controller
 		
 		public function hentJaktprove(hundId:String):void
 		{
-			//Components.instance.session.jaktproveListe = new ArrayCollection();
+			Components.instance.session.jaktproveListe = null;
 			Components.instance.services.airdogService.hentJaktprove(hundId, hentJaktproveResultat);
 		}
 		

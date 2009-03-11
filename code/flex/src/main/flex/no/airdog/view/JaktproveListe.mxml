@@ -10,20 +10,24 @@
 			import mx.core.UIComponent;
 			
 			private function init():void
-			{
-				if(Components.instance.session.bruker.rettigheter.getItemIndex("redigerJaktprove") != -1)
+			{				
+				for(var i:int = 0; i < Components.instance.session.bruker.rettigheter.length; i++)
 				{
-					adminPanel.visible = true;
+					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == "redigerJaktprove")
+					{
+						adminPanel.visible = true;
+					}					
 				}
-
-				Alert.show(Components.instance.session.bruker.rettigheter.contains("lese").toString(),"",0);
 			}
 			
 			public function set hundId(val:String):void
 			{
-				Components.instance.session.jaktproveListe = null;
-				Components.instance.controller.hentJaktprove(val);
+				if (val != null)
+				{
+					Components.instance.controller.hentJaktprove(val);
+				}
 			} 
+			
  			private function slett(eventObj:CloseEvent):void {
 				if (eventObj.detail==Alert.OK) {
 					if (jaktprover.selectedIndex > -1) {

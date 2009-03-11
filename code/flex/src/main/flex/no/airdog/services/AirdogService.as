@@ -82,7 +82,7 @@ package no.airdog.services
         
         public function loggUt(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.loggUt(), resultat, resultat);
+        	callServiceFunction(service.loggUt(), resultat, feil);
         }
         
         public function hentStamtre(hundId:String, dybde:int, resultat:Function, feil:Function=null):void
