@@ -13,10 +13,12 @@
 			{
 				Components.instance.controller.hentAlleRoller();
 				Components.instance.controller.hentAlleRettigheter();
+				Components.instance.controller.hentRollersRettigheter();
 			}
 		]]>
 	</mx:Script>
     
-	<mx:DataGrid dataProvider="{Components.instance.session.alleRoller}" />
+	<mx:DataGrid dataProvider="{Components.instance.session.rollersRettigheter}" />
 	<mx:DataGrid dataProvider="{Components.instance.session.alleRettigheter}" />
+	<mx:DataGrid dataProvider="{Components.instance.session.rollersRettigheter}" />
 </mx:VBox>

@@ -31,5 +31,6 @@ package no.airdog.controller
 		function fjernJaktproveVindu():void
 		function hentAlleRoller():void
 		function hentAlleRettigheter():void
+		function hentRollersRettigheter():void
 	}
 }
