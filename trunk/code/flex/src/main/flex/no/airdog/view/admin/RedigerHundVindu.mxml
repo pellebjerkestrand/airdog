@@ -31,7 +31,7 @@
 		  	
 		public function sendSkjema(event:Event):void
 		{
-			var verdier:Object = formVerdier();			
+			var verdier:Hund = formVerdier();			
 			Components.instance.controller.redigerHund(verdier);				
 		}
 		
@@ -40,7 +40,7 @@
 			Components.instance.controller.lukkRedigerHundVindu();
 		}
 		
-		private function formVerdier():Object
+		private function formVerdier():Hund
 		{
 			var hund:Hund = new Hund();
 			var skjemaliste:Object = skjemaer.getChildren();	
