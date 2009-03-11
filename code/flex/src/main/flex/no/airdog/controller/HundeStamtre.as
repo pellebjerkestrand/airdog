@@ -3,14 +3,15 @@ package no.airdog.controller
 	import flash.events.*;
 	import flash.geom.Rectangle;
 	
+	import mx.containers.Canvas;
 	import mx.containers.HBox;
 	import mx.containers.VBox;
 	import mx.controls.*;
-	import mx.core.UIComponent;
 	import mx.events.*;
 	
 	import no.airdog.model.Hund;
 	import no.airdog.services.Components;
+	import no.airdog.view.MultilineButton;
 	
 	public class HundeStamtre extends HBox
 	{
@@ -60,15 +61,38 @@ package no.airdog.controller
 		private function leggTilHund(hund:Hund):HBox
 		{
 			var hBox:HBox = new HBox();
-			var button:Button = new Button();
+			var button:MultilineButton = new MultilineButton();
 			var vBox:VBox = new VBox();
+			
+			var canvas:Canvas = new Canvas();
+			var hundIdLabel:Label = new Label();
+			var hundNavnLabel:Label = new Label();
+			
+			hundIdLabel.text = hund.hundId;
+			hundNavnLabel.text = hund.navn;
+			
+			canvas.addChild(hundIdLabel);
+			canvas.addChild(hundNavnLabel);
+			
+			canvas.setStyle("backgroundColor", "0xD3D4AA");
 			
 			hBox.setStyle("verticalAlign","middle")
 			hBox.addChild(button);
+			//hBox.addChild(canvas);
 			hBox.addChild(vBox);
 			
 			button.name = "hundKnapp";
-			button.label = hund.navn;
+			
+			if (hund.tittel != "")
+			{
+				button.label = hund.hundId + "\r" + hund.tittel + "\r" + hund.navn;
+			}
+			else
+			{
+				button.label = hund.hundId + "\r" + hund.navn;
+			}
+			
+			button.setStyle("fontSize", "12");
 			button.width = 190;
 			button.data = hund.hundId;
 			button.addEventListener(MouseEvent.CLICK, visHund);
@@ -91,7 +115,7 @@ package no.airdog.controller
 		
 		private function tegnStrek(hBox:HBox):void
 		{
-			var button:Button = hBox.getChildByName("hundKnapp") as Button;
+			var button:MultilineButton = hBox.getChildByName("hundKnapp") as MultilineButton;
 			var buttonRect:Rectangle = button.getRect(this);
 			
 			var vBox:VBox = hBox.getChildByName("foreldreBoks") as VBox;

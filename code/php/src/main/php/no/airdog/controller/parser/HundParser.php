@@ -1,5 +1,6 @@
 <?php
 require_once "no/airdog/controller/utf8Konverterer.php";
+require_once "Verktoy.php";
 
 class HundParser
 {
@@ -31,8 +32,8 @@ class HundParser
 	           "kjonn" => $hundArray[14],
 	           "eierId" => $hundArray[15],
 	           "endretAv" => $hundArray[16],
-	           "endretDato" => $hundArray[17],
-	           "regDato" => $hundArray[18],
+	           "endretDato" => Verktoy::konverterDatTilDatabaseDato($hundArray[17]),
+	           "regDato" => Verktoy::konverterDatTilDatabaseDato($hundArray[18]),
 	           "storrelse" => $hundArray[19]
 	    	);
 		}
