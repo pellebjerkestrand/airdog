@@ -82,6 +82,8 @@ package no.airdog.controller
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
+			
+			Components.instance.historie.settPunkt();
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -125,11 +127,11 @@ package no.airdog.controller
 			
 			Components.instance.session = new Session;
 			
-
-			
 			Components.instance.session.hovedNavigasjon.nr = 1;
 			
 			Components.instance.services.airdogService.loggUt(new Function());
+			
+			Components.instance.historie.nullstill();
 		}
 		
 		public function lastOppDatFil():void
@@ -154,6 +156,7 @@ package no.airdog.controller
 		public function hundesokResultat(event:Object):void
 		{
 			Components.instance.session.hundesokListe.provider = new ArrayCollection(event as Array);
+			Components.instance.historie.settPunkt();
 		}
 		
 		public function hentAvkom(hundId:String):void
@@ -188,6 +191,7 @@ package no.airdog.controller
 		{
 			Components.instance.session.hundprofil = event;
 			Components.instance.session.hovedNavigasjon.nr = 2;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public function hentBrukersKlubber():void
@@ -268,6 +272,7 @@ package no.airdog.controller
 		public function sokArsgjennomsnittResultat(event:Object):void
 		{
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
+			Components.instance.historie.settPunkt();
 		}
 		
 		public function redigerJaktprove(jaktprove:Jaktprove):void

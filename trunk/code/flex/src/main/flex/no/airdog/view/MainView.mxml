@@ -3,10 +3,12 @@
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
 	xmlns:adminView="no.airdog.view.admin.*"
-    creationComplete="showInitialView()" styleName="MainView"
+    creationComplete="showInitialView(event)" styleName="MainView"
     width="100%" height="100%" minWidth="800" minHeight="500">
 	<mx:Script>
         <![CDATA[
+        	import mx.controls.Alert;
+        	import no.airdog.model.Session;
         	import no.airdog.controller.Navigasjon;
             import no.airdog.services.Components;
             import no.airdog.view.InnloggingVindu;
@@ -14,14 +16,14 @@
             import mx.events.ItemClickEvent;
         	import mx.controls.tabBarClasses.Tab;
         	import mx.core.UIComponent;
-
+        	
             public function sok():void
 			{
 				visHundeliste();
 				Components.instance.controller.sokHund(sokefelt.text);
 			}
             
-            private function showInitialView():void
+            private function showInitialView(e:Event):void
             {
             	innloggingSprettOppVindu();
             }

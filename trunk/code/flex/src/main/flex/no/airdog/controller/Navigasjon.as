@@ -12,12 +12,14 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = 0;
 			Components.instance.session.hovedNavigasjon.laster = true;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public static function visHundeliste():void
 		{
 			Components.instance.session.hovedNavigasjon.nr = 1;
 			Components.instance.session.hovedNavigasjon.laster = false;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public static function visHundNr(nr:int):void
@@ -41,16 +43,19 @@ package no.airdog.controller
 		public static function visAdminRoller():void
 		{
 			Components.instance.session.hovedNavigasjon.nr = 3;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public static function visACL():void
 		{
 			Components.instance.session.hovedNavigasjon.nr = 4;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public static function visArsgjennomsnitt():void
 		{
 			Components.instance.session.hovedNavigasjon.nr = 5;
+			Components.instance.historie.settPunkt();
 		}
 	}
 }
