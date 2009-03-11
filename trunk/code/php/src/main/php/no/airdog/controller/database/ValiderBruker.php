@@ -5,7 +5,7 @@ class ValiderBruker
 	public static function validerSuperadmin($database, $brukerEpost, $brukerPassord)
 	{
 		$brk = $database->quoteInto('epost=?', $brukerEpost);
-		$pass = $database->quoteInto('passord=?', $brukerPassord);
+		$pass = $database->quoteInto('passord=?', sha1($brukerPassord));
 		
 		$hent = $database->select()
 		->from('ad_bruker', array('ad_bruker.*'))
@@ -29,7 +29,7 @@ class ValiderBruker
 		}
 		
 		$brk = $database->quoteInto('epost=?', $brukerEpost);
-		$pass = $database->quoteInto('passord=?', $brukerPassord);
+		$pass = $database->quoteInto('passord=?', sha1($brukerPassord));
 		
 		$hent = $database->select()
 		->from('ad_bruker', array('ad_bruker.*'))

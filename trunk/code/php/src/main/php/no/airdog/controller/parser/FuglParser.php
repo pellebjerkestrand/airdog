@@ -1,5 +1,7 @@
 <?php
 
+require_once "Verktoy.php";
+
 class FuglParser
 {
 	public function FuglParser()
@@ -14,7 +16,7 @@ class FuglParser
 		{
 			$ret = array (
 			"proveNr" => $fuglArray[0],
-			"proveDato" => $fuglArray[1],
+			"proveDato" => Verktoy::konverterDatTilDatabaseDato($fuglArray[1]),
 			"partiNr" => $fuglArray[2],
 			"klasse" => $fuglArray[3],
 			"dommerId1" => $fuglArray[4],
@@ -49,7 +51,7 @@ class FuglParser
 			"premiegrad" => $fuglArray[33],
 			"certifikat" => $fuglArray[34],
 			"regAv" => $fuglArray[35],
-			"regDato" => $fuglArray[36],
+			"regDato" => Verktoy::konverterDatTilDatabaseDato($fuglArray[36]),
 			"raseId" => $fuglArray[37]
 			);
 			

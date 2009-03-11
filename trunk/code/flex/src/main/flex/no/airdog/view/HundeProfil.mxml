@@ -117,7 +117,7 @@
             </mx:VBox>
             
             <mx:VBox label="Stamtavle">
-				<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="4"/>
+				<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="3"/>
 			</mx:VBox>
 						
 			<mx:VBox label="Ustilling">				

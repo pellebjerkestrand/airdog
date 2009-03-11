@@ -26,7 +26,7 @@ class LoggInnController {
 			->setCredentialColumn('passord');
 		
 		$epost = htmlspecialchars($bruker->epost);
-		$pass = htmlspecialchars($bruker->passord);
+		$pass = sha1(htmlspecialchars($bruker->passord));
 		
 		if($epost == ""){
 			return "FEIL_BRUKERNAVN_PASSORD";
