@@ -18,6 +18,8 @@ package no.airdog.services
         [Bindable]
         public var services:Services;
         
+        public var historie:Historie;
+        
 		public function Components()
 		{
 			super();

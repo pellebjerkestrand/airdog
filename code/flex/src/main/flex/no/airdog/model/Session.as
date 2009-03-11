@@ -1,12 +1,15 @@
 package no.airdog.model
 {
+	import flash.net.registerClassAlias;
+	import flash.utils.ByteArray;
+	
 	import mx.collections.ArrayCollection;
 	import mx.core.*;
 	
 	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 	
 	public class Session
-	{        
+	{      
         [Bindable]
         public var datOpplastning:Opplastning = new Opplastning();
              
@@ -36,11 +39,26 @@ package no.airdog.model
         
         [Bindable]
         public var jaktprove:Jaktprove;
-        
-        [Bindable]
+
+		[Bindable]
         public var alleRoller:ArrayCollection = new ArrayCollection();
         
         [Bindable]
         public var alleRettigheter:ArrayCollection = new ArrayCollection();
+        
+        public function clone():Session
+		{
+			registerClassAlias("no.airdog.model.Session", Session);
+			registerClassAlias("no.airdog.model.Hundeliste", Hundeliste);
+			registerClassAlias("no.airdog.model.Navigasjon", Navigasjon);
+			
+			registerClassAlias("mx.collections.ArrayCollection", ArrayCollection);
+			registerClassAlias("mx.core.int", int);
+			
+		    var myBA:ByteArray = new ByteArray();
+		    myBA.writeObject(this);
+		    myBA.position = 0;
+		    return myBA.readObject() as Session;
+		}
 	}
 }
