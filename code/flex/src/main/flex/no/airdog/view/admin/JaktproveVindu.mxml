@@ -226,7 +226,7 @@
     />
 	
 	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-		<mx:VBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+		<mx:VBox width="460" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
 			<mx:HBox width="100%">
 				<mx:Form id="prove" label="prove">
 					<mx:FormHeading label="Prøveinfo"/>
@@ -250,7 +250,7 @@
 				</mx:Form>
 			</mx:HBox>
 			
-			<mx:Accordion id="skjemaer" minWidth="460" minHeight="370" width="100%" height="100%" creationPolicy="all">
+			<mx:Accordion id="skjemaer" minWidth="460" minHeight="370" width="460" height="370" creationPolicy="all">
 				<mx:HBox label="Sum og generelt" width="100%">
 					<mx:Form id="sum">
 						<mx:FormHeading label="Summering" />
@@ -427,7 +427,7 @@
 		</mx:VBox>
 		
 		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0">
+			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
 				<mx:FormHeading label="Prosavurdering"/>
 				<mx:FormItem width="100%" height="100%">
 						<mx:TextArea width="100%" height="100%"/>
