@@ -13,24 +13,24 @@ class JaktproveDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function redigerJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+	public function redigerJaktprove($jaktprove, $klubbId)
 	{
 		$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']);			
 		return $this->database->update('nkk_fugl', $jaktprove, $hvor);
 	}
 	
-	public function leggInnJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+	public function leggInnJaktprove($jaktprove, $klubbId)
 	{
 			return $this->database->insert('nkk_fugl', $jaktprove);
 	}
 	
-	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
+	public function slettJaktprove($jaktproveId, $klubbId)
 	{
 		$hvor = $this->database->quoteInto('proveNr = ?', $jaktproveId);
 		return $this->database->delete('nkk_fugl', $hvor);
 	}
 	
-	public function hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentJaktprover($hundId, $klubbId)
 	{
 		$select = $this->database->select()
 		->from('nkk_fugl') 
