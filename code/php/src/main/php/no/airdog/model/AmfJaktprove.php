@@ -41,4 +41,5 @@ class AmfJaktprove
 	public $raseId;
 	public $manueltEndretAv;
 	public $manueltEndretDato;
+	public $kritikk;
 }
