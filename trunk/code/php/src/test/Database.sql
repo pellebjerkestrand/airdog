@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 10. Mar, 2009 14:38 PM
+-- Generert den: 11. Mar, 2009 11:22 AM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -34,9 +34,8 @@ CREATE TABLE IF NOT EXISTS `ad_bruker` (
 --
 
 INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
-('tore', 'Tore', 'Lervik', 'tore', 1),
-('gjest', 'gjest', 'gjest', 'gjest', 0),
-('frank', 'frank', 'frank', 'frank', 0);
+('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
+('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1);
 
 -- --------------------------------------------------------
 
