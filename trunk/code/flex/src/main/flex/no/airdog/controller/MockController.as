@@ -384,14 +384,24 @@ package no.airdog.controller
 		
 		}
 		
-		public function hentRolleRettighetLink():void
+		public function hentAlleRoller():void
 		{
-			Components.instance.services.airdogService.hentRolleRettighetLink(leggInnJaktProveResultat);
+			Components.instance.services.airdogService.hentAlleRoller(hentAlleRollerResultat);
 		}
 		
-		public function hentRolleRettighetLinkResultat(event:Object):void
+		public function hentAlleRollerResultat(event:Object):void
 		{
-			
+			Components.instance.session.alleRoller = new ArrayCollection(event as Array);
+		}
+		
+		public function hentAlleRettigheter():void
+		{
+			Components.instance.services.airdogService.hentAlleRettigheter(hentAlleRettigheterResultat);
+		}
+		
+		public function hentAlleRettigheterResultat(event:Object):void
+		{
+			Components.instance.session.alleRettigheter = new ArrayCollection(event as Array);
 		}
 	}
 }

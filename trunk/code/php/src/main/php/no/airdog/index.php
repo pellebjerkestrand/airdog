@@ -19,11 +19,13 @@ require_once 'controller/HundController.php';
 require_once 'controller/LoggInnController.php';
 require_once 'controller/ACLController.php';
 require_once 'controller/JaktproveController.php';
+require_once 'controller/RolleRettighetController.php';
 
 $server->setClass("HundController");
 $server->setClass("JaktproveController");
 $server->setClass("LoggInnController");
 $server->setClass("ACLController");
+$server->setClass("RolleRettighetController");
 
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");

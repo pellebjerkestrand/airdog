@@ -148,9 +148,18 @@ package no.airdog.services
         	resultat, feil);        	
         }
         
-        public function hentRolleRettighetLink(resultat:Function, feil:Function=null):void
+        public function hentAlleRoller(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentRolleRettighetLink(
+        	callServiceFunction(service.hentAlleRoller(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentAlleRettigheter(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentAlleRettigheter(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

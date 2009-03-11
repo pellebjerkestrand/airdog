@@ -29,6 +29,7 @@ package no.airdog.controller
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
-		function hentRolleRettighetLink():void
+		function hentAlleRoller():void
+		function hentAlleRettigheter():void
 	}
 }
