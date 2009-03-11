@@ -2,7 +2,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
 	xmlns:include="no.airdog.view.admin.Include.*"
-	title="Legg inn jaktprøve"
+	title="Jaktprøve"
 	height="100%" width="100%" 
 	creationComplete="init()"
 	defaultButton="{lagre}" 
