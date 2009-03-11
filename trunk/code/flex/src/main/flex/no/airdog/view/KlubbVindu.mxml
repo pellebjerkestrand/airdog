@@ -8,7 +8,7 @@
 			
 			private function settBrukersKlubb(event:Event):void
 			{
-				var knapp:Button = event.target as Button;
+				var knapp:LinkButton = event.target as LinkButton;
 				
 				Components.instance.controller.settBrukersKlubb(knapp.label, knapp.data.toString());
 			}
@@ -19,11 +19,17 @@
 			}
 		]]>
 	</mx:Script>
-
-	<mx:Button label="Tilbake" click="tilbake(event)"/>
-	<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
-		<mx:Button id="knapp" label="{klubbListe.currentItem.navn} ({klubbListe.currentItem.raseid})" 
-			data="{klubbListe.currentItem.raseid}" 
-			click="settBrukersKlubb(event)"/>
-	</mx:Repeater>
+	
+	<mx:Label text="Velg klubb"/>
+	<mx:VBox height="100%" width="100%" verticalAlign="middle">
+		<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
+			<mx:LinkButton id="knapp" 
+				label="{klubbListe.currentItem.navn} ({klubbListe.currentItem.raseid})" 
+				data="{klubbListe.currentItem.raseid}" 
+				click="settBrukersKlubb(event)"
+				icon="@Embed(source='assets/ikoner/dog.png')"/>
+		</mx:Repeater>	
+	</mx:VBox>
+	
+	<mx:LinkButton label="Tilbake" click="tilbake(event)" icon="@Embed(source='assets/ikoner/arrow_180_medium.png')"/>
 </mx:VBox>
