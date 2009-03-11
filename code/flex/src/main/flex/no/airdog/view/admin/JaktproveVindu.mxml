@@ -5,7 +5,7 @@
 	height="100%"
 	width="100%" 
 	xmlns:include="no.airdog.view.admin.Include.*" 
-	creationComplete="creationCompleteHandler()"
+	creationComplete="init()"
 	defaultButton="{lagre}" 
 	layout="vertical">
 	
@@ -35,7 +35,8 @@
                 tomt = (
                 	proveNr.text == "" 
                 	&& proveDato.text == ""
-                    && partiNr.text == ""); 
+                    && partiNr.text == ""
+               	); 
                     
                 if(Components.instance.session.jaktprove != null && !tomt)
              	{
@@ -53,9 +54,9 @@
             
             private function valider(validerer:Validator):Boolean
             {                
-	            var validererSource:DisplayObject = validerer.source as DisplayObject;
+	            var validatoren:DisplayObject = validerer.source as DisplayObject;
 	            
-	            var ikkeVisBoks:Boolean = (validererSource != hvilkeKontroll);
+	            var ikkeVisBoks:Boolean = (validatoren != hvilkeKontroll);
 	            
 	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
 	                            
@@ -66,10 +67,23 @@
 	            return erValidert;
              }
               
-             private function creationCompleteHandler():void
+             private function init():void
              {
-             	settFokus(); 
+             	settFokus();
+             	settValidatorError();
              } 
+             
+             private function settValidatorError():void
+             {
+             	proveNrValidator.tooShortError = "Du må skrive minst " + proveNrValidator.minLength + " tegn";
+             	
+             	proveDatoValidator.formatError = "Feil datoformatering"
+			    proveDatoValidator.invalidCharError = "Det er kun lov å bruke bindestrek (-) som skilletegn"
+			    proveDatoValidator.wrongDayError = "Skriv inn riktig dag for måneden"
+			    proveDatoValidator.wrongLengthError="Feil formatering"
+			    proveDatoValidator.wrongMonthError="Skriv en måned mellom 1 og 12"
+			   	proveDatoValidator.wrongYearError="Skriv år mellom 0 og 9999." 
+			 }
              
 			private function formVerdier():Object
 			{
@@ -168,24 +182,22 @@
     </mx:Script>
 
     <mx:StringValidator id="proveNrValidator" 
-    	source="{proveNr}" 
-    	property="text" 
-    	minLength="2" 
-    	tooShortError="Du må skrive minst {proveNrValidator.minLength} tegn"
+    	source = "{proveNr}"
+    	minLength = "2" 
+    	property = "text"
     />
+    
     <mx:DateValidator id="proveDatoValidator" 
-    	source ="{proveDato}" 
+    	source = "{proveDato}" 
     	property ="text" 
     	inputFormat ="YYYY-MM-DD"
-    	allowedFormatChars ="-" 
-    	formatError = "Feil datoformatering"
-    	invalidCharError = "Det er kun lov å bruke bindestrek (-) som skilletegn"
-    	wrongDayError = "Skriv inn riktig dag for måneden"
-    	wrongLengthError="Feil formatering"
-    	wrongMonthError="Skriv en måned mellom 1 og 12"
-   		wrongYearError="Skriv år mellom 0 og 9999."    	
+    	allowedFormatChars = "-"    	
     />
-    <mx:StringValidator id="partiNrValidator" source="{partiNr}" property="text" />
+    
+    <mx:StringValidator id="partiNrValidator" 
+    	source="{partiNr}" 
+    	property="text" 
+    />
 	
 	<mx:HBox width="100%">
 		<mx:VBox width="70%">
