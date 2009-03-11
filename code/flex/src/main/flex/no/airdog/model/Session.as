@@ -36,5 +36,11 @@ package no.airdog.model
         
         [Bindable]
         public var jaktprove:Jaktprove;
+        
+        [Bindable]
+        public var alleRoller:ArrayCollection = new ArrayCollection();
+        
+        [Bindable]
+        public var alleRettigheter:ArrayCollection = new ArrayCollection();
 	}
 }
