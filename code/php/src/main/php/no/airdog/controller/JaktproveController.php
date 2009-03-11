@@ -20,7 +20,7 @@ class JaktproveController
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))
 		{
 			$hd = new JaktproveDatabase();
-    		return $hd->slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId);
+    		return $hd->slettJaktprove($jaktproveId, $klubbId);
 		}
 		
 		$feilkode = 1;
@@ -32,7 +32,7 @@ class JaktproveController
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId);
+	    	$resultat = $hd->hentJaktprover($hundId, $klubbId);
 	
 	    	$ret = array();
 	    	
@@ -135,7 +135,7 @@ class JaktproveController
 	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
 	    	
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->redigerJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
+	    	$resultat = $hd->redigerJaktprove($ret, $klubbId);
 	    	
 	    	return $resultat;
     	
@@ -192,7 +192,7 @@ class JaktproveController
 	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
 	    	
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->leggInnJaktprove($ret, $brukerEpost, $brukerPassord, $klubbId);
+	    	$resultat = $hd->leggInnJaktprove($ret, $klubbId);
 	    	
 	    	return $resultat;
     	}
