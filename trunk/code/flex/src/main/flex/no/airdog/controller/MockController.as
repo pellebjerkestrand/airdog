@@ -324,5 +324,15 @@ package no.airdog.controller
 		{
 			Components.instance.session.alleRettigheter = new ArrayCollection(event as Array);
 		}
+		
+		public function hentRollersRettigheter():void
+		{
+			Components.instance.services.airdogService.hentRollersRettigheter(hentRollersRettigheterResultat);
+		}
+		
+		public function hentRollersRettigheterResultat(event:Object):void
+		{
+			Components.instance.session.rollersRettigheter = new ArrayCollection(event as Array);
+		}
 	}
 }

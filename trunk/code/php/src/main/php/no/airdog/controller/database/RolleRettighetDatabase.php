@@ -26,4 +26,12 @@ class RolleRettighetDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
+	public function hentRollersRettigheter()
+	{
+		$hent = $this->database->select()
+		->from('ad_rolle_rettighet_link', array('ad_rolle_rettighet_link.*'));
+		
+		return $this->database->fetchAll($hent);
+	}
+	
 }

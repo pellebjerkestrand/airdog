@@ -165,5 +165,14 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
+        
+        public function hentRollersRettigheter(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentRollersRettigheter(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
 	}
 }

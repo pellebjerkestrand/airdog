@@ -46,6 +46,9 @@ package no.airdog.model
         [Bindable]
         public var alleRettigheter:ArrayCollection = new ArrayCollection();
         
+        [Bindable]
+        public var rollersRettigheter:ArrayCollection = new ArrayCollection();
+        
         public function clone():Session
 		{
 			registerClassAlias("no.airdog.model.Session", Session);
