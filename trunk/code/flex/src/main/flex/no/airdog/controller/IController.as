@@ -14,7 +14,7 @@ package no.airdog.controller
 		function lastOppDatFil():void
 		function sokHund(soketekst:String):void
 		function hentAvkom(hundId:String):void
-		function hentJaktprove(hundId:String):void
+		function hentJaktprover(hundId:String):void
 		function visHund(hundId:String):void
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
@@ -29,5 +29,6 @@ package no.airdog.controller
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
 		function fjernJaktproveVindu():void
+		function hentRolleRettighetLink():void
 	}
 }

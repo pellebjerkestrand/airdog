@@ -1,7 +1,9 @@
 <?php
 require_once "FilvaliderController.php";
+
 require_once "database/HundDatabase.php";
 require_once "database/JaktproveDatabase.php";
+
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
 
