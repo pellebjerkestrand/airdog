@@ -78,6 +78,7 @@ class JaktproveController
 		    	$tmp->raseId = $rad['raseId'];
 		    	$tmp->manueltEndretAv = $rad['manueltEndretAv']; 	
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
+		    	$tmp->kritikk = $rad['kritikk'];
 				$ret[] = $tmp;
 			}
 			
@@ -133,6 +134,7 @@ class JaktproveController
 	    	$ret['raseId'] = $jaktprove->raseId;
 	    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv; 	
 	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
+	    	$ret['kritikk'] = $jaktprove->kritikk;
 	    	
 	    	$hd = new JaktproveDatabase();
 	    	$resultat = $hd->redigerJaktprove($ret, $klubbId);
@@ -190,6 +192,7 @@ class JaktproveController
 	    	$ret['raseId'] = $jaktprove->raseId;
 	    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv;
 	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
+	    	$ret['kritikk'] = $jaktprove->kritikk;
 	    	
 	    	$hd = new JaktproveDatabase();
 	    	$resultat = $hd->leggInnJaktprove($ret, $klubbId);

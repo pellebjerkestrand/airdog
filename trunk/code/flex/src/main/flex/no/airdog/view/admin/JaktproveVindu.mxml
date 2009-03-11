@@ -86,7 +86,7 @@
 			   	proveDatoValidator.wrongYearError="Skriv år mellom 0 og 9999." 
 			 }
              
-			private function formVerdier():Object
+			private function formVerdier():Jaktprove
 			{
 				var prove:Jaktprove = new Jaktprove();
 				

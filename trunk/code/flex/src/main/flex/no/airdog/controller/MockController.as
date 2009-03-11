@@ -270,50 +270,8 @@ package no.airdog.controller
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection(event as Array);
 		}
 		
-		public function redigerJaktprove(verdier:Object):void
+		public function redigerJaktprove(jaktprove:Jaktprove):void
 		{
-			var jaktprove:Jaktprove = new Jaktprove;
-			jaktprove.proveNr = verdier.proveNr;
-			jaktprove.proveDato = verdier.proveDato;
-			jaktprove.partiNr = verdier.partiNr;
-			jaktprove.klasse = verdier.klasse;
-			jaktprove.dommerId1 = verdier.dommerId1;
-			jaktprove.dommerId2 = verdier.dommerId2;
-			jaktprove.hundId = verdier.hundId;
-			jaktprove.slippTid = verdier.slippTid;
-			jaktprove.egneStand = verdier.egneStand;
-			jaktprove.egneStokk = verdier.egneStokk;
-			jaktprove.tomStand = verdier.tomStand;
-			jaktprove.makkerStand = verdier.makkerStand;
-			jaktprove.makkerStokk = verdier.makkerStokk;
-			jaktprove.jaktlyst = verdier.jaktlyst;
-			jaktprove.fart = verdier.fart;
-			jaktprove.stil = verdier.stil;
-			jaktprove.selvstendighet = verdier.selvstendighet;
-			jaktprove.bredde = verdier.bredde;
-			jaktprove.reviering = verdier.reviering;
-			jaktprove.samarbeid = verdier.samarbeid;
-			jaktprove.presUpresis = verdier.presUpresis;
-			jaktprove.presNoeUpresis = verdier.presNoeUpresis;
-			jaktprove.presPresis = verdier.presPresis;
-			jaktprove.reisNekter = verdier.reisNekter;
-			jaktprove.reisNoelende = verdier.reisNoelende;
-			jaktprove.reisVillig = verdier.reisVillig;
-			jaktprove.reisDjerv = verdier.reisDjerv;
-			jaktprove.sokStjeler = verdier.sokStjeler;
-			jaktprove.sokSpontant = verdier.sokSpontant;
-			jaktprove.appIkkeGodkjent = verdier.appIkkeGodkjent;
-			jaktprove.appGodkjent = verdier.appGodkjent;
-			jaktprove.rappInnkalt = verdier.rappInnkalt;
-			jaktprove.rappSpont = verdier.rappSpont;
-			jaktprove.premiegrad = verdier.premiegrad;
-			jaktprove.certifikat = verdier.certifikat;
-			jaktprove.regAv = verdier.regAv;
-			jaktprove.regDato = verdier.regDato;
-			jaktprove.raseId = verdier.raseId;
-			jaktprove.manueltEndretAv = verdier.manueltEndretAv;
-			jaktprove.manueltEndretDato = verdier.manueltEndretDato;
-			
 			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
 		}
 		

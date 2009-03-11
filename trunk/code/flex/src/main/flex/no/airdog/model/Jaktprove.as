@@ -1,6 +1,5 @@
 package no.airdog.model
 {
-
 	[RemoteClass(alias="AmfJaktprove")]
 	[Bindable]
 	public class Jaktprove
