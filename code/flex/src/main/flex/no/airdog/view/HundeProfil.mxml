@@ -41,60 +41,61 @@
 			<mx:VBox>
 				<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
 				<mx:HBox verticalAlign="middle">
-					<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/><mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()"/>
+					<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
+					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" icon="@Embed(source='assets/ikoner/report__pencil.png')"/>
 				</mx:HBox>
 				
-				<mx:Grid>
+				<mx:Grid styleName="profilGrid">
 					<mx:GridRow>
-						<mx:GridItem>
-							<mx:Label text="ID:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text text="{Components.instance.session.hundprofil.idNr}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text text="{Components.instance.session.hundprofil.idNr}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="Kull:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="Far:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="Farge:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" styleName="profilGridData"/>
 						</mx:GridItem>
 					</mx:GridRow>
 					<mx:GridRow>
-						<mx:GridItem>
-							<mx:Label text="Eier:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Eier:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="VF:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="Mor:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" styleName="profilGridData"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Label text="Kjønn:"/>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Kjønn:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
-						<mx:GridItem>
-							<mx:Text id="kjonn" text="{Components.instance.session.hundprofil.kjonn}"/>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="kjonn" text="{Components.instance.session.hundprofil.kjonn}" styleName="profilGridData"/>
 						</mx:GridItem>
 					</mx:GridRow>
 				</mx:Grid>

@@ -129,26 +129,36 @@ Button.SokKnapp
     textAlign: left;
 }
 
-Grid
+Grid.profilGrid
 {
+	backgroundColor: #FFFFFF;
+	cornerRadius: 0;
+	borderColor: #CCCCCC;
+	borderStyle: solid;
 	borderThickness: 1;
-	borderStyle: solid;	
+	
+	paddingBottom: 4;
+	paddingTop: 4;
+	paddingLeft: 4;
+	paddingRight: 4;
 }
 
-GridRow
+GridItem.profilGridBeskrivelse
 {
-	borderThickness: 1;
-	borderStyle: solid;
+	horizontalAlign: right;
+	paddingRight: 0;
+	paddingLeft: 2;
 }
 
-GridItem.beskrivelse
+Label.profilGridBeskrivelse
 {
-	borderThickness: 1;
-	borderStyle: solid;
+	color: #999999;
 }
 
-GridItem.data
+GridItem.profilGridData
 {
-	borderThickness: 1;
-	borderStyle: solid;
+	color: #000000;
+	horizontalAlign: left;
+	paddingRight: 2;
+	paddingLeft: 0;
 }
