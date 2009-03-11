@@ -64,6 +64,8 @@ class HundController
 	    	
 	        return $ret;
 		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
 	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
@@ -106,6 +108,8 @@ class HundController
 				
 	        return $tmp;
 		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
     public function redigerHund(AmfHund $hund, $brukerEpost, $brukerPassord, $klubbId)
@@ -151,6 +155,8 @@ class HundController
 		{	
     		return $this->lagStamtre($hundId, $dybde, $klubbId);
 		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
 	private function hentStamtreHund($hundId, $klubbId)
@@ -295,6 +301,8 @@ class HundController
 	
 	        return $avkomListe;
 		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
     public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
@@ -371,5 +379,7 @@ class HundController
 			
 	        return $ret;
 		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
 }

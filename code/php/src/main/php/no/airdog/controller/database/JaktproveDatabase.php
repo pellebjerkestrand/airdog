@@ -15,85 +15,50 @@ class JaktproveDatabase
 	
 	public function redigerJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
-		{
-			$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']);			
-			
-			return $this->database->update('nkk_fugl', $jaktprove, $hvor);
-		}
-		
-		$feilkode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']);			
+		return $this->database->update('nkk_fugl', $jaktprove, $hvor);
 	}
 	
 	public function leggInnJaktprove($jaktprove, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
-		{			
 			return $this->database->insert('nkk_fugl', $jaktprove);
-		}
-		
-		$feilkode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
 	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))
-		{
-			$hvor = $this->database->quoteInto('proveNr = ?', $jaktproveId);
-	
-			return $this->database->delete('nkk_fugl', $hvor);
-		}
-		
-		$feilkode = 1;
-		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		$hvor = $this->database->quoteInto('proveNr = ?', $jaktproveId);
+		return $this->database->delete('nkk_fugl', $hvor);
 	}
 	
-	public function hentJaktprove($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$select = $this->database->select()
-			->from('nkk_fugl') 
-			->where('hundId=?',$hundId)
-			->where('raseId=?', $klubbId); 
+		$select = $this->database->select()
+		->from('nkk_fugl') 
+		->where('hundId=?',$hundId)
+		->where('raseId=?', $klubbId); 
 	
-			return $this->database->fetchAll($select); 
-		}
-		
-		$feilkode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		return $this->database->fetchAll($select); 
 	}
 	
-	public function settInnJaktproveArray($jaktproveArray, $brukerEpost, $brukerPassord, $klubbId)
-	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$resultat = "";
-			
-			foreach($jaktproveArray as $jaktarray)
-			{
-				if ($jaktarray["raseId"] != $klubbId)
-				{
-					$resultat .= "\nRaseID stemmer ikke.";
-				}
-				else
-				{
-					$resultat .= $this->_settInnJaktprove($jaktarray);
-				}
-			}
-			
-			return $resultat;
-		}
-		
-		return false;
-	}
+//	public function settInnJaktproveArray($jaktproveArray, $brukerEpost, $brukerPassord, $klubbId)
+//	{
+//		$resultat = "";
+//		
+//		foreach($jaktproveArray as $jaktarray)
+//		{
+//			if ($jaktarray["raseId"] != $klubbId)
+//			{
+//				$resultat .= "\nRaseID stemmer ikke.";
+//			}
+//			else
+//			{
+//				$resultat .= $this->_settInnJaktprove($jaktarray);
+//			}
+//		}
+//		
+//		return $resultat;
+//	}
 	
-	public function settInnJaktproveFraFil($filsti, $brukerEpost, $brukerPassord, $klubbId)
-	{
-		
-	}
 	
 	public function settInnJaktprove($jaktarray, $klubbId)
 	{

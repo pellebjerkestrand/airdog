@@ -167,13 +167,13 @@ package no.airdog.controller
 			Components.instance.session.avkomListe = new ArrayCollection(event as Array);
 		}
 		
-		public function hentJaktprove(hundId:String):void
+		public function hentJaktprover(hundId:String):void
 		{
 			Components.instance.session.jaktproveListe = null;
-			Components.instance.services.airdogService.hentJaktprove(hundId, hentJaktproveResultat);
+			Components.instance.services.airdogService.hentJaktprover(hundId, hentJaktproverResultat);
 		}
 		
-		public function hentJaktproveResultat(event:Object):void
+		public function hentJaktproverResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
 		}
@@ -382,6 +382,16 @@ package no.airdog.controller
 		public function leggInnJaktProveResultat(event:Object):void
 		{
 		
+		}
+		
+		public function hentRolleRettighetLink():void
+		{
+			Components.instance.services.airdogService.hentRolleRettighetLink(leggInnJaktProveResultat);
+		}
+		
+		public function hentRolleRettighetLinkResultat(event:Object):void
+		{
+			
 		}
 	}
 }

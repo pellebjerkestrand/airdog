@@ -125,7 +125,7 @@
 	    <adminView:DatOpplastning/>
 	    <view:HundeSok/>
 	    <view:HundeProfil/>
-	    <adminView:Admin_Roller/>
+	    <adminView:RolleRettighet/>
 	    <adminView:Dev_ACL/>
 	    <view:Arsgjennomsnitt/>
     </mx:ViewStack>

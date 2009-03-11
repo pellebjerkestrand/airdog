@@ -12,24 +12,24 @@ class HundDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function settInnHundArray($hunderArray, $klubbId)
-	{
-		$resultat = "";
-		
-		foreach($hunderArray as $hundArray)
-		{
-			if ($hundArray["raseId"] != $klubbId)
-			{
-				$resultat .= "\nRaseID stemmer ikke.";
-			}
-			else
-			{
-				$resultat .= $this->_settInnHund($hundArray);
-			}
-		}
-		
-		return $resultat;
-	}
+//	public function settInnHundArray($hunderArray, $klubbId)
+//	{
+//		$resultat = "";
+//		
+//		foreach($hunderArray as $hundArray)
+//		{
+//			if ($hundArray["raseId"] != $klubbId)
+//			{
+//				$resultat .= "\nRaseID stemmer ikke.";
+//			}
+//			else
+//			{
+//				$resultat .= $this->_settInnHund($hundArray);
+//			}
+//		}
+//		
+//		return $resultat;
+//	}
 	
 	public function settInnHund($hundArray, $klubbId)
 	{
@@ -73,23 +73,23 @@ class HundDatabase
 		return true;
 	}
 	
-	//må testes
-	public function slettHund($hundId, $klubbId)
-	{
-			$hvor = $this->database->quoteInto('hundId = ?', $hundId);
-	
-			$this->database->delete('nkk_hund', $hvor);
-	}
-	
-	public function finnesHund($hundId)
-	{
-		$hund = $this->hentHund($hundId);
-		if (isset($hund["hundId"]))
-			return true;
-		
-		return false;
-	}
-	
+//	//må testes
+//	public function slettHund($hundId, $klubbId)
+//	{
+//			$hvor = $this->database->quoteInto('hundId = ?', $hundId);
+//	
+//			$this->database->delete('nkk_hund', $hvor);
+//	}
+//	
+//	public function finnesHund($hundId)
+//	{
+//		$hund = $this->hentHund($hundId);
+//		if (isset($hund["hundId"]))
+//			return true;
+//		
+//		return false;
+//	}
+//	
 	public function sokHund($soketekst, $klubbId)
 	{		
 		$select = $this->database->select()
@@ -176,14 +176,14 @@ class HundDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function hentHunder($klubbId)
-	{
-		$select = $this->database->select()
-		->from('nkk_hund', array('nkk_hund.*'))
-		->where('h.raseId=?', $klubbId);
-		
-		return $this->database->fetchAll($select);
-	}
+//	public function hentHunder($klubbId)
+//	{
+//		$select = $this->database->select()
+//		->from('nkk_hund', array('nkk_hund.*'))
+//		->where('h.raseId=?', $klubbId);
+//		
+//		return $this->database->fetchAll($select);
+//	}
 	
 	public function redigerHund($hund)
 	{

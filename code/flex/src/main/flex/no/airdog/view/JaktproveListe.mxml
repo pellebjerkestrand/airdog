@@ -24,7 +24,7 @@
 			{
 				if (val != null)
 				{
-					Components.instance.controller.hentJaktprove(val);
+					Components.instance.controller.hentJaktprover(val);
 				}
 			} 
 			
