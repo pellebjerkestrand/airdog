@@ -120,7 +120,8 @@ Button.SokKnapp
 	icon: "@Embed(source='assets/magnifier.png')";
 }
 
-.labelEditorStyle {
+.labelEditorStyle
+{
     cornerRadius: 0;
     backgroundColor: #FFFFFF;
     border-style: none;
@@ -128,3 +129,26 @@ Button.SokKnapp
     textAlign: left;
 }
 
+Grid
+{
+	borderThickness: 1;
+	borderStyle: solid;	
+}
+
+GridRow
+{
+	borderThickness: 1;
+	borderStyle: solid;
+}
+
+GridItem.beskrivelse
+{
+	borderThickness: 1;
+	borderStyle: solid;
+}
+
+GridItem.data
+{
+	borderThickness: 1;
+	borderStyle: solid;
+}
