@@ -241,7 +241,6 @@
 				<mx:HBox label="Sum og generell">	
 					<mx:Form id="sum" label="sum">
 						<mx:FormHeading label="Summering" />
-			
 						<mx:FormItem label="Slipptid">
 							<mx:TextInput id="slippTid"
 								change="validering(event);"	
@@ -532,7 +531,7 @@
 						<mx:TextArea width="100%" height="100%"/>
 				</mx:FormItem>						
 			</mx:Form>
-		</mx:VBox>				
+		</mx:VBox>						
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
