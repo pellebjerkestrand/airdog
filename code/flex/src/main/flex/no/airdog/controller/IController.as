@@ -27,7 +27,7 @@ package no.airdog.controller
 		function slettJaktprove(jaktproveId:String):void
 		function leggInnJaktProve(verdier:Object):void
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
-		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
+		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
 		function hentRolleRettighetLink():void
 	}

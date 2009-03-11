@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init()">
 	<mx:Script>
         <![CDATA[
+        	import no.airdog.model.Jaktprove;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
 			import mx.events.*;
@@ -38,7 +39,7 @@
 			
 			public function adminKlikk(event:ItemClickEvent):void{
 				if (event.index == 0){
-					Components.instance.controller.visRedigerJaktproveVindu(UIComponent(this.parentApplication), jaktprover.selectedItem);
+					Components.instance.controller.visRedigerJaktproveVindu(UIComponent(this.parentApplication), jaktprover.selectedItem as Jaktprove);
 				}
 				else
 				{

@@ -37,14 +37,14 @@ package no.airdog.controller
         	Components.instance.session.jaktprove.regDato = df.format(new Date());
         	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
-    		jaktproveVindu.width = parent.width;
-    		jaktproveVindu.height = parent.height;
+    		jaktproveVindu.width = parent.width * 0.80;
+    		jaktproveVindu.height = parent.height *  0.90;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
 			
         }      
         
-        public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Object):void
+        public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
         {
         	Components.instance.session.jaktprove = jaktprove as Jaktprove;
         	
