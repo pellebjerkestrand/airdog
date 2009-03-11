@@ -46,29 +46,17 @@ class RolleRettighetController
 		{
 			$db = new RolleRettighetDatabase();
 			
-			$resultat = $db->hentRollersRettigheter();
 			$roller = $db->hentAlleRoller();
 			
-			$tmp = $roller;
-			
-			
-			foreach($resultat as $rad)
-		   	{
-		   		foreach($roller as $rolle)
-		   		{
-			   		if($rolle['navn'] == $rad['ad_rolle_navn'])
-			   		{
-						$tmp['beskrivelse'] = $rad['ad_rettighet_navn'];
-			   		}
-		   		}
-		   	}
+	   		foreach($roller as $rolle)
+	   		{
+	   			$rolle["rettighetere"] = $db->hentRolleSineRettigheter($rolle);
+	   		}
 
-			return $tmp;
+			return $roller;
 		}
 
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
-
-		return true;
 	}
 }

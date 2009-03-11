@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 11. Mar, 2009 11:22 AM
+-- Generert den: 11. Mar, 2009 16:33 PM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -289,6 +289,7 @@ CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL,
+  `kritikk` mediumtext,
   KEY `proveNr` (`proveNr`,`proveDato`,`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

@@ -161,7 +161,7 @@ package no.airdog.controller
 		
 		public function hentAvkom(hundId:String):void
 		{
-			Components.instance.session.avkomListe = null;
+			//Components.instance.session.avkomListe = new ArrayCollection();
 			Components.instance.services.airdogService.hentAvkom(hundId, hentAvkomResultat);
 		}
 		
