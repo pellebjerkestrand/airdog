@@ -25,7 +25,7 @@ package no.airdog.controller
 		function lukkRedigerHundVindu():void
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String):void
-		function leggInnJaktProve(verdier:Object):void
+		function leggInnJaktprove(jaktprove:Jaktprove):void
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
