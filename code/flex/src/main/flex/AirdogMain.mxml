@@ -11,5 +11,5 @@
 	<services:MockComponents id="components"/>
 	
 	<view:MainView/>
-	<mx:Style source="no/airdog/view/assets/stil.css"/>
+	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
 </mx:Application>
