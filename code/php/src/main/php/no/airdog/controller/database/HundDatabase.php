@@ -81,15 +81,7 @@ class HundDatabase
 //			$this->database->delete('nkk_hund', $hvor);
 //	}
 //	
-//	public function finnesHund($hundId)
-//	{
-//		$hund = $this->hentHund($hundId);
-//		if (isset($hund["hundId"]))
-//			return true;
-//		
-//		return false;
-//	}
-//	
+	
 	public function sokHund($soketekst, $klubbId)
 	{		
 		$select = $this->database->select()

@@ -17,6 +17,7 @@
 					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == "redigerJaktprove")
 					{
 						adminPanel.visible = true;
+						adminPanelSammendrag.visible = true;
 					}					
 				}
 			}
@@ -52,26 +53,26 @@
 			}    
         ]]>
     </mx:Script>
-	<mx:DataGrid id="jaktprover" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
+	<mx:DataGrid id="jaktprover" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
 		<mx:columns>
-			<mx:DataGridColumn headerText="Prøve Nr." dataField="proveNr"/>
-			<mx:DataGridColumn headerText="Dato" dataField="proveDato"/>
+			<mx:DataGridColumn headerText="Prøve Nr." width="100" minWidth="100" dataField="proveNr" resizable="false"/>
+			<mx:DataGridColumn headerText="Dato" width="110" minWidth="110" dataField="proveDato" resizable="false"/>
 			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
-			<mx:DataGridColumn headerText="ST" width="40" textAlign="right" dataField="slippTid"/>
-			<mx:DataGridColumn headerText="ES" width="40" textAlign="right" dataField="egneStand"/>
-			<mx:DataGridColumn headerText="MS" width="40" textAlign="right" dataField="makkerStand"/>
-			<mx:DataGridColumn headerText="ESø" width="40" textAlign="right" dataField="egneStokk"/>
-			<mx:DataGridColumn headerText="MSø" width="40" textAlign="right" dataField="makkerStokk"/>
-			<mx:DataGridColumn headerText="TS" width="40" textAlign="right" dataField="tomStand"/>
-			<mx:DataGridColumn headerText="JL" width="40" textAlign="right" dataField="jaktlyst"/>
-			<mx:DataGridColumn headerText="Fa" width="40" textAlign="right" dataField="fart"/>
-			<mx:DataGridColumn headerText="St" width="40" textAlign="right" dataField="stil"/>
-			<mx:DataGridColumn headerText="Ss" width="40" textAlign="right" dataField="selvstendighet"/>
-			<mx:DataGridColumn headerText="SB" width="40" textAlign="right" dataField="bredde"/>
-			<mx:DataGridColumn headerText="Rv" width="40" textAlign="right" dataField="reviering"/>
-			<mx:DataGridColumn headerText="Sa" width="40" textAlign="right" dataField="samarbeid"/>
-			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false">
+			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
+			<mx:DataGridColumn headerText="ES" width="50" minWidth="50" textAlign="right" dataField="egneStand" resizable="false"/>
+			<mx:DataGridColumn headerText="MS" width="50" minWidth="50" textAlign="right" dataField="makkerStand" resizable="false"/>
+			<mx:DataGridColumn headerText="ESø" width="50" minWidth="50" textAlign="right" dataField="egneStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="MSø" width="50" minWidth="50" textAlign="right" dataField="makkerStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="TS" width="50" minWidth="50" textAlign="right" dataField="tomStand" resizable="false"/>
+			<mx:DataGridColumn headerText="JL" width="50" minWidth="50" textAlign="right" dataField="jaktlyst" resizable="false"/>
+			<mx:DataGridColumn headerText="Fa" width="50" minWidth="50" textAlign="right" dataField="fart" resizable="false"/>
+			<mx:DataGridColumn headerText="St" width="50" minWidth="50" textAlign="right" dataField="stil" resizable="false"/>
+			<mx:DataGridColumn headerText="Ss" width="50" minWidth="50" textAlign="right" dataField="selvstendighet" resizable="false"/>
+			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
+			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
+			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
+			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false" width="100" minWidth="100" resizable="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">
 						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
@@ -85,6 +86,27 @@
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:DataGrid id="jaktproveSammendrag" showHeaders="false" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="30" rowHeight="30"
+		dataProvider="{Components.instance.session.jaktproveSammendrag}" verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
+			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
+			<mx:DataGridColumn headerText="ES" width="50" minWidth="50" textAlign="right" dataField="egneStand" resizable="false"/>
+			<mx:DataGridColumn headerText="MS" width="50" minWidth="50" textAlign="right" dataField="makkerStand" resizable="false"/>
+			<mx:DataGridColumn headerText="ESø" width="50" minWidth="50" textAlign="right" dataField="egneStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="MSø" width="50" minWidth="50" textAlign="right" dataField="makkerStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="TS" width="50" minWidth="50" textAlign="right" dataField="tomStand" resizable="false"/>
+			<mx:DataGridColumn headerText="JL" width="50" minWidth="50" textAlign="right" dataField="jaktlyst" resizable="false"/>
+			<mx:DataGridColumn headerText="Fa" width="50" minWidth="50" textAlign="right" dataField="fart" resizable="false"/>
+			<mx:DataGridColumn headerText="St" width="50" minWidth="50" textAlign="right" dataField="stil" resizable="false"/>
+			<mx:DataGridColumn headerText="Ss" width="50" minWidth="50" textAlign="right" dataField="selvstendighet" resizable="false"/>
+			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
+			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
+			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
+			<mx:DataGridColumn id="adminPanelSammendrag" visible="false" width="100" minWidth="100" resizable="false"/>
+			<mx:DataGridColumn width="16" minWidth="16" resizable="false"/>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>

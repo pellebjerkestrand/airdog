@@ -8,45 +8,37 @@ package no.airdog.model
 	
 	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 	
+	[Bindable]
 	public class Session
 	{     
-		[Bindable]
         public var datOpplastning:Opplastning = new Opplastning();
              
-     	[Bindable]
      	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.HundeListeRenderer.NavnRendererStor));
         
-        [Bindable]
         public var hundprofil:Hund;
         
-        [Bindable]
         public var avkomListe:ArrayCollection = new ArrayCollection();
         
-        [Bindable]
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
         
-        [Bindable]
+        public var jaktproveSammendrag:ArrayCollection = new ArrayCollection();
+        
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
-        [Bindable]
         public var bruker:Bruker = new Bruker(); 
         
-        [Bindable]
         public var stamtre:Hund;
         
-        [Bindable]
+        public var fiktivtStamtre:Hund;
+        
         public var arsgjennomsnitt:ArrayCollection = new ArrayCollection();
         
-        [Bindable]
         public var jaktprove:Jaktprove;
 
-		[Bindable]
         public var alleRoller:ArrayCollection = new ArrayCollection();
         
-        [Bindable]
         public var alleRettigheter:ArrayCollection = new ArrayCollection();
         
-        [Bindable]
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
         
         public function clone():Session

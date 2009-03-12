@@ -40,6 +40,33 @@ class JaktproveDatabase
 		return $this->database->fetchAll($select); 
 	}
 	
+	public function hentJaktproveSammendrag($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+		->from('nkk_fugl', array(
+			'slippTid' => 'AVG(slippTid)',
+			'egneStand' => 'SUM(egneStand)',
+			'egneStokk' => 'SUM(egneStokk)',
+			'tomStand' => 'SUM(tomStand)',
+			'makkerStand' => 'SUM(makkerStand)',
+			'makkerStokk' => 'SUM(makkerStokk)',
+			'jaktlyst' => 'AVG(jaktlyst)',
+			'fart' => 'AVG(fart)',
+			'stil' => 'AVG(stil)',
+			'selvstendighet' => 'AVG(selvstendighet)',
+			'bredde' => 'AVG(bredde)',
+			'reviering' => 'AVG(reviering)',
+			'samarbeid' => 'AVG(samarbeid)',
+			'vf' => '(6 * SUM(egneStand) / (SUM(makkerStand) + SUM(egneStand)))',
+			'situasjoner' => 'SUM(egneStand) + SUM(makkerStand)'
+		))
+		->where('hundId=?',$hundId)
+		->where('raseId=?', $klubbId)
+		->group('hundId');; 
+	
+		return $this->database->fetchRow($select); 
+	}
+	
 //	public function settInnJaktproveArray($jaktproveArray, $brukerEpost, $brukerPassord, $klubbId)
 //	{
 //		$resultat = "";

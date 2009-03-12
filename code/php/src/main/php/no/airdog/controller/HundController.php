@@ -149,6 +149,41 @@ class HundController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
+	public function hentFiktivtStamtre($hundIdFar, $hundIdMor, $dybde, $brukerEpost, $brukerPassord, $klubbId)
+    {
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{	
+			$dybde--;
+			$hd = new HundDatabase();
+			
+			if ($hd->hentHund($hundIdFar, $klubbId) == null)
+			{
+				$feilkode = 2;
+				throw(new Exception('Hunden ' . $hundIdFar . ' ble ikke funnet.', $feilkode));
+			} 
+			else if ($hd->hentHund($hundIdMor, $klubbId) == null)
+			{
+				$feilkode = 2;
+				throw(new Exception('Hunden ' . $hundIdMor . ' ble ikke funnet.', $feilkode));
+			}
+			else
+			{
+				$tmp = new AmfHund();
+				
+				$tmp->navn = "Fiktiv";
+				$tmp->tittel = "";
+				$tmp->hundId = "";
+				
+				$tmp->far = $this->lagStamtre($hundIdFar, $dybde, $klubbId);
+				$tmp->mor = $this->lagStamtre($hundIdMor, $dybde, $klubbId);
+				
+				return $tmp;
+			}
+		}
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+    }
+    
     public function hentStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
