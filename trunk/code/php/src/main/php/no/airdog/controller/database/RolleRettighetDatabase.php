@@ -45,4 +45,10 @@ class RolleRettighetDatabase
 		return $this->database->insert('ad_rolle_rettighet_link', $data);
 	}
 	
+	public function slettRettighetPaRolle($rolle, $rettighet)
+	{
+		$hvor = $this->database->quoteInto('ad_rolle_navn = ? ', $rolle) . 'AND ' . $this->database->quoteInto('ad_rettighet_navn = ? ', $rettighet);
+		return $this->database->delete('ad_rolle_rettighet_link', $hvor);
+	}
+	
 }
