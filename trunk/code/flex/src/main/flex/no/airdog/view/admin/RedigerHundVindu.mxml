@@ -1,10 +1,8 @@
 <mx:TitleWindow
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	title="Rediger hund"
-	height="100%"
-	width="500" 
-	defaultButton="{lagre}" 
-	creationComplete="ferdiglastet()"
+	height="100%" width="100%"  
+	creationComplete="init()"
 	layout="vertical">
 	
 	<mx:Script>
@@ -21,223 +19,235 @@
 			import mx.controls.*;
 			import mx.events.*;
 			import mx.validators.Validator;
-		
-		private var _hundId:String;	
-				
-		public function set hundId(val:String):void
-		{
-			_hundId = val;
-		}
-		  	
-		public function sendSkjema(event:Event):void
-		{
-			var verdier:Hund = formVerdier();			
-			Components.instance.controller.redigerHund(verdier);				
-		}
-		
-		public function lukkRedigerHundVindu(event:Event):void
-		{
-			Components.instance.controller.lukkRedigerHundVindu();
-		}
-		
-		private function formVerdier():Hund
-		{
-			var hund:Hund = new Hund();
-			var skjemaliste:Object = skjemaer.getChildren();	
-		
-			for(var i:int = 0; i < skjemaliste.length; i++)
+			
+			[Bindable]public var godkjent:Boolean = false;
+            [Bindable]public var tilbakestillt:Boolean = true;
+			  	
+			public function sendSkjema():void
 			{
-				var delSkjema:Object = skjemaliste[i].getChildren();
+				var verdier:Hund = formVerdier();			
+				Components.instance.controller.redigerHund(verdier);				
+			}
+			
+			public function lukkRedigerHundVindu():void
+			{
+				Components.instance.controller.lukkRedigerHundVindu();
+			}
+			
+			private function formVerdier():Hund
+			{
+				var hund:Hund = new Hund();
 				
-				for(var j:int = 0; j < delSkjema.length; j++)
+				hund.hundId = hundId.text;
+				hund.tittel = tittel.text;
+				hund.morId = morId.text;
+				hund.morNavn = morNavn.text;
+				hund.farId = farId.text;
+				hund.farNavn = farNavn.text;
+				hund.idNr = idNr.text;
+				if(radioHann.selected)
 				{
-					var felt:Array = delSkjema[j].getChildren();
-					
-					for(var k:int = 0; k < felt.length; k++)
-					{
-						if(felt[k].toLocaleString().indexOf("TextInput") > -1 || felt[k].toLocaleString().indexOf("TextArea") > -1 ||
-						felt[k].toLocaleString().indexOf("DateField") > -1)
-						{
-							hund[felt[k].name] = felt[k].text;
-						}
-						else if(felt[k].toLocaleString().indexOf("CheckBox") > -1 || felt[k].toLocaleString().indexOf("RadioButton") > -1)
-						{
-							if(felt[k].selected)
-							{
-								hund[felt[k].name] = felt[k].value as String;
-							}
-					
-						}
-						else if(felt[k].toLocaleString().indexOf("ComboBox") > -1)
-						{
-							if(felt[k].selected)
-							{
-								hund[felt[k].name] = felt[k].selectedLabel;
-							}
-						}
-					}	
+					hund.kjonn = radioHann.value.toString();
+				}
+				else if(radioTispe.selected)
+				{
+					hund.kjonn = radioTispe.value.toString();
+				}
+				else
+				{
+					hund.kjonn = "";
+				}
+				hund.eierId = eierId.text;
+				hund.raseId = raseId.text;
+				hund.kullId = kullId.text;
+				hund.farge = farge.text;
+				hund.fargevariant = fargevariant.text;
+				hund.oyesykdom = oyesykdom.text;
+				hund.hoftesykdom = hoftesykdom.text;
+				hund.haarlag = haarlag.text;
+				hund.idMerke = idMerke.text;
+				hund.storrelse = storrelse.text;
+				hund.endretAv = endretAv.text;
+				hund.endretDato = endretDato.text;
+				hund.regDato = regDato.text;
+				hund.manueltEndretDato = manueltEndretDato.text;
+				
+				return hund;
+			}
+			
+			private function tilbakestillForm():void
+			{	
+				hundId.text = Components.instance.session.hundprofil.hundId;
+				tittel.text = Components.instance.session.hundprofil.tittel;
+				morId.text = Components.instance.session.hundprofil.morId;
+				morNavn.text = Components.instance.session.hundprofil.morNavn;
+				farId.text = Components.instance.session.hundprofil.farId;
+				farNavn.text = Components.instance.session.hundprofil.farNavn;
+				idNr.text = Components.instance.session.hundprofil.idNr;
+				if(Components.instance.session.hundprofil.kjonn == "H")
+				{
+					radioHann.selected = true;
+					radioTispe.selected = false;
+				}
+				else if(Components.instance.session.hundprofil.kjonn == "T")
+				{
+					radioHann.selected = false;
+					radioTispe.selected = true;	
+				}
+				else
+				{
+					radioHann.selected = false;
+					radioTispe.selected = false;	
+				}
+				eierId.text = Components.instance.session.hundprofil.eierId;
+				raseId.text = Components.instance.session.hundprofil.raseId;
+				kullId.text = Components.instance.session.hundprofil.kullId;
+				farge.text = Components.instance.session.hundprofil.farge;
+				fargevariant.text = Components.instance.session.hundprofil.fargevariant;
+				oyesykdom.text = Components.instance.session.hundprofil.oyesykdom;
+				hoftesykdom.text = Components.instance.session.hundprofil.hoftesykdom;
+				haarlag.text = Components.instance.session.hundprofil.haarlag;
+				idMerke.text = Components.instance.session.hundprofil.idMerke;
+				storrelse.text = Components.instance.session.hundprofil.storrelse;
+				endretAv.text = Components.instance.session.hundprofil.endretAv;
+				endretDato.text = Components.instance.session.hundprofil.endretDato;
+				regDato.text = Components.instance.session.hundprofil.regDato;
+				manueltEndretDato.text = Components.instance.session.hundprofil.manueltEndretAv;
+				
+				tilbakestillt = true;
+			}
+			
+			private function init():void
+			{
+				valNavn.tooShortError = "Du må skrive minst " + valNavn.minLength + " tegn";
+				valIdNr.tooShortError = "Du kan kun skrive maks " + valIdNr.maxLength + " tegn";
+				valEierId.tooShortError="Du må skrive minst " + valEierId.minLength + " tegn";
+				valEierId.tooLongError="Du kan kun skrive maks " + valEierId.maxLength + " tegn";
+				
+				if(Components.instance.session.hundprofil.kjonn == 'H')
+				{
+					radioHann.selected = true;
+				}
+				else if(Components.instance.session.hundprofil.kjonn == 'T')
+				{
+					radioTispe.selected = true;
 				}
 			}
-			return hund;
-		}
-		
-		private function resetForm():void
-		{
-			lagre.enabled = false;
-		}
-		
-		private function ferdiglastet():void
-		{
-			valNavn.tooShortError = "Du må skrive minst " + valNavn.minLength + " tegn";
-			valIdNr.tooShortError = "Du kan kun skrive maks " + valIdNr.maxLength + " tegn";
-			valEierId.tooShortError="Du må skrive minst " + valEierId.minLength + " tegn";
-			valEierId.tooLongError="Du kan kun skrive maks " + valEierId.maxLength + " tegn";
 			
-			if(Components.instance.session.hundprofil.kjonn == 'H')
+			private function finnesHund():void
 			{
-				radioHann.selected = true;
+				
 			}
-			else if(Components.instance.session.hundprofil.kjonn == 'T')
-			{
-				radioTispe.selected = true;
-			}
-		}
-		
-		private function finnesHund(event:Event):void
-		{
-			
-		}
 		
 		]]>
 	</mx:Script>	
 	<mx:StringValidator 
-		id="valHundId" 
-		source="{hundid}" 
-		property="text" 
-		required="true" 
-		requiredFieldError="Feltet er påkrevd"
-	/>
+		id="valHundId" source="{hundId}" 
+		property="text" required="true"/>
 	
 	<mx:StringValidator 
-		id="valNavn" 
-		source="{navn}" 
-		property="text" 
-		required="true" 
-		minLength="2" 
-	/>
+		id="valNavn" source="{navn}" 
+		property="text" required="true" 
+		minLength="2"/>
 	
 	<mx:StringValidator 
-		id="valIdNr" 
-		source="{idNr}" 
-		property="text" 
-		required="true" 
-		minLength="7" 
-	/>
+		id="valIdNr" source="{idNr}" 
+		property="text" required="true" 
+		minLength="7"/>
 	
 	<mx:StringValidator 
-		id="valEierId" 
-		source="{eierId}" 
-		property="text" 
-		required="true" 
-		minLength="7" 
-		maxLength="7" 
-	/>
+		id="valEierId" source="{eierId}" 
+		property="text" required="true" 
+		minLength="7" maxLength="7"/>
 	
 	<mx:Accordion id="skjemaer" creationPolicy="all" width="100%">
-		<mx:Form label="Hundedata">
-			<mx:FormItem label="Hund-ID">
-				<mx:TextInput id="hundid" name="hundId" text="{Components.instance.session.hundprofil.hundId}" />
-			</mx:FormItem>
-			<mx:FormItem label="Tittel">
-				<mx:TextInput id="tittel" name="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Navn">
-				<mx:TextInput id="navn" name="navn" text="{Components.instance.session.hundprofil.navn}" />
-			</mx:FormItem>
-			<mx:FormItem label="Mors ID">
-				<mx:TextInput id="morId" name="morId" text="{Components.instance.session.hundprofil.morId}" change="{finnesHund(event)}"/>
-				<mx:TextInput id="morNavn" name="morNavn" />
-			</mx:FormItem>
-			<mx:FormItem label="Fars ID">			
-				<mx:TextInput id="farId" name="farId" text="{Components.instance.session.hundprofil.farId}" change="{finnesHund(event)}"/>
-				<mx:TextInput id="farNavn" name="farNavn" />
-			</mx:FormItem>
-			<mx:FormItem label="ID-nummer">
-				<mx:TextInput id="idNr" name="idNr" text="{Components.instance.session.hundprofil.idNr}" />
-			</mx:FormItem>
-			<mx:FormItem label="Kjønn">
-				<mx:RadioButton groupName="kjonnValg" name="kjonn" id="radioHann" label="Hann" value="H"/>
-				<mx:RadioButton groupName="kjonnValg" name="kjonn" id="radioTispe" label="Tispe" value="T"/>						
-			</mx:FormItem>
-			<mx:FormItem label="Eier-ID">
-				<mx:TextInput id="eierId" name="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Rase-ID">
-				<mx:TextInput id="raseId" name="raseId" text="{Components.instance.session.hundprofil.raseId}" />
-			</mx:FormItem>
-			<mx:FormItem label="Kull-ID">
-				<mx:TextInput id="kullId" name="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Farge">
-				<mx:TextInput id="farge" name="farge" text="{Components.instance.session.hundprofil.farge}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Fargevariant">
-				<mx:TextInput id="fargeVariant" name="fargeVariant" text="{Components.instance.session.hundprofil.fargeVariant}"/>
-			</mx:FormItem>
-		</mx:Form>
-		<mx:Form label="Helse">
-			<mx:FormItem label="Øyesykdom">
-				<mx:TextInput id="oyesykdom" name="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Hoftesykdom">
-				<mx:TextInput id="hoftesykdom" name="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Hårlag">
-				<mx:TextInput id="haarlag" name="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
-			</mx:FormItem>
-			<mx:FormItem label="ID-merke">
-				<mx:TextInput id="idMerke" name="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Størrelse">
-				<mx:TextInput id="storrelse" name="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
-			</mx:FormItem>					
-		</mx:Form>
-		<mx:Form label="Metadata">
-			<mx:FormItem label="Endret av">
-				<mx:TextInput id="endretav" name="endretAv" text="{Components.instance.session.hundprofil.endretAv}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Dato endret">
-				<mx:DateField id="endretDato"
-					name="endretDato" 
-		            editable="true"		            
-		            formatString="YYYY-MM-DD" 
-		            text="{Components.instance.session.hundprofil.endretDato}"
-		        /> 
-				<!--<mx:TextInput id="endretDato" name="endretDato" text="{Components.instance.session.hundprofil.endretDato}"/>-->
-			</mx:FormItem>
-			<mx:FormItem label="Dato registrert">
-				<mx:DateField id="regdato" 
-					name="regDato"
-		            editable="true"		            
-		            formatString="YYYY-MM-DD"		          
-		            text="{Components.instance.session.hundprofil.regDato}"
-		        />
-			</mx:FormItem>			
-			<mx:FormItem label="Manuelt endret av">
-				<mx:TextInput id="manueltEndretAv" name="manueltEndretAv" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
-			</mx:FormItem>
-			<mx:FormItem label="Dato manuelt endret">
-				<mx:DateField id="manueltendretdato" 
-					name="manueltEndretDato"
-		            editable="true"		            
-		            formatString="YYYY-MM-DD"		          
-		            text="{Components.instance.session.hundprofil.manueltEndretDato}"
-		        />				
-			</mx:FormItem>	
-		</mx:Form>
+		<mx:HBox label="Hundedata">
+			<mx:Form>
+				<mx:FormItem label="Hund-ID">
+					<mx:TextInput id="hundId" text="{Components.instance.session.hundprofil.hundId}" />
+				</mx:FormItem>
+				<mx:FormItem label="Tittel">
+					<mx:TextInput id="tittel" text="{Components.instance.session.hundprofil.tittel}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Navn">
+					<mx:TextInput id="navn" text="{Components.instance.session.hundprofil.navn}" />
+				</mx:FormItem>
+				<mx:FormItem label="Mors ID">
+					<mx:TextInput id="morId" text="{Components.instance.session.hundprofil.morId}" change="{finnesHund()}"/>
+					<mx:TextInput id="morNavn" text="{Components.instance.session.hundprofil.morNavn}" enabled="false"/>
+				</mx:FormItem>
+				<mx:FormItem label="Fars ID">			
+					<mx:TextInput id="farId" text="{Components.instance.session.hundprofil.farId}" change="{finnesHund()}"/>
+					<mx:TextInput id="farNavn" text="{Components.instance.session.hundprofil.farNavn}" enabled="false"/>
+				</mx:FormItem>
+				<mx:FormItem label="ID-nummer">
+					<mx:TextInput id="idNr" text="{Components.instance.session.hundprofil.idNr}" />
+				</mx:FormItem>
+			</mx:Form>
+			<mx:Form>
+				<mx:FormItem label="Kjønn">
+					<mx:RadioButton groupName="kjonnValg" id="radioHann" label="Hann" value="H"/>
+					<mx:RadioButton groupName="kjonnValg" id="radioTispe" label="Tispe" value="T"/>						
+				</mx:FormItem>
+				<mx:FormItem label="Eier-ID">
+					<mx:TextInput id="eierId" text="{Components.instance.session.hundprofil.eierId}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Rase-ID">
+					<mx:TextInput id="raseId" text="{Components.instance.session.hundprofil.raseId}" />
+				</mx:FormItem>
+				<mx:FormItem label="Kull-ID">
+					<mx:TextInput id="kullId" text="{Components.instance.session.hundprofil.kullId}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Farge">
+					<mx:TextInput id="farge" text="{Components.instance.session.hundprofil.farge}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Fargevariant">
+					<mx:TextInput id="fargevariant" text="{Components.instance.session.hundprofil.fargevariant}"/>
+				</mx:FormItem>
+			</mx:Form>
+		</mx:HBox>
+		<mx:HBox label="Helse og metadata">
+			<mx:Form>
+				<mx:FormHeading label="Helse"/>
+				<mx:FormItem label="Øyesykdom">
+					<mx:TextInput id="oyesykdom" text="{Components.instance.session.hundprofil.oyesykdom}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Hoftesykdom">
+					<mx:TextInput id="hoftesykdom" text="{Components.instance.session.hundprofil.hoftesykdom}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Hårlag">
+					<mx:TextInput id="haarlag" text="{Components.instance.session.hundprofil.haarlag}"/>
+				</mx:FormItem>
+				<mx:FormItem label="ID-merke">
+					<mx:TextInput id="idMerke" text="{Components.instance.session.hundprofil.idMerke}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Størrelse">
+					<mx:TextInput id="storrelse" text="{Components.instance.session.hundprofil.storrelse}"/>
+				</mx:FormItem>					
+			</mx:Form>
+			<mx:Form>
+				<mx:FormHeading label="Metadata"/>
+				<mx:FormItem label="Endret av">
+					<mx:TextInput id="endretAv" enabled="false" text="{Components.instance.session.hundprofil.endretAv}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Dato endret">
+					<mx:DateField id="endretDato" enabled="false" formatString="YYYY-MM-DD" text="{Components.instance.session.hundprofil.endretDato}"/> 
+				</mx:FormItem>
+				<mx:FormItem label="Dato registrert">
+					<mx:DateField id="regDato" enabled="false" formatString="YYYY-MM-DD" text="{Components.instance.session.hundprofil.regDato}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Manuelt endret av">
+					<mx:TextInput id="manueltEndretAv" enabled="false" text="{Components.instance.session.hundprofil.manueltEndretAv}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Dato manuelt endret">
+					<mx:DateField id="manueltEndretDato" enabled="false" formatString="YYYY-MM-DD" text="{Components.instance.session.hundprofil.manueltEndretDato}"/>				
+				</mx:FormItem>	
+			</mx:Form>
+		</mx:HBox>
 	</mx:Accordion>
 	<mx:ControlBar horizontalAlign="center">
-		<mx:Button id="lagre" label="Lagre" click="sendSkjema(event)"/>
-		<mx:Button id="lukk" label="Lukk" click="lukkRedigerHundVindu(event)"/>	
+		<mx:Button id="lagre" label="Lagre" enabled="{godkjent}" click="sendSkjema()"/>
+		<mx:Button id="tilbakestill" label="Tilbakestill" enabled="{!tilbakestillt}" click="tilbakestillForm()"/>
+		<mx:Button id="avbryt" label="Avbryt" click="lukkRedigerHundVindu()"/>	
 	</mx:ControlBar>
 </mx:TitleWindow>

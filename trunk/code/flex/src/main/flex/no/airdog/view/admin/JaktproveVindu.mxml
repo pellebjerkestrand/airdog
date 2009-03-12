@@ -5,7 +5,6 @@
 	title="Jaktprøve"
 	height="100%" width="100%" 
 	creationComplete="init()"
-	defaultButton="{lagre}" 
 	layout="vertical">
 	
 	<mx:Script>
@@ -18,11 +17,8 @@
             import mx.controls.Alert;
 			import mx.formatters.DateFormatter;
 			
-			[Bindable]
-            public var godkjent:Boolean = false;
-
-            [Bindable]
-            public var tomt:Boolean = true;
+			[Bindable]public var godkjent:Boolean = false;
+            [Bindable]public var tilbakestillt:Boolean = true;
     
             private var hvilkeKontroll:DisplayObject;
                                   
@@ -32,13 +28,13 @@
            
                 godkjent = true;            
 
-                tomt = (
+                tilbakestillt = (
                 	proveNr.text == "" 
                 	&& proveDato.text == ""
                     && partiNr.text == ""
                	); 
                     
-                if(Components.instance.session.jaktprove != null && !tomt)
+                if(Components.instance.session.jaktprove != null && !tilbakestillt)
              	{
             		var df:DateFormatter = new DateFormatter();
 					df.formatString = "YYYY-MM-DD";
@@ -71,7 +67,7 @@
              {
              	settFokus();
              	settValidatorError();
-             	nullstillForm();
+             	tilbakestillForm();
              } 
              
              private function settValidatorError():void
@@ -147,7 +143,7 @@
             	}
             }
             
-            private function nullstillForm():void
+            private function tilbakestillForm():void
             {
             	appGodkjent.text = Components.instance.session.jaktprove.appGodkjent;
 				appIkkeGodkjent.text = Components.instance.session.jaktprove.appIkkeGodkjent;
@@ -191,7 +187,7 @@
 				stil.text = Components.instance.session.jaktprove.stil;
 				tomStand.text = Components.instance.session.jaktprove.tomStand;
             	
-                tomt = true;
+                tilbakestillt = true;
                 
                 settFokus();                          
             }
@@ -424,7 +420,6 @@
 						</mx:Form>
 					</mx:VBox>	
 				</mx:HBox>
-		
 			</mx:Accordion>
 		</mx:VBox>
 		
@@ -439,8 +434,8 @@
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-            <mx:Button id="lagre" label="Lagre" enabled="{godkjent}" click="lagreJaktprove()"/>
-            <mx:Button label="Tilbakestill" enabled="{!tomt}" click="nullstillForm()"/>
+            <mx:Button label="Lagre" enabled="{godkjent}" click="lagreJaktprove()"/>
+            <mx:Button label="Tilbakestill" enabled="{!tilbakestillt}" click="tilbakestillForm()"/>
             <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>
 </mx:TitleWindow>

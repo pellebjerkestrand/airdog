@@ -7,21 +7,14 @@ package no.airdog.model
 	[Bindable]
 	public class Hundeliste
 	{
-		
 		public function Hundeliste(hoyde:int=30, itemRenderer:IFactory=null)
 		{
 			rendererHoyde = hoyde;
-			renderer = itemRenderer;
-			
+			renderer = itemRenderer;	
 		}
 
-		[Bindable]
         public var rendererHoyde:int;
-        
-        [Bindable]
         public var renderer:IFactory;
-       
-		[Bindable]
 		public var provider:ArrayCollection;
 	}
 }

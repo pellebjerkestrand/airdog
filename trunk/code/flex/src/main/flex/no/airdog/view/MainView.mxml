@@ -112,19 +112,15 @@
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
 	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
-	   			<mx:LinkButton label="Vis hund nr 0" click="visHundNr(0)" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
-				<mx:LinkButton label="Favoritthunder (4)" styleName="UnderMeny" click="visHundeliste()" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
+	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
+				<mx:LinkButton label="Favoritthunder (4)" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
 				<mx:LinkButton label="Liste med bilde" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" styleName="UnderMeny" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
 				<mx:LinkButton label="Liste uten bilde" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" styleName="UnderMeny" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
 	   		</mx:HBox>
-	  		<mx:HBox id="divtab" label="Diverse">
-	  			<mx:LinkButton label="Div1" icon="@Embed(source='assets/ikoner/key__minus.png')" styleName="UnderMeny"/>
-	  			<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()"/>
-	  			<mx:LinkButton label="Div3" styleName="UnderMeny"/>
-	  			<mx:LinkButton label="Div4" styleName="UnderMeny"/>
-	  			<mx:LinkButton label="Div5" styleName="UnderMeny"/>
+	  		<mx:HBox id="stattab" label="Statistikk">
+	  			<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
 	  		</mx:HBox>
-	  		<mx:HBox id="devtab" label="Development">
+	  		<mx:HBox id="utviklingtab" label="Utvikling">
 	  			<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='assets/ikoner/key.png')"/>
 	  		</mx:HBox>
 		</mx:TabNavigator>	  
