@@ -45,5 +45,7 @@ package no.airdog.model
 		public var manueltEndretAv:String;
 		public var manueltEndretDato:String;
 		public var kritikk:String;
+		
+		public var premiegradTekst:String;
 	}
 }

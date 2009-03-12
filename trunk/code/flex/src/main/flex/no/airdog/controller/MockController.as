@@ -1,6 +1,7 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
+	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
@@ -37,8 +38,8 @@ package no.airdog.controller
         	Components.instance.session.jaktprove.regDato = df.format(new Date());
         	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
-    		jaktproveVindu.width = parent.width * 0.80;
-    		jaktproveVindu.height = parent.height *  0.90;
+    		jaktproveVindu.width = 900;
+    		jaktproveVindu.height = 580;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
 			
@@ -129,8 +130,8 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			//var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
-			var url:String = "http://airdog.no/backend/no/airdog/controller/FilopplastController.php?";
+			var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
+			//var url:String = "http://airdog.no/backend/no/airdog/controller/FilopplastController.php?";
 			
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";

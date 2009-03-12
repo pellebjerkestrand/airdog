@@ -70,7 +70,7 @@ class JaktproveController
 	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
     		
-	    	$tmp->premiegrad = "VF: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
+	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
 			$ret[] = $tmp;
 			
 	        return $ret;
@@ -124,7 +124,7 @@ class JaktproveController
 		    	$tmp->appGodkjent = $rad['appGodkjent']; 	
 		    	$tmp->rappInnkalt = $rad['rappInnkalt'];
 		    	$tmp->rappSpont = $rad['rappSpont']; 	
-		    	$tmp->premiegrad = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
+		    	$tmp->premiegrad = $rad['premiegrad'];
 		    	$tmp->certifikat = $rad['certifikat']; 	
 		    	$tmp->regAv = $rad['regAv'];
 		    	$tmp->regDato = $rad['regDato']; 	
@@ -132,6 +132,8 @@ class JaktproveController
 		    	$tmp->manueltEndretAv = $rad['manueltEndretAv']; 	
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->kritikk = $rad['kritikk'];
+		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
+		    	
 				$ret[] = $tmp;
 			}
 			
