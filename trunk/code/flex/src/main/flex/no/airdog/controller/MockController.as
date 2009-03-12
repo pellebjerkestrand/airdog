@@ -121,14 +121,10 @@ package no.airdog.controller
 		}
 		
 		public function loggUt():void
-		{
-			
-			Components.instance.session = new Session;
-			
-			Components.instance.session.hovedNavigasjon.nr = 1;
-			
+		{	
+			Components.instance.session = new Session;	
+			Components.instance.session.hovedNavigasjon.nr = 6;
 			Components.instance.services.airdogService.loggUt(new Function());
-			
 			Components.instance.historie.nullstill();
 		}
 		
