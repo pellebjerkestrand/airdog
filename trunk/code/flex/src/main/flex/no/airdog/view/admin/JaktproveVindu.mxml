@@ -3,7 +3,6 @@
 	xmlns:controls="flexunit.flexui.controls.*"
 	xmlns:include="no.airdog.view.admin.Include.*"
 	title="Jaktprøve"
-	height="100%" width="100%" 
 	creationComplete="init()"
 	layout="vertical">
 	
