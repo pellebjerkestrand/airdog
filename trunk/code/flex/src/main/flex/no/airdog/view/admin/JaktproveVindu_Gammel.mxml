@@ -21,15 +21,20 @@
             [Bindable]public var tilbakestillt:Boolean = true;
     
             private var hvilkeKontroll:DisplayObject;
-			
+                                  
             private function validering(event:Event):void 
             {                    
                 hvilkeKontroll = event.target as DisplayObject;   
            
-                godkjent = true;
+                godkjent = true;            
+
+                tilbakestillt = (
+                	proveNr.text == "" 
+                	&& proveDato.text == ""
+                    && partiNr.text == ""
+               	); 
                     
-                if((Components.instance.session.jaktprove != null) && 
-                	(sammenliknObject(formVerdier(), Components.instance.session.jaktprove)))
+                if(Components.instance.session.jaktprove != null && !tilbakestillt)
              	{
             		var df:DateFormatter = new DateFormatter();
 					df.formatString = "YYYY-MM-DD";
@@ -43,39 +48,16 @@
                 valider(partiNrValidator);
             }
             
-            private function sammenliknObject(obj1:Object,obj2:Object):Boolean
-			{
-			    var buffer1:ByteArray = new ByteArray();
-			    buffer1.writeObject(obj1);
-			    var buffer2:ByteArray = new ByteArray();
-			    buffer2.writeObject(obj2);
-			 	
-			    var size:uint = buffer1.length;
-			    if (buffer1.length == buffer2.length)
-			    {
-			        buffer1.position = 0;
-			        buffer2.position = 0;
-			 
-			        while (buffer1.position < size)
-			        {
-			            var v1:int = buffer1.readByte();
-			            if (v1 != buffer2.readByte())
-			            {
-			                return false;
-			            }
-			        }    
-			        return true;                        
-			    }
-			    return false;
-			}
-            
             private function valider(validerer:Validator):Boolean
             {                
 	            var validatoren:DisplayObject = validerer.source as DisplayObject;
-	            var ikkeVisBoks:Boolean = (validatoren != hvilkeKontroll);
-	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
-	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
 	            
+	            var ikkeVisBoks:Boolean = (validatoren != hvilkeKontroll);
+	            
+	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
+	                            
+	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
+	             
 	            godkjent = godkjent && erValidert;
 	             
 	            return erValidert;
@@ -121,7 +103,7 @@
 				prove.manueltEndretAv = manueltEndretAv.text;
 				prove.manueltEndretDato = manueltEndretDato.text;
 				prove.partiNr = partiNr.text;
-				prove.premiegrad = Components.instance.session.jaktprove.premiegrad;
+				prove.premiegrad = Components.instance.session.jaktprove.premiegrad; // !i ui. wai?
 				prove.presNoeUpresis = presNoeUpresis.text;
 				prove.presPresis = presPresis.text;
 				prove.presUpresis = presUpresis.text;
@@ -180,7 +162,7 @@
 				manueltEndretAv.text = Components.instance.session.jaktprove.manueltEndretAv;
 				manueltEndretDato.text = Components.instance.session.jaktprove.manueltEndretDato;
 				partiNr.text = Components.instance.session.jaktprove.partiNr;
-				premiegrad.text = Components.instance.session.jaktprove.premiegrad;
+				//premiegrad.text = Components.instance.session.jaktprove.premiegrad; // !i ui. wai?
 				presNoeUpresis.text = Components.instance.session.jaktprove.presNoeUpresis;
 				presPresis.text = Components.instance.session.jaktprove.presPresis;
 				presUpresis.text = Components.instance.session.jaktprove.presUpresis;
@@ -211,7 +193,7 @@
             
             private function settFokus():void
             {
-                focusManager.setFocus(kritikk);
+                focusManager.setFocus(proveNr);
             }
             
            	private function avbryt():void
@@ -241,77 +223,21 @@
     />
 	
 	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
-				<mx:FormHeading label="Kritikk"/>
-				<mx:FormItem width="100%" height="100%">
-						<mx:TextArea id="kritikk" width="100%" height="100%"/>
-				</mx:FormItem>						
-			</mx:Form>
-		</mx:VBox>
-		
-		<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-			<mx:VBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-				<mx:Form verticalGap="0">
-					<mx:FormHeading label="Summering" />
-					<mx:FormItem label="Slipptid">
-						<mx:TextInput id="slippTid" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Egne stand">
-						<mx:TextInput id="egneStand" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Egne støkk">
-						<mx:TextInput id="egneStokk" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Tomstand">
-						<mx:TextInput id="tomStand" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Makkers stand">
-						<mx:TextInput id="makkerStand" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Makkers støkk">
-						<mx:TextInput id="makkerStokk" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					
-					<mx:FormHeading label="Diverse"/>
+		<mx:VBox width="460" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+			<mx:HBox width="100%">
+				<mx:Form id="prove" label="prove">
+					<mx:FormHeading label="Prøveinfo"/>
 					<mx:FormItem label="Prøvenummer">
 						<mx:TextInput id="proveNr" change="validering(event);" width="84"/>
 					</mx:FormItem>
+		
 					<mx:FormItem label="Prøvedato">
 						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100"/> 
 					</mx:FormItem>
-					<mx:FormItem label="Dommer 1">
-						<mx:TextInput id="dommerId1" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					<mx:FormItem label="Dommer 2">			
-						<mx:TextInput id="dommerId2" change="validering(event);" width="84"/>
-					</mx:FormItem>
+				</mx:Form>
 				
-					<!--<mx:FormHeading label="Parti"/>-->
-					<mx:FormItem label="Partinummer">
-						<mx:TextInput id="partiNr" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					<mx:FormItem label="Klasse">
-						<mx:TextInput id="klasse" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					
-					<!--<mx:FormHeading label="Registrering"/>-->
-					<mx:FormItem label="Registert av">
-						<mx:TextInput id="regAv" enabled="false" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					<mx:FormItem label="Dato registrert">
-						<mx:TextInput id="regDato" enabled="false" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					
-					<!--<mx:FormHeading label="Endring"/>-->			
-					<mx:FormItem label="Endret av" >
-						<mx:TextInput id="manueltEndretAv" enabled="false" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					<mx:FormItem label="Dato endret" >
-						<mx:TextInput id="manueltEndretDato" enabled="false" change="validering(event);" width="84"/>
-					</mx:FormItem>
-
-					<!--<mx:FormHeading label="Hundinfo"/>-->
+				<mx:Form id="hund" label="hund">
+					<mx:FormHeading label="Hundinfo"/>
 					<mx:FormItem label="Hund-ID">
 						<mx:TextInput id="hundId" change="validering(event);" width="100"/>
 					</mx:FormItem>
@@ -319,88 +245,191 @@
 						<mx:TextInput id="hundNavn" enabled="false" change="validering(event);"	text="Placeholder" width="100"/>
 					</mx:FormItem>
 				</mx:Form>
-			</mx:VBox>
+			</mx:HBox>
 			
-			<mx:VBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-				<mx:Form verticalGap="0">
-					<mx:FormHeading label="Karakterer"/>
-					<mx:FormItem label="Jaktlyst">
-						<mx:TextInput id="jaktlyst" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Fart" >
-						<mx:TextInput id="fart" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Stil">
-						<mx:TextInput id="stil" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Selvstendighet" >
-						<mx:TextInput id="selvstendighet" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Søkebredde" >
-						<mx:TextInput id="bredde" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Reviering" >
-						<mx:TextInput id="reviering" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Samarbeid" >
-						<mx:TextInput id="samarbeid" change="validering(event);" width="35"/>
-					</mx:FormItem>
-
-					<!--<mx:FormHeading label="Presisjon"/>-->
-					<mx:FormItem label="Upresis" >
-						<mx:TextInput id="presUpresis" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Noe upresis" >
-						<mx:TextInput id="presNoeUpresis" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Presis" >
-						<mx:TextInput id="presPresis" change="validering(event);" width="35"/>
-					</mx:FormItem>					
+			<mx:Accordion id="skjemaer" minWidth="460" minHeight="370" width="460" height="370" creationPolicy="all">
+				<mx:HBox label="Sum og generelt" width="100%">
+					<mx:Form id="sum">
+						<mx:FormHeading label="Summering" />
+						<mx:FormItem label="Slipptid">
+							<mx:TextInput id="slippTid" change="validering(event);" width="35"/>
+						</mx:FormItem>
 				
-					<!--<mx:FormHeading label="Reising"/>-->
-					<mx:FormItem label="Nekter">
-						<mx:TextInput id="reisNekter" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Nølende">
-						<mx:TextInput id="reisNoelende" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Villig" >
-						<mx:TextInput id="reisVillig" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Djerv">
-						<mx:TextInput id="reisDjerv" change="validering(event);" width="35"/>
-					</mx:FormItem>
+						<mx:FormItem label="Egenstand">
+							<mx:TextInput id="egneStand" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Egenstøkk">
+							<mx:TextInput id="egneStokk" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Tomstand">
+							<mx:TextInput id="tomStand" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Makkerstand">
+							<mx:TextInput id="makkerStand" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Makkerstøkk">
+							<mx:TextInput id="makkerStokk" change="validering(event);" width="35"/>
+						</mx:FormItem>
+					</mx:Form>
+		
+					<mx:Form id="generelt" label="generelt">
+						<mx:FormHeading label="Generelt"/>
+						<mx:FormItem label="Jaktlyst">
+							<mx:TextInput id="jaktlyst" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Fart" >
+							<mx:TextInput id="fart" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Stil">
+							<mx:TextInput id="stil" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Selvstendighet" >
+							<mx:TextInput id="selvstendighet" change="validering(event);" width="35"/>
+						</mx:FormItem>
 					
-					<!--<mx:FormHeading label="Sekundering"/>-->
-					<mx:FormItem label="Stjeler" >
-						<mx:TextInput id="sokStjeler" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Spontan" >
-						<mx:TextInput id="sokSpontant" change="validering(event);" width="35"/>
-					</mx:FormItem>
+						<mx:FormItem label="Søkebredde" >
+							<mx:TextInput id="bredde" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Reviering" >
+							<mx:TextInput id="reviering" change="validering(event);" width="35"/>
+						</mx:FormItem>
+						
+						<mx:FormItem label="Samarbeid" >
+							<mx:TextInput id="samarbeid" change="validering(event);" width="35"/>
+						</mx:FormItem>
+					</mx:Form>
+				</mx:HBox>
+				
+				<mx:HBox label="Presisjon, reising, sekundering, apport og rapport" width="100%">
+					<mx:VBox>
+						<mx:Form id="presisjon" label="Presisjon">
+							<mx:FormHeading label="Presisjon"/>
+							<mx:FormItem label="Upresis" >
+								<mx:TextInput id="presUpresis" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Noe upresis" >
+								<mx:TextInput id="presNoeUpresis" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Presis" >
+								<mx:TextInput id="presPresis" change="validering(event);" width="35"/>
+							</mx:FormItem>					
+						
+							<mx:FormHeading label="Reising"/>
+							<mx:FormItem label="Nekter">
+								<mx:TextInput id="reisNekter" change="validering(event);" width="35"/>
+							</mx:FormItem>
+						
+							<mx:FormItem label="Nølende">
+								<mx:TextInput id="reisNoelende" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Villig" >
+								<mx:TextInput id="reisVillig" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Djerv">
+								<mx:TextInput id="reisDjerv" change="validering(event);" width="35"/>
+							</mx:FormItem>
+						</mx:Form>
+					</mx:VBox>
+					<mx:VBox>
+						<mx:Form id="sekundering" label="Sekundering">
+							<mx:FormHeading label="Sekundering"/>
+							<mx:FormItem label="Stjeler" >
+								<mx:TextInput id="sokStjeler" change="validering(event);" width="35"/>
+							</mx:FormItem>
+				
+							<mx:FormItem label="Spontan" >
+								<mx:TextInput id="sokSpontant" change="validering(event);" width="35"/>
+							</mx:FormItem>
+
+							<mx:FormHeading label="Apport"/>
+							<mx:FormItem label="Ikke godkjent">
+								<mx:TextInput id="appIkkeGodkjent" change="validering(event);" width="35"/>
+							</mx:FormItem>
+								
+							<mx:FormItem label="Godkjent" >
+								<mx:TextInput id="appGodkjent" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormHeading label="Rapport"/>
+							<mx:FormItem label="Innkalt" >
+								<mx:TextInput id="rappInnkalt" change="validering(event);" width="35"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Spontan">
+								<mx:TextInput id="rappSpont" change="validering(event);" width="35"/>
+							</mx:FormItem>
+						</mx:Form>
+					</mx:VBox>
+				</mx:HBox>
 					
-					<!--<mx:FormHeading label="Apport"/>-->
-					<mx:FormItem label="Ikke godkjent">
-						<mx:TextInput id="appIkkeGodkjent" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Godkjent" >
-						<mx:TextInput id="appGodkjent" change="validering(event);" width="35"/>
-					</mx:FormItem>
+				<mx:HBox label="Parti, klasse, dommere, registrering- og endringsinfo" width="100%">	
+					<mx:VBox>
+						<mx:Form id="parti" label="parti" width="100%" height="100%">
+							<mx:FormHeading label="Parti"/>
+							<mx:FormItem label="Partinummer">
+								<mx:TextInput id="partiNr" change="validering(event);" width="84"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Klasse">
+								<mx:TextInput id="klasse" change="validering(event);" width="84"/>
+							</mx:FormItem>
+						
+							<mx:FormHeading label="Dommere"/>		
+							<mx:FormItem label="Dommer 1">
+								<mx:TextInput id="dommerId1" change="validering(event);" width="84"/>
+							</mx:FormItem>
+						
+							<mx:FormItem label="Dommer 2">			
+								<mx:TextInput id="dommerId2" change="validering(event);" width="84"/>
+							</mx:FormItem>
+						</mx:Form>
+					</mx:VBox>
 					
-					<!--<mx:FormHeading label="Rapport"/>-->
-					<mx:FormItem label="Innkalt" >
-						<mx:TextInput id="rappInnkalt" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					<mx:FormItem label="Spontan">
-						<mx:TextInput id="rappSpont" change="validering(event);" width="35"/>
-					</mx:FormItem>
-					
-					<mx:FormItem label="Premie">
-						<mx:TextInput id="premiegrad" change="validering(event);" width="35"/>
-					</mx:FormItem>
-				</mx:Form>
-			</mx:VBox>
-		</mx:HBox>			
+					<mx:VBox>
+						<mx:Form id="registrert" label="registrert" width="100%" height="100%">
+							<mx:FormHeading label="Registrering"/>
+							<mx:FormItem label="Registert av">
+								<mx:TextInput id="regAv" enabled="false" change="validering(event);" width="84"/>
+							</mx:FormItem>
+							
+							<mx:FormItem label="Dato registrert">
+								<mx:TextInput id="regDato" enabled="false" change="validering(event);" width="84"/>
+							</mx:FormItem>
+							
+							<mx:FormHeading label="Endring"/>			
+							<mx:FormItem label="Endret av" >
+								<mx:TextInput id="manueltEndretAv" enabled="false" change="validering(event);" width="84"/>
+							</mx:FormItem>
+						
+							<mx:FormItem label="Dato endret" >
+								<mx:TextInput id="manueltEndretDato" enabled="false" change="validering(event);" width="84"/>
+							</mx:FormItem>
+						</mx:Form>
+					</mx:VBox>	
+				</mx:HBox>
+			</mx:Accordion>
+		</mx:VBox>
+		
+		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
+				<mx:FormHeading label="Kritikk"/>
+				<mx:FormItem width="100%" height="100%">
+						<mx:TextArea id="kritikk" width="100%" height="100%"/>
+				</mx:FormItem>						
+			</mx:Form>
+		</mx:VBox>						
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
