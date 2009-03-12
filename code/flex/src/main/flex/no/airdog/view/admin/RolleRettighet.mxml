@@ -6,19 +6,23 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
 			import no.airdog.controller.*;
-			import no.airdog.services.Components;  
+			import no.airdog.services.Components;
+			import mx.controls.Alert;
 			
 			private function init():void
 			{
 				Components.instance.controller.hentAlleRoller();
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
+
 			}
+			
 		]]>
 	</mx:Script>
     
-	<mx:DataGrid dataProvider="{Components.instance.session.rollersRettigheter}" />
+	<mx:Tree id="tre" dataProvider="{Components.instance.session.rollersRettigheter}" labelField="navn" />
 	<mx:DataGrid dataProvider="{Components.instance.session.alleRettigheter}" />
-	<mx:DataGrid dataProvider="{Components.instance.session.rollersRettigheter}" />
+	<mx:DataGrid dataProvider="{Components.instance.session.alleRoller}" />
 </mx:VBox>

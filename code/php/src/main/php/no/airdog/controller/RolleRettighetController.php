@@ -47,13 +47,14 @@ class RolleRettighetController
 			$db = new RolleRettighetDatabase();
 			
 			$roller = $db->hentAlleRoller();
-			
-	   		foreach($roller as $rolle)
-	   		{
-	   			$rolle["rettighetere"] = $db->hentRolleSineRettigheter($rolle);
-	   		}
+			$tmp = array();
 
-			return $roller;
+	   		foreach($roller as $rolle)
+	   		{   				   			
+	   			$tmp["'".$rolle['navn']."'"] = $db->hentRolleSineRettigheter($rolle['navn']);
+	   		}
+			
+			return $tmp;
 		}
 
 		$feilkode = 1;
