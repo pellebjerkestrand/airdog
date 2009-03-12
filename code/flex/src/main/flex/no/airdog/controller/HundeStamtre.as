@@ -96,7 +96,7 @@ package no.airdog.controller
 			hundNode.setStyle("borderStyle", "solid");
 			hundNode.setStyle("borderThickness", "1");
 			hundNode.setStyle("cornerRadius", "6");
-			hundNode.setStyle("borderColor", "#D3D4AA");
+			hundNode.setStyle("borderColor", "#a3a3a3");
 			hundNode.verticalScrollPolicy = "off";
 			hundNode.horizontalScrollPolicy = "off";
 			hundNode.setStyle("verticalGap", "0");
@@ -157,7 +157,7 @@ package no.airdog.controller
 					var nyBoxRect:Rectangle = nyBox.getRect(this);
 					
 					graphics.moveTo(nodeRect.right, nodeRect.y + (nodeRect.height / 2));
-					graphics.lineStyle(2,0xD3D4AA);
+					graphics.lineStyle(2,0xd2d8de);
 					graphics.lineTo(nyBoxRect.x, nyBoxRect.y + (nyBoxRect.height / 2));
 				}
 			}
