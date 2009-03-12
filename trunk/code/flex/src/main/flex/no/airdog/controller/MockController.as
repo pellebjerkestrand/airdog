@@ -226,6 +226,7 @@ package no.airdog.controller
 		public function hentBrukersRettigheterResultat(event:Object):void
 		{
 			Components.instance.session.bruker.rettigheter = new ArrayCollection(event as Array);
+			Components.instance.historie.settPunkt();
 		}
 		
 		public function hentStamtre(hundId:String, dybde:int):void

@@ -3,7 +3,6 @@ package no.airdog.controller
 	import flash.events.*;
 	import flash.geom.Rectangle;
 	
-	import mx.containers.Canvas;
 	import mx.containers.HBox;
 	import mx.containers.VBox;
 	import mx.controls.*;
@@ -11,7 +10,6 @@ package no.airdog.controller
 	
 	import no.airdog.model.Hund;
 	import no.airdog.services.Components;
-	import no.airdog.view.MultilineButton;
 	
 	public class HundeStamtre extends HBox
 	{
@@ -46,7 +44,7 @@ package no.airdog.controller
 			
 		private function visHund(event:Event):void
 		{
-			var sender:Button = event.target as Button;
+			var sender:LinkButton = event.target as LinkButton;
 			if (sender != null)
 			{
 				Components.instance.controller.visHund(sender.data.toString());
@@ -61,46 +59,68 @@ package no.airdog.controller
 		private function leggTilHund(hund:Hund):HBox
 		{
 			var hBox:HBox = new HBox();
-			var button:MultilineButton = new MultilineButton();
 			var vBox:VBox = new VBox();
 			
-			var canvas:Canvas = new Canvas();
+			var hundNode:VBox = new VBox();
+			var hundNodeHBox:HBox = new HBox();
 			var hundIdLabel:Label = new Label();
-			var hundNavnLabel:Label = new Label();
+			var tittelLabel:Label = new Label();
 			
-			hundIdLabel.text = hund.hundId;
-			hundNavnLabel.text = hund.navn;
+			var hRule:HRule = new HRule();
+			var hundNavn:LinkButton = new LinkButton();
 			
-			canvas.addChild(hundIdLabel);
-			canvas.addChild(hundNavnLabel);
+			hundNodeHBox.addChild(hundIdLabel);
+			hundNodeHBox.addChild(tittelLabel);
+			hundNodeHBox.percentWidth = 100;
 			
-			canvas.setStyle("backgroundColor", "0xD3D4AA");
-			
-			hBox.setStyle("verticalAlign","middle")
-			hBox.addChild(button);
-			//hBox.addChild(canvas);
-			hBox.addChild(vBox);
-			
-			button.name = "hundKnapp";
-			
-			if (hund.tittel != "")
+			if (hund.hundId != "")
 			{
-				button.label = hund.hundId + "\r" + hund.tittel + "\r" + hund.navn;
-			}
-			else if (hund.hundId != "")
-			{
-				button.label = hund.hundId + "\r" + hund.navn;
+				hundNode.addChild(hundNodeHBox);
+				hundNode.addChild(hRule);
 			}
 			else
 			{
-				button.label = hund.navn;
+				
 			}
 			
-			button.setStyle("fontSize", "12");
-			button.width = 190;
-			button.data = hund.hundId;
-			button.addEventListener(MouseEvent.CLICK, visHund);
-			button.addEventListener(FlexEvent.UPDATE_COMPLETE, oppdaterStrek);
+			hundNode.addChild(hundNavn);
+			
+			hundNavn.label = hund.navn;
+			hundNavn.data = hund.hundId;
+			tittelLabel.text = hund.tittel;
+			hundIdLabel.text = "  " + hund.hundId;
+			hundNode.name = "hundKnapp";
+			
+			hundNode.width = 250;
+			hundNode.setStyle("backgroundColor", "#F5F5F5");
+			hundNode.setStyle("borderStyle", "solid");
+			hundNode.setStyle("borderThickness", "1");
+			hundNode.setStyle("cornerRadius", "6");
+			hundNode.setStyle("borderColor", "#D3D4AA");
+			hundNode.verticalScrollPolicy = "off";
+			hundNode.horizontalScrollPolicy = "off";
+			hundNode.setStyle("verticalGap", "0");
+			
+			hRule.percentWidth = 100;
+			
+			hundNavn.percentWidth = 100;
+			hundNavn.setStyle("fontSize", "12");
+			hundNavn.setStyle("textAlign", "left");
+			
+			hundIdLabel.setStyle("fontSize", "9");
+			hundIdLabel.selectable = true;
+			
+			tittelLabel.setStyle("fontSize", "9");
+			tittelLabel.setStyle("color", "#878787");
+			tittelLabel.percentWidth = 100;
+			tittelLabel.setStyle("textAlign", "right");
+			
+			hBox.setStyle("verticalAlign","middle")
+			hBox.addChild(hundNode);
+			hBox.addChild(vBox);
+			
+			hundNavn.addEventListener(MouseEvent.CLICK, visHund);
+			hundNode.addEventListener(FlexEvent.UPDATE_COMPLETE, oppdaterStrek);
 			
 			vBox.name = "foreldreBoks";
 			
@@ -119,8 +139,8 @@ package no.airdog.controller
 		
 		private function tegnStrek(hBox:HBox):void
 		{
-			var button:MultilineButton = hBox.getChildByName("hundKnapp") as MultilineButton;
-			var buttonRect:Rectangle = button.getRect(this);
+			var node:VBox = hBox.getChildByName("hundKnapp") as VBox;
+			var nodeRect:Rectangle = node.getRect(this);
 			
 			var vBox:VBox = hBox.getChildByName("foreldreBoks") as VBox;
 			
@@ -136,8 +156,8 @@ package no.airdog.controller
 					
 					var nyBoxRect:Rectangle = nyBox.getRect(this);
 					
-					graphics.moveTo(buttonRect.right, buttonRect.y + (buttonRect.height / 2));
-					graphics.lineStyle(3,0xD3D4AA);
+					graphics.moveTo(nodeRect.right, nodeRect.y + (nodeRect.height / 2));
+					graphics.lineStyle(2,0xD3D4AA);
 					graphics.lineTo(nyBoxRect.x, nyBoxRect.y + (nyBoxRect.height / 2));
 				}
 			}

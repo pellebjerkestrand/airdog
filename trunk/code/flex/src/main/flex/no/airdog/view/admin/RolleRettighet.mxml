@@ -23,7 +23,7 @@
 			
 			private function init():void
 			{
-				Components.instance.controller.hentAlleRoller();
+				//Components.instance.controller.hentAlleRoller();
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
 			}
@@ -36,14 +36,12 @@
                 droppesHvor = id;
             }
             
-            private function sjekk(event:DragEvent):void 
+            private function sjekkRolle(event:DragEvent):void 
             { 
             	var dropp:Object = Object(event.currentTarget);
             	var data:ArrayCollection = dropp.dataProvider as ArrayCollection;
 				var ting:Array = event.dragSource.dataForFormat("items") as Array;
 				var ikkeLik:Boolean = true;
-            	
-            	Alert.show(dropp.id + " " + droppesHvor);
             	
                 if(droppesHvor == dropp.id)
                 {
@@ -58,8 +56,17 @@
                     	DragManager.acceptDragDrop(dropp as UIComponent);
 					}
                 }
-                
-        
+            }
+            
+            private function sjekkSlett(event:DragEvent):void 
+            { 
+            	var dropp:Object = Object(event.currentTarget);
+            	
+                if(droppesHvor == dropp.id)
+                {
+					DragManager.showFeedback(DragManager.MOVE);
+                	DragManager.acceptDragDrop(dropp as UIComponent);
+                }
             }
 
             private function leggtilRettighetPaRolle(event:DragEvent):void 
@@ -95,7 +102,7 @@
 					height="{roller.currentItem.rettigheter.length * 22 + 25}"			
 					paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%"
 					dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
-		            dragEnter="sjekk(event);"                      
+		            dragEnter="sjekkRolle(event);"                      
 		            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}"
 		            dragEnabled="true"
 		            mouseDown="settDroppesHvor(event, 'slettIkon');">
@@ -107,7 +114,7 @@
 				<mx:ControlBar horizontalAlign="right">
 	            	<mx:Image id="slettIkon" name="{roller.currentItem.navn}"
 	                    source="@Embed('../assets/ikoner/user__minus.png')"
-	                    dragEnter="sjekk(event);"
+	                    dragEnter="sjekkSlett(event);"
 	                    dragDrop="slettRettighetPaRolle(event);" />
 	        	</mx:ControlBar>
 	        	
