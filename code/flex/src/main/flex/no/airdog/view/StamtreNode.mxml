@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="165" height="65" borderStyle="solid" borderThickness="1" cornerRadius="6" borderColor="#D3D4AA" color="#000000" backgroundColor="#FFFFFF">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="170" height="50" borderStyle="solid" borderThickness="1" cornerRadius="6" borderColor="#D3D4AA" color="#000000" backgroundColor="#FFFFFF" verticalGap="0">
 	<mx:HBox width="100%">
-		<mx:Label text="HundId" width="100%" id="hundId"/>
-		<mx:Label text="Tittel" id="tittel"/>
+		<mx:Label text="HundId" width="100%" id="hundId" fontSize="9"/>
+		<mx:Label text="Tittel" id="tittel" fontSize="9"/>
 	</mx:HBox>
 	<mx:HRule width="100%"/>
 	<mx:LinkButton label="Navn" fontSize="12" width="100%" id="navn" icon="@Embed(source='assets/ikoner/dog.png')" textAlign="left"/>
