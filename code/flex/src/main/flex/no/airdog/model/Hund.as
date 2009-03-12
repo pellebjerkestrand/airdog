@@ -33,7 +33,7 @@ package no.airdog.model
 		public var mor:Hund;
 		public var far:Hund;
 		public var farge:String;
-    	public var fargeVariant:String;
+    	public var fargevariant:String;
     	public var oyesykdom:String;
     	public var hoftesykdom:String;
     	public var haarlag:String;
