@@ -3,7 +3,7 @@
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
 	xmlns:adminView="no.airdog.view.admin.*"
-    creationComplete="showInitialView(event)" styleName="MainView"
+    creationComplete="init(event)" styleName="MainView"
     width="100%" height="100%" minWidth="800" minHeight="500">
 	<mx:Script>
         <![CDATA[
@@ -28,9 +28,9 @@
 				Navigasjon.visHjem();
 			}
             
-            private function showInitialView(e:Event):void
+            private function init(e:Event):void
             {
-            	innloggingSprettOppVindu();
+            	Components.instance.controller.visLoggInnVindu(this);
             	Components.instance.historie.settPunkt();
             }
             
