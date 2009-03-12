@@ -51,7 +51,7 @@
 							<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
 						<mx:GridItem styleName="profilGridData">
-							<mx:Text text="{Components.instance.session.hundprofil.idNr}" styleName="profilGridData"/>
+							<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>
 						</mx:GridItem>
 						<mx:GridItem styleName="profilGridBeskrivelse">
 							<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
