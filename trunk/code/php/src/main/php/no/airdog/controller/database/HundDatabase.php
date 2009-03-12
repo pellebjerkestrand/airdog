@@ -81,6 +81,7 @@ class HundDatabase
 //			$this->database->delete('nkk_hund', $hvor);
 //	}
 //	
+
 	
 	public function sokHund($soketekst, $klubbId)
 	{		
@@ -165,7 +166,9 @@ class HundDatabase
 		->where('h.raseId=?', $klubbId)
 		->limit(1);
 		
-		return $this->database->fetchRow($select);
+		$ret = $this->database->fetchRow($select);
+		$this->database->closeConnection(); 
+		return $ret;
 	}
 	
 //	public function hentHunder($klubbId)
