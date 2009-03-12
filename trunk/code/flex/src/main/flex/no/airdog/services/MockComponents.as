@@ -8,7 +8,7 @@ package no.airdog.services
 		public function MockComponents()
 		{
 			var component:Components = new Components();
-			component.session = new Session();
+			component.session = new Session();			
 			component.controller = new MockController();
 			component.services = new Services();
 			component.historie = new Historie();
