@@ -4,7 +4,6 @@ package no.airdog.controller
 	
 	import mx.binding.utils.*;
 	import mx.collections.ArrayCollection;
-	import mx.controls.Alert;
 	import mx.events.BrowserChangeEvent;
 	import mx.managers.BrowserManager;
 	import mx.managers.IBrowserManager;
@@ -31,8 +30,7 @@ package no.airdog.controller
 		public function settPunkt():void 
         {
         	var i:int = leggTilSession(Components.instance.session);
-			browserManager.setFragment("state=" + i);
-            browserManager.setTitle("AirDog");
+			browserManager.setFragment("s=" + i);
         }
         
         public function nullstill():void
@@ -42,7 +40,7 @@ package no.airdog.controller
 		
 		private function hentPunkt(e:Event):void 
 		{            
-        	var index:String = browserManager.fragment.substr(6);      
+        	var index:String = browserManager.fragment.substr(2);      
         	  
         	if (index != "" && parseInt(index))
         	{
@@ -52,13 +50,8 @@ package no.airdog.controller
 				{
 					// Ting som ikke lar seg serialisere
 					session.hundesokListe.renderer = Components.instance.session.hundesokListe.renderer;
-					
 					Components.instance.session = session;
 				}		
-				else
-				{
-        			Alert.show("Dette historiepunktet finnes ikke lenger.", "Historie");  
-	        	}
         	}
         }  
 		
