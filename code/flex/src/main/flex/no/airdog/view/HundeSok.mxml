@@ -32,12 +32,6 @@
 			}			            
         ]]>
     </mx:Script>
-    <!--
-	<mx:HBox>
-			<mx:LinkButton label="Liste med bilde" color="0x3380DD" textDecoration="underline" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
-			<mx:LinkButton label="Liste uten bilde" color="0x3380DD" textDecoration="underline" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
-	</mx:HBox>
-	-->
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}" 
 		itemClick="visHund(event)"

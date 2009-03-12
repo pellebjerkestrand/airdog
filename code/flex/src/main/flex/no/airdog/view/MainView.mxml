@@ -89,7 +89,6 @@
         ]]>
     </mx:Script>
 	
-		
 <mx:VBox styleName="MainViewContainer" width="100%" height="100%">    	
 	<mx:VBox id="topbar" styleName="TopBar" width="100%">
 		<mx:HBox verticalAlign="middle" width="100%">
