@@ -60,13 +60,9 @@
             
             private function sjekkSlett(event:DragEvent):void 
             { 
-            	var dropp:Object = Object(event.currentTarget);
-            	
-                if(droppesHvor == dropp.id)
-                {
-					DragManager.showFeedback(DragManager.MOVE);
-                	DragManager.acceptDragDrop(dropp as UIComponent);
-                }
+            	DragManager.showFeedback(DragManager.MOVE);
+            	DragManager.acceptDragDrop(slettIkon as UIComponent);
+            	DragManager.acceptDragDrop(alleRettigheter as UIComponent);
             }
 
             private function leggtilRettighetPaRolle(event:DragEvent):void 
@@ -75,7 +71,6 @@
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
 				
 				Components.instance.controller.leggtilRettighetPaRolle(rolleRettighet.name, rettighet[0].navn);
-              	
             }
             
             private function slettRettighetPaRolle(event:DragEvent):void 
@@ -84,10 +79,7 @@
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
 
 				Components.instance.controller.slettRettighetPaRolle(event.dragInitiator.name, rettighet[0].ad_rettighet_navn);
-            	
             }
-            
- 
 		]]>
 	</mx:Script>
     
@@ -116,7 +108,9 @@
 			<mx:Text text="Alle rettigheter" fontWeight="bold" /> 
 			<mx:DataGrid id="alleRettigheter" dataProvider="{Components.instance.session.alleRettigheter}" width="100%"
 				dragEnabled="true"
-				mouseDown="settDroppesHvor(event, 'rolleRettighet');">
+				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
+				dragEnter="sjekkSlett(event);"
+                    dragDrop="slettRettighetPaRolle(event);">
 				<mx:columns>
 					<mx:DataGridColumn headerText="Alle rettigheter" dataField="navn"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
