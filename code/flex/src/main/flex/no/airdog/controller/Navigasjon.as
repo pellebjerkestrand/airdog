@@ -52,5 +52,10 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = 5;
 		}
+		
+		public static function visHjem():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 6;
+		}
 	}
 }
