@@ -9,8 +9,8 @@ package no.airdog.model
 	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 	
 	public class Session
-	{      
-        [Bindable]
+	{     
+		[Bindable]
         public var datOpplastning:Opplastning = new Opplastning();
              
      	[Bindable]

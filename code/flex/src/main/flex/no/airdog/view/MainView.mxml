@@ -26,6 +26,7 @@
             private function showInitialView(e:Event):void
             {
             	innloggingSprettOppVindu();
+            	Components.instance.historie.settPunkt();
             }
             
             private function visLastOpp():void

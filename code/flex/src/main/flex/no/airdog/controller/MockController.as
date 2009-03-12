@@ -82,8 +82,6 @@ package no.airdog.controller
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
-			
-			Components.instance.historie.settPunkt();
         }
 		
 		public function loggInn(brukernavn:String, passord:String):void
@@ -184,6 +182,7 @@ package no.airdog.controller
 		public function visHund(hundId:String):void
 		{
 			//Components.instance.session.hundprofil = null;
+			
 			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
 		}
 		
@@ -265,6 +264,7 @@ package no.airdog.controller
 		
 		public function sokArsgjennomsnitt(hund:String, ar:String):void
 		{
+			
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection();
 			Components.instance.services.airdogService.sokArsgjennomsnitt(hund, ar, sokArsgjennomsnittResultat);
 		}
