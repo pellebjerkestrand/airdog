@@ -9,6 +9,26 @@ class JaktproveController
 {
 	private $database;
 	
+	private $klassenavn = array(
+    	'1' => 'UK',
+		'2' => 'AK',
+		'3' => 'UK/AK',
+		'4' => 'VK',
+		'5' => 'VK SEMIFINALE',
+		'6' => 'VK FINALE',
+		'7' => 'UK KVALIK',
+		'8' => 'UKK FINALE',
+		'9' => 'DERBY KVALIK',
+		'10' => 'DERBY SEMIFINALE',
+		'11' => 'DERBY FINALE');
+    	
+    private $sertifikater = array(
+    	'1' => 'CK',
+		'2' => 'CERT',
+		'3' => 'CACIT',
+		'4' => 'R CACIT',
+		'5' => 'ÆP SKOG');
+	
 	public function __construct()
 	{
 		$tilkobling = new Tilkobling();
@@ -104,7 +124,7 @@ class JaktproveController
 		    	$tmp->appGodkjent = $rad['appGodkjent']; 	
 		    	$tmp->rappInnkalt = $rad['rappInnkalt'];
 		    	$tmp->rappSpont = $rad['rappSpont']; 	
-		    	$tmp->premiegrad = $rad['premiegrad'];
+		    	$tmp->premiegrad = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
 		    	$tmp->certifikat = $rad['certifikat']; 	
 		    	$tmp->regAv = $rad['regAv'];
 		    	$tmp->regDato = $rad['regDato']; 	
@@ -120,6 +140,16 @@ class JaktproveController
 		
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+    }
+    
+    private function _hentPremiegrad($premieGrad, $klasse, $sertifikat, $proveDato)
+    {
+    	$sert = "";
+    	
+    	if ($sertifikat != "")
+    		$sert = " " . $this->sertifikater[$sertifikat];
+
+    	return $premieGrad . "." . $this->klassenavn[$klasse] . $sert;
     }
     
     public function redigerJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)

@@ -35,7 +35,8 @@ class JaktproveDatabase
 		$select = $this->database->select()
 		->from('nkk_fugl') 
 		->where('hundId=?',$hundId)
-		->where('raseId=?', $klubbId); 
+		->where('raseId=?', $klubbId)
+		->order('proveDato DESC'); 
 	
 		return $this->database->fetchAll($select); 
 	}

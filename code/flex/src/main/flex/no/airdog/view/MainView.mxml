@@ -30,8 +30,7 @@
             
             private function init(e:Event):void
             {
-            	Components.instance.controller.visLoggInnVindu(this);
-            	Components.instance.historie.settPunkt();
+            	Components.instance.controller.visLoggInnVindu(this);       	
             }
             
             private function visLastOpp():void
