@@ -87,9 +87,13 @@ package no.airdog.controller
 			{
 				button.label = hund.hundId + "\r" + hund.tittel + "\r" + hund.navn;
 			}
-			else
+			else if (hund.hundId != "")
 			{
 				button.label = hund.hundId + "\r" + hund.navn;
+			}
+			else
+			{
+				button.label = hund.navn;
 			}
 			
 			button.setStyle("fontSize", "12");

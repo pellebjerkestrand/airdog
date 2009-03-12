@@ -167,12 +167,19 @@ package no.airdog.controller
 		public function hentJaktprover(hundId:String):void
 		{
 			Components.instance.session.jaktproveListe = null;
+			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.services.airdogService.hentJaktprover(hundId, hentJaktproverResultat);
+			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
 		}
 		
 		public function hentJaktproverResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+		}
+		
+		public function hentJaktproveSammendragResultat(event:Object):void
+		{
+			Components.instance.session.jaktproveSammendrag = new ArrayCollection(event as Array);
 		}
 		
 		public function visHund(hundId:String):void
@@ -231,6 +238,18 @@ package no.airdog.controller
 		public function hentStamtreResultat(event:Object):void
 		{
 			Components.instance.session.stamtre = event as Hund;
+		}
+		
+		public function hentFiktivtStamtre(hundIdFar:String, hundIdMor:String, dybde:int):void
+		{
+			Components.instance.session.fiktivtStamtre = null;
+			Components.instance.services.airdogService.hentFiktivtStamtre(hundIdFar, hundIdMor, dybde, hentFiktivtStamtreResultat);
+		}
+		
+		public function hentFiktivtStamtreResultat(event:Object):void
+		{
+			Components.instance.session.fiktivtStamtre = event as Hund;
+			Components.instance.historie.settPunkt();
 		}
 		
 		public function redigerHund(hund:Hund):void

@@ -32,5 +32,6 @@ package no.airdog.controller
 		function hentAlleRoller():void
 		function hentAlleRettigheter():void
 		function hentRollersRettigheter():void
+		function hentFiktivtStamtre(hundIdFar:String, hundIdMor:String, dybde:int):void
 	}
 }

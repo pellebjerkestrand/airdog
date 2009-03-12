@@ -41,6 +41,16 @@ package no.airdog.services
 			resultat, feil);
         }
         
+     public function hentJaktproveSammendrag(hundId:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentJaktproveSammendrag(
+        		hundId,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
+        }
+        
         public function hentHund(hundId:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentHund(
@@ -95,6 +105,19 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
+        
+        public function hentFiktivtStamtre(hundIdFar:String, hundIdMor:String, dybde:int, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentFiktivtStamtre(
+        		hundIdFar,
+        		hundIdMor,
+        		dybde,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
         public function redigerHund(hund:Hund, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.redigerHund(

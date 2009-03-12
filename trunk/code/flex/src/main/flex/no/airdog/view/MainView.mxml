@@ -65,6 +65,11 @@
             	Navigasjon.visArsgjennomsnitt();
             }
             
+            public function visFiktivStamtre():void
+            {
+            	Navigasjon.visFiktivStamtre();
+            }
+            
             private function innloggingSprettOppVindu():void
             {
             	Components.instance.controller.loggUt();
@@ -119,7 +124,8 @@
 	   		</mx:HBox>
 	  		<mx:HBox id="stattab" label="Statistikk">
 	  			<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
-	  		</mx:HBox>
+				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()"/>	  		
+			</mx:HBox>
 	  		<mx:HBox id="utviklingtab" label="Utvikling">
 	  			<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='assets/ikoner/key.png')"/>
 	  		</mx:HBox>
@@ -132,6 +138,7 @@
 	    <adminView:RolleRettighet/>
 	    <adminView:Dev_ACL/>
 	    <view:Arsgjennomsnitt/>
+	    <view:FiktivStamtre/>
 	    <view:Hjem/>
     </mx:ViewStack>
 </mx:VBox>
