@@ -347,7 +347,11 @@ package no.airdog.controller
 		public function hentRollersRettigheterResultat(event:Object):void
 		{
 			Components.instance.session.rollersRettigheter = new ArrayCollection(event as Array);
-			Alert.show(Components.instance.session.rollersRettigheter.getItemAt(0).length,"",0);
+		}
+		
+		public function leggtilRettighetPaRolle(rolle:String, rettighet:String):void
+		{
+			Components.instance.services.airdogService.leggtilRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
 		}
 	}
 }

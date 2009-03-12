@@ -32,6 +32,7 @@ package no.airdog.controller
 		function hentAlleRoller():void
 		function hentAlleRettigheter():void
 		function hentRollersRettigheter():void
+		function leggtilRettighetPaRolle(rolle:String, rettighet:String):void
 		function hentFiktivtStamtre(hundIdFar:String, hundIdMor:String, dybde:int):void
 	}
 }
