@@ -240,7 +240,7 @@
     	property="text" 
     />
 	
-	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" fontSize="11">
 		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
 			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
 				<mx:FormHeading label="Kritikk"/>
@@ -248,6 +248,26 @@
 						<mx:TextArea id="kritikk" width="100%" height="100%"/>
 				</mx:FormItem>						
 			</mx:Form>
+			<mx:HBox>
+				<mx:Form verticalGap="0">
+					<mx:FormItem label="Klasse">
+						<mx:TextInput id="klasse" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>					
+					<mx:FormItem label="Partinummer">
+						<mx:TextInput id="partiNr" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>
+				</mx:Form>	
+				<mx:Form>
+					<!--<mx:FormHeading label="Hundinfo"/>-->
+					<mx:FormItem label="Hund-ID">
+						<mx:TextInput id="hundId" change="validering(event);" width="100" height="20"/>
+					</mx:FormItem>				
+					<mx:FormItem label="Navn">
+						<mx:TextInput id="hundNavn" enabled="false" change="validering(event);"	text="Placeholder" width="100" height="20"/>
+					</mx:FormItem>
+				</mx:Form>
+			</mx:HBox>
+			
 		</mx:VBox>
 		
 		<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
@@ -255,69 +275,54 @@
 				<mx:Form verticalGap="0">
 					<mx:FormHeading label="Summering" />
 					<mx:FormItem label="Slipptid">
-						<mx:TextInput id="slippTid" change="validering(event);" width="35"/>
+						<mx:TextInput id="slippTid" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Egne stand">
-						<mx:TextInput id="egneStand" change="validering(event);" width="35"/>
+						<mx:TextInput id="egneStand" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Egne støkk">
-						<mx:TextInput id="egneStokk" change="validering(event);" width="35"/>
+						<mx:TextInput id="egneStokk" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Tomstand">
-						<mx:TextInput id="tomStand" change="validering(event);" width="35"/>
+						<mx:TextInput id="tomStand" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Makkers stand">
-						<mx:TextInput id="makkerStand" change="validering(event);" width="35"/>
+						<mx:TextInput id="makkerStand" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Makkers støkk">
-						<mx:TextInput id="makkerStokk" change="validering(event);" width="35"/>
+						<mx:TextInput id="makkerStokk" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
-					
+				</mx:Form>
+				<mx:Form verticalGap="0">					
 					<mx:FormHeading label="Diverse"/>
 					<mx:FormItem label="Prøvenummer">
-						<mx:TextInput id="proveNr" change="validering(event);" width="84"/>
-					</mx:FormItem>
+						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>					
 					<mx:FormItem label="Prøvedato">
-						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100"/> 
+						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100" height="20"/> 
 					</mx:FormItem>
 					<mx:FormItem label="Dommer 1">
-						<mx:TextInput id="dommerId1" change="validering(event);" width="84"/>
+						<mx:TextInput id="dommerId1" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dommer 2">			
-						<mx:TextInput id="dommerId2" change="validering(event);" width="84"/>
+						<mx:TextInput id="dommerId2" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 				
-					<!--<mx:FormHeading label="Parti"/>-->
-					<mx:FormItem label="Partinummer">
-						<mx:TextInput id="partiNr" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					<mx:FormItem label="Klasse">
-						<mx:TextInput id="klasse" change="validering(event);" width="84"/>
-					</mx:FormItem>
-					
 					<!--<mx:FormHeading label="Registrering"/>-->
 					<mx:FormItem label="Registert av">
-						<mx:TextInput id="regAv" enabled="false" change="validering(event);" width="84"/>
+						<mx:TextInput id="regAv" enabled="false" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dato registrert">
-						<mx:TextInput id="regDato" enabled="false" change="validering(event);" width="84"/>
+						<mx:TextInput id="regDato" enabled="false" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 					
 					<!--<mx:FormHeading label="Endring"/>-->			
 					<mx:FormItem label="Endret av" >
-						<mx:TextInput id="manueltEndretAv" enabled="false" change="validering(event);" width="84"/>
+						<mx:TextInput id="manueltEndretAv" enabled="false" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dato endret" >
-						<mx:TextInput id="manueltEndretDato" enabled="false" change="validering(event);" width="84"/>
-					</mx:FormItem>
-
-					<!--<mx:FormHeading label="Hundinfo"/>-->
-					<mx:FormItem label="Hund-ID">
-						<mx:TextInput id="hundId" change="validering(event);" width="100"/>
-					</mx:FormItem>
-					<mx:FormItem label="Navn">
-						<mx:TextInput id="hundNavn" enabled="false" change="validering(event);"	text="Placeholder" width="100"/>
-					</mx:FormItem>
+						<mx:TextInput id="manueltEndretDato" enabled="false" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>					
 				</mx:Form>
 			</mx:VBox>
 			
@@ -325,78 +330,78 @@
 				<mx:Form verticalGap="0">
 					<mx:FormHeading label="Karakterer"/>
 					<mx:FormItem label="Jaktlyst">
-						<mx:TextInput id="jaktlyst" change="validering(event);" width="35"/>
+						<mx:TextInput id="jaktlyst" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Fart" >
-						<mx:TextInput id="fart" change="validering(event);" width="35"/>
+						<mx:TextInput id="fart" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Stil">
-						<mx:TextInput id="stil" change="validering(event);" width="35"/>
+						<mx:TextInput id="stil" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Selvstendighet" >
-						<mx:TextInput id="selvstendighet" change="validering(event);" width="35"/>
+						<mx:TextInput id="selvstendighet" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Søkebredde" >
-						<mx:TextInput id="bredde" change="validering(event);" width="35"/>
+						<mx:TextInput id="bredde" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Reviering" >
-						<mx:TextInput id="reviering" change="validering(event);" width="35"/>
+						<mx:TextInput id="reviering" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Samarbeid" >
-						<mx:TextInput id="samarbeid" change="validering(event);" width="35"/>
+						<mx:TextInput id="samarbeid" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 
 					<!--<mx:FormHeading label="Presisjon"/>-->
 					<mx:FormItem label="Upresis" >
-						<mx:TextInput id="presUpresis" change="validering(event);" width="35"/>
+						<mx:TextInput id="presUpresis" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Noe upresis" >
-						<mx:TextInput id="presNoeUpresis" change="validering(event);" width="35"/>
+						<mx:TextInput id="presNoeUpresis" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Presis" >
-						<mx:TextInput id="presPresis" change="validering(event);" width="35"/>
+						<mx:TextInput id="presPresis" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>					
 				
 					<!--<mx:FormHeading label="Reising"/>-->
 					<mx:FormItem label="Nekter">
-						<mx:TextInput id="reisNekter" change="validering(event);" width="35"/>
+						<mx:TextInput id="reisNekter" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Nølende">
-						<mx:TextInput id="reisNoelende" change="validering(event);" width="35"/>
+						<mx:TextInput id="reisNoelende" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Villig" >
-						<mx:TextInput id="reisVillig" change="validering(event);" width="35"/>
+						<mx:TextInput id="reisVillig" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Djerv">
-						<mx:TextInput id="reisDjerv" change="validering(event);" width="35"/>
+						<mx:TextInput id="reisDjerv" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					
 					<!--<mx:FormHeading label="Sekundering"/>-->
 					<mx:FormItem label="Stjeler" >
-						<mx:TextInput id="sokStjeler" change="validering(event);" width="35"/>
+						<mx:TextInput id="sokStjeler" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Spontan" >
-						<mx:TextInput id="sokSpontant" change="validering(event);" width="35"/>
+						<mx:TextInput id="sokSpontant" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					
 					<!--<mx:FormHeading label="Apport"/>-->
 					<mx:FormItem label="Ikke godkjent">
-						<mx:TextInput id="appIkkeGodkjent" change="validering(event);" width="35"/>
+						<mx:TextInput id="appIkkeGodkjent" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Godkjent" >
-						<mx:TextInput id="appGodkjent" change="validering(event);" width="35"/>
+						<mx:TextInput id="appGodkjent" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					
 					<!--<mx:FormHeading label="Rapport"/>-->
 					<mx:FormItem label="Innkalt" >
-						<mx:TextInput id="rappInnkalt" change="validering(event);" width="35"/>
+						<mx:TextInput id="rappInnkalt" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Spontan">
-						<mx:TextInput id="rappSpont" change="validering(event);" width="35"/>
+						<mx:TextInput id="rappSpont" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 					
 					<mx:FormItem label="Premie">
-						<mx:TextInput id="premiegrad" change="validering(event);" width="35"/>
+						<mx:TextInput id="premiegrad" change="validering(event);" width="35" height="20"/>
 					</mx:FormItem>
 				</mx:Form>
 			</mx:VBox>
