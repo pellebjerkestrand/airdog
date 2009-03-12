@@ -45,16 +45,31 @@ class RolleRettighetController
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "hentAlleRettigheter"))
 		{
 			$db = new RolleRettighetDatabase();
-			
 			$roller = $db->hentAlleRoller();
 			$tmp = array();
+			$rr = array();
 
 	   		foreach($roller as $rolle)
-	   		{   				   			
-	   			$tmp["'".$rolle['navn']."'"] = $db->hentRolleSineRettigheter($rolle['navn']);
+	   		{   
+	   			$rolle['rettigheter'] = $db->hentRollersRettigheter($rolle['navn']);
+	   			$tmp[] = $rolle;
 	   		}
 			
 			return $tmp;
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
+	public function leggtilRettighetPaRolle($rolle, $rettighet, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "hentAlleRettigheter"))
+		{
+			$db = new RolleRettighetDatabase();
+			$db->leggtilRettighetPaRolle($rolle, $rettighet);
+			
+			return $this->hentRollersRettigheter($brukerEpost, $brukerPassord, $klubbId);
 		}
 
 		$feilkode = 1;

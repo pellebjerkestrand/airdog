@@ -6,23 +6,91 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import mx.collections.ArrayCollection;
 			import no.airdog.controller.*;
-			import no.airdog.services.Components;
+			import no.airdog.services.Components;  
 			import mx.controls.Alert;
+			import mx.collections.ArrayCollection;
+            import mx.collections.ListCollectionView;
+            import mx.controls.List;
+            import mx.core.DragSource;
+            import mx.events.*;
+            import mx.managers.DragManager;
+            import mx.controls.Alert;
+            import mx.collections.IList;
+            import flash.events.MouseEvent;
 			
 			private function init():void
 			{
 				Components.instance.controller.hentAlleRoller();
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
-
 			}
 			
+
+            private var droppesHvor:String
+
+            private function settDroppesHvor(event:MouseEvent, id:String):void
+            {
+                droppesHvor = id;
+            }
+            
+            private function sjekk(event:DragEvent):void 
+            { 
+            	var droppDatagrid:DataGrid = DataGrid(event.currentTarget);
+                   
+                var dropp:Boolean = true;
+                
+                if(droppesHvor == droppDatagrid.id)
+                {
+                    DragManager.showFeedback(DragManager.MOVE);
+                    DragManager.acceptDragDrop(droppDatagrid);
+                } 
+          
+            }
+
+            private function leggtilRettighetPaRolle(event:DragEvent):void 
+            {        
+                var rolleRettighet:DataGrid = DataGrid(event.currentTarget);  
+                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
+				
+				Components.instance.controller.leggtilRettighetPaRolle(rolleRettighet.name, rettighet[0].navn);
+              	
+            }
+            
+ 
 		]]>
 	</mx:Script>
     
-	<mx:Tree id="tre" dataProvider="{Components.instance.session.rollersRettigheter}" labelField="navn" />
-	<mx:DataGrid dataProvider="{Components.instance.session.alleRettigheter}" />
-	<mx:DataGrid dataProvider="{Components.instance.session.alleRoller}" />
+    <mx:HBox width="100%">
+    	<mx:VBox width="100%">
+    	<mx:Label text="Rolles rettigheter" fontWeight="bold" />   
+    
+			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}" >
+				<mx:Text text="{roller.currentItem.navn}" />
+				<mx:DataGrid id="rolleRettighet"
+					height="{roller.currentItem.rettigheter.length * 22 + 25}"			
+					paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="50%"
+					dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
+		            dragEnter="sjekk(event);"                      
+		            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}">
+					<mx:columns>
+						<mx:DataGridColumn headerText="Rettighet" dataField="ad_rettighet_navn"/>
+					</mx:columns>
+				</mx:DataGrid>
+			</mx:Repeater>
+		</mx:VBox>
+		<mx:VBox width="100%">
+			<mx:Text text="Alle rettigheter" fontWeight="bold" /> 
+			<mx:DataGrid dataProvider="{Components.instance.session.alleRettigheter}" width="50%"
+				dragEnabled="true"
+				mouseDown="settDroppesHvor(event, 'rolleRettighet');">
+				<mx:columns>
+					<mx:DataGridColumn headerText="Alle rettigheter" dataField="navn"/>
+					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
+				</mx:columns>
+			</mx:DataGrid>
+						
+		</mx:VBox>
+	</mx:HBox>
+	<!--<mx:Tree dataProvider="{Components.instance.session.rollersRettigheter}" labelField="ad_rettighet_navn"/>-->
 </mx:VBox>

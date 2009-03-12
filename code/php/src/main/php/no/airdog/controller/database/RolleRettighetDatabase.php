@@ -26,7 +26,7 @@ class RolleRettighetDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function hentRolleSineRettigheter($rolle)
+	public function hentRollersRettigheter($rolle)
 	{
 		$hent = $this->database->select()
 		->from('ad_rolle_rettighet_link', array('ad_rettighet_navn'))
@@ -35,12 +35,14 @@ class RolleRettighetDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function hentRollersRettigheter()
+	public function leggtilRettighetPaRolle($rolle, $rettighet)
 	{
-		$hent = $this->database->select()
-		->from(array('r' => 'ad_rolle_rettighet_link'), array('r.*'));
+		$data = array(
+		    'ad_rolle_navn'	=> $rolle,
+		    'ad_rettighet_navn' => $rettighet
+		);
 		
-		return $this->database->fetchAll($hent);
+		return $this->database->insert('ad_rolle_rettighet_link', $data);
 	}
 	
 }
