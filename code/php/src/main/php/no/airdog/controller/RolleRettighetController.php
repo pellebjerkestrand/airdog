@@ -75,4 +75,18 @@ class RolleRettighetController
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
+	
+	public function slettRettighetPaRolle($rolle, $rettighet, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "hentAlleRettigheter"))
+		{
+			$db = new RolleRettighetDatabase();
+			$db->slettRettighetPaRolle($rolle, $rettighet);
+			
+			return $this->hentRollersRettigheter($brukerEpost, $brukerPassord, $klubbId);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
 }

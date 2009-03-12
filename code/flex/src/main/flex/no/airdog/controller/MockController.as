@@ -353,5 +353,10 @@ package no.airdog.controller
 		{
 			Components.instance.services.airdogService.leggtilRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
 		}
+		
+		public function slettRettighetPaRolle(rolle:String, rettighet:String):void
+		{
+			Components.instance.services.airdogService.slettRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
+		}
 	}
 }

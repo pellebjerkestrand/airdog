@@ -6,6 +6,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.core.UIComponent;
 			import no.airdog.controller.*;
 			import no.airdog.services.Components;  
 			import mx.controls.Alert;
@@ -18,6 +19,7 @@
             import mx.controls.Alert;
             import mx.collections.IList;
             import flash.events.MouseEvent;
+            import mx.core.IUIComponent;
 			
 			private function init():void
 			{
@@ -36,16 +38,28 @@
             
             private function sjekk(event:DragEvent):void 
             { 
-            	var droppDatagrid:DataGrid = DataGrid(event.currentTarget);
-                   
-                var dropp:Boolean = true;
-                
-                if(droppesHvor == droppDatagrid.id)
+            	var dropp:Object = Object(event.currentTarget);
+            	var data:ArrayCollection = dropp.dataProvider as ArrayCollection;
+				var ting:Array = event.dragSource.dataForFormat("items") as Array;
+				var ikkeLik:Boolean = true;
+            	
+            	Alert.show(dropp.id + " " + droppesHvor);
+            	
+                if(droppesHvor == dropp.id)
                 {
-                    DragManager.showFeedback(DragManager.MOVE);
-                    DragManager.acceptDragDrop(droppDatagrid);
-                } 
-          
+                	for(var i:int = 0; i < data.length; i++)
+                	{ 
+						if(data[i].ad_rettighet_navn == ting[0].navn) ikkeLik = false;
+					}
+					
+					if(ikkeLik)
+					{
+						DragManager.showFeedback(DragManager.MOVE);
+                    	DragManager.acceptDragDrop(dropp as UIComponent);
+					}
+                }
+                
+        
             }
 
             private function leggtilRettighetPaRolle(event:DragEvent):void 
@@ -57,31 +71,51 @@
               	
             }
             
+            private function slettRettighetPaRolle(event:DragEvent):void 
+            {
+            	var rolleRettighet:UIComponent = UIComponent(event.currentTarget);
+                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
+				
+				//Alert.show(rolleRettighet.name + " " + rettighet[0].ad_rettighet_navn);
+				Components.instance.controller.slettRettighetPaRolle(rolleRettighet.name, rettighet[0].ad_rettighet_navn);
+            	
+            }
+            
  
 		]]>
 	</mx:Script>
     
-    <mx:HBox width="100%">
+    <mx:HBox width="100%" horizontalAlign="center">
     	<mx:VBox width="100%">
-    	<mx:Label text="Rolles rettigheter" fontWeight="bold" />   
+    	<mx:Label text="Rolles rettigheter" fontWeight="bold"/>   
     
 			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}" >
 				<mx:Text text="{roller.currentItem.navn}" />
 				<mx:DataGrid id="rolleRettighet"
 					height="{roller.currentItem.rettigheter.length * 22 + 25}"			
-					paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="50%"
+					paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%"
 					dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
 		            dragEnter="sjekk(event);"                      
-		            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}">
+		            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}"
+		            dragEnabled="true"
+		            mouseDown="settDroppesHvor(event, 'slettIkon');">
 					<mx:columns>
-						<mx:DataGridColumn headerText="Rettighet" dataField="ad_rettighet_navn"/>
+						<mx:DataGridColumn headerText="slettBar" dataField="ad_rettighet_navn"/>
 					</mx:columns>
 				</mx:DataGrid>
+				
+				<mx:ControlBar horizontalAlign="right">
+	            	<mx:Image id="slettIkon" name="{roller.currentItem.navn}"
+	                    source="@Embed('../assets/ikoner/user__minus.png')"
+	                    dragEnter="sjekk(event);"
+	                    dragDrop="slettRettighetPaRolle(event);" />
+	        	</mx:ControlBar>
+	        	
 			</mx:Repeater>
 		</mx:VBox>
 		<mx:VBox width="100%">
 			<mx:Text text="Alle rettigheter" fontWeight="bold" /> 
-			<mx:DataGrid dataProvider="{Components.instance.session.alleRettigheter}" width="50%"
+			<mx:DataGrid id="alleRettigheter" dataProvider="{Components.instance.session.alleRettigheter}" width="100%"
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');">
 				<mx:columns>

@@ -208,5 +208,16 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
+        
+        public function slettRettighetPaRolle(rolle:String, rettighet:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.slettRettighetPaRolle(
+        		rolle,
+        		rettighet,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
 	}
 }
