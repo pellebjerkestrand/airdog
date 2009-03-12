@@ -82,9 +82,8 @@
             {
             	var rolleRettighet:UIComponent = UIComponent(event.currentTarget);
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
-				
-				//Alert.show(rolleRettighet.name + " " + rettighet[0].ad_rettighet_navn);
-				Components.instance.controller.slettRettighetPaRolle(rolleRettighet.name, rettighet[0].ad_rettighet_navn);
+
+				Components.instance.controller.slettRettighetPaRolle(event.dragInitiator.name, rettighet[0].ad_rettighet_navn);
             	
             }
             
@@ -110,13 +109,6 @@
 						<mx:DataGridColumn headerText="slettBar" dataField="ad_rettighet_navn"/>
 					</mx:columns>
 				</mx:DataGrid>
-				
-				<mx:ControlBar horizontalAlign="right">
-	            	<mx:Image id="slettIkon" name="{roller.currentItem.navn}"
-	                    source="@Embed('../assets/ikoner/user__minus.png')"
-	                    dragEnter="sjekkSlett(event);"
-	                    dragDrop="slettRettighetPaRolle(event);" />
-	        	</mx:ControlBar>
 	        	
 			</mx:Repeater>
 		</mx:VBox>
@@ -131,6 +123,12 @@
 				</mx:columns>
 			</mx:DataGrid>
 						
+			<mx:ControlBar horizontalAlign="right">
+            	<mx:Image id="slettIkon"
+                    source="@Embed('../assets/ikoner/user__minus.png')"
+                    dragEnter="sjekkSlett(event);"
+                    dragDrop="slettRettighetPaRolle(event);" />
+        	</mx:ControlBar>
 		</mx:VBox>
 	</mx:HBox>
 	<!--<mx:Tree dataProvider="{Components.instance.session.rollersRettigheter}" labelField="ad_rettighet_navn"/>-->
