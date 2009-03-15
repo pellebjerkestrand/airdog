@@ -51,4 +51,14 @@ class RolleRettighetDatabase
 		return $this->database->delete('ad_rolle_rettighet_link', $hvor);
 	}
 	
+	public function leggInnNyRolle($rolle)
+	{
+		$data = array(
+		    'navn'	=> $rolle,
+		);
+		
+		return $this->database->insert('ad_rolle', $data);
+	}	
+	
+	
 }
