@@ -90,28 +90,37 @@
 				   
             	slettIkon.load(slett_full);
             }
+            
+           	private function leggInnNyRolle():void 
+            {
+				Components.instance.controller.leggInnNyRolle(nyRolleTekst.text);
+            }
 		]]>
 	</mx:Script>
     
     <mx:HBox width="100%" horizontalAlign="center">
     	<mx:VBox width="100%">
+    	<mx:Label text="Legg inn ny rolle" fontWeight="bold"/>
+    	<mx:TextInput id="nyRolleTekst" />
+    	<mx:Button id="nyRolle" label="Legg inn ny rolle" click="leggInnNyRolle()" />
+    	
+    	
     	<mx:Label text="Rolles rettigheter" fontWeight="bold"/>   
     
-			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}" >
-				<mx:Text text="{roller.currentItem.navn}" />
-				<mx:DataGrid id="rolleRettighet"
-					height="{roller.currentItem.rettigheter.length * 22 + 25}"			
-					paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%"
-					dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
-		            dragEnter="sjekkRolle(event);"                      
-		            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}"
-		            dragEnabled="true"
-		            mouseDown="settDroppesHvor(event, 'slettIkon');">
-					<mx:columns>
-						<mx:DataGridColumn headerText="slettBar" dataField="ad_rettighet_navn"/>
-					</mx:columns>
-				</mx:DataGrid>
-	        	
+			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
+					<mx:Text text="{roller.currentItem.navn}" />
+					<mx:DataGrid id="rolleRettighet"
+						height="{roller.currentItem.rettigheter.length * 22 + 25}"			
+						paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%"
+						dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
+			            dragEnter="sjekkRolle(event);"                      
+			            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}"
+			            dragEnabled="true"
+			            mouseDown="settDroppesHvor(event, 'slettIkon');">
+						<mx:columns>
+							<mx:DataGridColumn headerText="Rettighet" dataField="ad_rettighet_navn"/>
+						</mx:columns>
+					</mx:DataGrid>
 			</mx:Repeater>
 		</mx:VBox>
 		<mx:VBox width="100%">
