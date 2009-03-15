@@ -20,6 +20,14 @@
             import mx.collections.IList;
             import flash.events.MouseEvent;
             import mx.core.IUIComponent;
+            
+            [Bindable]
+            [Embed("../assets/ikoner/trash_empty.png")]
+			private var slett_tom:Class;
+			
+			[Bindable]
+			[Embed("../assets/ikoner/trash_full.png")]
+			private var slett_full:Class;
 			
 			private function init():void
 			{
@@ -79,6 +87,8 @@
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
 
 				Components.instance.controller.slettRettighetPaRolle(event.dragInitiator.name, rettighet[0].ad_rettighet_navn);
+				   
+            	slettIkon.load(slett_full);
             }
 		]]>
 	</mx:Script>
@@ -118,12 +128,12 @@
 			</mx:DataGrid>
 						
 			<mx:ControlBar horizontalAlign="right">
+			
             	<mx:Image id="slettIkon"
-                    source="@Embed('../assets/ikoner/user__minus.png')"
+                    source="{slett_tom}"
                     dragEnter="sjekkSlett(event);"
                     dragDrop="slettRettighetPaRolle(event);" />
         	</mx:ControlBar>
 		</mx:VBox>
 	</mx:HBox>
-	<!--<mx:Tree dataProvider="{Components.instance.session.rollersRettigheter}" labelField="ad_rettighet_navn"/>-->
 </mx:VBox>
