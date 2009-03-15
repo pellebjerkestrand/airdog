@@ -120,7 +120,7 @@
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"
-                    dragDrop="slettRettighetPaRolle(event);">
+              	dragDrop="slettRettighetPaRolle(event);">
 				<mx:columns>
 					<mx:DataGridColumn headerText="Alle rettigheter" dataField="navn"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
