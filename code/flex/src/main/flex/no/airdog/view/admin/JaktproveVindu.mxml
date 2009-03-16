@@ -8,6 +8,9 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.validators.NumberValidator;
+			import mx.validators.StringValidator;
+			import mx.validators.DateValidator;
 			import no.airdog.services.Components;
 			import no.airdog.model.Jaktprove;      
 			import no.airdog.controller.*;
@@ -20,42 +23,108 @@
             [Bindable]public var tilbakestillt:Boolean = true;
     
             private var hvilkeKontroll:DisplayObject;
+            
+            private var proveNrValidator:StringValidator = new StringValidator();
+            private var proveDatoValidator:DateValidator = new DateValidator();
+            
+            private var jaktlystValidator:NumberValidator = new NumberValidator();
+            private var fartValidator:NumberValidator = new NumberValidator();
+            private var stilValidator:NumberValidator = new NumberValidator();
+            private var selvstendighetValidator:NumberValidator = new NumberValidator();
+            private var breddeValidator:NumberValidator = new NumberValidator();
+            private var revieringValidator:NumberValidator = new NumberValidator();
+            private var samarbeidValidator:NumberValidator = new NumberValidator();
+            
+            private var slippTidValidator:NumberValidator = new NumberValidator();
+            private var egneStokkValidator:NumberValidator = new NumberValidator();
+            private var tomStandValidator:NumberValidator = new NumberValidator();
+            private var makkerStandValidator:NumberValidator = new NumberValidator();
+            private var makkerStokkValidator:NumberValidator = new NumberValidator();
+            
+            private var klasseValidator:NumberValidator = new NumberValidator();
+            private var partiNrValidator:StringValidator = new StringValidator();
+            private var hundIdValidator:StringValidator = new StringValidator();
+            
+            private var presUpresisValidator:NumberValidator = new NumberValidator();
+            private var presNoeUpresisValidator:NumberValidator = new NumberValidator();
+            private var presPresisValidator:NumberValidator = new NumberValidator();
+            
+            private var reisNekterValidator:NumberValidator = new NumberValidator();
+            private var reisNoelendeValidator:NumberValidator = new NumberValidator();
+            private var reisVilligValidator:NumberValidator = new NumberValidator();
+            private var reisDjervValidator:NumberValidator = new NumberValidator();
+            
+            private var sokStjelerValidator:NumberValidator = new NumberValidator();
+            private var sokSpontantValidator:NumberValidator = new NumberValidator();
+            
+            private var appIkkeGodkjentValidator:NumberValidator = new NumberValidator();
+            private var appGodkjentValidator:NumberValidator = new NumberValidator();
+            
+            private var rappInnkaltValidator:NumberValidator = new NumberValidator();
+            private var rappSpontValidator:NumberValidator = new NumberValidator();
+            
+            private var premiegradValidator:StringValidator = new StringValidator();
+			
+			private function init():void
+            {
+            	settFokus();
+             	settValidatorer();
+             	settToolTips();
+             	tilbakestillForm();
+         	}
+         	
+         	private function settFokus():void
+            {
+                focusManager.setFocus(kritikk);
+            }
 			
             private function validering(event:Event):void 
             {                    
-                hvilkeKontroll = event.target as DisplayObject;   
-           
-                godkjent = true;
-                    
-                if((Components.instance.session.jaktprove != null) && 
-                	(sammenliknObject(formVerdier(), Components.instance.session.jaktprove)))
+                hvilkeKontroll = event.target as DisplayObject;
+                var likTest:Boolean = sammenliknObjekt(formVerdier(), Components.instance.session.jaktprove);
+                
+                if((Components.instance.session.jaktprove != null) && !likTest)
              	{
             		var df:DateFormatter = new DateFormatter();
 					df.formatString = "YYYY-MM-DD";
 					
 					manueltEndretAv.text = Components.instance.session.bruker.epost
              		manueltEndretDato.text = df.format(new Date());
+             		
+             		tilbakestillt = false;
+             	}
+             	
+             	if(likTest)
+             	{
+             		tilbakestillt = true;
              	}
 
                 valider(proveNrValidator);                
                 valider(proveDatoValidator);
                 valider(partiNrValidator);
+                valider(jaktlystValidator);
+                valider(fartValidator);
+                valider(stilValidator);
+                valider(selvstendighetValidator);
+                valider(breddeValidator);
+                valider(revieringValidator);
+                valider(samarbeidValidator);
             }
             
-            private function sammenliknObject(obj1:Object,obj2:Object):Boolean
+            private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
 			{
 			    var buffer1:ByteArray = new ByteArray();
-			    buffer1.writeObject(obj1);
+			    buffer1.writeObject(objekt1);
 			    var buffer2:ByteArray = new ByteArray();
-			    buffer2.writeObject(obj2);
+			    buffer2.writeObject(objekt2);
 			 	
-			    var size:uint = buffer1.length;
+			    var storrelse:uint = buffer1.length;
 			    if (buffer1.length == buffer2.length)
 			    {
 			        buffer1.position = 0;
 			        buffer2.position = 0;
 			 
-			        while (buffer1.position < size)
+			        while (buffer1.position < storrelse)
 			        {
 			            var v1:int = buffer1.readByte();
 			            if (v1 != buffer2.readByte())
@@ -78,24 +147,314 @@
 	            godkjent = godkjent && erValidert;
 	             
 	            return erValidert;
-             }
-              
-             private function init():void
-             {
-             	settFokus();
-             	settValidatorError();
-             	tilbakestillForm();
              } 
              
-             private function settValidatorError():void
+             private function settToolTips():void
              {
+             	jaktlyst.toolTip = 
+             		"1. Meget lav intensitet\n" + 
+             		"2. Lav intensitet\n" + 
+             		"3. Middels intensitet\n" + 
+             		"4. God intensitet\n" + 
+             		"5. Meget god intensitet\n" + 
+             		"6. Særdeles god intensitet (best)";
+             		
+             	fart.toolTip =
+             		"1. Meget lav fart\n" + 
+             		"2. Lav fart\n" + 
+             		"3. Middels fart\n" + 
+             		"4. God fart\n" + 
+             		"5. Meget god fart\n" + 
+             		"6. Særdeles høy fart (best)";
+             		
+             	stil.toolTip =
+             		"1. Meget dårlig stil\n" + 
+             		"2. Dårlig stil\n" + 
+             		"3. Bra stil\n" + 
+             		"4. Fin stil\n" + 
+             		"5. Meget fin stil\n" + 
+             		"6. Særdeles fin stil (best)";
+             		
+             	selvstendighet.toolTip =
+             		"1. Helt avhengig av makker\n" + 
+             		"2. Meget avhengig av makker\n" + 
+             		"3. Noe avhengig av makker\n" + 
+             		"4. Tendenser til avhengighet\n" + 
+             		"5. Stort sett selvstendig\n" + 
+             		"6. Helt selvstendig (best)";
+             		
+             	bredde.toolTip = 
+             		"1. Altfor liten søkebredde\n" + 
+             		"2. Moderat søkebredde\n" + 
+             		"3. God søkebredde\n" + 
+             		"4. Meget god søkebredde (best)\n" + 
+             		"5. Litt for stor søkebredde\n" + 
+             		"6. Altfor stor søkebredde";
+             		
+             	reviering.toolTip = 
+             		"1. Planløst, uten framdrift\n" + 
+             		"2. Altfor tett reviering\n" + 
+             		"3. Noe for tett reviering\n" + 
+             		"4. Utmerket reviering (best)\n" + 
+             		"5. Noe åpen reviering\n" + 
+             		"6. Altfor åpen reviering";
+             		
+             	samarbeid.toolTip =
+             		"1. Totalt førerfiksert\n" + 
+             		"2. Noe bundet til fører\n" + 
+             		"3. Bra samarbeid\n" + 
+             		"4. Utmerket samarbeid (best)\n" + 
+             		"5. Noe egenrådig\n" + 
+             		"6. Samarbeider ikke";
+             		
+             	var presisjonTip:String =
+             		"PRESISJON\n" + 
+             		"Antalle fuglearbeider i hver presisjonskategori inklusive fuglearbeid på gjenliggere. " + 
+             		"Noteres for alle fuglearbeider.";
+             		
+             	presUpresis.toolTip = presisjonTip;
+             	presNoeUpresis.toolTip = presisjonTip;
+             	presPresis.toolTip = presisjonTip;
+             	
+             	var reisingTip:String =
+             		"REISING\n" + 
+             		"Antall fuglearbeider i hver reisingskategori inklusive fuglearbeid på gjenliggere.";
+             	
+             	reisNekter.toolTip = reisingTip;
+             	reisNoelende.toolTip = reisingTip;
+             	reisVillig.toolTip = reisingTip;
+             	reisDjerv.toolTip = reisingTip;
+             	
+             	var sekunderingTip:String =
+             		"SEKUNDERING\n" + 
+             		"Stjeler = Antall situasjoner der hunden ikke respekterer makkers stand.\n" + 
+             		"Spontan = Antall tilfeller der hunden sekunderer spontant uten kommando fra fører.";
+             		
+             	sokStjeler.toolTip = sekunderingTip;
+             	sokSpontant.toolTip = sekunderingTip;
+             		
+             	var apportTip:String =
+             		"APPORT\n" + 
+             		"Antall godkjente, henholdsvis ikke godkjente apporter.";
+             		
+             	appIkkeGodkjent.toolTip = apportTip;
+             	appGodkjent.toolTip = apportTip;
+             		
+             	var adferdTip:String =
+             		"ADFERD\n" + 
+             		"Bedømmes ved aggressivitet i forhold til mennesker eller hunder.";
+             		
+             	premiegrad.toolTip = 
+             		"CACIT\n" + 
+             		"ResCacit\n" + 
+             		"CK\n" + 
+             		"Finale\n" + 
+             		"Semifinale\n" + 
+             		"ÆP";
+             }
+             
+             private function settValidatorer():void
+             {
+             	var krevd:String = "Feltet er påkrevd";
+             	var negativ:String = "Skriv et positivt tall";
+             	
+             	proveNrValidator.source = proveNr;
+             	proveNrValidator.minLength = 2;
+             	proveNrValidator.property = "text";
              	proveNrValidator.tooShortError = "Du må skrive minst " + proveNrValidator.minLength + " tegn";
+             	
+				proveDatoValidator.source = proveDato;
+				proveDatoValidator.property ="text";
+				proveDatoValidator.inputFormat ="YYYY-MM-DD";
+				proveDatoValidator.allowedFormatChars = "-";
              	proveDatoValidator.formatError = "Feil datoformatering"
 			    proveDatoValidator.invalidCharError = "Det er kun lov å bruke bindestrek (-) som skilletegn"
 			    proveDatoValidator.wrongDayError = "Skriv inn riktig dag for måneden"
 			    proveDatoValidator.wrongLengthError="Feil formatering"
 			    proveDatoValidator.wrongMonthError="Skriv en måned mellom 1 og 12"
-			   	proveDatoValidator.wrongYearError="Skriv år mellom 0 og 9999." 
+			   	proveDatoValidator.wrongYearError="Skriv år mellom 0 og 9999."
+			   	
+			   	jaktlystValidator.source = jaktlyst;
+			   	jaktlystValidator.minValue = 1;
+			   	jaktlystValidator.maxValue = 6;
+			   	jaktlystValidator.property = "text";
+			   	jaktlystValidator.requiredFieldError = krevd;
+			   	jaktlystValidator.lowerThanMinError = "Verdien må være mellom " + jaktlystValidator.minValue + " og " + jaktlystValidator.maxValue;
+			   	jaktlystValidator.exceedsMaxError = jaktlystValidator.lowerThanMinError;
+			   	
+			   	fartValidator.source = fart;
+			   	fartValidator.minValue = 1;
+			   	fartValidator.maxValue = 6;
+			   	fartValidator.property = "text";
+    			fartValidator.requiredFieldError = krevd;
+    			fartValidator.lowerThanMinError = "Verdien må være mellom " + fartValidator.minValue + " og " + fartValidator.maxValue;
+			   	fartValidator.exceedsMaxError = fartValidator.lowerThanMinError;
+			   	
+			   	stilValidator.source = stil;
+			   	stilValidator.minValue = 1;
+			   	stilValidator.maxValue = 6;
+			   	stilValidator.property = "text";
+    			stilValidator.requiredFieldError = krevd;
+    			stilValidator.lowerThanMinError = "Verdien må være mellom " + stilValidator.minValue + " og " + stilValidator.maxValue;
+			   	stilValidator.exceedsMaxError = stilValidator.lowerThanMinError;
+			   	
+			   	selvstendighetValidator.source = selvstendighet;
+			   	selvstendighetValidator.minValue = 1;
+			   	selvstendighetValidator.maxValue = 6;
+			   	selvstendighetValidator.property = "text";
+    			selvstendighetValidator.requiredFieldError = krevd;
+    			selvstendighetValidator.lowerThanMinError = "Verdien må være mellom " + selvstendighetValidator.minValue + " og " + selvstendighetValidator.maxValue;
+			   	selvstendighetValidator.exceedsMaxError = selvstendighetValidator.lowerThanMinError;
+			   	
+			   	breddeValidator.source = bredde;
+			   	breddeValidator.minValue = 1;
+			   	breddeValidator.maxValue = 6;
+			   	breddeValidator.property = "text";
+    			breddeValidator.requiredFieldError = krevd;
+    			breddeValidator.lowerThanMinError = "Verdien må være mellom " + breddeValidator.minValue + " og " + breddeValidator.maxValue;
+			   	breddeValidator.exceedsMaxError = breddeValidator.lowerThanMinError;
+			   	
+			   	revieringValidator.source = reviering;
+			   	revieringValidator.minValue = 1;
+			   	revieringValidator.maxValue = 6;
+			   	revieringValidator.property = "text";
+    			revieringValidator.requiredFieldError = krevd;
+    			revieringValidator.lowerThanMinError = "Verdien må være mellom " + revieringValidator.minValue + " og " + revieringValidator.maxValue;
+			   	revieringValidator.exceedsMaxError = revieringValidator.lowerThanMinError;
+			   	
+			   	samarbeidValidator.source = samarbeid;
+			   	samarbeidValidator.minValue = 1;
+			   	samarbeidValidator.maxValue = 6;
+			   	samarbeidValidator.property = "text";
+    			samarbeidValidator.requiredFieldError = krevd;
+    			samarbeidValidator.lowerThanMinError = "Verdien må være mellom " + samarbeidValidator.minValue + " og " + samarbeidValidator.maxValue;
+			   	samarbeidValidator.exceedsMaxError = samarbeidValidator.lowerThanMinError;
+			   	
+			   	slippTidValidator.source = slippTid;
+			   	slippTidValidator.property = "text";
+			   	slippTidValidator.required = false;
+			   	slippTidValidator.allowNegative = false;
+			   	slippTidValidator.negativeError = negativ;
+			   	
+			   	egneStokkValidator.source = egneStokk;
+			   	egneStokkValidator.property = "text";
+			   	egneStokkValidator.required = false;
+			   	egneStokkValidator.allowNegative = false;
+			   	egneStokkValidator.negativeError = negativ;
+			   	
+			   	tomStandValidator.source = tomStand;
+			   	tomStandValidator.property = "text";
+			   	tomStandValidator.required = false;
+			   	tomStandValidator.allowNegative = false;
+			   	tomStandValidator.negativeError = negativ;
+			   	
+			   	makkerStandValidator.source = makkerStand;
+			   	makkerStandValidator.property = "text";
+			   	makkerStandValidator.required = false;
+			   	makkerStandValidator.allowNegative = false;
+			   	makkerStandValidator.negativeError = negativ;
+			   	
+			   	makkerStokkValidator.source = makkerStokk;
+			   	makkerStokkValidator.property = "text";
+			   	makkerStokkValidator.required = false;
+			   	makkerStokkValidator.allowNegative = false;
+			   	makkerStokkValidator.negativeError = negativ;
+	            
+	            klasseValidator.source = klasse;
+			   	klasseValidator.property = "text"
+			   	klasseValidator.required = false;
+			   	klasseValidator.allowNegative = false;
+			   	klasseValidator.negativeError = negativ;
+	            
+	            partiNrValidator.source = partiNr;
+			   	partiNrValidator.property = "text"
+			   	partiNrValidator.required = false;
+			   	
+	            hundIdValidator.source = hundId;
+			   	hundIdValidator.property = "text"
+			   	hundIdValidator.required = false;
+	            
+	            presUpresisValidator.source = presUpresis;
+			   	presUpresisValidator.property = "text"
+			   	presUpresisValidator.required = false;
+			   	presUpresisValidator.allowNegative = false;
+			   	presUpresisValidator.negativeError = negativ;
+	            
+	            presNoeUpresisValidator.source = presNoeUpresis;
+			   	presNoeUpresisValidator.property = "text"
+			   	presNoeUpresisValidator.required = false;
+			   	presNoeUpresisValidator.allowNegative = false;
+			   	presNoeUpresisValidator.negativeError = negativ;
+	            
+	            presPresisValidator.source = presPresis;
+			   	presPresisValidator.property = "text"
+			   	presPresisValidator.required = false;
+			   	presPresisValidator.allowNegative = false;
+			   	presPresisValidator.negativeError = negativ;
+	            
+	            reisNekterValidator.source = reisNekter;
+			   	reisNekterValidator.property = "text"
+			   	reisNekterValidator.required = false;
+			   	reisNekterValidator.allowNegative = false;
+			   	reisNekterValidator.negativeError = negativ;
+	            
+	            reisNoelendeValidator.source = reisNoelende;
+			   	reisNoelendeValidator.property = "text"
+			   	reisNoelendeValidator.required = false;
+			   	reisNoelendeValidator.allowNegative = false;
+			   	reisNoelendeValidator.negativeError = negativ;
+	            
+	            reisVilligValidator.source = reisVillig;
+			   	reisVilligValidator.property = "text"
+			   	reisVilligValidator.required = false;
+			   	reisVilligValidator.allowNegative = false;
+			   	reisVilligValidator.negativeError = negativ;
+	            
+	            reisDjervValidator.source = reisDjerv;
+			   	reisDjervValidator.property = "text"
+			   	reisDjervValidator.required = false;
+			   	reisDjervValidator.allowNegative = false;
+			   	reisDjervValidator.negativeError = negativ;
+	            
+	            sokStjelerValidator.source = sokStjeler;
+			   	sokStjelerValidator.property = "text"
+			   	sokStjelerValidator.required = false;
+			   	sokStjelerValidator.allowNegative = false;
+			   	sokStjelerValidator.negativeError = negativ;
+	            
+	            sokSpontantValidator.source = sokSpontant;
+			   	sokSpontantValidator.property = "text"
+			   	sokSpontantValidator.required = false;
+			   	sokSpontantValidator.allowNegative = false;
+			   	sokSpontantValidator.negativeError = negativ;
+	            
+	            appIkkeGodkjentValidator.source = appIkkeGodkjent;
+			   	appIkkeGodkjentValidator.property = "text"
+			   	appIkkeGodkjentValidator.required = false;
+			   	appIkkeGodkjentValidator.allowNegative = false;
+			   	appIkkeGodkjentValidator.negativeError = negativ;
+	            
+	            appGodkjentValidator.source = appGodkjent;
+			   	appGodkjentValidator.property = "text"
+			   	appGodkjentValidator.required = false;
+			   	appGodkjentValidator.allowNegative = false;
+			   	appGodkjentValidator.negativeError = negativ;
+	            
+	            rappInnkaltValidator.source = rappInnkalt;
+			   	rappInnkaltValidator.property = "text"
+			   	rappInnkaltValidator.required = false;
+			   	rappInnkaltValidator.allowNegative = false;
+			   	rappInnkaltValidator.negativeError = negativ;
+			   	
+	            rappSpontValidator.source = rappSpont;
+			   	rappSpontValidator.property = "text"
+			   	rappSpontValidator.required = false;
+			   	rappSpontValidator.allowNegative = false;
+			   	rappSpontValidator.negativeError = negativ;
+	            
+	            premiegradValidator.source = premiegrad;
+	            premiegradValidator.property = "text";
+	            premiegradValidator.required = false;
 			 }
              
 			private function formVerdier():Jaktprove
@@ -128,7 +487,7 @@
 				prove.proveNr = proveNr.text;
 				prove.rappInnkalt = rappInnkalt.text;
 				prove.rappSpont = rappSpont.text;
-				prove.raseId = Components.instance.session.jaktprove.raseId; // skal ikke endres, da hunder ikke endrer rase
+				prove.raseId = Components.instance.session.jaktprove.raseId; // ikke i ui. skal ikke endres, da hunder ikke endrer rase
 				prove.regAv = regAv.text;
 				prove.regDato = regDato.text;
 				prove.reisDjerv = reisDjerv.text;
@@ -187,7 +546,7 @@
 				proveNr.text = Components.instance.session.jaktprove.proveNr;
 				rappInnkalt.text = Components.instance.session.jaktprove.rappInnkalt;
 				rappSpont.text = Components.instance.session.jaktprove.rappSpont;
-				//raseId.text = Components.instance.session.jaktprove.raseId; // skal ikke endres, da hunder ikke endrer rase
+				//raseId.text = Components.instance.session.jaktprove.raseId; // ikke i ui. skal ikke endres, da hunder ikke endrer rase
 				regAv.text = Components.instance.session.jaktprove.regAv;
 				regDato.text = Components.instance.session.jaktprove.regDato;
 				reisDjerv.text = Components.instance.session.jaktprove.reisDjerv;
@@ -208,11 +567,6 @@
                 settFokus();                          
             }
             
-            private function settFokus():void
-            {
-                focusManager.setFocus(kritikk);
-            }
-            
            	private function avbryt():void
 			{
 				Components.instance.controller.fjernJaktproveVindu();
@@ -220,24 +574,6 @@
             
         ]]>
     </mx:Script>
-
-    <mx:StringValidator id="proveNrValidator" 
-    	source = "{proveNr}"
-    	minLength = "2" 
-    	property = "text"
-    />
-    
-    <mx:DateValidator id="proveDatoValidator" 
-    	source = "{proveDato}" 
-    	property ="text" 
-    	inputFormat ="YYYY-MM-DD"
-    	allowedFormatChars = "-"    	
-    />
-    
-    <mx:StringValidator id="partiNrValidator" 
-    	source="{partiNr}" 
-    	property="text" 
-    />
 	
 	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" fontSize="11">
 		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
@@ -249,20 +585,19 @@
 			</mx:Form>
 			<mx:HBox>
 				<mx:Form verticalGap="0">
-					<mx:FormItem label="Klasse">
-						<mx:TextInput id="klasse" change="validering(event);" width="84" height="20"/>
+					<mx:FormItem label="Prøvenummer">
+						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>					
-					<mx:FormItem label="Partinummer">
-						<mx:TextInput id="partiNr" change="validering(event);" width="84" height="20"/>
+					<mx:FormItem label="Prøvedato">
+						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100" height="20"/> 
 					</mx:FormItem>
-				</mx:Form>	
-				<mx:Form>
-					<!--<mx:FormHeading label="Hundinfo"/>-->
-					<mx:FormItem label="Hund-ID">
-						<mx:TextInput id="hundId" change="validering(event);" width="100" height="20"/>
-					</mx:FormItem>				
-					<mx:FormItem label="Navn">
-						<mx:TextInput id="hundNavn" enabled="false" change="validering(event);"	text="Placeholder" width="100" height="20"/>
+				</mx:Form>
+				<mx:Form verticalGap="0">
+					<mx:FormItem label="Dommer 1">
+						<mx:TextInput id="dommerId1" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>
+					<mx:FormItem label="Dommer 2">			
+						<mx:TextInput id="dommerId2" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
 				</mx:Form>
 			</mx:HBox>
@@ -294,17 +629,18 @@
 				</mx:Form>
 				<mx:Form verticalGap="0">					
 					<mx:FormHeading label="Diverse"/>
-					<mx:FormItem label="Prøvenummer">
-						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
+					<mx:FormItem label="Klasse">
+						<mx:TextInput id="klasse" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>					
-					<mx:FormItem label="Prøvedato">
-						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100" height="20"/> 
+					<mx:FormItem label="Partinummer">
+						<mx:TextInput id="partiNr" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>
-					<mx:FormItem label="Dommer 1">
-						<mx:TextInput id="dommerId1" change="validering(event);" width="84" height="20"/>
-					</mx:FormItem>
-					<mx:FormItem label="Dommer 2">			
-						<mx:TextInput id="dommerId2" change="validering(event);" width="84" height="20"/>
+					<!--<mx:FormHeading label="Hundinfo"/>-->
+					<mx:FormItem label="Hund-ID">
+						<mx:TextInput id="hundId" change="validering(event);" width="84" height="20"/>
+					</mx:FormItem>				
+					<mx:FormItem label="Navn">
+						<mx:TextInput id="hundNavn" enabled="false"	text="Placeholder" width="84" height="20"/>
 					</mx:FormItem>
 				
 					<!--<mx:FormHeading label="Registrering"/>-->
@@ -317,10 +653,10 @@
 					
 					<!--<mx:FormHeading label="Endring"/>-->			
 					<mx:FormItem label="Endret av" >
-						<mx:TextInput id="manueltEndretAv" enabled="false" change="validering(event);" width="84" height="20"/>
+						<mx:TextInput id="manueltEndretAv" enabled="false" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dato endret" >
-						<mx:TextInput id="manueltEndretDato" enabled="false" change="validering(event);" width="84" height="20"/>
+						<mx:TextInput id="manueltEndretDato" enabled="false" width="84" height="20"/>
 					</mx:FormItem>					
 				</mx:Form>
 			</mx:VBox>
