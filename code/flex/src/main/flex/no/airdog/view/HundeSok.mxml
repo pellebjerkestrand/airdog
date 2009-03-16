@@ -44,13 +44,13 @@
 				headerText="Hunder" 
 				itemRenderer="{Components.instance.session.hundesokListe.renderer}" 
 				dataField="navn"/>
+			<mx:DataGridColumn width="100" headerText="Id" dataField="hundId"/>
 			<mx:DataGridColumn width="80" headerText="Eier" dataField="eierId"/>
-			<mx:DataGridColumn width="100" headerText="Oppdretter" dataField="oppdretter"/>
 			<mx:DataGridColumn width="150" headerText="Far" dataField="farNavn" sortable="false"/>
 			<mx:DataGridColumn width="150" headerText="Mor" dataField="morNavn" sortable="false"/>
 			<!--<mx:DataGridColumn width="50" headerText="Id" dataField="hundId"/>-->
 			<!--<mx:DataGridColumn width="50" headerText="Kull" dataField="kullId"/>-->
-			<mx:DataGridColumn width="50" headerText="Kjønn" dataField="kjonn" sortable="false"/>
+			<mx:DataGridColumn width="50" headerText="Kjønn" dataField="kjonn" sortable="false" textAlign="center"/>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>
