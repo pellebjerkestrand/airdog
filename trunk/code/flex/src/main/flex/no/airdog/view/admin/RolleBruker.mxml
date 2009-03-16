@@ -138,6 +138,9 @@
 						            dragDrop="leggtilRettighetPaRolle(event)"
 						            dragEnabled="true"
 						            mouseDown="settDroppesHvor(event, 'sletting')">
+						         	<mx:columns>
+						         		<mx:DataGridColumn headerText="Brukere" dataField="ad_bruker_epost" />
+						         	</mx:columns>
 								</mx:DataGrid>
 
 							</mx:Panel>
