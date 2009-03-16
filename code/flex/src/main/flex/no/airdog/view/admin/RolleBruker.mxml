@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="100%"
+	width="100%" xmlns:controls="flexunit.flexui.controls.*" creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.containers.Panel;
+			import mx.controls.Text;
+			import mx.core.UIComponent;
+			import no.airdog.controller.*;
+			import no.airdog.services.Components;  
+			import mx.controls.Alert;
+			import mx.collections.ArrayCollection;
+            import mx.collections.ListCollectionView;
+            import mx.controls.List;
+            import mx.core.DragSource;
+            import mx.events.*;
+            import mx.managers.DragManager;
+            import mx.controls.Alert;
+            import mx.collections.IList;
+            import flash.events.MouseEvent;
+            import mx.core.IUIComponent;
+            
+            
+			[Bindable]
+           	[Embed("../assets/ikoner/trash_empty.png")]
+           	private var slett_tom:Class;
+           
+           	[Bindable]
+           	[Embed("../assets/ikoner/trash_full.png")]
+           	private var slett_full:Class;
+            			
+			[Bindable]
+			[Embed ("../assets/ikoner/slett.png")]
+            private var slett:Class;
+			
+            private var droppesHvor:String
+			
+			private function init():void
+			{				
+			}
+			
+            private function settDroppesHvor(event:MouseEvent, id:String):void
+            {
+                droppesHvor = id;
+            }
+            
+            private function sjekkRolle(event:DragEvent):void 
+            { 
+            	var dropp:Object = Object(event.currentTarget);
+            	var data:ArrayCollection = dropp.dataProvider as ArrayCollection;
+				var ting:Array = event.dragSource.dataForFormat("items") as Array;
+				var ikkeLik:Boolean = true;
+            	
+                if(droppesHvor == dropp.id)
+                {
+                	for(var i:int = 0; i < data.length; i++)
+                	{ 
+						if(data[i].ad_rolle_navn == ting[0].navn) ikkeLik = false;
+					}
+					
+					if(ikkeLik)
+					{
+						DragManager.showFeedback(DragManager.MOVE);
+                    	DragManager.acceptDragDrop(dropp as UIComponent);
+					}
+                }
+            }
+            
+            private function sjekkSlett(event:DragEvent):void 
+            { 
+            	var drasFra:UIComponent = event.dragInitiator as UIComponent;
+            	var drasTil:UIComponent = event.currentTarget as UIComponent;
+            	
+            	if((droppesHvor == drasTil.id || drasTil.id == "alleBrukere") && drasFra.id != "alleBrukere")
+                {
+	            	DragManager.showFeedback(DragManager.MOVE);
+	            	DragManager.acceptDragDrop(sletting as UIComponent);
+	            	DragManager.acceptDragDrop(alleBrukere as UIComponent);
+                }
+            }
+
+            private function leggtilRettighetPaRolle(event:DragEvent):void 
+            {        
+                var rolleRettighet:DataGrid = DataGrid(event.currentTarget);  
+                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
+                var panel:Panel = rolleRettighet.parent as Panel;
+
+				Components.instance.controller.leggtilRettighetPaRolle(panel.data.toString(), rettighet[0].navn);
+            }
+            
+            private function slettBrukerPaRolle(event:DragEvent):void 
+            {
+            	var rolleRettighet:UIComponent = UIComponent(event.currentTarget);
+                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
+                var panel:Panel = event.dragInitiator.parent as Panel;
+
+				//Components.instance.controller.slettRettighetPaRolle(panel.data.toString(), rettighet[0].ad_rettighet_navn);
+				
+				slettIkon.load(slett_full);
+				rister.duration = 200;
+				rister.play([slettIkon]);
+				
+				var timer:Timer = new Timer(3000);
+      			timer.addEventListener(TimerEvent.TIMER, tomSoppel);
+        		timer.start();
+            }
+            
+            private function tomSoppel(event:TimerEvent):void
+            {
+            	slettIkon.load(slett_tom);
+            }
+            
+            
+		]]>
+	</mx:Script>
+   
+    <mx:Sequence id="rister">
+		<mx:Move yBy="10"/>
+		<mx:Move yBy="-10" />
+	</mx:Sequence>
+    
+    <mx:HBox width="100%" horizontalAlign="center">
+    	<mx:VBox width="100%" height="100%">
+    		<mx:Box width="100%" height="100%">
+				<mx:Repeater id="klubb" dataProvider="{Components.instance.session.alleRollersBrukere}">
+					<mx:Panel title="{klubb.currentItem.navn}" width="100%" data="{klubb.currentItem.navn}">
+						<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
+							<mx:Panel title="{rolle.currentItem.ad_rolle_navn}" width="100%">
+								<mx:DataGrid id="rolleBruker"
+									height="{rolle.currentItem.brukere.length * 22 + 25}"			
+									paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+									width="100%"
+									dataProvider="{rolle.currentItem.brukere}" 
+									verticalAlign="middle"
+						            dragEnter="sjekkRolle(event);"                      
+						            dragDrop="leggtilRettighetPaRolle(event)"
+						            dragEnabled="true"
+						            mouseDown="settDroppesHvor(event, 'sletting')">
+								</mx:DataGrid>
+							</mx:Panel>
+						</mx:Repeater>
+					</mx:Panel>
+					
+				</mx:Repeater>
+				
+				<mx:DataGrid dataProvider="{Components.instance.session.alleRollersBrukere}" />
+			</mx:Box>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%">
+
+		<mx:Panel title="Alle brukere" width="100%" height="100%">
+			<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%"
+				rowCount="{Components.instance.session.alleBrukere.length}"
+				dragEnabled="true"
+				mouseDown="settDroppesHvor(event, 'rolleBruker');"
+				dragEnter="sjekkSlett(event);"
+              	dragDrop="slettBrukerPaRolle(event);">
+				<mx:columns>
+					<mx:DataGridColumn headerText="E-post" dataField="epost"/>
+					<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
+					<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
+					<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:Panel>	
+
+		<mx:Panel id="sletting" title="Slett bruker på rolle" width="100%"
+        	dragEnter="sjekkSlett(event)"
+            dragDrop="slettBrukerPaRolle(event)">
+                    
+          	<mx:Image id="slettIkon" source="{slett_tom}" />
+                    
+		</mx:Panel>
+		</mx:VBox>
+	</mx:HBox>
+</mx:VBox>

@@ -14,18 +14,6 @@ class RolleRettighetController
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function hentAlleRoller($brukerEpost, $brukerPassord, $klubbId)
-	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
-		{
-			$db = new RolleRettighetDatabase();
-			return $db->hentAlleRoller();
-		}
-
-		$feilkode = 1;
-		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
-	}
-	
 	public function hentAlleRettigheter($brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
@@ -47,7 +35,6 @@ class RolleRettighetController
 			$db = new RolleRettighetDatabase();
 			$roller = $db->hentAlleRoller();
 			$tmp = array();
-			$rr = array();
 
 	   		foreach($roller as $rolle)
 	   		{   

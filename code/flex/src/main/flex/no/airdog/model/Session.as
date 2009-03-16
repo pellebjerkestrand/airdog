@@ -37,11 +37,13 @@ package no.airdog.model
         
         public var jaktprove:Jaktprove;
 
-        public var alleRoller:ArrayCollection = new ArrayCollection();
+        public var alleBrukere:ArrayCollection = new ArrayCollection();
         
         public var alleRettigheter:ArrayCollection = new ArrayCollection();
         
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
+        
+        public var alleRollersBrukere:ArrayCollection = new ArrayCollection();
         
         public function clone():Session
 		{

@@ -40,28 +40,33 @@ package no.airdog.controller
 		
 		public static function visAdminRoller():void
 		{
+			Components.instance.session.hovedNavigasjon.nr = 4;
+		}
+		
+		public static function visAdminBrukere():void
+		{
 			Components.instance.session.hovedNavigasjon.nr = 3;
 		}
 		
 		public static function visACL():void
 		{
-			Components.instance.session.hovedNavigasjon.nr = 4;
+			Components.instance.session.hovedNavigasjon.nr = 5;
 		}
 		
 		public static function visArsgjennomsnitt():void
 		{
-			Components.instance.session.hovedNavigasjon.nr = 5;
+			Components.instance.session.hovedNavigasjon.nr = 6;
 		}
 		
 		public static function visFiktivStamtre():void
 		{
-			Components.instance.session.hovedNavigasjon.nr = 6;
+			Components.instance.session.hovedNavigasjon.nr = 7;
 		}
 		
 		
 		public static function visHjem():void
 		{
-			Components.instance.session.hovedNavigasjon.nr = 7;
+			Components.instance.session.hovedNavigasjon.nr = 8;
 		}
 	}
 }
