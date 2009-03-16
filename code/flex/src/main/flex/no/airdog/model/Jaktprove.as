@@ -7,7 +7,7 @@ package no.airdog.model
 		public var proveNr:String;
 		public var proveDato:String;
 		public var partiNr:String;
-		public var klasse:String;
+		public var klasse:int;
 		public var dommerId1:String;
 		public var dommerId2:String;
 		public var hundId:String;
@@ -37,7 +37,7 @@ package no.airdog.model
 		public var appGodkjent:String;
 		public var rappInnkalt:String;
 		public var rappSpont:String;
-		public var premiegrad:String;
+		public var premiegrad:int;
 		public var certifikat:String;
 		public var regAv:String;
 		public var regDato:String;

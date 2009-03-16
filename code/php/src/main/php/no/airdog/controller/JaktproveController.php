@@ -10,6 +10,7 @@ class JaktproveController
 	private $database;
 	
 	private $klassenavn = array(
+		'0' => '',
     	'1' => 'UK',
 		'2' => 'AK',
 		'3' => 'UK/AK',
@@ -23,6 +24,7 @@ class JaktproveController
 		'11' => 'DERBY FINALE');
     	
     private $sertifikater = array(
+    	'0' => '',
     	'1' => 'CK',
 		'2' => 'CERT',
 		'3' => 'CACIT',
