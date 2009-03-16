@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init()">
+	<mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Jaktprove;
+			import no.airdog.services.Components;      
+			import no.airdog.controller.*;
+			import mx.events.*;
+			import mx.collections.*;
+			import mx.controls.*;
+			import mx.core.UIComponent;
+			
+			private function init():void
+			{				
+				for(var i:int = 0; i < Components.instance.session.bruker.rettigheter.length; i++)
+				{
+					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == "redigerUtstilling")
+					{
+						adminPanel.visible = true;
+					}					
+				}
+			}
+			
+			public function set hundId(val:String):void
+			{
+				if (val != null)
+				{
+					Components.instance.controller.hentUtstillinger(val);
+				}
+			} 
+			
+ 			private function slett(eventObj:CloseEvent):void {
+				if (eventObj.detail==Alert.OK) {
+					if (utstillinger.selectedIndex > -1) {
+						//Components.instance.controller.slettUtstilling(utstillinger.selectedItem.utstillingId);
+					}
+				}
+			}
+			
+			public function adminKlikk(event:ItemClickEvent):void{
+				if (event.index == 0){
+					//Components.instance.controller.visRedigerUtstillingVindu(UIComponent(this.parentApplication), utstillinger.selectedItem as Utstilling);
+				}
+				else
+				{
+					Alert.okLabel = "Ja"
+					Alert.cancelLabel = "Nei"
+					var objAlert:Alert = Alert.show(
+					"Vil du slette " + utstillinger.selectedItem.utstillingId, "Slette?", 
+					Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+				}
+			}    
+        ]]>
+    </mx:Script>
+	<mx:DataGrid id="utstillinger" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
+		dataProvider="{Components.instance.session.utstillingListe}" verticalAlign="middle">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Dato" dataField="utstillingDato"/>
+			<mx:DataGridColumn headerText="Sted" dataField="utstillingSted"/>
+			<mx:DataGridColumn headerText="Dommer" dataField="dommer"/>
+			<mx:DataGridColumn headerText="Premie" dataField="premie"/>
+			<mx:DataGridColumn headerText="HP" dataField="HP" width="50"/>
+			<mx:DataGridColumn headerText="CK" dataField="CK" width="50"/>
+			<mx:DataGridColumn headerText="CERT" dataField="CERT" width="50"/>
+			<mx:DataGridColumn headerText="BIR" dataField="BIR" width="50"/>
+			<mx:DataGridColumn headerText="BTK" dataField="BTK" width="50"/>
+			<mx:DataGridColumn headerText="BHK" dataField="BHK" width="50"/>
+			<mx:DataGridColumn headerText="CACIB" dataField="CACIB" width="50"/>
+			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false" width="100" minWidth="100" resizable="false">
+				<mx:itemRenderer>
+					<mx:Component id="admin">
+						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
+							<mx:dataProvider>
+								<mx:Array>
+									<mx:String>Rediger</mx:String>
+									<mx:String>Slett</mx:String>
+								</mx:Array>
+							</mx:dataProvider>
+						</mx:ButtonBar>					   	
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>

@@ -181,6 +181,17 @@ package no.airdog.controller
 			Components.instance.session.jaktproveSammendrag = new ArrayCollection(event as Array);
 		}
 		
+		public function hentUtstillinger(hundId:String):void
+		{
+			Components.instance.session.utstillingListe = null;
+			Components.instance.services.airdogService.hentUtstillinger(hundId, hentUtstillingerResultat);
+		}
+		
+		public function hentUtstillingerResultat(event:Object):void
+		{
+			Components.instance.session.utstillingListe = new ArrayCollection(event as Array);
+		}
+		
 		public function visHund(hundId:String):void
 		{
 			//Components.instance.session.hundprofil = null;
