@@ -1,7 +1,6 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
-	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
@@ -364,6 +363,11 @@ package no.airdog.controller
 		public function leggInnNyRolle(rolle:String):void
 		{
 			Components.instance.services.airdogService.leggInnNyRolle(rolle, hentRollersRettigheterResultat);
+		}
+		
+		public function slettRolle(rolle:String):void
+		{
+			Components.instance.services.airdogService.slettRolle(rolle, hentRollersRettigheterResultat);
 		}
 	}
 }
