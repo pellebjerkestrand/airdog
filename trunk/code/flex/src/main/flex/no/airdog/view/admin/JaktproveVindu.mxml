@@ -8,6 +8,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import no.airdog.model.Hund;
 			import mx.validators.NumberValidator;
 			import mx.validators.StringValidator;
 			import mx.validators.DateValidator;
@@ -18,9 +19,31 @@
             import mx.events.ValidationResultEvent;
             import mx.controls.Alert;
 			import mx.formatters.DateFormatter;
+			import mx.collections.ArrayCollection;
 			
-			[Bindable]public var godkjent:Boolean = false;
+			[Bindable]public var godkjent:Boolean = true;
             [Bindable]public var tilbakestillt:Boolean = true;
+    		
+    		[Bindable]private var premier:ArrayCollection = new ArrayCollection(
+                [ {label:"Ingen"}, 
+                  {label:"CK"}, 
+                  {label:"CERT"},
+                  {label:"CACIT"},
+                  {label:"ResCacit"},
+                  {label:"ÆP Skog"} ]);
+                  
+            [Bindable]private var klasser:ArrayCollection = new ArrayCollection(
+                [ {label:"UK"}, 
+                  {label:"AK"}, 
+                  {label:"UK/AK"},
+                  {label:"VK"},
+                  {label:"VK Semi"},
+                  {label:"VK Finale"},
+                  {label:"UK Kvalik"},
+                  {label:"UKK Finale"},
+                  {label:"Derby Kvalik"},
+                  {label:"Derby Semi"},
+                  {label:"Derby Finale"} ]);
     
             private var hvilkeKontroll:DisplayObject;
             
@@ -36,12 +59,12 @@
             private var samarbeidValidator:NumberValidator = new NumberValidator();
             
             private var slippTidValidator:NumberValidator = new NumberValidator();
+            private var egneStandValidator:NumberValidator = new NumberValidator();
             private var egneStokkValidator:NumberValidator = new NumberValidator();
             private var tomStandValidator:NumberValidator = new NumberValidator();
             private var makkerStandValidator:NumberValidator = new NumberValidator();
             private var makkerStokkValidator:NumberValidator = new NumberValidator();
             
-            private var klasseValidator:NumberValidator = new NumberValidator();
             private var partiNrValidator:StringValidator = new StringValidator();
             private var hundIdValidator:StringValidator = new StringValidator();
             
@@ -62,8 +85,6 @@
             
             private var rappInnkaltValidator:NumberValidator = new NumberValidator();
             private var rappSpontValidator:NumberValidator = new NumberValidator();
-            
-            private var premiegradValidator:StringValidator = new StringValidator();
 			
 			private function init():void
             {
@@ -98,10 +119,13 @@
              	{
              		tilbakestillt = true;
              	}
+             	
+             	godkjent = true;
 
                 valider(proveNrValidator);                
                 valider(proveDatoValidator);
                 valider(partiNrValidator);
+                
                 valider(jaktlystValidator);
                 valider(fartValidator);
                 valider(stilValidator);
@@ -109,6 +133,34 @@
                 valider(breddeValidator);
                 valider(revieringValidator);
                 valider(samarbeidValidator);
+                
+                valider(slippTidValidator);
+                valider(egneStandValidator);
+            	valider(egneStokkValidator);
+            	valider(tomStandValidator);
+            	valider(makkerStandValidator);
+            	valider(makkerStokkValidator);
+            	
+	            valider(partiNrValidator);
+	            valider(hundIdValidator);
+	            
+	            valider(presUpresisValidator);
+	            valider(presNoeUpresisValidator);
+	            valider(presPresisValidator);
+	            
+	            valider(reisNekterValidator);
+	            valider(reisNoelendeValidator);
+	            valider(reisVilligValidator);
+	            valider(reisDjervValidator);
+	            
+	            valider(sokStjelerValidator);
+	            valider(sokSpontantValidator);
+	            
+	            valider(appIkkeGodkjentValidator);
+	            valider(appGodkjentValidator);
+	            
+	            valider(rappInnkaltValidator);
+	            valider(rappSpontValidator);
             }
             
             private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
@@ -243,14 +295,6 @@
              	var adferdTip:String =
              		"ADFERD\n" + 
              		"Bedømmes ved aggressivitet i forhold til mennesker eller hunder.";
-             		
-             	premiegrad.toolTip = 
-             		"CACIT\n" + 
-             		"ResCacit\n" + 
-             		"CK\n" + 
-             		"Finale\n" + 
-             		"Semifinale\n" + 
-             		"ÆP";
              }
              
              private function settValidatorer():void
@@ -336,6 +380,12 @@
 			   	slippTidValidator.allowNegative = false;
 			   	slippTidValidator.negativeError = negativ;
 			   	
+			   	egneStandValidator.source = egneStand;
+			   	egneStandValidator.property = "text";
+			   	egneStandValidator.required = false;
+			   	egneStandValidator.allowNegative = false;
+			   	egneStandValidator.negativeError = negativ;
+			   	
 			   	egneStokkValidator.source = egneStokk;
 			   	egneStokkValidator.property = "text";
 			   	egneStokkValidator.required = false;
@@ -359,12 +409,6 @@
 			   	makkerStokkValidator.required = false;
 			   	makkerStokkValidator.allowNegative = false;
 			   	makkerStokkValidator.negativeError = negativ;
-	            
-	            klasseValidator.source = klasse;
-			   	klasseValidator.property = "text"
-			   	klasseValidator.required = false;
-			   	klasseValidator.allowNegative = false;
-			   	klasseValidator.negativeError = negativ;
 	            
 	            partiNrValidator.source = partiNr;
 			   	partiNrValidator.property = "text"
@@ -451,10 +495,6 @@
 			   	rappSpontValidator.required = false;
 			   	rappSpontValidator.allowNegative = false;
 			   	rappSpontValidator.negativeError = negativ;
-	            
-	            premiegradValidator.source = premiegrad;
-	            premiegradValidator.property = "text";
-	            premiegradValidator.required = false;
 			 }
              
 			private function formVerdier():Jaktprove
@@ -472,14 +512,14 @@
 				prove.fart = fart.text;
 				prove.hundId = hundId.text;
 				prove.jaktlyst = jaktlyst.text;
-				prove.klasse = klasse.text;
+				prove.klasse = klasse.selectedIndex + 1;
 				prove.kritikk = kritikk.text;
 				prove.makkerStand = makkerStand.text;
 				prove.makkerStokk = makkerStokk.text;
 				prove.manueltEndretAv = manueltEndretAv.text;
 				prove.manueltEndretDato = manueltEndretDato.text;
 				prove.partiNr = partiNr.text;
-				prove.premiegrad = Components.instance.session.jaktprove.premiegrad;
+				prove.premiegrad = premiegrad.selectedIndex;
 				prove.presNoeUpresis = presNoeUpresis.text;
 				prove.presPresis = presPresis.text;
 				prove.presUpresis = presUpresis.text;
@@ -530,15 +570,16 @@
 				egneStokk.text = Components.instance.session.jaktprove.egneStokk;
 				fart.text = Components.instance.session.jaktprove.fart;
 				hundId.text = Components.instance.session.jaktprove.hundId;
+				hundNavn.text = Components.instance.session.hundprofil.navn;
 				jaktlyst.text = Components.instance.session.jaktprove.jaktlyst;
-				klasse.text = Components.instance.session.jaktprove.klasse;
+				klasse.selectedIndex = Components.instance.session.jaktprove.klasse - 1;
 				kritikk.text = Components.instance.session.jaktprove.kritikk;
 				makkerStand.text = Components.instance.session.jaktprove.makkerStand;
 				makkerStokk.text = Components.instance.session.jaktprove.makkerStokk;
 				manueltEndretAv.text = Components.instance.session.jaktprove.manueltEndretAv;
 				manueltEndretDato.text = Components.instance.session.jaktprove.manueltEndretDato;
 				partiNr.text = Components.instance.session.jaktprove.partiNr;
-				premiegrad.text = Components.instance.session.jaktprove.premiegrad;
+				premiegrad.selectedIndex = Components.instance.session.jaktprove.premiegrad;
 				presNoeUpresis.text = Components.instance.session.jaktprove.presNoeUpresis;
 				presPresis.text = Components.instance.session.jaktprove.presPresis;
 				presUpresis.text = Components.instance.session.jaktprove.presUpresis;
@@ -564,14 +605,19 @@
             	
                 tilbakestillt = true;
                 
-                settFokus();                          
+                settFokus();              
+            }
+            
+            private function hentHundNavnFraId():void
+            {
+            	//trenger vi en ny funksjon som returnerer hundobjekt uten å sette det noe sted?
+            	hundNavn.text = Components.instance.session.hundprofil.navn;
             }
             
            	private function avbryt():void
 			{
 				Components.instance.controller.fjernJaktproveVindu();
 			}
-            
         ]]>
     </mx:Script>
 	
@@ -630,7 +676,7 @@
 				<mx:Form verticalGap="0">					
 					<mx:FormHeading label="Diverse"/>
 					<mx:FormItem label="Klasse">
-						<mx:TextInput id="klasse" change="validering(event);" width="84" height="20"/>
+						<mx:ComboBox id="klasse" change="validering(event);" dataProvider="{klasser}" height="20"/>
 					</mx:FormItem>					
 					<mx:FormItem label="Partinummer">
 						<mx:TextInput id="partiNr" change="validering(event);" width="84" height="20"/>
@@ -640,7 +686,7 @@
 						<mx:TextInput id="hundId" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>				
 					<mx:FormItem label="Navn">
-						<mx:TextInput id="hundNavn" enabled="false"	text="Placeholder" width="84" height="20"/>
+						<mx:TextInput id="hundNavn" enabled="false" width="84" height="20"/>
 					</mx:FormItem>
 				
 					<!--<mx:FormHeading label="Registrering"/>-->
@@ -736,7 +782,7 @@
 					</mx:FormItem>
 					
 					<mx:FormItem label="Premie">
-						<mx:TextInput id="premiegrad" change="validering(event);" width="35" height="20"/>
+						<mx:ComboBox id="premiegrad" change="validering(event);" dataProvider="{premier}" height="20"/>
 					</mx:FormItem>
 				</mx:Form>
 			</mx:VBox>
@@ -744,8 +790,8 @@
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-            <mx:Button label="Lagre" enabled="{godkjent}" click="lagreJaktprove()"/>
-            <mx:Button label="Tilbakestill" enabled="{!tilbakestillt}" click="tilbakestillForm()"/>
-            <mx:Button label="Avbryt" click="avbryt()"/>
+        <mx:Button label="Lagre" enabled="{godkjent}" click="lagreJaktprove()"/>
+        <mx:Button label="Tilbakestill" enabled="{!tilbakestillt}" click="tilbakestillForm()"/>
+        <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>
 </mx:TitleWindow>
