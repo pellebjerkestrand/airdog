@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
 	height="100%"
-	width="100%" 
-	creationComplete="init()">
+	width="100%" xmlns:controls="flexunit.flexui.controls.*" creationComplete="init()">
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.containers.Panel;
+			import mx.controls.Text;
 			import mx.core.UIComponent;
 			import no.airdog.controller.*;
 			import no.airdog.services.Components;  
@@ -21,24 +22,25 @@
             import flash.events.MouseEvent;
             import mx.core.IUIComponent;
             
-            [Bindable]
-            [Embed("../assets/ikoner/trash_empty.png")]
-			private var slett_tom:Class;
-			
+            
 			[Bindable]
-			[Embed("../assets/ikoner/trash_full.png")]
-			private var slett_full:Class;
+           	[Embed("../assets/ikoner/trash_empty.png")]
+           	private var slett_tom:Class;
+           
+           	[Bindable]
+           	[Embed("../assets/ikoner/trash_full.png")]
+           	private var slett_full:Class;
+            			
+			[Bindable]
+			[Embed ("../assets/ikoner/slett.png")]
+            private var slett:Class;
+			
+            private var droppesHvor:String
 			
 			private function init():void
-			{
-				//Components.instance.controller.hentAlleRoller();
-				Components.instance.controller.hentAlleRettigheter();
-				Components.instance.controller.hentRollersRettigheter();
+			{				
 			}
 			
-
-            private var droppesHvor:String
-
             private function settDroppesHvor(event:MouseEvent, id:String):void
             {
                 droppesHvor = id;
@@ -68,82 +70,126 @@
             
             private function sjekkSlett(event:DragEvent):void 
             { 
-            	DragManager.showFeedback(DragManager.MOVE);
-            	DragManager.acceptDragDrop(slettIkon as UIComponent);
-            	DragManager.acceptDragDrop(alleRettigheter as UIComponent);
+            	var drasFra:UIComponent = event.dragInitiator as UIComponent;
+            	var drasTil:UIComponent = event.currentTarget as UIComponent;
+            	
+            	if((droppesHvor == drasTil.id || drasTil.id == "alleRettigheter") && drasFra.id != "alleRettigheter")
+                {
+	            	DragManager.showFeedback(DragManager.MOVE);
+	            	DragManager.acceptDragDrop(slettRettighet as UIComponent);
+	            	DragManager.acceptDragDrop(alleRettigheter as UIComponent);
+                }
             }
 
             private function leggtilRettighetPaRolle(event:DragEvent):void 
             {        
                 var rolleRettighet:DataGrid = DataGrid(event.currentTarget);  
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
-				
-				Components.instance.controller.leggtilRettighetPaRolle(rolleRettighet.name, rettighet[0].navn);
+                var panel:Panel = rolleRettighet.parent as Panel;
+
+				Components.instance.controller.leggtilRettighetPaRolle(panel.data.toString(), rettighet[0].navn);
             }
             
             private function slettRettighetPaRolle(event:DragEvent):void 
             {
             	var rolleRettighet:UIComponent = UIComponent(event.currentTarget);
                 var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
+                var panel:Panel = event.dragInitiator.parent as Panel;
 
-				Components.instance.controller.slettRettighetPaRolle(event.dragInitiator.name, rettighet[0].ad_rettighet_navn);
-				   
-            	slettIkon.load(slett_full);
+				Components.instance.controller.slettRettighetPaRolle(panel.data.toString(), rettighet[0].ad_rettighet_navn);
+				
+				slettIkon.load(slett_full);
+				rister.duration = 200;
+				rister.play([slettIkon]);
+				
+				var timer:Timer = new Timer(3000);
+      			timer.addEventListener(TimerEvent.TIMER, tomSoppel);
+        		timer.start();
+            }
+            
+            private function tomSoppel(event:TimerEvent):void
+            {
+            	slettIkon.load(slett_tom);
             }
             
            	private function leggInnNyRolle():void 
             {
 				Components.instance.controller.leggInnNyRolle(nyRolleTekst.text);
             }
+            
+            private function slettRolle(event:Event):void
+            {
+            	var knapp:Button = event.target as Button;
+            	var panel:Panel = knapp.parent.parent as Panel;
+            	
+            	Components.instance.controller.slettRolle(panel.data.toString());
+            }
 		]]>
 	</mx:Script>
+   
+    <mx:Sequence id="rister">
+		<mx:Move yBy="10"/>
+		<mx:Move yBy="-10" />
+	</mx:Sequence>
     
     <mx:HBox width="100%" horizontalAlign="center">
-    	<mx:VBox width="100%">
-    	<mx:Label text="Legg inn ny rolle" fontWeight="bold"/>
-    	<mx:TextInput id="nyRolleTekst" />
-    	<mx:Button id="nyRolle" label="Legg inn ny rolle" click="leggInnNyRolle()" />
-    	
-    	
-    	<mx:Label text="Rolles rettigheter" fontWeight="bold"/>   
-    
-			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
-			 
-					<mx:Text text="{roller.currentItem.navn}" />
-					<mx:DataGrid id="rolleRettighet"
-						height="{roller.currentItem.rettigheter.length * 22 + 25}"			
-						paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%"
-						dataProvider="{roller.currentItem.rettigheter}" verticalAlign="middle"
-			            dragEnter="sjekkRolle(event);"                      
-			            dragDrop="leggtilRettighetPaRolle(event);" name="{roller.currentItem.navn}"
-			            dragEnabled="true"
-			            mouseDown="settDroppesHvor(event, 'slettIkon');">
-						<mx:columns>
-							<mx:DataGridColumn headerText="Rettighet" dataField="ad_rettighet_navn"/>
-						</mx:columns>
-					</mx:DataGrid>
-			</mx:Repeater>
+    	<mx:VBox width="100%" height="100%">
+    		<mx:Panel title="Ny rolle" width="100%">
+	    		<mx:HBox>
+		    		<mx:TextInput id="nyRolleTekst" />
+		    		<mx:Button id="nyRolle" label="Legg til" click="leggInnNyRolle()" />   
+	    		</mx:HBox>
+    		</mx:Panel>
+
+    		<mx:Box width="100%" height="100%">
+				<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
+					<mx:Panel title="{roller.currentItem.navn}" width="100%" data="{roller.currentItem.navn}" >
+						<mx:DataGrid id="rolleRettighet"
+							height="{roller.currentItem.rettigheter.length * 22 + 25}"			
+							paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+							width="100%"
+							dataProvider="{roller.currentItem.rettigheter}" 
+							verticalAlign="middle"
+				            dragEnter="sjekkRolle(event);"                      
+				            dragDrop="leggtilRettighetPaRolle(event)"
+				            dragEnabled="true"
+				            mouseDown="settDroppesHvor(event, 'slettRettighet')">
+							<mx:columns>
+								<mx:DataGridColumn headerText="Rollens rettigheter" dataField="ad_rettighet_navn"/>
+							</mx:columns>
+						</mx:DataGrid>
+							
+						<mx:HBox horizontalAlign="right" width="100%">
+							<mx:LinkButton icon="{slett}" label="Slett rollen" click="slettRolle(event)" />
+						</mx:HBox>
+					</mx:Panel>
+					
+				</mx:Repeater>
+			</mx:Box>
 		</mx:VBox>
-		<mx:VBox width="100%">
-			<mx:Text text="Alle rettigheter" fontWeight="bold" /> 
+		<mx:VBox width="100%" height="100%">
+
+		<mx:Panel title="Alle rettigheter" width="100%" height="100%">
 			<mx:DataGrid id="alleRettigheter" dataProvider="{Components.instance.session.alleRettigheter}" width="100%"
+				rowCount="{Components.instance.session.alleRettigheter.length}"
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"
               	dragDrop="slettRettighetPaRolle(event);">
 				<mx:columns>
-					<mx:DataGridColumn headerText="Alle rettigheter" dataField="navn"/>
+					<mx:DataGridColumn headerText="Rettighet" dataField="navn"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
 				</mx:columns>
 			</mx:DataGrid>
-						
-			<mx:ControlBar horizontalAlign="right">
-			
-            	<mx:Image id="slettIkon"
-                    source="{slett_tom}"
-                    dragEnter="sjekkSlett(event);"
-                    dragDrop="slettRettighetPaRolle(event);" />
-        	</mx:ControlBar>
+		</mx:Panel>	
+
+		<mx:Panel id="slettRettighet" title="Slett rettighet på rolle" width="100%"
+        	dragEnter="sjekkSlett(event)"
+            dragDrop="slettRettighetPaRolle(event)">
+                    
+          	<mx:Image id="slettIkon" source="{slett_tom}" />
+                    
+		</mx:Panel>
 		</mx:VBox>
 	</mx:HBox>
 </mx:VBox>

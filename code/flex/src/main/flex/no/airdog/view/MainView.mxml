@@ -51,6 +51,8 @@
             
             public function visAdminRoller():void
             {
+            	Components.instance.controller.hentAlleRettigheter();
+				Components.instance.controller.hentRollersRettigheter();
             	Navigasjon.visAdminRoller();
             }
             
