@@ -23,6 +23,8 @@ package no.airdog.model
         
         public var jaktproveSammendrag:ArrayCollection = new ArrayCollection();
         
+        public var utstillingListe:ArrayCollection = new ArrayCollection();
+        
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
         public var bruker:Bruker = new Bruker(); 

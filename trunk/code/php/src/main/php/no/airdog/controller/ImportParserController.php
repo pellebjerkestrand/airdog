@@ -2,6 +2,8 @@
 require_once "FilvaliderController.php";
 
 require_once "database/HundDatabase.php";
+require_once "database/UtstillingDatabase.php";
+require_once "database/PremieDatabase.php";
 require_once "database/JaktproveDatabase.php";
 
 require_once "database/ValiderBruker.php";
@@ -76,14 +78,26 @@ class importParserController
 					$ep = new PersonParser();
 					$ep->getPersonlisteArrayFraFil($filSti);
 					break;
-				case "Premie":	
+				case "Premie":
 					$ep = new PremieParser();
-					$ep->getPremielisteArrayFraFil($filSti);
-					break;
+					$hd = new PremieDatabase();
+					
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$ret .= "\r" . $hd->settInnPremie($ep->getPremieArray($listeArray[$i]), $klubbId);
+			    	}
+			    	
+					return $ret;
 				case "Utstilling":
 					$ep = new UtstillingParser();
-					$ep->getUtstillinglisteArrayFraFil($filSti);
-					break;
+					$hd = new UtstillingDatabase();
+					
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$ret .= "\r" . $hd->settInnUtstilling($ep->getUtstillingArray($listeArray[$i]), $klubbId);
+			    	}
+			    	
+					return $ret;
 				case "Veteriner":
 					$ep = new VeterinerParser();
 					$ep->getVeterinerlisteArrayFraFil($filSti);

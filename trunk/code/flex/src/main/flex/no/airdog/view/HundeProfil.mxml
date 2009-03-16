@@ -121,7 +121,8 @@
 				<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="3"/>
 			</mx:VBox>
 						
-			<mx:VBox label="Ustilling">				
+			<mx:VBox label="Ustilling">	
+				<view:UtstillingListe hundId="{Components.instance.session.hundprofil.hundId}" />   			
 			</mx:VBox>
 		</mx:TabNavigator>
 		
