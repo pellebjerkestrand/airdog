@@ -108,6 +108,7 @@
     	<mx:Label text="Rolles rettigheter" fontWeight="bold"/>   
     
 			<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
+			 
 					<mx:Text text="{roller.currentItem.navn}" />
 					<mx:DataGrid id="rolleRettighet"
 						height="{roller.currentItem.rettigheter.length * 22 + 25}"			
