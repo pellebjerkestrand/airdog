@@ -18,11 +18,12 @@ class RolleBrukerDatabase
 		return $this->database->fetchAll($hent);
 	}
 		
-	public function hentRollesBrukere($rolle)
+	public function hentRollesBrukere($rolle, $klubb)
 	{
 		$hent = $this->database->select()
 		->from('ad_bruker_klubb_rolle_link', array('ad_bruker_epost'))
-		->where('ad_rolle_navn =?', $rolle);
+		->where('ad_rolle_navn =?', $rolle)
+		->where('ad_klubb_raseid =?', $klubb);
 	
 		return $this->database->fetchAll($hent);
 	}
