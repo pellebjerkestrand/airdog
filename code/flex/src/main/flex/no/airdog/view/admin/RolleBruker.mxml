@@ -127,18 +127,19 @@
 				<mx:Repeater id="klubb" dataProvider="{Components.instance.session.alleRollersBrukere}">
 					<mx:Panel title="{klubb.currentItem.navn}" width="100%" data="{klubb.currentItem.navn}">
 						<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
-							<mx:Panel title="{rolle.currentItem.ad_rolle_navn}" width="100%">
+							<mx:Panel title="{rolle.currentItem.ad_rolle_navn}" width="100%">								
 								<mx:DataGrid id="rolleBruker"
-									height="{rolle.currentItem.brukere.length * 22 + 25}"			
+									height="{klubb.currentItem.roller.brukere.length * 22 + 25}"			
 									paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
 									width="100%"
-									dataProvider="{rolle.currentItem.brukere}" 
+									dataProvider="{klubb.currentItem.roller.brukere}" 
 									verticalAlign="middle"
 						            dragEnter="sjekkRolle(event);"                      
 						            dragDrop="leggtilRettighetPaRolle(event)"
 						            dragEnabled="true"
 						            mouseDown="settDroppesHvor(event, 'sletting')">
 								</mx:DataGrid>
+
 							</mx:Panel>
 						</mx:Repeater>
 					</mx:Panel>

@@ -44,7 +44,7 @@ class RolleBrukerController
 	   			
 	   			foreach($klubb['roller'] as $rolle)
 	   			{
-	   				$klubb['roller']['brukere'] = $db->hentRollesBrukere($rolle['ad_rolle_navn']);
+	   				$klubb['roller']['brukere'] = $db->hentRollesBrukere($rolle['ad_rolle_navn'], $klubb['raseid']);
 	   			}
 	   			
 	   			$tmp[] = $klubb;
