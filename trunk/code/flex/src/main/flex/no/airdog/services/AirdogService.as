@@ -180,16 +180,7 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);        	
         }
-        
-        public function hentAlleRoller(resultat:Function, feil:Function=null):void
-        {
-        	callServiceFunction(service.hentAlleRoller(
-        		Components.instance.session.bruker.epost,
-        		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
-        	resultat, feil);
-        }
-        
+              
         public function hentAlleRettigheter(resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentAlleRettigheter(
@@ -244,6 +235,24 @@ package no.airdog.services
         {
         	callServiceFunction(service.slettRolle(
         		rolle,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentAlleRollersBrukere(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentAlleRollersBrukere(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentAlleBrukere(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentAlleBrukere(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

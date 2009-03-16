@@ -30,7 +30,6 @@ package no.airdog.controller
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
-		function hentAlleRoller():void
 		function hentAlleRettigheter():void
 		function hentRollersRettigheter():void
 		function leggtilRettighetPaRolle(rolle:String, rettighet:String):void
@@ -38,5 +37,7 @@ package no.airdog.controller
 		function slettRettighetPaRolle(rolle:String, rettighet:String):void
 		function leggInnNyRolle(rolle:String):void
 		function slettRolle(rolle:String):void
+		function hentAlleRollersBrukere():void
+		function hentAlleBrukere():void
 	}
 }

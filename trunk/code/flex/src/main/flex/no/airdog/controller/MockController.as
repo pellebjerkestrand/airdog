@@ -330,17 +330,7 @@ package no.airdog.controller
 		{
 		
 		}
-		
-		public function hentAlleRoller():void
-		{
-			Components.instance.services.airdogService.hentAlleRoller(hentAlleRollerResultat);
-		}
-		
-		public function hentAlleRollerResultat(event:Object):void
-		{
-			Components.instance.session.alleRoller = new ArrayCollection(event as Array);
-		}
-		
+				
 		public function hentAlleRettigheter():void
 		{
 			Components.instance.services.airdogService.hentAlleRettigheter(hentAlleRettigheterResultat);
@@ -379,6 +369,26 @@ package no.airdog.controller
 		public function slettRolle(rolle:String):void
 		{
 			Components.instance.services.airdogService.slettRolle(rolle, hentRollersRettigheterResultat);
+		}
+		
+		public function hentAlleRollersBrukere():void
+		{
+			Components.instance.services.airdogService.hentAlleRollersBrukere(hentAlleRollersBrukereResultat);
+		}
+		
+		public function hentAlleRollersBrukereResultat(event:Object):void
+		{
+			Components.instance.session.alleRollersBrukere = new ArrayCollection(event as Array);
+		}
+			
+		public function hentAlleBrukere():void
+		{
+			Components.instance.services.airdogService.hentAlleBrukere(hentAlleBrukereResultat);
+		}
+		
+		public function hentAlleBrukereResultat(event:Object):void
+		{
+			Components.instance.session.alleBrukere = new ArrayCollection(event as Array);
 		}
 	}
 }

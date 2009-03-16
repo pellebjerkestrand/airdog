@@ -21,6 +21,7 @@ require_once 'controller/ACLController.php';
 require_once 'controller/JaktproveController.php';
 require_once 'controller/UtstillingController.php';
 require_once 'controller/RolleRettighetController.php';
+require_once 'controller/RolleBrukerController.php';
 
 $server->setClass("HundController");
 $server->setClass("JaktproveController");
@@ -28,6 +29,7 @@ $server->setClass("UtstillingController");
 $server->setClass("LoggInnController");
 $server->setClass("ACLController");
 $server->setClass("RolleRettighetController");
+$server->setClass("RolleBrukerController");
 
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
