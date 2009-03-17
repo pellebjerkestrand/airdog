@@ -8,21 +8,26 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import no.airdog.controller.*;
 			import no.airdog.model.Hund;
+			import no.airdog.model.Jaktprove;
+			import no.airdog.model.Person;      
+			import no.airdog.services.Components;
+			import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+			import mx.events.ValidationResultEvent;
+			import mx.formatters.DateFormatter;
+			import mx.utils.StringUtil;
+			import mx.validators.DateValidator;
 			import mx.validators.NumberValidator;
 			import mx.validators.StringValidator;
-			import mx.validators.DateValidator;
-			import no.airdog.services.Components;
-			import no.airdog.model.Jaktprove;      
-			import no.airdog.controller.*;
 			import mx.validators.Validator;
-            import mx.events.ValidationResultEvent;
-            import mx.controls.Alert;
-			import mx.formatters.DateFormatter;
-			import mx.collections.ArrayCollection;
 			
-			[Bindable]public var godkjent:Boolean = true;
-            [Bindable]public var tilbakestillt:Boolean = true;
+			[Bindable]public var erGodkjent:Boolean = true;
+            [Bindable]public var erTilbakestillt:Boolean = true;
+            [Bindable]public var erDommerId1Korrekt:Boolean = false;
+            [Bindable]public var erDommerId2Korrekt:Boolean = false;
+            [Bindable]public var erHundIdKorrekt:Boolean = false;
     		
     		[Bindable]private var premier:ArrayCollection = new ArrayCollection(
                 [ {label:"Ingen"}, 
@@ -112,15 +117,15 @@
 					manueltEndretAv.text = Components.instance.session.bruker.epost
              		manueltEndretDato.text = df.format(new Date());
              		
-             		tilbakestillt = false;
+             		erTilbakestillt = false;
              	}
              	
              	if(likTest)
              	{
-             		tilbakestillt = true;
+             		erTilbakestillt = true;
              	}
              	
-             	godkjent = true;
+             	erGodkjent = true;
 
                 valider(proveNrValidator);                
                 valider(proveDatoValidator);
@@ -196,7 +201,7 @@
 	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
 	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
 	            
-	            godkjent = godkjent && erValidert;
+	            erGodkjent = erGodkjent && erValidert;
 	             
 	            return erValidert;
              } 
@@ -558,6 +563,69 @@
             	}
             }
             
+            private function hundIdSjekk():void
+            {
+            	if(valider(hundIdValidator))
+            	{
+            		Components.instance.controller.hentHund(hundId.text, hundIdSjekkResultat);
+            	}
+            	else
+            	{
+            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_cirle.png";
+            	}
+            }
+            
+            private function hundIdSjekkResultat(event:Hund):void
+            {
+            	if((StringUtil.trim(event.navn) == ""))
+            	{
+            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_circle.png";
+            	}
+            	else
+            	{
+            		hundIdIkon.source = "no/airdog/view/assets/ikoner/tick_circle.png";
+            	}
+            	hundNavn.text = StringUtil.trim(event.navn);
+            }
+            
+            private function dommerId1Sjekk():void
+            {
+            	Components.instance.controller.hentPerson(dommerId1.text, dommerId1SjekkResultat);
+            }
+            
+            private function dommerId1SjekkResultat(event:Person):void
+            {
+            	if(StringUtil.trim(event.navn) == "")
+            	{
+            		dommer1Ikon.source = "no/airdog/view/assets/ikoner/user_silhouette.png";
+            		dommer1Label.text = "Ukjent";
+            	}
+            	else
+            	{
+            		dommer1Ikon.source = "no/airdog/view/assets/ikoner/user.png";
+            		dommer1Label.text = StringUtil.trim(event.navn);
+            	}
+            }
+			
+			private function dommerId2Sjekk():void
+            {
+            	Components.instance.controller.hentPerson(dommerId2.text, dommerId2SjekkResultat);
+            }
+            
+            private function dommerId2SjekkResultat(event:Person):void
+            {
+            	if(StringUtil.trim(event.navn) == "")
+            	{
+            		dommer2Ikon.source = "no/airdog/view/assets/ikoner/user_silhouette.png";
+            		dommer2Label.text = "Ukjent";
+            	}
+            	else
+            	{
+            		dommer2Ikon.source = "no/airdog/view/assets/ikoner/user.png";
+            		dommer2Label.text = StringUtil.trim(event.navn);
+            	}
+            }
+            
             private function tilbakestillForm():void
             {
             	appGodkjent.text = Components.instance.session.jaktprove.appGodkjent;
@@ -570,7 +638,7 @@
 				egneStokk.text = Components.instance.session.jaktprove.egneStokk;
 				fart.text = Components.instance.session.jaktprove.fart;
 				hundId.text = Components.instance.session.jaktprove.hundId;
-				hundNavn.text = Components.instance.session.hundprofil.navn;
+				//hundNavn.text settes sammen med ikon i hundIdSjekk();
 				jaktlyst.text = Components.instance.session.jaktprove.jaktlyst;
 				klasse.selectedIndex = Components.instance.session.jaktprove.klasse - 1;
 				kritikk.text = Components.instance.session.jaktprove.kritikk;
@@ -603,15 +671,11 @@
 				stil.text = Components.instance.session.jaktprove.stil;
 				tomStand.text = Components.instance.session.jaktprove.tomStand;
             	
-                tilbakestillt = true;
+                erTilbakestillt = true;
                 
-                settFokus();              
-            }
-            
-            private function hentHundNavnFraId():void
-            {
-            	//trenger vi en ny funksjon som returnerer hundobjekt uten å sette det noe sted?
-            	hundNavn.text = Components.instance.session.hundprofil.navn;
+                hundIdSjekk();
+                dommerId1Sjekk();
+                dommerId2Sjekk();         
             }
             
            	private function avbryt():void
@@ -629,21 +693,31 @@
 						<mx:TextArea id="kritikk" width="100%" height="100%"/>
 				</mx:FormItem>						
 			</mx:Form>
-			<mx:HBox>
+			<mx:HBox horizontalAlign="left" horizontalGap="0">
 				<mx:Form verticalGap="0">
-					<mx:FormItem label="Prøvenummer">
+					<mx:FormHeading label="Prøve"/>
+					<mx:FormItem label="Nummer">
 						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
 					</mx:FormItem>					
-					<mx:FormItem label="Prøvedato">
+					<mx:FormItem label="Dato">
 						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event);" yearNavigationEnabled="true" width="100" height="20"/> 
 					</mx:FormItem>
 				</mx:Form>
 				<mx:Form verticalGap="0">
-					<mx:FormItem label="Dommer 1">
-						<mx:TextInput id="dommerId1" change="validering(event);" width="84" height="20"/>
+					<mx:FormHeading label="Dommere"/>
+					<mx:FormItem label="1">
+						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
+							<mx:TextInput id="dommerId1" focusOut="dommerId1Sjekk();" change="validering(event);" width="84" height="20"/>
+							<mx:Image id="dommer1Ikon" width="16" height="16"/>
+							<mx:Label id="dommer1Label" width="75" maxWidth="75"/>
+						</mx:HBox>
 					</mx:FormItem>
-					<mx:FormItem label="Dommer 2">			
-						<mx:TextInput id="dommerId2" change="validering(event);" width="84" height="20"/>
+					<mx:FormItem label="2">	
+						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">		
+							<mx:TextInput id="dommerId2" focusOut="dommerId2Sjekk();" change="validering(event);" width="84" height="20"/>
+							<mx:Image id="dommer2Ikon" width="16" height="16"/>
+							<mx:Label id="dommer2Label" width="75" maxWidth="75"/>
+						</mx:HBox>
 					</mx:FormItem>
 				</mx:Form>
 			</mx:HBox>
@@ -683,7 +757,10 @@
 					</mx:FormItem>
 					<!--<mx:FormHeading label="Hundinfo"/>-->
 					<mx:FormItem label="Hund-ID">
-						<mx:TextInput id="hundId" change="validering(event);" width="84" height="20"/>
+						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
+							<mx:TextInput id="hundId" focusOut="hundIdSjekk();" change="validering(event);" width="84" height="20"/>
+							<mx:Image id="hundIdIkon"/>
+						</mx:HBox>
 					</mx:FormItem>				
 					<mx:FormItem label="Navn">
 						<mx:TextInput id="hundNavn" enabled="false" width="84" height="20"/>
@@ -790,8 +867,8 @@
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-        <mx:Button label="Lagre" enabled="{godkjent}" click="lagreJaktprove()"/>
-        <mx:Button label="Tilbakestill" enabled="{!tilbakestillt}" click="tilbakestillForm()"/>
+        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagreJaktprove()"/>
+        <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
         <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>
 </mx:TitleWindow>

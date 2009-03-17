@@ -22,6 +22,7 @@ require_once 'controller/JaktproveController.php';
 require_once 'controller/UtstillingController.php';
 require_once 'controller/RolleRettighetController.php';
 require_once 'controller/RolleBrukerController.php';
+require_once 'controller/PersonController.php';
 
 $server->setClass("HundController");
 $server->setClass("JaktproveController");
@@ -30,12 +31,14 @@ $server->setClass("LoggInnController");
 $server->setClass("ACLController");
 $server->setClass("RolleRettighetController");
 $server->setClass("RolleBrukerController");
+$server->setClass("PersonController");
 
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
 $server->setClassMap("AmfJaktprove", "AmfJaktprove");
 $server->setClassMap("AmfUtstilling", "AmfUtstilling");
 $server->setClassMap("AmfBruker","AmfBruker");
+$server->setClassMap("AmfPerson","AmfPerson");
 
 //Bytt til true når det skal lanseres
 $server->setProduction(false);

@@ -71,6 +71,16 @@ package no.airdog.services
 			resultat, feil);
         }
         
+        public function hentPerson(personId:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentPerson(
+        		personId,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
+        }
+        
 		public function hentBrukersKlubber(resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(
