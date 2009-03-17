@@ -37,7 +37,7 @@ package no.airdog.controller
 		function slettRettighetPaRolle(rolle:String, rettighet:String):void
 		function leggInnNyRolle(rolle:String):void
 		function slettRolle(rolle:String):void
-		function hentAlleRollersBrukere():void
+		function hentKlubbersRollersBrukere():void
 		function hentAlleBrukere():void
 	}
 }

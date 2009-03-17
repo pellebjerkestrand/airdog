@@ -241,9 +241,9 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function hentAlleRollersBrukere(resultat:Function, feil:Function=null):void
+        public function hentKlubbersRollersBrukere(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentAlleRollersBrukere(
+        	callServiceFunction(service.hentKlubbersRollersBrukere(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

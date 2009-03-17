@@ -96,7 +96,7 @@
 			public function visAdminBrukere():void
 			{
 				Components.instance.controller.hentAlleBrukere();
-				Components.instance.controller.hentAlleRollersBrukere();
+				Components.instance.controller.hentKlubbersRollersBrukere();
 				Navigasjon.visAdminBrukere();
 			}
         ]]>

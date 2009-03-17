@@ -13,7 +13,8 @@ class RolleRettighetDatabase
 	public function hentAlleRoller()
 	{
 		$hent = $this->database->select()
-		->from('ad_rolle', array('ad_rolle.*'));
+		->from('ad_rolle', array('ad_rolle.*'))
+		->order('navn');;
 		
 		return $this->database->fetchAll($hent);
 	}
@@ -21,7 +22,8 @@ class RolleRettighetDatabase
 	public function hentAlleRettigheter()
 	{
 		$hent = $this->database->select()
-		->from('ad_rettighet', array('ad_rettighet.*'));
+		->from('ad_rettighet', array('ad_rettighet.*'))
+		->order('navn');
 		
 		return $this->database->fetchAll($hent);
 	}
@@ -30,8 +32,9 @@ class RolleRettighetDatabase
 	{
 		$hent = $this->database->select()
 		->from('ad_rolle_rettighet_link', array('ad_rettighet_navn'))
-		->where('ad_rolle_navn =?', $rolle);
-	
+		->where('ad_rolle_navn =?', $rolle)
+		->order('ad_rettighet_navn');
+		
 		return $this->database->fetchAll($hent);
 	}
 	

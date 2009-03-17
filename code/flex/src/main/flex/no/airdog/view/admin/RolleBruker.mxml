@@ -125,7 +125,7 @@
     	<mx:VBox width="100%" height="100%">
     		<mx:Box width="100%" height="100%">
     			<mx:Accordion creationPolicy="auto" width="100%" height="100%">
-					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.alleRollersBrukere}">
+					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
 						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.navn}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
 								<mx:Panel title="{rolle.currentItem.ad_rolle_navn}" width="100%">								

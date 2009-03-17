@@ -27,7 +27,7 @@ class RolleBrukerController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-	public function hentAlleRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
+	public function hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
 		{
