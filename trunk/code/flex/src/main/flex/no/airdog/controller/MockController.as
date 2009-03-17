@@ -410,5 +410,10 @@ package no.airdog.controller
 		{
 			Components.instance.services.airdogService.slettBrukerFraRollePaKlubb(klubb, rolle, bruker, hentKlubbersRollersBrukereResultat);
 		}
+		
+		public function slettBruker(epost:String):void
+		{
+			Components.instance.services.airdogService.slettBruker(epost, hentAlleBrukereResultat);
+		}
 	}
 }

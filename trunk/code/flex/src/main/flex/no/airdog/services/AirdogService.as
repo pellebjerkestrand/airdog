@@ -293,6 +293,16 @@ package no.airdog.services
         	resultat, feil);
         }
         
+        public function slettBruker(epost:String, resultat:Function, feil:Function=null):void
+		{
+			callServiceFunction(service.slettBruker(
+        		epost,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+		}
+        
         
 	}
 }

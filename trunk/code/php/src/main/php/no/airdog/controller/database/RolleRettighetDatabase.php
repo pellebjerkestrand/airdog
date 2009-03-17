@@ -106,8 +106,8 @@ class RolleRettighetDatabase
 			$link = $this->database->quoteInto('ad_rolle_navn = ? ', $rolle);
 			$rolle = $this->database->quoteInto('navn = ? ', $rolle);
 		
-			$hvor = $this->database->quoteInto('ad_rolle_navn = ? ', $rolle);
 			$this->database->delete('ad_rolle_rettighet_link', $link);
+			
 			return $this->database->delete('ad_rolle', $rolle);
 		}
 		

@@ -77,4 +77,38 @@ class RolleBrukerDatabase
 			return true;
 		}
 	}
+	
+	public function slettBruker($epost)
+	{
+		if(!$this->finnesBruker($epost))
+		{
+			$link = $this->database->quoteInto('ad_bruker_epost = ? ', $epost);
+			$bruker = $this->database->quoteInto('epost = ? ', $epost);
+		
+			$this->database->delete('ad_bruker_klubb_rolle_link', $link);
+			
+			return $this->database->delete('ad_bruker', $bruker);
+		}
+		
+		throw(new Exception('Denne rollen er slettet allerede', "1"));
+
+	}	
+	
+	public function finnesBruker($epost)
+	{
+		$hent = $this->database->select()
+		->from('ad_bruker', array('epost'))
+		->where('epost =?', $epost);
+		
+		$gyldig = $this->database->fetchRow($hent);
+		
+		if($gyldig)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }
