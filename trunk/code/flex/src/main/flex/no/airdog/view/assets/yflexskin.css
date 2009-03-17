@@ -12,7 +12,7 @@ global
    color: #4d4d4d;
    fontFamily: Arial;
    fontSize: 14px;
-	themeColor: #ff0000;
+	themeColor: #69CDFF;
 }
 
 /*
@@ -603,9 +603,8 @@ TabNavigator
 
 .UnderMeny
 {
-	textRollOverColor: #901808;
+	textRollOverColor: #AF0C00;
 	color: #0054A2;
-	textDecoration: underline;
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
 	leading: 0;
