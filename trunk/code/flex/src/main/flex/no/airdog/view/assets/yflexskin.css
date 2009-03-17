@@ -11,8 +11,8 @@ global
 {
    color: #4d4d4d;
    fontFamily: Arial;
-   fontSize: 12px;
-	themeColor: #99CDFF;
+   fontSize: 14px;
+	themeColor: #ff0000;
 }
 
 /*
@@ -183,7 +183,8 @@ ComboBox
 	dropDownStyleName: "myComboBoxDropDowns";
 }
 	
-.myComboBoxDropDowns {
+.myComboBoxDropDowns 
+{
    cornerRadius: 4;
 }
 
@@ -416,7 +417,7 @@ Panel
 }
 
 .panelTitle {
-    fontSize: 16;
+    fontSize: 15;
 	fontWeight: bold;
 }
 
@@ -595,7 +596,26 @@ TabBar
 TabNavigator
 {
 	borderColor: #a3a3a3;
+	paddingBottom: 4;
+	paddingTop: 4;
+	paddingLeft: 2;
 }
+
+.UnderMeny
+{
+	textRollOverColor: #901808;
+	color: #0054A2;
+	textDecoration: underline;
+	cornerRadius: 2;
+	themeColor: #FFFFFF;
+	leading: 0;
+	textAlign: left;
+	paddingTop: 2;
+	paddingBottom: 2;
+	paddingLeft: 5;
+	paddingRight: 5;
+	borderColor: #FFFFFF;
+}	
 
 /*
 //------------------------------
@@ -606,7 +626,8 @@ ToolTip
 {
 
 	borderSkin: Embed(source="yflexskin.swf", symbol="ToolTip_borderSkin");
-
+	color: #ffffff;
+	fontSize: 11px;
 }
 
 /*
@@ -614,6 +635,7 @@ ToolTip
 //  Tree
 //------------------------------
 */
+
 Tree
 {
 	defaultLeafIcon: Embed(source="yflexskin.swf",symbol="Tree_defaultLeafIcon");
