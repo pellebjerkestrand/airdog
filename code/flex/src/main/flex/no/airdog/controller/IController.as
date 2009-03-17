@@ -43,5 +43,6 @@ package no.airdog.controller
 		function hentAlleBrukere():void
 		function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
 		function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		function slettBruker(epost:String):void
 	}
 }
