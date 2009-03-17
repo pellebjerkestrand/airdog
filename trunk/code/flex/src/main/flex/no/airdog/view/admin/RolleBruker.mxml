@@ -5,6 +5,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import no.airdog.model.Bruker;
 			import mx.containers.Panel;
 			import mx.controls.Text;
 			import mx.core.UIComponent;
@@ -118,9 +119,11 @@
             	slettIkon.load(slett_tom);
             }
             
-           	public function adminKlikk(event:ItemClickEvent):void{
-				if (event.index == 0){
-					//Components.instance.controller.visRedigerJaktproveVindu(UIComponent(this.parentApplication), jaktprover.selectedItem as Jaktprove);
+           	public function adminKlikk(event:ItemClickEvent):void
+           	{
+				if (event.index == 0)
+				{
+					Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), alleBrukere.selectedItem as Bruker);
 				}
 				else
 				{
@@ -132,9 +135,12 @@
 				}
 			} 
 			
-			private function slettBruker(eventObj:CloseEvent):void {
-				if (eventObj.detail==Alert.OK) {
-					if (alleBrukere.selectedIndex > -1) {
+			private function slettBruker(eventObj:CloseEvent):void
+			{
+				if (eventObj.detail==Alert.OK)
+				{
+					if (alleBrukere.selectedIndex > -1)
+					{
 						Components.instance.controller.slettBruker(alleBrukere.selectedItem.epost);
 					}
 				}

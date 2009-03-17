@@ -7,7 +7,10 @@ package no.airdog.model
 	public class Bruker
 	{		
 		public var epost:String;
+		public var fornavn:String;
+		public var etternavn:String;
 		public var passord:String;
+		public var superadmin:Boolean;
 		public var innlogget:Boolean = false;
 		public var sattKlubb:String;
 		public var sattKlubbId:String;

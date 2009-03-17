@@ -32,6 +32,8 @@ package no.airdog.controller
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
+		function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
+		function fjernBrukerVindu():void
 		function hentAlleRettigheter():void
 		function hentRollersRettigheter():void
 		function leggtilRettighetPaRolle(rolle:String, rettighet:String):void
@@ -44,5 +46,7 @@ package no.airdog.controller
 		function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
 		function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String):void
 		function slettBruker(epost:String):void
+		function redigerBruker(bruker:Bruker):void
+		function leggInnBruker(bruker:Bruker):void
 	}
 }

@@ -20,6 +20,7 @@ package no.airdog.controller
 		private var vindu:InnloggingVindu;
 		private var klubb:KlubbVindu;
 		private var jaktproveVindu:JaktproveVindu;
+		private var brukerVindu:BrukerVindu;
 		private var redigerHundVindu:RedigerHundVindu;
 		
         public function MockController()
@@ -59,6 +60,23 @@ package no.airdog.controller
         {
         	Components.instance.session.jaktprove = null;
         	PopUpManager.removePopUp(jaktproveVindu);
+        }
+        
+        public function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
+        {
+        	Components.instance.session.bruker = bruker as Bruker;
+        	
+    		brukerVindu = PopUpManager.createPopUp(parent, BrukerVindu, true) as BrukerVindu;
+    		brukerVindu.width = 900;
+    		brukerVindu.height = 580;
+        	PopUpManager.centerPopUp(brukerVindu);
+			PopUpManager.bringToFront(brukerVindu);
+        }
+       
+        public function fjernBrukerVindu():void
+        {
+        	Components.instance.session.bruker = null;
+        	PopUpManager.removePopUp(brukerVindu);
         }
         
         public function visLoggInnVindu(parent:DisplayObject):void
@@ -414,6 +432,16 @@ package no.airdog.controller
 		public function slettBruker(epost:String):void
 		{
 			Components.instance.services.airdogService.slettBruker(epost, hentAlleBrukereResultat);
+		}
+		
+		public function redigerBruker(bruker:Bruker):void
+		{
+			Components.instance.services.airdogService.redigerBruker(bruker, hentAlleBrukereResultat);
+		}
+		
+		public function leggInnBruker(bruker:Bruker):void
+		{
+			Components.instance.services.airdogService.leggInnBruker(bruker, hentAlleBrukereResultat);
 		}
 	}
 }

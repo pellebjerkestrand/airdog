@@ -303,6 +303,24 @@ package no.airdog.services
         	resultat, feil);
 		}
         
+        public function leggInnBruker(bruker:Bruker, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.leggInnBruker(
+        		bruker,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
         
+        public function redigerBruker(bruker:Bruker, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.redigerBruker(
+        		bruker,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
 	}
 }
