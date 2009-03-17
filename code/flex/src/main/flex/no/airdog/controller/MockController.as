@@ -400,5 +400,15 @@ package no.airdog.controller
 		{
 			Components.instance.session.alleBrukere = new ArrayCollection(event as Array);
 		}
+		
+		public function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		{
+			Components.instance.services.airdogService.leggBrukerTilRollePaKlubb(klubb, rolle, bruker, hentKlubbersRollersBrukereResultat);
+		}
+		
+		public function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		{
+			Components.instance.services.airdogService.slettBrukerFraRollePaKlubb(klubb, rolle, bruker, hentKlubbersRollersBrukereResultat);
+		}
 	}
 }
