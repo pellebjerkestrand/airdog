@@ -31,8 +31,10 @@ class RolleBrukerDatabase
 	public function hentKlubbsRoller($klubb)
 	{
 		$hent = $this->database->select()
+		->distinct()
 		->from('ad_bruker_klubb_rolle_link', array('ad_rolle_navn'))
-		->where('ad_klubb_raseid =?', $klubb);
+		->where('ad_klubb_raseid =?', $klubb)
+		->group('ad_rolle_navn');
 	
 		return $this->database->fetchAll($hent);
 	}

@@ -35,19 +35,23 @@ class RolleBrukerController
 			$klubber = $dbACL->hentAlleKlubber();
 			
 			$db = new RolleBrukerDatabase();			
-			$tmp = array();
-			$tmp2 = array();
 
 	   		foreach($klubber as $klubb)
-	   		{   
-	   			$klubb['roller'] = $db->hentKlubbsRoller($klubb['raseid']);
-	   			
-	   			foreach($klubb['roller'] as $rolle)
-	   			{
-	   				$klubb['roller']['brukere'] = $db->hentRollesBrukere($rolle['ad_rolle_navn'], $klubb['raseid']);
-	   			}
-	   			
-	   			$tmp[] = $klubb;
+	   		{
+	   			if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubb['raseid'], "Rollehåndtering"))
+				{	   
+		   			$tempRoller = array();
+		   			$roller['roller'] = $db->hentKlubbsRoller($klubb['raseid']);
+		   			
+		   			foreach($roller['roller'] as $rolle)
+		   			{
+		   				$rolle['brukere'] = $db->hentRollesBrukere($rolle['ad_rolle_navn'], $klubb['raseid']);
+		   				$tempRoller[] = $rolle;
+		   			}
+		   			
+		   			$klubb['roller'] = $tempRoller;
+		   			$tmp[] = $klubb;
+				}
 	   		}
 			
 			return $tmp;
