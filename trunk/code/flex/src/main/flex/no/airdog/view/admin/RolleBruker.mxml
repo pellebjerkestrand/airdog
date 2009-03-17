@@ -38,7 +38,8 @@
             private var droppesHvor:String
 			
 			private function init():void
-			{				
+			{			
+					
 			}
 			
             private function settDroppesHvor(event:MouseEvent, id:String):void
@@ -46,18 +47,18 @@
                 droppesHvor = id;
             }
             
-            private function sjekkRolle(event:DragEvent):void 
+            private function sjekkBruker(event:DragEvent):void 
             { 
             	var dropp:Object = Object(event.currentTarget);
             	var data:ArrayCollection = dropp.dataProvider as ArrayCollection;
-				var ting:Array = event.dragSource.dataForFormat("items") as Array;
+				var bruker:Array = event.dragSource.dataForFormat("items") as Array;
 				var ikkeLik:Boolean = true;
             	
                 if(droppesHvor == dropp.id)
                 {
                 	for(var i:int = 0; i < data.length; i++)
                 	{ 
-						if(data[i].ad_rolle_navn == ting[0].navn) ikkeLik = false;
+						if(data[i].ad_bruker_epost == bruker[0].epost) ikkeLik = false;
 					}
 					
 					if(ikkeLik)
@@ -81,22 +82,27 @@
                 }
             }
 
-            private function leggtilRettighetPaRolle(event:DragEvent):void 
+            private function leggBrukerTilRollePaKlubb(event:DragEvent):void 
             {        
-                var rolleRettighet:DataGrid = DataGrid(event.currentTarget);  
-                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
-                var panel:Panel = rolleRettighet.parent as Panel;
-
-				Components.instance.controller.leggtilRettighetPaRolle(panel.data.toString(), rettighet[0].navn);
+                var rolleBruker:DataGrid = DataGrid(event.currentTarget);  
+                var bruker:Array = event.dragSource.dataForFormat("items") as Array;
+                var rolle:Panel = rolleBruker.parent as Panel;
+                var klubb:VBox = rolle.parent as VBox;
+				
+				//Alert.show(klubb.data.toString() + " " + rolle.data.toString() + " " + bruker[0].epost);
+				Components.instance.controller.leggBrukerTilRollePaKlubb(klubb.data.toString(), rolle.data.toString(), bruker[0].epost);
             }
             
             private function slettBrukerPaRolle(event:DragEvent):void 
-            {
-            	var rolleRettighet:UIComponent = UIComponent(event.currentTarget);
-                var rettighet:Array = event.dragSource.dataForFormat("items") as Array;
-                var panel:Panel = event.dragInitiator.parent as Panel;
-
-				//Components.instance.controller.slettRettighetPaRolle(panel.data.toString(), rettighet[0].ad_rettighet_navn);
+            {            	
+                var rolleBruker:DataGrid = DataGrid(event.dragInitiator);  
+                var bruker:Array = event.dragSource.dataForFormat("items") as Array;
+                var rolle:Panel = rolleBruker.parent as Panel;
+                var klubb:VBox = rolle.parent as VBox;
+				
+				
+				//Alert.show(klubb.data.toString() + " " + rolle.data.toString() + " " + bruker[0].ad_bruker_epost);
+				Components.instance.controller.slettBrukerFraRollePaKlubb(klubb.data.toString(), rolle.data.toString(), bruker[0].ad_bruker_epost);
 				
 				slettIkon.load(slett_full);
 				rister.duration = 200;
@@ -112,7 +118,27 @@
             	slettIkon.load(slett_tom);
             }
             
-            
+           	public function adminKlikk(event:ItemClickEvent):void{
+				if (event.index == 0){
+					//Components.instance.controller.visRedigerJaktproveVindu(UIComponent(this.parentApplication), jaktprover.selectedItem as Jaktprove);
+				}
+				else
+				{
+					Alert.okLabel = "Ja"
+					Alert.cancelLabel = "Nei"
+					var objAlert:Alert = Alert.show(
+					"Vil du slette " + alleBrukere.selectedItem.epost, "Slette?", 
+					Alert.OK | Alert.CANCEL, this, slettBruker, null, Alert.OK);	
+				}
+			} 
+			
+			private function slettBruker(eventObj:CloseEvent):void {
+				if (eventObj.detail==Alert.OK) {
+					if (alleBrukere.selectedIndex > -1) {
+						//Components.instance.controller.slettJaktprove(jaktprover.selectedItem.proveNr);
+					}
+				}
+			} 
 		]]>
 	</mx:Script>
    
@@ -123,20 +149,20 @@
     
     <mx:HBox width="100%" horizontalAlign="center">
     	<mx:VBox width="100%" height="100%">
-    		<mx:Box width="100%" height="100%">
-    			<mx:Accordion creationPolicy="auto" width="100%" height="100%">
+    		<mx:Box width="100%" height="{this.height}">
+    			<mx:Accordion creationPolicy="all" width="100%" height="100%">
 					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
-						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.navn}" width="100%" height="100%">
+						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.raseid}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
-								<mx:Panel title="{rolle.currentItem.ad_rolle_navn}" width="100%">								
+								<mx:Panel title="{rolle.currentItem.navn}" width="100%" data="{rolle.currentItem.navn}">								
 									<mx:DataGrid id="rolleBruker"
 										height="{rolle.currentItem.brukere.length * 22 + 25}"			
 										paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
 										width="100%"
 										dataProvider="{rolle.currentItem.brukere}" 
 										verticalAlign="middle"
-							            dragEnter="sjekkRolle(event);"                      
-							            dragDrop="leggtilRettighetPaRolle(event)"
+							            dragEnter="sjekkBruker(event);"                      
+							            dragDrop="leggBrukerTilRollePaKlubb(event)"
 							            dragEnabled="true"
 							            mouseDown="settDroppesHvor(event, 'sletting')">
 							         	<mx:columns>
@@ -165,6 +191,20 @@
 					<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
 					<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
 					<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
+					<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="true" width="100" minWidth="100" resizable="false">
+						<mx:itemRenderer>
+							<mx:Component id="admin">
+								<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
+									<mx:dataProvider>
+										<mx:Array>
+											<mx:String>Rediger</mx:String>
+											<mx:String>Slett</mx:String>
+										</mx:Array>
+									</mx:dataProvider>
+								</mx:ButtonBar>					   	
+							</mx:Component>
+						</mx:itemRenderer>
+					</mx:DataGridColumn>
 				</mx:columns>
 			</mx:DataGrid>
 		</mx:Panel>	

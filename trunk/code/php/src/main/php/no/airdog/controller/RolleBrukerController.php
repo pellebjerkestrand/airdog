@@ -1,6 +1,7 @@
 <?php
 require_once "database/RolleBrukerDatabase.php";
 require_once "database/ACLDatabase.php";
+require_once "database/RolleRettighetDatabase.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -34,18 +35,20 @@ class RolleBrukerController
 			$dbACL = new ACLDatabase();
 			$klubber = $dbACL->hentAlleKlubber();
 			
-			$db = new RolleBrukerDatabase();			
+			$db = new RolleBrukerDatabase();
+			
+			$dbRR = new RolleRettighetDatabase();			
 
 	   		foreach($klubber as $klubb)
 	   		{
 	   			if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubb['raseid'], "Rollehåndtering"))
 				{	   
 		   			$tempRoller = array();
-		   			$roller['roller'] = $db->hentKlubbsRoller($klubb['raseid']);
+		   			$roller['roller'] = $dbRR->hentAlleRoller();
 		   			
 		   			foreach($roller['roller'] as $rolle)
 		   			{
-		   				$rolle['brukere'] = $db->hentRollesBrukere($rolle['ad_rolle_navn'], $klubb['raseid']);
+		   				$rolle['brukere'] = $db->hentRollesBrukere($rolle['navn'], $klubb['raseid']);
 		   				$tempRoller[] = $rolle;
 		   			}
 		   			
@@ -60,5 +63,35 @@ class RolleBrukerController
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
+	
+	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		{
+			$db = new RolleBrukerDatabase();
+			$db->leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker);
+			
+			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
+	
+	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		{
+			$db = new RolleBrukerDatabase();
+			$db->slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker);
+			
+			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
 
 }

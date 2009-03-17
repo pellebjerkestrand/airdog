@@ -28,14 +28,53 @@ class RolleBrukerDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function hentKlubbsRoller($klubb)
+	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker)
+	{		
+		if($this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		{
+			$data = array(
+	   			'ad_klubb_raseid'	=> $klubb,
+	    		'ad_rolle_navn' => $rolle,
+	    		'ad_bruker_epost' => $bruker
+			);
+	
+			return $this->database->insert('ad_bruker_klubb_rolle_link', $data);
+		}
+		
+		throw(new Exception('Brukeren finnes allerede i denne rollen hos denne klubben', "1"));
+	}
+	
+	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker)
+	{		
+		if(!$this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		{
+			$hvor = $this->database->quoteInto('ad_klubb_raseid = ? ', $klubb) . 
+				'AND ' . $this->database->quoteInto('ad_rolle_navn = ? ', $rolle) . 
+				'AND ' . $this->database->quoteInto('ad_bruker_epost = ? ', $bruker);
+				
+			return $this->database->delete('ad_bruker_klubb_rolle_link', $hvor);
+		}
+		
+		throw(new Exception('Brukeren finnes allerede i denne rollen hos denne klubben', "1"));
+	}
+	
+	private function finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker)
 	{
 		$hent = $this->database->select()
-		->distinct()
-		->from('ad_bruker_klubb_rolle_link', array('ad_rolle_navn'))
-		->where('ad_klubb_raseid =?', $klubb)
-		->group('ad_rolle_navn');
-	
-		return $this->database->fetchAll($hent);
+		->from('ad_bruker_klubb_rolle_link', array('ad_bruker_epost'))
+		->where('ad_klubb_raseid=?', $klubb)
+		->where('ad_rolle_navn =?', $rolle)
+		->where('ad_bruker_epost =?', $bruker);
+		
+		$gyldig = $this->database->fetchRow($hent);
+		
+		if($gyldig)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 }

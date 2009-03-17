@@ -268,5 +268,31 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
+        
+        public function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.leggBrukerTilRollePaKlubb(
+        		klubb,
+        		rolle,
+        		bruker,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String, resultat:Function, feil:Function=null):void
+        {
+       		callServiceFunction(service.slettBrukerFraRollePaKlubb(
+        		klubb,
+        		rolle,
+        		bruker,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        
 	}
 }

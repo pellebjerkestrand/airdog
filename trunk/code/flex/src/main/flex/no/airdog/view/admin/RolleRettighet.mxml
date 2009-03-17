@@ -141,7 +141,7 @@
 	    		</mx:HBox>
     		</mx:Panel>
 
-    		<mx:Box width="100%" height="100%">
+    		<mx:Box width="100%" height="{this.height-75}">
 				<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
 					<mx:Panel title="{roller.currentItem.navn}" width="100%" data="{roller.currentItem.navn}" >
 						<mx:DataGrid id="rolleRettighet"
