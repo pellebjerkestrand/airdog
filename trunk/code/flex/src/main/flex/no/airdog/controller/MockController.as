@@ -206,6 +206,16 @@ package no.airdog.controller
 			Components.instance.historie.settPunkt();
 		}
 		
+		public function hentHund(hundId:String, resultat:Function):void
+		{
+			Components.instance.services.airdogService.hentHund(hundId, resultat);
+		}
+		
+		public function hentPerson(personId:String, resultat:Function):void
+		{
+			Components.instance.services.airdogService.hentPerson(personId, resultat);
+		}
+		
 		public function hentBrukersKlubber():void
 		{
 			//Components.instance.session.bruker.klubber = new ArrayCollection();
