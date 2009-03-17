@@ -108,5 +108,49 @@ class RolleBrukerController
 		
 	}
 	
+	public function leggInnBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		{		
+			$ret = array();
+	    	$ret['epost'] = $bruker->epost;
+	    	$ret['fornavn'] = $bruker->fornavn;
+	    	$ret['etternavn'] = $bruker->etternavn;
+	    	$ret['passord'] = $bruker->etternavn;
+	    	$ret['superadmin'] = $bruker->superadmin;  	
+
+			$db = new RolleBrukerDatabase();
+			$db->leggInnBruker($ret);
+			
+			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		
+	}
+	
+	public function redigerBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		{		
+			$ret = array();
+	    	$ret['epost'] = $bruker->epost;
+	    	$ret['fornavn'] = $bruker->fornavn;
+	    	$ret['etternavn'] = $bruker->etternavn;
+	    	$ret['passord'] = $bruker->etternavn;
+	    	$ret['superadmin'] = $bruker->superadmin;  	
+
+			$db = new RolleBrukerDatabase();
+			$db->redigerBruker($ret);
+			
+			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		
+	}
+	
 
 }

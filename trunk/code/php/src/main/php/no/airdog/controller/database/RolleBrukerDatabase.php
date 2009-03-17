@@ -111,4 +111,16 @@ class RolleBrukerDatabase
 			return true;
 		}
 	}
+	
+	public function leggInnBruker($bruker)
+	{
+			return $this->database->insert('ad_bruker', $bruker);
+	}
+	
+	public function redigerBruker($bruker)
+	{
+		$hvor = $this->database->quoteInto('epost = ?', $bruker['epost']);			
+		
+		return $this->database->update('ad_bruker', $bruker, $hvor);
+	}
 }
