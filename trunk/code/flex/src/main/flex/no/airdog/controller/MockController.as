@@ -371,14 +371,14 @@ package no.airdog.controller
 			Components.instance.services.airdogService.slettRolle(rolle, hentRollersRettigheterResultat);
 		}
 		
-		public function hentAlleRollersBrukere():void
+		public function hentKlubbersRollersBrukere():void
 		{
-			Components.instance.services.airdogService.hentAlleRollersBrukere(hentAlleRollersBrukereResultat);
+			Components.instance.services.airdogService.hentKlubbersRollersBrukere(hentKlubbersRollersBrukereResultat);
 		}
 		
-		public function hentAlleRollersBrukereResultat(event:Object):void
+		public function hentKlubbersRollersBrukereResultat(event:Object):void
 		{
-			Components.instance.session.alleRollersBrukere = new ArrayCollection(event as Array);
+			Components.instance.session.klubbersRollersBrukere = new ArrayCollection(event as Array);
 		}
 			
 		public function hentAlleBrukere():void

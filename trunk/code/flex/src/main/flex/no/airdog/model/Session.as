@@ -43,7 +43,7 @@ package no.airdog.model
         
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
         
-        public var alleRollersBrukere:ArrayCollection = new ArrayCollection();
+        public var klubbersRollersBrukere:ArrayCollection = new ArrayCollection();
         
         public function clone():Session
 		{
