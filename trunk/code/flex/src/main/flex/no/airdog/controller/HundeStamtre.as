@@ -63,12 +63,14 @@ package no.airdog.controller
 			
 			var hundNode:VBox = new VBox();
 			var hundNodeHBox:HBox = new HBox();
+			var kjonnIkon:Image = new Image();
 			var hundIdLabel:Label = new Label();
 			var tittelLabel:Label = new Label();
 			
 			var hRule:HRule = new HRule();
 			var hundNavn:LinkButton = new LinkButton();
 			
+			hundNodeHBox.addChild(kjonnIkon);
 			hundNodeHBox.addChild(hundIdLabel);
 			hundNodeHBox.addChild(tittelLabel);
 			hundNodeHBox.percentWidth = 100;
@@ -78,19 +80,27 @@ package no.airdog.controller
 				hundNode.addChild(hundNodeHBox);
 				hundNode.addChild(hRule);
 			}
-			else
-			{
-				
-			}
 			
 			hundNode.addChild(hundNavn);
 			
 			hundNavn.label = hund.navn;
 			hundNavn.data = hund.hundId;
 			tittelLabel.text = hund.tittel;
-			hundIdLabel.text = "  " + hund.hundId;
-			hundNode.name = "hundKnapp";
 			
+			if(hund.kjonn == "H")
+			{
+				kjonnIkon.source = "no/airdog/view/assets/ikoner/gender.png";
+				hundNodeHBox.setStyle("backgroundColor", "#ceceff");
+			}
+			else if(hund.kjonn == "T")
+			{
+				kjonnIkon.source = "no/airdog/view/assets/ikoner/gender_female.png";
+				hundNodeHBox.setStyle("backgroundColor", "#ffcece");
+			}
+			
+			hundIdLabel.text = hund.hundId;
+			
+			hundNode.name = "hundKnapp";
 			hundNode.width = 250;
 			hundNode.setStyle("backgroundColor", "#F5F5F5");
 			hundNode.setStyle("borderStyle", "solid");
