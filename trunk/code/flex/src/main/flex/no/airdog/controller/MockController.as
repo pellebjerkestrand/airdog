@@ -142,8 +142,8 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
-			//var url:String = "http://airdog.no/backend/no/airdog/controller/FilopplastController.php?";
+			//var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
+			var url:String = "http://airdog.no/backend/no/airdog/controller/FilopplastController.php?";
 			
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
@@ -392,6 +392,84 @@ package no.airdog.controller
 		public function slettRolle(rolle:String):void
 		{
 			Components.instance.services.airdogService.slettRolle(rolle, hentRollersRettigheterResultat);
+		}
+		
+		
+		public function hentTabeller():void
+		{
+			Components.instance.services.airdogService.hentTabeller(hentTabellerResultat);
+		}
+		
+		public function hentTabellerResultat(event:Object):void
+		{
+			Components.instance.session.backupTabeller = new ArrayCollection(event as Array);
+		}
+		
+		public function hentKopier():void
+		{
+			Components.instance.services.airdogService.hentKopier(hentKopierResultat);
+		}
+		
+		public function hentKopierResultat(event:Object):void
+		{
+			Components.instance.session.backupKopier = new ArrayCollection(event as Array);
+		}
+		
+//		public function lagKopi(tabell:String):void
+//		{
+//			Components.instance.services.airdogService.lagKopi(tabell, lagKopiResultat);
+//		}
+//		
+//		public function lagKopiResultat(event:Object):void
+//		{
+//			
+//		}
+		
+		public function lagFullKopi(navn:String):void
+		{
+			Components.instance.services.airdogService.lagFullKopi(navn, lagFullKopiResultat);
+		}
+		
+		public function lagFullKopiResultat(event:Object):void
+		{
+			Components.instance.controller.hentKopier();
+		}
+		
+		public function hentFiler(mappe:String):void
+		{
+			Components.instance.services.airdogService.hentFiler(mappe, hentFilerResultat);
+		}
+		
+		public function hentFilerResultat(event:Object):void
+		{
+			var array:Array = event as Array;
+			var filer:ArrayCollection = new ArrayCollection();
+			
+			for (var i:int = 0; i < array.length; i++) 
+			{
+          		filer.addItem(new Valg(array[i], false));
+   			}
+			Components.instance.session.backupFiler = filer;
+		}
+		
+		public function lastKopi(tabell:String, mappe:String):void
+		{
+			Components.instance.services.airdogService.lastKopi(tabell, mappe, lastKopiResultat);
+		}
+		
+		public function lastKopiResultat(event:Object):void
+		{
+			
+		}
+		
+		public function lastKopier(tabeller:ArrayCollection, mappe:String):void
+		{
+			Components.instance.services.airdogService.lastKopier(tabeller, mappe, lastKopierResultat);
+		}
+		
+		public function lastKopierResultat(event:Object):void
+		{
+			Alert.show("Gjennoppretningen ble fullført", "Backup");
 		}
 		
 		public function hentKlubbersRollersBrukere():void

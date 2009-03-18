@@ -57,5 +57,6 @@ package no.airdog.model
 		public var BTK:String;
 		public var BHK:String;
 		public var CACIB:String;
+		public var CERT:String;
 	}
 }

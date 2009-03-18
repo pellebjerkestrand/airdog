@@ -119,7 +119,45 @@ class UtstillingController
 		    	$tmp->BIR = $rad['BIR'];
 		    	$tmp->BIM = $rad['BIM'];
 		    	
-		    	//$tmp->CACIB = $rad['CACIB'];
+		    	$tmp->CERT = "-";
+		    	$tmp->CK = "-";
+		    	$tmp->CACIB = "-";
+		    	$tmp->BHK = "-";
+		    	
+		    	if ($rad['CC'] == "1")
+		    		$tmp->CERT = "X";
+	    		else if ($rad['CC'] == "2")
+		    		$tmp->CK = "X";
+		    	
+	    		if ($rad['CA'] == "1")
+		    		$tmp->CACIB = "CACIB";
+		    	else if ($rad['CA'] == "2")
+		    		$tmp->CACIB = "RES CACIB";
+		    		
+	    		if ($tmp->kjonn = "H")
+	    		{
+	    			$tmp->BHK = $rad['BIK'];
+	    			$tmp->BTK = "-";
+	    		}
+    			else
+    			{
+	    			$tmp->BTK = $rad['BIK'];	
+	    			$tmp->BHK = "-";
+    			}
+    			
+    			if ($tmp->klasse == "C" && $tmp->premie)
+    			
+/*HVIS Klasse == 'C' og premie == 7 : så er premien KIP
+ELLERS HVIS premie == 4 : så er premien KIP
+ELLERS HVIS premie == 6 : så er "premien" PLASS
+ELLERS premie = premie OG
+klasse =
+J for JK
+U for AUK
+A for AK
+C for CHK
+V for VETK
+B for BK*/
 		    	
 				$ret[] = $tmp;
 			}

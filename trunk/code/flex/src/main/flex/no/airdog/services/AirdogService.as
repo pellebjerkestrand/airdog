@@ -1,5 +1,7 @@
 package no.airdog.services
 {
+	import mx.collections.ArrayCollection;
+	
 	import no.airdog.model.Bruker;
 	import no.airdog.model.Hund;
 	import no.airdog.model.Jaktprove;
@@ -245,6 +247,76 @@ package no.airdog.services
         {
         	callServiceFunction(service.slettRolle(
         		rolle,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentTabeller(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentTabeller(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentKopier(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentKopier(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+//        public function lagKopi(tabell:String, resultat:Function, feil:Function=null):void
+//        {
+//        	callServiceFunction(service.lagKopi(
+//        		tabell,
+//        		Components.instance.session.bruker.epost,
+//        		Components.instance.session.bruker.passord,
+//        		Components.instance.session.bruker.sattKlubbId),
+//        	resultat, feil);
+//        }
+        
+        public function lagFullKopi(navn:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.lagFullKopi(
+        		navn,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentFiler(mappe:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentFiler(
+        		mappe,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function lastKopi(tabell:String, mappe:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.lastKopi(
+        		tabell,
+        		mappe,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function lastKopier(tabeller:ArrayCollection, mappe:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.lastKopier(
+        		tabeller.toArray(),
+        		mappe,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

@@ -43,6 +43,12 @@ package no.airdog.model
         
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
         
+        public var backupTabeller:ArrayCollection;
+        
+        public var backupKopier:ArrayCollection;
+        
+        public var backupFiler:ArrayCollection;
+        
         public var klubbersRollersBrukere:ArrayCollection = new ArrayCollection();
         
         public function clone():Session
