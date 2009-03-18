@@ -15,7 +15,9 @@ class JaktproveDatabase
 	
 	public function redigerJaktprove($jaktprove, $klubbId)
 	{
-		$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']);			
+		$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']) . 
+				$this->database->quoteInto(' AND hundId = ?', $jaktprove['hundId']) .
+				$this->database->quoteInto(' AND proveDato = ?', $jaktprove['proveDato']);			
 		return $this->database->update('nkk_fugl', $jaktprove, $hvor);
 	}
 	
