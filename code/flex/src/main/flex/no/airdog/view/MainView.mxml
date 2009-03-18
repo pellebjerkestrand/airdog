@@ -56,6 +56,11 @@
             	Navigasjon.visAdminRoller();
             }
             
+            public function visAdminBackup():void
+            {
+            	Navigasjon.visAdminBackup();
+            }
+            
             public function visACL():void
             {
             	Navigasjon.visACL();
@@ -122,6 +127,7 @@
 				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__pencil.png')"/>
 		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/report__plus.png')"/>
+		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__pencil.png')"/>
 		 	</mx:HBox>
 	   		<mx:HBox id="hundertab" label="Hunder">
 	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
@@ -150,6 +156,7 @@
 	    <view:Arsgjennomsnitt/>
 	    <view:FiktivStamtre/>
 	    <view:Hjem/>
+	    <adminView:BackupVindu/>
     </mx:ViewStack>
 </mx:VBox>
 </mx:VBox>

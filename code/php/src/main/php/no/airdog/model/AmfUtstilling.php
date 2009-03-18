@@ -54,4 +54,5 @@ class AmfUtstilling
 	public $premie;
 	public $BTK;
 	public $BHK;
+	public $CERT;
 }

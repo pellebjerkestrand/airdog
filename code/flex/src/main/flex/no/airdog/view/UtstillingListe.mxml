@@ -59,13 +59,13 @@
 			<mx:DataGridColumn headerText="Sted" dataField="utstillingSted"/>
 			<mx:DataGridColumn headerText="Dommer" dataField="dommer"/>
 			<mx:DataGridColumn headerText="Premie" dataField="premie"/>
-			<mx:DataGridColumn headerText="HP" dataField="HP" width="50"/>
-			<mx:DataGridColumn headerText="CK" dataField="CK" width="50"/>
-			<mx:DataGridColumn headerText="CERT" dataField="CERT" width="50"/>
-			<mx:DataGridColumn headerText="BIR" dataField="BIR" width="50"/>
-			<mx:DataGridColumn headerText="BTK" dataField="BTK" width="50"/>
-			<mx:DataGridColumn headerText="BHK" dataField="BHK" width="50"/>
-			<mx:DataGridColumn headerText="CACIB" dataField="CACIB" width="50"/>
+			<mx:DataGridColumn headerText="HP" dataField="HP" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="CK" dataField="CK" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="CERT" dataField="CERT" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="BIR" dataField="BIR" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="BTK" dataField="BTK" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="BHK" dataField="BHK" width="50" textAlign="center"/>
+			<mx:DataGridColumn headerText="CACIB" dataField="CACIB" width="100" textAlign="center"/>
 			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false" width="100" minWidth="100" resizable="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">

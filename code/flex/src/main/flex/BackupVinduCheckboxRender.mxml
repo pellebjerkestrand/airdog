@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+    <mx:Script>
+        <![CDATA[
+            override public function set data(value:Object):void
+            {
+                if(value != null)
+                {
+                    super.data = value;
+                    cb.selected = value.valgt;
+                    cb.label = value.navn;
+                }
+            }
+            
+            public function cbChange(event:Event):void
+            {
+            	super.data.valgt = cb.selected;
+            }
+        ]]>
+    </mx:Script>
+    <mx:CheckBox id="cb" change="cbChange(event)"/>
+</mx:HBox>

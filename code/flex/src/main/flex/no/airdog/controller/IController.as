@@ -2,6 +2,8 @@ package no.airdog.controller
 {
 	import flash.display.DisplayObject;
 	
+	import mx.collections.ArrayCollection;
+	
 	import no.airdog.model.*;
 	
 	public interface IController
@@ -41,6 +43,13 @@ package no.airdog.controller
 		function slettRettighetPaRolle(rolle:String, rettighet:String):void
 		function leggInnNyRolle(rolle:String):void
 		function slettRolle(rolle:String):void
+		function hentTabeller():void
+		function hentKopier():void
+		//function lagKopi(tabell:String):void
+		function lagFullKopi(navn:String):void
+		function hentFiler(mappe:String):void
+		function lastKopi(tabell:String, mappe:String):void
+		function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		function hentKlubbersRollersBrukere():void
 		function hentAlleBrukere():void
 		function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="no.airdog.view.*" width="100%" height="100%">
+    <mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Valg;
+        	import mx.collections.ArrayCollection;
+        	import mx.controls.*;
+        	import mx.events.FlexEvent;
+        	import mx.controls.Alert;
+        	import no.airdog.model.Opplastning;
+			import no.airdog.services.Components;
+			import flash.events.Event;
+         	import mx.events.DropdownEvent;
+	
+ 			public function backupKopierClick(event:Event):void 
+ 			{
+ 				Components.instance.session.backupFiler = null;
+ 				Components.instance.controller.hentFiler(backupListe.selectedItem.toString());
+ 				navnLabel.text = backupListe.selectedItem.toString();
+ 			}
+
+			private function lagFullKopi():void
+            {
+            	Components.instance.controller.lagFullKopi(backupNavn.text);
+            }  
+            
+            private function gjennopprettFiler(event:Event):void
+            {
+            	var array:ArrayCollection = new ArrayCollection();
+            	
+            	for (var i:int = 0; i < Components.instance.session.backupFiler.length; i++)
+            	{
+            		var valg:Valg = Components.instance.session.backupFiler.getItemAt(i) as Valg;
+            		
+            		if (valg.valgt)
+            		{
+            			array.addItem(valg.navn);
+            		}
+            	}
+            	
+            	Components.instance.controller.lastKopier(array, navnLabel.text);
+            }
+        ]]>
+    </mx:Script>
+    <mx:HBox height="100%">
+	    <mx:Panel title="Utfør sikkerhetskopi" width="300" horizontalAlign="center">
+		    <mx:HBox width="100%">
+		    	<mx:Label text="Navn"/>
+		    	<mx:TextInput id="backupNavn" width="100%"/>
+		    </mx:HBox>
+		    <mx:Button click="lagFullKopi()" label="Ta full kopi av databasen"/>
+	    </mx:Panel>
+	    <mx:Panel title="Sikkerhetskopier" height="100%" width="100%">
+		    <mx:HBox height="100%" width="100%">
+			    <mx:DataGrid id="backupListe" dataProvider="{Components.instance.session.backupKopier}" width="300" height="100%" itemClick="backupKopierClick(event)">
+			    	<mx:columns>
+			    		<mx:DataGridColumn headerText="Navn" dataField="data"/>
+			    	</mx:columns>
+			    </mx:DataGrid>
+			    <mx:VBox height="100%" width="300" visible="{Components.instance.session.backupFiler ? true : false}">
+			    	<mx:HBox>
+			    		<mx:Label text="Navn: "/>
+			    		<mx:Label id="navnLabel"/>
+			    	</mx:HBox>
+			    	<mx:DataGrid id="backupfilerListe" cachePolicy="on" dataProvider="{Components.instance.session.backupFiler}" width="100%" height="100%" showHeaders="false">
+				    	<mx:columns>
+				    		<mx:DataGridColumn paddingLeft="5" headerText="Filer" itemRenderer="BackupVinduCheckboxRender"/>
+				    	</mx:columns>
+				    </mx:DataGrid>
+			    	<mx:Button label="Gjennopprett merkede tabeller" width="100%" click="gjennopprettFiler(event)"/>
+		    	 </mx:VBox>
+		    </mx:HBox>
+	    </mx:Panel>
+    </mx:HBox>
+</mx:VBox>

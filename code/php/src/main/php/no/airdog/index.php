@@ -21,6 +21,7 @@ require_once 'controller/ACLController.php';
 require_once 'controller/JaktproveController.php';
 require_once 'controller/UtstillingController.php';
 require_once 'controller/RolleRettighetController.php';
+require_once 'controller/BackupController.php';
 require_once 'controller/RolleBrukerController.php';
 require_once 'controller/PersonController.php';
 
@@ -30,6 +31,7 @@ $server->setClass("UtstillingController");
 $server->setClass("LoggInnController");
 $server->setClass("ACLController");
 $server->setClass("RolleRettighetController");
+$server->setClass("BackupController");
 $server->setClass("RolleBrukerController");
 $server->setClass("PersonController");
 

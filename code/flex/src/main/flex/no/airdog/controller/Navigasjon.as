@@ -68,5 +68,11 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = 8;
 		}
+		
+		public static function visAdminBackup():void
+		{
+			Components.instance.controller.hentKopier();
+			Components.instance.session.hovedNavigasjon.nr = 9;
+		}
 	}
 }
