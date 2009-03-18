@@ -127,6 +127,7 @@
 	   			<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
 	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
 				<mx:LinkButton label="Favoritthunder (4)" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
+				<mx:Spacer width="100%"/>
 				<mx:LinkButton label="Liste med bilde" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" styleName="UnderMeny" click="visStorHundeliste()" icon="@Embed(source='assets/ikoner/toggle.png')"/>
 				<mx:LinkButton label="Liste uten bilde" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" styleName="UnderMeny" click="visLitenHundeliste()" icon="@Embed(source='assets/ikoner/toggle_collapse.png')"/>
 	   		</mx:HBox>
