@@ -24,15 +24,15 @@
             
             
 			[Bindable]
-           	[Embed("../assets/ikoner/trash_empty.png")]
+           	[Embed("/no/airdog/view/assets/ikoner/trash_empty.png")]
            	private var slett_tom:Class;
            
            	[Bindable]
-           	[Embed("../assets/ikoner/trash_full.png")]
+           	[Embed("/no/airdog/view/assets/ikoner/trash_full.png")]
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("../assets/ikoner/slett.png")]
+			[Embed ("/no/airdog/view/assets/ikoner/slett.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -119,7 +119,7 @@
             
             private function slettRolle(event:Event):void
             {
-            	var knapp:Button = event.target as Button;
+            	var knapp:LinkButton = event.target as LinkButton;
             	var panel:Panel = knapp.parent.parent as Panel;
             	
             	Components.instance.controller.slettRolle(panel.data.toString());
@@ -135,10 +135,14 @@
     <mx:HBox width="100%" horizontalAlign="center">
     	<mx:VBox width="100%" height="100%">
     		<mx:Panel title="Ny rolle" width="100%">
-	    		<mx:HBox>
-		    		<mx:TextInput id="nyRolleTekst" />
-		    		<mx:Button id="nyRolle" label="Legg til" click="leggInnNyRolle()" />   
-	    		</mx:HBox>
+	    		<mx:Form paddingBottom="0" paddingLeft="5" paddingRight="0" paddingTop="0" width="100%">
+	    			<mx:FormItem label="Rollenavn" width="100%">
+	    				<mx:HBox verticalAlign="middle" width="100%">
+	    					<mx:TextInput id="nyRolleTekst"/><mx:Spacer width="100%"/>
+			    			<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='/no/airdog/view/assets/ikoner/tick_circle.png')"/>
+	    				</mx:HBox>
+	    			</mx:FormItem>
+	    		</mx:Form>
     		</mx:Panel>
 
     		<mx:Box width="100%" height="{this.height-75}">
@@ -160,7 +164,7 @@
 						</mx:DataGrid>
 							
 						<mx:HBox horizontalAlign="right" width="100%">
-							<mx:LinkButton icon="{slett}" label="Slett rollen" click="slettRolle(event)" />
+							<mx:LinkButton icon="{slett}" label="Slett valgt rolle" click="slettRolle(event)"/>
 						</mx:HBox>
 					</mx:Panel>
 					
@@ -170,12 +174,14 @@
 		<mx:VBox width="100%" height="100%">
 
 		<mx:Panel title="Alle rettigheter" width="100%" height="100%">
-			<mx:DataGrid id="alleRettigheter" dataProvider="{Components.instance.session.alleRettigheter}" width="100%"
+			<mx:DataGrid id="alleRettigheter"
+				dataProvider="{Components.instance.session.alleRettigheter}"
 				rowCount="{Components.instance.session.alleRettigheter.length}"
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"
-              	dragDrop="slettRettighetPaRolle(event);">
+              	dragDrop="slettRettighetPaRolle(event);"
+              	width="100%" height="100%">
 				<mx:columns>
 					<mx:DataGridColumn headerText="Rettighet" dataField="navn"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
