@@ -35,7 +35,7 @@
         ]]>
     </mx:Script>
 	<mx:DataGrid id="hundeGrid"			 
-		dataProvider="{Components.instance.session.hundesokListe.provider}" 
+		dataProvider="{Components.instance.session.hundesokListe.provider}"
 		itemClick="visHund(event.columnIndex)"
 		rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
