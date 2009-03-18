@@ -9,10 +9,10 @@
 */
 global
 {
-   color: #4d4d4d;
-   fontFamily: Arial;
-   fontSize: 14px;
-	themeColor: #69CDFF;
+   	color: #4d4d4d;
+   	fontFamily: Arial;
+   	fontSize: 14px;
+	themeColor: #69bDFF;
 }
 
 /*
@@ -455,9 +455,9 @@ PopUpButton
 ProgressBar
 {
 
-	barSkin: Embed(source="yflexskin.swf", symbol="ProgressBarSkin");
+	/*barSkin: Embed(source="yflexskin.swf", symbol="ProgressBarSkin");
 	indeterminateSkin: Embed(source="yflexskin.swf", symbol="ProgressIndeterminateSkin");
-	trackSkin: Embed(source="yflexskin.swf", symbol="ProgressTrackSkin");
+	trackSkin: Embed(source="yflexskin.swf", symbol="ProgressTrackSkin");*/
 
 }
 

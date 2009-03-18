@@ -11,10 +11,12 @@
         	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
+			import mx.controls.Alert
 			
-			public function visHund(event:Event):void
+			public function visHund(kolonnenr:int):void
 			{
-				if (hundeGrid.selectedItem != null)
+				
+				if(hundeGrid.selectedItem != null && kolonnenr != 1)
 				{
 					var hund:Hund = hundeGrid.selectedItem as Hund;
 					Components.instance.controller.visHund(hund.hundId);
@@ -34,7 +36,7 @@
     </mx:Script>
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}" 
-		itemClick="visHund(event)"
+		itemClick="visHund(event.columnIndex)"
 		rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
 		width="100%" height="100%" verticalAlign="middle">
@@ -44,11 +46,26 @@
 				headerText="Hunder" 
 				itemRenderer="{Components.instance.session.hundesokListe.renderer}" 
 				dataField="navn"/>
-			<mx:DataGridColumn width="100" headerText="Id" dataField="hundId"/>
+			<mx:DataGridColumn width="100" headerText="Id" dataField="hundId">
+				<mx:itemRenderer>
+                    <mx:Component>
+                        <mx:Label>
+                            <mx:Script>
+                            	<![CDATA[
+                                	override public function set data(value:Object):void
+                                    {
+                                        super.data = value;
+                                        this.selectable = true;
+                                	}
+                            	]]>
+                            </mx:Script>
+                        </mx:Label>
+                    </mx:Component>
+            	</mx:itemRenderer> 
+			</mx:DataGridColumn>
 			<mx:DataGridColumn width="80" headerText="Eier" dataField="eierId"/>
 			<mx:DataGridColumn width="150" headerText="Far" dataField="farNavn" sortable="false"/>
 			<mx:DataGridColumn width="150" headerText="Mor" dataField="morNavn" sortable="false"/>
-			<!--<mx:DataGridColumn width="50" headerText="Id" dataField="hundId"/>-->
 			<!--<mx:DataGridColumn width="50" headerText="Kull" dataField="kullId"/>-->
 			<mx:DataGridColumn width="50" headerText="Kjønn" dataField="kjonn" sortable="false" textAlign="center"/>
 		</mx:columns>
