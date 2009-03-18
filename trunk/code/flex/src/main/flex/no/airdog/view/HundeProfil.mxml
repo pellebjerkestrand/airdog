@@ -45,8 +45,8 @@
 					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" icon="@Embed(source='assets/ikoner/report__pencil.png')"/>
 				</mx:HBox>
 				
-				<mx:Grid styleName="profilGrid">
-					<mx:GridRow>
+				<mx:Grid backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" cornerRadius="6" styleName="profilGrid">
+					<mx:GridRow paddingTop="3" paddingLeft="3" paddingRight="3">
 						<mx:GridItem styleName="profilGridBeskrivelse">
 							<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
@@ -72,7 +72,7 @@
 							<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" styleName="profilGridData"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow>
+					<mx:GridRow paddingBottom="3" paddingLeft="3" paddingRight="3">
 						<mx:GridItem styleName="profilGridBeskrivelse">
 							<mx:Label text="Eier:" styleName="profilGridBeskrivelse"/>
 						</mx:GridItem>
