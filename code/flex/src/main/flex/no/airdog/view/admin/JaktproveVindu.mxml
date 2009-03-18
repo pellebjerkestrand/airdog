@@ -1,7 +1,6 @@
 <mx:TitleWindow
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	xmlns:include="no.airdog.view.admin.Include.*"
 	title="Jaktprøve"
 	creationComplete="init()"
 	layout="vertical">

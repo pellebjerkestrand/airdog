@@ -42,7 +42,6 @@ package no.airdog.controller
     		jaktproveVindu.height = 580;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
-			
         }      
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
@@ -64,18 +63,14 @@ package no.airdog.controller
         
         public function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
         {
-        	Components.instance.session.bruker = bruker as Bruker;
-        	
     		brukerVindu = PopUpManager.createPopUp(parent, BrukerVindu, true) as BrukerVindu;
-    		brukerVindu.width = 900;
-    		brukerVindu.height = 580;
         	PopUpManager.centerPopUp(brukerVindu);
 			PopUpManager.bringToFront(brukerVindu);
+			brukerVindu.aktivBruker = bruker;
         }
        
         public function fjernBrukerVindu():void
         {
-        	Components.instance.session.bruker = null;
         	PopUpManager.removePopUp(brukerVindu);
         }
         

@@ -1,4 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Accordion xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="Bruker"
+	creationComplete="init()"
+	layout="vertical"
+	height="100%" width="100%">
 	
-</mx:Accordion>
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.model.Bruker;
+			import no.airdog.controller.*;
+			import no.airdog.services.Components;
+			import mx.controls.Alert;
+			import mx.utils.StringUtil;
+		
+			[Bindable]private var erTilbakestillt:Boolean = true;
+			[Bindable]private var erGodkjent:Boolean = true;
+			
+			public var _aktivBruker:Bruker = null;
+			
+			public function set aktivBruker(bruker:Bruker):void
+			{
+				_aktivBruker = bruker;
+				tilbakestillForm();
+			}
+			
+			private function init():void
+			{
+				tilbakestillForm();
+			}
+			
+			private function formVerdier():Bruker
+			{
+				var bruker:Bruker = new Bruker();
+				
+				bruker.epost = epost.text;
+				bruker.fornavn = fornavn.text;
+				bruker.etternavn = etternavn.text;
+				bruker.passord = passord.text;
+				bruker.superadmin = superadmin.selected;
+				
+				return bruker;
+			}
+			
+			private function endring():void
+			{
+				erTilbakestillt = sammenliknObjekt(formVerdier(), _aktivBruker) && passordSjekk();
+			}
+			
+			private function passordSjekk():Boolean
+			{
+				return (StringUtil.trim(passord.text) == StringUtil.trim(passord2.text));	
+			}
+			
+			private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
+			{
+			    var buffer1:ByteArray = new ByteArray();
+			    buffer1.writeObject(objekt1);
+			    var buffer2:ByteArray = new ByteArray();
+			    buffer2.writeObject(objekt2);
+			 	
+			    var storrelse:uint = buffer1.length;
+			    if (buffer1.length == buffer2.length)
+			    {
+			        buffer1.position = 0;
+			        buffer2.position = 0;
+			 
+			        while (buffer1.position < storrelse)
+			        {
+			            var v1:int = buffer1.readByte();
+			            if (v1 != buffer2.readByte())
+			            {
+			                return false;
+			            }
+			        }    
+			        return true;                        
+			    }
+			    return false;
+			}
+			
+			private function lagre():void
+			{
+				if(passordSjekk())
+				{
+					if(_aktivBruker.epost == epost.text)
+					{
+						Components.instance.controller.redigerBruker(formVerdier());
+						Alert.show("Bruker " + epost.text + " redigert", "Redigert");
+					}
+					else
+					{
+						Components.instance.controller.leggInnBruker(formVerdier());
+						Alert.show("Ny bruker, " + epost.text + ", lagt inn", "Lagt inn");
+					}
+					avbryt();
+				}
+				else
+				{
+					Alert.show("Passordet er ikke lik passordbekreftelsen\nPrøv igjen", "Passordfeil");
+					passord.text = "";
+					passord2.text = "";
+				}
+			}
+			
+			private function tilbakestillForm():void
+			{
+				if(_aktivBruker)
+				{
+					epost.text = _aktivBruker.epost;
+					fornavn.text = _aktivBruker.fornavn;
+					etternavn.text = _aktivBruker.etternavn;
+					superadmin.selected = _aktivBruker.superadmin;
+				}
+				else
+				{
+					epost.text = "";
+					fornavn.text = "";
+					etternavn.text = "";
+					superadmin.selected = false;
+				}
+				
+				passord.text = "";
+				passord2.text = "";
+				
+				erTilbakestillt = sammenliknObjekt(formVerdier(), _aktivBruker);
+			}
+			
+			private function avbryt():void
+			{
+				Components.instance.controller.fjernBrukerVindu();
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:VBox horizontalAlign="center">
+		<mx:Form paddingBottom="0">
+			<mx:FormItem label="E-post">
+				<mx:TextInput id="epost" change="endring();"/>
+			</mx:FormItem>
+			<mx:FormItem label="Fornavn">
+				<mx:TextInput id="fornavn" change="endring();"/>
+			</mx:FormItem>
+			<mx:FormItem label="Etternavn">
+				<mx:TextInput id="etternavn" change="endring();"/>
+			</mx:FormItem>
+			<mx:FormItem label="Passord">
+				<mx:TextInput id="passord" change="endring();" displayAsPassword="true"/>
+			</mx:FormItem>
+			<mx:FormItem label="Bekreft passord">
+				<mx:TextInput id="passord2" change="endring();" displayAsPassword="true"/>
+			</mx:FormItem>
+			<mx:FormItem label="Superadmin">
+				<mx:CheckBox id="superadmin" change="endring();"/>
+			</mx:FormItem>
+		</mx:Form>
+		<mx:Label fontSize="10" text="Endres e-post, lages det ny bruker"/>
+	</mx:VBox>
+	
+	<mx:ControlBar horizontalAlign="center">
+        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
+        <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
+        <mx:Button label="Avbryt" click="avbryt()"/>
+	</mx:ControlBar>
+</mx:TitleWindow>

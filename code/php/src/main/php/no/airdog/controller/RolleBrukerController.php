@@ -116,7 +116,7 @@ class RolleBrukerController
 	    	$ret['epost'] = $bruker->epost;
 	    	$ret['fornavn'] = $bruker->fornavn;
 	    	$ret['etternavn'] = $bruker->etternavn;
-	    	$ret['passord'] = $bruker->etternavn;
+	    	$ret['passord'] = sha1($bruker->etternavn);
 	    	$ret['superadmin'] = $bruker->superadmin;  	
 
 			$db = new RolleBrukerDatabase();
@@ -138,7 +138,7 @@ class RolleBrukerController
 	    	$ret['epost'] = $bruker->epost;
 	    	$ret['fornavn'] = $bruker->fornavn;
 	    	$ret['etternavn'] = $bruker->etternavn;
-	    	$ret['passord'] = $bruker->etternavn;
+	    	$ret['passord'] = sha1($bruker->etternavn);
 	    	$ret['superadmin'] = $bruker->superadmin;  	
 
 			$db = new RolleBrukerDatabase();
