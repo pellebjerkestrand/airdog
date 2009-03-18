@@ -27,7 +27,7 @@ package no.airdog.model
         
         public var hovedNavigasjon:Navigasjon = new Navigasjon();
         
-        public var bruker:Bruker = new Bruker(); 
+        public var bruker:Bruker = new Bruker();
         
         public var stamtre:Hund;
         

@@ -123,7 +123,21 @@
            	{
 				if (event.index == 0)
 				{
-					Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), alleBrukere.selectedItem as Bruker);
+					var bruker:Bruker = new Bruker();
+					bruker.epost = alleBrukere.selectedItem.epost;
+					bruker.fornavn = alleBrukere.selectedItem.fornavn;
+					bruker.etternavn = alleBrukere.selectedItem.etternavn;
+					bruker.passord = "";
+					if(alleBrukere.selectedItem.superadmin == 1)
+					{
+						bruker.superadmin = true;	
+					}
+					else
+					{
+						bruker.superadmin = false;
+					}
+					
+					Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), bruker);
 				}
 				else
 				{
@@ -154,9 +168,11 @@
 	</mx:Sequence>
     
     <mx:HBox width="100%" horizontalAlign="center">
+    
     	<mx:VBox width="100%" height="100%">
     		<mx:Box width="100%" height="{this.height}">
-    			<mx:Accordion creationPolicy="all" width="100%" height="100%">
+    			<mx:TabNavigator creationPolicy="all" width="100%" height="100%">
+    			<!--<mx:Accordion creationPolicy="all" width="100%" height="100%">-->
 					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
 						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.raseid}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
@@ -180,48 +196,48 @@
 							</mx:Repeater>
 						</mx:VBox>	
 					</mx:Repeater>
-				</mx:Accordion>
+				<!--</mx:Accordion>-->
+				</mx:TabNavigator>
 			</mx:Box>
 		</mx:VBox>
+		
 		<mx:VBox width="100%" height="100%">
+			<mx:Panel id="gridPanel" title="Alle brukere" width="100%" height="100%">
+				<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="100%"
+					rowCount="{Components.instance.session.alleBrukere.length}"
+					dragEnabled="true"
+					mouseDown="settDroppesHvor(event, 'rolleBruker');"
+					dragEnter="sjekkSlett(event);"
+	              	dragDrop="slettBrukerPaRolle(event);">
+					<mx:columns>
+						<mx:DataGridColumn headerText="E-post" dataField="epost"/>
+						<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
+						<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
+						<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
+						<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="true" width="100" minWidth="100" resizable="false">
+							<mx:itemRenderer>
+								<mx:Component id="admin">
+									<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
+										<mx:dataProvider>
+											<mx:Array>
+												<mx:String>Rediger</mx:String>
+												<mx:String>Slett</mx:String>
+											</mx:Array>
+										</mx:dataProvider>
+									</mx:ButtonBar>					   	
+								</mx:Component>
+							</mx:itemRenderer>
+						</mx:DataGridColumn>
+					</mx:columns>
+				</mx:DataGrid>
+			</mx:Panel>	
 
-		<mx:Panel title="Alle brukere" width="100%" height="100%">
-			<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%"
-				rowCount="{Components.instance.session.alleBrukere.length}"
-				dragEnabled="true"
-				mouseDown="settDroppesHvor(event, 'rolleBruker');"
-				dragEnter="sjekkSlett(event);"
-              	dragDrop="slettBrukerPaRolle(event);">
-				<mx:columns>
-					<mx:DataGridColumn headerText="E-post" dataField="epost"/>
-					<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
-					<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
-					<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
-					<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="true" width="100" minWidth="100" resizable="false">
-						<mx:itemRenderer>
-							<mx:Component id="admin">
-								<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
-									<mx:dataProvider>
-										<mx:Array>
-											<mx:String>Rediger</mx:String>
-											<mx:String>Slett</mx:String>
-										</mx:Array>
-									</mx:dataProvider>
-								</mx:ButtonBar>					   	
-							</mx:Component>
-						</mx:itemRenderer>
-					</mx:DataGridColumn>
-				</mx:columns>
-			</mx:DataGrid>
-		</mx:Panel>	
-
-		<mx:Panel id="sletting" title="Slett bruker på rolle" width="100%"
-        	dragEnter="sjekkSlett(event)"
-            dragDrop="slettBrukerPaRolle(event)">
-                    
-          	<mx:Image id="slettIkon" source="{slett_tom}" />
-                    
-		</mx:Panel>
+			<mx:Panel id="sletting" title="Slett bruker på rolle" width="100%"
+	        	dragEnter="sjekkSlett(event)"
+	            dragDrop="slettBrukerPaRolle(event)">
+	                    
+	          	<mx:Image id="slettIkon" source="{slett_tom}" />
+			</mx:Panel>
 		</mx:VBox>
 	</mx:HBox>
 </mx:VBox>
