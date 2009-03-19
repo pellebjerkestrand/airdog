@@ -5,7 +5,7 @@
     preloader="no.airdog.view.Laster"
     backgroundColor="#000000"
     layout="absolute"
-    minWidth="960">
+    minWidth="960" verticalGap="0" horizontalGap="0">
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
