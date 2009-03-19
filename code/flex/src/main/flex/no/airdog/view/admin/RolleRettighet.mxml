@@ -32,7 +32,7 @@
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("/no/airdog/view/assets/ikoner/slett.png")]
+			[Embed ("/no/airdog/view/assets/ikoner/minus_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -139,7 +139,7 @@
 	    			<mx:FormItem label="Rollenavn" width="100%">
 	    				<mx:HBox verticalAlign="middle" width="100%">
 	    					<mx:TextInput id="nyRolleTekst"/><mx:Spacer width="100%"/>
-			    			<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='/no/airdog/view/assets/ikoner/tick_circle.png')"/>
+			    			<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')"/>
 	    				</mx:HBox>
 	    			</mx:FormItem>
 	    		</mx:Form>

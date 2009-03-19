@@ -120,7 +120,7 @@ class JaktproveDatabase
 		}
 		else if ($dbJaktprove["manueltEndretAv"] != "")
 		{
-			return "Manuelt endret, vil du overskrive???";
+			return "Manuelt endret, vil du overskrive?";
 		}
 		else
 		{
