@@ -42,7 +42,7 @@
 				<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
 				<mx:HBox verticalAlign="middle">
 					<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
-					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" icon="@Embed(source='assets/ikoner/report__pencil.png')"/>
+					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')"/>
 				</mx:HBox>
 				
 				<mx:Grid backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" cornerRadius="6" styleName="profilGrid">

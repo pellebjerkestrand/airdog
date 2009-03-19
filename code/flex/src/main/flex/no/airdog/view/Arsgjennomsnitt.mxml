@@ -20,7 +20,7 @@
     		<mx:TextInput id="hundAr" enter="sok()"/>
     	</mx:FormItem>
     	<mx:FormItem>
-    		<mx:Button label="Søk" click="sok()" icon="@Embed(source='assets/ikoner/magnifier.png')"/>
+    		<mx:Button label="Søk" click="sok()" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')"/>
     	</mx:FormItem>
     </mx:HBox>
 	<mx:DataGrid paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
