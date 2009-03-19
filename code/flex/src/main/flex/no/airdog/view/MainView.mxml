@@ -117,9 +117,7 @@
 				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="300"/>
 				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
-			
 			<mx:LinkButton label="Administrasjon" icon="@Embed(source='assets/ikoner/crown.png')" click="{meny.selectedChild = adminmeny}"/>
-			<mx:LinkButton label="Utvikling" icon="@Embed(source='assets/ikoner/gear.png')" click="{meny.selectedChild = utviklermeny}"/>
 				<mx:Spacer width="100%"/>
 			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
