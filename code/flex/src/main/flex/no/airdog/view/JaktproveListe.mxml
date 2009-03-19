@@ -31,7 +31,7 @@
 			} 
 			
  			private function slett(eventObj:CloseEvent):void {
-				if (eventObj.detail==Alert.OK) {
+				if (eventObj.detail==Alert.YES) {
 					if (jaktprover.selectedIndex > -1) {
 						Components.instance.controller.slettJaktprove(jaktprover.selectedItem.proveNr);
 					}
@@ -44,11 +44,9 @@
 				}
 				else
 				{
-					Alert.okLabel = "Ja"
-					Alert.cancelLabel = "Nei"
 					var objAlert:Alert = Alert.show(
 					"Vil du slette " + jaktprover.selectedItem.proveNr, "Slette?", 
-					Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
+					Alert.YES | Alert.NO, this, slett, null, Alert.YES);	
 				}
 			}    
         ]]>
