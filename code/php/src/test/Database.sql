@@ -110,7 +110,7 @@ INSERT INTO `ad_rettighet` VALUES('Rediger jaktprøve', NULL);
 INSERT INTO `ad_rettighet` VALUES('Importer database', NULL);
 INSERT INTO `ad_rettighet` VALUES('Legge inn jaktprøve', NULL);
 INSERT INTO `ad_rettighet` VALUES('Slett jaktprøve', NULL);
-INSERT INTO `ad_rettighet` VALUES('Rollehåndtering', NULL);
+INSERT INTO `ad_rettighet` VALUES('tering', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,7 @@ INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rediger hund');
 INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Lese');
 INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rediger jaktprøve');
 INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'Legge inn jaktprøve');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'RolleHåndtering');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rollehåndtering');
 INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'Rollehåndtering');
 
 
