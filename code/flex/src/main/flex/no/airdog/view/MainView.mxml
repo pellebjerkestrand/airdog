@@ -111,8 +111,11 @@
 	<mx:VBox id="topbar" styleName="TopBar" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 		<mx:ApplicationControlBar width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png" click="visHjem()"/>
-			<mx:TextInput id="sokefelt" text="" enter="sok()" cornerRadius="5"/>
-			<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#22201E" fontSize="13"/>
+			<mx:HBox styleName="sokBar">
+				<mx:TextInput id="sokefelt" styleName="sok" text="" enter="sok()" cornerRadius="5"/>
+				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#22201E" fontSize="13"/>
+			</mx:HBox>
+			
 			<mx:LinkButton label="Hjem" icon="@Embed(source='assets/ikoner/home.png')" click="visHjem()" color="#22201E" fontSize="13"/>
 				<mx:Spacer width="100%"/>
 			<mx:LinkButton label="Bruker" icon="@Embed(source='assets/ikoner/user.png')" click="{meny.selectedChild = brukermeny}" color="#22201E" fontSize="13"/>
