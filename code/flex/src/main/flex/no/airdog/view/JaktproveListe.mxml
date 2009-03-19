@@ -12,14 +12,11 @@
 			
 			private function init():void
 			{				
-				for(var i:int = 0; i < Components.instance.session.bruker.rettigheter.length; i++)
+				if(Components.instance.controller.harBrukerRettighet("Rediger jaktprøve"))
 				{
-					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == "Rediger jaktprøve")
-					{
-						adminPanel.visible = true;
-						adminPanelSammendrag.visible = true;
-					}					
-				}
+					adminPanel.visible = true;
+					adminPanelSammendrag.visible = true;
+				}					
 			}
 			
 			public function set hundId(val:String):void

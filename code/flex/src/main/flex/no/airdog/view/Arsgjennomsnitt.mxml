@@ -21,7 +21,10 @@
     		<mx:Label text="År" width="50"/>
     		<mx:TextInput id="hundAr" enter="sok()"/>
     	</mx:HBox>
-    	<mx:Button label="Søk" click="sok()"/>
+    	<mx:HBox>
+    		<mx:Spacer width="50"/>
+    		<mx:Button label="Søk" click="sok()"/>
+    	</mx:HBox>
     </mx:VBox>
 	<mx:DataGrid paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.arsgjennomsnitt}" verticalAlign="middle">
