@@ -26,6 +26,7 @@ class ACLDatabase
 		$hent = $this->database->select()
 		->from(array('a'=>'ad_bruker_klubb_rolle_link'), array('b.navn', 'b.raseid'))
 		->join(array('b'=>'ad_klubb'),'a.ad_klubb_raseid = b.raseid', array())
+		->group('a.ad_klubb_raseid')
 		->where($bruker);
 		
 		return $this->database->fetchAll($hent);
