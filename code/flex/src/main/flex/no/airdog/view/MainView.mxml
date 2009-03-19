@@ -34,7 +34,7 @@
             
             private function init(e:Event):void
             {
-            	Components.instance.controller.visLoggInnVindu(this);
+            	//Components.instance.controller.visLoggInnVindu(this);
 				meny.selectedChild = brukermeny;
             }
             
