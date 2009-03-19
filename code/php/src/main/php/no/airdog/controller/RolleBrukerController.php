@@ -156,8 +156,5 @@ class RolleBrukerController
 
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
-		
 	}
-	
-
 }
