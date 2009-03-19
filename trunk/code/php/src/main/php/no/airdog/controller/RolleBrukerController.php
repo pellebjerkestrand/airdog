@@ -116,7 +116,7 @@ class RolleBrukerController
 	    	$ret['epost'] = $bruker->epost;
 	    	$ret['fornavn'] = $bruker->fornavn;
 	    	$ret['etternavn'] = $bruker->etternavn;
-	    	$ret['passord'] = sha1($bruker->etternavn);
+	    	$ret['passord'] = sha1($bruker->passord);
 	    	$ret['superadmin'] = $bruker->superadmin;  	
 
 			$db = new RolleBrukerDatabase();
@@ -138,14 +138,14 @@ class RolleBrukerController
 	    	$fra['epost'] = $fraBruker->epost;
 	    	$fra['fornavn'] = $fraBruker->fornavn;
 	    	$fra['etternavn'] = $fraBruker->etternavn;
-	    	$fra['passord'] = sha1($fraBruker->etternavn);
+	    	$fra['passord'] = sha1($fraBruker->passord);
 	    	$fra['superadmin'] = $fraBruker->superadmin; 
 	    	
 	    	$til = array();
 	    	$til['epost'] = $tilBruker->epost;
 	    	$til['fornavn'] = $tilBruker->fornavn;
 	    	$til['etternavn'] = $tilBruker->etternavn;
-	    	$til['passord'] = sha1($tilBruker->etternavn);
+	    	$til['passord'] = sha1($tilBruker->passord);
 	    	$til['superadmin'] = $tilBruker->superadmin; 	
 
 			$db = new RolleBrukerDatabase();
