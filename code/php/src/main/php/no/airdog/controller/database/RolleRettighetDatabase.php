@@ -84,12 +84,13 @@ class RolleRettighetDatabase
 		}
 	}
 	
-	public function leggInnNyRolle($rolle)
+	public function leggInnNyRolle($rolle, $beskrivelse)
 	{
 		if($this->finnesRolle($rolle))
 		{		
 			$data = array(
 		    	'navn'	=> $rolle,
+		    	'beskrivelse' => $beskrivelse
 			);
 		
 		return $this->database->insert('ad_rolle', $data);

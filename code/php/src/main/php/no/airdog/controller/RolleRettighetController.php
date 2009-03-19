@@ -77,12 +77,12 @@ class RolleRettighetController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-	public function leggInnNyRolle($rolle, $brukerEpost, $brukerPassord, $klubbId)
+	public function leggInnNyRolle($rolle, $beskrivelse, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
 		{
 			$db = new RolleRettighetDatabase();
-			$db->leggInnNyRolle($rolle);
+			$db->leggInnNyRolle($rolle, $beskrivelse);
 			
 			return $this->hentRollersRettigheter($brukerEpost, $brukerPassord, $klubbId);
 		}

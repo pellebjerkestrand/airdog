@@ -114,7 +114,7 @@
             
            	private function leggInnNyRolle():void 
             {
-				Components.instance.controller.leggInnNyRolle(nyRolleTekst.text);
+				Components.instance.controller.leggInnNyRolle(nyRolleTekst.text, nyRolleBeskrivelse.text);
             }
             
             private function slettRolle(event:Event):void
@@ -140,14 +140,17 @@
 	    				<mx:HBox verticalAlign="middle" width="100%">
 	    					<mx:TextInput id="nyRolleTekst"/><mx:Spacer width="100%"/>
 			    			<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')"/>
-	    				</mx:HBox>
+	    				</mx:HBox>	
+	    			</mx:FormItem>
+	    			<mx:FormItem label="Beskrivelse" width="100%">
+	    				<mx:TextArea id="nyRolleBeskrivelse" width="100%" />
 	    			</mx:FormItem>
 	    		</mx:Form>
     		</mx:Panel>
 
-    		<mx:Box width="100%" height="{this.height-75}">
+    		<mx:Box width="100%" height="{this.height-125}">
 				<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
-					<mx:Panel title="{roller.currentItem.navn}" width="100%" data="{roller.currentItem.navn}" >
+					<mx:Panel title="{roller.currentItem.navn} - {roller.currentItem.beskrivelse}" width="100%" data="{roller.currentItem.navn}" >
 						<mx:DataGrid id="rolleRettighet"
 							height="{roller.currentItem.rettigheter.length * 22 + 25}"			
 							paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 

@@ -233,10 +233,11 @@ package no.airdog.services
         	resultat, feil);
         }
         
-       	public function leggInnNyRolle(rolle:String, resultat:Function, feil:Function=null):void
+       	public function leggInnNyRolle(rolle:String, beskrivelse:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.leggInnNyRolle(
         		rolle,
+        		beskrivelse,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),
