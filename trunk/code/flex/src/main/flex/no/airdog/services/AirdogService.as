@@ -385,10 +385,10 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function redigerBruker(bruker:Bruker, resultat:Function, feil:Function=null):void
+        public function redigerBruker(fraBruker:Bruker, tilBruker:Bruker, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.redigerBruker(
-        		bruker,
+        		fraBruker, tilBruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

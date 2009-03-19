@@ -1,6 +1,7 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
+	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
@@ -490,6 +491,7 @@ package no.airdog.controller
 		public function hentAlleBrukereResultat(event:Object):void
 		{
 			Components.instance.session.alleBrukere = new ArrayCollection(event as Array);
+			fjernBrukerVindu();
 		}
 		
 		public function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
@@ -507,9 +509,14 @@ package no.airdog.controller
 			Components.instance.services.airdogService.slettBruker(epost, hentAlleBrukereResultat);
 		}
 		
-		public function redigerBruker(bruker:Bruker):void
+		public function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerBruker(bruker, hentAlleBrukereResultat);
+			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, hentAlleBrukereResultat, redigerBrukerFeil);
+		}
+		
+		public function redigerBrukerFeil(event:Object):void
+		{
+			Alert.show("Eposten er allerede registrert på en annen bruker", "Feil");
 		}
 		
 		public function leggInnBruker(bruker:Bruker):void

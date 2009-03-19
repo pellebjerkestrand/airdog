@@ -15,7 +15,8 @@
 			import mx.utils.StringUtil;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
-			[Bindable]private var erGodkjent:Boolean = true;
+//			TODO
+//			[Bindable]private var erSuperadmin:Boolean = HAR_BRUKER_RETTIGHET_SUPERADMIN;
 			
 			public var _aktivBruker:Bruker = null;
 			
@@ -50,7 +51,17 @@
 			
 			private function passordSjekk():Boolean
 			{
-				return (StringUtil.trim(passord.text) == StringUtil.trim(passord2.text));	
+				if(StringUtil.trim(passord.text) == StringUtil.trim(passord2.text))
+				{
+					return true;
+				}
+				else
+				{
+					Alert.show("Passordet er ikke lik passordbekreftelsen\nPrøv igjen", "Passordfeil");
+					passord.text = "";
+					passord2.text = "";
+					return false;
+				}	
 			}
 			
 			private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
@@ -83,23 +94,14 @@
 			{
 				if(passordSjekk())
 				{
-					if(_aktivBruker.epost == epost.text)
+					if(_aktivBruker)
 					{
-						Components.instance.controller.redigerBruker(formVerdier());
-						Alert.show("Bruker " + epost.text + " redigert", "Redigert");
+						Components.instance.controller.redigerBruker(_aktivBruker, formVerdier());
 					}
 					else
 					{
 						Components.instance.controller.leggInnBruker(formVerdier());
-						Alert.show("Ny bruker, " + epost.text + ", lagt inn", "Lagt inn");
 					}
-					avbryt();
-				}
-				else
-				{
-					Alert.show("Passordet er ikke lik passordbekreftelsen\nPrøv igjen", "Passordfeil");
-					passord.text = "";
-					passord2.text = "";
 				}
 			}
 			
@@ -134,7 +136,7 @@
 	</mx:Script>
 	
 	<mx:VBox horizontalAlign="center">
-		<mx:Form paddingBottom="0">
+		<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
 			<mx:FormItem label="E-post">
 				<mx:TextInput id="epost" change="endring();"/>
 			</mx:FormItem>
@@ -154,11 +156,10 @@
 				<mx:CheckBox id="superadmin" change="endring();"/>
 			</mx:FormItem>
 		</mx:Form>
-		<mx:Label fontSize="10" text="Endres e-post, lages det ny bruker"/>
 	</mx:VBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
+        <mx:Button label="Lagre" enabled="{!erTilbakestillt}" click="lagre()"/>
         <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
         <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>
