@@ -181,7 +181,7 @@
 					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
 						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.raseid}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
-								<mx:Panel title="{rolle.currentItem.navn}" width="100%" data="{rolle.currentItem.navn}">								
+								<mx:Panel title="{rolle.currentItem.navn} - {rolle.currentItem.beskrivelse}" width="100%" data="{rolle.currentItem.navn}">								
 									<mx:DataGrid id="rolleBruker"
 										height="{rolle.currentItem.brukere.length * 22 + 25}"			
 										paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
