@@ -33,7 +33,7 @@
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("../assets/ikoner/slett.png")]
+			[Embed ("../assets/ikoner/minus_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -158,7 +158,12 @@
 						Components.instance.controller.slettBruker(alleBrukere.selectedItem.epost);
 					}
 				}
-			} 
+			}
+			
+			private function leggTilBruker():void
+			{
+				Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), null);
+			}
 		]]>
 	</mx:Script>
    
@@ -191,7 +196,6 @@
 							         		<mx:DataGridColumn headerText="Brukere" dataField="ad_bruker_epost" />
 							         	</mx:columns>
 									</mx:DataGrid>
-	
 								</mx:Panel>
 							</mx:Repeater>
 						</mx:VBox>	
@@ -231,7 +235,10 @@
 					</mx:columns>
 				</mx:DataGrid>
 			</mx:Panel>	
-
+			<mx:HBox width="100%">
+				<mx:Spacer width="100%"/>
+				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
+			</mx:HBox>
 			<mx:Panel id="sletting" title="Slett bruker på rolle" width="100%"
 	        	dragEnter="sjekkSlett(event)"
 	            dragDrop="slettBrukerPaRolle(event)">
