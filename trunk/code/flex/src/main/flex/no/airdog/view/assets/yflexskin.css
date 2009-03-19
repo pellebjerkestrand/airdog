@@ -73,6 +73,30 @@ Button
 	paddingTop: 2;
 }
 
+.sokBar
+{
+	backgroundColor: #ffffff;  
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #666666; 
+	cornerRadius: 4;
+	focusAlpha: 0.5;
+	paddingLeft: 2;
+}
+.sok
+{
+	backgroundAlpha: 0;
+    backgroundColor: none;
+    borderColor: none;
+    borderSides: left top right bottom;
+    borderStyle: none;
+    dropShadowEnabled: false;
+    focusAlpha: 0;
+    fontSize: 12;
+    fontWeight: bold;
+    paddingTop: 2;
+}
+
 /* 
 //------------------------------ 
 //  ButtonBar 
