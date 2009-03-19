@@ -25,7 +25,7 @@ class Backup
 	
 	private function lagKopi($tabell, $navn)
 	{
-		$mappe = dirname(__FILE__) . "/backup/" . date("d-m-Y") . "_$navn/";
+		$mappe = dirname(__FILE__) . "/backup/" . date("d-m-Y") . " - $navn/";
 		
 		if  (!file_exists($mappe))
 		{
