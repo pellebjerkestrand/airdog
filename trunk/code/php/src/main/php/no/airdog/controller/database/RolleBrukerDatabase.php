@@ -30,7 +30,7 @@ class RolleBrukerDatabase
 	
 	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker)
 	{		
-		if($this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		if($this->hentBrukerPaRolleIklubb($klubb, $rolle, $bruker))
 		{
 			$data = array(
 	   			'ad_klubb_raseid'	=> $klubb,
@@ -46,7 +46,7 @@ class RolleBrukerDatabase
 	
 	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker)
 	{		
-		if(!$this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		if(!$this->hentBrukerPaRolleIklubb($klubb, $rolle, $bruker))
 		{
 			$hvor = $this->database->quoteInto('ad_klubb_raseid = ? ', $klubb) . 
 				'AND ' . $this->database->quoteInto('ad_rolle_navn = ? ', $rolle) . 
@@ -80,7 +80,7 @@ class RolleBrukerDatabase
 	
 	public function slettBruker($epost)
 	{
-		if($this->finnesBruker($epost))
+		if($this->hentBruker($epost))
 		{
 			$link = $this->database->quoteInto('ad_bruker_epost = ? ', $epost);
 			$bruker = $this->database->quoteInto('epost = ? ', $epost);
@@ -90,48 +90,52 @@ class RolleBrukerDatabase
 			return $this->database->delete('ad_bruker', $bruker);
 		}
 		
-		throw(new Exception('Denne rollen er slettet allerede', "1"));
+		throw(new Exception('Denne brukeren er slettet allerede', "1"));
 
 	}	
 	
-	public function finnesBruker($epost)
+	private function hentBruker($epost)
 	{
 		$hent = $this->database->select()
-		->from('ad_bruker', array('epost'))
+		->from('ad_bruker', array('ad_bruker.*'))
 		->where('epost =?', $epost);
 		
-		$gyldig = $this->database->fetchRow($hent);
-		
-		if($gyldig)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return $this->database->fetchRow($hent);
 	}
 	
 	public function leggInnBruker($bruker)
 	{
-		if($this->finnesBruker($bruker['epost']))
-		{
-			throw(new Exception('E-posten er allerede registrert på en annen bruker', "1"));
-			return false;
-		}
-		
+		$this->sjekkTommeBrukerfelt($bruker);
 		return $this->database->insert('ad_bruker', $bruker);
 	}
 	
 	public function redigerBruker($fraBruker, $tilBruker)
 	{
-		if($fraBruker['epost'] != $tilBruker['epost'] && $this->finnesBruker($tilBruker['epost']))
+		$gammelBruker = $this->hentBruker($tilBruker['epost']);
+		
+		if($fraBruker['epost'] != $tilBruker['epost'] && $gammelBruker)
 		{
 			throw(new Exception('E-posten er allerede registrert på en annen bruker', "1"));
-			return false;
 		}
 		
+		if ($tilBruker['passord'] == sha1(""))
+		{
+			$tilBruker['passord'] = $gammelBruker['passord'];
+		}
+			
+		$this->sjekkTommeBrukerfelt($tilBruker);
+			
 		$hvor = $this->database->quoteInto('epost = ?', $fraBruker['epost']);			
 		return $this->database->update('ad_bruker', $tilBruker, $hvor);
+	}
+	
+	
+	private function sjekkTommeBrukerfelt($bruker)
+	{
+		if ($bruker['epost'] == "")
+			throw(new Exception('E-postfeltet kan ikke være tomt', 1));
+			
+		if ($bruker['passord'] == "" || $bruker['passord'] == sha1(""))
+			throw(new Exception('Passordfeltet kan ikke være tomt', 1));
 	}
 }
