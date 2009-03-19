@@ -112,37 +112,37 @@
 	   	
 	<mx:VBox id="topbar" styleName="TopBar" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 		<mx:ApplicationControlBar width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
-			<mx:LinkButton label="AirDog" icon="@Embed(source='assets/ikoner/airdog_logo.png')" click="visHjem()" />
+			<mx:LinkButton label="AirDog" icon="@Embed(source='/no/airdog/view/assets/ikoner/airdog_logo.png')" click="visHjem()" />
 			<mx:HBox styleName="sokBar">
 				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="300"/>
-				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
+				<mx:LinkButton label="Søk" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
-			<mx:LinkButton label="Administrasjon" icon="@Embed(source='assets/ikoner/crown.png')" click="{meny.selectedChild = adminmeny}"/>
+			<mx:LinkButton label="Administrasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')" click="{meny.selectedChild = adminmeny}"/>
 				<mx:Spacer width="100%"/>
 			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
-			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
+			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/key__minus.png')"/>
 		</mx:ApplicationControlBar>
 		
 		<mx:ViewStack id="meny" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
-	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
-				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
-				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
-				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
+				<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
+	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
+				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" icon="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
+				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
 					<mx:Spacer width="100%"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visStorHundeliste()"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visLitenHundeliste()"/>
 			</mx:HBox>
 			<mx:HBox id="adminmeny" label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
-				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/cards_address.png')"/>
-		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
-		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/report__plus.png')"/>
-		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/safe.png')"/>
+				<mx:LinkButton label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/users.png')"/>
+				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/cards_address.png')"/>
+		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/envelope__plus.png')"/>
+		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__plus.png')"/>
+		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/safe.png')"/>
 			</mx:HBox>
 			<mx:HBox id="utviklermeny" label="Utvikling" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='assets/ikoner/key.png')"/>
+				<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='/no/airdog/view/assets/ikoner/key.png')"/>
 			</mx:HBox>
 		</mx:ViewStack>
 	</mx:VBox>

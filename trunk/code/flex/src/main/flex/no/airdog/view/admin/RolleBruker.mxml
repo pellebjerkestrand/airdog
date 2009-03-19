@@ -25,15 +25,15 @@
             
             
 			[Bindable]
-           	[Embed("../assets/ikoner/trash_empty.png")]
+           	[Embed("/no/airdog/view/assets/ikoner/trash_empty.png")]
            	private var slett_tom:Class;
            
            	[Bindable]
-           	[Embed("../assets/ikoner/trash_full.png")]
+           	[Embed("/no/airdog/view/assets/ikoner/trash_full.png")]
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("../assets/ikoner/minus_circle.png")]
+			[Embed ("/no/airdog/view/assets/ikoner/minus_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
