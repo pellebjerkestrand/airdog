@@ -301,16 +301,16 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function lastKopi(tabell:String, mappe:String, resultat:Function, feil:Function=null):void
-        {
-        	callServiceFunction(service.lastKopi(
-        		tabell,
-        		mappe,
-        		Components.instance.session.bruker.epost,
-        		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
-        	resultat, feil);
-        }
+//        public function lastKopi(tabell:String, mappe:String, resultat:Function, feil:Function=null):void
+//        {
+//        	callServiceFunction(service.lastKopi(
+//        		tabell,
+//        		mappe,
+//        		Components.instance.session.bruker.epost,
+//        		Components.instance.session.bruker.passord,
+//        		Components.instance.session.bruker.sattKlubbId),
+//        	resultat, feil);
+//        }
         
         public function lastKopier(tabeller:ArrayCollection, mappe:String, resultat:Function, feil:Function=null):void
         {

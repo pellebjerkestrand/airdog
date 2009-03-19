@@ -453,15 +453,15 @@ package no.airdog.controller
 			Components.instance.session.backupFiler = filer;
 		}
 		
-		public function lastKopi(tabell:String, mappe:String):void
-		{
-			Components.instance.services.airdogService.lastKopi(tabell, mappe, lastKopiResultat);
-		}
-		
-		public function lastKopiResultat(event:Object):void
-		{
-			
-		}
+//		public function lastKopi(tabell:String, mappe:String):void
+//		{
+//			Components.instance.services.airdogService.lastKopi(tabell, mappe, lastKopiResultat);
+//		}
+//		
+//		public function lastKopiResultat(event:Object):void
+//		{
+//			
+//		}
 		
 		public function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		{

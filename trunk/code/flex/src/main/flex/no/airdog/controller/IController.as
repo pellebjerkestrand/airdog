@@ -48,7 +48,7 @@ package no.airdog.controller
 		//function lagKopi(tabell:String):void
 		function lagFullKopi(navn:String):void
 		function hentFiler(mappe:String):void
-		function lastKopi(tabell:String, mappe:String):void
+		//function lastKopi(tabell:String, mappe:String):void
 		function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		function hentKlubbersRollersBrukere():void
 		function hentAlleBrukere():void
