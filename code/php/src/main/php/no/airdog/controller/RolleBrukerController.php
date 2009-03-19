@@ -130,19 +130,26 @@ class RolleBrukerController
 		
 	}
 	
-	public function redigerBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
+	public function redigerBruker($fraBruker, $tilBruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
-		{		
-			$ret = array();
-	    	$ret['epost'] = $bruker->epost;
-	    	$ret['fornavn'] = $bruker->fornavn;
-	    	$ret['etternavn'] = $bruker->etternavn;
-	    	$ret['passord'] = sha1($bruker->etternavn);
-	    	$ret['superadmin'] = $bruker->superadmin;  	
+		{
+			$fra = array();
+	    	$fra['epost'] = $fraBruker->epost;
+	    	$fra['fornavn'] = $fraBruker->fornavn;
+	    	$fra['etternavn'] = $fraBruker->etternavn;
+	    	$fra['passord'] = sha1($fraBruker->etternavn);
+	    	$fra['superadmin'] = $fraBruker->superadmin; 
+	    	
+	    	$til = array();
+	    	$til['epost'] = $tilBruker->epost;
+	    	$til['fornavn'] = $tilBruker->fornavn;
+	    	$til['etternavn'] = $tilBruker->etternavn;
+	    	$til['passord'] = sha1($tilBruker->etternavn);
+	    	$til['superadmin'] = $tilBruker->superadmin; 	
 
 			$db = new RolleBrukerDatabase();
-			$db->redigerBruker($ret);
+			$db->redigerBruker($fra, $til);
 			
 			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
 		}

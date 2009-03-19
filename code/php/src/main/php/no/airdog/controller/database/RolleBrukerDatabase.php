@@ -104,11 +104,11 @@ class RolleBrukerDatabase
 		
 		if($gyldig)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 	
@@ -117,10 +117,15 @@ class RolleBrukerDatabase
 			return $this->database->insert('ad_bruker', $bruker);
 	}
 	
-	public function redigerBruker($bruker)
+	public function redigerBruker($fraBruker, $tilBruker)
 	{
-		$hvor = $this->database->quoteInto('epost = ?', $bruker['epost']);			
+		if($fraBruker['epost'] != $tilBruker['epost'] && $this->finnesBruker($tilBruker['epost']))
+		{
+			throw(new Exception('E-posten er allerede registrert på en annen bruker', "1"));
+			return false;
+		}
 		
-		return $this->database->update('ad_bruker', $bruker, $hvor);
+		$hvor = $this->database->quoteInto('epost = ?', $fraBruker['epost']);			
+		return $this->database->update('ad_bruker', $tilBruker, $hvor);
 	}
 }

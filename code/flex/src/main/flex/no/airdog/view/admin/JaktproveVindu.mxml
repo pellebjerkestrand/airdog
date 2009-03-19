@@ -552,7 +552,8 @@
 			            
             private function lagreJaktprove():void 
             {
-            	if(Components.instance.session.jaktprove)
+            	if(Components.instance.session.jaktprove && 
+            		(Components.instance.session.jaktprove.proveNr == StringUtil.trim(proveNr.text)))
             	{
             		Components.instance.controller.redigerJaktprove(formVerdier());
             	}
