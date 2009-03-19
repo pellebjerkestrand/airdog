@@ -80,7 +80,7 @@ class RolleBrukerDatabase
 	
 	public function slettBruker($epost)
 	{
-		if(!$this->finnesBruker($epost))
+		if($this->finnesBruker($epost))
 		{
 			$link = $this->database->quoteInto('ad_bruker_epost = ? ', $epost);
 			$bruker = $this->database->quoteInto('epost = ? ', $epost);
