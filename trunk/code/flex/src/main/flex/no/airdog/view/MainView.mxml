@@ -112,7 +112,7 @@
 		<mx:ApplicationControlBar width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
 			<mx:Image source="no/airdog/view/assets/airdoglogo2.png" click="visHjem()"/>
 			<mx:HBox styleName="sokBar">
-				<mx:TextInput id="sokefelt" styleName="sok" text="" enter="sok()" cornerRadius="5"/>
+				<mx:TextInput id="sokefelt" styleName="sok" text="" enter="sok()"/>
 				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()" color="#22201E" fontSize="13"/>
 			</mx:HBox>
 			
