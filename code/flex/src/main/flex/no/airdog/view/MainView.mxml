@@ -138,10 +138,10 @@
 			</mx:HBox>
 			<mx:HBox id="adminmeny" label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
-				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__pencil.png')"/>
+				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/cards_address.png')"/>
 		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/report__plus.png')"/>
-		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users__pencil.png')"/>
+		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/safe.png')"/>
 			</mx:HBox>
 			<mx:HBox id="utviklermeny" label="Utvikling" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='assets/ikoner/key.png')"/>
