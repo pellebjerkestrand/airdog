@@ -5,11 +5,22 @@
     preloader="no.airdog.view.Laster"
     backgroundColor="#000000"
     layout="absolute"
-    minWidth="960" verticalGap="0" horizontalGap="0">
+    minWidth="960" verticalGap="0" horizontalGap="0" creationComplete="init(event)">
+    
+    <mx:Script>
+    	<![CDATA[
+    		import no.airdog.services.Components;
+    		
+    		private function init(e:Event):void
+            {
+            	Components.instance.controller.visLoggInnVindu(this);
+            }
+    	]]>
+    </mx:Script>
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
 	
-	<view:MainView/>
+	<view:MainView visible="{Components.instance.session.bruker.innlogget}"/>
 	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
 </mx:Application>
