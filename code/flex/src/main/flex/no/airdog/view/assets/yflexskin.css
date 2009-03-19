@@ -82,19 +82,29 @@ Button
 	cornerRadius: 4;
 	focusAlpha: 0.5;
 	paddingLeft: 2;
+	paddingRight: 2;
+	paddingBottom: 0;
+	paddingTop: 0;
+	verticalAlign: middle;
+	horizontalGap: 0;
 }
-.sok
+
+.sokFelt
 {
 	backgroundAlpha: 0;
     backgroundColor: none;
     borderColor: none;
     borderSides: left top right bottom;
     borderStyle: none;
+    borderThickness: 0;
     dropShadowEnabled: false;
     focusAlpha: 0;
-    fontSize: 12;
+    fontSize: 13;
     fontWeight: bold;
-    paddingTop: 2;
+    paddingLeft: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingTop: 2;
 }
 
 /* 

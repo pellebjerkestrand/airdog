@@ -28,6 +28,7 @@
 			private function visHjem():void
 			{
 				Navigasjon.visHjem();
+				meny.selectedChild = brukermeny;
 			}
             
             private function init(e:Event):void
@@ -110,18 +111,14 @@
 	   	
 	<mx:VBox id="topbar" styleName="TopBar" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 		<mx:ApplicationControlBar width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
-			<!--
-			<mx:Image source="no/airdog/view/assets/airdoglogo2.png" buttonMode="true" click="visHjem()" toolTip="Hjem"/>
-			-->
-			<mx:Label text="AirDog"/>
+			<mx:LinkButton label="AirDog" icon="@Embed(source='assets/ikoner/airdog_logo.png')" click="visHjem()" />
 			<mx:HBox styleName="sokBar">
-				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sok"/>
+				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="200"/>
 				<mx:LinkButton label="Søk" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
-				<mx:Spacer width="100%"/>
-			<mx:LinkButton label="Bruker" icon="@Embed(source='assets/ikoner/user.png')" click="{meny.selectedChild = brukermeny}"/>
-			<mx:LinkButton label="Admin" icon="@Embed(source='assets/ikoner/crown.png')" click="{meny.selectedChild = adminmeny}"/>
-			<mx:LinkButton label="Utvikler" icon="@Embed(source='assets/ikoner/gear.png')" click="{meny.selectedChild = utviklermeny}"/>
+			
+			<mx:LinkButton label="Administrasjon" icon="@Embed(source='assets/ikoner/crown.png')" click="{meny.selectedChild = adminmeny}"/>
+			<mx:LinkButton label="Utvikling" icon="@Embed(source='assets/ikoner/gear.png')" click="{meny.selectedChild = utviklermeny}"/>
 				<mx:Spacer width="100%"/>
 			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/key__minus.png')"/>
@@ -129,7 +126,6 @@
 		
 		<mx:ViewStack id="meny" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="Startside" click="visHjem()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/home.png')"/>
 				<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
 	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/dog.png')"/>
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/folder_horizontal.png')"/>
