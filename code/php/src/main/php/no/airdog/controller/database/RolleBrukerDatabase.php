@@ -114,7 +114,13 @@ class RolleBrukerDatabase
 	
 	public function leggInnBruker($bruker)
 	{
-			return $this->database->insert('ad_bruker', $bruker);
+		if($this->finnesBruker($bruker['epost']))
+		{
+			throw(new Exception('E-posten er allerede registrert på en annen bruker', "1"));
+			return false;
+		}
+		
+		return $this->database->insert('ad_bruker', $bruker);
 	}
 	
 	public function redigerBruker($fraBruker, $tilBruker)

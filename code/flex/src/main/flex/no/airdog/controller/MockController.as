@@ -511,12 +511,7 @@ package no.airdog.controller
 		
 		public function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, hentAlleBrukereResultat, redigerBrukerFeil);
-		}
-		
-		public function redigerBrukerFeil(event:Object):void
-		{
-			Alert.show("Eposten er allerede registrert på en annen bruker", "Feil");
+			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, hentAlleBrukereResultat);
 		}
 		
 		public function leggInnBruker(bruker:Bruker):void
