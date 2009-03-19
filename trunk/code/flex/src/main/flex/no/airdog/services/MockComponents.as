@@ -2,6 +2,7 @@ package no.airdog.services
 {
 	import no.airdog.controller.*;
 	import no.airdog.model.*;
+	import mx.controls.Alert;
 	
 	public class MockComponents
 	{
@@ -15,6 +16,10 @@ package no.airdog.services
 			
 			component.services.rootPath = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/";
 			//component.services.rootPath = "http://airdog.no/backend/no/airdog/";
+			
+			Alert.cancelLabel = "Avbryt";
+			Alert.noLabel = "Nei";
+			Alert.yesLabel = "Ja";
 		}
 	}
 }

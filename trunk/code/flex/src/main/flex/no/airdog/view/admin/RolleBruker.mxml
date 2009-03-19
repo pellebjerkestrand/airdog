@@ -141,17 +141,15 @@
 				}
 				else
 				{
-					Alert.okLabel = "Ja"
-					Alert.cancelLabel = "Nei"
 					var objAlert:Alert = Alert.show(
 					"Vil du slette " + alleBrukere.selectedItem.epost, "Slette?", 
-					Alert.OK | Alert.CANCEL, this, slettBruker, null, Alert.OK);	
+					Alert.YES | Alert.NO, this, slettBruker, null, Alert.YES);	
 				}
 			} 
 			
 			private function slettBruker(eventObj:CloseEvent):void
 			{
-				if (eventObj.detail==Alert.OK)
+				if (eventObj.detail==Alert.YES)
 				{
 					if (alleBrukere.selectedIndex > -1)
 					{

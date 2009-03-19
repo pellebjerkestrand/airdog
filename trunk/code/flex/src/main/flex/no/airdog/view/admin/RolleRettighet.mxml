@@ -186,7 +186,7 @@
               	dragDrop="slettRettighetPaRolle(event);"
               	width="100%" height="100%">
 				<mx:columns>
-					<mx:DataGridColumn headerText="Rettighet" dataField="navn"/>
+					<mx:DataGridColumn headerText="Rettighet" dataField="navn" width="150"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
 				</mx:columns>
 			</mx:DataGrid>
