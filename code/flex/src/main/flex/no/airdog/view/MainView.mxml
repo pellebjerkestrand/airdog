@@ -22,6 +22,7 @@
             public function sok():void
 			{
 				visHundeliste();
+				meny.selectedChild = brukermeny;
 				Components.instance.controller.sokHund(sokefelt.text);
 			}
 			
