@@ -399,7 +399,7 @@ Panel
 	borderThicknessRight: 1;
 	borderThicknessTop: 1;
 	borderThicknessBottom: 1;
-	borderColor: #555555;
+	borderColor: #666666;
 	headerHeight: 30;
 	background-color: #FFFFFF;
 	background-alpha: 1;
@@ -417,7 +417,7 @@ Panel
 .panelTitle {
     fontSize: 15;
 	fontWeight: bold;
-	color: #cccccc;
+	color: #ffffff;
 }
 
 /*
