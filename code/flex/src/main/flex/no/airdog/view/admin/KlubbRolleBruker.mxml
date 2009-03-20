@@ -174,8 +174,7 @@
     
     	<mx:VBox width="100%" height="100%">
     		<mx:Box width="100%" height="{this.height}">
-    			<!--<mx:TabNavigator creationPolicy="all" width="100%" height="100%">-->
-    			<mx:Accordion creationPolicy="all" width="100%" height="100%">
+    			<mx:Accordion id="klubbAC" creationPolicy="all" width="100%" height="100%">
 					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
 						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.raseid}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
@@ -199,7 +198,6 @@
 						</mx:VBox>	
 					</mx:Repeater>
 				</mx:Accordion>
-				<!--</mx:TabNavigator>-->
 			</mx:Box>
 		</mx:VBox>
 		
