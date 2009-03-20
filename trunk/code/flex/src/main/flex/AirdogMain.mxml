@@ -5,16 +5,11 @@
     preloader="no.airdog.view.Laster"
     backgroundColor="#000000"
     layout="absolute"
-    minWidth="960" verticalGap="0" horizontalGap="0" creationComplete="init(event)">
+    minWidth="960" verticalGap="0" horizontalGap="0">
     
     <mx:Script>
     	<![CDATA[
     		import no.airdog.services.Components;
-    		
-    		private function init(e:Event):void
-            {
-            	Components.instance.controller.visLoggInnVindu(this);
-            }
     	]]>
     </mx:Script>
 	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
