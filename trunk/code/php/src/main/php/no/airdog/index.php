@@ -22,7 +22,7 @@ require_once 'controller/JaktproveController.php';
 require_once 'controller/UtstillingController.php';
 require_once 'controller/RolleRettighetController.php';
 require_once 'controller/BackupController.php';
-require_once 'controller/RolleBrukerController.php';
+require_once 'controller/KlubbRolleBrukerController.php';
 require_once 'controller/PersonController.php';
 
 $server->setClass("HundController");
@@ -32,7 +32,7 @@ $server->setClass("LoggInnController");
 $server->setClass("ACLController");
 $server->setClass("RolleRettighetController");
 $server->setClass("BackupController");
-$server->setClass("RolleBrukerController");
+$server->setClass("KlubbRolleBrukerController");
 $server->setClass("PersonController");
 
 $server->setClassMap("AmfRettigheter", "AmfRettigheter");

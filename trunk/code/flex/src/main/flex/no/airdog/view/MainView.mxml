@@ -183,7 +183,7 @@
 	    <adminView:DatOpplastning/>
 	    <view:HundeSok/>
 	    <view:HundeProfil/>
-	    <adminView:RolleBruker/>
+	    <adminView:KlubbRolleBruker/>
 	    <adminView:RolleRettighet/>
 	    <adminView:Dev_ACL/>
 	    <view:Arsgjennomsnitt/>
