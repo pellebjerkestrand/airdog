@@ -1,7 +1,7 @@
 <?php 
 require_once 'Tilkobling.php';
 
-class RolleBrukerDatabase
+class KlubbRolleBrukerDatabase
 {
 	private $database;
 	

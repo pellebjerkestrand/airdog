@@ -1,12 +1,12 @@
 <?php
-require_once "database/RolleBrukerDatabase.php";
+require_once "database/KlubbRolleBrukerDatabase.php";
 require_once "database/ACLDatabase.php";
 require_once "database/RolleRettighetDatabase.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
 
-class RolleBrukerController
+class KlubbRolleBrukerController
 {
 	private $database;
 	
@@ -20,7 +20,7 @@ class RolleBrukerController
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
 		{
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			return $db->hentAlleBrukere();
 		}
 
@@ -35,7 +35,7 @@ class RolleBrukerController
 			$dbACL = new ACLDatabase();
 			$klubber = $dbACL->hentAlleKlubber();
 			
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			
 			$dbRR = new RolleRettighetDatabase();			
 
@@ -68,7 +68,7 @@ class RolleBrukerController
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
 		{
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			$db->leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker);
 			
 			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
@@ -83,7 +83,7 @@ class RolleBrukerController
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
 		{
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			$db->slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker);
 			
 			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
@@ -97,7 +97,7 @@ class RolleBrukerController
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
 		{
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			$db->slettBruker($epost);
 			
 			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
@@ -119,7 +119,7 @@ class RolleBrukerController
 	    	$ret['passord'] = sha1($bruker->passord);
 	    	$ret['superadmin'] = $bruker->superadmin;  	
 
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			$db->leggInnBruker($ret);
 			
 			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
@@ -148,7 +148,7 @@ class RolleBrukerController
 	    	$til['passord'] = sha1($tilBruker->passord);
 	    	$til['superadmin'] = $tilBruker->superadmin; 	
 
-			$db = new RolleBrukerDatabase();
+			$db = new KlubbRolleBrukerDatabase();
 			$db->redigerBruker($fra, $til);
 			
 			return $this->hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId);
