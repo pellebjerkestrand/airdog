@@ -3,8 +3,8 @@ package no.airdog.controller
 	import mx.core.ClassFactory;
 	
 	import no.airdog.services.Components;
-	import no.airdog.view.hundeListeRender.NavnRendererLiten;
-	import no.airdog.view.hundeListeRender.NavnRendererStor;
+	import no.airdog.view.hundeListeRenderer.NavnRendererLiten;
+	import no.airdog.view.hundeListeRenderer.NavnRendererStor;
 	
 	public class Navigasjon
 	{
@@ -28,13 +28,13 @@ package no.airdog.controller
 		
 		public static function visStorHundeliste():void
 		{
-			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRender.NavnRendererStor);
+			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererStor);
 			Components.instance.session.hundesokListe.rendererHoyde = 60;
 		}
 		
 		public static function visLitenHundeliste():void
 		{
-			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRender.NavnRendererLiten);
+			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererLiten);
 			Components.instance.session.hundesokListe.rendererHoyde = 20;
 		}
 		
