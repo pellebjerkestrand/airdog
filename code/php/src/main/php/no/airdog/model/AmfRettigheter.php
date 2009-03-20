@@ -7,7 +7,8 @@ class AmfRettigheter
 	public $importerDatabase;
 	public $leggInnJaktprove;
 	public $slettJaktprove;
-	public $rollehandtering;
+	public $rolleRettighetHandtering;
+	public $klubbRolleBrukerHandtering;
 	public $administrereBackup;
 	
 	public $administrere;

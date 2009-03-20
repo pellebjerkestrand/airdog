@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+ -- phpMyAdmin SQL Dump
 -- version 2.11.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2009 at 09:22 AM
+-- Generation Time: Mar 20, 2009 at 11:58 PM
 -- Server version: 5.0.41
 -- PHP Version: 5.2.6
 
@@ -35,7 +35,7 @@ CREATE TABLE `ad_bruker` (
 
 INSERT INTO `ad_bruker` VALUES('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0);
 INSERT INTO `ad_bruker` VALUES('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1);
-INSERT INTO `ad_bruker` VALUES('hmi@live.no', 'Hans Magnus', 'Inderberg', 'test', 0);
+INSERT INTO `ad_bruker` VALUES('test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
 
 -- --------------------------------------------------------
 
@@ -60,10 +60,13 @@ CREATE TABLE `ad_bruker_klubb_rolle_link` (
 INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'admin', 348);
 INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'gjest', 306);
 INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'gjest', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'hmi@live.no', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'hmi@live.no', 348);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'gjest', 348);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'admin', 306);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'test', 306);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'gjest', 306);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'test', 348);
+INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'test', 306);
 INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'admin', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'hmi@live.no', 307);
 
 -- --------------------------------------------------------
 
@@ -85,7 +88,6 @@ CREATE TABLE `ad_klubb` (
 
 INSERT INTO `ad_klubb` VALUES('Norsk Breton Klubb', NULL, 306);
 INSERT INTO `ad_klubb` VALUES('Norsk Pointer Klubb', NULL, 348);
-INSERT INTO `ad_klubb` VALUES('Test', NULL, 307);
 
 -- --------------------------------------------------------
 
@@ -104,13 +106,15 @@ CREATE TABLE `ad_rettighet` (
 -- Dumping data for table `ad_rettighet`
 --
 
-INSERT INTO `ad_rettighet` VALUES('Lese', 'Utføre handlinger som ikke endrer på databasen');
-INSERT INTO `ad_rettighet` VALUES('Rediger hund', NULL);
-INSERT INTO `ad_rettighet` VALUES('Rediger jaktprøve', NULL);
-INSERT INTO `ad_rettighet` VALUES('Importer database', NULL);
-INSERT INTO `ad_rettighet` VALUES('Legge inn jaktprøve', NULL);
-INSERT INTO `ad_rettighet` VALUES('Slett jaktprøve', NULL);
-INSERT INTO `ad_rettighet` VALUES('tering', NULL);
+INSERT INTO `ad_rettighet` VALUES('lese', 'Utføre handlinger som ikke endrer på databasen');
+INSERT INTO `ad_rettighet` VALUES('redigerHund', 'Redigere hunder');
+INSERT INTO `ad_rettighet` VALUES('redigerJaktprove', 'Redigere jaktprøver');
+INSERT INTO `ad_rettighet` VALUES('importerDatabase', 'Importere data fra NKK til databasen');
+INSERT INTO `ad_rettighet` VALUES('leggInnJaktprove', 'Legge inn jaktprøver');
+INSERT INTO `ad_rettighet` VALUES('slettJaktprove', 'Slette jaktprøver');
+INSERT INTO `ad_rettighet` VALUES('rolleRettighetHandtering', 'Tildele rettigheter på roller');
+INSERT INTO `ad_rettighet` VALUES('administrereBackup', 'Administrere Backup av databasen');
+INSERT INTO `ad_rettighet` VALUES('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb');
 
 -- --------------------------------------------------------
 
@@ -150,21 +154,13 @@ CREATE TABLE `ad_rolle_rettighet_link` (
 -- Dumping data for table `ad_rolle_rettighet_link`
 --
 
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rediger hund');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Lese');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rediger jaktprøve');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'Legge inn jaktprøve');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'Rollehåndtering');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'Rollehåndtering');
-
-
-
-
-
-
-
-
-
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'klubbRolleBrukerHandtering');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'redigerJaktprove');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'lese');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'leggInnJaktprove');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'administrereBackup');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'rolleRettighetHandtering');
+INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'lese');
 
 
 CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (

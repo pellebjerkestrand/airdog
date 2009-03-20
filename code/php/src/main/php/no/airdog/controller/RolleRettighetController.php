@@ -16,7 +16,7 @@ class RolleRettighetController
 	
 	public function hentAlleRettigheter($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			return $db->hentAlleRettigheter();
@@ -30,7 +30,7 @@ class RolleRettighetController
 	
 	public function hentRollersRettigheter($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			$roller = $db->hentAlleRoller();
@@ -51,7 +51,7 @@ class RolleRettighetController
 	
 	public function leggtilRettighetPaRolle($rolle, $rettighet, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			$db->leggtilRettighetPaRolle($rolle, $rettighet);
@@ -65,7 +65,7 @@ class RolleRettighetController
 	
 	public function slettRettighetPaRolle($rolle, $rettighet, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			$db->slettRettighetPaRolle($rolle, $rettighet);
@@ -79,7 +79,7 @@ class RolleRettighetController
 	
 	public function leggInnNyRolle($rolle, $beskrivelse, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			$db->leggInnNyRolle($rolle, $beskrivelse);
@@ -93,7 +93,7 @@ class RolleRettighetController
 	
 	public function slettRolle($rolle, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rolleRettighetHandtering"))
 		{
 			$db = new RolleRettighetDatabase();
 			if($db->slettRolle($rolle))
