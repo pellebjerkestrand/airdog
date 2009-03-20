@@ -5,6 +5,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.core.Container;
 			import no.airdog.model.Bruker;
 			import mx.containers.Panel;
 			import mx.controls.Text;
@@ -174,7 +175,7 @@
     
     	<mx:VBox width="100%" height="100%">
     		<mx:Box width="100%" height="{this.height}">
-    			<mx:Accordion id="klubbAC" creationPolicy="all" width="100%" height="100%">
+    			<mx:Accordion id="klubbAC" width="100%" height="100%">
 					<mx:Repeater id="klubb" dataProvider="{Components.instance.session.klubbersRollersBrukere}">
 						<mx:VBox label="{klubb.currentItem.navn}" data="{klubb.currentItem.raseid}" width="100%" height="100%">
 							<mx:Repeater id="rolle" dataProvider="{klubb.currentItem.roller}">
