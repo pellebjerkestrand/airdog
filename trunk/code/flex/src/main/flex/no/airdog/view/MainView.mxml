@@ -165,12 +165,12 @@
 				borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" 
 				paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton 
-					visible="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
-					includeInLayout="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					visible="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
+					includeInLayout="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
 					label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/users.png')"/>
 				<mx:LinkButton 
-					visible="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
-					includeInLayout="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					visible="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
+					includeInLayout="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
 					label="Roller" click="visAdminRoller()" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/cards_address.png')"/>
 		 		<mx:LinkButton 

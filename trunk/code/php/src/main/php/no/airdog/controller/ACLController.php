@@ -55,7 +55,8 @@ class ACLController
 			$tmp->importerDatabase = true;
 			$tmp->leggInnJaktprove = true;
 			$tmp->slettJaktprove = true;
-			$tmp->rollehandtering = true;
+			$tmp->rolleRettighetHandtering = true;
+			$tmp->klubbRolleBrukerHandtering = true;
 			$tmp->administrereBackup = true;
 			$tmp->importerDatabase = true;
 			$tmp->administrere = true;
@@ -78,7 +79,8 @@ class ACLController
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   			if($r['navn'] == "leggInnJaktprove") $tmp->leggInnJaktprove = true;
 	   			if($r['navn'] == "slettJaktprove") $tmp->slettJaktprove = true;
-	   			if($r['navn'] == "rollehandtering")	$tmp->rollehandtering = true;
+	   			if($r['navn'] == "rolleRettighetHandtering") $tmp->rolleRettighetHandtering = true;
+	   			if($r['navn'] == "klubbRolleBrukerHandtering") $tmp->klubbRolleBrukerHandtering = true;
 	   			if($r['navn'] == "administrereBackup") $tmp->administrereBackup = true;
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   		}

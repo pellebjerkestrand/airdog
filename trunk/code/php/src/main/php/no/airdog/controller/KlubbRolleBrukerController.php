@@ -18,7 +18,7 @@ class KlubbRolleBrukerController
 	
 	public function hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new KlubbRolleBrukerDatabase();
 			return $db->hentAlleBrukere();
@@ -30,7 +30,7 @@ class KlubbRolleBrukerController
 	
 	public function hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$dbACL = new ACLDatabase();
 			$klubber = $dbACL->hentAlleKlubber();
@@ -41,7 +41,7 @@ class KlubbRolleBrukerController
 
 	   		foreach($klubber as $klubb)
 	   		{
-	   			if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubb['raseid'], "rollehandtering"))
+	   			if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubb['raseid'], "klubbRolleBrukerHandtering"))
 				{	   
 		   			$tempRoller = array();
 		   			$roller['roller'] = $dbRR->hentAlleRoller();
@@ -66,7 +66,7 @@ class KlubbRolleBrukerController
 	
 	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new KlubbRolleBrukerDatabase();
 			$db->leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker);
@@ -81,7 +81,7 @@ class KlubbRolleBrukerController
 	
 	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new KlubbRolleBrukerDatabase();
 			$db->slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker);
@@ -95,7 +95,7 @@ class KlubbRolleBrukerController
 	
 	public function slettBruker($epost, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new KlubbRolleBrukerDatabase();
 			$db->slettBruker($epost);
@@ -110,7 +110,7 @@ class KlubbRolleBrukerController
 	
 	public function leggInnBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{		
 			$ret = array();
 	    	$ret['epost'] = $bruker->epost;
@@ -132,7 +132,7 @@ class KlubbRolleBrukerController
 	
 	public function redigerBruker($fraBruker, $tilBruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "rollehandtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$fra = array();
 	    	$fra['epost'] = $fraBruker->epost;
