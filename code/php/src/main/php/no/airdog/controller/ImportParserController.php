@@ -21,7 +21,7 @@ class importParserController
 
 	public function lagreDb($filSti, $epost, $passord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $epost, $passord, $klubbId, "Importer database"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $epost, $passord, $klubbId, "importerDatabase"))
 		{
 			$valider = new FilvaliderController();
 			$filtype = $valider->getFiltypeFraFil($filSti);

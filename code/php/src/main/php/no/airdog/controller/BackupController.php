@@ -18,7 +18,7 @@ class BackupController
 
 	public function hentTabeller($brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->hentTabeller();
 		}
@@ -28,7 +28,7 @@ class BackupController
     
 	public function hentKopier($brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->hentKopier();
 		}
@@ -48,7 +48,7 @@ class BackupController
     
 	public function lagFullKopi($navn, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->lagFullKopi($navn);
 		}
@@ -58,7 +58,7 @@ class BackupController
     
 	public function hentFiler($mappe, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->hentFiler($mappe);
 		}
@@ -68,7 +68,7 @@ class BackupController
     
 	public function lastKopi($tabell, $mappe, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->lastKopi($tabell, $mappe);
 		}
@@ -78,7 +78,7 @@ class BackupController
     
 	public function lastKopier($tabeller, $mappe, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Administrere backup"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "administrereBackup"))
 		{	
 	    	return $this->backup->lastKopier($tabeller, $mappe);
 		}

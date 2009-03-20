@@ -19,7 +19,7 @@ class HundController
 
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{	
 	    	$hd = new HundDatabase();
 	    	$resultat = $hd->sokHund($soketekst, $klubbId);
@@ -70,7 +70,7 @@ class HundController
     
 	public function hentHund($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{	
 	    	$hd = new HundDatabase();
 	    	$rad = $hd->hentHund($hundId, $klubbId);
@@ -114,7 +114,7 @@ class HundController
     
     public function redigerHund(AmfHund $hund, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rediger hund"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerHund"))
 		{	
 		  	$ret = array();
 	    	$ret['raseId'] = $klubbId;
@@ -151,7 +151,7 @@ class HundController
     
 	public function hentFiktivtStamtre($hundIdFar, $hundIdMor, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{	
 			$dybde--;
 			$hd = new HundDatabase();
@@ -186,7 +186,7 @@ class HundController
     
     public function hentStamtre($hundId, $dybde, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{	
     		return $this->lagStamtre($hundId, $dybde, $klubbId);
 		}
@@ -236,7 +236,7 @@ class HundController
     
     public function hentAvkom($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$avkomListe = array();
 	    	$kd = new KullDatabase();
@@ -342,7 +342,7 @@ class HundController
     
     public function sokArsgjennomsnitt($hund, $ar, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new HundDatabase();
 	    	$resultat = $hd->sokArsgjennomsnitt($hund, $ar, $klubbId);
