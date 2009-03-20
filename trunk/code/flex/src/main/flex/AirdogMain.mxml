@@ -17,10 +17,11 @@
             }
     	]]>
     </mx:Script>
+	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
-	
+
 	<view:MainView visible="{Components.instance.session.bruker.sattKlubb ? true : false}"/>
-	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
+
 </mx:Application>
