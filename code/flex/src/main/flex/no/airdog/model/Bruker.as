@@ -16,6 +16,6 @@ package no.airdog.model
 		public var sattKlubbId:String;
 		public var klubber:ArrayCollection;
 		public var roller:ArrayCollection;
-		public var rettigheter:ArrayCollection;
+		public var rettigheter:Rettigheter;
 	}
 }

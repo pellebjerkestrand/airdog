@@ -259,7 +259,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRettigheterResultat(event:Object):void
 		{
-			Components.instance.session.bruker.rettigheter = new ArrayCollection(event as Array);
+			Components.instance.session.bruker.rettigheter = event as Rettigheter;
 			Components.instance.historie.settPunkt();
 		}
 		
@@ -518,20 +518,5 @@ package no.airdog.controller
 			Components.instance.services.airdogService.leggInnBruker(bruker, hentAlleBrukereResultat);
 		}
 		
-		public function harBrukerRettighet(rettighet:String):Boolean
-		{
-			if (Components.instance.session.bruker != null && Components.instance.session.bruker.rettigheter != null)
-			{
-				for(var i:int = 0; i < Components.instance.session.bruker.rettigheter.length; i++)
-				{
-					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == rettighet)
-					{
-						return true;
-					}					
-				}
-			}
-			
-			return false;
-		}
 	}
 }
