@@ -39,7 +39,7 @@ class JaktproveController
 	
 	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Slett jaktprøve"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))
 		{
 			$hd = new JaktproveDatabase();
     		return $hd->slettJaktprove($jaktproveId, $klubbId);
@@ -51,7 +51,7 @@ class JaktproveController
 	
 	public function hentJaktproveSammendrag($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-	    if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+	    if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new JaktproveDatabase();
 			
@@ -84,7 +84,7 @@ class JaktproveController
 		
  	public function hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Lese"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new JaktproveDatabase();
 	    	$resultat = $hd->hentJaktprover($hundId, $klubbId);
@@ -158,7 +158,7 @@ class JaktproveController
     
     public function redigerJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rediger jaktprøve"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
 		{
 	    	$ret = array();
 	    	$ret['proveNr'] = $jaktprove->proveNr;   	
@@ -216,7 +216,7 @@ class JaktproveController
     
    	public function leggInnJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
     {
-    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Legge inn jaktprøve"))
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "leggInnJaktprove"))
 		{	
 	    	$ret = array();
 	    	$ret['proveNr'] = $jaktprove->proveNr;   	
