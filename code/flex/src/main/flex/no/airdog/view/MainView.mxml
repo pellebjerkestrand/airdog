@@ -138,14 +138,40 @@
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visStorHundeliste()"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visLitenHundeliste()"/>
 			</mx:HBox>
-			<mx:HBox id="adminmeny" visible="{Components.instance.session.bruker.rettigheter.administrere}" label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/users.png')"/>
-				<mx:LinkButton label="Roller" click="visAdminRoller()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/cards_address.png')"/>
-		 		<mx:LinkButton label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/envelope__plus.png')"/>
-		 		<mx:LinkButton label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__plus.png')"/>
-		 		<mx:LinkButton label="Backup" click="visAdminBackup()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/safe.png')"/>
+			<mx:HBox id="adminmeny" 
+				visible="{Components.instance.session.bruker.rettigheter.administrere}" 
+				enabled="{Components.instance.session.bruker.rettigheter.administrere}"
+				label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" 
+				borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" 
+				paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
+				<mx:LinkButton 
+					visible="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					includeInLayout="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					label="Brukere" click="visAdminBrukere()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/users.png')"/>
+				<mx:LinkButton 
+					visible="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					includeInLayout="{Components.instance.session.bruker.rettigheter.rollehandtering}" 
+					label="Roller" click="visAdminRoller()" styleName="UnderMeny" 
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/cards_address.png')"/>
+		 		<mx:LinkButton 
+		 			visible="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
+		 			includeInLayout="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
+		 			label="Last opp .DAT" click="visLastOpp()" styleName="UnderMeny" 
+		 			icon="@Embed(source='/no/airdog/view/assets/ikoner/envelope__plus.png')"/>
+		 		<mx:LinkButton 
+		 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
+		 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
+		 			label="Legg inn jaktprøve" click="leggInnJaktprove()" styleName="UnderMeny" 
+		 			icon="@Embed(source='/no/airdog/view/assets/ikoner/report__plus.png')"/>
+		 		<mx:LinkButton 
+		 			visible="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
+		 			includeInLayout="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
+		 			label="Backup" click="visAdminBackup()" styleName="UnderMeny" 
+		 			icon="@Embed(source='/no/airdog/view/assets/ikoner/safe.png')"/>
 			</mx:HBox>
-			<mx:HBox id="utviklermeny" label="Utvikling" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
+			<mx:HBox id="utviklermeny" label="Utvikling" backgroundColor="#FFFFFF" 
+				borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" 
+				verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton label="ACL" styleName="UnderMeny" click="visACL()" icon="@Embed(source='/no/airdog/view/assets/ikoner/key.png')"/>
 			</mx:HBox>
 		</mx:ViewStack>
