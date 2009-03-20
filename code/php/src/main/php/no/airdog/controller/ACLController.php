@@ -70,8 +70,6 @@ class ACLController
 			
 			$tmp = new AmfRettigheter();
 			
-			if($rettigheter) $tmp->administrere = true;
-			
 			foreach($rettigheter as $r)
 	   		{   
 	   			if($r['navn'] == "lese") $tmp->lese = true;
@@ -84,6 +82,9 @@ class ACLController
 	   			if($r['navn'] == "administrereBackup") $tmp->administrereBackup = true;
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   		}
+	   		
+	   		if($tmp->redigerHund || $tmp->redigerJaktprove || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
+	   		$tmp->slettJaktprove || $tmp->rollehandtering || $tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
 	   		
 			return $tmp;
 		}
