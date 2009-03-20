@@ -62,7 +62,9 @@
 			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
 			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
-			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}" width="100" minWidth="100" resizable="false">
+			<mx:DataGridColumn headerText="Admin" id="adminPanel" 
+				visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}" 
+				width="100" minWidth="100" resizable="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">
 						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
