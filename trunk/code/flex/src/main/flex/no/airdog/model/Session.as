@@ -6,14 +6,14 @@ package no.airdog.model
 	import mx.collections.ArrayCollection;
 	import mx.core.*;
 	
-	import no.airdog.view.hundeListeRender.NavnRendererStor;
+	import no.airdog.view.hundeListeRenderer.NavnRendererStor;
 	
 	[Bindable]
 	public class Session
 	{     
         public var datOpplastning:Opplastning = new Opplastning();
              
-     	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.hundeListeRender.NavnRendererStor));
+     	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererStor));
         
         public var hundprofil:Hund;
         

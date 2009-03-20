@@ -8,7 +8,7 @@
         <![CDATA[
         	import no.airdog.model.Hund;
         	import no.airdog.model.Hundeliste;
-        	import no.airdog.view.HundeListeRenderer.NavnRendererStor;
+        	import no.airdog.view.hundeListeRenderer.NavnRendererStor;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
 			import mx.controls.Alert
