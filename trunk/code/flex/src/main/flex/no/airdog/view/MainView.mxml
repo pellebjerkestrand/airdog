@@ -24,6 +24,8 @@
 				visHundeliste();
 				meny.selectedChild = brukermeny;
 				Components.instance.controller.sokHund(sokefelt.text);
+				sokeResultat.visible = true;
+				sokeResultat.includeInLayout = true;
 			}
 			
 			private function visHjem():void
@@ -110,7 +112,8 @@
         ]]>
     </mx:Script>
 	   	
-	<mx:VBox id="topbar" styleName="TopBar" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
+	<mx:VBox id="topbar" styleName="TopBar" width="100%" 
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 		<mx:ApplicationControlBar width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
 			<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogo28clean.png')" buttonMode="true" click="visHjem()"/>
 			<mx:LinkButton label="AirDog" click="visHjem()" width="70"/>
@@ -118,6 +121,11 @@
 				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="300"/>
 				<mx:LinkButton label="Søk" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
+			
+			<mx:LinkButton label="Hovednavigasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')"
+				click="{meny.selectedChild = brukermeny}"
+				visible="{Components.instance.session.bruker.rettigheter.administrere}"
+			/>
 			<mx:LinkButton label="Administrasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')" 
 				click="{meny.selectedChild = adminmeny}"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"
@@ -127,16 +135,28 @@
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/key__minus.png')"/>
 		</mx:ApplicationControlBar>
 		
-		<mx:ViewStack id="meny" width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0" selectedIndex="{Components.instance.session.bruker.rettigheter.administrere ? 0 : 0}">
-			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
-	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
-				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
-				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" icon="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
-				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+		<mx:ViewStack id="meny" width="100%" 
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0" 
+			selectedIndex="{Components.instance.session.bruker.rettigheter.administrere ? 0 : 0}">
+			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
+				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
+				<mx:LinkButton id="sokeResultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"
+					visible="false"
+					includeInLayout="false"/>
+	   			<mx:LinkButton label="Vis hund" enabled="false" styleName="UnderMeny" 
+	   				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
+				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" 
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
+				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" 
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
 					<mx:Spacer width="100%"/>
-				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visStorHundeliste()"/>
-				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visLitenHundeliste()"/>
+				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" 
+					visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visStorHundeliste()"/>
+				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" 
+					visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visLitenHundeliste()"/>
 			</mx:HBox>
 			<mx:HBox id="adminmeny" 
 				visible="{Components.instance.session.bruker.rettigheter.administrere}" 
