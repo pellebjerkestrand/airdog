@@ -35,6 +35,7 @@ $server->setClass("BackupController");
 $server->setClass("RolleBrukerController");
 $server->setClass("PersonController");
 
+$server->setClassMap("AmfRettigheter", "AmfRettigheter");
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
 $server->setClassMap("AmfJaktprove", "AmfJaktprove");

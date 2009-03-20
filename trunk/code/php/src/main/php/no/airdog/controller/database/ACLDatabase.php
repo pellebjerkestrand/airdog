@@ -44,14 +44,6 @@ class ACLDatabase
 		
 		return $this->database->fetchAll($hent);
 	}
-	
-	public function hentAlleRettigheter($klubbId)
-	{
-		$hent = $this->database->select()
-		->from(array('a'=>'ad_rettighet'), array('a.navn'));
-		
-		return $this->database->fetchAll($hent);
-	}
 
 	public function hentBrukersRettigheter($brukerEpost, $klubbId)
 	{
