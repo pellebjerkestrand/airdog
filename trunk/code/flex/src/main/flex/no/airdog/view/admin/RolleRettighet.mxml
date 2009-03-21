@@ -136,14 +136,19 @@
     	<mx:VBox width="100%" height="100%">
     		<mx:Panel title="Ny rolle" width="100%">
 	    		<mx:Form paddingBottom="0" paddingLeft="5" paddingRight="0" paddingTop="0" width="100%">
-	    			<mx:FormItem label="Rollenavn" width="100%">
-	    				<mx:HBox verticalAlign="middle" width="100%">
-	    					<mx:TextInput id="nyRolleTekst"/><mx:Spacer width="100%"/>
-			    			<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')"/>
-	    				</mx:HBox>	
-	    			</mx:FormItem>
-	    			<mx:FormItem label="Beskrivelse" width="100%">
-	    				<mx:TextArea id="nyRolleBeskrivelse" width="100%" />
+	    			<mx:HBox width="100%">
+	    				<mx:FormItem label="Rollenavn">
+		    				<mx:TextInput id="nyRolleTekst"/>
+		    			</mx:FormItem>
+		    			<mx:FormItem label="Beskrivelse" width="100%">
+		    				<mx:TextInput id="nyRolleBeskrivelse" width="100%" />
+		    			</mx:FormItem>
+	    			</mx:HBox>
+	    			<mx:FormItem width="100%">
+	    				<mx:HBox width="100%">
+	    					<mx:Spacer width="100%"/>
+	    					<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')"/>
+	    				</mx:HBox>
 	    			</mx:FormItem>
 	    		</mx:Form>
     		</mx:Panel>
@@ -167,7 +172,7 @@
 						</mx:DataGrid>
 							
 						<mx:HBox horizontalAlign="right" width="100%">
-							<mx:LinkButton icon="{slett}" label="Slett valgt rolle" click="slettRolle(event)"/>
+							<mx:LinkButton icon="{slett}" label="Slett rollen {roller.currentItem.navn}" click="slettRolle(event)"/>
 						</mx:HBox>
 					</mx:Panel>
 					
