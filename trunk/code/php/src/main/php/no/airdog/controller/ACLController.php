@@ -86,7 +86,8 @@ class ACLController
 	   		}
 	   		
 	   		if($tmp->redigerHund || $tmp->redigerJaktprove || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
-	   		$tmp->slettJaktprove || $tmp->rollehandtering || $tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
+	   		$tmp->slettJaktprove || $tmp->rolleRettighetHandtering || $tmp->klubbRolleBrukerHandtering  || 
+	   		$tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
 	   		
 			return $tmp;
 		}
