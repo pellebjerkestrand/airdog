@@ -26,6 +26,11 @@ package no.airdog.controller
 			Components.instance.session.hovedNavigasjon.nr = 2;
 		}
 		
+		public static function visHundprofil():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 2;
+		}
+		
 		public static function visStorHundeliste():void
 		{
 			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererStor);
