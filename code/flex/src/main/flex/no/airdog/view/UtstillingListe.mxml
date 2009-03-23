@@ -12,13 +12,7 @@
 			
 			private function init():void
 			{				
-				for(var i:int = 0; i < Components.instance.session.bruker.rettigheter.length; i++)
-				{
-					if(Components.instance.session.bruker.rettigheter.getItemAt(i).navn == "redigerUtstilling")
-					{
-						adminPanel.visible = true;
-					}					
-				}
+				adminPanel.visible = Components.instance.session.bruker.rettigheter.redigerUtstilling;
 			}
 			
 			public function set hundId(val:String):void

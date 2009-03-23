@@ -7,6 +7,7 @@ package no.airdog.model
 		public var lese:Boolean;
 		public var redigerHund:Boolean;
 		public var redigerJaktprove:Boolean;
+		public var redigerUtstilling:Boolean;
 		public var importerDatabase:Boolean;
 		public var leggInnJaktprove:Boolean;
 		public var slettJaktprove:Boolean;

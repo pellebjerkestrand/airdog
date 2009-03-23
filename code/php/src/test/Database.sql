@@ -1,11 +1,11 @@
- -- phpMyAdmin SQL Dump
--- version 2.11.7.1
+-- phpMyAdmin SQL Dump
+-- version 3.1.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 20, 2009 at 11:58 PM
--- Server version: 5.0.41
--- PHP Version: 5.2.6
+-- Vert: localhost
+-- Generert den: 23. Mar, 2009 09:33 AM
+-- Tjenerversjon: 5.1.30
+-- PHP-Versjon: 5.2.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,37 +16,36 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_bruker`
+-- Tabellstruktur for tabell `ad_bruker`
 --
 
-DROP TABLE IF EXISTS `ad_bruker`;
-CREATE TABLE `ad_bruker` (
+CREATE TABLE IF NOT EXISTS `ad_bruker` (
   `epost` varchar(50) NOT NULL,
   `fornavn` varchar(30) NOT NULL,
   `etternavn` varchar(30) NOT NULL,
   `passord` varchar(50) NOT NULL,
-  `superadmin` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`epost`)
+  `superadmin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`epost`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_bruker`
+-- Dataark for tabell `ad_bruker`
 --
 
-INSERT INTO `ad_bruker` VALUES('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0);
-INSERT INTO `ad_bruker` VALUES('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1);
-INSERT INTO `ad_bruker` VALUES('test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
+INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
+('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
+('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
+('test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_bruker_klubb_rolle_link`
+-- Tabellstruktur for tabell `ad_bruker_klubb_rolle_link`
 --
 
-DROP TABLE IF EXISTS `ad_bruker_klubb_rolle_link`;
-CREATE TABLE `ad_bruker_klubb_rolle_link` (
-  `ad_rolle_navn` varchar(50) NOT NULL default '',
-  `ad_bruker_epost` varchar(50) NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
+  `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
+  `ad_bruker_epost` varchar(50) NOT NULL DEFAULT '',
   `ad_klubb_raseid` int(3) NOT NULL,
   KEY `AD_rolle_navn` (`ad_rolle_navn`),
   KEY `AD_bruker_epost` (`ad_bruker_epost`),
@@ -54,114 +53,121 @@ CREATE TABLE `ad_bruker_klubb_rolle_link` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_bruker_klubb_rolle_link`
+-- Dataark for tabell `ad_bruker_klubb_rolle_link`
 --
 
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'admin', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'gjest', 306);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'gjest', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'gjest', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'admin', 306);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'test', 306);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'gjest', 306);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('admin', 'test', 348);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'test', 306);
-INSERT INTO `ad_bruker_klubb_rolle_link` VALUES('gjest', 'admin', 348);
+INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `ad_klubb_raseid`) VALUES
+('admin', 'admin', 348),
+('gjest', 'gjest', 306),
+('gjest', 'gjest', 348),
+('admin', 'gjest', 348),
+('admin', 'admin', 306),
+('admin', 'test', 306),
+('admin', 'gjest', 306),
+('admin', 'test', 348),
+('gjest', 'test', 306),
+('gjest', 'admin', 348);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_klubb`
+-- Tabellstruktur for tabell `ad_klubb`
 --
 
-DROP TABLE IF EXISTS `ad_klubb`;
-CREATE TABLE `ad_klubb` (
+CREATE TABLE IF NOT EXISTS `ad_klubb` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(50) default NULL,
+  `beskrivelse` varchar(50) DEFAULT NULL,
   `raseid` int(3) NOT NULL,
-  PRIMARY KEY  (`raseid`)
+  PRIMARY KEY (`raseid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_klubb`
+-- Dataark for tabell `ad_klubb`
 --
 
-INSERT INTO `ad_klubb` VALUES('Norsk Breton Klubb', NULL, 306);
-INSERT INTO `ad_klubb` VALUES('Norsk Pointer Klubb', NULL, 348);
+INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
+('Norsk Breton Klubb', NULL, 306),
+('Norsk Pointer Klubb', NULL, 348);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rettighet`
+-- Tabellstruktur for tabell `ad_rettighet`
 --
 
-DROP TABLE IF EXISTS `ad_rettighet`;
-CREATE TABLE `ad_rettighet` (
+CREATE TABLE IF NOT EXISTS `ad_rettighet` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(250) default NULL,
-  PRIMARY KEY  (`navn`)
+  `beskrivelse` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_rettighet`
+-- Dataark for tabell `ad_rettighet`
 --
 
-INSERT INTO `ad_rettighet` VALUES('lese', 'Utføre handlinger som ikke endrer på databasen');
-INSERT INTO `ad_rettighet` VALUES('redigerHund', 'Redigere hunder');
-INSERT INTO `ad_rettighet` VALUES('redigerJaktprove', 'Redigere jaktprøver');
-INSERT INTO `ad_rettighet` VALUES('importerDatabase', 'Importere data fra NKK til databasen');
-INSERT INTO `ad_rettighet` VALUES('leggInnJaktprove', 'Legge inn jaktprøver');
-INSERT INTO `ad_rettighet` VALUES('slettJaktprove', 'Slette jaktprøver');
-INSERT INTO `ad_rettighet` VALUES('rolleRettighetHandtering', 'Tildele rettigheter på roller');
-INSERT INTO `ad_rettighet` VALUES('administrereBackup', 'Administrere Backup av databasen');
-INSERT INTO `ad_rettighet` VALUES('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb');
+INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
+('lese', 'Utføre handlinger som ikke endrer på databasen'),
+('redigerHund', 'Redigere hunder'),
+('redigerJaktprove', 'Redigere jaktprøver'),
+('importerDatabase', 'Importere data fra NKK til databasen'),
+('leggInnJaktprove', 'Legge inn jaktprøver'),
+('slettJaktprove', 'Slette jaktprøver'),
+('rolleRettighetHandtering', 'Tildele rettigheter på roller'),
+('administrereBackup', 'Administrere Backup av databasen'),
+('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
+('redigerUtstilling', 'Redigere utstillinger');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rolle`
+-- Tabellstruktur for tabell `ad_rolle`
 --
 
-DROP TABLE IF EXISTS `ad_rolle`;
-CREATE TABLE `ad_rolle` (
+CREATE TABLE IF NOT EXISTS `ad_rolle` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(50) default NULL,
-  PRIMARY KEY  (`navn`)
+  `beskrivelse` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_rolle`
+-- Dataark for tabell `ad_rolle`
 --
 
-INSERT INTO `ad_rolle` VALUES('admin', 'admin');
-INSERT INTO `ad_rolle` VALUES('gjest', 'gjest');
+INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
+('admin', 'admin'),
+('gjest', 'gjest');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ad_rolle_rettighet_link`
+-- Tabellstruktur for tabell `ad_rolle_rettighet_link`
 --
 
-DROP TABLE IF EXISTS `ad_rolle_rettighet_link`;
-CREATE TABLE `ad_rolle_rettighet_link` (
-  `ad_rolle_navn` varchar(50) NOT NULL default '',
-  `ad_rettighet_navn` varchar(50) NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
+  `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
+  `ad_rettighet_navn` varchar(50) NOT NULL DEFAULT '',
   KEY `AD_rolle_navn` (`ad_rolle_navn`),
   KEY `AD_rettighet_navn` (`ad_rettighet_navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ad_rolle_rettighet_link`
+-- Dataark for tabell `ad_rolle_rettighet_link`
 --
 
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'klubbRolleBrukerHandtering');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'redigerJaktprove');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('admin', 'lese');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'leggInnJaktprove');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'administrereBackup');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'rolleRettighetHandtering');
-INSERT INTO `ad_rolle_rettighet_link` VALUES('gjest', 'lese');
+INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
+('gjest', 'klubbRolleBrukerHandtering'),
+('gjest', 'redigerJaktprove'),
+('admin', 'lese'),
+('gjest', 'leggInnJaktprove'),
+('gjest', 'administrereBackup'),
+('gjest', 'rolleRettighetHandtering'),
+('gjest', 'lese');
 
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `nkk_aasykdom`
+--
 
 CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `veId` varchar(4) NOT NULL,
@@ -568,5 +574,4 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
 --
 -- Dataark for tabell `nkk_veteriner`
 --
-
 
