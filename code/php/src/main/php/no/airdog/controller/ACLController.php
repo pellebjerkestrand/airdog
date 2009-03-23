@@ -87,7 +87,7 @@ class ACLController
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   		}
 	   		
-	   		if($tmp->redigerHund || $tmp->redigerJaktprove || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
+	   		if($tmp->redigerHund || $tmp->redigerJaktprove || $tmp->redigerUtstilling || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
 	   		$tmp->slettJaktprove || $tmp->rolleRettighetHandtering || $tmp->klubbRolleBrukerHandtering  || 
 	   		$tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
 	   		
