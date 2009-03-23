@@ -51,7 +51,6 @@ ApplicationControlBar.applicationBar
 	paddingTop: 4;
 }
 
-
 /*
 //------------------------------
 //  Button
@@ -471,6 +470,11 @@ PopUpButton
 }
 
 
+.profilGridBeskrivelse
+{
+	color: #a3a3a3;	
+}
+
 /*
 //------------------------------
 //  ProgressBar
@@ -719,3 +723,5 @@ Tree
 	folderClosedIcon: Embed(source="yflexskin.swf",symbol="Tree_folderClosedIcon");
 	folderOpenIcon: Embed(source="yflexskin.swf",symbol="Tree_folderOpenIcon");
 }
+
+
