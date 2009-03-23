@@ -8,17 +8,23 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.validators.EmailValidator;
 			import no.airdog.model.Bruker;
 			import no.airdog.controller.*;
 			import no.airdog.services.Components;
 			import mx.controls.Alert;
 			import mx.utils.StringUtil;
+			import mx.validators.Validator;
+			import mx.events.ValidationResultEvent;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
-//			TODO
-//			[Bindable]private var erSuperadmin:Boolean = HAR_BRUKER_RETTIGHET_SUPERADMIN;
+			[Bindable]public var erGodkjent:Boolean = true;
 			
 			public var _aktivBruker:Bruker = null;
+			
+			private var hvilkeKontroll:DisplayObject;
+			
+			private var epostValidator:EmailValidator = new EmailValidator();
 			
 			public function set aktivBruker(bruker:Bruker):void
 			{
@@ -28,6 +34,7 @@
 			
 			private function init():void
 			{
+				settValidatorer();
 				tilbakestillForm();
 			}
 			
@@ -42,11 +49,6 @@
 				bruker.superadmin = superadmin.selected;
 				
 				return bruker;
-			}
-			
-			private function endring():void
-			{
-				erTilbakestillt = sammenliknObjekt(formVerdier(), _aktivBruker) && passordSjekk();
 			}
 			
 			private function passordSjekk():Boolean
@@ -132,28 +134,73 @@
 			{
 				Components.instance.controller.fjernBrukerVindu();
 			}
+			
+			private function validering(event:Event):void 
+            {                    
+                hvilkeKontroll = event.target as DisplayObject;
+                var likTest:Boolean = sammenliknObjekt(formVerdier(), _aktivBruker);
+                
+                if((_aktivBruker != null) && !likTest && passordSjekk())
+             	{
+             		erTilbakestillt = false;
+             	}
+             	
+             	if(likTest)
+             	{
+             		erTilbakestillt = true;
+             	}
+             	
+             	erGodkjent = true;
+
+                valider(epostValidator);                
+            }
+            
+			private function valider(validerer:Validator):Boolean
+            {                
+	            var validatoren:DisplayObject = validerer.source as DisplayObject;
+	            var ikkeVisBoks:Boolean = (validatoren != hvilkeKontroll);
+	            var event:ValidationResultEvent = validerer.validate(null, ikkeVisBoks); 
+	            var erValidert:Boolean = (event.type == ValidationResultEvent.VALID);
+	            
+	            erGodkjent = erGodkjent && erValidert;
+	             
+	            return erValidert;
+             } 
+             
+            private function settValidatorer():void
+            {             	
+             	epostValidator.source = epost;
+             	epostValidator.property = "text";
+             	epostValidator.missingAtSignError = "Mangler @ i epost";
+             	epostValidator.invalidCharError = "Ulovlig tegn i epost";
+             	epostValidator.invalidPeriodsInDomainError = "Du har for mange punktummer i domene navnet ditt";
+             	epostValidator.invalidDomainError = "Det er noe feil i domenet ditt";
+             	epostValidator.missingPeriodInDomainError = "Mangler punktum i domenet ditt";
+             	epostValidator.missingUsernameError = "Du har glemt navnet før @";
+             	epostValidator.tooManyAtSignsError = "Du har for mange @ i eposten din";
+			 }
 		]]>
 	</mx:Script>
 	
 	<mx:VBox horizontalAlign="center">
 		<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
 			<mx:FormItem label="E-post">
-				<mx:TextInput id="epost" change="endring();"/>
+				<mx:TextInput id="epost" change="validering(event);"/>
 			</mx:FormItem>
 			<mx:FormItem label="Fornavn">
-				<mx:TextInput id="fornavn" change="endring();"/>
+				<mx:TextInput id="fornavn" change="validering(event);"/>
 			</mx:FormItem>
 			<mx:FormItem label="Etternavn">
-				<mx:TextInput id="etternavn" change="endring();"/>
+				<mx:TextInput id="etternavn" change="validering(event);"/>
 			</mx:FormItem>
 			<mx:FormItem label="Passord">
-				<mx:TextInput id="passord" change="endring();" displayAsPassword="true"/>
+				<mx:TextInput id="passord" change="validering(event);" displayAsPassword="true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Bekreft passord">
-				<mx:TextInput id="passord2" change="endring();" displayAsPassword="true"/>
+				<mx:TextInput id="passord2" change="validering(event);" displayAsPassword="true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Superadmin">
-				<mx:CheckBox id="superadmin" change="endring();"/>
+				<mx:CheckBox id="superadmin" change="validering(event);"/>
 			</mx:FormItem>
 		</mx:Form>
 	</mx:VBox>
