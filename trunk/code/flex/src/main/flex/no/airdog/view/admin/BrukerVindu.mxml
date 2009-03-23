@@ -18,7 +18,7 @@
 			import mx.events.ValidationResultEvent;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
-			[Bindable]public var erGodkjent:Boolean = true;
+			[Bindable]public var erGodkjent:Boolean;
 			
 			public var _aktivBruker:Bruker = null;
 			
