@@ -140,7 +140,7 @@
                 hvilkeKontroll = event.target as DisplayObject;
                 var likTest:Boolean = sammenliknObjekt(formVerdier(), _aktivBruker);
                 
-                if((_aktivBruker != null) && !likTest && passordSjekk())
+                if((_aktivBruker != null) && !likTest)
              	{
              		erTilbakestillt = false;
              	}
@@ -194,10 +194,10 @@
 				<mx:TextInput id="etternavn" change="validering(event);"/>
 			</mx:FormItem>
 			<mx:FormItem label="Passord">
-				<mx:TextInput id="passord" change="validering(event);" displayAsPassword="true"/>
+				<mx:TextInput id="passord" displayAsPassword="true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Bekreft passord">
-				<mx:TextInput id="passord2" change="validering(event);" displayAsPassword="true"/>
+				<mx:TextInput id="passord2" displayAsPassword="true"/>
 			</mx:FormItem>
 			<mx:FormItem label="Superadmin">
 				<mx:CheckBox id="superadmin" change="validering(event);"/>
