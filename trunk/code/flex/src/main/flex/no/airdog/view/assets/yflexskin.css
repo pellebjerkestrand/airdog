@@ -40,7 +40,17 @@ AccordionHeader
 Application
 {
 	backgroundImage: Embed(source="yflexskin.swf",symbol="BackgroundImage");
+	backgroundGradientAlphas: 1.0, 0.0;
 }
+
+ApplicationControlBar.applicationBar
+{
+	paddingBottom: 4;
+	paddingLeft: 4;
+	paddingRight: 4;
+	paddingTop: 4;
+}
+
 
 /*
 //------------------------------
@@ -709,5 +719,3 @@ Tree
 	folderClosedIcon: Embed(source="yflexskin.swf",symbol="Tree_folderClosedIcon");
 	folderOpenIcon: Embed(source="yflexskin.swf",symbol="Tree_folderOpenIcon");
 }
-
-
