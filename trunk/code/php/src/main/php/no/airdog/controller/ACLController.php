@@ -52,6 +52,7 @@ class ACLController
 			$tmp->lese = true;
 			$tmp->redigerHund = true;
 			$tmp->redigerJaktprove = true;
+			$tmp->redigerUtstilling = true;
 			$tmp->importerDatabase = true;
 			$tmp->leggInnJaktprove = true;
 			$tmp->slettJaktprove = true;
@@ -76,6 +77,7 @@ class ACLController
 	   			if($r['navn'] == "lese") $tmp->lese = true;
 	   			if($r['navn'] == "redigerHund")	$tmp->redigerHund = true;
 	   			if($r['navn'] == "redigerJaktprove") $tmp->redigerJaktprove = true;
+	   			if($r['navn'] == "redigerUtstilling") $tmp->redigerUtstilling = true;
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   			if($r['navn'] == "leggInnJaktprove") $tmp->leggInnJaktprove = true;
 	   			if($r['navn'] == "slettJaktprove") $tmp->slettJaktprove = true;
