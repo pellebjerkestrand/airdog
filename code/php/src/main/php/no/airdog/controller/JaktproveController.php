@@ -204,9 +204,9 @@ class JaktproveController
 	    	$ret['kritikk'] = $jaktprove->kritikk;
 	    	
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->redigerJaktprove($ret, $klubbId);
+	    	$hd->redigerJaktprove($ret, $klubbId);
 	    	
-	    	return $resultat;
+	    	return $this->hentJaktprover($jaktprove->hundId, $brukerEpost, $brukerPassord, $klubbId);
     	
     	}
 		
