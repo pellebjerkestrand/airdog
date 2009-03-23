@@ -73,39 +73,6 @@ Button
 	paddingTop: 2;
 }
 
-.sokBar
-{
-	backgroundColor: #ffffff;  
-	borderStyle: solid; 
-	borderThickness: 1; 
-	borderColor: #a3a3a3; 
-	cornerRadius: 4;
-	focusAlpha: 0.5;
-	paddingLeft: 2;
-	paddingBottom: 0;
-	paddingTop: 0;
-	verticalAlign: middle;
-	horizontalGap: 0;
-}
-
-.sokFelt
-{
-	backgroundAlpha: 0;
-    backgroundColor: none;
-    borderColor: none;
-    borderSides: left top right bottom;
-    borderStyle: none;
-    borderThickness: 0;
-    dropShadowEnabled: false;
-    focusAlpha: 0;
-    fontSize: 13;
-    fontWeight: bold;
-    paddingLeft: 0;
-	paddingRight: 0;
-	paddingBottom: 0;
-	paddingTop: 2;
-}
-
 /* 
 //------------------------------ 
 //  ButtonBar 
@@ -595,6 +562,49 @@ VSlider
 	thumbUpSkin: Embed(source="yflexskin.swf", symbol="SliderThumb_upSkin");
 	trackHighlightSkin: Embed(source="yflexskin.swf", symbol="SliderHighlight_Skin");
 	trackSkin: Embed(source="yflexskin.swf", symbol="SliderTrack_Skin");
+}
+
+/* 
+//------------------------------ 
+//  Sokefelt 
+//------------------------------ 
+*/ 
+
+.sokBar
+{
+	backgroundColor: #ffffff;  
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 4;
+	focusAlpha: 0.5;
+	paddingLeft: 2;
+	paddingBottom: 0;
+	paddingTop: 0;
+	verticalAlign: middle;
+	horizontalGap: 0;
+}
+
+.sokFelt
+{
+	backgroundAlpha: 0;
+    backgroundColor: none;
+    borderColor: none;
+    borderSides: left top right bottom;
+    borderStyle: none;
+    borderThickness: 0;
+    dropShadowEnabled: false;
+    focusAlpha: 0;
+    fontSize: 13;
+    fontWeight: bold;
+    paddingLeft: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingTop: 2;
+}
+.sokKnapp
+{
+	paddingBottom: 0;
 }
 
 /*
