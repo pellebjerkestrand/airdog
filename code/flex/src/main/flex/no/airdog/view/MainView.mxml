@@ -35,7 +35,7 @@
             
             private function init(e:Event):void
             {
-            	Components.instance.controller.visLoggInnVindu(this);
+//            	Components.instance.controller.visLoggInnVindu(this);
 				meny.selectedChild = brukermeny;
             }
             
@@ -84,7 +84,7 @@
             private function innloggingSprettOppVindu():void
             {
             	Components.instance.controller.loggUt();
-            	Components.instance.controller.visLoggInnVindu(this);
+//            	Components.instance.controller.visLoggInnVindu(this);
             }
             
             private function leggInnJaktprove():void

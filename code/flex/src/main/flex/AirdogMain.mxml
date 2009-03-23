@@ -3,6 +3,7 @@
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
     preloader="no.airdog.view.Laster"
+    creationComplete="init()"
     backgroundColor="#000000"
     layout="absolute"
     minWidth="960" verticalGap="0" horizontalGap="0">
@@ -10,6 +11,11 @@
     <mx:Script>
     	<![CDATA[
     		import no.airdog.services.Components;
+    		
+    		private function init():void
+    		{
+    			Components.instance.controller.visLoggInnVindu(this);
+    		}
     	]]>
     </mx:Script>
 	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
