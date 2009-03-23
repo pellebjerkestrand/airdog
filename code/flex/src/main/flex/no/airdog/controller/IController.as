@@ -50,10 +50,10 @@ package no.airdog.controller
 		function hentFiler(mappe:String):void
 		//function lastKopi(tabell:String, mappe:String):void
 		function lastKopier(tabeller:ArrayCollection, mappe:String):void
-		function hentKlubbersRollersBrukere():void
+		function hentRollersBrukere():void
 		function hentAlleBrukere():void
-		function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
-		function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		function leggBrukerTilRolle(rolle:String, bruker:String):void
+		function slettBrukerFraRolle(rolle:String, bruker:String):void
 		function slettBruker(epost:String):void
 		function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		function leggInnBruker(bruker:Bruker):void		

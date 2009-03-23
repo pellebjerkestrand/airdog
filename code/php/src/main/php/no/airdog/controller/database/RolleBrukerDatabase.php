@@ -30,7 +30,7 @@ class RolleBrukerDatabase
 	
 	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker)
 	{		
-		if($this->hentBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		if($this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
 		{
 			$data = array(
 	   			'ad_klubb_raseid'	=> $klubb,
@@ -46,7 +46,7 @@ class RolleBrukerDatabase
 	
 	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker)
 	{		
-		if(!$this->hentBrukerPaRolleIklubb($klubb, $rolle, $bruker))
+		if(!$this->finnesBrukerPaRolleIklubb($klubb, $rolle, $bruker))
 		{
 			$hvor = $this->database->quoteInto('ad_klubb_raseid = ? ', $klubb) . 
 				'AND ' . $this->database->quoteInto('ad_rolle_navn = ? ', $rolle) . 
