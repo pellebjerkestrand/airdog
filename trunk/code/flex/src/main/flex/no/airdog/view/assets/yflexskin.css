@@ -84,6 +84,7 @@ ButtonBar
 	buttonStyleName: "buttonBarButton"; 
 	firstButtonStyleName: "firstButtonBarButton"; 
 	lastButtonStyleName: "lastButtonBarButton";
+	fontSize: 9;
 }
 
 ToggleButtonBar 
@@ -91,6 +92,7 @@ ToggleButtonBar
 	buttonStyleName: "buttonBarButton"; 
 	firstButtonStyleName: "firstButtonBarButton"; 
 	lastButtonStyleName: "lastButtonBarButton";
+	
 }
 
 /* 
@@ -108,7 +110,13 @@ ToggleButtonBar
 	selectedDownSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_firstSelectedUpSkin"); 
 	selectedOverSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_firstSelectedUpSkin");
 	selectedUpSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_firstSelectedUpSkin");
-	upSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_firstUpSkin"); 
+	upSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_firstUpSkin");
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+
+	
 }
 
 .buttonBarButton 
@@ -121,6 +129,10 @@ ToggleButtonBar
 	selectedOverSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_buttonSelectedUpSkin");
 	selectedUpSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_buttonSelectedUpSkin");
 	upSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_buttonUpSkin"); 
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
 }
 
 .lastButtonBarButton 
@@ -133,6 +145,10 @@ ToggleButtonBar
 	selectedOverSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_lastSelectedUpSkin");
 	selectedUpSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_lastSelectedUpSkin");
 	upSkin: Embed(source="yflexskin.swf", symbol="ButtonBar_lastUpSkin"); 
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
 }
 
 /*
