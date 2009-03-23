@@ -118,7 +118,7 @@
 			<mx:LinkButton label="AirDog" click="visHjem()" width="70"/>
 			<mx:HBox styleName="sokBar">
 				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="300"/>
-				<mx:LinkButton label="Søk" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
+				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
 			
 			<mx:LinkButton label="Hovednavigasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')"
