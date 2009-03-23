@@ -83,6 +83,7 @@
             
             private function innloggingSprettOppVindu():void
             {
+            	visHjem();
             	Components.instance.controller.loggUt();
             	Components.instance.controller.visLoggInnVindu(this);
             }
@@ -109,7 +110,7 @@
 				Navigasjon.visAdminBrukere();
 			}
 			
-			private function visHundprofil()
+			private function visHundprofil():void
 			{
 				Navigasjon.visHundprofil();
 			}
@@ -140,8 +141,7 @@
 		</mx:ApplicationControlBar>
 		
 		<mx:ViewStack id="meny" width="100%" 
-			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0" 
-			selectedIndex="{Components.instance.session.bruker.rettigheter.administrere ? 0 : 0}">
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
@@ -163,7 +163,6 @@
 					visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visLitenHundeliste()"/>
 			</mx:HBox>
 			<mx:HBox id="adminmeny" 
-				visible="{Components.instance.session.bruker.rettigheter.administrere}" 
 				enabled="{Components.instance.session.bruker.rettigheter.administrere}"
 				label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" 
 				borderThickness="1" borderColor="#a3a3a3" width="100%" verticalAlign="middle" 
