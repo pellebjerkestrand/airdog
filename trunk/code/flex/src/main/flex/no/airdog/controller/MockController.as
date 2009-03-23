@@ -1,9 +1,12 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.core.Application;
 	import mx.events.*;
 	import mx.formatters.DateFormatter;
 	import mx.managers.PopUpManager;
@@ -135,9 +138,11 @@ package no.airdog.controller
 		
 		public function loggUt():void
 		{	
-			Components.instance.session = new Session;	
-			Components.instance.services.airdogService.loggUt(new Function());
-			Components.instance.historie.nullstill();
+//			Components.instance.session = new Session;	
+//			Components.instance.services.airdogService.loggUt(new Function());
+//			Components.instance.historie.nullstill();
+			
+			navigateToURL(new URLRequest(Application.application.url), '_self');
 		}
 		
 		public function lastOppDatFil():void
