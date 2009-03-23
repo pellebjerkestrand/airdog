@@ -122,13 +122,13 @@
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 		<mx:ApplicationControlBar width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
 			<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogo28clean.png')" buttonMode="true" click="visHjem()"/>
-			<mx:LinkButton label="AirDog" click="visHjem()" width="70"/>
+			<mx:LinkButton label="AirDog" click="visHjem()" width="66"/>
 			<mx:HBox styleName="sokBar">
 				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="200"/>
 				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
 			
-			<mx:LinkButton label="Bruker" icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')"
+			<mx:LinkButton label="Bruker" icon="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"
 				click="{meny.selectedChild = brukermeny}"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			<mx:LinkButton label="Admin" icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')" 
@@ -144,6 +144,8 @@
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
+				<mx:LinkButton id="hjem" label="Hjem" click="visHjem()" styleName="UnderMeny"
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')" width="68"/>
 				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')" enabled="false"/>
 	   			<mx:LinkButton label="Aktiv hundprofil" styleName="UnderMeny" click="visHundprofil()"
