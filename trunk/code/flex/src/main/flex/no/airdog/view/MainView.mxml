@@ -146,9 +146,10 @@
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
 				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')" enabled="false"/>
-	   			<mx:LinkButton label="Siste hundprofil" styleName="UnderMeny" click="visHundprofil()"
+	   			<mx:LinkButton label="Aktiv hundprofil" styleName="UnderMeny" click="visHundprofil()"
 	   				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')" 
-	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"/>
+	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
+	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
 				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" 
