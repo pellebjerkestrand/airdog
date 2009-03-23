@@ -420,7 +420,7 @@
 			   	
 	            hundIdValidator.source = hundId;
 			   	hundIdValidator.property = "text"
-			   	hundIdValidator.required = false;
+			   	hundIdValidator.required = true;
 	            
 	            presUpresisValidator.source = presUpresis;
 			   	presUpresisValidator.property = "text"
