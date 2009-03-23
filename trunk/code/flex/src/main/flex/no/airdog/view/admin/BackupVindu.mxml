@@ -44,11 +44,14 @@
     </mx:Script>
     <mx:HBox height="100%">
 	    <mx:Panel title="Utfør sikkerhetskopi" width="300" horizontalAlign="center">
-		    <mx:HBox width="100%">
-		    	<mx:Label text="Navn"/>
-		    	<mx:TextInput id="backupNavn" width="100%"/>
-		    </mx:HBox>
-		    <mx:Button click="lagFullKopi()" label="Ta full kopi av databasen"/>
+	    <mx:Form paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+	    	<mx:FormItem label="Navn">
+	    		<mx:TextInput id="backupNavn" width="100%"/>
+	    	</mx:FormItem>
+	    	<mx:FormItem>
+	    		<mx:Button click="lagFullKopi()" label="Kopier databasen" icon="@Embed(source='/no/airdog/view/assets/ikoner/server__arrow.png')"/>
+	    	</mx:FormItem>
+	    </mx:Form>
 	    </mx:Panel>
 	    <mx:Panel title="Sikkerhetskopier" height="100%" width="100%">
 		    <mx:HBox height="100%" width="100%">

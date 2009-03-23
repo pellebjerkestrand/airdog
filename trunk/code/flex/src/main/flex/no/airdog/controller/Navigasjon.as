@@ -79,5 +79,10 @@ package no.airdog.controller
 			Components.instance.controller.hentKopier();
 			Components.instance.session.hovedNavigasjon.nr = 9;
 		}
+		
+		public static function visJaktprove():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 10;
+		}
 	}
 }

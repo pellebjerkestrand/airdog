@@ -32,7 +32,7 @@
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("/no/airdog/view/assets/ikoner/minus_circle.png")]
+			[Embed ("/no/airdog/view/assets/ikoner/cross_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String

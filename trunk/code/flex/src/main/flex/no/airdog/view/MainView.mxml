@@ -90,7 +90,8 @@
             
             private function leggInnJaktprove():void
             {
-            	Components.instance.controller.visLeggInnJaktproveVindu(UIComponent(this.parentApplication));
+//            	Components.instance.controller.visLeggInnJaktproveVindu(UIComponent(this.parentApplication));
+				Navigasjon.visJaktprove();
             }
             
             public function visStorHundeliste():void
@@ -123,21 +124,20 @@
 			<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogo28clean.png')" buttonMode="true" click="visHjem()"/>
 			<mx:LinkButton label="AirDog" click="visHjem()" width="70"/>
 			<mx:HBox styleName="sokBar">
-				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="300"/>
+				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="200"/>
 				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
 			
-			<mx:LinkButton label="Hovednavigasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')"
+			<mx:LinkButton label="Bruker" icon="@Embed(source='/no/airdog/view/assets/ikoner/home.png')"
 				click="{meny.selectedChild = brukermeny}"
-				visible="{Components.instance.session.bruker.rettigheter.administrere}"
-			/>
-			<mx:LinkButton label="Administrasjon" icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')" 
+				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
+			<mx:LinkButton label="Admin" icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')" 
 				click="{meny.selectedChild = adminmeny}"
-				visible="{Components.instance.session.bruker.rettigheter.administrere}"
-			/>
+				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
+			
 			<mx:Spacer width="100%"/>
-			<mx:Text text="Logget inn som {Components.instance.session.bruker.epost} i {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
-			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/key__minus.png')"/>
+			<mx:Text text="{Components.instance.session.bruker.epost}, {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
+			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_out.png')"/>
 		</mx:ApplicationControlBar>
 		
 		<mx:ViewStack id="meny" width="100%" 
@@ -213,5 +213,6 @@
 	    <view:FiktivStamtre/>
 	    <view:Hjem/>
 	    <adminView:BackupVindu/>
+	    <adminView:JaktproveVindu/>
 	</mx:ViewStack>
 </mx:VBox>
