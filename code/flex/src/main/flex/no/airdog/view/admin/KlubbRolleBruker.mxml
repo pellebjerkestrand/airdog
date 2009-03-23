@@ -34,7 +34,7 @@
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("/no/airdog/view/assets/ikoner/minus_circle.png")]
+			[Embed ("/no/airdog/view/assets/ikoner/cross_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -213,8 +213,10 @@
 									<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
 										<mx:dataProvider>
 											<mx:Array>
-												<mx:String>Rediger</mx:String>
-												<mx:String>Slett</mx:String>
+												<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" 
+													toolTip="Rediger"/>
+												<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')"
+													toolTip="Slett"/>
 											</mx:Array>
 										</mx:dataProvider>
 									</mx:ButtonBar>					   	

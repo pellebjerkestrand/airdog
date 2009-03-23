@@ -70,9 +70,9 @@
 						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
 							<mx:dataProvider>
 								<mx:Array>
-									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/exclamation.png')" 
+									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" 
 										toolTip="Rediger"/>
-									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/minus_circle.png')"
+									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')"
 										toolTip="Slett"/>
 								</mx:Array>
 							</mx:dataProvider>
