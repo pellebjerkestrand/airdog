@@ -49,7 +49,7 @@ package no.airdog.model
         
         public var backupFiler:ArrayCollection;
         
-        public var klubbersRollersBrukere:ArrayCollection = new ArrayCollection();
+        public var rollersBrukere:ArrayCollection = new ArrayCollection();
         
         public function clone():Session
 		{

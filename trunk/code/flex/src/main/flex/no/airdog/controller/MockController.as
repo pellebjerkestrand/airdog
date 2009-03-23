@@ -1,12 +1,9 @@
 package no.airdog.controller
 {
 	import flash.display.DisplayObject;
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
-	import mx.core.Application;
 	import mx.events.*;
 	import mx.formatters.DateFormatter;
 	import mx.managers.PopUpManager;
@@ -477,14 +474,14 @@ package no.airdog.controller
 			Alert.show("Gjennoppretningen ble fullført", "Backup");
 		}
 		
-		public function hentKlubbersRollersBrukere():void
+		public function hentRollersBrukere():void
 		{
-			Components.instance.services.airdogService.hentKlubbersRollersBrukere(hentKlubbersRollersBrukereResultat);
+			Components.instance.services.airdogService.hentRollersBrukere(hentRollersBrukereResultat);
 		}
 		
-		public function hentKlubbersRollersBrukereResultat(event:Object):void
+		public function hentRollersBrukereResultat(event:Object):void
 		{
-			Components.instance.session.klubbersRollersBrukere = new ArrayCollection(event as Array);
+			Components.instance.session.rollersBrukere = new ArrayCollection(event as Array);
 		}
 			
 		public function hentAlleBrukere():void
@@ -498,14 +495,14 @@ package no.airdog.controller
 			fjernBrukerVindu();
 		}
 		
-		public function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		public function leggBrukerTilRolle(rolle:String, bruker:String):void
 		{
-			Components.instance.services.airdogService.leggBrukerTilRollePaKlubb(klubb, rolle, bruker, hentKlubbersRollersBrukereResultat);
+			Components.instance.services.airdogService.leggBrukerTilRolle(rolle, bruker, hentRollersBrukereResultat);
 		}
 		
-		public function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String):void
+		public function slettBrukerFraRolle(rolle:String, bruker:String):void
 		{
-			Components.instance.services.airdogService.slettBrukerFraRollePaKlubb(klubb, rolle, bruker, hentKlubbersRollersBrukereResultat);
+			Components.instance.services.airdogService.slettBrukerFraRolle(rolle, bruker, hentRollersBrukereResultat);
 		}
 		
 		public function slettBruker(epost:String):void

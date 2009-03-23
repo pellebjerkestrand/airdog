@@ -324,9 +324,9 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function hentKlubbersRollersBrukere(resultat:Function, feil:Function=null):void
+        public function hentRollersBrukere(resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentKlubbersRollersBrukere(
+        	callServiceFunction(service.hentRollersBrukere(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),
@@ -342,10 +342,9 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function leggBrukerTilRollePaKlubb(klubb:String, rolle:String, bruker:String, resultat:Function, feil:Function=null):void
+        public function leggBrukerTilRolle(rolle:String, bruker:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.leggBrukerTilRollePaKlubb(
-        		klubb,
+        	callServiceFunction(service.leggBrukerTilRolle(
         		rolle,
         		bruker,
         		Components.instance.session.bruker.epost,
@@ -354,10 +353,9 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function slettBrukerFraRollePaKlubb(klubb:String, rolle:String, bruker:String, resultat:Function, feil:Function=null):void
+        public function slettBrukerFraRolle(rolle:String, bruker:String, resultat:Function, feil:Function=null):void
         {
-       		callServiceFunction(service.slettBrukerFraRollePaKlubb(
-        		klubb,
+       		callServiceFunction(service.slettBrukerFraRolle(
         		rolle,
         		bruker,
         		Components.instance.session.bruker.epost,

@@ -28,34 +28,24 @@ class RolleBrukerController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-	public function hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
+	public function hentRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
 		{
 			$dbACL = new ACLDatabase();
-			$klubber = $dbACL->hentAlleKlubber();
 			
 			$db = new RolleBrukerDatabase();
 			
 			$dbRR = new RolleRettighetDatabase();			
 
-	   		foreach($klubber as $klubb)
-	   		{
-	   			if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubb['raseid'], "Rollehåndtering"))
-				{	   
-		   			$tempRoller = array();
-		   			$roller['roller'] = $dbRR->hentAlleRoller();
-		   			
-		   			foreach($roller['roller'] as $rolle)
-		   			{
-		   				$rolle['brukere'] = $db->hentRollesBrukere($rolle['navn'], $klubb['raseid']);
-		   				$tempRoller[] = $rolle;
-		   			}
-		   			
-		   			$klubb['roller'] = $tempRoller;
-		   			$tmp[] = $klubb;
-				}
-	   		}
+   			$tempRoller = array();
+   			$roller = $dbRR->hentAlleRoller();
+   			
+   			foreach($roller as $rolle)
+   			{
+   				$rolle['brukere'] = $db->hentRollesBrukere($rolle['navn'], $klubbId);
+   				$tmp[] = $rolle;
+   			}
 			
 			return $tmp;
 		}
@@ -64,14 +54,15 @@ class RolleBrukerController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-	public function leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
+	public function leggBrukerTilRolle($rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
 		{
-			$db = new RolleBrukerDatabase();
-			$db->leggBrukerTilRollePaKlubb($klubb, $rolle, $bruker);
 			
-			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
+			$db = new RolleBrukerDatabase();
+			$db->leggBrukerTilRollePaKlubb($klubbId, $rolle, $bruker);
+			
+			return $this->hentRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
 		}
 
 		$feilkode = 1;
@@ -79,14 +70,14 @@ class RolleBrukerController
 	}
 	
 	
-	public function slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
+	public function slettBrukerFraRolle($rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
 		{
 			$db = new RolleBrukerDatabase();
-			$db->slettBrukerFraRollePaKlubb($klubb, $rolle, $bruker);
+			$db->slettBrukerFraRollePaKlubb($klubbId, $rolle, $bruker);
 			
-			return $this->hentKlubbersRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
+			return $this->hentRollersBrukere($brukerEpost, $brukerPassord, $klubbId);
 		}
 
 		$feilkode = 1;
