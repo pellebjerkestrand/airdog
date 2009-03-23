@@ -70,8 +70,10 @@
 						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
 							<mx:dataProvider>
 								<mx:Array>
-									<mx:String>Rediger</mx:String>
-									<mx:String>Slett</mx:String>
+									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/exclamation.png')" 
+										toolTip="Rediger"/>
+									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/minus_circle.png')"
+										toolTip="Slett"/>
 								</mx:Array>
 							</mx:dataProvider>
 						</mx:ButtonBar>					   	
