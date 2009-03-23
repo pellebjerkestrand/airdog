@@ -136,7 +136,7 @@
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
 			<mx:Spacer width="100%"/>
-			<mx:Text text="{Components.instance.session.bruker.epost}, {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
+			<mx:Label text="{Components.instance.session.bruker.epost}, {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_out.png')"/>
 		</mx:ApplicationControlBar>
 		
