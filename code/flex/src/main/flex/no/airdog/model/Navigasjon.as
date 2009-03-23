@@ -5,6 +5,5 @@ package no.airdog.model
 	{
 		public var nr:int = 8;
 		public var laster:Boolean;
-
 	}
 }

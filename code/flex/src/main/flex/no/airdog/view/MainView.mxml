@@ -19,7 +19,7 @@
         	import mx.controls.tabBarClasses.Tab;
         	import mx.core.UIComponent;
         	
-            public function sok():void
+            private function sok():void
 			{
 				visHundeliste();
 				meny.selectedChild = brukermeny;
@@ -35,8 +35,7 @@
             
             private function init(e:Event):void
             {
-//            	Components.instance.controller.visLoggInnVindu(this);
-				meny.selectedChild = brukermeny;
+				visHjem();
             }
             
             private function visLastOpp():void
@@ -44,39 +43,34 @@
             	Navigasjon.visLastOpp();
             }
             
-            public function visHundeliste():void
+            private function visHundeliste():void
             {
             	Navigasjon.visHundeliste();
             }
             
-            public function visHundNr(nr:int):void
-            {
-            	Navigasjon.visHundNr(nr);
-            }
-            
-            public function visAdminRoller():void
+            private function visAdminRoller():void
             {
             	Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
             	Navigasjon.visAdminRoller();
             }
             
-            public function visAdminBackup():void
+            private function visAdminBackup():void
             {
             	Navigasjon.visAdminBackup();
             }
             
-            public function visACL():void
+            private function visACL():void
             {
             	Navigasjon.visACL();
             }
             
-            public function visArsgjennomsnitt():void
+            private function visArsgjennomsnitt():void
             {
             	Navigasjon.visArsgjennomsnitt();
             }
             
-            public function visFiktivStamtre():void
+            private function visFiktivStamtre():void
             {
             	Navigasjon.visFiktivStamtre();
             }
@@ -90,21 +84,20 @@
             
             private function leggInnJaktprove():void
             {
-//            	Components.instance.controller.visLeggInnJaktproveVindu(UIComponent(this.parentApplication));
 				Navigasjon.visJaktprove();
             }
             
-            public function visStorHundeliste():void
+            private function visStorHundeliste():void
 			{
 				Navigasjon.visStorHundeliste();
 			}
 			
-			public function visLitenHundeliste():void
+			private function visLitenHundeliste():void
 			{
 				Navigasjon.visLitenHundeliste();
 			}
 			
-			public function visAdminBrukere():void
+			private function visAdminBrukere():void
 			{
 				Components.instance.controller.hentAlleBrukere();
 				Components.instance.controller.hentRollersBrukere();
