@@ -138,11 +138,11 @@ package no.airdog.controller
 		
 		public function loggUt():void
 		{	
-//			Components.instance.session = new Session;	
-//			Components.instance.services.airdogService.loggUt(new Function());
-//			Components.instance.historie.nullstill();
+			Components.instance.session = new Session();	
+			Components.instance.services.airdogService.loggUt(new Function());
+			Components.instance.historie.nullstill();
 			
-			navigateToURL(new URLRequest(Application.application.url), '_self');
+//			navigateToURL(new URLRequest(Application.application.url), '_self');
 		}
 		
 		public function lastOppDatFil():void
