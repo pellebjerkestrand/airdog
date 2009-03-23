@@ -84,7 +84,6 @@ ButtonBar
 	buttonStyleName: "buttonBarButton"; 
 	firstButtonStyleName: "firstButtonBarButton"; 
 	lastButtonStyleName: "lastButtonBarButton";
-	fontSize: 9;
 }
 
 ToggleButtonBar 
