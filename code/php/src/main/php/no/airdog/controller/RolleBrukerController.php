@@ -18,7 +18,7 @@ class RolleBrukerController
 	
 	public function hentAlleBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new RolleBrukerDatabase();
 			return $db->hentAlleBrukere();
@@ -30,7 +30,7 @@ class RolleBrukerController
 	
 	public function hentRollersBrukere($brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$dbACL = new ACLDatabase();
 			
@@ -56,7 +56,7 @@ class RolleBrukerController
 	
 	public function leggBrukerTilRolle($rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			
 			$db = new RolleBrukerDatabase();
@@ -72,7 +72,7 @@ class RolleBrukerController
 	
 	public function slettBrukerFraRolle($rolle, $bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new RolleBrukerDatabase();
 			$db->slettBrukerFraRollePaKlubb($klubbId, $rolle, $bruker);
@@ -86,7 +86,7 @@ class RolleBrukerController
 	
 	public function slettBruker($epost, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$db = new RolleBrukerDatabase();
 			$db->slettBruker($epost);
@@ -101,7 +101,7 @@ class RolleBrukerController
 	
 	public function leggInnBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{		
 			$ret = array();
 	    	$ret['epost'] = $bruker->epost;
@@ -123,7 +123,7 @@ class RolleBrukerController
 	
 	public function redigerBruker($fraBruker, $tilBruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "Rollehåndtering"))
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "klubbRolleBrukerHandtering"))
 		{
 			$fra = array();
 	    	$fra['epost'] = $fraBruker->epost;
