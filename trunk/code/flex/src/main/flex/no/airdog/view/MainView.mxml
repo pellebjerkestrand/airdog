@@ -24,7 +24,7 @@
 				visHundeliste();
 				meny.selectedChild = brukermeny;
 				Components.instance.controller.sokHund(sokefelt.text);
-				sokeResultat.enabled = true;
+				sokeresultat.enabled = true;
 			}
 			
 			private function visHjem():void
@@ -108,6 +108,11 @@
 				Components.instance.controller.hentKlubbersRollersBrukere();
 				Navigasjon.visAdminBrukere();
 			}
+			
+			private function visHundprofil()
+			{
+				Navigasjon.visHundprofil();
+			}
         ]]>
     </mx:Script>
 	   	
@@ -139,10 +144,11 @@
 			selectedIndex="{Components.instance.session.bruker.rettigheter.administrere ? 0 : 0}">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<mx:LinkButton id="sokeResultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
+				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="visHundeliste()" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')" enabled="false"/>
-	   			<mx:LinkButton label="Vis hund" styleName="UnderMeny" 
-	   				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')" enabled="false"/>
+	   			<mx:LinkButton label="Siste hundprofil" styleName="UnderMeny" click="visHundprofil()"
+	   				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')" 
+	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"/>
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
 				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" 
