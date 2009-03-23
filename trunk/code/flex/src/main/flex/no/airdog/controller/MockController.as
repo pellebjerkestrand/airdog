@@ -330,12 +330,7 @@ package no.airdog.controller
 		
 		public function redigerJaktprove(jaktprove:Jaktprove):void
 		{
-			Components.instance.services.airdogService.redigerJaktprove(jaktprove, redigerJaktproveResultat);
-		}
-		
-		public function redigerJaktproveResultat(event:Object):void
-		{
-			
+			Components.instance.services.airdogService.redigerJaktprove(jaktprove, hentJaktproverResultat);
 		}
 		
 		public function slettJaktprove(jaktproveId:String):void
