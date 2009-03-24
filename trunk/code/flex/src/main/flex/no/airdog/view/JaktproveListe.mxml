@@ -90,7 +90,7 @@
 			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
 			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
-			<mx:DataGridColumn id="adminPanelSammendrag" visible="false" width="100" minWidth="100" resizable="false"/>
+			<mx:DataGridColumn id="adminPanelSammendrag" visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}" width="70" minWidth="70" resizable="false"/>
 			<mx:DataGridColumn width="16" minWidth="16" resizable="false"/>
 		</mx:columns>
 	</mx:DataGrid>
