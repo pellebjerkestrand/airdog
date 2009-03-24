@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>info.flex-mojos</groupId>
+		<artifactId>flex-super-pom</artifactId>
+		<version>2.0.3</version>
+	</parent>
 	<groupId>no.airdog</groupId>
 	<artifactId>airdog-flex</artifactId>
 	<packaging>swf</packaging>
@@ -15,7 +19,7 @@
 		<developerConnection>
 			scm:svn:https://airdog.googlecode.com/svn/trunk/code/flex
 		</developerConnection>
-	</scm>	
+	</scm>
 
 	<properties>
 		<flex.sdk.version>3.2.0.3958</flex.sdk.version>
@@ -30,26 +34,12 @@
 
 	<!-- BUILD -->
 	<build>
-		<sourceDirectory>src/main/flex</sourceDirectory>
-		<testSourceDirectory>src/test/flex</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>info.flex-mojos</groupId>
 				<artifactId>flex-compiler-mojo</artifactId>
-				<version>${flex-mojos.version}</version>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile-swf</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<sourceFile>AirdogMain.mxml</sourceFile>
-					<locales>
-						<param>en_US</param>
-					</locales>
 					<warnings>
 						<changesInResolve>true</changesInResolve>
 						<deprecatedEventHandlerError>true</deprecatedEventHandlerError>
@@ -60,7 +50,7 @@
 		</plugins>
 	</build>
 
-	<!-- DEPENDENCIES  -->
+	<!-- DEPENDENCIES 
 	<dependencies>
 		<dependency>
 			<groupId>com.adobe.flex</groupId>
@@ -82,6 +72,77 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+ -->
+	<!-- REPORTING -->
+	<developers>
+		<developer>
+			<id>judoole</id>
+			<name>Ole Christian Langfjæran</name>
+			<organization>BEKK</organization>
+			<organizationUrl>http://www.bekk.no</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>pelle.bjerkestrand</id>
+			<name>Pelle Bjerkestrand</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>egil.paulsen</id>
+			<name>Egil Paulsen</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>hinderberg</id>
+			<name>Hans Magnus Inderberg</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>hallatore</id>
+			<name>Tore Lervik</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.4.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<configuration>
+					<type>range</type>
+					<range>360</range>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<!-- REPOS -->
 	<repositories>
