@@ -2,31 +2,20 @@
 <mx:HBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:HundeListeRenderer="no.airdog.view.hundeListeRenderer.*"
-	creationComplete="init()"
 	paddingBottom="0" paddingLeft="0" paddingRight="10" paddingTop="0" 
 	verticalAlign="middle" horizontalAlign="left"
 	width="100%">
 	<mx:Script>
 		<![CDATA[
 			import mx.utils.StringUtil;
-		
-			private function init():void
-			{
-				if((StringUtil.trim(data.bilde) == "") || (data.bilde == null))
-				{
-					hundbilde.source = data.bilde;
-				}
-				else
-				{
-					hundbilde.source = 'no/airdog/view/assets/intetbilde.png';	
-				}
-			}
 		]]>
 	</mx:Script>
 	<mx:VBox 
 	    width="60" height="60" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 	    horizontalAlign="center" verticalAlign="middle">    
-	    <mx:Image id="hundbilde" width="50" height="50"/>
+	    <mx:Image id="hundbilde" width="50" height="50" 
+	    	source="{StringUtil.trim(data.bilde) == '' || data.bilde == null 
+					? 'no/airdog/view/assets/intetbilde.png' : data.bilde}"/>
 	</mx:VBox>
 	
 	<mx:VBox 

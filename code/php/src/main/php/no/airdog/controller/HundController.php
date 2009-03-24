@@ -3,6 +3,7 @@ require_once "no/airdog/model/AmfHund.php";
 require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/controller/database/HundDatabase.php";
 require_once "no/airdog/controller/database/KullDatabase.php";
+require_once "no/airdog/controller/database/PersonDatabase.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -23,7 +24,9 @@ class HundController
 		{	
 	    	$hd = new HundDatabase();
 	    	$resultat = $hd->sokHund($soketekst, $klubbId);
-	
+			
+			$pd = new PersonDatabase();
+			
 	    	$ret = array();
 	    	
 		   	foreach($resultat as $rad)
@@ -32,7 +35,7 @@ class HundController
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
 				$tmp->navn = $rad["navn"];
-				$tmp->bilde = "bilde";
+				$tmp->bilde = "";
 				$tmp->morId = $rad["hundMorId"];
 				$tmp->morNavn = $rad["hundMorNavn"];
 				$tmp->farId = $rad["hundFarId"];
@@ -41,7 +44,10 @@ class HundController
 				$tmp->oppdretterId = "oppdretterId";
 				$tmp->oppdretter = "oppdretter";
 				$tmp->eierId = $rad["eierId"];
-				$tmp->eier = "eier";
+				
+				$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
+				$tmp->eier = $pdres["navn"];
+				
 				$tmp->kjonn = $rad["kjonn"];
 				$tmp->raseId = $rad["raseId"];
 				$tmp->kullId = $rad["kullId"];
@@ -75,11 +81,13 @@ class HundController
 	    	$hd = new HundDatabase();
 	    	$rad = $hd->hentHund($hundId, $klubbId);
 	
+			$pd = new PersonDatabase();
+	
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
-			$tmp->bilde = "bilde";
+			$tmp->bilde = "";
 			$tmp->morId = $rad["hundMorId"];
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
@@ -88,7 +96,10 @@ class HundController
 			$tmp->oppdretterId = "oppdretterId";
 			$tmp->oppdretter = "oppdretter";
 			$tmp->eierId = $rad["eierId"];
-			$tmp->eier = "eier";
+			
+			$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
+			$tmp->eier = $pdres["navn"];
+			
 			$tmp->kjonn = $rad["kjonn"];
 			$tmp->raseId = $rad["raseId"];
 			$tmp->kullId = $rad["kullId"];
@@ -206,7 +217,7 @@ class HundController
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
-			$tmp->bilde = "bilde";
+			$tmp->bilde = "";
 			$tmp->morId = $rad["hundMorId"];
 			$tmp->farId = $rad["hundFarId"];
 			$tmp->kjonn = $rad["kjonn"];
@@ -241,6 +252,8 @@ class HundController
 	    	$avkomListe = array();
 	    	$kd = new KullDatabase();
 	    	
+	    	$pd = new PersonDatabase();
+	    	
 		    $hundListe = $kd->hentAvkom($hundId, $klubbId);
 		    $avkomHundListe = array();
 		    
@@ -250,13 +263,16 @@ class HundController
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
 				$tmp->navn = $rad["navn"];
-				$tmp->bilde = "bilde";
+				$tmp->bilde = "";
 				$tmp->morId = $rad["hundMorId"];
 				$tmp->morNavn = $rad["hundMorNavn"];
 				$tmp->farId = $rad["hundFarId"];
 				$tmp->farNavn = $rad["hundFarNavn"];
 				$tmp->eierId = $rad["eierId"];
-				$tmp->eier = "eier";
+				
+				$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
+				$tmp->eier = $pdres["navn"];
+				
 				$tmp->kjonn = $rad["kjonn"];
 				$tmp->rase = $rad["raseId"];
 				$tmp->kullId = $rad["kullId"];

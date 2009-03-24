@@ -58,7 +58,7 @@
 			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
 			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
-			<mx:DataGridColumn id="infokolonne" headerText="" width="24" minWidth="24" resizable="false">
+			<mx:DataGridColumn id="infokolonne" headerText="" width="24" minWidth="24" resizable="false" sortable="false">
 				<mx:itemRenderer>
 					<mx:Component>
 						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
@@ -71,7 +71,7 @@
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
 			<mx:DataGridColumn headerText="" id="redigerkolonne" 
-				width="24" minWidth="24" resizable="false"
+				width="24" minWidth="24" resizable="false" sortable="false"
 				visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}">
 				<mx:itemRenderer>
 					<mx:Component>
@@ -83,7 +83,7 @@
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
 			<mx:DataGridColumn headerText="" id="slettkolonne" 
-				width="24" minWidth="24" resizable="false"
+				width="24" minWidth="24" resizable="false" sortable="false"
 				visible="{Components.instance.session.bruker.rettigheter.slettJaktprove}">
 				<mx:itemRenderer>
 					<mx:Component>
