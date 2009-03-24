@@ -16,18 +16,18 @@ class UtstillingParser
 			"utstillingId" => $utstillingArray[0],
 			"klasseId" => $utstillingArray[1],
 			"personId" => $utstillingArray[2],
-			"regDato" => $utstillingArray[3],
+			"regDato" => Verktoy::konverterDatTilDatabaseDato($utstillingArray[3]),
 			"regAv" => $utstillingArray[4],
 			"navn" => $utstillingArray[5],
 			"adresse1" => $utstillingArray[6],
 			"adresse2" => $utstillingArray[7],
 			"postNr" => $utstillingArray[8],
 			"spesialAdresse" => $utstillingArray[9],
-			"utstillingDato" => $utstillingArray[10],
+			"utstillingDato" => Verktoy::konverterDatTilDatabaseDato($utstillingArray[10]),
 			"utstillingSted" => $utstillingArray[11],
 			"arrangorNavn1" => $utstillingArray[12],
 			"arrangorNavn2" => $utstillingArray[13],
-			"overfortDato" => $utstillingArray[14]
+			"overfortDato" => Verktoy::konverterDatTilDatabaseDato($utstillingArray[14])
 			);
 		}
 	}

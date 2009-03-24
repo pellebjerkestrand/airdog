@@ -1,8 +1,10 @@
 package no.airdog.services
 {
+	import mx.controls.Alert;
+	import mx.core.Application;
+	
 	import no.airdog.controller.*;
 	import no.airdog.model.*;
-	import mx.controls.Alert;
 	
 	public class MockComponents
 	{

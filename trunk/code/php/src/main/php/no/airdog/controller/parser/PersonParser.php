@@ -24,8 +24,8 @@ class PersonParser
 			"status" => $personArray[8],
 			"telefon1" => $personArray[9],
 			"endretDato" => $personArray[10],
-			"regDato" => $personArray[11],
-			"fodt" => $personArray[12]
+			"regDato" => Verktoy::konverterDatTilDatabaseDato($personArray[11]),
+			"fodt" => Verktoy::konverterDatTilDatabaseDato($personArray[12])
 			);
 		}
 	}

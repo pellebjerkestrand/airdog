@@ -17,8 +17,8 @@ class KullParser
 			"hundIdFar" => $kullArray[1],
 			"hundIdMor" => $kullArray[2],
 			"oppdretterId" => $kullArray[3],
-			"endretDato" => $kullArray[4],
-			"fodt" => $kullArray[5],
+			"endretDato" => Verktoy::konverterDatTilDatabaseDato($kullArray[4]),
+			"fodt" => Verktoy::konverterDatTilDatabaseDato($kullArray[5]),
 			"raseId" => $kullArray[6]
 			);
 		}
