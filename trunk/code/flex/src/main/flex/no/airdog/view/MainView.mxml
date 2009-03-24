@@ -117,7 +117,7 @@
 			<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogo28clean.png')" buttonMode="true" click="visHjem()"/>
 			<mx:LinkButton label="AirDog" click="visHjem()" width="66"/>
 			<mx:HBox styleName="sokBar">
-				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="200"/>
+				<mx:TextInput id="sokefelt" text="" enter="sok()" styleName="sokFelt" minWidth="{Components.instance.session.bruker.rettigheter.administrere ? 200 : 300}"/>
 				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='/no/airdog/view/assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
 			
@@ -145,8 +145,10 @@
 	   				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')" 
 	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
 	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
+				<!-- nedprioritert
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
-					icon="@Embed(source='/no/airdog/view/assets/ikoner/folder_horizontal.png')"/>
+					icon="@Embed(source='/no/airdog/view/assets/ikoner/star.png')"/>
+				-->
 				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="visArsgjennomsnitt()" 
 					icon="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
 				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" 
