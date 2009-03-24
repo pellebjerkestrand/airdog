@@ -176,6 +176,11 @@
 		
 		<mx:VBox width="100%" height="100%">
 			<mx:Panel id="gridPanel" title="Alle brukere" width="100%" height="100%">
+				<mx:HBox width="100%">
+					<mx:Label text="Dra og slipp brukere over i roller. Fjern brukere fra roller ved å dra dem tilbake."/>				
+					<mx:Spacer width="100%"/>
+					<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
+				</mx:HBox>
 				<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="100%"
 					rowCount="{Components.instance.session.alleBrukere.length}"
 					dragEnabled="true"
@@ -209,12 +214,7 @@
 						</mx:DataGridColumn>
 					</mx:columns>
 				</mx:DataGrid>
-			</mx:Panel>	
-			<mx:HBox width="100%" paddingLeft="5" paddingRight="5">
-				<mx:Label text="Dra og slipp brukere over i roller. Fjern brukere fra roller ved å dra dem tilbake."/>				
-				<mx:Spacer width="100%"/>
-				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
-			</mx:HBox>
+			</mx:Panel>			
 		</mx:VBox>
 	</mx:HBox>
 </mx:VBox>
