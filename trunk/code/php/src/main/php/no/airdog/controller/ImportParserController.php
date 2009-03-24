@@ -5,6 +5,7 @@ require_once "database/HundDatabase.php";
 require_once "database/UtstillingDatabase.php";
 require_once "database/PremieDatabase.php";
 require_once "database/JaktproveDatabase.php";
+require_once "database/PersonDatabase.php";
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -76,8 +77,14 @@ class importParserController
 					break;
 				case "Person":
 					$ep = new PersonParser();
-					$ep->getPersonlisteArrayFraFil($filSti);
-					break;
+					$hd = new PersonDatabase();
+					
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$ret .= "\r" . $hd->settInnPerson($ep->getPersonArray($listeArray[$i]), $klubbId);
+			    	}
+			    	
+					return $ret;
 				case "Premie":
 					$ep = new PremieParser();
 					$hd = new PremieDatabase();

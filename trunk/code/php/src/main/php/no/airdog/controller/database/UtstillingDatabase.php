@@ -32,8 +32,9 @@ class UtstillingDatabase
 	public function hentUtstillinger($hundId, $klubbId)
 	{
 		$select = $this->database->select()
-		->from(array('p'=>'nkk_premie'), array('p.*', 'u.*'))
+		->from(array('p'=>'nkk_premie'), array('p.*', 'u.*', 'dommer' => 'd.navn'))
 		->joinLeft(array('u'=>'nkk_utstilling'),'p.utstillingId = u.utstillingId', array())
+		->joinLeft(array('d'=>'nkk_person'),'d.personId = p.personIdDommer', array())
 		->where('p.raseId=?', $klubbId)
 		->where('p.hundId=?', $hundId)
 		->order('u.utstillingDato DESC');
