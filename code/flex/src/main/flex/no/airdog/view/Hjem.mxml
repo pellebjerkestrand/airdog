@@ -9,7 +9,7 @@
 		]]>
 	</mx:Script>
 	<mx:HBox width="100%" horizontalAlign="center">
-		<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
+		<mx:Image source="@Embed(source='assets/airdoglogostorst318.png')"/>
 	</mx:HBox>
 	<mx:HBox width="100%" horizontalAlign="center">
 		<mx:Label text="Velkommen til AirDog. Trykk på ting."/>

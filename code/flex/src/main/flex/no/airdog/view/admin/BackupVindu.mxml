@@ -49,7 +49,7 @@
 	    		<mx:TextInput id="backupNavn" width="100%"/>
 	    	</mx:FormItem>
 	    	<mx:FormItem>
-	    		<mx:Button click="lagFullKopi()" label="Kopier databasen" icon="@Embed(source='/no/airdog/view/assets/ikoner/server__arrow.png')"/>
+	    		<mx:Button click="lagFullKopi()" label="Kopier databasen" icon="@Embed(source='../assets/ikoner/server__arrow.png')"/>
 	    	</mx:FormItem>
 	    </mx:Form>
 	    </mx:Panel>

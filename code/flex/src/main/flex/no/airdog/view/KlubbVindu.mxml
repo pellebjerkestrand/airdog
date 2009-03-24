@@ -27,9 +27,9 @@
 				label="{klubbListe.currentItem.navn} ({klubbListe.currentItem.raseid})" 
 				data="{klubbListe.currentItem.raseid}" 
 				click="settBrukersKlubb(event)"
-				icon="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+				icon="@Embed(source='assets/ikoner/dog.png')"/>
 		</mx:Repeater>	
 	</mx:VBox>
 	
-	<mx:LinkButton label="Tilbake" click="tilbake(event)" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_180_medium.png')"/>
+	<mx:LinkButton label="Tilbake" click="tilbake(event)" icon="@Embed(source='assets/ikoner/arrow_180_medium.png')"/>
 </mx:VBox>

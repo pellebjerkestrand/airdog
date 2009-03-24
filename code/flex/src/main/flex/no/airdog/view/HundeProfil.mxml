@@ -30,7 +30,7 @@
 				<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
 				<mx:HBox width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
 					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" 
-					icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')"
+					icon="@Embed(source='assets/ikoner/report__pencil.png')"
 					visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
 				</mx:HBox>
@@ -99,22 +99,22 @@
     	width="100%" height="100%" paddingLeft="5" paddingRight="5" paddingBottom="5" 
     	creationPolicy="auto">
     	
-    	<mx:VBox id="v1" label="Jaktprøver" icon="@Embed(source='/no/airdog/view/assets/ikoner/flag.png')">
+    	<mx:VBox id="v1" label="Jaktprøver" icon="@Embed(source='assets/ikoner/flag.png')">
         	<view:JaktproveListe hundId="{Components.instance.session.hundprofil.hundId}" />            
         </mx:VBox>
 
-        <mx:VBox label="Avkom" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')">
+        <mx:VBox label="Avkom" icon="@Embed(source='assets/ikoner/dog_many.png')">
       		<view:AvkomListe hundId="{Components.instance.session.hundprofil.hundId}" />
         </mx:VBox>            
         <!--
-        <mx:VBox label="Helse" icon="@Embed(source='/no/airdog/view/assets/ikoner/monitor.png')">
+        <mx:VBox label="Helse" icon="@Embed(source='assets/ikoner/monitor.png')">
         </mx:VBox>
         -->
-        <mx:VBox label="Stamtavle" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')">
+        <mx:VBox label="Stamtavle" icon="@Embed(source='assets/ikoner/arrow_join_180.png')">
 			<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="3"/>
 		</mx:VBox>
 					
-		<mx:VBox label="Ustilling" icon="@Embed(source='/no/airdog/view/assets/ikoner/trophy.png')">	
+		<mx:VBox label="Ustilling" icon="@Embed(source='assets/ikoner/trophy.png')">	
 			<view:UtstillingListe hundId="{Components.instance.session.hundprofil.hundId}" />   			
 		</mx:VBox>
 	</mx:TabNavigator>
