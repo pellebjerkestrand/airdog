@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
 	height="100%"
-	width="100%" xmlns:controls="flexunit.flexui.controls.*" creationComplete="init()">
+	width="100%" xmlns:controls="flexunit.flexui.controls.*">
 	
 	<mx:Script>
 		<![CDATA[
@@ -38,11 +38,6 @@
             private var slett:Class;
 			
             private var droppesHvor:String
-			
-			private function init():void
-			{			
-					
-			}
 			
             private function settDroppesHvor(event:MouseEvent, id:String):void
             {
@@ -90,7 +85,6 @@
                 var bruker:Array = event.dragSource.dataForFormat("items") as Array;
                 var rolle:Panel = rolleBruker.parent as Panel;
 				
-				//Alert.show(klubb.data.toString() + " " + rolle.data.toString() + " " + bruker[0].epost);
 				Components.instance.controller.leggBrukerTilRolle(rolle.data.toString(), bruker[0].epost);
             }
             
@@ -100,8 +94,6 @@
                 var bruker:Array = event.dragSource.dataForFormat("items") as Array;
                 var rolle:Panel = rolleBruker.parent as Panel;
 				
-				
-				//Alert.show(klubb.data.toString() + " " + rolle.data.toString() + " " + bruker[0].ad_bruker_epost);
 				Components.instance.controller.slettBrukerFraRolle(rolle.data.toString(), bruker[0].ad_bruker_epost);
 				
 				slettIkon.load(slett_full);
@@ -117,34 +109,6 @@
             {
             	slettIkon.load(slett_tom);
             }
-            
-           	public function adminKlikk(event:ItemClickEvent):void
-           	{
-				if (event.index == 0)
-				{
-					var bruker:Bruker = new Bruker();
-					bruker.epost = alleBrukere.selectedItem.epost;
-					bruker.fornavn = alleBrukere.selectedItem.fornavn;
-					bruker.etternavn = alleBrukere.selectedItem.etternavn;
-					bruker.passord = "";
-					if(alleBrukere.selectedItem.superadmin == 1)
-					{
-						bruker.superadmin = true;	
-					}
-					else
-					{
-						bruker.superadmin = false;
-					}
-					
-					Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), bruker);
-				}
-				else
-				{
-					var objAlert:Alert = Alert.show(
-					"Vil du slette " + alleBrukere.selectedItem.epost, "Slette?", 
-					Alert.YES | Alert.NO, this, slettBruker, null, Alert.YES);	
-				}
-			} 
 			
 			private function slettBruker(eventObj:CloseEvent):void
 			{
@@ -160,6 +124,32 @@
 			private function leggTilBruker():void
 			{
 				Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), null);
+			}
+			
+			public function redigerKlikk():void
+			{
+				var bruker:Bruker = new Bruker();
+				bruker.epost = alleBrukere.selectedItem.epost;
+				bruker.fornavn = alleBrukere.selectedItem.fornavn;
+				bruker.etternavn = alleBrukere.selectedItem.etternavn;
+				bruker.passord = "";
+				if(alleBrukere.selectedItem.superadmin == 1)
+				{
+					bruker.superadmin = true;	
+				}
+				else
+				{
+					bruker.superadmin = false;
+				}
+				
+				Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), bruker);
+			}
+			
+			public function slettKlikk():void
+			{
+				var objAlert:Alert = Alert.show(
+				"Vil du slette " + alleBrukere.selectedItem.epost, "Slette?", 
+				Alert.YES | Alert.NO, this, slettBruker, null, Alert.YES);	
 			}
 		]]>
 	</mx:Script>
@@ -207,19 +197,15 @@
 						<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
 						<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
 						<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
-						<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="true" width="100" minWidth="100" resizable="false">
+						<mx:DataGridColumn headerText="Admin" id="adminPanel" 
+							width="70" minWidth="70" resizable="false" visible="true">
 							<mx:itemRenderer>
 								<mx:Component id="admin">
-									<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
-										<mx:dataProvider>
-											<mx:Array>
-												<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" 
-													toolTip="Rediger"/>
-												<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')"
-													toolTip="Slett"/>
-											</mx:Array>
-										</mx:dataProvider>
-									</mx:ButtonBar>					   	
+									<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+										paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
+										<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+										<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
+									</mx:HBox>
 								</mx:Component>
 							</mx:itemRenderer>
 						</mx:DataGridColumn>

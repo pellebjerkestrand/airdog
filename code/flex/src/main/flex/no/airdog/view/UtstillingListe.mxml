@@ -31,19 +31,19 @@
 				}
 			}
 			
-			public function adminKlikk(event:ItemClickEvent):void{
-				if (event.index == 0){
-					//Components.instance.controller.visRedigerUtstillingVindu(UIComponent(this.parentApplication), utstillinger.selectedItem as Utstilling);
-				}
-				else
-				{
-					Alert.okLabel = "Ja"
-					Alert.cancelLabel = "Nei"
-					var objAlert:Alert = Alert.show(
-					"Vil du slette " + utstillinger.selectedItem.utstillingId, "Slette?", 
-					Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);	
-				}
-			}    
+			public function redigerKlikk():void
+			{
+				//Components.instance.controller.visRedigerUtstillingVindu(UIComponent(this.parentApplication), utstillinger.selectedItem as Utstilling);
+			}
+			
+			public function slettKlikk():void
+			{
+				Alert.okLabel = "Ja"
+				Alert.cancelLabel = "Nei"
+				var objAlert:Alert = Alert.show(
+				"Vil du slette " + utstillinger.selectedItem.utstillingId, "Slette?", 
+				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);
+			}
         ]]>
     </mx:Script>
 	<mx:DataGrid id="utstillinger" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
@@ -63,16 +63,11 @@
 			<mx:DataGridColumn headerText="Admin" id="adminPanel" visible="false" width="100" minWidth="100" resizable="false">
 				<mx:itemRenderer>
 					<mx:Component id="admin">
-						<mx:ButtonBar itemClick="outerDocument.adminKlikk(event)" width="100%">
-							<mx:dataProvider>
-								<mx:Array>
-									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" 
-										toolTip="Rediger"/>
-									<mx:Object label="" icon="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')"
-										toolTip="Slett"/>
-								</mx:Array>
-							</mx:dataProvider>
-						</mx:ButtonBar>					   	
+						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
+							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+							<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
+						</mx:HBox>
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
