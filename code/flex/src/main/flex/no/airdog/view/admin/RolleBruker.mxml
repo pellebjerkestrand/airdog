@@ -74,7 +74,6 @@
             	if((droppesHvor == drasTil.id || drasTil.id == "alleBrukere") && drasFra.id != "alleBrukere")
                 {
 	            	DragManager.showFeedback(DragManager.MOVE);
-	            	DragManager.acceptDragDrop(sletting as UIComponent);
 	            	DragManager.acceptDragDrop(alleBrukere as UIComponent);
                 }
             }
@@ -96,19 +95,10 @@
 				
 				Components.instance.controller.slettBrukerFraRolle(rolle.data.toString(), bruker[0].ad_bruker_epost);
 				
-				slettIkon.load(slett_full);
-				rister.duration = 200;
-				rister.play([slettIkon]);
 				
-				var timer:Timer = new Timer(3000);
-      			timer.addEventListener(TimerEvent.TIMER, tomSoppel);
-        		timer.start();
             }
             
-            private function tomSoppel(event:TimerEvent):void
-            {
-            	slettIkon.load(slett_tom);
-            }
+
 			
 			private function slettBruker(eventObj:CloseEvent):void
 			{
@@ -220,16 +210,11 @@
 					</mx:columns>
 				</mx:DataGrid>
 			</mx:Panel>	
-			<mx:HBox width="100%">
+			<mx:HBox width="100%" paddingLeft="5" paddingRight="5">
+				<mx:Label text="Dra og slipp brukere over i roller. Fjern brukere fra roller ved å dra dem tilbake."/>				
 				<mx:Spacer width="100%"/>
 				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
 			</mx:HBox>
-			<mx:Panel id="sletting" title="Slett bruker på rolle" width="100%"
-	        	dragEnter="sjekkSlett(event)"
-	            dragDrop="slettBrukerPaRolle(event)">
-	                    
-	          	<mx:Image id="slettIkon" source="{slett_tom}" />
-			</mx:Panel>
 		</mx:VBox>
 	</mx:HBox>
 </mx:VBox>
