@@ -26,39 +26,6 @@ class UtstillingController
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
-	
-	public function hentUtstillingSammendrag($hundId, $brukerEpost, $brukerPassord, $klubbId)
-    {
-	    if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-	    	$hd = new UtstillingDatabase();
-			
-			$sammendrag = $hd->hentUtstillingSammendrag($hundId, $klubbId);
-			
-			$tmp = new AmfUtstilling();	    	
-	    	$tmp->slippTid = sprintf("%u", $sammendrag['slippTid']);
-	    	$tmp->egneStand = $sammendrag['egneStand']; 	
-	    	$tmp->egneStokk = $sammendrag['egneStokk'];
-	    	$tmp->tomStand = $sammendrag['tomStand']; 	
-	    	$tmp->makkerStand = $sammendrag['makkerStand'];
-	    	$tmp->makkerStokk = $sammendrag['makkerStokk']; 	
-	    	$tmp->jaktlyst = sprintf("%.2f", $sammendrag['jaktlyst']);
-	    	$tmp->fart = sprintf("%.2f", $sammendrag['fart']); 	
-	    	$tmp->stil = sprintf("%.2f", $sammendrag['stil']);
-	    	$tmp->selvstendighet = sprintf("%.2f", $sammendrag['selvstendighet']); 	
-	    	$tmp->bredde = sprintf("%.2f", $sammendrag['bredde']);
-	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
-	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
-    		
-	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
-			$ret[] = $tmp;
-			
-	        return $ret;
-		}
-		
-		$feilkode = 1;	
-   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
-    }
 		
  	public function hentUtstillinger($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
@@ -89,6 +56,8 @@ class UtstillingController
 		    	$tmp->manueltEndretAv = $rad['manueltEndretAv']; 	
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->raseId = $rad['raseId'];
+		    	
+		    	$tmp->dommer = $rad['dommer'];
 		    	
 		    	$tmp->doId = $rad['doId'];
 		    	$tmp->hundId = $rad['hundId'];
@@ -134,18 +103,66 @@ class UtstillingController
 		    	else if ($rad['CA'] == "2")
 		    		$tmp->CACIB = "RES CACIB";
 		    		
-	    		if ($tmp->kjonn = "H")
-	    		{
-	    			$tmp->BHK = $rad['BIK'];
-	    			$tmp->BTK = "-";
-	    		}
-    			else
-    			{
-	    			$tmp->BTK = $rad['BIK'];	
-	    			$tmp->BHK = "-";
-    			}
+//	    		if ($tmp->kjonn = "H")
+//	    		{
+//	    			$tmp->BHK = $rad['BIK'];
+//	    			$tmp->BTK = "-";
+//	    		}
+//    			else
+//    			{
+//	    			$tmp->BTK = $rad['BIK'];	
+//	    			$tmp->BHK = "-";
+//    			}
     			
-    			if ($tmp->klasse == "C" && $tmp->premie)
+		    	$k = "";
+		    	$kk = "";
+		    	
+    			switch($rad['klasse'])
+				{
+					case "J":
+						$k = "JK";
+		    			$kk = "JKK";
+					break;
+					
+					case "U":
+						$k = "UK";
+		    			$kk = "UKK";
+					break;
+					
+					case "A":
+						$k = "AK";
+		    			$kk = "AKK";
+					break;
+					
+					case "C":
+						$k = "CHK";
+		    			$kk = "CHKK";
+					break;
+					
+					case "V":
+						$k = "VTK";
+		    			$kk = "VTKK";
+					break;
+					
+					case "B":
+						$k = "BK";
+		    			$kk = "BKK";
+					break;
+				}
+				
+				if ($k != "" && $kk != "")
+				{
+					if ($rad[$k] != 0)
+						$tmp->premie = $rad[$k] . $k;
+						
+					if ($rad[$kk] != 0 && $rad[$k] != 0)
+						$tmp->premie .= ", ";
+						
+					if ($rad[$kk] != 0)
+						$tmp->premie .=  $rad[$kk] . $kk;
+				}
+				
+    			//if ($tmp->klasse == "C" && $tmp->premie)
     			
 /*HVIS Klasse == 'C' og premie == 7 : så er premien KIP
 ELLERS HVIS premie == 4 : så er premien KIP
