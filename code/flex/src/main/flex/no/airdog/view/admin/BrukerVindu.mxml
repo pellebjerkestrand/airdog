@@ -16,6 +16,7 @@
 			import mx.utils.StringUtil;
 			import mx.validators.Validator;
 			import mx.events.ValidationResultEvent;
+			import no.airdog.controller.Verktoy;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
 			[Bindable]public var erGodkjent:Boolean;
@@ -58,50 +59,9 @@
 				return bruker;
 			}
 			
-			private function passordSjekk():Boolean
-			{
-				if(StringUtil.trim(passord.text) == StringUtil.trim(passord2.text))
-				{
-					return true;
-				}
-				else
-				{
-					Alert.show("Passordet er ikke lik passordbekreftelsen\nPrøv igjen", "Passordfeil");
-					passord.text = "";
-					passord2.text = "";
-					return false;
-				}	
-			}
-			
-			private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
-			{
-			    var buffer1:ByteArray = new ByteArray();
-			    buffer1.writeObject(objekt1);
-			    var buffer2:ByteArray = new ByteArray();
-			    buffer2.writeObject(objekt2);
-			 	
-			    var storrelse:uint = buffer1.length;
-			    if (buffer1.length == buffer2.length)
-			    {
-			        buffer1.position = 0;
-			        buffer2.position = 0;
-			 
-			        while (buffer1.position < storrelse)
-			        {
-			            var v1:int = buffer1.readByte();
-			            if (v1 != buffer2.readByte())
-			            {
-			                return false;
-			            }
-			        }    
-			        return true;                        
-			    }
-			    return false;
-			}
-			
 			private function lagre():void
 			{
-				if(passordSjekk())
+				if(Verktoy.sammenliknObjekt(passord.text, passord2.text))
 				{
 					if(_aktivBruker)
 					{
@@ -119,6 +79,10 @@
 					{
 						Components.instance.controller.leggInnBruker(formVerdier());
 					}
+				}
+				else
+				{
+					Alert.show("Passordene er ikke like");
 				}
 			}
 			
@@ -142,7 +106,7 @@
 				passord.text = "";
 				passord2.text = "";
 				
-				erTilbakestillt = sammenliknObjekt(formVerdier(), _aktivBruker);
+				erTilbakestillt = Verktoy.sammenliknObjekt(formVerdier(), _aktivBruker);
 			}
 			
 			private function avbryt():void
@@ -153,7 +117,7 @@
 			private function validering(event:Event):void 
             {                    
                 hvilkeKontroll = event.target as DisplayObject;
-                var likTest:Boolean = sammenliknObjekt(formVerdier(), _aktivBruker);
+                var likTest:Boolean = Verktoy.sammenliknObjekt(formVerdier(), _aktivBruker);
                 
                 if((_aktivBruker != null) && !likTest)
              	{
@@ -165,7 +129,7 @@
              		erTilbakestillt = true;
              	}
              	
-             	erGodkjent = true;
+				erGodkjent = true;
 
                 valider(epostValidator);                
             }
@@ -221,7 +185,7 @@
 	</mx:VBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-        <mx:Button label="Lagre" enabled="{!erTilbakestillt}" click="lagre()"/>
+        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
         <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
         <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>
