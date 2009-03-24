@@ -24,15 +24,15 @@
             
             
 			[Bindable]
-           	[Embed("/no/airdog/view/assets/ikoner/trash_empty.png")]
+           	[Embed("../assets/ikoner/trash_empty.png")]
            	private var slett_tom:Class;
            
            	[Bindable]
-           	[Embed("/no/airdog/view/assets/ikoner/trash_full.png")]
+           	[Embed("../assets/ikoner/trash_full.png")]
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("/no/airdog/view/assets/ikoner/cross_circle.png")]
+			[Embed ("../assets/ikoner/cross_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -134,7 +134,7 @@
 	    			<mx:FormItem width="100%">
 	    				<mx:HBox width="100%">
 	    					<mx:Spacer width="100%"/>
-	    					<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')"/>
+	    					<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='../assets/ikoner/plus_circle.png')"/>
 	    				</mx:HBox>
 	    			</mx:FormItem>
 	    		</mx:Form>

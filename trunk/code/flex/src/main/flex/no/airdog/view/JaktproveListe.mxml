@@ -65,7 +65,7 @@
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
 							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" 
 								visible="{data.kritikk == '' || data.kritikk == null ? false : true}"
-								source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="Kritikk"/>
+								source="@Embed(source='assets/ikoner/information.png')" toolTip="Kritikk"/>
 						</mx:HBox>
 					</mx:Component>
 				</mx:itemRenderer>
@@ -77,7 +77,7 @@
 					<mx:Component>
 						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
 						</mx:HBox>
 					</mx:Component>
 				</mx:itemRenderer>
@@ -89,7 +89,7 @@
 					<mx:Component>
 						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-							<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
+							<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='assets/ikoner/cross_circle.png')" toolTip="Slett"/>
 						</mx:HBox>
 					</mx:Component>
 				</mx:itemRenderer>

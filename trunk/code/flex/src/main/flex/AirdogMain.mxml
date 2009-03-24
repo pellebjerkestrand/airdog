@@ -22,7 +22,7 @@
     		}
     	]]>
     </mx:Script>
-	<mx:Style source="no/airdog/view/assets/yflexskin.css"/>
+	<mx:Style source="/no/airdog/view/assets/yflexskin.css"/>
 	
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>

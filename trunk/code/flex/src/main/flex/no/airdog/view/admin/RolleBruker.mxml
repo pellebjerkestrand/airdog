@@ -26,15 +26,15 @@
             
             
 			[Bindable]
-           	[Embed("/no/airdog/view/assets/ikoner/trash_empty.png")]
+           	[Embed("../assets/ikoner/trash_empty.png")]
            	private var slett_tom:Class;
            
            	[Bindable]
-           	[Embed("/no/airdog/view/assets/ikoner/trash_full.png")]
+           	[Embed("../assets/ikoner/trash_full.png")]
            	private var slett_full:Class;
             			
 			[Bindable]
-			[Embed ("/no/airdog/view/assets/ikoner/cross_circle.png")]
+			[Embed ("../assets/ikoner/cross_circle.png")]
             private var slett:Class;
 			
             private var droppesHvor:String
@@ -179,7 +179,7 @@
 				<mx:HBox width="100%">
 					<mx:Label text="Dra og slipp brukere over i roller. Fjern brukere fra roller ved å dra dem tilbake."/>				
 					<mx:Spacer width="100%"/>
-					<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='no/airdog/view/assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
+					<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='../assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
 				</mx:HBox>
 				<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="100%"
 					rowCount="{Components.instance.session.alleBrukere.length}"
@@ -197,7 +197,7 @@
 								<mx:Component>
 									<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 										paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-										<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+										<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='../assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
 									</mx:HBox>
 								</mx:Component>
 							</mx:itemRenderer>
@@ -207,7 +207,7 @@
 								<mx:Component>
 									<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 										paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-										<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
+										<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='../assets/ikoner/cross_circle.png')" toolTip="Slett"/>
 									</mx:HBox>
 								</mx:Component>
 							</mx:itemRenderer>

@@ -73,8 +73,8 @@
 			
 				<mx:FormItem horizontalAlign="right" width="100%">
 					<mx:HBox>
-						<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='/no/airdog/view/assets/ikoner/user_silhouette.png')"/>
-						<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_in.png')"/>
+						<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='assets/ikoner/user_silhouette.png')"/>
+						<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='assets/ikoner/door_open_in.png')"/>
 					</mx:HBox>
 				</mx:FormItem>
 			</mx:Form>
