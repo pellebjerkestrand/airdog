@@ -136,7 +136,10 @@
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
 			<mx:Spacer width="100%"/>
-			<mx:LinkButton click="redigerBruker()" label="{Components.instance.session.bruker.epost}," fontSize="12"/><mx:Label text="{Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
+			<mx:LinkButton label="{Components.instance.session.bruker.epost}"
+				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
+				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
+				click="redigerBruker()" /><mx:Label text="{Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_out.png')"/>
 		</mx:ApplicationControlBar>
 		
