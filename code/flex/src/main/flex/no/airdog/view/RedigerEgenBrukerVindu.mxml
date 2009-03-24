@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="Bruker"
+	creationComplete="init()"
+	layout="vertical"
+	height="100%" width="100%">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.validators.EmailValidator;
+			import no.airdog.model.Bruker;
+			import no.airdog.controller.*;
+			import no.airdog.services.Components;
+			import mx.controls.Alert;
+			import mx.utils.StringUtil;
+		
+			[Bindable]private var erTilbakestillt:Boolean = true;
+		
+			private function init():void
+			{	
+				tilbakestillForm();
+			}
+			
+			private function formVerdier():Bruker
+			{
+				var bruker:Bruker = new Bruker();
+				
+				bruker.epost = epost.text;
+				bruker.fornavn = fornavn.text;
+				bruker.etternavn = etternavn.text;
+				
+				bruker.passord = passord.text;
+				
+				return bruker;
+			}
+			
+			private function passordSjekk():Boolean
+			{
+				if(StringUtil.trim(passord.text) == StringUtil.trim(passord2.text))
+				{
+					return true;
+				}
+				else
+				{
+					Alert.show("Passordet er ikke lik passordbekreftelsen\nPrøv igjen", "Passordfeil");
+					passord.text = "";
+					passord2.text = "";
+					return false;
+				}	
+			}
+			
+			private function lagre():void
+			{
+				if(passordSjekk())
+				{
+					Components.instance.controller.redigerEgenBruker(formVerdier());
+				}
+			}
+			
+			private function tilbakestillForm():void
+			{
+				epost.text = Components.instance.session.bruker.epost
+				fornavn.text = Components.instance.session.bruker.fornavn;
+				etternavn.text = Components.instance.session.bruker.etternavn;
+				
+				passord.text ="";
+				passord2.text = "";
+			}
+			
+			private function sammenlign():void
+			{
+				erTilbakestillt = false;
+			}
+			
+			private function avbryt():void
+			{
+				Components.instance.controller.fjernRedigerEgenBrukerVindu()
+			}	
+             
+		]]>
+	</mx:Script>
+	
+	<mx:VBox horizontalAlign="center">
+		<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:FormItem label="E-post" enabled="false">
+				<mx:TextInput id="epost" />
+			</mx:FormItem>
+			<mx:FormItem label="Fornavn">
+				<mx:TextInput id="fornavn" change="sammenlign()"/>
+			</mx:FormItem>
+			<mx:FormItem label="Etternavn">
+				<mx:TextInput id="etternavn" change="sammenlign()"/>
+			</mx:FormItem>
+			<mx:FormItem label="Passord">
+				<mx:TextInput id="passord" change="sammenlign()" displayAsPassword="true"/>
+			</mx:FormItem>
+			<mx:FormItem label="Bekreft passord">
+				<mx:TextInput id="passord2" displayAsPassword="true"/>
+			</mx:FormItem>
+		</mx:Form>
+	</mx:VBox>
+	
+	<mx:ControlBar horizontalAlign="center">
+        <mx:Button label="Lagre" enabled="{!erTilbakestillt}" click="lagre()"/>
+        <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
+        <mx:Button label="Avbryt" click="avbryt()"/>
+	</mx:ControlBar>
+</mx:TitleWindow>

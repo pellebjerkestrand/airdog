@@ -11,7 +11,7 @@ package no.airdog.controller
 		function visLoggInnVindu(parent:DisplayObject):void
 		function fjernLoggInnVindu():void
 		function settBrukersKlubb(klubb:String, klubbId:String):void;
-		function loggInn(brukernavn:String, passord:String):void
+		function loggInn(bruker:Bruker):void
 		function loggUt():void
 		function lastOppDatFil():void
 		function sokHund(soketekst:String):void
@@ -56,6 +56,9 @@ package no.airdog.controller
 		function slettBrukerFraRolle(rolle:String, bruker:String):void
 		function slettBruker(epost:String):void
 		function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
-		function leggInnBruker(bruker:Bruker):void		
+		function leggInnBruker(bruker:Bruker):void	
+		function redigerEgenBruker(bruker:Bruker):void	
+		function fjernRedigerEgenBrukerVindu():void
+		function visRedigerEgenBrukerVindu(parent:DisplayObject):void
 	}
 }

@@ -94,7 +94,7 @@ class RolleBrukerDatabase
 
 	}	
 	
-	private function hentBruker($epost)
+	public function hentBruker($epost)
 	{
 		$hent = $this->database->select()
 		->from('ad_bruker', array('ad_bruker.*'))

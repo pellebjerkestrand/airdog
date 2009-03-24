@@ -1,5 +1,6 @@
 <?php
 require_once 'ValiderBruker.php';
+require_once "RolleBrukerDatabase.php";
 require_once 'Tilkobling.php';
 class ACLDatabase
 {
@@ -58,4 +59,32 @@ class ACLDatabase
 		
 		return $this->database->fetchAll($hent);
 	}
+	
+	public function redigerEgenBruker($bruker, $brukerPassord)
+	{
+		if($bruker->passord == "")
+		{
+			$bruker->passord = $brukerPassord;
+		}
+		
+		$redigertBruker = array();
+    	$redigertBruker['fornavn'] = $bruker->fornavn;
+    	$redigertBruker['etternavn'] = $bruker->etternavn;
+    	$redigertBruker['passord'] = sha1($bruker->passord);
+		
+	
+		$hvor = $this->database->quoteInto('epost = ?', $bruker->epost);			
+		$this->database->update('ad_bruker', $redigertBruker, $hvor);
+		
+		$db = new RolleBrukerDatabase();
+
+		$redigertBruker = $db->hentBruker($bruker->epost);
+		
+		$bruker->fornavn = $redigertBruker['fornavn'];
+		$bruker->etternavn = $redigertBruker['etternavn'];
+		$bruker->passord = $bruker->passord;
+
+		return $bruker;
+	}
+	
 }
