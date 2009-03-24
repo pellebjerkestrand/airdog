@@ -33,8 +33,8 @@ class HdsykdomParser
 			"sekVenstreKode" => $hdsykdomArray[18],
 			"sendes" => $hdsykdomArray[19],
 			"veterinerId" => $hdsykdomArray[20],
-			"rontgenDato" => $hdsykdomArray[21],
-			"avlestDato" => $hdsykdomArray[22]
+			"rontgenDato" => Verktoy::konverterDatTilDatabaseDato($hdsykdomArray[21]),
+			"avlestDato" => Verktoy::konverterDatTilDatabaseDato($hdsykdomArray[22])
 			);
 		}
 	}

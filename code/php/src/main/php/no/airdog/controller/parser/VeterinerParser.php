@@ -21,7 +21,7 @@ class VeterinerParser
 			"telefon" => $veterinerArray[6],
 			"telefax" => $veterinerArray[7],
 			"klinikkNavn" => $veterinerArray[8],
-			"regDato" => $veterinerArray[9],
+			"regDato" => Verktoy::konverterDatTilDatabaseDato($veterinerArray[9]),
 			"regAv" => $veterinerArray[10],
 			"endretAv" => $veterinerArray[11]
 			);

@@ -43,80 +43,82 @@ class importParserController
 					$ep = new EierParser();
 					$ep->getEierlisteArrayFraFil($filSti);
 					break;
+					
 				case "Fugl":
 					$ep = new FuglParser();
 					$hd = new JaktproveDatabase();
-					
 					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnJaktprove($ep->getFuglArray($listeArray[$i]), $klubbId);
 			    	}
-			    	
 			    	return $ret;
+			    	
 				case "Hdsykdom":
 					$ep = new HdsykdomParser();
 					$ep->getHdsykdomlisteArrayFraFil($filSti);
 					break;
+					
 				case "Hund":
 					$ep = new HundParser();
 					$hd = new HundDatabase();
-					
 					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnHund($ep->getHundArray($listeArray[$i]), $klubbId);
 			    	}
-			    	
 					return $ret;
+					
 				case "Kull":
 					$ep = new KullParser();
 					$ep->getKulllisteArrayFraFil($filSti);
 					break;
+					
 				case "Oppdrett":
 					$ep = new OppdrettParser();
 					$ep->getOppdrettlisteArrayFraFil($filSti);
 					break;
+					
 				case "Person":
 					$ep = new PersonParser();
 					$hd = new PersonDatabase();
-					
 					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnPerson($ep->getPersonArray($listeArray[$i]), $klubbId);
 			    	}
-			    	
 					return $ret;
+					
 				case "Premie":
 					$ep = new PremieParser();
 					$hd = new PremieDatabase();
-					
 					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnPremie($ep->getPremieArray($listeArray[$i]), $klubbId);
 			    	}
-			    	
 					return $ret;
+					
 				case "Utstilling":
 					$ep = new UtstillingParser();
 					$hd = new UtstillingDatabase();
-					
 					for ($i = 1; $i < $size; $i++)
 			    	{
 			    		$ret .= "\r" . $hd->settInnUtstilling($ep->getUtstillingArray($listeArray[$i]), $klubbId);
 			    	}
-			    	
 					return $ret;
+					
 				case "Veteriner":
 					$ep = new VeterinerParser();
 					$ep->getVeterinerlisteArrayFraFil($filSti);
 					break;
+					
 				case "Aasykdom":
 					$ep = new AasykdomParser();
 					$ep->getAasykdomlisteArrayFraFil($filSti);
 					break;
+					
 				case "Oyesykdom":
 					$ep = new OyesykdomParser();
 					$ep->getOyesykdomlisteArrayFraFil($filSti);
 					break;
+					
 				default:
 					return "Dette er en ukjent .dat fil";
 				

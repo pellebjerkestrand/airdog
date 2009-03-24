@@ -37,8 +37,8 @@ class AasykdomParser
 			"sekHoyre" => $aaSykdomArray[21],
 			"sekVenstre" => $aaSykdomArray[22],
 			"sendes" => $aaSykdomArray[23],
-			"avlestDato" => $aaSykdomArray[24],
-			"rontgenDato" => $aaSykdomArray[25]
+			"avlestDato" => Verktoy::konverterDatTilDatabaseDato($aaSykdomArray[24]),
+			"rontgenDato" => Verktoy::konverterDatTilDatabaseDato($aaSykdomArray[25])
 			);
 		}
 	}

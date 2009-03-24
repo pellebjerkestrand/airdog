@@ -115,6 +115,7 @@ INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
 ('rolleRettighetHandtering', 'Tildele rettigheter på roller'),
 ('administrereBackup', 'Administrere Backup av databasen'),
 ('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
+('redigerEgenBruker', 'En bruker skal kunne redigere seg selv'),
 ('redigerUtstilling', 'Redigere utstillinger');
 
 -- --------------------------------------------------------
@@ -539,6 +540,7 @@ CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
   `arrangorNavn1` varchar(64) NOT NULL,
   `arrangorNavn2` varchar(64) NOT NULL,
   `overfortDato` date NOT NULL,
+  `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -567,6 +569,7 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `regDato` date NOT NULL,
   `regAv` varchar(16) NOT NULL,
   `endretAv` varchar(16) NOT NULL,
+  `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -4,6 +4,7 @@ package no.airdog.controller
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.core.Application;
 	import mx.events.*;
 	import mx.formatters.DateFormatter;
 	import mx.managers.PopUpManager;
@@ -156,8 +157,7 @@ package no.airdog.controller
 		
 		public function lastOppDatFil():void
 		{
-			var url:String = "http://localhost:8888/AirDog%20-%20PHP/src/main/php/no/airdog/controller/FilopplastController.php?";
-			//var url:String = "http://airdog.no/backend/no/airdog/controller/FilopplastController.php?";
+			var url:String = Components.instance.services.rootPath + "controller/FilopplastController.php?";
 			
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
