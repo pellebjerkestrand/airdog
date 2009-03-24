@@ -571,7 +571,7 @@
             	}
             	else
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_cirle.png";
+            		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
             	}
             }
             
@@ -579,11 +579,11 @@
             {
             	if((StringUtil.trim(event.navn) == ""))
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_circle.png";
+            		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
             	}
             	else
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/ikoner/tick_circle.png";
+            		hundIdIkon.source = "no/airdog/view/assets/ikoner/dog.png";
             	}
             	hundNavn.text = StringUtil.trim(event.navn);
             }
@@ -759,7 +759,7 @@
 					<mx:FormItem label="Hund-ID">
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
 							<mx:TextInput id="hundId" focusOut="hundIdSjekk()" change="validering(event)" width="84" height="20"/>
-							<mx:Image id="hundIdIkon"/>
+							<mx:Image width="16" height="16" id="hundIdIkon"/>
 						</mx:HBox>
 					</mx:FormItem>				
 					<mx:FormItem label="Navn">
