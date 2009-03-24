@@ -145,6 +145,12 @@ class RolleBrukerDatabase
 		{
 			$tilBruker['passord'] = sha1($tilBruker['passord']);
 		}
+		
+		$redigertBrukerRolle = array();
+		$redigertBrukerRolle['ad_bruker_epost'] = $tilBruker['epost'];
+		
+		$hvor = $this->database->quoteInto('ad_bruker_epost = ?', $fraBruker['epost']);			
+		$this->database->update('ad_bruker_klubb_rolle_link', $redigertBrukerRolle, $hvor);	
 			
 		$hvor = $this->database->quoteInto('epost = ?', $fraBruker['epost']);			
 		return $this->database->update('ad_bruker', $tilBruker, $hvor);

@@ -107,7 +107,8 @@
 					{
 						if(Components.instance.session.bruker.epost == _aktivBruker.epost)
 						{
-							Components.instance.controller.redigerEgenBruker(Components.instance.session.bruker, formVerdier());
+							_aktivBruker.passord = Components.instance.session.bruker.passord;
+							Components.instance.controller.redigerEgenBruker(_aktivBruker, formVerdier());
 						}
 						else
 						{
