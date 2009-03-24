@@ -30,6 +30,13 @@
 			{
 				_aktivBruker = bruker;
 				tilbakestillForm();
+				
+				if(Components.instance.session.bruker.epost == _aktivBruker.epost)
+				{
+					superAdminFelt.visible = false;
+					superAdminFelt.includeInLayout = false;
+					superAdminFelt.enabled = false;
+				}
 			}
 			
 			private function init():void
@@ -100,7 +107,7 @@
 					{
 						if(Components.instance.session.bruker.epost == _aktivBruker.epost)
 						{
-							Components.instance.controller.redigerEgenBruker(formVerdier());
+							Components.instance.controller.redigerEgenBruker(Components.instance.session.bruker, formVerdier());
 						}
 						else
 						{
@@ -206,7 +213,7 @@
 			<mx:FormItem label="Bekreft passord">
 				<mx:TextInput id="passord2" displayAsPassword="true"/>
 			</mx:FormItem>
-			<mx:FormItem label="Superadmin">
+			<mx:FormItem label="Superadmin" id="superAdminFelt">
 				<mx:CheckBox id="superadmin" change="validering(event)"/>
 			</mx:FormItem>
 		</mx:Form>

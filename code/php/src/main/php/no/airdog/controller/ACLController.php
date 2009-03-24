@@ -102,13 +102,13 @@ class ACLController
 		
 	}
 	
-	public function redigerEgenBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
+	public function redigerEgenBruker($fraBruker, $tilBruker, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerEgenBruker"))
 		{
 			$db = new ACLDatabase();
 
-			return $db->redigerEgenBruker($bruker, $brukerPassord);
+			return $db->redigerEgenBruker($fraBruker, $tilBruker, $brukerPassord);
 		}
 
 		$feilkode = 1;

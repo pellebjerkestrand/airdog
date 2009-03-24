@@ -60,31 +60,52 @@ class ACLDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function redigerEgenBruker($bruker, $brukerPassord)
+	public function redigerEgenBruker($fraBruker, $tilBruker, $brukerPassord)
 	{
-		if($bruker->passord == "")
+		$db = new RolleBrukerDatabase();
+		
+		$nyEpostBruker = $this->hentBruker($tilBruker->epost);
+		
+		if($fraBruker->epost != $tilBruker->epost && isset($nyEpostBruker))
 		{
-			$bruker->passord = $brukerPassord;
+			throw(new Exception('E-posten er allerede registrert på en annen bruker', "1"));
+		}
+		else if ($fraBruker->epost == "")
+		{
+			throw(new Exception('E-postfeltet kan ikke være tomt', 1));
+		}
+		
+		if ($tilBruker->passord == "")
+		{
+			$gammelBruker = $db->hentBruker($fraBruker->epost);
+			
+			if(!isset($gammelBruker))
+				throw(new Exception('Passordfeltet kan ikke være tomt', 1));
+				
+			$tilBruker->passord = $gammelBruker['passord'];
+		}
+		else
+		{
+			$tilBruker['passord'] = sha1($tilBruker->passord);
+		}
+		
+		if($tilBruker->passord != "")
+		{
+			$fraBruker->passord = $tilBruker->passord;
 		}
 		
 		$redigertBruker = array();
-    	$redigertBruker['fornavn'] = $bruker->fornavn;
-    	$redigertBruker['etternavn'] = $bruker->etternavn;
-    	$redigertBruker['passord'] = sha1($bruker->passord);
-		
-	
-		$hvor = $this->database->quoteInto('epost = ?', $bruker->epost);			
+		$redigertBruker['epost'] = $tilBruker->epost;
+    	$redigertBruker['fornavn'] = $tilBruker->fornavn;
+    	$redigertBruker['etternavn'] = $tilBruker->etternavn;
+    	$redigertBruker['passord'] = sha1($tilBruker->passord);
+			
+		$hvor = $this->database->quoteInto('epost = ?', $fraBruker->epost);			
 		$this->database->update('ad_bruker', $redigertBruker, $hvor);
 		
-		$db = new RolleBrukerDatabase();
+		$tilBruker->passord = $bruker->passord;
 
-		$redigertBruker = $db->hentBruker($bruker->epost);
-		
-		$bruker->fornavn = $redigertBruker['fornavn'];
-		$bruker->etternavn = $redigertBruker['etternavn'];
-		$bruker->passord = $bruker->passord;
-
-		return $bruker;
+		return $tilBruker;
 	}
 	
 }

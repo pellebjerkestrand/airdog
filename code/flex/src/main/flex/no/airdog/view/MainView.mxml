@@ -110,10 +110,10 @@
 				bruker.epost = Components.instance.session.bruker.epost;
 				bruker.fornavn = Components.instance.session.bruker.fornavn;
 				bruker.etternavn = Components.instance.session.bruker.etternavn;
-				bruker.passord = "";
+				bruker.passord = Components.instance.session.bruker.passord;
 				bruker.superadmin = Components.instance.session.bruker.superadmin;
 				
-				Components.instance.controller.visRedigerEgenBrukerVindu(UIComponent(this.parentApplication));
+				Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), bruker);
 			}
         ]]>
     </mx:Script>
