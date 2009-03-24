@@ -50,7 +50,7 @@
 				<mx:columns>
 					<mx:DataGridColumn headerText="Tittel" dataField="tittel"/>
 					<mx:DataGridColumn headerText="Navn" dataField="navn"/>
-					<mx:DataGridColumn width="100" textAlign="center" headerText="Reg.nr" dataField="idNr" />
+					<mx:DataGridColumn width="100" textAlign="center" headerText="ID" dataField="hundId" />
 					<mx:DataGridColumn width="50" textAlign="center" headerText="Kjønn" dataField="kjonn"/>
 					<mx:DataGridColumn width="100" textAlign="center" headerText="Eier" dataField="eierId"/>
 					<mx:DataGridColumn width="50" textAlign="center" headerText="HD" dataField="hd" />
@@ -66,5 +66,4 @@
 			</mx:DataGrid>
 		</mx:VBox>
     </mx:Repeater>
-    
 </mx:VBox>
