@@ -95,5 +95,19 @@ class ACLController
 		}
 		$feilkode = 1;
 		throw(new Exception('Du har ingen rettigheter', $feilkode));	
+		
+	}
+	
+	public function redigerEgenBruker($bruker, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerEgenBruker"))
+		{
+			$db = new ACLDatabase();
+
+			return $db->redigerEgenBruker($bruker, $brukerPassord);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 }

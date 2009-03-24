@@ -9,8 +9,10 @@
     verticalGap="0" horizontalGap="0">
 	<mx:Script>
         <![CDATA[
+        	import mx.core.UIComponent;
         	import no.airdog.controller.Navigasjon;
             import no.airdog.services.Components;
+        	import no.airdog.model.Bruker;
         	
             private function sok():void
 			{
@@ -101,6 +103,18 @@
 			{
 				Navigasjon.visHundprofil();
 			}
+			
+			private function redigerBruker():void
+			{
+				var bruker:Bruker = new Bruker();
+				bruker.epost = Components.instance.session.bruker.epost;
+				bruker.fornavn = Components.instance.session.bruker.fornavn;
+				bruker.etternavn = Components.instance.session.bruker.etternavn;
+				bruker.passord = "";
+				bruker.superadmin = Components.instance.session.bruker.superadmin;
+				
+				Components.instance.controller.visRedigerEgenBrukerVindu(UIComponent(this.parentApplication));
+			}
         ]]>
     </mx:Script>
 	   	
@@ -122,7 +136,7 @@
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
 			<mx:Spacer width="100%"/>
-			<mx:Label text="{Components.instance.session.bruker.epost}, {Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
+			<mx:Label click="redigerBruker()" text="{Components.instance.session.bruker.epost}," fontSize="12"/><mx:Label text="{Components.instance.session.bruker.sattKlubb}" fontSize="12"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_out.png')"/>
 		</mx:ApplicationControlBar>
 		
@@ -196,7 +210,7 @@
 	    <adminView:DatOpplastning/>
 	    <view:HundeSok/>
 	    <view:HundeProfil/>
-	    <adminView:KlubbRolleBruker/>
+	    <adminView:RolleBruker/>
 	    <adminView:RolleRettighet/>
 	    <adminView:Dev_ACL/>
 	    <view:Arsgjennomsnitt/>

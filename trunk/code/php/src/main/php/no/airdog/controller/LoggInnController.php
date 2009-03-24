@@ -61,8 +61,11 @@ class LoggInnController {
 			
 			case Zend_Auth_Result::SUCCESS:
 				$r = $autentisering->getResultRowObject();
+				
 				$bruker->epost = $r->epost;
-				$bruker->passord = $r->passord;
+				$bruker->fornavn = $r->fornavn;
+				$bruker->etternavn = $r->etternavn;
+				$bruker->superadmin = $r->superadmin;
 
 				return $bruker; 
 			break;

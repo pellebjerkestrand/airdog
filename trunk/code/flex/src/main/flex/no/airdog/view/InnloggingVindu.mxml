@@ -8,6 +8,7 @@
 
 <mx:Script>
 	<![CDATA[
+		import no.airdog.model.Bruker;
 		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
 		
@@ -18,7 +19,10 @@
 		
         private function loggInn():void 
         {
-			Components.instance.controller.loggInn(brukernavn.text, passord.text);
+        	var bruker:Bruker = new Bruker();
+        	bruker.epost = brukernavn.text;
+        	bruker.passord = passord.text;
+			Components.instance.controller.loggInn(bruker);
         }
         
         public function ristVindu():void
@@ -31,7 +35,10 @@
         
         private function gjest():void
         {
-        	Components.instance.controller.loggInn("gjest", "gjest");
+        	var bruker:Bruker = new Bruker();
+        	bruker.epost = "gjest";
+        	bruker.passord = "gjest";
+        	Components.instance.controller.loggInn(bruker);
         }
 	]]>
 </mx:Script>

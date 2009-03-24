@@ -22,6 +22,7 @@ package no.airdog.controller
 		private var jaktproveVindu:JaktproveVindu;
 		private var brukerVindu:BrukerVindu;
 		private var redigerHundVindu:RedigerHundVindu;
+		private var redigerEgenBrukerVindu:RedigerEgenBrukerVindu;
 		
         public function MockController()
         {
@@ -74,6 +75,18 @@ package no.airdog.controller
         	PopUpManager.removePopUp(brukerVindu);
         }
         
+        public function visRedigerEgenBrukerVindu(parent:DisplayObject):void
+        {
+    		redigerEgenBrukerVindu = PopUpManager.createPopUp(parent, RedigerEgenBrukerVindu, true) as RedigerEgenBrukerVindu;
+        	PopUpManager.centerPopUp(redigerEgenBrukerVindu);
+			PopUpManager.bringToFront(redigerEgenBrukerVindu);
+        }
+       
+        public function fjernRedigerEgenBrukerVindu():void
+        {
+        	PopUpManager.removePopUp(redigerEgenBrukerVindu);
+        }
+        
         public function visLoggInnVindu(parent:DisplayObject):void
         {
         	vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
@@ -97,15 +110,13 @@ package no.airdog.controller
 			hentBrukersRoller();
         }
 		
-		public function loggInn(brukernavn:String, passord:String):void
+		public function loggInn(bruker:Bruker):void
 		{
-			Components.instance.session.bruker.epost = brukernavn;
-			Components.instance.session.bruker.passord = passord;
-			Components.instance.services.airdogService.loggInn(Components.instance.session.bruker, loggInnResultEvent, loggInnFaultEvent);
+			Components.instance.services.airdogService.loggInn(bruker, loggInnResultEvent, loggInnFaultEvent);
 		}
 		
 		private function loggInnResultEvent(bruker:Object):void
-		{			
+		{		
 			if(bruker)
 			{	
 				if(bruker.toString() == "FEIL_BRUKERNAVN_PASSORD")
@@ -114,7 +125,8 @@ package no.airdog.controller
 					loggUt();
 					return;
 				}	
-				
+								
+				Components.instance.session.bruker = bruker as Bruker;
 				Components.instance.session.bruker.innlogget = true;
 							
 				hentBrukersKlubber();
@@ -515,6 +527,18 @@ package no.airdog.controller
 		public function leggInnBruker(bruker:Bruker):void
 		{
 			Components.instance.services.airdogService.leggInnBruker(bruker, hentAlleBrukereResultat);
+		}
+		
+		public function redigerEgenBruker(bruker:Bruker):void
+		{
+			Components.instance.services.airdogService.redigerEgenBruker(bruker, redigerEgenBrukerResultat);
+		}
+		
+		public function redigerEgenBrukerResultat(bruker:Object):void
+		{
+			Components.instance.session.bruker.passord = bruker.passord;
+			Components.instance.session.bruker.fornavn = bruker.fornavn;
+			Components.instance.session.bruker.etternavn = bruker.etternavn;
 		}
 		
 	}
