@@ -60,6 +60,8 @@ class ACLController
 			$tmp->klubbRolleBrukerHandtering = true;
 			$tmp->administrereBackup = true;
 			$tmp->importerDatabase = true;
+			$tmp->redigerEgenBruker = true;
+			
 			$tmp->administrere = true;
   				
   			return $tmp;		
@@ -85,10 +87,12 @@ class ACLController
 	   			if($r['navn'] == "klubbRolleBrukerHandtering") $tmp->klubbRolleBrukerHandtering = true;
 	   			if($r['navn'] == "administrereBackup") $tmp->administrereBackup = true;
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
+	   			if($r['navn'] == "redigerEgenBruker") $tmp->redigerEgenBruker = true;
+	   			
 	   		}
 	   		
-	   		if($tmp->redigerHund || $tmp->redigerJaktprove || $tmp->redigerUtstilling || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
-	   		$tmp->slettJaktprove || $tmp->rolleRettighetHandtering || $tmp->klubbRolleBrukerHandtering  || 
+	   		if($tmp->redigerHund || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
+	   		$tmp->rolleRettighetHandtering || $tmp->klubbRolleBrukerHandtering  || 
 	   		$tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
 	   		
 			return $tmp;
