@@ -60,24 +60,35 @@
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
 			<mx:DataGridColumn id="infokolonne" headerText="" width="24" minWidth="24" resizable="false">
 				<mx:itemRenderer>
-					<mx:Component id="info">
+					<mx:Component>
 						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-							<mx:Image id="infoknapp" buttonMode="true" click="outerDocument.redigerKlikk()" 
-								visible="{data.kritikk == '' ? false : true}"
+							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" 
+								visible="{data.kritikk == '' || data.kritikk == null ? false : true}"
 								source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="Kritikk"/>
 						</mx:HBox>
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
-			<mx:DataGridColumn headerText="Admin" id="adminPanel" 
-				width="70" minWidth="70" resizable="false"
+			<mx:DataGridColumn headerText="" id="redigerkolonne" 
+				width="24" minWidth="24" resizable="false"
 				visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}">
 				<mx:itemRenderer>
-					<mx:Component id="admin">
+					<mx:Component>
 						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
 							<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+						</mx:HBox>
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+			<mx:DataGridColumn headerText="" id="slettkolonne" 
+				width="24" minWidth="24" resizable="false"
+				visible="{Components.instance.session.bruker.rettigheter.slettJaktprove}">
+				<mx:itemRenderer>
+					<mx:Component>
+						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
 							<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
 						</mx:HBox>
 					</mx:Component>
@@ -103,7 +114,8 @@
 			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
 			<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false"/>
-			<mx:DataGridColumn id="adminPanelSammendrag" visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}" width="70" minWidth="70" resizable="false"/>
+			<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false" visible="{Components.instance.session.bruker.rettigheter.redigerJaktprove}"/>
+			<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false" visible="{Components.instance.session.bruker.rettigheter.slettJaktprove}"/>
 			<mx:DataGridColumn width="16" minWidth="16" resizable="false"/>
 		</mx:columns>
 	</mx:DataGrid>
