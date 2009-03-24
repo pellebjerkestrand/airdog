@@ -96,6 +96,19 @@
              	settValidatorer();
              	settToolTips();
              	tilbakestillForm();
+             	sjekkRettighet();
+         	}
+         	
+         	private function sjekkRettighet():void
+         	{
+         		var rett:Boolean = Components.instance.session.bruker.rettigheter.redigerJaktprove;
+         		
+     			beskrivelseForm.enabled = rett;
+				proveForm.enabled = rett;
+				dommerForm.enabled = rett;
+				summeringForm.enabled = rett;
+				diverseForm.enabled = rett;
+				karakterForm.enabled = rett;
          	}
          	
          	private function settFokus():void
@@ -604,6 +617,7 @@
             	{
             		dommer1Ikon.source = "no/airdog/view/assets/ikoner/user.png";
             		dommer1Label.text = StringUtil.trim(event.navn);
+            		dommer1Ikon.toolTip = dommer1Label.text;
             	}
             }
 			
@@ -623,6 +637,7 @@
             	{
             		dommer2Ikon.source = "no/airdog/view/assets/ikoner/user.png";
             		dommer2Label.text = StringUtil.trim(event.navn);
+            		dommer2Ikon.toolTip = dommer2Label.text;
             	}
             }
             
@@ -687,14 +702,14 @@
 	
 	<mx:HBox width="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" fontSize="11">
 		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-			<mx:Form id="beskrivelse"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
+			<mx:Form id="beskrivelseForm"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
 				<mx:FormHeading label="Kritikk"/>
 				<mx:FormItem width="100%" height="100%">
 						<mx:TextArea id="kritikk" width="100%" height="100%"/>
 				</mx:FormItem>						
 			</mx:Form>
 			<mx:HBox horizontalAlign="left" horizontalGap="0">
-				<mx:Form verticalGap="0">
+				<mx:Form id="proveForm" verticalGap="0">
 					<mx:FormHeading label="Prøve"/>
 					<mx:FormItem label="Nummer">
 						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
@@ -703,7 +718,7 @@
 						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event)" yearNavigationEnabled="true" width="100" height="20"/> 
 					</mx:FormItem>
 				</mx:Form>
-				<mx:Form verticalGap="0">
+				<mx:Form id="dommerForm" verticalGap="0">
 					<mx:FormHeading label="Dommere"/>
 					<mx:FormItem label="1">
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
@@ -726,7 +741,7 @@
 		
 		<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
 			<mx:VBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-				<mx:Form verticalGap="0">
+				<mx:Form id="summeringForm" verticalGap="0">
 					<mx:FormHeading label="Summering" />
 					<mx:FormItem label="Slipptid">
 						<mx:TextInput id="slippTid" change="validering(event)" width="35" height="20"/>
@@ -747,7 +762,7 @@
 						<mx:TextInput id="makkerStokk" change="validering(event)" width="35" height="20"/>
 					</mx:FormItem>
 				</mx:Form>
-				<mx:Form verticalGap="0">					
+				<mx:Form id="diverseForm" verticalGap="0">					
 					<mx:FormHeading label="Diverse"/>
 					<mx:FormItem label="Klasse">
 						<mx:ComboBox id="klasse" change="validering(event)" dataProvider="{klasser}" height="20"/>
@@ -785,7 +800,7 @@
 			</mx:VBox>
 			
 			<mx:VBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">
-				<mx:Form verticalGap="0">
+				<mx:Form id="karakterForm" verticalGap="0">
 					<mx:FormHeading label="Karakterer"/>
 					<mx:FormItem label="Jaktlyst">
 						<mx:TextInput id="jaktlyst" change="validering(event)" width="35" height="20"/>
