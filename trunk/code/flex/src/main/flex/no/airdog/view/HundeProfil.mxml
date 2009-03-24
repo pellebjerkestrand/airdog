@@ -4,7 +4,6 @@
 	xmlns:controller="no.airdog.controller.*"
 	xmlns:view="no.airdog.view.*"
 	xmlns:adminView="no.airdog.view.admin.*"
-	creationComplete="init()"
 	width="100%" height="100%">
 	
 	<mx:Script>
@@ -13,27 +12,18 @@
 			import mx.core.UIComponent;
 			import mx.utils.StringUtil;
 			
-			private function init():void
-			{
-				if((StringUtil.trim(Components.instance.session.hundprofil.bilde) == "") || (Components.instance.session.hundprofil.bilde == null))
-				{
-					hundbilde.source = data.bilde;
-				}
-				else
-				{
-					hundbilde.source = 'no/airdog/view/assets/intetbilde.png';	
-				}
-			}
-			
-			public function visRedigerHundVindu():void
+			private function visRedigerHundVindu():void
 			{	
-					Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
-			}  
+				Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
+			}
 		]]>
     </mx:Script>
 	
 	<mx:HBox width="100%">
-		<mx:Image id="hundbilde" width="100" height="100"/>
+		<mx:Image id="hundbilde" width="100" height="100"
+			source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
+					|| Components.instance.session.hundprofil.bilde == null 
+					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
 		<mx:VBox width="100%">
 			<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-15"/>
 			<mx:HBox verticalAlign="middle" width="100%">
@@ -75,10 +65,12 @@
 				</mx:GridRow>
 				<mx:GridRow paddingBottom="3" paddingLeft="3" paddingRight="3">
 					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Eier:" styleName="profilGridBeskrivelse"/>
+						<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="eier" text="{Components.instance.session.hundprofil.eier}" styleName="profilGridData"/>
+						<mx:Text id="eier" text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
+												|| Components.instance.session.hundprofil.eier == null 
+												? Components.instance.session.hundprofil.eierId : Components.instance.session.hundprofil.eier}" styleName="profilGridData"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
