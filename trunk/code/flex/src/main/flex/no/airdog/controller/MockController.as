@@ -521,7 +521,13 @@ package no.airdog.controller
 		
 		public function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, hentAlleBrukereResultat);
+			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, redigerBrukerResultat);
+		}
+		
+		public function redigerBrukerResultat(brukere:Object):void
+		{
+			hentAlleBrukereResultat(brukere);
+			hentRollersBrukere();
 		}
 		
 		public function leggInnBruker(bruker:Bruker):void
@@ -536,9 +542,13 @@ package no.airdog.controller
 		
 		public function redigerEgenBrukerResultat(bruker:Object):void
 		{
+			Components.instance.session.bruker.epost = bruker.epost;
 			Components.instance.session.bruker.passord = bruker.passord;
 			Components.instance.session.bruker.fornavn = bruker.fornavn;
 			Components.instance.session.bruker.etternavn = bruker.etternavn;
+			
+			hentAlleBrukere();
+			hentRollersBrukere();
 		}
 		
 	}

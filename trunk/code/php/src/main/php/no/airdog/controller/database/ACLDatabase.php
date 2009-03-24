@@ -60,11 +60,11 @@ class ACLDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
-	public function redigerEgenBruker($fraBruker, $tilBruker, $brukerPassord)
+	public function redigerEgenBruker($fraBruker, $tilBruker)
 	{
 		$db = new RolleBrukerDatabase();
 		
-		$nyEpostBruker = $this->hentBruker($tilBruker->epost);
+		$nyEpostBruker = $db->hentBruker($tilBruker->epost);
 		
 		if($fraBruker->epost != $tilBruker->epost && isset($nyEpostBruker))
 		{
@@ -75,35 +75,37 @@ class ACLDatabase
 			throw(new Exception('E-postfeltet kan ikke være tomt', 1));
 		}
 		
+		$gammeltPassord = "";
 		if ($tilBruker->passord == "")
 		{
-			$gammelBruker = $db->hentBruker($fraBruker->epost);
-			
-			if(!isset($gammelBruker))
-				throw(new Exception('Passordfeltet kan ikke være tomt', 1));
-				
-			$tilBruker->passord = $gammelBruker['passord'];
+			$gammeltPassord = $fraBruker->passord;
+			$tilBruker->passord = sha1($fraBruker->passord);
 		}
 		else
 		{
-			$tilBruker['passord'] = sha1($tilBruker->passord);
-		}
-		
-		if($tilBruker->passord != "")
-		{
-			$fraBruker->passord = $tilBruker->passord;
+			$gammeltPassord = $tilBruker->passord;
+			$tilBruker->passord = sha1($tilBruker->passord);
 		}
 		
 		$redigertBruker = array();
 		$redigertBruker['epost'] = $tilBruker->epost;
     	$redigertBruker['fornavn'] = $tilBruker->fornavn;
     	$redigertBruker['etternavn'] = $tilBruker->etternavn;
-    	$redigertBruker['passord'] = sha1($tilBruker->passord);
+    	$redigertBruker['passord'] = $tilBruker->passord;
 			
+    	
+    	
 		$hvor = $this->database->quoteInto('epost = ?', $fraBruker->epost);			
 		$this->database->update('ad_bruker', $redigertBruker, $hvor);
 		
-		$tilBruker->passord = $bruker->passord;
+		
+		$redigertBrukerRolle = array();
+		$redigertBrukerRolle['ad_bruker_epost'] = $tilBruker->epost;
+		
+		$hvor = $this->database->quoteInto('ad_bruker_epost = ?', $fraBruker->epost);			
+		$this->database->update('ad_bruker_klubb_rolle_link', $redigertBrukerRolle, $hvor);		
+		
+		$tilBruker->passord = $gammeltPassord;
 
 		return $tilBruker;
 	}
