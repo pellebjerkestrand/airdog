@@ -529,9 +529,9 @@ package no.airdog.controller
 			Components.instance.services.airdogService.leggInnBruker(bruker, hentAlleBrukereResultat);
 		}
 		
-		public function redigerEgenBruker(bruker:Bruker):void
+		public function redigerEgenBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerEgenBruker(bruker, redigerEgenBrukerResultat);
+			Components.instance.services.airdogService.redigerEgenBruker(fraBruker, tilBruker, redigerEgenBrukerResultat);
 		}
 		
 		public function redigerEgenBrukerResultat(bruker:Object):void

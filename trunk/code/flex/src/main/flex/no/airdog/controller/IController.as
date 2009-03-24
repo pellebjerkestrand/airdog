@@ -57,7 +57,7 @@ package no.airdog.controller
 		function slettBruker(epost:String):void
 		function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		function leggInnBruker(bruker:Bruker):void	
-		function redigerEgenBruker(bruker:Bruker):void	
+		function redigerEgenBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		function fjernRedigerEgenBrukerVindu():void
 		function visRedigerEgenBrukerVindu(parent:DisplayObject):void
 	}
