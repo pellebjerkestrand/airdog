@@ -61,6 +61,7 @@
 	<distributionManagement>
     	<repository>
     		<id>ftp-repository</id>
+    		<name>test</name>
     		<url>ftp://airdog.no/test</url>
     	</repository>
   	</distributionManagement>
