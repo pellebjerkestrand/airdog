@@ -1,6 +1,6 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once dirname(__FILE__).'\..\..\..\LastZend.php';
+ini_set("include_path", ini_get("include_path") . PATH_SEPARATOR . dirname(__FILE__).'/../../../../../main/php/');
 require_once str_replace('.','/','no.airdog.controller.parser').'/UtstillingParser.php';
 
 //UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|
