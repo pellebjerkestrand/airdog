@@ -15,7 +15,7 @@ class OyesykdomParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("11111/97", $pa["hundId"]);
     	$this->assertEquals("0049", $pa["veterinerId"]);
     	$this->assertEquals("03", $pa["oyeVeteriner"]);
-    	$this->assertEquals("16.11.1999", $pa["lystDato"]);
+    	$this->assertEquals("1999-11-16", $pa["lystDato"]);
     	$this->assertEquals("3", $pa["idmerketKode"]);
     	$this->assertEquals("M", $pa["idmerket"]);
     	$this->assertEquals("1", $pa["idfeil"]);
@@ -29,7 +29,7 @@ class OyesykdomParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("3", $pa["diagnoseKode3"]);
     	$this->assertEquals("1", $pa["diagnoseGrad3"]);
     	$this->assertEquals("ta", $pa["regAv"]);
-    	$this->assertEquals("17.03.2000", $pa["regDato"]);
+    	$this->assertEquals("2000-03-17", $pa["regDato"]);
     	$this->assertEquals("ta", $pa["endretAv"]);
     	$this->assertEquals("4", $pa["endretDato"]);
     	$this->assertEquals("3099999", $pa["personId"]);
