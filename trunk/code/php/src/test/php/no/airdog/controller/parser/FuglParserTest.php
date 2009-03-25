@@ -12,7 +12,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
         $pa = $hp->getFuglArray($parseString);
         
     	$this->assertEquals("50-95042", $pa["proveNr"]);
-    	$this->assertEquals("01.04.1995", $pa["proveDato"]);
+    	$this->assertEquals("1995-04-01", $pa["proveDato"]);
     	$this->assertEquals("L1", $pa["partiNr"]);
     	$this->assertEquals("4", $pa["klasse"]);
     	$this->assertEquals("1355668", $pa["dommerId1"]);
@@ -47,7 +47,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("5", $pa["premiegrad"]);
     	$this->assertEquals("4", $pa["certifikat"]);
     	$this->assertEquals("TA", $pa["regAv"]);
-    	$this->assertEquals("13.05.1995", $pa["regDato"]);
+    	$this->assertEquals("1995-05-13", $pa["regDato"]);
     	$this->assertEquals("348", $pa["raseId"]);
     }
     
