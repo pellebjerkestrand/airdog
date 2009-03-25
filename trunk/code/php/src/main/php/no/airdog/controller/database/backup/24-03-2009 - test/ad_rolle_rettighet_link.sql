@@ -1,0 +1,12 @@
+gjest	klubbRolleBrukerHandtering
+gjest	redigerJaktprove
+admin	lese
+gjest	leggInnJaktprove
+gjest	administrereBackup
+gjest	rolleRettighetHandtering
+gjest	lese
+gjest	importerDatabase
+gjest	redigerEgenBruker
+gjest	redigerHund
+gjest	redigerUtstilling
+gjest	slettJaktprove
