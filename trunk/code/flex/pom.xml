@@ -48,7 +48,23 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+      	<extension>
+        	<groupId>org.apache.maven.wagon</groupId>
+	         	<artifactId>wagon-ftp</artifactId>
+	         	<version>1.0-alpha-6</version>
+	      	</extension>
+	    </extensions>		
 	</build>
+	
+	<!-- FTP -->
+	<distributionManagement>
+    	<repository>
+    		<id>ftp-repository</id>
+    		<url>ftp://airdog.no/test</url>
+    	</repository>
+  	</distributionManagement>
+	
 
 	<!-- DEPENDENCIES 
 	<dependencies>
