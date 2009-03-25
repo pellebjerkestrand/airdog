@@ -674,7 +674,7 @@ TabNavigator
 
 .UnderMeny
 {
-	textRollOverColor: #AF0C00;
+	textRollOverColor: #000099;
 	color: #0054A2;
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
@@ -722,6 +722,18 @@ Tree
 	disclosureOpenIcon: Embed(source="yflexskin.swf",symbol="Tree_disclosureOpenIcon");
 	folderClosedIcon: Embed(source="yflexskin.swf",symbol="Tree_folderClosedIcon");
 	folderOpenIcon: Embed(source="yflexskin.swf",symbol="Tree_folderOpenIcon");
+}
+VBox.notis
+{
+	backgroundColor: #ffffff;
+	borderColor: #555555;
+	borderStyle: solid;
+	cornerRadius: 5;
+	paddingBottom: 10;
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	backgroundAlpha: 0.7;
 }
 
 
