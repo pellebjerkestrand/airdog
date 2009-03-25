@@ -6,15 +6,15 @@
 	
 	<mx:Script>
 		<![CDATA[
-			//import no.airdog.controller.HundControllerTest;
-			//import no.airdog.domain.hund.HundTest;
+			import no.airdog.model.AvkomTest;
+
 			import flexunit.framework.TestSuite;
 			
 			public static function suite() : TestSuite
 			{
 				var testSuite : TestSuite = new TestSuite();		
 				   
-				//testSuite.addTestSuite( HundTest );
+				testSuite.addTestSuite( AvkomTest );
 				//testSuite.addTestSuite( HundControllerTest );
 				
 				return testSuite;
