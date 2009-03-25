@@ -8,12 +8,12 @@
 		PATH_SEPARATOR . dirname(__FILE__).'/../'); 
 	
 	require_once 'Zend/Loader.php';
+	Zend_Loader::registerAutoload();	
 	
-	
-	class LastZendTest extends PHPUnit_Framework_TestCase 
-	{
-		function testLastZendTest()
-		{
-			Zend_Loader::registerAutoload();	
-		}
-	}
+//	class LastZendTest extends PHPUnit_Framework_TestCase 
+//	{
+//		function testLastZendTest()
+//		{
+//			Zend_Loader::registerAutoload();	
+//		}
+//	}
