@@ -7,13 +7,13 @@
 		PATH_SEPARATOR . dirname(__FILE__).'/../../../main/php/' .
 		PATH_SEPARATOR . dirname(__FILE__).'/../'); 
 	
-	require_once 'Zend/Loader.php';
+	//require_once 'no/airdog/index.php';
 	
 	
-	class LastZend extends PHPUnit_Framework_TestCase 
+	class LastZendTest extends PHPUnit_Framework_TestCase 
 	{
-		function testLastZendLoader()
+		function testLastZendTest()
 		{
-			Zend_Loader::registerAutoload();	
+			//Zend_Loader::registerAutoload();	
 		}
 	}
