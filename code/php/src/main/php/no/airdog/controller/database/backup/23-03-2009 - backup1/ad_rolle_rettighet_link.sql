@@ -1,0 +1,7 @@
+gjest	klubbRolleBrukerHandtering
+gjest	redigerJaktprove
+admin	lese
+gjest	leggInnJaktprove
+gjest	administrereBackup
+gjest	rolleRettighetHandtering
+gjest	lese

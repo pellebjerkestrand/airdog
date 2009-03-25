@@ -1,0 +1,2 @@
+admin	admin
+gjest	gjest
