@@ -35,8 +35,8 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("foo5", $pa["sekHoyre"]);
     	$this->assertEquals("foo6", $pa["sekVenstre"]);
     	$this->assertEquals("foo7", $pa["sendes"]);
-    	$this->assertEquals("20.07.2010", $pa["avlestDato"]);
-    	$this->assertEquals("04.07.2010", $pa["rontgenDato"]);
+    	$this->assertEquals("2010-07-20", $pa["avlestDato"]);
+    	$this->assertEquals("2010-07-04", $pa["rontgenDato"]);
     }    
     
     function testGetAasykdomlisteArray()
@@ -52,11 +52,11 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("9711", $pa[0]["veId"]);						// Toppen i arrayet
     	$this->assertEquals("gl", $pa[0]["regAv"]);							// Midten
-    	$this->assertEquals("04.07.2010", $pa[0]["rontgenDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2010-07-04", $pa[0]["rontgenDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("0202", $pa[1]["veId"]);						// Toppen i arrayet
     	$this->assertEquals("saa", $pa[1]["regAv"]);						// Midten
-    	$this->assertEquals("16.11.2009", $pa[1]["rontgenDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2009-11-16", $pa[1]["rontgenDato"]);			// Bunnen i arrayet
     }    
     
 	function testGetAasykdomlisteArrayFraFil()
@@ -69,11 +69,11 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("9711", $pa[0]["veId"]);						// Toppen i arrayet
     	$this->assertEquals("gl", $pa[0]["regAv"]);							// Midten
-    	$this->assertEquals("04.07.2010", $pa[0]["rontgenDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2010-07-04", $pa[0]["rontgenDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("0202", $pa[1]["veId"]);						// Toppen i arrayet
     	$this->assertEquals("saa", $pa[1]["regAv"]);						// Midten
-    	$this->assertEquals("16.11.2009", $pa[1]["rontgenDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2009-11-16", $pa[1]["rontgenDato"]);			// Bunnen i arrayet
     }
     
     function testValiderAasykdomlisteFraFil()

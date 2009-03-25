@@ -15,8 +15,8 @@ class KullParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("11111/96", $pa["hundIdFar"]);
     	$this->assertEquals("03225/97", $pa["hundIdMor"]);
     	$this->assertEquals("3074574", $pa["oppdretterId"]);
-    	$this->assertEquals("20.04.2001", $pa["endretDato"]);
-    	$this->assertEquals("19.09.2000", $pa["fodt"]);
+    	$this->assertEquals("2001-04-20", $pa["endretDato"]);
+    	$this->assertEquals("2000-09-19", $pa["fodt"]);
     	$this->assertEquals("348", $pa["raseId"]);
     }
     

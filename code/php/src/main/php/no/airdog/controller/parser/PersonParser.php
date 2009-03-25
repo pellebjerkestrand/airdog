@@ -25,7 +25,7 @@ class PersonParser
 			"raseId" => $personArray[7],
 			"status" => $personArray[8],
 			"telefon1" => $personArray[9],
-			"endretDato" => $personArray[10],
+			"endretDato" => Verktoy::konverterDatTilDatabaseDato($personArray[10]),
 			"regDato" => Verktoy::konverterDatTilDatabaseDato($personArray[11]),
 			"fodt" => Verktoy::konverterDatTilDatabaseDato($personArray[12])
 			);

@@ -17,24 +17,24 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("010001", $pa["utstillingId"]);
     	$this->assertEquals("036200", $pa["klasseId"]);
     	$this->assertEquals("foo", $pa["personId"]);
-    	$this->assertEquals("22.11.1999", $pa["regDato"]);
+    	$this->assertEquals("1999-11-22", $pa["regDato"]);
     	$this->assertEquals("sb", $pa["regAv"]);
     	$this->assertEquals("GUSTAFSSON, ELLEN", $pa["navn"]);
     	$this->assertEquals("MARKERUDLIA 2", $pa["adresse1"]);
     	$this->assertEquals("foo", $pa["adresse2"]);
     	$this->assertEquals("1490", $pa["postNr"]);
     	$this->assertEquals("foo", $pa["spesialAdresse"]);
-    	$this->assertEquals("09.02.2000", $pa["utstillingDato"]);
+    	$this->assertEquals("2000-02-09", $pa["utstillingDato"]);
     	$this->assertEquals("SKEDSMOHALLEN", $pa["utstillingSted"]);
     	$this->assertEquals("NORSK DOBERMANN KLUB", $pa["arrangorNavn1"]);
     	$this->assertEquals("foo", $pa["arrangorNavn2"]);
-    	$this->assertEquals("22.03.2001", $pa["overfortDato"]);
+    	$this->assertEquals("2001-03-22", $pa["overfortDato"]);
     }    
     
     function testGetUtstillinglisteArray()
     {
     	$parseString = 'UTID|KLID|PEID|RegDato|RegAv|Navn|Adresse1|Adresse2|Postnr|SpesialAdresse|UtstillingDato|UtstillingSted|ArrangoerNavn1|ArrangoerNavn2|OverfoertDato
-    					100005|111100|3033819|07.11.1999|sb|BYRBØKKEN, TOVE|foo|foo|2739|foo|16.01.2010|VINSTRAHALLEN|POINTER HUNDEKLUBB|foo|foo
+    					100005|111100|3033819|07.11.1999|sb|BYRBï¿½KKEN, TOVE|foo|foo|2739|foo|16.01.2010|VINSTRAHALLEN|POINTER HUNDEKLUBB|foo|foo
 						100006|014100|2594871|03.11.1999|sb|PETTERSEN, TORILL|SORLAND|foo|3538|foo|16.01.2010|GLOMMA, DAL|NORSK POLAREHUNDKLUBB|foo|21.02.2010';
     	
         $hp = new UtstillingParser();
@@ -48,7 +48,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
-   		$this->assertEquals("21.02.2010", $pa[1]["overfortDato"]);		// Bunnen i arrayet
+   		$this->assertEquals("2010-02-21", $pa[1]["overfortDato"]);		// Bunnen i arrayet
     }    
     
 	function testGetUtstillinglisteArrayFraFil()
@@ -65,7 +65,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("100006", $pa[1]["utstillingId"]);			// Toppen i arrayet
     	$this->assertEquals("SORLAND", $pa[1]["adresse1"]);				// Midten
-   		$this->assertEquals("21.02.2010", $pa[1]["overfortDato"]);		// Bunnen i arrayet
+   		$this->assertEquals("2010-02-21", $pa[1]["overfortDato"]);		// Bunnen i arrayet
     }
     
     function testValiderUtstillinglisteFraFil()

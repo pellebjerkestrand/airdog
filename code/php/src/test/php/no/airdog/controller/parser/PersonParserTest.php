@@ -21,9 +21,9 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("348", $pa["raseId"]);
     	$this->assertEquals("lol", $pa["status"]);
     	$this->assertEquals("112", $pa["telefon1"]);
-    	$this->assertEquals("05.02.2008", $pa["endretDato"]);
-    	$this->assertEquals("22.09.1993", $pa["regDato"]);
-    	$this->assertEquals("19.09.1949", $pa["fodt"]);
+    	$this->assertEquals("2008-02-05", $pa["endretDato"]);
+    	$this->assertEquals("1993-09-22", $pa["regDato"]);
+    	$this->assertEquals("1949-09-19", $pa["fodt"]);
     }
     
     function testGetPersonlisteArray()
@@ -39,11 +39,11 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("2459201", $pa[0]["personId"]);			// Toppen i arrayet
     	$this->assertEquals("348", $pa[0]["raseId"]);				// Midten
-    	$this->assertEquals("19.09.1949", $pa[0]["fodt"]);			// Bunnen i arrayet
+    	$this->assertEquals("1949-09-19", $pa[0]["fodt"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("2459202", $pa[1]["personId"]);			// Toppen i arrayet
     	$this->assertEquals("349", $pa[1]["raseId"]);				// Midten
-    	$this->assertEquals("19.09.1950", $pa[1]["fodt"]);			// Bunnen i arrayet
+    	$this->assertEquals("1950-09-19", $pa[1]["fodt"]);			// Bunnen i arrayet
     }    
     
 	function testGetPersonlisteArrayFraFil()
@@ -56,11 +56,11 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("2459201", $pa[0]["personId"]);			// Toppen i arrayet
     	$this->assertEquals("348", $pa[0]["raseId"]);				// Midten
-    	$this->assertEquals("19.09.1949", $pa[0]["fodt"]);			// Bunnen i arrayet
+    	$this->assertEquals("1949-09-19", $pa[0]["fodt"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("2459202", $pa[1]["personId"]);			// Toppen i arrayet
     	$this->assertEquals("349", $pa[1]["raseId"]);				// Midten
-    	$this->assertEquals("19.09.1950", $pa[1]["fodt"]);			// Bunnen i arrayet
+    	$this->assertEquals("1950-09-19", $pa[1]["fodt"]);			// Bunnen i arrayet
     }
     
     function testValiderPersonlisteFraFil()
