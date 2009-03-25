@@ -1,4 +1,6 @@
 <?php
+require_once "Verktoy.php";
+
 class HdsykdomParser
 {
 	public function HdsykdomParser()

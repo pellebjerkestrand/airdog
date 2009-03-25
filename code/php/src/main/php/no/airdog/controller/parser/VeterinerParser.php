@@ -1,4 +1,6 @@
 <?php
+require_once "Verktoy.php";
+
 class VeterinerParser
 {
 	public function VeterinerParser()

@@ -1,5 +1,7 @@
 <?php
 
+require_once "Verktoy.php";
+
 class UtstillingParser
 {
 	public function UtstillingParser()
