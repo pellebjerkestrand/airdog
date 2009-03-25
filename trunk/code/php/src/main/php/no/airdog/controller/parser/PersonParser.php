@@ -1,5 +1,7 @@
 <?php
 
+require_once "Verktoy.php";
+
 class PersonParser
 {
 	public function PersonParser()

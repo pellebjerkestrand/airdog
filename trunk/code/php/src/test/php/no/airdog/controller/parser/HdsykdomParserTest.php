@@ -32,8 +32,8 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("", $pa["sekVenstreKode"]);
     	$this->assertEquals("", $pa["sendes"]);
     	$this->assertEquals("0022332", $pa["veterinerId"]);
-    	$this->assertEquals("30.11.2020", $pa["rontgenDato"]);
-    	$this->assertEquals("01.04.2040", $pa["avlestDato"]);
+    	$this->assertEquals("2020-11-30", $pa["rontgenDato"]);
+    	$this->assertEquals("2040-04-01", $pa["avlestDato"]);
     }
     
     function testGetHdsykdomlisteArray()
@@ -49,11 +49,11 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     	
     	$this->assertEquals("to", $pa[0]["avlestAv"]);						// Toppen i arrayet
     	$this->assertEquals("", $pa[0]["lidelse"]);							// Midten
-    	$this->assertEquals("23.02.2000", $pa[0]["avlestDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2000-02-23", $pa[0]["avlestDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("tre", $pa[1]["avlestAv"]);						// Toppen i arrayet
     	$this->assertEquals("", $pa[1]["lidelse"]);							// Midten
-    	$this->assertEquals("09.03.2000", $pa[1]["avlestDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2000-03-09", $pa[1]["avlestDato"]);			// Bunnen i arrayet
     }    
     
 	function testGetHdsykdomlisteArrayFraFil()
@@ -66,11 +66,11 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
         
     	$this->assertEquals("to", $pa[0]["avlestAv"]);						// Toppen i arrayet
     	$this->assertEquals("", $pa[0]["lidelse"]);							// Midten
-    	$this->assertEquals("23.02.2000", $pa[0]["avlestDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2000-02-23", $pa[0]["avlestDato"]);			// Bunnen i arrayet
     	
     	$this->assertEquals("tre", $pa[1]["avlestAv"]);						// Toppen i arrayet
     	$this->assertEquals("", $pa[1]["lidelse"]);							// Midten
-    	$this->assertEquals("09.03.2000", $pa[1]["avlestDato"]);			// Bunnen i arrayet
+    	$this->assertEquals("2000-03-09", $pa[1]["avlestDato"]);			// Bunnen i arrayet
     }
     
     function testValiderHdsykdomlisteFraFil()
