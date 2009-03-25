@@ -14,8 +14,9 @@
             }            
             
         ]]>
-    </mx:Script>
+    </mx:Script> 
     <mx:Panel title="Last opp .DAT" height="100%">	
+    	<mx:Text text="Klikk på knappen og velg fra din datamaskin den DAT-filen du ønsker å laste opp."/>
    		<mx:Button label="Last opp" click="velgFil()" icon="@Embed(source='../assets/ikoner/arrow_skip_090.png')"/>
 		<mx:ProgressBar id="pBar" mode="manual" width="300" label="" labelPlacement="center" trackHeight="10" visible="{Components.instance.session.datOpplastning.startet}" />
 		<mx:ProgressBar indeterminate="true" id="venterSQL" width="300" label="Behandler data..." labelPlacement="center" visible="{Components.instance.session.datOpplastning.venterSQL}" />
