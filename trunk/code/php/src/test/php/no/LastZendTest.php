@@ -7,7 +7,7 @@
 		PATH_SEPARATOR . dirname(__FILE__).'/../../../main/php/' .
 		PATH_SEPARATOR . dirname(__FILE__).'/../'); 
 	
-	//require_once 'no/airdog/index.php';
+	require_once 'no/airdog/index.php';
 	
 	
 	class LastZendTest extends PHPUnit_Framework_TestCase 
