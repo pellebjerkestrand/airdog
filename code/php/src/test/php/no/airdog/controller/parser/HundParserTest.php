@@ -8,14 +8,14 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testGetHundArray() 
     {
     	$hp = new HundParser();
-    	$parseString = "323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
+    	$parseString = "323|345453|&15335/4354|Tittel|hunden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
         $pa = $hp->getHundArray($parseString);
         
     	$this->assertEquals("323", $pa["raseId"]);
     	$this->assertEquals("345453", $pa["kullId"]);
     	$this->assertEquals("&15335/4354", $pa["hundId"]);
     	$this->assertEquals("Tittel", $pa["tittel"]);
-    	$this->assertEquals("Hei&HŒHuden", $pa["navn"]);
+    	$this->assertEquals("hunden", $pa["navn"]);
     	$this->assertEquals("&1212/2323", $pa["hundFarId"]);
     	$this->assertEquals("&213/57213270", $pa["hundMorId"]);
     	$this->assertEquals("1032332303067", $pa["idNr"]);
@@ -36,8 +36,8 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testGetHundelisteArray()
     {
     	$parseString = 'RAID|KUID|HUID|Tittel|Navn|HUIDFar|HUIDMor|IDNR|FargeBeskrivelse|FargeVariant|AD|HD|Haarlag|IDMerk|Kjoenn|PEID|EndretAv|EndretDato|RegDato|Stoerrelse
-    					323|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor
-        				3232|345453|&15335/4354|Tittel|Hei&HŒHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra2|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor2';
+    					323|345453|&15335/4354|Tittel|Hei&HÃ¥Huden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor
+        				3232|345453|&15335/4354|Tittel|Hei&HÃ¥Huden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra2|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor2';
     	
         $hp = new HundParser();
         $pa = $hp->getHundelisteArray($parseString);
