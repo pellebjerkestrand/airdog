@@ -49,20 +49,19 @@
 			</plugin>
 		</plugins>
 		<extensions>
-      	<extension>
-        	<groupId>org.apache.maven.wagon</groupId>
+	      	<extension>
+	        	<groupId>org.apache.maven.wagon</groupId>
 	         	<artifactId>wagon-ftp</artifactId>
-	         	<version>1.0-alpha-6</version>
+	         	<version>1.0-beta-2</version>
 	      	</extension>
-	    </extensions>		
+	    </extensions>	
 	</build>
 	
 	<!-- FTP -->
 	<distributionManagement>
     	<repository>
-    		<id>ftp-repository</id>
-    		<name>test</name>
-    		<url>ftp://airdog.no/test</url>
+    		<id>airdog-no</id>
+    		<url>ftp://airdog.no/test/</url>
     	</repository>
   	</distributionManagement>
 	
