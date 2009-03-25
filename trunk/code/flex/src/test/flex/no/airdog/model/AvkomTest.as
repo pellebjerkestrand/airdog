@@ -7,7 +7,7 @@ package no.airdog.model
 		public function testPass() : void
 		{
 			var avkom1:Avkom = new Avkom();
-			//assertTrue();
+			assertTrue(avkom1);
 		}
 	}
 }
