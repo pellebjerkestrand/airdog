@@ -7,7 +7,7 @@ class VerktoyTest extends PHPUnit_Framework_TestCase
 {
     function testKonverterDatTilDatabaseDato() 
     {    	
-    	$this->assertEquals("2000-12-24", Verktoy::konverterDatTilDatabaseDato("24.12.2000"));
+    	$this->assertEquals("2002-12-24", Verktoy::konverterDatTilDatabaseDato("24.12.2002"));
     }
 }
 ?>
