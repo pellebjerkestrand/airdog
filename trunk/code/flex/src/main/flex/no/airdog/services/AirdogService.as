@@ -162,20 +162,20 @@ package no.airdog.services
         	resultat, feil);
         }
         
-        public function redigerJaktprove(jaktprove:Jaktprove, resultat:Function, feil:Function=null):void
+        public function redigerJaktprove(gammelJaktprove:Jaktprove, jaktprove:Jaktprove, resultat:Function, feil:Function=null):void
         {
        		callServiceFunction(service.redigerJaktprove(
-        		jaktprove,
+        		gammelJaktprove, jaktprove,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);        	
         }
 
-		public function slettJaktprove(jaktproveId:String, resultat:Function, feil:Function=null):void
+		public function slettJaktprove(jaktproveId:String, hundId:String, jaktproveDato:String, resultat:Function, feil:Function=null):void
         {
        		callServiceFunction(service.slettJaktprove(
-        		jaktproveId,
+        		jaktproveId, hundId, jaktproveDato,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

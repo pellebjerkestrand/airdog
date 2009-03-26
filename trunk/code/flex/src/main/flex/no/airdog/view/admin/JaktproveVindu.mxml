@@ -7,7 +7,7 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import no.airdog.controller.*;
+			import no.airdog.controller.Verktoy;
 			import no.airdog.model.Hund;
 			import no.airdog.model.Jaktprove;
 			import no.airdog.model.Person;      
@@ -22,11 +22,11 @@
 			import mx.validators.StringValidator;
 			import mx.validators.Validator;
 			
-			[Bindable]public var erGodkjent:Boolean;
-            [Bindable]public var erTilbakestillt:Boolean = true;
-            [Bindable]public var erDommerId1Korrekt:Boolean = false;
-            [Bindable]public var erDommerId2Korrekt:Boolean = false;
-            [Bindable]public var erHundIdKorrekt:Boolean = false;
+			[Bindable]private var erGodkjent:Boolean;
+            [Bindable]private var erTilbakestillt:Boolean = true;
+            [Bindable]private var erDommerId1Korrekt:Boolean = false;
+            [Bindable]private var erDommerId2Korrekt:Boolean = false;
+            [Bindable]private var erHundIdKorrekt:Boolean = false;
     		
     		[Bindable]private var premier:ArrayCollection = new ArrayCollection(
                 [ {label:"Ingen"}, 
@@ -90,6 +90,14 @@
             private var rappInnkaltValidator:NumberValidator = new NumberValidator();
             private var rappSpontValidator:NumberValidator = new NumberValidator();
 			
+			public var _aktivJaktprove:Jaktprove = null;
+			
+			public function set aktivJaktprove(jaktprove:Jaktprove):void
+			{
+				_aktivJaktprove = jaktprove;
+				tilbakestillForm();
+			}
+			
 			private function init():void
             {
             	settFokus();
@@ -119,17 +127,22 @@
             private function validering(event:Event):void 
             {                    
                 hvilkeKontroll = event.target as DisplayObject;
-                var likTest:Boolean = sammenliknObjekt(formVerdier(), Components.instance.session.jaktprove);
+                var likTest:Boolean = Verktoy.sammenliknObjekt(_aktivJaktprove, formVerdier());
                 
-                if((Components.instance.session.jaktprove != null) && !likTest)
-             	{
-            		var df:DateFormatter = new DateFormatter();
-					df.formatString = "YYYY-MM-DD";
-					
+                var df:DateFormatter = new DateFormatter();
+				df.formatString = "YYYY-MM-DD";
+                
+                if((_aktivJaktprove != null) && !likTest)
+             	{	
 					manueltEndretAv.text = Components.instance.session.bruker.epost
              		manueltEndretDato.text = df.format(new Date());
              		
              		erTilbakestillt = false;
+             	}
+             	else
+             	{
+             		regAv.text = Components.instance.session.bruker.epost;
+             		regDato.text = df.format(new Date());
              	}
              	
              	if(likTest)
@@ -180,32 +193,6 @@
 	            valider(rappSpontValidator);
             }
             
-            private function sammenliknObjekt(objekt1:Object,objekt2:Object):Boolean
-			{
-			    var buffer1:ByteArray = new ByteArray();
-			    buffer1.writeObject(objekt1);
-			    var buffer2:ByteArray = new ByteArray();
-			    buffer2.writeObject(objekt2);
-			 	
-			    var storrelse:uint = buffer1.length;
-			    if (buffer1.length == buffer2.length)
-			    {
-			        buffer1.position = 0;
-			        buffer2.position = 0;
-			 
-			        while (buffer1.position < storrelse)
-			        {
-			            var v1:int = buffer1.readByte();
-			            if (v1 != buffer2.readByte())
-			            {
-			                return false;
-			            }
-			        }    
-			        return true;                        
-			    }
-			    return false;
-			}
-            
             private function valider(validerer:Validator):Boolean
             {                
 	            var validatoren:DisplayObject = validerer.source as DisplayObject;
@@ -216,11 +203,11 @@
 	            erGodkjent = erGodkjent && erValidert;
 	             
 	            return erValidert;
-             } 
+			} 
              
-             private function settToolTips():void
-             {
-             	jaktlyst.toolTip = 
+			private function settToolTips():void
+			{
+				jaktlyst.toolTip = 
              		"1. Meget lav intensitet\n" + 
              		"2. Lav intensitet\n" + 
              		"3. Middels intensitet\n" + 
@@ -312,10 +299,10 @@
              	var adferdTip:String =
              		"ADFERD\n" + 
              		"Bedømmes ved aggressivitet i forhold til mennesker eller hunder.";
-             }
+			}
              
-             private function settValidatorer():void
-             {
+			private function settValidatorer():void
+			{
              	var krevd:String = "Feltet er påkrevd";
              	var negativ:String = "Skriv et positivt tall";
              	
@@ -512,7 +499,7 @@
 			   	rappSpontValidator.required = false;
 			   	rappSpontValidator.allowNegative = false;
 			   	rappSpontValidator.negativeError = negativ;
-			 }
+			}
              
 			private function formVerdier():Jaktprove
 			{
@@ -544,7 +531,7 @@
 				prove.proveNr = proveNr.text;
 				prove.rappInnkalt = rappInnkalt.text;
 				prove.rappSpont = rappSpont.text;
-				//prove.raseId = Components.instance.session.jaktprove.raseId; // ikke i ui. skal ikke endres, da hunder ikke endrer rase
+				prove.raseId = raseId.text; // ikke i ui. skal ikke endres, da hunder ikke endrer rase
 				prove.regAv = regAv.text;
 				prove.regDato = regDato.text;
 				prove.reisDjerv = reisDjerv.text;
@@ -563,12 +550,11 @@
 				return prove;
 			}
 			            
-            private function lagreJaktprove():void 
-            {
-            	if(Components.instance.session.jaktprove && 
-            		(Components.instance.session.jaktprove.proveNr == StringUtil.trim(proveNr.text)))
+            private function lagre():void 
+            {	
+            	if(_aktivJaktprove)
             	{
-            		Components.instance.controller.redigerJaktprove(formVerdier());
+            		Components.instance.controller.redigerJaktprove(_aktivJaktprove, formVerdier());
             	}
             	else
             	{
@@ -585,6 +571,8 @@
             	else
             	{
             		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
+            		hundNavn.text = "Ukjent";
+            		hundNavn.toolTip = "Ukjent";
             	}
             }
             
@@ -593,10 +581,12 @@
             	if((StringUtil.trim(event.navn) == ""))
             	{
             		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
+            		hundNavn.toolTip = "Ukjent";
             	}
             	else
             	{
             		hundIdIkon.source = "no/airdog/view/assets/ikoner/dog.png";
+            		hundNavn.toolTip = StringUtil.trim(event.navn);
             	}
             	hundNavn.text = StringUtil.trim(event.navn);
             }
@@ -643,50 +633,93 @@
             
             private function tilbakestillForm():void
             {
-            	if(Components.instance.session.jaktprove)
+            	if(_aktivJaktprove)
             	{
-	            	appGodkjent.text = Components.instance.session.jaktprove.appGodkjent;
-					appIkkeGodkjent.text = Components.instance.session.jaktprove.appIkkeGodkjent;
-					bredde.text = Components.instance.session.jaktprove.bredde;
-					//certifikat.text = Components.instance.session.jaktprove.certifikat; // !i ui. wai?
-					dommerId1.text = Components.instance.session.jaktprove.dommerId1;
-					dommerId2.text = Components.instance.session.jaktprove.dommerId2;
-					egneStand.text = Components.instance.session.jaktprove.egneStand;
-					egneStokk.text = Components.instance.session.jaktprove.egneStokk;
-					fart.text = Components.instance.session.jaktprove.fart;
-					hundId.text = Components.instance.session.jaktprove.hundId;
-					//hundNavn.text settes sammen med ikon i hundIdSjekk();
-					jaktlyst.text = Components.instance.session.jaktprove.jaktlyst;
-					klasse.selectedIndex = Components.instance.session.jaktprove.klasse - 1;
-					kritikk.text = Components.instance.session.jaktprove.kritikk;
-					makkerStand.text = Components.instance.session.jaktprove.makkerStand;
-					makkerStokk.text = Components.instance.session.jaktprove.makkerStokk;
-					manueltEndretAv.text = Components.instance.session.jaktprove.manueltEndretAv;
-					manueltEndretDato.text = Components.instance.session.jaktprove.manueltEndretDato;
-					partiNr.text = Components.instance.session.jaktprove.partiNr;
-					premiegrad.selectedIndex = Components.instance.session.jaktprove.premiegrad;
-					presNoeUpresis.text = Components.instance.session.jaktprove.presNoeUpresis;
-					presPresis.text = Components.instance.session.jaktprove.presPresis;
-					presUpresis.text = Components.instance.session.jaktprove.presUpresis;
-					proveDato.text = Components.instance.session.jaktprove.proveDato;
-					proveNr.text = Components.instance.session.jaktprove.proveNr;
-					rappInnkalt.text = Components.instance.session.jaktprove.rappInnkalt;
-					rappSpont.text = Components.instance.session.jaktprove.rappSpont;
-					//raseId.text = Components.instance.session.jaktprove.raseId; // ikke i ui. skal ikke endres, da hunder ikke endrer rase
-					regAv.text = Components.instance.session.jaktprove.regAv;
-					regDato.text = Components.instance.session.jaktprove.regDato;
-					reisDjerv.text = Components.instance.session.jaktprove.reisDjerv;
-					reisNekter.text = Components.instance.session.jaktprove.reisNekter;
-					reisNoelende.text = Components.instance.session.jaktprove.reisNoelende;
-					reisVillig.text = Components.instance.session.jaktprove.reisVillig;
-					reviering.text = Components.instance.session.jaktprove.reviering;
-					samarbeid.text = Components.instance.session.jaktprove.samarbeid;
-					selvstendighet.text = Components.instance.session.jaktprove.selvstendighet;
-					slippTid.text = Components.instance.session.jaktprove.slippTid;
-					sokSpontant.text = Components.instance.session.jaktprove.sokSpontant;
-					sokStjeler.text = Components.instance.session.jaktprove.sokStjeler;
-					stil.text = Components.instance.session.jaktprove.stil;
-					tomStand.text = Components.instance.session.jaktprove.tomStand;
+	            	appGodkjent.text = _aktivJaktprove.appGodkjent;
+					appIkkeGodkjent.text = _aktivJaktprove.appIkkeGodkjent;
+					bredde.text = _aktivJaktprove.bredde;
+					//certifikat.text = _aktivJaktprove.certifikat; // !i ui
+					dommerId1.text = _aktivJaktprove.dommerId1;
+					dommerId2.text = _aktivJaktprove.dommerId2;
+					egneStand.text = _aktivJaktprove.egneStand;
+					egneStokk.text = _aktivJaktprove.egneStokk;
+					fart.text = _aktivJaktprove.fart;
+					hundId.text = _aktivJaktprove.hundId;
+					jaktlyst.text = _aktivJaktprove.jaktlyst;
+					klasse.selectedIndex = _aktivJaktprove.klasse - 1;
+					kritikk.text = _aktivJaktprove.kritikk;
+					makkerStand.text = _aktivJaktprove.makkerStand;
+					makkerStokk.text = _aktivJaktprove.makkerStokk;
+					manueltEndretAv.text = _aktivJaktprove.manueltEndretAv;
+					manueltEndretDato.text = _aktivJaktprove.manueltEndretDato;
+					partiNr.text = _aktivJaktprove.partiNr;
+					premiegrad.selectedIndex = _aktivJaktprove.premiegrad;
+					presNoeUpresis.text = _aktivJaktprove.presNoeUpresis;
+					presPresis.text = _aktivJaktprove.presPresis;
+					presUpresis.text = _aktivJaktprove.presUpresis;
+					proveDato.text = _aktivJaktprove.proveDato;
+					proveNr.text = _aktivJaktprove.proveNr;
+					rappInnkalt.text = _aktivJaktprove.rappInnkalt;
+					rappSpont.text = _aktivJaktprove.rappSpont;
+					raseId.text = _aktivJaktprove.raseId;
+					regAv.text = _aktivJaktprove.regAv;
+					regDato.text = _aktivJaktprove.regDato;
+					reisDjerv.text = _aktivJaktprove.reisDjerv;
+					reisNekter.text = _aktivJaktprove.reisNekter;
+					reisNoelende.text = _aktivJaktprove.reisNoelende;
+					reisVillig.text = _aktivJaktprove.reisVillig;
+					reviering.text = _aktivJaktprove.reviering;
+					samarbeid.text = _aktivJaktprove.samarbeid;
+					selvstendighet.text = _aktivJaktprove.selvstendighet;
+					slippTid.text = _aktivJaktprove.slippTid;
+					sokSpontant.text = _aktivJaktprove.sokSpontant;
+					sokStjeler.text = _aktivJaktprove.sokStjeler;
+					stil.text = _aktivJaktprove.stil;
+					tomStand.text = _aktivJaktprove.tomStand;
+            	}
+            	else
+            	{
+            		appGodkjent.text = "";
+					appIkkeGodkjent.text = "";
+					bredde.text = "";
+					//certifikat.text = ""; // !i ui
+					dommerId1.text = "";
+					dommerId2.text = "";
+					egneStand.text = "";
+					egneStokk.text = "";
+					fart.text = "";
+					hundId.text = "";
+					jaktlyst.text = "";
+					klasse.selectedIndex = -1;
+					kritikk.text = "";
+					makkerStand.text = "";
+					makkerStokk.text = "";
+					manueltEndretAv.text = "";
+					manueltEndretDato.text = "";
+					partiNr.text = "";
+					premiegrad.selectedIndex = 0;
+					presNoeUpresis.text = "";
+					presPresis.text = "";
+					presUpresis.text = "";
+					proveDato.text = "";
+					proveNr.text = "";
+					rappInnkalt.text = "";
+					rappSpont.text = "";
+					raseId.text = Components.instance.session.bruker.sattKlubbId;
+					regAv.text = "";
+					regDato.text = "";
+					reisDjerv.text = "";
+					reisNekter.text = "";
+					reisNoelende.text = "";
+					reisVillig.text = "";
+					reviering.text = "";
+					samarbeid.text = "";
+					selvstendighet.text = "";
+					slippTid.text = "";
+					sokSpontant.text = "";
+					sokStjeler.text = "";
+					stil.text = "";
+					tomStand.text = "";
             	}
             	
                 erTilbakestillt = true;
@@ -708,14 +741,14 @@
 			<mx:Form id="beskrivelseForm"  width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0">
 				<mx:FormHeading label="Kritikk"/>
 				<mx:FormItem width="100%" height="100%">
-						<mx:TextArea id="kritikk" width="100%" height="100%"/>
+						<mx:TextArea id="kritikk" change="validering(event)" width="100%" height="100%"/>
 				</mx:FormItem>						
 			</mx:Form>
 			<mx:HBox horizontalAlign="left" horizontalGap="0">
 				<mx:Form id="proveForm" verticalGap="0">
 					<mx:FormHeading label="Prøve"/>
 					<mx:FormItem label="Nummer">
-						<mx:TextInput id="proveNr" change="validering(event);" width="84" height="20"/>
+						<mx:TextInput id="proveNr" change="validering(event)" width="84" height="20"/>
 					</mx:FormItem>					
 					<mx:FormItem label="Dato">
 						<mx:DateField id="proveDato" editable="false" formatString="YYYY-MM-DD" change="validering(event)" yearNavigationEnabled="true" width="100" height="20"/> 
@@ -727,14 +760,14 @@
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
 							<mx:TextInput id="dommerId1" focusOut="dommerId1Sjekk()" change="validering(event)" width="84" height="20"/>
 							<mx:Image id="dommer1Ikon" width="16" height="16"/>
-							<mx:Label id="dommer1Label" width="75" maxWidth="75"/>
+							<mx:Text id="dommer1Label" width="75" maxWidth="75"/>
 						</mx:HBox>
 					</mx:FormItem>
 					<mx:FormItem label="2">	
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">		
 							<mx:TextInput id="dommerId2" focusOut="dommerId2Sjekk()" change="validering(event)" width="84" height="20"/>
 							<mx:Image id="dommer2Ikon" width="16" height="16"/>
-							<mx:Label id="dommer2Label" width="75" maxWidth="75"/>
+							<mx:Text id="dommer2Label" width="75" maxWidth="75"/>
 						</mx:HBox>
 					</mx:FormItem>
 				</mx:Form>
@@ -781,23 +814,26 @@
 						</mx:HBox>
 					</mx:FormItem>				
 					<mx:FormItem label="Navn">
-						<mx:TextInput id="hundNavn" enabled="false" width="84" height="20"/>
+						<mx:Text id="hundNavn" width="84" height="20"/>
 					</mx:FormItem>
-				
+					<mx:FormItem label="Rase-ID">
+						<mx:Text id="raseId" width="84" height="20"/>
+					</mx:FormItem>
+					
 					<!--<mx:FormHeading label="Registrering"/>-->
 					<mx:FormItem label="Registert av">
-						<mx:TextInput id="regAv" enabled="false" change="validering(event)" width="84" height="20"/>
+						<mx:Text id="regAv" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dato registrert">
-						<mx:TextInput id="regDato" enabled="false" change="validering(event)" width="84" height="20"/>
+						<mx:Text id="regDato" width="84" height="20"/>
 					</mx:FormItem>
 					
 					<!--<mx:FormHeading label="Endring"/>-->			
 					<mx:FormItem label="Endret av" >
-						<mx:TextInput id="manueltEndretAv" enabled="false" width="84" height="20"/>
+						<mx:Text id="manueltEndretAv" width="84" height="20"/>
 					</mx:FormItem>
 					<mx:FormItem label="Dato endret" >
-						<mx:TextInput id="manueltEndretDato" enabled="false" width="84" height="20"/>
+						<mx:Text id="manueltEndretDato" width="84" height="20"/>
 					</mx:FormItem>					
 				</mx:Form>
 			</mx:VBox>
@@ -885,7 +921,7 @@
 	</mx:HBox>
 	
 	<mx:ControlBar horizontalAlign="center">
-        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagreJaktprove()"/>
+        <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
         <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
         <mx:Button label="Avbryt" click="avbryt()"/>
 	</mx:ControlBar>

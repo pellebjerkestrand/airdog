@@ -24,12 +24,12 @@ package no.airdog.controller
 		function hentBrukersRettigheter():void
 		function hentBrukersRoller():void
 		function hentStamtre(hundId:String, dybde:int):void
-		function redigerJaktprove(jaktprove:Jaktprove):void
+		function redigerJaktprove(gammelJaktprove:Jaktprove, jaktprove:Jaktprove):void
 		function redigerHund(hund:Hund):void 
 		function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
 		function lukkRedigerHundVindu():void
 		function sokArsgjennomsnitt(hund:String, ar:String):void
-		function slettJaktprove(jaktproveId:String):void
+		function slettJaktprove(jaktproveId:String, hundId:String, proveDato:String):void
 		function leggInnJaktprove(jaktprove:Jaktprove):void
 		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void

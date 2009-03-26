@@ -37,12 +37,12 @@ class JaktproveController
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function slettJaktprove($jaktproveId, $brukerEpost, $brukerPassord, $klubbId)
+	public function slettJaktprove($jaktproveId, $hundId, $dato, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))
 		{
 			$hd = new JaktproveDatabase();
-    		return $hd->slettJaktprove($jaktproveId, $klubbId);
+    		return $hd->slettJaktprove($jaktproveId, $hundId, $dato, $klubbId);
 		}
 		
 		$feilkode = 1;
@@ -156,55 +156,12 @@ class JaktproveController
     	return $premieGrad . "." . $this->klassenavn[$klasse] . $sert;
     }
     
-    public function redigerJaktprove(AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
+    public function redigerJaktprove(AmfJaktprove $gammelJaktprove, AmfJaktprove $jaktprove, $brukerEpost, $brukerPassord, $klubbId)
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "redigerJaktprove"))
-		{
-	    	$ret = array();
-	    	$ret['proveNr'] = $jaktprove->proveNr;   	
-	    	$ret['proveDato'] = $jaktprove->proveDato; 
-	    	$ret['partiNr'] = $jaktprove->partiNr;   	
-	    	$ret['klasse'] = $jaktprove->klasse;
-	    	$ret['dommerId1'] = $jaktprove->dommerId1;   	
-	    	$ret['dommerId2'] = $jaktprove->dommerId2;   	
-	    	$ret['hundId'] = $jaktprove->hundId;
-	    	$ret['slippTid'] = $jaktprove->slippTid;
-	    	$ret['egneStand'] = $jaktprove->egneStand; 	
-	    	$ret['egneStokk'] = $jaktprove->egneStokk;
-	    	$ret['tomStand'] = $jaktprove->tomStand; 	
-	    	$ret['makkerStand'] = $jaktprove->makkerStand;
-	    	$ret['makkerStokk'] = $jaktprove->makkerStokk; 	
-	    	$ret['jaktlyst'] = $jaktprove->jaktlyst;
-	    	$ret['fart'] = $jaktprove->fart; 	
-	    	$ret['stil'] = $jaktprove->stil;
-	    	$ret['selvstendighet'] = $jaktprove->selvstendighet; 	
-	    	$ret['bredde'] = $jaktprove->bredde;
-	    	$ret['reviering'] = $jaktprove->reviering; 	
-	    	$ret['samarbeid'] = $jaktprove->samarbeid;
-	    	$ret['presUpresis'] = $jaktprove->presUpresis; 	
-	    	$ret['presNoeUpresis'] = $jaktprove->presNoeUpresis;
-	    	$ret['presPresis'] = $jaktprove->presPresis; 	
-	    	$ret['reisNekter'] = $jaktprove->reisNekter;
-	    	$ret['reisNoelende'] = $jaktprove->reisNoelende; 	
-	    	$ret['reisVillig'] = $jaktprove->reisVillig;
-	    	$ret['reisDjerv'] = $jaktprove->reisDjerv; 	
-	    	$ret['sokStjeler'] = $jaktprove->sokStjeler;
-	    	$ret['sokSpontant'] = $jaktprove->sokSpontant; 	
-	    	$ret['appIkkeGodkjent'] = $jaktprove->appIkkeGodkjent;
-	    	$ret['appGodkjent'] = $jaktprove->appGodkjent; 	
-	    	$ret['rappInnkalt'] = $jaktprove->rappInnkalt;
-	    	$ret['rappSpont'] = $jaktprove->rappSpont; 	
-	    	$ret['premiegrad'] = $jaktprove->premiegrad;
-	    	$ret['certifikat'] = $jaktprove->certifikat; 	
-	    	$ret['regAv'] = $jaktprove->regAv;
-	    	$ret['regDato'] = $jaktprove->regDato; 	
-	    	$ret['raseId'] = $jaktprove->raseId;
-	    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv; 	
-	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
-	    	$ret['kritikk'] = $jaktprove->kritikk;
-	    	
+		{	
 	    	$hd = new JaktproveDatabase();
-	    	$hd->redigerJaktprove($ret, $klubbId);
+	    	$hd->redigerJaktprove($gammelJaktprove, $jaktprove, $klubbId);
 	    	
 	    	return $this->hentJaktprover($jaktprove->hundId, $brukerEpost, $brukerPassord, $klubbId);
     	
@@ -218,51 +175,11 @@ class JaktproveController
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "leggInnJaktprove"))
 		{	
-	    	$ret = array();
-	    	$ret['proveNr'] = $jaktprove->proveNr;   	
-	    	$ret['proveDato'] = $jaktprove->proveDato; 
-	    	$ret['partiNr'] = $jaktprove->partiNr;   	
-	    	$ret['klasse'] = $jaktprove->klasse;
-	    	$ret['dommerId1'] = $jaktprove->dommerId1;   	
-	    	$ret['dommerId2'] = $jaktprove->dommerId2;   	
-	    	$ret['hundId'] = $jaktprove->hundId;
-	    	$ret['slippTid'] = $jaktprove->slippTid;
-	    	$ret['egneStand'] = $jaktprove->egneStand; 	
-	    	$ret['egneStokk'] = $jaktprove->egneStokk;
-	    	$ret['tomStand'] = $jaktprove->tomStand; 	
-	    	$ret['makkerStand'] = $jaktprove->makkerStand;
-	    	$ret['makkerStokk'] = $jaktprove->makkerStokk; 	
-	    	$ret['jaktlyst'] = $jaktprove->jaktlyst;
-	    	$ret['fart'] = $jaktprove->fart; 	
-	    	$ret['stil'] = $jaktprove->stil;
-	    	$ret['selvstendighet'] = $jaktprove->selvstendighet; 	
-	    	$ret['bredde'] = $jaktprove->bredde;
-	    	$ret['reviering'] = $jaktprove->reviering; 	
-	    	$ret['samarbeid'] = $jaktprove->samarbeid;
-	    	$ret['presUpresis'] = $jaktprove->presUpresis; 	
-	    	$ret['presNoeUpresis'] = $jaktprove->presNoeUpresis;
-	    	$ret['presPresis'] = $jaktprove->presPresis; 	
-	    	$ret['reisNekter'] = $jaktprove->reisNekter;
-	    	$ret['reisNoelende'] = $jaktprove->reisNoelende; 	
-	    	$ret['reisVillig'] = $jaktprove->reisVillig;
-	    	$ret['reisDjerv'] = $jaktprove->reisDjerv; 	
-	    	$ret['sokStjeler'] = $jaktprove->sokStjeler;
-	    	$ret['sokSpontant'] = $jaktprove->sokSpontant; 	
-	    	$ret['appIkkeGodkjent'] = $jaktprove->appIkkeGodkjent;
-	    	$ret['appGodkjent'] = $jaktprove->appGodkjent; 	
-	    	$ret['rappInnkalt'] = $jaktprove->rappInnkalt;
-	    	$ret['rappSpont'] = $jaktprove->rappSpont; 	
-	    	$ret['premiegrad'] = $jaktprove->premiegrad;
-	    	$ret['certifikat'] = $jaktprove->certifikat; 	
-	    	$ret['regAv'] = $jaktprove->regAv; 	
-	    	$ret['regDato'] = $jaktprove->regDato;
-	    	$ret['raseId'] = $jaktprove->raseId;
-	    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv;
-	    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
-	    	$ret['kritikk'] = $jaktprove->kritikk;
-	    	
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->leggInnJaktprove($ret, $klubbId);
+	    	
+	    	//throw(new Exception('Jeg bor i JaktproveController.php', 1));
+	    	
+	    	$resultat = $hd->leggInnJaktprove($jaktprove, $klubbId);
 	    	
 	    	return $resultat;
     	}
