@@ -89,7 +89,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testgetHundDatabaseSomDat()
     {
     	$hp = new HundParser();
-    	$parseString = "323|345453|&15335/4354|Tittel|hunden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
+    	$parseString = "323|345453|&15335/4354|Tittel|hunden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|10.02.2022|10.22.2222|stor";
         $paa = $hp->getHundArray($parseString);
         $pa = $hp->getHundDatabaseSomDat($paa);
         

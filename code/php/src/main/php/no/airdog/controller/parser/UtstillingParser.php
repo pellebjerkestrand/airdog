@@ -82,18 +82,18 @@ class UtstillingParser
 		$dat = "$utstillingArray[utstillingId]|" .
 	 		"$utstillingArray[klasseId]|" .
 	 		"$utstillingArray[personId]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray[regDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray['regDato'])."|" .
 	 		"$utstillingArray[regAv]|" .
 	 		"$utstillingArray[navn]|" .
 	 		"$utstillingArray[adresse1]|" .
 	 		"$utstillingArray[adresse2]|" .
 	 		"$utstillingArray[postNr]|" .
 	 		"$utstillingArray[spesialAdresse]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray[utstillingDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray['utstillingDato'])."|" .
 	 		"$utstillingArray[utstillingSted]|" .
 	 		"$utstillingArray[arrangorNavn1]|" .
 	 		"$utstillingArray[arrangorNavn2]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray[overfortDato]);
+	 		Verktoy::konverterDatabaseTilDatDato($utstillingArray['overfortDato']);
 			 			
 			return $dat;
 	}

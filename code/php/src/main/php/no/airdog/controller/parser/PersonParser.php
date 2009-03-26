@@ -84,9 +84,9 @@ class PersonParser
 	 		"$personArray[raseId]|" .
 	 		"$personArray[status]|" .
 	 		"$personArray[telefon1]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($personArray[endretDato])."|" .
-	 		Verktoy::konverterDatabaseTilDatDato($personArray[regDato])."|" .
-	 		Verktoy::konverterDatabaseTilDatDato($personArray[fodt]);
+	 		Verktoy::konverterDatabaseTilDatDato($personArray['endretDato'])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($personArray['regDato'])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($personArray['fodt']);
 			 			
 			return $dat;
 	}

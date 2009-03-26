@@ -78,5 +78,16 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     	$this->assertFalse($hp->validerPersonliste(""));
     	$this->assertFalse($hp->validerPersonliste("false"));
     }    
+    
+    function testgetPersonDatabaseSomDat()
+    {
+    	$hp = new PersonParser();
+    	$parseString = "2459201|Petter, Svein Hansen|En gate. 2 A|3. b|4 a|4323|N|348|lol|112|05.02.2008|22.09.1993|19.09.1949";
+        $paa = $hp->getPersonArray($parseString);
+        $pa = $hp->getPersonDatabaseSomDat($paa);
+        
+    	$this->assertEquals($parseString, $pa);
+    	
+    }   
 }
 ?>
