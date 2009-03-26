@@ -10,14 +10,23 @@ require_once "database/PersonDatabase.php";
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
 
+//require_once 'model/AmfOpplastningObjekt.php';
+
 class importParserController
 {
 	private $database;
+	private $svarListe = array();
 	
 	public function __construct()
 	{
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
+		
+		$this->svarListe[] = "";	// 0 = generelt resultat
+		$this->svarListe[] = "";	// 1 = filtype
+		$this->svarListe[] = 0;		// 2 = antall oppdaterte
+		$this->svarListe[] = 0;		// 3 = antall lagt til
+		$this->svarListe[] = 0;		// 4 = antall ignorerte
 	}
 
 	public function lagreDb($filSti, $epost, $passord, $klubbId)
@@ -36,6 +45,8 @@ class importParserController
 			
 			$ret = "";
 			$size = sizeof($listeArray);
+			
+			$this->svarListe[1] = $filtype;
 			
 			switch($filtype)
 			{
@@ -63,9 +74,11 @@ class importParserController
 					$hd = new HundDatabase();
 					for ($i = 1; $i < $size; $i++)
 			    	{
-			    		$ret .= "\r" . $hd->settInnHund($ep->getHundArray($listeArray[$i]), $klubbId);
+			    		$verdier = $ep->getHundArray($listeArray[$i]);
+			    		$svar = $hd->settInnHund($verdier, $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
 			    	}
-					return $ret;
+					break;
 					
 				case "Kull":
 					$ep = new KullParser();
@@ -121,13 +134,53 @@ class importParserController
 					
 				default:
 					return "Dette er en ukjent .dat fil";
-				
 			}
 			
-			return "En feil har oppstått";
+			$ret = "";
+			$splitter = "";
+			foreach ($this->svarListe as $svar)
+			{
+				$ret .= $splitter . $svar;
+				$splitter = "###";
+			}
+			
+			return $ret;
 		}
 		
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
+/*	$this->svarListe[] = "";	// 0 = generelt resultat
+	$this->svarListe[] = "";	// 1 = filtype
+	$this->svarListe[] = 0;		// 2 = antall oppdaterte
+	$this->svarListe[] = 0;		// 3 = antall lagt til
+	$this->svarListe[] = 0;		// 4 = antall ignorerte*/
+		
+	private function velgHandling($svar, $verdi)
+	{
+		switch($svar)
+	    	{
+	    		case "Lagt til":
+	    			$this->svarListe[3]++;
+	    			$this->svarListe[] = $verdi;
+	    			break;
+	    			
+    			case "Oppdatert":
+	    			$this->svarListe[2]++;
+	    			break;
+	    			
+    			case "Finnes alt i DATreferanser tabellen.": 
+	    			$this->svarListe[4]++;
+	    			break;
+	    			
+	    		case "Manuelt endret, vil du overskrive?":	    			
+	    			$this->svarListe[] = $verdi;
+	    			break;
+	    			
+	    		default:
+	    			if ($verdi != "")
+	    				$this->svarListe[0] .= "\r" . $svar;
+	    	}
 	}
 }

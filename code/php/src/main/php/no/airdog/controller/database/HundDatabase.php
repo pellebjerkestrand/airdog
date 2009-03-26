@@ -1,6 +1,7 @@
 <?php 
 require_once 'ValiderBruker.php';
 require_once 'Tilkobling.php';
+require_once 'DatReferanseDatabase.php';
 
 class HundDatabase
 {
@@ -53,15 +54,21 @@ class HundDatabase
 			return "hundId-verdien mangler."; 
 		}
 		
+		/*if (DatReferanseDatabase::hentReferanse($hundArray, $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}*/
+		
 		$dbHund = $this->hentHund($hundArray["hundId"], $hundArray["raseId"]);
 		
 		if ($dbHund == null)
 		{
 			$this->database->insert('nkk_hund', $hundArray);
+			return "Lagt til";
 		}
 		else if ($dbHund["manueltEndretAv"] != "")
 		{
-			return "Manuelt endret, vil du overskrive???";
+			return "Manuelt endret, vil du overskrive?";
 		}
 		else
 		{
@@ -69,8 +76,6 @@ class HundDatabase
 			$this->database->update('nkk_hund', $hundArray, $hvor);
 			return "Oppdatert";
 		}
-		
-		return true;
 	}
 	
 //	//må testes

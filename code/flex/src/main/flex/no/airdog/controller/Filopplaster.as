@@ -3,8 +3,12 @@ package no.airdog.controller
 	import flash.errors.IllegalOperationError;
 	import flash.events.*;
 	import flash.net.*;
+	
+	import mx.collections.ArrayCollection;
 	import mx.controls.*;
+	
 	import no.airdog.model.Opplastning;
+	import no.airdog.model.Valg;
 	import no.airdog.services.Components;
     
 	public class Filopplaster
@@ -27,6 +31,7 @@ package no.airdog.controller
 			opplastning.ferdig = false;
 			opplastning.startet = false;
 			opplastning.resultat = "";
+			opplastning.objektliste = new ArrayCollection();
 			
 			settFilrestriksjoner();
 			fr = new FileReference();
@@ -120,7 +125,21 @@ package no.airdog.controller
 
         private function uploadCompleteHandler(event:DataEvent):void
         {
-        	opplastning.resultat += event.data as String;
+        	var resultat:Array = event.data.split(/###/);
+        	
+        	
+        	opplastning.resultat += "Lagt til: " + resultat[3];
+        	opplastning.resultat += "\rOppdatert: " + resultat[2];
+        	
+        	opplastning.resultat += "\rIgnorert: " + resultat[4];
+        	opplastning.resultat += "\r\rFiltype: " + resultat[1];
+        	opplastning.resultat += "\rGenerelt: " + resultat[0];
+     	
+        	for(var i:int = 5; i < resultat.length; i++)
+        	{  		
+        		opplastning.objektliste.addItem(new Valg(resultat[i], false));
+        	}
+        	
         	opplastning.ferdig = true;
         }		
 
