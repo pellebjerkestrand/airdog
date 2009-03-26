@@ -16,6 +16,15 @@ class VerktoyTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($ut, $datoUt);
 		
 	}
-}
+	
+	function testKonverterDatabaseTilDatDato()
+	{
+		$datoInn = "10-01-2001";
+		$datoUt = "2001.01.10";
 
-?>
+		$vt = new Verktoy();
+		$ut = $vt->konverterDatabaseTilDatDato($datoInn);
+		
+		$this->assertEquals($ut, $datoUt);
+	}
+}

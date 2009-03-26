@@ -12,4 +12,16 @@ class Verktoy
 		
 		return $datoArray[2]."-".$datoArray[1]."-".$datoArray[0];
 	}
+	
+	// Inn: 2001-01-10
+	// Ut:	10.01.2001
+	public static function konverterDatabaseTilDatDato($dato)
+	{
+		$datoArray = split('[-]', trim($dato));
+		
+		if (!isset($datoArray[2]))
+			return $dato;
+		
+		return $datoArray[2].".".$datoArray[1].".".$datoArray[0];
+	}
 }
