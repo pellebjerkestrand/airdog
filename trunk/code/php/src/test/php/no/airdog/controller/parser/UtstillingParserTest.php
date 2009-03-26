@@ -55,7 +55,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new UtstillingParser();
     	
-    	$pa = $hp->getUtstillinglisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Utstilling.dat');
+    	$pa = $hp->getUtstillinglisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Utstilling.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -71,7 +71,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     function testValiderUtstillinglisteFraFil()
     {
     	$hp = new UtstillingParser();
-    	$this->assertTrue($hp->validerUtstillinglisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Utstilling.dat'));
+    	$this->assertTrue($hp->validerUtstillinglisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Utstilling.dat'));
     }
     
     function testValiderUtstillingliste()

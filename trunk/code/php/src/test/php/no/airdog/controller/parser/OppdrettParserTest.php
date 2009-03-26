@@ -40,7 +40,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new OppdrettParser();
     	
-    	$pa = $hp->getOppdrettlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Oppdrett.dat');
+    	$pa = $hp->getOppdrettlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oppdrett.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -56,7 +56,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     function testValiderOppdrettlisteFraFil()
     {
     	$hp = new OppdrettParser();
-    	$this->assertTrue($hp->validerOppdrettlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Oppdrett.dat'));
+    	$this->assertTrue($hp->validerOppdrettlisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oppdrett.dat'));
     }
     
     function testValiderOppdrettliste()

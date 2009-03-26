@@ -60,7 +60,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new HdsykdomParser();
     	
-    	$pa = $hp->getHdsykdomlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hdsykdom.dat');
+    	$pa = $hp->getHdsykdomlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Hdsykdom.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -76,7 +76,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     function testValiderHdsykdomlisteFraFil()
     {
     	$hp = new HdsykdomParser();
-    	$this->assertTrue($hp->validerHdsykdomlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hdsykdom.dat'));
+    	$this->assertTrue($hp->validerHdsykdomlisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Hdsykdom.dat'));
     }
     
     function testValiderHdsykdomliste()

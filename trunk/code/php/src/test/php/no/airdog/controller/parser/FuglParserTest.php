@@ -75,7 +75,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new FuglParser();
     	
-    	$pa = $hp->getFugllisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Fugl.dat');
+    	$pa = $hp->getFugllisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Fugl.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -91,7 +91,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     function testValiderFugllisteFraFil()
     {
     	$hp = new FuglParser();
-    	$this->assertTrue($hp->validerFugllisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Fugl.dat'));
+    	$this->assertTrue($hp->validerFugllisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Fugl.dat'));
     }
     
     function testValiderFuglliste()
