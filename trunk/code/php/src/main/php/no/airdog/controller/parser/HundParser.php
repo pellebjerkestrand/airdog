@@ -79,4 +79,33 @@ class HundParser
 		
 		return false;
 	}
+	
+	public function getHundDatabaseSomDat($hundArray)
+	{
+		$dat = "$hundArray[raseId]|" .
+	 		"$hundArray[kullId]|" .
+	 		"$hundArray[hundId]|" .
+	 		"$hundArray[tittel]|" .
+	 		"$hundArray[navn]|" .
+	 		"$hundArray[hundFarId]|" .
+	 		"$hundArray[hundMorId]|" .
+	 		"$hundArray[idNr]|" .
+	 		"$hundArray[farge]|" .
+	 		"$hundArray[fargeVariant]|" .
+	 		"$hundArray[oyesykdom]|" .
+	 		"$hundArray[hoftesykdom]|" .
+	 		"$hundArray[haarlag]|" .
+	 		"$hundArray[idMerke]|" .
+	 		"$hundArray[kjonn]|" .
+	 		"$hundArray[eierId]|" .
+	 		"$hundArray[endretAv]|" .
+	 		"$hundArray[endretDato]|" .
+	 		"$hundArray[regDato]|" .
+	 		"$hundArray[storrelse]";
+			 			
+			return $dat;
+		
+	}
+
+		
 }
