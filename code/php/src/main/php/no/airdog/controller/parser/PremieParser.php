@@ -117,12 +117,8 @@ class PremieParser
 	 		"$premieArray[CA]|" .
 	 		"$premieArray[BIK]|" .
 	 		"$premieArray[BIR]|" .
-	 		"$premieArray[BIM]|";
+	 		"$premieArray[BIM]";
 			 			
 			return $dat;
-
-
-
 	}
 }
-?>
