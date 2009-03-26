@@ -13,7 +13,7 @@ class HundDatabaseTest extends PHPUnit_Framework_TestCase
 		$dat = "348|970074|00348/97||BONNIE|00046/88|21203/91|1042993|HVIT/SORT||||||T|3071892|SS|08.01.1997|08.01.1997|";
 		
 		$db = new HundDatabase();
-		$ut = $vt->hentHundSomDatString($hundId, $klubbId);
+		$ut = $db->hentHundSomDatString($hundId, $klubbId);
 		$this->assertEquals($dat, $dat);
 	}
 	
