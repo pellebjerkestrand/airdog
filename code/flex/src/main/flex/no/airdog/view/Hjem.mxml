@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Box 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
+	paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"
 	backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
 	width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
 	<mx:Script>
@@ -9,7 +9,48 @@
 			import no.airdog.controller.Navigasjon;
 		]]>
 	</mx:Script>
+	<mx:HBox verticalAlign="middle">
 	
-	<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
+		<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
+	
+		<mx:VBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"/>
+				<mx:Label text="Her kan du" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+				<mx:Label text="Søke etter hunder" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/flag.png')"/>
+				<mx:Label text="Se jaktprøveresultater" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+				<mx:Label text="Se jaktprøvekritikker" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
+				<mx:Label text="Se avkom" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+				<mx:Label text="Se stamtrær" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/trophy.png')"/>
+				<mx:Label text="Se utstillingsresultater" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
+				<mx:Label text="Søke i årsgjennomsnitt" fontWeight="bold"/>
+			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+				<mx:Label text="Lage fiktive stamtrær" fontWeight="bold"/>
+			</mx:HBox>
+		</mx:VBox>
+	</mx:HBox>
 	
 </mx:Box>
