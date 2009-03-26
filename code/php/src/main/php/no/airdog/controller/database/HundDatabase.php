@@ -186,37 +186,4 @@ class HundDatabase
 		
 		return $this->database->update('nkk_hund', $hund, $hvor);
 	}
-	
-	public function hentHundSomDatString($hundId, $klubbId)
-	{
-		$hund = $this->hentHund($hundId, $klubbId);
-		
-		if($hund)
-		{
-			 $dat = "$hund[raseId]|" .
-			 		"$hund[kullId]|" .
-			 		"$hund[hundId]|" .
-			 		"$hund[tittel]|" .
-			 		"$hund[navn]|" .
-			 		"$hund[hundFarId]|" .
-			 		"$hund[hundMorId]|" .
-			 		"$hund[idNr]|" .
-			 		"$hund[farge]|" .
-			 		"$hund[fargeVariant]|" .
-			 		"$hund[oyesykdom]|" .
-			 		"$hund[hoftesykdom]|" .
-			 		"$hund[haarlag]|" .
-			 		"$hund[idMerke]|" .
-			 		"$hund[kjonn]|" .
-			 		"$hund[eierId]|" .
-			 		"$hund[endretAv]|" .
-			 		"$hund[endretDato]|" .
-			 		"$hund[regDato]|" .
-			 		"$hund[storrelse]|";
-			
-			return $dat;
-		}
-		
-		return "";
-	}
 }

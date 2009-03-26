@@ -57,7 +57,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new HundParser();
     	
-    	$pa = $hp->getHundelisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hund.dat');
+    	$pa = $hp->getHundelisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Hund.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -73,7 +73,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     function testValiderHundelisteFraFil()
     {
     	$hp = new HundParser();
-    	$this->assertTrue($hp->validerHundelisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Hund.dat'));
+    	$this->assertTrue($hp->validerHundelisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Hund.dat'));
     }
     
     function testValiderHundeliste()
@@ -84,6 +84,17 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     	$this->assertFalse($hp->validerHundeliste("RAID|KUID|HUID|Tittel|Navn|HUIDFar|HUIDMor|IDNR|FaargeBeskrivelse|FargeVariant|AD|HD|Haarlag|IDMerk|Kjoenn|PEID|EndretAv|EndretDato|RegDato|Stoerrelse"));
     	$this->assertFalse($hp->validerHundeliste(""));
     	$this->assertFalse($hp->validerHundeliste("false"));
+    }
+    
+    function testgetHundDatabaseSomDat()
+    {
+    	$hp = new HundParser();
+    	$parseString = "323|345453|&15335/4354|Tittel|hunden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
+        $paa = $hp->getHundArray($parseString);
+        $pa = $hp->getHundDatabaseSomDat($paa);
+        
+    	$this->assertEquals($parseString, $pa);
+    	
     }
 }
 ?>
