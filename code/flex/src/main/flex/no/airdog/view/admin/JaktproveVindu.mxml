@@ -132,21 +132,24 @@
                 var df:DateFormatter = new DateFormatter();
 				df.formatString = "YYYY-MM-DD";
                 
-                if((_aktivJaktprove != null) && !likTest)
+                if(!likTest)
              	{	
-					manueltEndretAv.text = Components.instance.session.bruker.epost
-             		manueltEndretDato.text = df.format(new Date());
+             		if(_aktivJaktprove != null)
+             		{
+             			manueltEndretAv.text = Components.instance.session.bruker.epost
+             			manueltEndretDato.text = df.format(new Date());	
+             		}
              		
              		erTilbakestillt = false;
              	}
              	else
              	{
-             		regAv.text = Components.instance.session.bruker.epost;
-             		regDato.text = df.format(new Date());
-             	}
-             	
-             	if(likTest)
-             	{
+             		if(_aktivJaktprove == null)
+             		{
+             			regAv.text = Components.instance.session.bruker.epost;
+             			regDato.text = df.format(new Date());	
+             		}
+             		
              		erTilbakestillt = true;
              	}
              	
