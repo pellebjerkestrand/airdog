@@ -85,5 +85,44 @@ class PremieParser
 		
 		return false;
 	}
+	
+	public function getPremieDatabaseSomDat($premieArray)
+	{
+		$dat = "$premieArray[doId]|" .
+	 		"$premieArray[utstillingId]|" .
+	 		"$premieArray[hundId]|" .
+	 		"$premieArray[katalogNr]|" .
+	 		"$premieArray[personIdDommer]|" .
+	 		"$premieArray[klasse]|" .
+	 		"$premieArray[kjonn]|" .
+	 		"$premieArray[raseId]|" .
+	 		"$premieArray[IM]|" .
+	 		"$premieArray[KIP]|" .
+	 		"$premieArray[JK]|" .
+	 		"$premieArray[JKK]|" .
+	 		"$premieArray[UK]|" .
+	 		"$premieArray[UKK]|" .
+	 		"$premieArray[BK]|" .
+	 		"$premieArray[BKK]|" .
+	 		"$premieArray[AK]|" .
+	 		"$premieArray[AKK]|" .
+	 		"$premieArray[VK]|" .
+	 		"$premieArray[CHK]|" .
+	 		"$premieArray[CHKK]|" .
+	 		"$premieArray[VTK]|" .
+	 		"$premieArray[VTKK]|" .
+	 		"$premieArray[HP]|" .
+	 		"$premieArray[CK]|" .
+	 		"$premieArray[CC]|" .
+	 		"$premieArray[CA]|" .
+	 		"$premieArray[BIK]|" .
+	 		"$premieArray[BIR]|" .
+	 		"$premieArray[BIM]|";
+			 			
+			return $dat;
+
+
+
+	}
 }
 ?>
