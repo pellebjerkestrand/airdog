@@ -71,5 +71,23 @@ class PersonParser
 		
 		return false;
 	}
+	
+	public function getPersonDatabaseSomDat($personArray)
+	{
+		$dat = "$personArray[personId]|" .
+	 		"$personArray[navn]|" .
+	 		"$personArray[adresse1]|" .
+	 		"$personArray[adresse2]|" .
+	 		"$personArray[adresse3]|" .
+	 		"$personArray[postNr]|" .
+	 		"$personArray[landkode]|" .
+	 		"$personArray[raseId]|" .
+	 		"$personArray[status]|" .
+	 		"$personArray[telefon1]|" .
+	 		Verktoy::konverterDatabaseTilDatDato($personArray[endretDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($personArray[regDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($personArray[fodt]);
+			 			
+			return $dat;
+	}
 }
-?>

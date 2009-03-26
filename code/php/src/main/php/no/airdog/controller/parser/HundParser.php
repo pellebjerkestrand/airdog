@@ -99,12 +99,11 @@ class HundParser
 	 		"$hundArray[kjonn]|" .
 	 		"$hundArray[eierId]|" .
 	 		"$hundArray[endretAv]|" .
-	 		"$hundArray[endretDato]|" .
-	 		"$hundArray[regDato]|" .
+	 		Verktoy::konverterDatabaseTilDatDato($hundArray[endretDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($hundArray[regDato])."|" .
 	 		"$hundArray[storrelse]";
 			 			
 			return $dat;
-		
 	}
 
 		
