@@ -80,4 +80,3 @@ class HundParser
 		return false;
 	}
 }
-?>
