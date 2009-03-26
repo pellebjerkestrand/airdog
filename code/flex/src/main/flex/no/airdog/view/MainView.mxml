@@ -220,6 +220,6 @@
 	    <view:FiktivStamtre/>
 	    <view:Hjem/>
 	    <adminView:BackupVindu/>
-	    <adminView:JaktproveVindu/>
+	    <adminView:JaktproveVindu id="jaktprovevindu"/>
 	</mx:ViewStack>
 </mx:VBox>

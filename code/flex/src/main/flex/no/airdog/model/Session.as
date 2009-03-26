@@ -22,7 +22,7 @@ package no.airdog.model
      	public var hovedNavigasjon:Navigasjon = new Navigasjon();
      	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererStor));
         public var hundprofil:Hund;
-        public var jaktprove:Jaktprove;
+//        public var jaktprove:Jaktprove;
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendrag:ArrayCollection = new ArrayCollection();
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();

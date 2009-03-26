@@ -4,9 +4,7 @@ package no.airdog.controller
 	
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
-	import mx.core.Application;
 	import mx.events.*;
-	import mx.formatters.DateFormatter;
 	import mx.managers.PopUpManager;
 	import mx.rpc.events.*;
 	
@@ -31,14 +29,7 @@ package no.airdog.controller
         }
         
         public function visLeggInnJaktproveVindu(parent:DisplayObject):void
-        {
-        	Components.instance.session.jaktprove = new Jaktprove;
-        	Components.instance.session.jaktprove.regAv = Components.instance.session.bruker.epost;
-        	
-	        var df:DateFormatter = new DateFormatter();
-			df.formatString = "YYYY-MM-DD";
-        	Components.instance.session.jaktprove.regDato = df.format(new Date());
-        	
+        {	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
     		jaktproveVindu.width = 900;
     		jaktproveVindu.height = 580;
@@ -48,9 +39,8 @@ package no.airdog.controller
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
         {
-        	Components.instance.session.jaktprove = jaktprove as Jaktprove;
-        	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+    		jaktproveVindu.aktivJaktprove = jaktprove;
     		jaktproveVindu.width = 900;
     		jaktproveVindu.height = 580;
         	PopUpManager.centerPopUp(jaktproveVindu);
@@ -59,7 +49,6 @@ package no.airdog.controller
        
         public function fjernJaktproveVindu():void
         {
-        	Components.instance.session.jaktprove = null;
         	PopUpManager.removePopUp(jaktproveVindu);
         }
         
@@ -340,19 +329,19 @@ package no.airdog.controller
 			Components.instance.historie.settPunkt();
 		}
 		
-		public function redigerJaktprove(jaktprove:Jaktprove):void
+		public function redigerJaktprove(gammelJaktprove:Jaktprove, jaktprove:Jaktprove):void
 		{
-			Components.instance.services.airdogService.redigerJaktprove(jaktprove, hentJaktproverResultat);
+			Components.instance.services.airdogService.redigerJaktprove(gammelJaktprove, jaktprove, hentJaktproverResultat);
 		}
 		
-		public function slettJaktprove(jaktproveId:String):void
+		public function slettJaktprove(jaktproveId:String, hundId:String, jaktproveDato:String):void
 		{
-			Components.instance.services.airdogService.slettJaktprove(jaktproveId, slettJaktproveResultat);
+			Components.instance.services.airdogService.slettJaktprove(jaktproveId, hundId, jaktproveDato, slettJaktproveResultat);
 		}
 		
 		public function slettJaktproveResultat(event:Object):void
 		{
-			
+			hentJaktprover(Components.instance.session.hundprofil.hundId);
 		}
 		
 		public function leggInnJaktprove(jaktprove:Jaktprove):void

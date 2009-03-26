@@ -1,6 +1,7 @@
 <?php
 require_once 'ValiderBruker.php';
 require_once 'Tilkobling.php';
+require_once "no/airdog/model/AmfJaktprove.php";
 require_once 'no/airdog/controller/parser/FuglParser.php';
 
 class JaktproveDatabase
@@ -13,22 +14,31 @@ class JaktproveDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function redigerJaktprove($jaktprove, $klubbId)
+	public function redigerJaktprove(AmfJaktprove $gammelJaktprove, AmfJaktprove $jaktprove, $klubbId)
 	{
-		$hvor = $this->database->quoteInto('proveNr = ?', $jaktprove['proveNr']) . 
-				$this->database->quoteInto(' AND hundId = ?', $jaktprove['hundId']) .
-				$this->database->quoteInto(' AND proveDato = ?', $jaktprove['proveDato']);			
-		return $this->database->update('nkk_fugl', $jaktprove, $hvor);
+		$gJakt = $this->lagJaktproveArray($gammelJaktprove);
+		$nJakt = $this->lagJaktproveArray($jaktprove);
+		
+		$hvor = $this->database->quoteInto('proveNr = ? ', $gJakt['proveNr']).
+				$this->database->quoteInto('AND hundId = ? ', $gJakt['hundId']).
+				$this->database->quoteInto('AND proveDato = ?', $gJakt['proveDato']);
+							
+		return $this->database->update('nkk_fugl', $nJakt, $hvor);
 	}
 	
-	public function leggInnJaktprove($jaktprove, $klubbId)
-	{
-			return $this->database->insert('nkk_fugl', $jaktprove);
+	public function leggInnJaktprove(AmfJaktprove $jaktprove, $klubbId)
+	{	
+		$inn = $this->lagJaktproveArray($jaktprove);
+		
+		return $this->database->insert('nkk_fugl', $inn);
 	}
 	
-	public function slettJaktprove($jaktproveId, $klubbId)
+	public function slettJaktprove($jaktproveId, $hundId, $dato, $klubbId)
 	{
-		$hvor = $this->database->quoteInto('proveNr = ?', $jaktproveId);
+		$hvor = $this->database->quoteInto('proveNr = ? ', $jaktproveId).
+				$this->database->quoteInto('AND hundId = ? ', $hundId).
+				$this->database->quoteInto('AND proveDato = ?', $dato);
+		
 		return $this->database->delete('nkk_fugl', $hvor);
 	}
 	
@@ -68,27 +78,7 @@ class JaktproveDatabase
 		->group('hundId');; 
 	
 		return $this->database->fetchRow($select); 
-	}
-	
-//	public function settInnJaktproveArray($jaktproveArray, $brukerEpost, $brukerPassord, $klubbId)
-//	{
-//		$resultat = "";
-//		
-//		foreach($jaktproveArray as $jaktarray)
-//		{
-//			if ($jaktarray["raseId"] != $klubbId)
-//			{
-//				$resultat .= "\nRaseID stemmer ikke.";
-//			}
-//			else
-//			{
-//				$resultat .= $this->_settInnJaktprove($jaktarray);
-//			}
-//		}
-//		
-//		return $resultat;
-//	}
-	
+	}	
 	
 	public function settInnJaktprove($jaktarray, $klubbId)
 	{
@@ -148,5 +138,52 @@ class JaktproveDatabase
 	
 			return $this->database->fetchRow($select); 
 	}
-
+	
+	private function lagJaktproveArray(AmfJaktprove $jaktprove)
+	{
+		$ret = array();
+    	$ret['proveNr'] = $jaktprove->proveNr;   	
+    	$ret['proveDato'] = $jaktprove->proveDato; 
+    	$ret['partiNr'] = $jaktprove->partiNr;   	
+    	$ret['klasse'] = $jaktprove->klasse;
+    	$ret['dommerId1'] = $jaktprove->dommerId1;   	
+    	$ret['dommerId2'] = $jaktprove->dommerId2;   	
+    	$ret['hundId'] = $jaktprove->hundId;
+    	$ret['slippTid'] = $jaktprove->slippTid;
+    	$ret['egneStand'] = $jaktprove->egneStand; 	
+    	$ret['egneStokk'] = $jaktprove->egneStokk;
+    	$ret['tomStand'] = $jaktprove->tomStand; 	
+    	$ret['makkerStand'] = $jaktprove->makkerStand;
+    	$ret['makkerStokk'] = $jaktprove->makkerStokk; 	
+    	$ret['jaktlyst'] = $jaktprove->jaktlyst;
+    	$ret['fart'] = $jaktprove->fart; 	
+    	$ret['stil'] = $jaktprove->stil;
+    	$ret['selvstendighet'] = $jaktprove->selvstendighet; 	
+    	$ret['bredde'] = $jaktprove->bredde;
+    	$ret['reviering'] = $jaktprove->reviering; 	
+    	$ret['samarbeid'] = $jaktprove->samarbeid;
+    	$ret['presUpresis'] = $jaktprove->presUpresis; 	
+    	$ret['presNoeUpresis'] = $jaktprove->presNoeUpresis;
+    	$ret['presPresis'] = $jaktprove->presPresis; 	
+    	$ret['reisNekter'] = $jaktprove->reisNekter;
+    	$ret['reisNoelende'] = $jaktprove->reisNoelende; 	
+    	$ret['reisVillig'] = $jaktprove->reisVillig;
+    	$ret['reisDjerv'] = $jaktprove->reisDjerv; 	
+    	$ret['sokStjeler'] = $jaktprove->sokStjeler;
+    	$ret['sokSpontant'] = $jaktprove->sokSpontant; 	
+    	$ret['appIkkeGodkjent'] = $jaktprove->appIkkeGodkjent;
+    	$ret['appGodkjent'] = $jaktprove->appGodkjent; 	
+    	$ret['rappInnkalt'] = $jaktprove->rappInnkalt;
+    	$ret['rappSpont'] = $jaktprove->rappSpont; 	
+    	$ret['premiegrad'] = $jaktprove->premiegrad;
+    	$ret['certifikat'] = $jaktprove->certifikat; 	
+    	$ret['regAv'] = $jaktprove->regAv; 	
+    	$ret['regDato'] = $jaktprove->regDato;
+    	$ret['raseId'] = $jaktprove->raseId;
+    	$ret['manueltEndretAv'] = $jaktprove->manueltEndretAv;
+    	$ret['manueltEndretDato'] = $jaktprove->manueltEndretDato;
+    	$ret['kritikk'] = $jaktprove->kritikk;
+    	
+    	return $ret;
+	}
 }

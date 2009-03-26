@@ -11,7 +11,7 @@ class PersonDatabase
 	}
 	
 	public function hentPerson($personId, $klubbId)
-	{
+	{	
 		$select = $this->database->select()
 		->from(array('p'=>'nkk_person'), 'p.*')
 		->where('p.personId=?', $personId)

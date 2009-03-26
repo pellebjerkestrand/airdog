@@ -19,13 +19,12 @@
 			import no.airdog.controller.Verktoy;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
-			[Bindable]public var erGodkjent:Boolean;
-			
-			public var _aktivBruker:Bruker = null;
+			[Bindable]private var erGodkjent:Boolean;
 			
 			private var hvilkeKontroll:DisplayObject;
-			
 			private var epostValidator:EmailValidator = new EmailValidator();
+			
+			public var _aktivBruker:Bruker = null;
 			
 			public function set aktivBruker(bruker:Bruker):void
 			{
