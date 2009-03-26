@@ -110,7 +110,7 @@
         <mx:VBox label="Helse" icon="@Embed(source='assets/ikoner/monitor.png')">
         </mx:VBox>
         -->
-        <mx:VBox label="Stamtavle" icon="@Embed(source='assets/ikoner/arrow_join_180.png')">
+        <mx:VBox label="Stamtre" icon="@Embed(source='assets/ikoner/arrow_join_180.png')">
 			<view:Stamtre width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="3"/>
 		</mx:VBox>
 					
