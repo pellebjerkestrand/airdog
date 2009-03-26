@@ -83,5 +83,16 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
     	$this->assertFalse($hp->validerUtstillingliste(""));
     	$this->assertFalse($hp->validerUtstillingliste("false"));
     }    
+    
+    function testgetUtstillingDatabaseSomDat()
+    {
+    	$hp = new UtstillingParser();
+    	$parseString = "010001|036200|foo|22.11.1999|sb|GUSTAFSSON, ELLEN|MARKERUDLIA 2|foo|1490|foo|09.02.2000|SKEDSMOHALLEN|NORSK DOBERMANN KLUB|foo|22.03.2001";
+        $paa = $hp->getUtstillingArray($parseString);
+        $pa = $hp->getUtstillingDatabaseSomDat($paa);
+        
+    	$this->assertEquals($parseString, $pa);
+    	
+    }
 }
 ?>

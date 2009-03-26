@@ -103,11 +103,11 @@ class FuglParser
 	public function getFuglDatabaseSomDat($fuglArray)
 	{
 		$dat = "$fuglArray[proveNr]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($fuglArray[proveDato])."|" .
+	 		Verktoy::konverterDatabaseTilDatDato($fuglArray['proveDato'])."|" .
 	 		"$fuglArray[partiNr]|" .
 	 		"$fuglArray[klasse]|" .
 	 		"$fuglArray[dommerId1]|" .
-	 		"$fuglArray[dommerId1]|" .
+	 		"$fuglArray[dommerId2]|" .
 	 		"$fuglArray[hundId]|" .
 	 		"$fuglArray[slippTid]|" .
 	 		"$fuglArray[egneStand]|" .
@@ -137,9 +137,11 @@ class FuglParser
 	 		"$fuglArray[rappSpont]|" .
 	 		"$fuglArray[premiegrad]|" .
 	 		"$fuglArray[certifikat]|" .
-	 		"$fuglArray[regAv]|";	 		
-	 		Verktoy::konverterDatabaseTilDatDato($fuglArray[regDato])."|" .
+	 		"$fuglArray[regAv]|" .	 		
+	 		Verktoy::konverterDatabaseTilDatDato($fuglArray['regDato'])."|" .
 	 		"$fuglArray[raseId]";
+	 		
+	 		return $dat;
 	 					 			
 	}
 }
