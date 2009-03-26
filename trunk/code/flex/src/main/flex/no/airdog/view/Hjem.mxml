@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox 
+<mx:Box 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
-	width="100%" height="100%" verticalAlign="top">
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
+	backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
+	width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.controller.Navigasjon;
 		]]>
 	</mx:Script>
-	<mx:HBox width="100%">
-		<mx:VBox height="100%">
-			<mx:HBox width="100%" horizontalAlign="center" fontSize="17" fontWeight="bold">
-				<mx:Label text="Velkommen til AirDog!"/>
-			</mx:HBox>
-		<mx:Text text="Airdog er den nye portalen for fuglehunder."/>
-		</mx:VBox>
-		<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
-	</mx:HBox>
-</mx:VBox>
+	
+	<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
+	
+</mx:Box>
