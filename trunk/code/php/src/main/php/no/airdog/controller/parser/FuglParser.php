@@ -99,5 +99,47 @@ class FuglParser
 		
 		return false;
 	}
+	
+	public function getFuglDatabaseSomDat($fuglArray)
+	{
+		$dat = "$fuglArray[proveNr]|" .
+	 		Verktoy::konverterDatabaseTilDatDato($fuglArray[proveDato])."|" .
+	 		"$fuglArray[partiNr]|" .
+	 		"$fuglArray[klasse]|" .
+	 		"$fuglArray[dommerId1]|" .
+	 		"$fuglArray[dommerId1]|" .
+	 		"$fuglArray[hundId]|" .
+	 		"$fuglArray[slippTid]|" .
+	 		"$fuglArray[egneStand]|" .
+	 		"$fuglArray[egneStokk]|" .
+	 		"$fuglArray[tomStand]|" .
+	 		"$fuglArray[makkerStand]|" .
+	 		"$fuglArray[makkerStokk]|" .
+	 		"$fuglArray[jaktlyst]|" .
+	 		"$fuglArray[fart]|" .
+	 		"$fuglArray[stil]|" .
+	 		"$fuglArray[selvstendighet]|" .
+	 		"$fuglArray[bredde]|" .
+	 		"$fuglArray[reviering]|" .
+	 		"$fuglArray[samarbeid]|" .
+	 		"$fuglArray[presUpresis]|" .
+	 		"$fuglArray[presNoeUpresis]|" .
+	 		"$fuglArray[presPresis]|" .
+	 		"$fuglArray[reisNekter]|" .
+	 		"$fuglArray[reisNoelende]|" .
+	 		"$fuglArray[reisVillig]|" .
+	 		"$fuglArray[reisDjerv]|" .
+	 		"$fuglArray[sokStjeler]|" .
+	 		"$fuglArray[sokSpontant]|" .
+	 		"$fuglArray[appIkkeGodkjent]|" .
+	 		"$fuglArray[appGodkjent]|" .
+	 		"$fuglArray[rappInnkalt]|" .
+	 		"$fuglArray[rappSpont]|" .
+	 		"$fuglArray[premiegrad]|" .
+	 		"$fuglArray[certifikat]|" .
+	 		"$fuglArray[regAv]|";	 		
+	 		Verktoy::konverterDatabaseTilDatDato($fuglArray[regDato])."|" .
+	 		"$fuglArray[raseId]";
+	 					 			
+	}
 }
-?>
