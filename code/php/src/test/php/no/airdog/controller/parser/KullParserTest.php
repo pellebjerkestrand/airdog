@@ -44,7 +44,7 @@ class KullParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new KullParser();
     	
-    	$pa = $hp->getKulllisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Kull.dat');
+    	$pa = $hp->getKulllisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Kull.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -60,7 +60,7 @@ class KullParserTest extends PHPUnit_Framework_TestCase
     function testValiderKulllisteFraFil()
     {
     	$hp = new KullParser();
-    	$this->assertTrue($hp->validerKulllisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Kull.dat'));
+    	$this->assertTrue($hp->validerKulllisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Kull.dat'));
     }
     
     function testValiderKullliste()

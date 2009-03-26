@@ -8,7 +8,7 @@ class FilvaliderControllerTest extends PHPUnit_Framework_TestCase
     function testGetFiltypeFraFil() 
     {
     	$fv = new FilvaliderController();
-    	$this->assertEquals("Eier", $fv->getFiltypeFraFil(dirname(__FILE__).'\..\..\..\..\dummyfiler\Eier.dat'));
+    	$this->assertEquals("Eier", $fv->getFiltypeFraFil(dirname(__FILE__).'/../../../../dummyfiler/Eier.dat'));
     }
     
 	function testGetFiltypeController() 

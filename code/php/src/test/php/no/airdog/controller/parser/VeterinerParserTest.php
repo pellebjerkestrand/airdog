@@ -49,7 +49,7 @@ class VeterinerParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new VeterinerParser();
     	
-    	$pa = $hp->getVeterinerlisteArrayFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Veteriner.dat');
+    	$pa = $hp->getVeterinerlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Veteriner.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
@@ -65,7 +65,7 @@ class VeterinerParserTest extends PHPUnit_Framework_TestCase
     function testValiderVeterinerlisteFraFil()
     {
     	$hp = new VeterinerParser();
-    	$this->assertTrue($hp->validerVeterinerlisteFraFil(dirname(__FILE__).'\..\..\..\..\..\dummyfiler\Veteriner.dat'));
+    	$this->assertTrue($hp->validerVeterinerlisteFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Veteriner.dat'));
     }
     
     function testValiderVeterinerliste()
