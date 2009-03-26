@@ -6,7 +6,7 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import no.airdog.model.AvkomTest;
+			//import no.airdog.model.AvkomTest;
 
 			import flexunit.framework.TestSuite;
 			
@@ -14,7 +14,7 @@
 			{
 				var testSuite : TestSuite = new TestSuite();		
 				   
-				testSuite.addTestSuite( AvkomTest );
+				//testSuite.addTestSuite( AvkomTest );
 				//testSuite.addTestSuite( HundControllerTest );
 				
 				return testSuite;

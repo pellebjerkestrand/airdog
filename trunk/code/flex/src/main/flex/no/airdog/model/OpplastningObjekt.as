@@ -4,7 +4,8 @@ package no.airdog.model
 	[Bindable]
 	public class OpplastningObjekt
 	{
-		public var verdi:String;
+		public var tekst:String;
+		public var filtype:String;
 		public var overskriv:Boolean;
 	}
 }
