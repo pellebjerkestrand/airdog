@@ -720,6 +720,9 @@
 					sokStjeler.text = "";
 					stil.text = "";
 					tomStand.text = "";
+					
+					avbrytKnapp.visible = false;
+					avbrytKnapp.includeInLayout = false;
             	}
             	
                 erTilbakestillt = true;
@@ -923,6 +926,6 @@
 	<mx:ControlBar horizontalAlign="center">
         <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
         <mx:Button label="Tilbakestill" enabled="{!erTilbakestillt}" click="tilbakestillForm()"/>
-        <mx:Button label="Avbryt" click="avbryt()"/>
+        <mx:Button label="Avbryt" id="avbrytKnapp" click="avbryt()" />
 	</mx:ControlBar>
 </mx:TitleWindow>
