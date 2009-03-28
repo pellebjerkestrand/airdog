@@ -18,7 +18,7 @@
  				Components.instance.controller.hentFiler(backupListe.selectedItem.toString());
  				navnLabel.text = backupListe.selectedItem.toString();
  			}
-
+ 			
 			private function lagFullKopi():void
             {
             	Components.instance.controller.lagFullKopi(backupNavn.text);
@@ -67,7 +67,7 @@
 			    	</mx:HBox>
 			    	<mx:DataGrid id="backupfilerListe" cachePolicy="on" dataProvider="{Components.instance.session.backupFiler}" width="100%" height="100%" showHeaders="false">
 				    	<mx:columns>
-				    		<mx:DataGridColumn paddingLeft="5" headerText="Filer" itemRenderer="BackupVinduCheckboxRender"/>
+				    		<mx:DataGridColumn paddingLeft="5" headerText="Filer" itemRenderer="no.airdog.view.renderer.BackupVinduCheckboxRender"/>
 				    	</mx:columns>
 				    </mx:DataGrid>
 			    	<mx:Button label="Gjennopprett merkede tabeller" width="100%" click="gjennopprettFiler(event)"/>
