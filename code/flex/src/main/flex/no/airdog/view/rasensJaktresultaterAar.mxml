@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+        <![CDATA[
+        	import no.airdog.model.Jaktprove;
+			import no.airdog.services.Components;			
+			import no.airdog.controller.*;
+			import mx.events.*;
+			import mx.collections.*;
+			import mx.controls.*;		
+			 
+			private function sokAar(val:String):void
+			{
+				Components.instance.controller.hentAlleJaktproverAar(val);				
+			}     
+						
+					            
+        ]]>
+    </mx:Script>
+	<mx:HBox>
+		<mx:Text text="Rasens jaktresultater for år: "/>
+		<mx:TextInput id="valgtAar" text="2002-11"/>
+		<mx:Button label="Resultater" click="sokAar(valgtAar.text)"/>
+		
+	</mx:HBox>
+	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListe}"
+		height="100%" width="100%">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
+			<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
+			<mx:DataGridColumn headerText="Hund ID" dataField="hundId"/>	
+		</mx:columns>		
+	</mx:DataGrid>	
+</mx:VBox>

@@ -192,6 +192,16 @@ package no.airdog.controller
 			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
 		}
 		
+		public function hentAlleJaktproverAar(aar:String):void
+		{
+			Components.instance.session.jaktproveListe = null;
+			Components.instance.services.airdogService.hentAlleJaktproverAar(aar, hentAlleJaktproverResultat);
+		}
+		public function hentAlleJaktproverResultat(event:Object):void
+		{
+			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+		}
+				
 		public function hentJaktproveSammendragResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveSammendrag = new ArrayCollection(event as Array);

@@ -42,6 +42,10 @@
             {
             	Navigasjon.visHundeliste();
             }
+            private function visAlleJaktprover():void
+            {
+            	Navigasjon.visAlleJaktprover();
+            }
             
             private function visAdminRoller():void
             {
@@ -163,6 +167,8 @@
 					icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
 				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="visFiktivStamtre()" 
 					icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
+				<mx:LinkButton label="Rasens jaktresultater" styleName="UnderMeny" click="visAlleJaktprover()" 
+					icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
 					<mx:Spacer width="100%"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
 					visible="{Components.instance.session.hovedNavigasjon.nr == 1 ? true : false}" click="visStorHundeliste()"/>
@@ -219,7 +225,8 @@
 	    <view:Arsgjennomsnitt/>
 	    <view:FiktivStamtre/>
 	    <view:Hjem/>
-	    <adminView:BackupVindu/>
+	    <adminView:BackupVindu/>	    
 	    <adminView:JaktproveVindu id="jaktprovevindu"/>
+		<view:rasensJaktresultaterAar/>
 	</mx:ViewStack>
 </mx:VBox>
