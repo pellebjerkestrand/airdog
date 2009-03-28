@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:HundeListeRenderer="no.airdog.view.hundeListeRenderer.*"
 	paddingBottom="0" paddingLeft="0" paddingRight="10" paddingTop="0" 
 	verticalAlign="middle" horizontalAlign="left"
 	width="100%">

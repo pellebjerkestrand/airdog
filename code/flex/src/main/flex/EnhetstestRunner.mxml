@@ -7,7 +7,6 @@
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.model.AvkomTest;
-
 			import flexunit.framework.TestSuite;
 			
 			public static function suite() : TestSuite
