@@ -140,7 +140,7 @@
 	    		</mx:Form>
     		</mx:Panel>
 
-    		<mx:Box width="100%" height="{this.height-125}">
+    		<mx:Box width="100%" height="{this.height-106}">
 				<mx:Repeater id="roller" dataProvider="{Components.instance.session.rollersRettigheter}">
 					<mx:Panel title="{roller.currentItem.navn} - {roller.currentItem.beskrivelse}" width="100%" data="{roller.currentItem.navn}" >
 						<mx:DataGrid id="rolleRettighet"
@@ -166,9 +166,8 @@
 				</mx:Repeater>
 			</mx:Box>
 		</mx:VBox>
-		<mx:VBox width="100%" height="100%">
 
-		<mx:Panel title="Alle rettigheter" width="100%" height="100%">
+		<mx:Panel title="Alle rettigheter" width="100%" height="{this.height}">
 			<mx:HBox width="100%">
 					<mx:Label text="Dra og slipp rettigheter over til roller. Fjern rettigheter fra roller ved å dra dem tilbake."/>						
 			</mx:HBox>
@@ -179,13 +178,12 @@
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"
               	dragDrop="slettRettighetPaRolle(event);"
-              	width="100%" height="100%">
+              	width="100%" height="{this.height}">
 				<mx:columns>
 					<mx:DataGridColumn headerText="Rettighet" dataField="navn" width="250"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
 				</mx:columns>
 			</mx:DataGrid>
 		</mx:Panel>	
-		</mx:VBox>
 	</mx:HBox>
 </mx:VBox>
