@@ -227,6 +227,6 @@
 	    <view:Hjem/>
 	    <adminView:BackupVindu/>	    
 	    <adminView:JaktproveVindu id="jaktprovevindu"/>
-		<view:RasensJaktresultaterAar1/>
+		<view:RasensJaktresultaterAar/>
 	</mx:ViewStack>
 </mx:VBox>
