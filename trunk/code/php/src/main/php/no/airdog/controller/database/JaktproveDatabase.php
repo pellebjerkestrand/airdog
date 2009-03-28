@@ -53,6 +53,18 @@ class JaktproveDatabase
 		return $this->database->fetchAll($select); 
 	}
 	
+	public function hentAlleJaktprover($aar, $klubbId)
+	{
+		$select = $this->database->select()
+		->from('nkk_fugl') 		
+		//kan ikke bruke kun år+wildcard, blir FOR MANGE og flex får ikke svar tidsnok
+		->where('proveDato LIKE ?', $aar.'%') 
+		->where('raseId=?', $klubbId)
+		->order('proveDato DESC'); 
+		
+		return $this->database->fetchAll($select);			
+	}
+	
 	public function hentJaktproveSammendrag($hundId, $klubbId)
 	{
 		$select = $this->database->select()

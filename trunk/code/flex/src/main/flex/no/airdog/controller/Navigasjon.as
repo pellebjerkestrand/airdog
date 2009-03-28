@@ -8,6 +8,10 @@ package no.airdog.controller
 	
 	public class Navigasjon
 	{
+		public static function visAlleJaktprover():void
+		{
+			Components.instance.session.hovedNavigasjon.nr = 11;
+		}
 		public static function visStorHundeliste():void
 		{
 			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.hundeListeRenderer.NavnRendererStor);

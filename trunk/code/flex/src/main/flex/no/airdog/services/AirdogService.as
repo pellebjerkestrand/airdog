@@ -42,10 +42,19 @@ package no.airdog.services
     			Components.instance.session.bruker.sattKlubbId), 
 			resultat, feil);
         }
-        
-        public function hentUtstillinger(hundId:String, resultat:Function, feil:Function=null):void
+        public function hentAlleJaktproverAar(aar:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentUtstillinger(
+        	callServiceFunction(service.hentAlleJaktproverAar(
+        		aar,
+        		Components.instance.session.bruker.epost,
+    			Components.instance.session.bruker.passord,
+    			Components.instance.session.bruker.sattKlubbId), 
+			resultat, feil);
+        }
+        
+        public function hentJaktproveSammendrag(hundId:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentJaktproveSammendrag(
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
@@ -53,9 +62,9 @@ package no.airdog.services
 			resultat, feil);
         }
         
-    	public function hentJaktproveSammendrag(hundId:String, resultat:Function, feil:Function=null):void
+        public function hentUtstillinger(hundId:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentJaktproveSammendrag(
+        	callServiceFunction(service.hentUtstillinger(
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
