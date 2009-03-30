@@ -27,7 +27,7 @@
         	private function sok():void
 			{
 				naviger(1);
-				meny.selectedChild = brukermeny;
+				meny.selectedChild = sokmeny;
 				Components.instance.controller.sokHund(sokefelt.text);
 			}
             
@@ -68,15 +68,13 @@
 		<mx:ApplicationControlBar width="100%" styleName="applicationBar">
 			<mx:Image source="@Embed(source='assets/airdoglogo28clean.png')" buttonMode="true" click="naviger(0)"/>
 			<mx:LinkButton label="AirDog" click="naviger(0)" width="66"/>
-			<mx:HBox styleName="sokBar">
-				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" minWidth="{Components.instance.session.bruker.rettigheter.administrere ? 200 : 300}"/>
-				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
-			</mx:HBox>
-			
-			<mx:LinkButton label="Bruker" icon="@Embed(source='assets/ikoner/user.png')"
-				click="{meny.selectedChild = brukermeny}"
-				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
-			<mx:LinkButton label="Admin" icon="@Embed(source='assets/ikoner/user_business.png')" 
+			<mx:LinkButton label="Søkemeny" icon="@Embed(source='assets/ikoner/magnifier.png')"
+				click="{meny.selectedChild = sokmeny}"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton label="Rapporter" icon="@Embed(source='assets/ikoner/reports.png')" 
+				click="{meny.selectedChild = rapporter}"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton label="Administering" icon="@Embed(source='assets/ikoner/crown.png')" 
 				click="{meny.selectedChild = adminmeny}"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
@@ -90,40 +88,45 @@
 		
 		<mx:ViewStack id="meny" width="100%" 
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
-			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
+			<mx:HBox id="sokmeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				
-				<mx:LinkButton id="hjem" label="Hjem" click="naviger(0)" styleName="UnderMeny"
-					icon="@Embed(source='assets/ikoner/home.png')" width="68"/>
+				<mx:HBox id="sokbar" styleName="sokBar" width="50%">
+					
+				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%"/>
+				<mx:LinkButton label="Søk" styleName="sokKnapp" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
+				</mx:HBox>
 				
 				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/dog_many.png')"
 					enabled="{Components.instance.session.hundesokListe.provider != null ? true : false}"/>
-	   			<mx:LinkButton label="Aktiv hund" styleName="UnderMeny" click="naviger(2)"
+	   			<mx:LinkButton label="Aktiv hundprofil" styleName="UnderMeny" click="naviger(2)"
 	   				icon="@Embed(source='assets/ikoner/dog.png')" 
 	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
-	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>	
-			
+	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
 				<!-- nedprioritert
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/star.png')"/>
 				-->
-				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="naviger(3)" 
-					icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
-				<mx:LinkButton label="Stamtre" styleName="UnderMeny" click="naviger(4)" 
-					icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
-				<mx:LinkButton label="Jaktresultater" styleName="UnderMeny" click="naviger(5)" 
-					icon="@Embed(source='assets/ikoner/flag.png')"/>
-				<mx:LinkButton label="Avlstall" styleName="UnderMeny" click="naviger(6)"
-					icon="@Embed(source='assets/ikoner/dog_many.png')"/>
-				<mx:LinkButton label="Ranking" styleName="UnderMeny" click="naviger(7)" 
-					icon="@Embed(source='assets/ikoner/crown.png')"/>
 				<mx:Spacer width="100%"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
 					visible="{stack.selectedChild == hundesokview ? true : false}" click="visStorHundeliste()"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true"
-					visible="{stack.selectedChild == hundesokview ? true : false}" click="visLitenHundeliste()"/>
+					visible="{stack.selectedChild == hundesokview ? true : false}" click="visLitenHundeliste()"/>			
 			</mx:HBox>
+			
+			<mx:HBox id="rapporter" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
+				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
+				<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="naviger(3)" 
+					icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
+				<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="naviger(4)" 
+					icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
+				<mx:LinkButton label="Rasens jaktresultater" styleName="UnderMeny" click="naviger(5)" 
+					icon="@Embed(source='assets/ikoner/flag.png')"/>
+				<mx:LinkButton label="Alle avlstall" styleName="UnderMeny" click="naviger(6)" />
+				<mx:LinkButton label="Rankingliste" styleName="UnderMeny" click="naviger(7)" 
+					icon="@Embed(source='assets/ikoner/crown.png')"/>
+			</mx:HBox>
+			
 			<mx:HBox id="adminmeny" 
 				enabled="{Components.instance.session.bruker.rettigheter.administrere}"
 				label="Admin" backgroundColor="#FFFFFF" borderStyle="solid" 
@@ -157,7 +160,7 @@
 		</mx:ViewStack>
 	</mx:VBox>
 	
-	<mx:Spacer height="4" width="100%"/>
+	<mx:Spacer height="5" width="100%"/>
 	
 	<mx:ViewStack id="stack" width="100%" height="100%" 
 		selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
