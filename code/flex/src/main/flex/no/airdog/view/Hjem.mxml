@@ -11,7 +11,7 @@
 	</mx:Script>
 	<mx:HBox verticalAlign="middle">
 	
-		<mx:Image source="@Embed(source='/no/airdog/view/assets/airdoglogostorst318.png')"/>
+		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogostorst318.png')"/>
 	
 		<mx:VBox>
 			<mx:HBox verticalAlign="middle">
