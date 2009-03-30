@@ -27,7 +27,7 @@
         	private function sok():void
 			{
 				naviger(1);
-				meny.selectedChild = brukermeny;
+				meny.selectedChild = sokemeny;
 				Components.instance.controller.sokHund(sokefelt.text);
 			}
             
@@ -85,13 +85,14 @@
 					<mx:Label text="{Components.instance.session.bruker.sattKlubb}" paddingTop="3"/>
 					<mx:Label text="|" />
 					<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')" />
-
-
 		</mx:ApplicationControlBar>
 		
 		<mx:HBox>
-			<mx:LinkButton label="Bruker" icon="@Embed(source='assets/ikoner/reports.png')" 
-				click="{meny.selectedChild = brukermeny}"
+			<mx:LinkButton label="Søkemeny" icon="@Embed(source='assets/ikoner/reports.png')" 
+				click="{meny.selectedChild = sokemeny}"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton label="Rapporter" icon="@Embed(source='assets/ikoner/reports.png')" 
+				click="{meny.selectedChild = rapportmeny}"
 				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
 			<mx:LinkButton label="Admin" icon="@Embed(source='assets/ikoner/crown.png')" 
 				click="{meny.selectedChild = adminmeny}"
@@ -105,7 +106,7 @@
 			<mx:ViewStack id="meny" width="100%"
 				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 				
-				<mx:HBox id="brukermeny" label="Bruker" width="100%">
+				<mx:HBox id="sokemeny" label="Søkemeny" width="100%">
 					<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="UnderMeny" 
 						icon="@Embed(source='assets/ikoner/dog_many.png')"
 						enabled="{Components.instance.session.hundesokListe.provider != null ? true : false}"/>
@@ -117,7 +118,9 @@
 					<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
 						icon="@Embed(source='assets/ikoner/star.png')"/>
 					-->
-					
+				</mx:HBox>
+				
+				<mx:HBox id="rapportmeny" label="Rapporter" width="100%">					
 					<mx:LinkButton label="Årsgjennomsnitt" styleName="UnderMeny" click="naviger(3)" 
 						icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
 					<mx:LinkButton label="Fiktivt stamtre" styleName="UnderMeny" click="naviger(4)" 
