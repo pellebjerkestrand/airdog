@@ -19,19 +19,17 @@
     </mx:Script>
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}"
-		rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
 		width="100%" height="100%" verticalAlign="middle">
 		
 		<mx:columns>
-			<mx:DataGridColumn
-				headerText="Hunder ({Components.instance.session.hundesokListe.provider.length})" 
-				dataField="navn" width="525" />
-			<mx:DataGridColumn width="60" minWidth="60" headerText="ID" dataField="hundId" />
-			<mx:DataGridColumn width="60" minWidth="60" headerText="Eier" dataField="eierId"/>
-			<mx:DataGridColumn width="150" minWidth="150" headerText="Far" dataField="farNavn" sortable="false"/>
-			<mx:DataGridColumn width="150" minWidth="150" headerText="Mor" dataField="morNavn" sortable="false"/>
-			<mx:DataGridColumn width="40" headerText="Kjønn" dataField="kjonn" sortable="false" textAlign="center"/>
+			<mx:DataGridColumn headerText="ID" dataField="hundId" />
+			<mx:DataGridColumn headerText="Navn" dataField="eierId"/>
+			<mx:DataGridColumn headerText="Far" dataField="farNavn" />
+			<mx:DataGridColumn headerText="Mor" dataField="morNavn" />
+			<mx:DataGridColumn headerText="Hofter" dataField="kjonn" />
+			<mx:DataGridColumn headerText="Jaktlyst" />
+			<mx:DataGridColumn headerText="Viltfinner" />
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>
