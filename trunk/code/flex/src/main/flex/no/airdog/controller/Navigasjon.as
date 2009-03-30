@@ -12,25 +12,6 @@ package no.airdog.controller
 		public static function naviger(barnNr:int):void
 		{
 			Components.instance.session.hovedNavigasjon.nr = barnNr;
-			
-			if(barnNr ==  6)
-			{
-				Components.instance.controller.hentAlleBrukere();
-				Components.instance.controller.hentRollersBrukere();
-			}
-			else if(barnNr == 7)
-			{
-				Components.instance.controller.hentAlleRettigheter();
-				Components.instance.controller.hentRollersRettigheter();
-			}
-			else if(barnNr == 8)
-			{
-				Components.instance.session.hovedNavigasjon.laster = true;
-			}
-			else if(barnNr == 1)
-			{
-				Components.instance.session.hovedNavigasjon.laster = false;
-			}
 		}
 		
 		public static function visStorHundeliste():void

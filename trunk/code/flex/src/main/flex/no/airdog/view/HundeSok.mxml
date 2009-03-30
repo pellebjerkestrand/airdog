@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:controller="no.airdog.controller.*" 
+	xmlns:controller="no.airdog.controller.*"
+	creationComplete="init()"
 	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 	width="100%" height="100%">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Hund;
-			import no.airdog.services.Components;      
-			import no.airdog.controller.Navigasjon;
+			import no.airdog.services.Components;
 			
-			public function visHund(kolonnenr:int):void
+			private function init():void
+			{
+				Components.instance.session.hovedNavigasjon.laster = false;
+			}
+			
+			private function visHund(kolonnenr:int):void
 			{	
 				if(hundeGrid.selectedItem != null && kolonnenr != 1)
 				{
 					var hund:Hund = hundeGrid.selectedItem as Hund;
 					Components.instance.controller.visHund(hund.hundId);
 				}
-			} 
-			
-			public function visStorHundeliste():void
-			{
-				Navigasjon.visStorHundeliste();
-			}
-			
-			public function visLitenHundeliste():void
-			{
-				Navigasjon.visLitenHundeliste();
-			}			            
+			}		            
         ]]>
     </mx:Script>
 	<mx:DataGrid id="hundeGrid"			 
