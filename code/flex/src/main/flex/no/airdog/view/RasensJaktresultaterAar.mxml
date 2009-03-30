@@ -2,26 +2,21 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
 	<mx:Script>
         <![CDATA[
-        	import no.airdog.model.Jaktprove;
-			import no.airdog.services.Components;			
-			import no.airdog.controller.*;
-			import mx.events.*;
-			import mx.collections.*;
-			import mx.controls.*;		
+			import no.airdog.services.Components;		
 			 
 			private function sokAar(val:String):void
 			{
 				Components.instance.controller.hentAlleJaktproverAar(val);				
 			}     
-						
-					            
         ]]>
     </mx:Script>
 	<mx:HBox>
-		<mx:Text text="Rasens jaktresultater for år: "/>
-		<mx:TextInput id="valgtAar" text="2002-11"/>
-		<mx:Button label="Resultater" click="sokAar(valgtAar.text)"/>
-		
+		<mx:FormItem label="År">
+			<mx:TextInput id="valgtAar" text="2002-11"/>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.text)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+		</mx:FormItem>
 	</mx:HBox>
 	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListe}"
 		height="100%" width="100%">

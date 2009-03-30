@@ -2,7 +2,6 @@
 <mx:VBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	creationComplete="init()"
 	height="100%" width="100%">
 	
 	<mx:Script>
@@ -40,12 +39,6 @@
             private var slett:Class;
 			
             private var droppesHvor:String
-			
-			private function init():void
-			{
-				Components.instance.controller.hentAlleBrukere();
-				Components.instance.controller.hentRollersBrukere();
-			}
 			
             private function settDroppesHvor(event:MouseEvent, id:String):void
             {

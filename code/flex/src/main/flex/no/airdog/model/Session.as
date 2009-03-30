@@ -2,8 +2,10 @@ package no.airdog.model
 {
 	import flash.net.registerClassAlias;
 	import flash.utils.ByteArray;
+	
 	import mx.collections.ArrayCollection;
 	import mx.core.*;
+	
 	import no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor;
 	
 	[Bindable]
@@ -20,6 +22,7 @@ package no.airdog.model
         public var datOpplastning:Opplastning = new Opplastning();
         public var fiktivtStamtre:Hund;
      	public var hovedNavigasjon:Navigasjon = new Navigasjon();
+     	public var cupListe:ArrayCollection;
      	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor));
         public var hundprofil:Hund;
         public var jaktproveListe:ArrayCollection = new ArrayCollection();

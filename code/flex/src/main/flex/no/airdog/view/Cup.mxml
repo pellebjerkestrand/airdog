@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="100%" height="100%">
+	
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.services.Components;
+			
+			private function hentListe():void
+			{
+				Components.instance.controller.hentCupListe(fra.text, til.text, antall.value);
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:HBox>
+		<mx:FormItem label="Fra">
+			<mx:DateField id="fra" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>	
+		</mx:FormItem>
+		<mx:FormItem label="Til">
+			<mx:DateField id="til" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Antall">
+			<mx:NumericStepper id="antall" minimum="1" maximum="100"/>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:LinkButton label="Hent liste" click="hentListe()" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+		</mx:FormItem>
+	</mx:HBox>
+	
+	<mx:DataGrid id="cupgrid" dataProvider="{Components.instance.session.cupListe}" height="100%">
+		<mx:columns>
+			<mx:DataGridColumn dataField="hundId" headerText="Hund"/>
+			<mx:DataGridColumn dataField="proveNr" headerText="Prøve"/>
+			<mx:DataGridColumn dataField="proveDato" headerText="Dato"/>
+			<mx:DataGridColumn dataField="premiegrad" headerText="Premie"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+</mx:VBox>
