@@ -53,8 +53,8 @@ class JaktproveDatabase
 		return $this->database->fetchAll($select); 
 	}
 	
-	public function hentAlleJaktprover($aar, $klubbId)
-	{
+	public function hentAlleJaktproverAar($aar, $klubbId)
+	{				
 		$select = $this->database->select()
 		->from('nkk_fugl') 		
 		//kan ikke bruke kun år+wildcard, blir FOR MANGE og flex får ikke svar tidsnok
@@ -90,7 +90,34 @@ class JaktproveDatabase
 		->group('hundId');; 
 	
 		return $this->database->fetchRow($select); 
-	}	
+	}
+
+	public function hentJaktproveSammendragAar($aar, $klubbId)
+	{
+		$select = $this->database->select()
+		->from('nkk_fugl', array(
+			'slippTid' => 'AVG(slippTid)',
+			'egneStand' => 'SUM(egneStand)',
+			'egneStokk' => 'SUM(egneStokk)',
+			'tomStand' => 'SUM(tomStand)',
+			'makkerStand' => 'SUM(makkerStand)',
+			'makkerStokk' => 'SUM(makkerStokk)',
+			'jaktlyst' => 'AVG(jaktlyst)',
+			'fart' => 'AVG(fart)',
+			'stil' => 'AVG(stil)',
+			'selvstendighet' => 'AVG(selvstendighet)',
+			'bredde' => 'AVG(bredde)',
+			'reviering' => 'AVG(reviering)',
+			'samarbeid' => 'AVG(samarbeid)',
+			'vf' => '(6 * SUM(egneStand) / (SUM(makkerStand) + SUM(egneStand)))',
+			'situasjoner' => 'SUM(egneStand) + SUM(makkerStand)'
+		))
+		->where('proveDato LIKE ?', $aar.'%')
+		->where('raseId=?', $klubbId)
+		->group('hundId');; 
+		
+		return $this->database->fetchRow($select); 
+	}
 	
 	public function settInnJaktprove($jaktarray, $klubbId)
 	{
