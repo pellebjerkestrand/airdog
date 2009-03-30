@@ -625,7 +625,7 @@ VSlider
     dropShadowEnabled: false;
     focusAlpha: 0;
     fontSize: 13;
-    fontWeight: bold;
+    fontWeight: normal;
     paddingLeft: 0;
 	paddingRight: 0;
 	paddingBottom: 0;
