@@ -76,7 +76,7 @@
 			<mx:LinkButton label="Bruker" icon="@Embed(source='assets/ikoner/user.png')"
 				click="{meny.selectedChild = brukermeny}"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
-			<mx:LinkButton label="Admin" icon="@Embed(source='assets/ikoner/user_business.png')" 
+			<mx:LinkButton label="Admin" icon="@Embed(source='assets/ikoner/crown.png')" 
 				click="{meny.selectedChild = adminmeny}"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
@@ -111,9 +111,10 @@
 					icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
 				<mx:LinkButton label="Rasens jaktresultater" styleName="UnderMeny" click="naviger(5)" 
 					icon="@Embed(source='assets/ikoner/flag.png')"/>
-				<mx:LinkButton label="Rankingliste" styleName="UnderMeny" click="naviger(6)" 
+				<mx:LinkButton label="Alle avlstall" styleName="UnderMeny" click="naviger(6)" />
+				<mx:LinkButton label="Rankingliste" styleName="UnderMeny" click="naviger(7)" 
 					icon="@Embed(source='assets/ikoner/crown.png')"/>
-					<mx:Spacer width="100%"/>
+				<mx:Spacer width="100%"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
 					visible="{stack.selectedChild == hundesokview ? true : false}" click="visStorHundeliste()"/>
 				<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true"
@@ -127,26 +128,26 @@
 				<mx:LinkButton 
 					visible="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
 					includeInLayout="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
-					label="Brukere" click="naviger(7)" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
-				<mx:LinkButton 
+					label="Brukere" click="naviger(8)" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/users.png')"/>
+				<mx:LinkButton
 					visible="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
 					includeInLayout="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
-					label="Roller" click="naviger(8)" styleName="UnderMeny" 
+					label="Roller" click="naviger(9)" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/cards_address.png')"/>
 		 		<mx:LinkButton 
 		 			visible="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
 		 			includeInLayout="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
-		 			label="Last opp .DAT" click="naviger(9)" styleName="UnderMeny" 
+		 			label="Last opp .DAT" click="naviger(10)" styleName="UnderMeny" 
 		 			icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 		 		<mx:LinkButton 
 		 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
 		 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
-		 			label="Legg inn jaktprøve" click="naviger(10)" styleName="UnderMeny" 
+		 			label="Legg inn jaktprøve" click="naviger(11)" styleName="UnderMeny" 
 		 			icon="@Embed(source='assets/ikoner/report__plus.png')"/>
 		 		<mx:LinkButton 
 		 			visible="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
 		 			includeInLayout="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
-		 			label="Backup" click="naviger(11)" styleName="UnderMeny" 
+		 			label="Backup" click="naviger(12)" styleName="UnderMeny" 
 		 			icon="@Embed(source='assets/ikoner/safe.png')"/>
 			</mx:HBox>
 		</mx:ViewStack>
@@ -162,11 +163,12 @@
 	    <!--  3 -->	<view:Arsgjennomsnitt id="arsgjennomsnittview"/>
 	    <!--  4 -->	<view:FiktivStamtre id="fiktivstamtreview"/>
 	    <!--  5 -->	<view:RasensJaktresultaterAar id="rasensjaktresultateraarview"/>
-	    <!--  6 --> <view:Cup id="cup"/>
-	    <!--  7 -->	<adminView:RolleBruker id="rollebrukerview"/>
-	    <!--  8 -->	<adminView:RolleRettighet id="rollerettighetview"/>
-	    <!--  9 -->	<adminView:DatOpplastning id="datopplastningview"/>
-	    <!-- 10 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
-	    <!-- 11 -->	<adminView:BackupVindu id="backupvinduview"/>
+	    <!--  6 -->	<view:AvlstallRapport id="avlstallRapport" />
+		<!--  7 --> <view:Cup id="cup"/>
+	    <!--  8 -->	<adminView:RolleBruker id="rollebrukerview"/>
+	    <!--  9 -->	<adminView:RolleRettighet id="rollerettighetview"/>
+	    <!-- 10 -->	<adminView:DatOpplastning id="datopplastningview"/>
+	    <!-- 11 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
+	    <!-- 12 -->	<adminView:BackupVindu id="backupvinduview"/>
 	</mx:ViewStack>
 </mx:VBox>
