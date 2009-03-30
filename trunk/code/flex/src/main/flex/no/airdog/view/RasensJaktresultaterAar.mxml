@@ -18,7 +18,9 @@
 			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.text)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
 		</mx:FormItem>
 	</mx:HBox>
-	<mx:DataGrid id="jaktProveSammendrag" dataProvider="{Components.instance.session.jaktproveSammendragAar}">
+	<mx:DataGrid id="jaktProveSammendrag" dataProvider="{Components.instance.session.jaktproveSammendragAar}"
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"
+		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
 			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
