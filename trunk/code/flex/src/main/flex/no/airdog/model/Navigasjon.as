@@ -4,6 +4,5 @@ package no.airdog.model
 	public class Navigasjon
 	{
 		public var nr:int;
-		public var laster:Boolean;
 	}
 }

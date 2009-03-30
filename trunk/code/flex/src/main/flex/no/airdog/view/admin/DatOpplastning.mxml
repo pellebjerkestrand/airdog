@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:view="no.airdog.view.*"
-	creationComplete="init()">
+	xmlns:view="no.airdog.view.*">
     <mx:Script>
         <![CDATA[
         	import no.airdog.model.Opplastning;
 			import no.airdog.services.Components;
-			
-			private function init():void
-			{
-				Components.instance.session.hovedNavigasjon.laster = true;
-			}
 			
 			private function velgFil():void
             {

@@ -166,9 +166,18 @@ package no.airdog.controller
 			Components.instance.historie.settPunkt();
 		}
 		
+		public function hentCupListe(fra:String, til:String, limit:int):void
+		{
+			Components.instance.services.airdogService.hentCupListe(fra, til, limit, hentCupListeResultat);
+		}
+		
+		public function hentCupListeResultat(event:Object):void
+		{
+			Components.instance.session.cupListe = new ArrayCollection(event as Array);
+		}
+		
 		public function hentAvkom(hundId:String):void
 		{
-			//Components.instance.session.avkomListe = new ArrayCollection();
 			Components.instance.services.airdogService.hentAvkom(hundId, hentAvkomResultat);
 		}
 		
