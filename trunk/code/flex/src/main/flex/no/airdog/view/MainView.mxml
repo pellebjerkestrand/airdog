@@ -92,17 +92,18 @@
 			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 			<mx:HBox id="brukermeny" label="Bruker" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 				width="100%" verticalAlign="middle" paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4">
-				<!--
+				
 				<mx:LinkButton id="hjem" label="Hjem" click="naviger(0)" styleName="UnderMeny"
 					icon="@Embed(source='assets/ikoner/home.png')" width="68"/>
-				-->
+				
 				<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/dog_many.png')"
 					enabled="{Components.instance.session.hundesokListe.provider != null ? true : false}"/>
 	   			<mx:LinkButton label="Aktiv hund" styleName="UnderMeny" click="naviger(2)"
 	   				icon="@Embed(source='assets/ikoner/dog.png')" 
 	   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
-	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
+	   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>	
+			
 				<!-- nedprioritert
 				<mx:LinkButton label="Favoritthunder" enabled="false" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/star.png')"/>

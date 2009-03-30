@@ -29,8 +29,12 @@
 			<mx:HBox verticalAlign="middle" width="100%">
 				<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
 				<mx:HBox width="100%" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
-					<mx:LinkButton label="Rediger denne hunden" styleName="UnderMeny" click="visRedigerHundVindu()" 
+					<mx:LinkButton label="Rediger hund" styleName="UnderMeny" click="visRedigerHundVindu()" 
 					icon="@Embed(source='assets/ikoner/report__pencil.png')"
+					visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
+					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
+					<mx:LinkButton label="Legg til bilde" styleName="UnderMeny" click="" enabled="false" 
+					icon="@Embed(source='assets/ikoner/camera_black.png')"
 					visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
 				</mx:HBox>
