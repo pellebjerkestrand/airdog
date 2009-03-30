@@ -8,10 +8,31 @@ package no.airdog.controller
 	
 	public class Navigasjon
 	{
-		public static function visAlleJaktprover():void
+		//Fungerte ikke med Containers. Magic numbers hentet fra ViewStack 'stack' i MainView.mxml
+		public static function naviger(barnNr:int):void
 		{
-			Components.instance.session.hovedNavigasjon.nr = 11;
+			Components.instance.session.hovedNavigasjon.nr = barnNr;
+			
+			if(barnNr ==  6)
+			{
+				Components.instance.controller.hentAlleBrukere();
+				Components.instance.controller.hentRollersBrukere();
+			}
+			else if(barnNr == 7)
+			{
+				Components.instance.controller.hentAlleRettigheter();
+				Components.instance.controller.hentRollersRettigheter();
+			}
+			else if(barnNr == 8)
+			{
+				Components.instance.session.hovedNavigasjon.laster = true;
+			}
+			else if(barnNr == 1)
+			{
+				Components.instance.session.hovedNavigasjon.laster = false;
+			}
 		}
+		
 		public static function visStorHundeliste():void
 		{
 			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor);
@@ -22,70 +43,6 @@ package no.airdog.controller
 		{
 			Components.instance.session.hundesokListe.renderer = new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererLiten);
 			Components.instance.session.hundesokListe.rendererHoyde = 20;
-		}
-		
-		public static function visLastOpp():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 0;
-			Components.instance.session.hovedNavigasjon.laster = true;
-		}
-		
-		public static function visHundeliste():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 1;
-			Components.instance.session.hovedNavigasjon.laster = false;
-		}
-		
-		public static function visHundNr(nr:int):void
-		{
-			Components.instance.session.hundprofil = Components.instance.session.hundesokListe.provider[nr];
-			Components.instance.session.hovedNavigasjon.nr = 2;
-		}
-		
-		public static function visHundprofil():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 2;
-		}
-		
-		public static function visAdminBrukere():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 3;
-		}
-		
-		public static function visAdminRoller():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 4;
-		}
-		
-		public static function visACL():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 5;
-		}
-		
-		public static function visArsgjennomsnitt():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 6;
-		}
-		
-		public static function visFiktivStamtre():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 7;
-		}
-		
-		public static function visHjem():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 8;
-		}
-		
-		public static function visAdminBackup():void
-		{
-			Components.instance.controller.hentKopier();
-			Components.instance.session.hovedNavigasjon.nr = 9;
-		}
-		
-		public static function visJaktprove():void
-		{
-			Components.instance.session.hovedNavigasjon.nr = 10;
 		}
 	}
 }
