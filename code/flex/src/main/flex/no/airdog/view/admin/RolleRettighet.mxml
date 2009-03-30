@@ -38,7 +38,9 @@
             private var droppesHvor:String
 			
 			private function init():void
-			{				
+			{
+				Components.instance.controller.hentAlleRettigheter();
+				Components.instance.controller.hentRollersRettigheter();				
 			}
 			
             private function settDroppesHvor(event:MouseEvent, id:String):void
