@@ -140,8 +140,6 @@ package no.airdog.controller
 			Components.instance.session = new Session();	
 			Components.instance.services.airdogService.loggUt(new Function());
 			Components.instance.historie.nullstill();
-			
-//			navigateToURL(new URLRequest(Application.application.url), '_self');
 		}
 		
 		public function lastOppDatFil():void
