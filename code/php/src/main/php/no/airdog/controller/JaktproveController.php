@@ -50,7 +50,7 @@ class JaktproveController
 	}
 	
 	public function hentJaktproveSammendrag($hundId, $brukerEpost, $brukerPassord, $klubbId)
-    {
+    {	
 	    if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new JaktproveDatabase();
@@ -71,9 +71,10 @@ class JaktproveController
 	    	$tmp->bredde = sprintf("%.2f", $sammendrag['bredde']);
 	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
-    		
+    		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
 	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
 			$ret[] = $tmp;
+			
 			
 	        return $ret;
 		}
@@ -81,7 +82,40 @@ class JaktproveController
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
+
+public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $klubbId)
+    {	    
+    	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+	    	$hd = new JaktproveDatabase();
+			
+			$sammendrag = $hd->hentJaktproveSammendragAar($aar, $klubbId);
+			
+			$tmp = new AmfJaktprove();	    	
+	    	$tmp->slippTid = sprintf("%u", $sammendrag['slippTid']);
+	    	$tmp->egneStand = $sammendrag['egneStand']; 	
+	    	$tmp->egneStokk = $sammendrag['egneStokk'];
+	    	$tmp->tomStand = $sammendrag['tomStand']; 	
+	    	$tmp->makkerStand = $sammendrag['makkerStand'];
+	    	$tmp->makkerStokk = $sammendrag['makkerStokk']; 	
+	    	$tmp->jaktlyst = sprintf("%.2f", $sammendrag['jaktlyst']);
+	    	$tmp->fart = sprintf("%.2f", $sammendrag['fart']); 	
+	    	$tmp->stil = sprintf("%.2f", $sammendrag['stil']);
+	    	$tmp->selvstendighet = sprintf("%.2f", $sammendrag['selvstendighet']); 	
+	    	$tmp->bredde = sprintf("%.2f", $sammendrag['bredde']);
+	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
+	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
+    		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
+	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
+			$ret[] = $tmp;
+			
+			
+	        return $ret;
+		}
 		
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+    }
  	public function hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
@@ -147,12 +181,11 @@ class JaktproveController
     }
     
 	public function hentAlleJaktproverAar($aar, $brukerEpost, $brukerPassord, $klubbId)
-    {
+    {    		
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	$hd = new JaktproveDatabase();
-	    	$resultat = $hd->hentAlleJaktprover($aar, $klubbId);
-	
+	    	$resultat = $hd->hentAlleJaktproverAar($aar, $klubbId);
     		$ret = array();
 		   	foreach($resultat as $rad) { 
 		   		$tmp = new AmfJaktprove();
@@ -198,11 +231,11 @@ class JaktproveController
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->kritikk = $rad['kritikk'];
 		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
-		    	
-				$ret[] = $tmp;				
-			}
+		    				
+   				$ret[] = $tmp;   							
+			}	        
 			
-	        return $ret;
+			return $ret;
 		}
 		
 		$feilkode = 1;	

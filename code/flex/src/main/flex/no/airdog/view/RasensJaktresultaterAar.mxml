@@ -6,22 +6,43 @@
 			 
 			private function sokAar(val:String):void
 			{
-				Components.instance.controller.hentAlleJaktproverAar(val);				
+				Components.instance.controller.hentAlleJaktproverAar(val);								
 			}     
         ]]>
     </mx:Script>
 	<mx:HBox>
 		<mx:FormItem label="År">
-			<mx:TextInput id="valgtAar" text="2002-11"/>
+			<mx:TextInput id="valgtAar" text="2002"/>
 		</mx:FormItem>
 		<mx:FormItem>
 			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.text)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
 		</mx:FormItem>
 	</mx:HBox>
+	<mx:DataGrid id="jaktProveSammendrag" dataProvider="{Components.instance.session.jaktproveSammendragAar}">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad"/>
+			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
+			<mx:DataGridColumn headerText="ES" width="50" minWidth="50" textAlign="right" dataField="egneStand" resizable="false"/>
+			<mx:DataGridColumn headerText="MS" width="50" minWidth="50" textAlign="right" dataField="makkerStand" resizable="false"/>
+			<mx:DataGridColumn headerText="ESø" width="50" minWidth="50" textAlign="right" dataField="egneStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="MSø" width="50" minWidth="50" textAlign="right" dataField="makkerStokk" resizable="false"/>
+			<mx:DataGridColumn headerText="TS" width="50" minWidth="50" textAlign="right" dataField="tomStand" resizable="false"/>
+			<mx:DataGridColumn headerText="JL" width="50" minWidth="50" textAlign="right" dataField="jaktlyst" resizable="false"/>
+			<mx:DataGridColumn headerText="Fa" width="50" minWidth="50" textAlign="right" dataField="fart" resizable="false"/>
+			<mx:DataGridColumn headerText="St" width="50" minWidth="50" textAlign="right" dataField="stil" resizable="false"/>
+			<mx:DataGridColumn headerText="Ss" width="50" minWidth="50" textAlign="right" dataField="selvstendighet" resizable="false"/>
+			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
+			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
+			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
+			<!--<mx:DataGridColumn headerText="Vf" width="50" minWidth="50" textAlign="right" datafield="vf" resizable="false"/>-->				
+		</mx:columns>
+	</mx:DataGrid>
 	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListe}"
 		height="100%" width="100%">
 		<mx:columns>
+			
 			<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
+			<mx:DataGridColumn headerText="Fart" dataField="fart"/>
 			<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
 			<mx:DataGridColumn headerText="Hund ID" dataField="hundId"/>	
 		</mx:columns>		
