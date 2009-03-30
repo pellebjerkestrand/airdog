@@ -67,7 +67,7 @@
 	<mx:VBox id="topbar" styleName="TopBar" width="100%" 
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0" verticalAlign="middle">
 		<mx:ApplicationControlBar width="100%" styleName="applicationBar">
-			<mx:Image source="@Embed(source='assets/airdoglogo28clean.png')" buttonMode="true" click="naviger(0)"/>
+			<mx:Image source="@Embed(source='assets/logo/airdoglogo28clean.png')" buttonMode="true" click="naviger(0)"/>
 			<mx:LinkButton label="AirDog" click="naviger(0)" width="66"/>
 			
 			<mx:HBox id="sokbar" styleName="sokBar" width="100%">
