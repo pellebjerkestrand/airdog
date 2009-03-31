@@ -693,9 +693,8 @@ TabNavigator
 */
 ToolTip
 {
-
-	borderSkin: Embed(source="skin/stil.swf", symbol="ToolTip_borderSkin");
-	color: #ffffff;
+	backgroundColor: #ffffcc;
+	color: #333;
 	fontSize: 11px;
 }
 
@@ -725,7 +724,7 @@ Tree
 .notis
 {
 	backgroundColor: #ffffcc;
-	borderColor: #aaaa99;
+	borderColor: #bbbbaa;
 	borderStyle: solid;
 	cornerRadius: 5;
 	paddingBottom: 10;
