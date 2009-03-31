@@ -73,14 +73,23 @@
 				else if(knapp == resultatLink)
 				{
 					meny.selectedChild = sokemeny;
+					resultatLink.styleName = "mainButtonLink";
+					rapporterLink.styleName = "";
+					adminLink.styleName = "";
 				}
 				else if(knapp == rapporterLink)
 				{
 					meny.selectedChild = rapportmeny;
+					resultatLink.styleName = "";
+					rapporterLink.styleName = "mainButtonLink";
+					adminLink.styleName = "";
 				}
 				else if(knapp == adminLink)
 				{
 					meny.selectedChild = adminmeny;
+					resultatLink.styleName = "";
+					rapporterLink.styleName = "";
+					adminLink.styleName = "mainButtonLink";
 				}		
 			}		
 			
