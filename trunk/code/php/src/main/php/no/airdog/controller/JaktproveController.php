@@ -106,7 +106,7 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
 	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
-	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
+	    	//$tmp->premiegradTekst = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
 			$ret[] = $tmp;
 			
 			

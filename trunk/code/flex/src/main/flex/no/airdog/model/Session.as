@@ -27,6 +27,7 @@ package no.airdog.model
      	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor));
         public var hundprofil:Hund;
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
+        public var jaktproveListeAar:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendrag:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendragAar:ArrayCollection = new ArrayCollection();
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();

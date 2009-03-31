@@ -207,7 +207,7 @@ package no.airdog.controller
 		}
 		public function hentAlleJaktproverAarResultat(event:Object):void
 		{
-			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+			Components.instance.session.jaktproveListeAar = new ArrayCollection(event as Array);
 		}
 				
 		public function hentJaktproveSammendragResultat(event:Object):void
