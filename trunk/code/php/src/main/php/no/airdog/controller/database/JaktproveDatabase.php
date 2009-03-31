@@ -195,7 +195,7 @@ class JaktproveDatabase
 		
 		$hvor = $this->database->quoteInto('proveNr = ?', $verdier["proveNr"]).
 		$this->database->quoteInto('AND proveDato = ?', $verdier["proveDato"]).
-		$this->database->quoteInto('AND raseId = ?', $verdier["raseId"]).
+		$this->database->quoteInto('AND raseId = ?', $klubbId).
 		$this->database->quoteInto('AND hundId = ?', $verdier["hundId"]);
 		
 		return $this->database->update('nkk_fugl', $verdier, $hvor);

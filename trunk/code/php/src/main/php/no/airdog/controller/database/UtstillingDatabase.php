@@ -99,7 +99,9 @@ class UtstillingDatabase
 		$verdier['manueltEndretAv'] = "";
 		$verdier['manueltEndretDato'] = "";
 
-		$hvor = $this->database->quoteInto('utstillingId = ?', $verdier['utstillingId']);			
+		$hvor = $this->database->quoteInto('utstillingId = ?', $verdier['utstillingId']).
+			$this->database->quoteInto('AND raseId = ?', $klubbId);
+						
 		return $this->database->update('nkk_utstilling', $verdier, $hvor);
 	}
 

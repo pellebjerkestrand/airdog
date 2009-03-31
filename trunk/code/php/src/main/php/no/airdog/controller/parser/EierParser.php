@@ -59,5 +59,14 @@ class EierParser
 		
 		return false;
 	}
+	
+	public static function getEierDatabaseSomDat($personArray)
+	{
+		$dat = "$personArray[eier]|" .
+	 		"$personArray[hundId]|" .
+	 		"$personArray[raseId]";
+			 			
+			return $dat;
+	}
 }
 ?>

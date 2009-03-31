@@ -69,5 +69,23 @@ class VeterinerParser
 		
 		return false;
 	}
+	
+	public static function getVeterinerDatabaseSomDat($veterinerArray)
+	{
+		$dat = "$veterinerArray[veterinerId]|" .
+			"$veterinerArray[personId]|" .
+			"$veterinerArray[adresse1]|" .
+			"$veterinerArray[adresse2]|" .
+			"$veterinerArray[adresse3]|" .
+			"$veterinerArray[postNr]|" .
+			"$veterinerArray[telefon]|" .
+			"$veterinerArray[telefax]|" .
+			"$veterinerArray[klinikkNavn]|" .
+			Verktoy::konverterDatabaseTilDatDato($veterinerArray['regDato'])."|" .
+			"$veterinerArray[regAv]|" .
+			"$veterinerArray[endretAv]";
+			 			
+			return $dat;
+	}
 }
 ?>
