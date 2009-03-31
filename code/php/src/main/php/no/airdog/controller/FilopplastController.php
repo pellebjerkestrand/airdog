@@ -74,3 +74,16 @@ else
 {
 	echo "Denne filen skal du ikke gå direkte til";
 }
+
+function hoppBakover($antall)
+{	
+	$mapper = split("/", dirname(__FILE__));
+	$sti = "";
+	
+	for ($i = 0; $i < count($mapper) - $antall; $i++)
+	{
+		$sti = $mapper[$i];
+	}
+	
+	return $sti;
+}
