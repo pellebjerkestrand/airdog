@@ -171,7 +171,10 @@
 		
 		<mx:Panel id="gridPanel" title="Alle brukere" width="100%" height="{this.height}">
 			<mx:HBox width="100%">
-				<mx:Label text="Dra og slipp brukere over i roller. Fjern brukere fra roller ved å dra dem tilbake."/>				
+			<mx:HBox width="100%" styleName="notis" paddingBottom="2" paddingLeft="2" paddingRight="2" paddingTop="2" verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+				<mx:Label text="Dra og slipp brukere på roller. Dra tilbake for å fjerne."/>
+			</mx:HBox>				
 				<mx:Spacer width="100%"/>
 				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='../assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
 			</mx:HBox>
