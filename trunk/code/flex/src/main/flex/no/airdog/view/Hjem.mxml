@@ -13,7 +13,7 @@
 	
 		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogostorst318.png')"/>
 	
-		<mx:VBox>
+		<mx:VBox styleName="notis">
 			<mx:HBox verticalAlign="middle">
 				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"/>
 				<mx:Label text="Her kan du" fontWeight="bold"/>

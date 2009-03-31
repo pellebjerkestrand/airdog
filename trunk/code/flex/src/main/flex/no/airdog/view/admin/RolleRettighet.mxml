@@ -118,22 +118,16 @@
     <mx:HBox width="100%" horizontalAlign="center">
     	<mx:VBox width="100%" height="100%">
     		<mx:Panel title="Ny rolle" width="100%">
-	    		<mx:Form paddingBottom="0" paddingLeft="5" paddingRight="0" paddingTop="0" width="100%">
-	    			<mx:HBox width="100%">
-	    				<mx:FormItem label="Rollenavn">
-		    				<mx:TextInput id="nyRolleTekst"/>
-		    			</mx:FormItem>
-		    			<mx:FormItem label="Beskrivelse" width="100%">
-		    				<mx:TextInput id="nyRolleBeskrivelse" width="100%" />
-		    			</mx:FormItem>
-	    			</mx:HBox>
-	    			<mx:FormItem width="100%">
-	    				<mx:HBox width="100%">
-	    					<mx:Spacer width="100%"/>
-	    					<mx:LinkButton id="nyRolle" label="Legg til rolle" click="leggInnNyRolle()" icon="@Embed(source='../assets/ikoner/plus_circle.png')"/>
-	    				</mx:HBox>
+    			<mx:HBox width="100%" paddingBottom="0" paddingLeft="4" paddingRight="0" paddingTop="0" verticalAlign="middle">
+    				<mx:FormItem label="Navn">
+	    				<mx:TextInput id="nyRolleTekst" width="100"/>
 	    			</mx:FormItem>
-	    		</mx:Form>
+	    			<mx:FormItem label="Beskrivelse" width="100%">
+	    				<mx:TextInput id="nyRolleBeskrivelse" width="100%" />
+	    			</mx:FormItem>
+    				<mx:Spacer width="100%"/>
+    				<mx:LinkButton id="nyRolle" label="Legg til" click="leggInnNyRolle()" icon="@Embed(source='../assets/ikoner/plus_circle.png')"/>
+    			</mx:HBox>
     		</mx:Panel>
 
     		<mx:Box width="100%" height="{this.height-106}">
@@ -164,8 +158,9 @@
 		</mx:VBox>
 
 		<mx:Panel title="Alle rettigheter" width="100%" height="{this.height}">
-			<mx:HBox width="100%">
-					<mx:Label text="Dra og slipp rettigheter over til roller. Fjern rettigheter fra roller ved å dra dem tilbake."/>						
+			<mx:HBox styleName="notis" paddingBottom="2" paddingLeft="2" paddingRight="2" paddingTop="2" verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+				<mx:Label text="Dra og slipp rettigheter på roller. Dra tilbake for å fjerne."/>						
 			</mx:HBox>
 			<mx:DataGrid id="alleRettigheter"
 				dataProvider="{Components.instance.session.alleRettigheter}"
@@ -174,7 +169,7 @@
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"
               	dragDrop="slettRettighetPaRolle(event);"
-              	width="100%" height="{this.height}">
+              	width="100%" height="100%">
 				<mx:columns>
 					<mx:DataGridColumn headerText="Rettighet" dataField="navn" width="250"/>
 					<mx:DataGridColumn headerText="Beskrivelse" dataField="beskrivelse"/>
