@@ -12,11 +12,11 @@ class PremieDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	public function redigerPremie($premie, $klubbId)
-	{
-		$hvor = $this->database->quoteInto('proveNr = ?', $premie['proveNr']);			
-		return $this->database->update('nkk_premie', $premie, $hvor);
-	}
+//	public function redigerPremie($premie, $klubbId)
+//	{
+//		$hvor = $this->database->quoteInto('proveNr = ?', $premie['proveNr']);			
+//		return $this->database->update('nkk_premie', $premie, $hvor);
+//	}
 	
 	public function leggInnPremie($premie, $klubbId)
 	{
@@ -57,16 +57,22 @@ class PremieDatabase
 		{ 
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($premiearray).", forventet 30."; 
 		}
+		
+		if (DatReferanseDatabase::hentReferanse(PremieParser::getPremieDatabaseSomDat($premiearray), $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}
 
 		$dbPremie = $this->_hentPremie($premiearray["utstillingId"], $premiearray["hundId"], $premiearray["raseId"]);
 		
 		if ($dbPremie == null)
 		{
 			$this->database->insert('nkk_premie', $premiearray);
+			return "Lagt til";
 		}
 		else if ($dbPremie["manueltEndretAv"] != "")
 		{
-			return "Manuelt endret, vil du overskrive???";
+			return "Manuelt endret, vil du overskrive?";
 		}
 		else
 		{
@@ -77,8 +83,6 @@ class PremieDatabase
 
 			return "Oppdatert";
 		}
-		
-		return true;
 	}
 	
 	private function _hentPremie($utstillingId, $hundId, $klubbId)
@@ -91,6 +95,22 @@ class PremieDatabase
 			->limit(1);
 	
 			return $this->database->fetchRow($select); 
+	}
+	
+	public function overskrivPremie($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(PremieParser::getPremieDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(PremieParser::getPremieDatabaseSomDat($verdier), $this->database);
+		}
+		
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+
+		$hvor = $this->database->quoteInto('utstillingId = ?', $verdier['utstillingId']).
+			$this->database->quoteInto('AND hundId = ?', $verdier['hundId']).
+			$this->database->quoteInto('AND raseId = ?', $verdier['raseId']);			
+		return $this->database->update('nkk_premie', $verdier, $hvor);
 	}
 
 }

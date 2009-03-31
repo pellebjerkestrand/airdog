@@ -50,6 +50,11 @@ class UtstillingDatabase
 		}
 		
 		$utstillingarray["raseId"] = $klubbId;
+		
+		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getUtstillingDatabaseSomDat($utstillingarray), $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}
 
 		$dbUtstilling = $this->_hentUtstilling($utstillingarray["utstillingId"], $utstillingarray["raseId"]);
 		
@@ -59,7 +64,7 @@ class UtstillingDatabase
 		}
 		else if ($dbUtstilling["manueltEndretAv"] != "")
 		{
-			return "Manuelt endret, vil du overskrive???";
+			return "Manuelt endret, vil du overskrive?";
 		}
 		else
 		{
@@ -82,6 +87,20 @@ class UtstillingDatabase
 			->limit(1);
 	
 			return $this->database->fetchRow($select); 
+	}
+	
+	public function overskrivUtstilling($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getUtstillingDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(UtstillingParser::getUtstillingDatabaseSomDat($verdier), $this->database);
+		}
+		
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+
+		$hvor = $this->database->quoteInto('utstillingId = ?', $verdier['utstillingId']);			
+		return $this->database->update('nkk_utstilling', $verdier, $hvor);
 	}
 
 }

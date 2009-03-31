@@ -100,7 +100,7 @@ class FuglParser
 		return false;
 	}
 	
-	public function getFuglDatabaseSomDat($fuglArray)
+	public static function getFuglDatabaseSomDat($fuglArray)
 	{
 		$dat = "$fuglArray[proveNr]|" .
 	 		Verktoy::konverterDatabaseTilDatDato($fuglArray['proveDato'])."|" .

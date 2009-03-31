@@ -140,6 +140,11 @@ class JaktproveDatabase
 		{ 
 			return "hundId-verdien mangler."; 
 		}
+		
+		if (DatReferanseDatabase::hentReferanse(FuglParser::getFuglDatabaseSomDat($jaktarray), $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}
 
 		$dbJaktprove = $this->_hentJaktprove($jaktarray["proveNr"], $jaktarray["proveDato"], $jaktarray["hundId"], $jaktarray["raseId"]);
 		
@@ -176,6 +181,24 @@ class JaktproveDatabase
 			->limit(1);
 	
 			return $this->database->fetchRow($select); 
+	}
+	
+	public function overskrivJaktprove($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(FuglParser::getFuglDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(UtstillingParser::getFuglDatabaseSomDat($verdier), $this->database);
+		}
+		
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+		
+		$hvor = $this->database->quoteInto('proveNr = ?', $verdier["proveNr"]).
+		$this->database->quoteInto('AND proveDato = ?', $verdier["proveDato"]).
+		$this->database->quoteInto('AND raseId = ?', $verdier["raseId"]).
+		$this->database->quoteInto('AND hundId = ?', $verdier["hundId"]);
+		
+		return $this->database->update('nkk_fugl', $verdier, $hvor);
 	}
 	
 	private function lagJaktproveArray(AmfJaktprove $jaktprove)

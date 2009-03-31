@@ -54,10 +54,10 @@ class HundDatabase
 			return "hundId-verdien mangler."; 
 		}
 		
-		/*if (DatReferanseDatabase::hentReferanse($hundArray, $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(HundParser::getHundDatabaseSomDat($hundArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
-		}*/
+		}
 		
 		$dbHund = $this->hentHund($hundArray["hundId"], $hundArray["raseId"]);
 		
@@ -190,5 +190,20 @@ class HundDatabase
 		$hvor = $this->database->quoteInto('hundId = ?', $hund['hundId']);
 		
 		return $this->database->update('nkk_hund', $hund, $hvor);
+	}
+	
+	public function overskrivHund($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(HundParser::getHundDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(HundParser::getHundDatabaseSomDat($verdier), $this->database);
+		}
+		
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+		
+		$hvor = $this->database->quoteInto('hundId = ?', $verdier['hundId']);
+		
+		return $this->database->update('nkk_hund', $verdier, $hvor);
 	}
 }

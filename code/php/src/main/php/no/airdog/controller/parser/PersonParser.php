@@ -72,7 +72,7 @@ class PersonParser
 		return false;
 	}
 	
-	public function getPersonDatabaseSomDat($personArray)
+	public static function getPersonDatabaseSomDat($personArray)
 	{
 		$dat = "$personArray[personId]|" .
 	 		"$personArray[navn]|" .
