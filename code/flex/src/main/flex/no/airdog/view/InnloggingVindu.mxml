@@ -11,6 +11,7 @@
 		import no.airdog.model.Bruker;
 		import no.airdog.services.Components;
 		import mx.events.CloseEvent;
+		import mx.managers.FocusManager;
 		
 		private function avbryt():void
 		{

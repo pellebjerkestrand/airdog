@@ -13,12 +13,12 @@ package no.airdog.controller
 		{
 			Components.instance.session.hovedNavigasjon.nr = barnNr;
 			
-			if(barnNr == 7)
+			if(barnNr == 8)
 			{
 				Components.instance.controller.hentAlleBrukere();
 				Components.instance.controller.hentRollersBrukere();
 			}
-			else if(barnNr == 8)
+			else if(barnNr == 9)
 			{
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
