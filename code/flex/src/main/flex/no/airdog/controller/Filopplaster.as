@@ -23,11 +23,11 @@ package no.airdog.controller
 		private var uploadtekst:TextArea; 
 		private var opplastning:Opplastning;
 		
-		public function Filopplaster(urlAdresse:String)
+		public function Filopplaster(urlAdresse:String, laster:Opplastning)
 		{
 			adresse = urlAdresse;
 			
-			opplastning = Components.instance.session.datOpplastning;
+			opplastning = laster;
 			opplastning.ferdig = false;
 			opplastning.startet = false;
 			opplastning.resultat = "";
@@ -41,9 +41,18 @@ package no.airdog.controller
 		
 		private function settFilrestriksjoner():void
         {
-        	//bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
-        	tekstTyper = new FileFilter("Tekstfiler (*.dat)", "*.dat");
-        	alleTyper = new Array(tekstTyper); 
+
+        	if (opplastning.type == "dat")
+        	{
+        		tekstTyper = new FileFilter("Tekstfiler (*.dat)", "*.dat");
+        		alleTyper = new Array(tekstTyper); 
+        	}
+        	else if (opplastning.type == "bilde")
+        	{
+        		bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
+        		alleTyper = new Array(bildeTyper); 
+        	}
+        	
         	maksfilStorrelse = 50 * 1024;
         }
                

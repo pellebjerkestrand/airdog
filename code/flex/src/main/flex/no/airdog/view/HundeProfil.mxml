@@ -16,6 +16,13 @@
 			{	
 				Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
 			}
+			
+			private function velgFil():void
+			{
+				Components.instance.session.bildeOpplastning.progressBar = pBar;
+				Components.instance.session.bildeOpplastning.type = "bilde";
+            	Components.instance.controller.lastOpp(Components.instance.session.bildeOpplastning);
+			}
 		]]>
     </mx:Script>
 	
@@ -33,10 +40,12 @@
 					icon="@Embed(source='assets/ikoner/report__pencil.png')"
 					visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
-					<mx:LinkButton label="Legg til bilde" styleName="UnderMeny" click="" enabled="false" 
+					<mx:LinkButton label="Legg til bilde" styleName="UnderMeny" click="velgFil()"
 					icon="@Embed(source='assets/ikoner/camera_black.png')"
 					visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
+					<mx:ProgressBar id="pBar" mode="manual" width="80%" label="" labelPlacement="center" trackHeight="10" visible="{Components.instance.session.datOpplastning.startet}" />
+					
 				</mx:HBox>
 			</mx:HBox>
 			

@@ -20,6 +20,7 @@ package no.airdog.model
         public var backupFiler:ArrayCollection;
         public var bruker:Bruker = new Bruker();
         public var datOpplastning:Opplastning = new Opplastning();
+        public var bildeOpplastning:Opplastning = new Opplastning();
         public var fiktivtStamtre:Hund;
      	public var hovedNavigasjon:Navigasjon = new Navigasjon();
      	public var cupListe:ArrayCollection;

@@ -13,5 +13,6 @@ package no.airdog.model
 		public var ferdig:Boolean;
 		public var startet:Boolean;
 		public var venterSQL:Boolean;
+		public var type:String;
 	}
 }
