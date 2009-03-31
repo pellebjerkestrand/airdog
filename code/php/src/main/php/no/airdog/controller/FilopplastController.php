@@ -28,8 +28,8 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	$info = pathinfo($fil_navn);
 	$fil_ext = $info['extension'];;
 	
-	$dat_fil_stien = $dat_upload_dir . $_FILES['Filedata']['name']; 
-	$bilde_fil_stien = $bilde_upload_dir . $_GET["klubbId"] . "/" . $_FILES['Filedata']['name'];
+	$dat_fil_stien = $dat_upload_dir . $fil_navn;
+	$bilde_fil_stien = $bilde_upload_dir . $_GET["klubbId"] . "/" . $fil_navn;
 
 	$fil_navn = str_replace("\\","",$fil_navn);
 	$fil_navn = str_replace("'","",$fil_navn);
