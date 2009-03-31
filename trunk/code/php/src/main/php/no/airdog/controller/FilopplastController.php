@@ -32,11 +32,20 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	
 	$dat_fil_stien = $dat_upload_dir . $fil_navn;
 	
-	if ($fil_storrelse <= $MAKSSTORRELSE && move_uploaded_file($temp_navn, $dat_fil_stien) && $fil_ext == "dat")
+	if ($fil_storrelse <= $MAKSSTORRELSE && $fil_ext == "dat")
 	{
-	    $ip = new importParserController();
-	    echo $ip->lagreDb($dat_fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
-	    unlink($dat_fil_stien);
+		if(move_uploaded_file($temp_navn, $dat_fil_stien))
+		{
+			$ip = new importParserController();
+	    	echo $ip->lagreDb($dat_fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
+	    	unlink($dat_fil_stien);
+		}
+		else
+		{
+			// Bør byttes ut med bedre informasjon.
+			echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
+		}
+
 	}
 	else if ($fil_storrelse <= $MAKSSTORRELSE)
 	{
@@ -59,8 +68,15 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 		if (file_exists($bilde_fil_stien))
 			unlink ($bilde_fil_stien);
 			
-		move_uploaded_file($temp_navn, $bilde_fil_stien);	
-		
+		if(move_uploaded_file($temp_navn, $bilde_fil_stien))
+		{
+			
+		}
+		else
+		{
+			// Bør byttes ut med bedre informasjon.
+			echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
+		}
 	}
 	else
 	{
@@ -81,7 +97,7 @@ function hoppBakover($antall)
 	$mapper = split("/", $mapper);
 	$sti = "";
 	
-	for ($i = 0; $i < sizeof($mapper) - $antall; $i++)
+	for ($i = 1; $i < sizeof($mapper) - $antall; $i++)
 	{
 		$sti .= "/" . $mapper[$i];
 	}
