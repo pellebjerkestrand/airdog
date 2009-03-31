@@ -7,6 +7,11 @@ require_once "database/UtstillingDatabase.php";
 require_once "database/PremieDatabase.php";
 require_once "database/JaktproveDatabase.php";
 require_once "database/PersonDatabase.php";
+require_once "database/EierDatabase.php";
+require_once "database/HdsykdomDatabase.php";
+require_once "database/AasykdomDatabase.php";
+require_once "database/OyesykdomDatabase.php";
+require_once "database/VeterinerDatabase.php";
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -52,7 +57,14 @@ class importParserController
 			switch($filtype)
 			{
 				case "Eier":
-					return "Ikke implementert ennå.";
+					$ep = new EierParser();
+					$hd = new EierDatabase();
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$svar = $hd->settInnEier($ep->getEierArray($listeArray[$i]), $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
+			    	}
+			    	break;
 					
 				case "Fugl":
 					$ep = new FuglParser();
@@ -65,7 +77,14 @@ class importParserController
 			    	break;
 			    	
 				case "Hdsykdom":
-					return "Ikke implementert ennå.";
+					$ep = new HdsykdomParser();
+					$hd = new HdsykdomDatabase();
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$svar = $hd->settInnHdsykdom($ep->getHdsykdomArray($listeArray[$i]), $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
+			    	}
+			    	break;
 					
 				case "Hund":
 					$ep = new HundParser();
@@ -114,13 +133,34 @@ class importParserController
 					break;
 					
 				case "Veteriner":
-					return "Ikke implementert ennå.";
+					$ep = new VeterinerParser();
+					$hd = new VeterinerDatabase();
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$svar = $hd->settInnVeteriner($ep->getVeterinerArray($listeArray[$i]), $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
+			    	}
+			    	break;
 					
 				case "Aasykdom":
-					return "Ikke implementert ennå.";
+					$ep = new AasykdomParser();
+					$hd = new AasykdomDatabase();
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$svar = $hd->settInnAasykdom($ep->getAasykdomArray($listeArray[$i]), $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
+			    	}
+			    	break;
 					
 				case "Oyesykdom":
-					return "Ikke implementert ennå.";
+					$ep = new OyesykdomParser();
+					$hd = new OyesykdomDatabase();
+					for ($i = 1; $i < $size; $i++)
+			    	{
+			    		$svar = $hd->settInnOyesykdom($ep->getOyesykdomArray($listeArray[$i]), $klubbId);
+			    		$this->velgHandling($svar, $listeArray[$i]);
+			    	}
+			    	break;
 					
 				default:
 					return "Dette er en ukjent .dat fil";

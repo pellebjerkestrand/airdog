@@ -61,7 +61,8 @@ class PersonDatabase
 		}
 		else
 		{
-			$hvor = $this->database->quoteInto('personId = ?', $personArray["personId"]) . $this->database->quoteInto('AND raseId = ?', $personArray["raseId"]);
+			$hvor = $this->database->quoteInto('personId = ?', $personArray["personId"]) . 
+				$this->database->quoteInto('AND raseId = ?', $personArray["raseId"]);
 			$this->database->update('nkk_person', $personArray, $hvor);
 			return "Oppdatert";
 		}
@@ -77,7 +78,8 @@ class PersonDatabase
 		$verdier['manueltEndretAv'] = "";
 		$verdier['manueltEndretDato'] = "";
 		
-		$hvor = $this->database->quoteInto('personId = ?', $verdier['personId']);
+		$hvor = $this->database->quoteInto('personId = ?', $verdier['personId']).
+			$this->database->quoteInto('AND raseId = ?', $klubbId);
 		
 		return $this->database->update('nkk_person', $verdier, $hvor);
 	}

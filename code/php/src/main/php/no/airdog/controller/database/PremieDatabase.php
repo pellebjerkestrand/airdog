@@ -109,7 +109,7 @@ class PremieDatabase
 
 		$hvor = $this->database->quoteInto('utstillingId = ?', $verdier['utstillingId']).
 			$this->database->quoteInto('AND hundId = ?', $verdier['hundId']).
-			$this->database->quoteInto('AND raseId = ?', $verdier['raseId']);			
+			$this->database->quoteInto('AND raseId = ?', $klubbId);			
 		return $this->database->update('nkk_premie', $verdier, $hvor);
 	}
 

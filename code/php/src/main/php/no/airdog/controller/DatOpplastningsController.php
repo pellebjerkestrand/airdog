@@ -6,6 +6,11 @@ require_once "database/UtstillingDatabase.php";
 require_once "database/PremieDatabase.php";
 require_once "database/JaktproveDatabase.php";
 require_once "database/PersonDatabase.php";
+require_once "database/EierDatabase.php";
+require_once "database/HdsykdomDatabase.php";
+require_once "database/AasykdomDatabase.php";
+require_once "database/OyesykdomDatabase.php";
+require_once "database/VeterinerDatabase.php";
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -29,7 +34,21 @@ class DatOpplastningsController
 			switch($objektType)
 			{
 				case "Eier":
-					return;
+					$ep = new EierParser();
+					$hd = new EierDatabase();
+					for ($i = 0; $i < $size; $i++)
+			    	{
+			    		if ($objekter[$i][1] == "true")
+			    		{
+				    		$verdier = $ep->getEierArray($objekter[$i][0]);
+				    		$svar = $hd->overskrivEier($verdier, $klubbId);
+			    		}
+			    		else if ($objekter[$i][1]== "false")
+			    		{
+		    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+			    		}
+			    	}
+					return $size;
 					
 				case "Fugl":
 					$ep = new FuglParser();
@@ -49,7 +68,21 @@ class DatOpplastningsController
 					return $size;
 			    	
 				case "Hdsykdom":
-					return;
+					$ep = new HdsykdomParser();
+					$hd = new HdsykdomDatabase();
+					for ($i = 0; $i < $size; $i++)
+			    	{
+			    		if ($objekter[$i][1] == "true")
+			    		{
+				    		$verdier = $ep->getHdsykdomArray($objekter[$i][0]);
+				    		$svar = $hd->overskrivHdsykdom($verdier, $klubbId);
+			    		}
+			    		else if ($objekter[$i][1]== "false")
+			    		{
+		    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+			    		}
+			    	}
+					return $size;
 					
 				case "Hund":
 					$ep = new HundParser();
@@ -126,13 +159,55 @@ class DatOpplastningsController
 					return $size;
 					
 				case "Veteriner":
-					return;
+					$ep = new VeterinerParser();
+					$hd = new VeterinerDatabase();
+					for ($i = 0; $i < $size; $i++)
+			    	{
+			    		if ($objekter[$i][1] == "true")
+			    		{
+				    		$verdier = $ep->getVeterinerArray($objekter[$i][0]);
+				    		$svar = $hd->overskrivVeteriner($verdier, $klubbId);
+			    		}
+			    		else if ($objekter[$i][1]== "false")
+			    		{
+		    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+			    		}
+			    	}
+					return $size;
 					
 				case "Aasykdom":
-					return;
+					$ep = new AasykdomParser();
+					$hd = new AasykdomDatabase();
+					for ($i = 0; $i < $size; $i++)
+			    	{
+			    		if ($objekter[$i][1] == "true")
+			    		{
+				    		$verdier = $ep->getAasykdomArray($objekter[$i][0]);
+				    		$svar = $hd->overskrivAasykdom($verdier, $klubbId);
+			    		}
+			    		else if ($objekter[$i][1]== "false")
+			    		{
+		    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+			    		}
+			    	}
+					return $size;
 					
 				case "Oyesykdom":
-					return;
+					$ep = new OyesykdomParser();
+					$hd = new OyesykdomDatabase();
+					for ($i = 0; $i < $size; $i++)
+			    	{
+			    		if ($objekter[$i][1] == "true")
+			    		{
+				    		$verdier = $ep->getOyesykdomArray($objekter[$i][0]);
+				    		$svar = $hd->overskrivOyesykdom($verdier, $klubbId);
+			    		}
+			    		else if ($objekter[$i][1]== "false")
+			    		{
+		    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+			    		}
+			    	}
+					return $size;
 					
 				default:
 					return "Dette er en ukjent .dat fil";

@@ -85,5 +85,38 @@ class OyesykdomParser
 		
 		return false;
 	}
+	
+	public static function getOyesykdomDatabaseSomDat($oyesykdomArray)
+	{
+		$dat = "$oyesykdomArray[oyId]|" .
+			"$oyesykdomArray[hundId]|" .
+			"$oyesykdomArray[veterinerId]|" .
+			"$oyesykdomArray[oyeVeteriner]|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['lystDato'])."|" .
+			"$oyesykdomArray[idmerketKode]|" .
+			"$oyesykdomArray[idmerket]|" .
+			"$oyesykdomArray[idfeil]|" .
+			"$oyesykdomArray[raseId]|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['sendtEierDato'])."|" .
+			"$oyesykdomArray[longAnnet]|" .
+			"$oyesykdomArray[diagnoseKode1]|" .
+			"$oyesykdomArray[diagnoseGrad1]|" .
+			"$oyesykdomArray[diagnoseKode2]|" .
+			"$oyesykdomArray[diagnoseGrad2]|" .
+			"$oyesykdomArray[diagnoseKode3]|" .
+			"$oyesykdomArray[diagnoseGrad3]|" .
+			"$oyesykdomArray[regAv]|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['regDato'])."|" .
+			"$oyesykdomArray[endretAv]|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['endretDato'])."|" .
+			"$oyesykdomArray[personId]|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['sendtVetDato'])."|" .
+			Verktoy::konverterDatabaseTilDatDato($oyesykdomArray['sendtKlubbDato'])."|" .
+			"$oyesykdomArray[longAnnet1]|" .
+			"$oyesykdomArray[longAnnet2]|" .
+			"$oyesykdomArray[inaktiv]";
+			 			
+			return $dat;
+	}
 }
 ?>

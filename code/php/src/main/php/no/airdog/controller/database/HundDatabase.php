@@ -202,7 +202,8 @@ class HundDatabase
 		$verdier['manueltEndretAv'] = "";
 		$verdier['manueltEndretDato'] = "";
 		
-		$hvor = $this->database->quoteInto('hundId = ?', $verdier['hundId']);
+		$hvor = $this->database->quoteInto('hundId = ?', $verdier['hundId']).
+			$this->database->quoteInto('AND raseId = ?', $klubbId);
 		
 		return $this->database->update('nkk_hund', $verdier, $hvor);
 	}
