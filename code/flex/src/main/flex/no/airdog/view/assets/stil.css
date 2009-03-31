@@ -344,7 +344,12 @@ LinkButton
 	downSkin: Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
 	overSkin: Embed(source="skin/stil.swf", symbol="LinkButton_overSkin");
 	upSkin: Embed(source="skin/stil.swf", symbol="LinkButton_upSkin");
-}		
+}
+
+.mainButtonLink
+{
+	upSkin:Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
+}
 
 /*
 //------------------------------
