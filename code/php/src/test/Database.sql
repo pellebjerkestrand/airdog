@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 31. Mar, 2009 11:10 AM
+-- Generert den: 31. Mar, 2009 14:19 PM
 -- Tjenerversjon: 5.1.30
 -- PHP-Versjon: 5.2.8
 
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `veId` varchar(4) NOT NULL,
   `aaId` varchar(7) NOT NULL,
   `diagnoseKode` int(1) NOT NULL,
-  `idmerkeKode` int(1) NOT NULL,
+  `idmerketkode` int(1) NOT NULL,
   `lidelseKode` int(1) NOT NULL,
   `sekHoyreKode` int(1) NOT NULL,
   `sekVenstreKode` int(1) NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `avlestAv` varchar(32) NOT NULL,
   `betaling` int(1) NOT NULL,
   `diagnose` varchar(6) NOT NULL,
-  `hundId` varchar(9) NOT NULL,
+  `hundId` varchar(17) NOT NULL,
   `idFeil` varchar(6) NOT NULL,
   `idMerket` varchar(1) NOT NULL,
   `kode` varchar(20) NOT NULL,
@@ -219,7 +219,8 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   `avlestDato` date NOT NULL,
   `rontgenDato` date NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`aaId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -235,10 +236,11 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
 
 CREATE TABLE IF NOT EXISTS `nkk_eier` (
   `eier` varchar(64) NOT NULL,
-  `hundId` varchar(9) NOT NULL,
+  `hundId` varchar(17) NOT NULL,
   `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -315,9 +317,9 @@ CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   `diagnoseKode` int(1) NOT NULL,
   `endretAv` varchar(16) NOT NULL,
   `hofteDyId` varchar(7) NOT NULL,
-  `hundId` varchar(9) NOT NULL,
+  `hundId` varchar(17) NOT NULL,
   `idmerket` varchar(1) NOT NULL,
-  `idmerketKode` varchar(20) NOT NULL,
+  `idmerketkode` varchar(20) NOT NULL,
   `kode` varchar(20) NOT NULL,
   `lidelse` varchar(1) NOT NULL,
   `lidelseKode` int(1) NOT NULL,
@@ -333,7 +335,8 @@ CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   `rontgenDato` date NOT NULL,
   `avlestDato` date NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`hofteDyId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -429,7 +432,7 @@ CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
 
 CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   `oyId` varchar(7) NOT NULL,
-  `hundId` varchar(9) NOT NULL,
+  `hundId` varchar(17) NOT NULL,
   `veterinerId` varchar(4) NOT NULL,
   `oyeVeteriner` varchar(2) NOT NULL,
   `lystDato` date NOT NULL,
@@ -456,7 +459,8 @@ CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   `longAnnet2` varchar(20) NOT NULL,
   `inaktiv` varchar(1) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`oyId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -595,7 +599,8 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `endretAv` varchar(16) NOT NULL,
   `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`veterinerId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
