@@ -103,7 +103,7 @@
 			
 			<mx:HBox id="sokbar" styleName="sokBar" width="250">
 				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%"/>
-				<mx:LinkButton label="" width="26" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
+				<mx:LinkButton label="" width="26" height="100%" styleName="UnderMeny" icon="@Embed(source='assets/ikoner/magnifier.png')" click="sok()"/>
 			</mx:HBox>
 			
 			<mx:ViewStack id="meny" width="100%"
