@@ -26,10 +26,11 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	//$fil_type = $_FILES['Filedata']['type'];
 	
 	$info = pathinfo($fil_navn);
-	$fil_ext = $info['extension'];;
+	$fil_ext = $info['extension'];
+	
+	$klubb = $_GET["klubbId"];
 	
 	$dat_fil_stien = $dat_upload_dir . $fil_navn;
-	$bilde_fil_stien = $bilde_upload_dir . $_GET["klubbId"] . "/" . $fil_navn;
 
 	$fil_navn = str_replace("\\","",$fil_navn);
 	$fil_navn = str_replace("'","",$fil_navn);
@@ -38,7 +39,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	{
 	    $ip = new importParserController();
 	    echo $ip->lagreDb($dat_fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
-	    unlink($fil_stien);
+	    unlink($dat_fil_stien);
 	}
 	else if ($fil_storrelse <= $MAKSSTORRELSE)
 	{
@@ -47,6 +48,16 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 			mkdir($bilde_upload_dir);
 			chmod($bilde_upload_dir, 0777);
 		}
+		
+		$bilde_upload_dir =  $bilde_upload_dir . $klubb . "/";
+		
+		if (!file_exists($bilde_upload_dir))
+		{
+			mkdir($bilde_upload_dir);
+			chmod($bilde_upload_dir, 0777);
+		}
+		
+		$bilde_fil_stien = $bilde_upload_dir . $fil_navn;
 		
 		if (file_exists($bilde_fil_stien))
 			unlink ($bilde_fil_stien);
