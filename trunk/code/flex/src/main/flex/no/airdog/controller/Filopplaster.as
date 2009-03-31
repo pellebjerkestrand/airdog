@@ -32,6 +32,7 @@ package no.airdog.controller
 			opplastning.startet = false;
 			opplastning.resultat = "";
 			opplastning.objektliste = new ArrayCollection();
+			opplastning.objektType = "";
 			
 			settFilrestriksjoner();
 			fr = new FileReference();
@@ -134,6 +135,8 @@ package no.airdog.controller
         	opplastning.resultat += "\rIgnorert: " + resultat[4];
         	opplastning.resultat += "\r\rFiltype: " + resultat[1];
         	opplastning.resultat += "\rGenerelt: " + resultat[0];
+     	
+     		opplastning.objektType = resultat[1];
      	
         	for(var i:int = 5; i < resultat.length; i++)
         	{  		

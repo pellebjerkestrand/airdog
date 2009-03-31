@@ -77,7 +77,7 @@ class UtstillingParser
 		return false;
 	}
 	
-	public function getUtstillingDatabaseSomDat($utstillingArray)
+	public static function getUtstillingDatabaseSomDat($utstillingArray)
 	{
 		$dat = "$utstillingArray[utstillingId]|" .
 	 		"$utstillingArray[klasseId]|" .

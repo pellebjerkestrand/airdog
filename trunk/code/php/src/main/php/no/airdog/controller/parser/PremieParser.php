@@ -86,7 +86,7 @@ class PremieParser
 		return false;
 	}
 	
-	public function getPremieDatabaseSomDat($premieArray)
+	public static function getPremieDatabaseSomDat($premieArray)
 	{
 		$dat = "$premieArray[doId]|" .
 	 		"$premieArray[utstillingId]|" .

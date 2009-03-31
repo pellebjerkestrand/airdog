@@ -43,23 +43,42 @@ class PersonDatabase
 			return "personId-verdien mangler."; 
 		}
 		
+		if (DatReferanseDatabase::hentReferanse(PersonParser::getPersonDatabaseSomDat($personArray), $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}
+		
 		$dbPerson = $this->hentPerson($personArray["personId"], $personArray["raseId"]);
 		
 		if ($dbPerson == null)
 		{
 			$this->database->insert('nkk_person', $personArray);
+			return "Lagt til";
 		}
 		else if ($dbPerson["manueltEndretAv"] != "")
 		{
-			return "Manuelt endret, vil du overskrive???";
+			return "Manuelt endret, vil du overskrive?";
 		}
 		else
 		{
 			$hvor = $this->database->quoteInto('personId = ?', $personArray["personId"]) . $this->database->quoteInto('AND raseId = ?', $personArray["raseId"]);
 			$this->database->update('nkk_person', $personArray, $hvor);
-			return $personArray["personId"] . " ble oppdatert.";
+			return "Oppdatert";
+		}
+	}
+	
+	public function overskrivPerson($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(PersonParser::getPersonDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(PersonParser::getPersonDatabaseSomDat($verdier), $this->database);
 		}
 		
-		return true;
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+		
+		$hvor = $this->database->quoteInto('personId = ?', $verdier['personId']);
+		
+		return $this->database->update('nkk_person', $verdier, $hvor);
 	}
 }

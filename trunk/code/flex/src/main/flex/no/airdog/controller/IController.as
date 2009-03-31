@@ -62,5 +62,6 @@ package no.airdog.controller
 		function redigerEgenBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		function fjernRedigerEgenBrukerVindu():void
 		function visRedigerEgenBrukerVindu(parent:DisplayObject):void
+		function overskrivDatInnlegg(objekter:ArrayCollection, objektType:String):void
 	}
 }

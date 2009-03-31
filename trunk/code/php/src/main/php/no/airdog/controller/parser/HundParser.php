@@ -80,7 +80,7 @@ class HundParser
 		return false;
 	}
 	
-	public function getHundDatabaseSomDat($hundArray)
+	public static function getHundDatabaseSomDat($hundArray)
 	{
 		$dat = "$hundArray[raseId]|" .
 	 		"$hundArray[kullId]|" .

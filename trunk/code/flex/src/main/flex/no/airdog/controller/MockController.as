@@ -563,5 +563,15 @@ package no.airdog.controller
 			hentRollersBrukere();
 		}
 		
+		public function overskrivDatInnlegg(objekter:ArrayCollection, objektType:String):void
+		{
+			Components.instance.services.airdogService.overskrivDatInnlegg(objekter, objektType, overskrivDatInnleggResultat);
+		}
+		
+		public function overskrivDatInnleggResultat(event:Object):void
+		{
+			Alert.show("Innlegging ble fullført" + event.toString(), "Dat-opplastning");
+		}
+		
 	}
 }

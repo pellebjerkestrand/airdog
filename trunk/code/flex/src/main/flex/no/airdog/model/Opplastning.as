@@ -7,6 +7,7 @@ package no.airdog.model
 	public class Opplastning
 	{
 		public var objektliste:ArrayCollection = new ArrayCollection();
+		public var objektType:String;
 		public var resultat:String;
 		public var progressBar:ProgressBar;
 		public var ferdig:Boolean;

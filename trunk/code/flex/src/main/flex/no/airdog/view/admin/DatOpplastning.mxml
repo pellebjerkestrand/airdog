@@ -4,6 +4,9 @@
 	xmlns:view="no.airdog.view.*">
     <mx:Script>
         <![CDATA[
+        	import no.airdog.model.Valg;
+        	import mx.collections.ArrayCollection;
+        	import no.airdog.model.OpplastningObjekt;
         	import no.airdog.model.Opplastning;
 			import no.airdog.services.Components;
 			
@@ -12,6 +15,39 @@
             	Components.instance.session.datOpplastning.progressBar = pBar;
             	Components.instance.controller.lastOppDatFil();
             }            
+            
+            private function overskrivMerkedeObjekter():void
+            {
+            	var array:ArrayCollection = new ArrayCollection();
+            	var bunnArray:ArrayCollection = new ArrayCollection();
+            	
+            	for (var i:int = 0; i < Components.instance.session.datOpplastning.objektliste.length; i++)
+            	{
+            		var valg:Valg = Components.instance.session.datOpplastning.objektliste.getItemAt(i) as Valg;
+            		
+            		var objekt:ArrayCollection = new ArrayCollection();
+            		objekt.addItem(valg.navn);
+            		objekt.addItem(valg.valgt.toString());
+            		
+            		if (valg.valgt)
+            		{
+            			bunnArray.addItem(objekt.toArray());
+            		}
+            		else
+            		{
+            			array.addItem(objekt.toArray());
+            		}
+            	}
+            	
+            	for(var x:int = 0; x < bunnArray.length; x++)
+            	{
+            		array.addItem(bunnArray.getItemAt(x));
+            	}
+            	
+            	// Valgte objekter blir lagt til slutt i arrayet slik at disse sletter duplikate datreferanse-hasher ved innlegging.
+            	
+            	Components.instance.controller.overskrivDatInnlegg(array, Components.instance.session.datOpplastning.objektType);
+            }
             
         ]]>
     </mx:Script>
@@ -160,7 +196,7 @@
 	    </mx:DataGrid>
 	    <mx:HBox width="100%">
 	    	<mx:Spacer width="100%"/>
-	    	<mx:Button icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_switch.png')" label="Overskriv merkede innlegg"/>
+	    	<mx:Button icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_switch.png')" label="Overskriv merkede innlegg" click="overskrivMerkedeObjekter()"/>
 	    </mx:HBox>
     </mx:Panel>
 </mx:HBox>
