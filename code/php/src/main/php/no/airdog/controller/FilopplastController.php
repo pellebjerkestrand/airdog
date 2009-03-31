@@ -40,9 +40,18 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	    echo $ip->lagreDb($dat_fil_stien, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
 	    unlink($fil_stien);
 	}
-	else if ($fil_storrelse <= $MAKSSTORRELSE && move_uploaded_file($temp_navn, $bilde_fil_stien))
+	else if ($fil_storrelse <= $MAKSSTORRELSE)
 	{
+		if  (!file_exists($bilde_upload_dir))
+		{
+			mkdir($bilde_upload_dir);
+			chmod($bilde_upload_dir, 0777);
+		}
 		
+		if (file_exists($bilde_fil_stien))
+			unlink ($bilde_fil_stien);
+			
+		move_uploaded_file($temp_navn, $bilde_fil_stien);	
 	}
 	else
 	{
