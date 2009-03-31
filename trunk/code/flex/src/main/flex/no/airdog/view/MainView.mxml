@@ -99,24 +99,18 @@
 	<mx:VBox id="topbar" styleName="TopBar" width="100%" 
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0" verticalAlign="middle">
 		<mx:ApplicationControlBar width="100%" styleName="applicationBar">
-		<!--
-			<mx:Image source="@Embed(source='assets/logo/airdoglogo28clean.png')" buttonMode="true" click="init()"/>
-			<mx:Label text="AirDog" fontWeight="bold" click="init()" buttonMode="true"/>
-		-->
-			<mx:HBox>
-				<mx:LinkButton id="hjemLink" label="Hjem" icon="@Embed(source='assets/ikoner/airdog_logo_light.png')" 
-					click="klikkHovedMeny(event)" width="74"
-					visible="{Components.instance.session.bruker.rettigheter.lese}"/>
-				<mx:LinkButton id="resultatLink" label="Resultat" icon="@Embed(source='assets/ikoner/dog.png')" 
-					click="klikkHovedMeny(event)"
-					visible="{Components.instance.session.bruker.rettigheter.lese}"/>
-				<mx:LinkButton id="rapporterLink" label="Rapporter" icon="@Embed(source='assets/ikoner/reports.png')" 
-					click="klikkHovedMeny(event)"
-					visible="{Components.instance.session.bruker.rettigheter.lese}"/>
-				<mx:LinkButton id="adminLink" label="Admin" icon="@Embed(source='assets/ikoner/user_business.png')" 
-					click="klikkHovedMeny(event)"
-					visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
-			</mx:HBox>
+			<mx:LinkButton id="hjemLink" label="Hjem" icon="@Embed(source='assets/ikoner/airdog_logo_light.png')" 
+				click="klikkHovedMeny(event)" width="74"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton id="resultatLink" label="Resultat" icon="@Embed(source='assets/ikoner/dog.png')" 
+				click="klikkHovedMeny(event)"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton id="rapporterLink" label="Rapporter" icon="@Embed(source='assets/ikoner/reports.png')" 
+				click="klikkHovedMeny(event)"
+				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
+			<mx:LinkButton id="adminLink" label="Admin" icon="@Embed(source='assets/ikoner/user_business.png')" 
+				click="klikkHovedMeny(event)"
+				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
 			
 			<mx:Spacer width="100%"/>	
 			<mx:LinkButton id="brukeren" label="{Components.instance.session.bruker.epost}"
@@ -212,7 +206,7 @@
 	    <!--  4 -->	<view:FiktivStamtre id="fiktivstamtreview"/>
 	    <!--  5 -->	<view:RasensJaktresultaterAar id="rasensjaktresultateraarview"/>
 	    <!--  6 -->	<view:AvlstallRapport id="avlstallRapport" />
-		<!--  7 --> <view:Cup id="cup"/>
+		<!--  7 -->	<view:Cup id="cup"/>
 	    <!--  8 -->	<adminView:RolleBruker id="rollebrukerview"/>
 	    <!--  9 -->	<adminView:RolleRettighet id="rollerettighetview"/>
 	    <!-- 10 -->	<adminView:DatOpplastning id="datopplastningview"/>

@@ -59,7 +59,7 @@ class HundDatabase
 			return "Finnes alt i DATreferanser tabellen.";
 		}
 		
-		$dbHund = $this->hentHund($hundArray["hundId"], $hundArray["raseId"]);
+		$dbHund = $this->hentKunHund($hundArray["hundId"], $hundArray["raseId"]);
 		
 		if ($dbHund == null)
 		{
@@ -147,6 +147,17 @@ class HundDatabase
 		->group('h.hundId')
 		->where('h.hundId=?', $hundId)
 		->where('h.raseId=?', $klubbId)
+		->limit(1);
+		
+		return $this->database->fetchRow($select);
+	}
+	
+	public function hentKunHund($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+		->from('nkk_hund', array('hundId', 'raseId', 'navn', 'eierId', 'tittel'))
+		->where('hundId=?', $hundId)
+		->where('raseId=?', $klubbId)
 		->limit(1);
 		
 		return $this->database->fetchRow($select);

@@ -156,7 +156,7 @@
 				</mx:Repeater>
 			</mx:Box>
 		</mx:VBox>
-
+		
 		<mx:Panel title="Alle rettigheter" width="100%" height="{this.height}">
 			<mx:HBox styleName="notis" paddingBottom="2" paddingLeft="2" paddingRight="2" paddingTop="2" verticalAlign="middle">
 				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
@@ -164,7 +164,7 @@
 			</mx:HBox>
 			<mx:DataGrid id="alleRettigheter"
 				dataProvider="{Components.instance.session.alleRettigheter}"
-				rowCount="{Components.instance.session.alleRettigheter.length}"
+				rowCount="{Components.instance.session.alleRettigheter.length + 1}"
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleRettighet');"
 				dragEnter="sjekkSlett(event);"

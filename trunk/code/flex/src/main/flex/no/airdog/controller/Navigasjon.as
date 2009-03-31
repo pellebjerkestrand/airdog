@@ -23,6 +23,8 @@ package no.airdog.controller
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
 			}
+			
+			Components.instance.historie.settPunkt();
 		}
 		
 		public static function visStorHundeliste():void

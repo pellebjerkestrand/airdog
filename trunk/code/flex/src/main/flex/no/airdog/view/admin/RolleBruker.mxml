@@ -178,7 +178,7 @@
 				<mx:Spacer width="100%"/>
 				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='../assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
 			</mx:HBox>
-			<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="100%"
+			<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="{this.height - 76}"
 				rowCount="{Components.instance.session.alleBrukere.length}"
 				dragEnabled="true"
 				mouseDown="settDroppesHvor(event, 'rolleBruker');"
