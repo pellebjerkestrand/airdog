@@ -674,17 +674,16 @@ TabNavigator
 
 .UnderMeny
 {
-	textRollOverColor: #000099;
-	color: #0054A2;
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
 	leading: 0;
 	textAlign: left;
-	paddingTop: 2;
-	paddingBottom: 2;
+	paddingTop: 0;
+	paddingBottom: 0;
 	paddingLeft: 5;
 	paddingRight: 5;
 	borderColor: #FFFFFF;
+	fontWeight: normal;
 }	
 
 /*
