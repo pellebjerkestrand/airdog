@@ -18,7 +18,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
 	$dat_upload_dir = dirname(__FILE__)."/temp_opplasting/";
-	$bilde_upload_dir = "../../../images/";
+	$bilde_upload_dir = hoppBakover(3) . "/images/";
 
 	$temp_navn = $_FILES['Filedata']['tmp_name'];
 	$fil_navn = $_FILES['Filedata']['name'];
@@ -31,9 +31,6 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	$klubb = $_GET["klubbId"];
 	
 	$dat_fil_stien = $dat_upload_dir . $fil_navn;
-
-	$fil_navn = str_replace("\\","",$fil_navn);
-	$fil_navn = str_replace("'","",$fil_navn);
 	
 	if ($fil_storrelse <= $MAKSSTORRELSE && move_uploaded_file($temp_navn, $dat_fil_stien) && $fil_ext == "dat")
 	{
@@ -63,6 +60,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 			unlink ($bilde_fil_stien);
 			
 		move_uploaded_file($temp_navn, $bilde_fil_stien);	
+		
 	}
 	else
 	{
@@ -77,12 +75,15 @@ else
 
 function hoppBakover($antall)
 {	
-	$mapper = split("/", dirname(__FILE__));
+	$mapper = dirname(__FILE__);
+	$mapper = str_replace("\\","/",$mapper);
+	
+	$mapper = split("/", $mapper);
 	$sti = "";
 	
-	for ($i = 0; $i < count($mapper) - $antall; $i++)
+	for ($i = 0; $i < sizeof($mapper) - $antall; $i++)
 	{
-		$sti += "/". $mapper[$i];
+		$sti .= "/" . $mapper[$i];
 	}
 	
 	return $sti;
