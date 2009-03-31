@@ -5,36 +5,51 @@
 	<mx:Script>
 		<![CDATA[
 			import no.airdog.services.Components;
+			import mx.utils.StringUtil;
 			
 			private function hentListe():void
 			{
-				Components.instance.controller.hentCupListe(fra.text, til.text, antall.value);
+				Components.instance.controller.hentCupListe(fra.text, til.text, 0);
 			}
 		]]>
 	</mx:Script>
 	
-	<mx:HBox>
+	<mx:HBox paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0" verticalAlign="middle">
 		<mx:FormItem label="Fra">
-			<mx:DateField id="fra" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>	
+			<mx:DateField id="fra" text="2008-03-01" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>	
 		</mx:FormItem>
 		<mx:FormItem label="Til">
-			<mx:DateField id="til" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>
+			<mx:DateField id="til" text="2009-03-01" editable="false" formatString="YYYY-MM-DD" yearNavigationEnabled="true" width="100"/>
 		</mx:FormItem>
+		<!--
 		<mx:FormItem label="Antall">
 			<mx:NumericStepper id="antall" minimum="1" maximum="100"/>
 		</mx:FormItem>
+		-->
 		<mx:FormItem>
 			<mx:LinkButton label="Hent liste" click="hentListe()" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
 		</mx:FormItem>
 	</mx:HBox>
 	
-	<mx:DataGrid id="cupgrid" dataProvider="{Components.instance.session.cupListe}" height="100%">
-		<mx:columns>
-			<mx:DataGridColumn dataField="hundId" headerText="Hund"/>
-			<mx:DataGridColumn dataField="proveNr" headerText="Prøve"/>
-			<mx:DataGridColumn dataField="proveDato" headerText="Dato"/>
-			<mx:DataGridColumn dataField="premiegrad" headerText="Premie"/>
-		</mx:columns>
-	</mx:DataGrid>
-	
+	<mx:VBox
+		paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4"
+		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
+		width="100%" height="{this.height-32}" horizontalAlign="center">
+		<mx:VBox>
+			<mx:Repeater id="cup" dataProvider="{Components.instance.session.cupListe}">
+				<mx:VBox width="100%" styleName="notis" paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
+					<mx:HBox width="100%" height="100%">
+						<mx:Box minWidth="80" height="100%" verticalAlign="middle" horizontalAlign="center">
+							<mx:Text text="{cup.currentIndex + 1}" fontSize="32" fontWeight="bold"/>
+						</mx:Box>
+						<mx:VBox minWidth="200">
+							<mx:Text text="{cup.currentItem.hundId}" fontSize="10" minWidth="0"/>
+							<mx:Text text="{cup.currentItem.hundNavn}" fontSize="18" paddingBottom="-15" paddingTop="-15"/>
+							<mx:Text text="{cup.currentItem.eier}" fontSize="10"/>
+						</mx:VBox>
+					</mx:HBox>	
+				</mx:VBox>
+			</mx:Repeater>
+		</mx:VBox>
+	</mx:VBox>
 </mx:VBox>
