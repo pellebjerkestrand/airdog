@@ -142,7 +142,7 @@ package no.airdog.controller
 			Components.instance.historie.nullstill();
 		}
 		
-		public function lastOppDatFil():void
+		public function lastOpp(laster:Opplastning):void
 		{
 			var url:String = Components.instance.services.rootPath + "controller/FilopplastController.php?";
 			
@@ -150,7 +150,7 @@ package no.airdog.controller
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
 			url += "klubbId=" + Components.instance.session.bruker.sattKlubbId;
 			
-			var datOpplaster:Filopplaster = new Filopplaster(url);
+			var datOpplaster:Filopplaster = new Filopplaster(url, laster);
 			datOpplaster.velgFil();
 		}
 		

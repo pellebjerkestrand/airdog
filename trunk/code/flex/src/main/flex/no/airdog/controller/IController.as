@@ -13,7 +13,7 @@ package no.airdog.controller
 		function settBrukersKlubb(klubb:String, klubbId:String):void;
 		function loggInn(bruker:Bruker):void
 		function loggUt():void
-		function lastOppDatFil():void
+		function lastOpp(laster:Opplastning):void
 		function sokHund(soketekst:String):void
 		function hentCupListe(fra:String, til:String, limit:int):void
 		function hentAvkom(hundId:String):void

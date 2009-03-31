@@ -13,7 +13,8 @@
 			private function velgFil():void
             {
             	Components.instance.session.datOpplastning.progressBar = pBar;
-            	Components.instance.controller.lastOppDatFil();
+            	Components.instance.session.datOpplastning.type = "dat";
+            	Components.instance.controller.lastOpp(Components.instance.session.datOpplastning);
             }            
             
             private function overskrivMerkedeObjekter():void
