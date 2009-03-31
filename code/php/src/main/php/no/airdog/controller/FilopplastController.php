@@ -82,7 +82,7 @@ function hoppBakover($antall)
 	
 	for ($i = 0; $i < count($mapper) - $antall; $i++)
 	{
-		$sti = $mapper[$i];
+		$sti += "/". $mapper[$i];
 	}
 	
 	return $sti;
