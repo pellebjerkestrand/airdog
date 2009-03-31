@@ -42,6 +42,6 @@ class AmfJaktprove
 	public $manueltEndretAv;
 	public $manueltEndretDato;
 	public $kritikk;
-	
+	public $vf;	
 	public $premiegradTekst;
 }
