@@ -129,8 +129,6 @@ class importParserController
 					default:
 						return "Dette er en ukjent .dat fil";
 				}
-			
-				$x = 0;
 		
 			    while (!feof($handle)) 
 			    {
@@ -141,12 +139,7 @@ class importParserController
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 		    		
-		    		if ($x > 100)	// Spytt ut firefox "søppel" hver 100 rad for at tilkoblingen ikke skal stoppe.
-		    		{
-		    			echo ' ----- ';
-		    			$x = 0;
-		    		}
-		    		$x++;
+	    			echo ' ----- '; // Spytt ut firefox "søppel" hver 100 rad for at tilkoblingen ikke skal stoppe.
 			    }
 			    
 			    fclose($handle);
