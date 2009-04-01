@@ -1,89 +1,103 @@
 <?php
-/*
-JPEG / PNG Image Resizer
-Parameters (passed via URL):
 
-img = path / url of jpeg or png image file
+class BildeendringController
+{
+	public function __construct()
+	{
 
-percent = if this is defined, image is resized by it's
-          value in percent (i.e. 50 to divide by 50 percent)
-
-w = image width
-
-h = image height
-
-constrain = if this is parameter is passed and w and h are set
-            to a size value then the size of the resulting image
-            is constrained by whichever dimension is smaller
-
-Requires the PHP GD Extension
-
-Outputs the resulting image in JPEG Format
-
-By: Michael John G. Lopez - www.sydel.net
-Filename : imgsize.php
-*/
-
-$img = $_GET['img'];
-$percent = $_GET['percent'];
-$constrain = $_GET['constrain'];
-$w = $_GET['w'];
-$h = $_GET['h'];
-
-// get image size of img
-$x = @getimagesize($img);
-// image width
-$sw = $x[0];
-// image height
-$sh = $x[1];
-
-if ($percent > 0) {
-	// calculate resized height and width if percent is defined
-	$percent = $percent * 0.01;
-	$w = $sw * $percent;
-	$h = $sh * $percent;
-} else {
-	if (isset ($w) AND !isset ($h)) {
-		// autocompute height if only width is set
-		$h = (100 / ($sw / $w)) * .01;
-		$h = @round ($sh * $h);
-	} elseif (isset ($h) AND !isset ($w)) {
-		// autocompute width if only height is set
-		$w = (100 / ($sh / $h)) * .01;
-		$w = @round ($sw * $w);
-	} elseif (isset ($h) AND isset ($w) AND isset ($constrain)) {
-		// get the smaller resulting image dimension if both height
-		// and width are set and $constrain is also set
-		$hx = (100 / ($sw / $w)) * .01;
-		$hx = @round ($sh * $hx);
-
-		$wx = (100 / ($sh / $h)) * .01;
-		$wx = @round ($sw * $wx);
-
-		if ($hx < $h) {
-			$h = (100 / ($sw / $w)) * .01;
-			$h = @round ($sh * $h);
-		} else {
-			$w = (100 / ($sh / $h)) * .01;
-			$w = @round ($sw * $w);
-		}
 	}
-}
+	
+	function endreStorrelse($bilde, $nyBredde, $nyHoyde, $kroppBredde, $kroppHoyde)
+	{
+		$naStorrelse = @getimagesize($bilde);
+		$nanyBredde = $naStorrelse[0];
+		$nanyHoyde = $naStorrelse[1];
+		
+		$hx = (100 / ($nanyBredde / $nyBredde)) * .01;
+		$hx = @round ($nanyHoyde * $hx);
 
-$im = @ImageCreateFromJPEG ($img) or // Read JPEG Image
-$im = @ImageCreateFromPNG ($img) or // or PNG Image
-$im = @ImageCreateFromGIF ($img) or // or GIF Image
-$im = false; // If image is not JPEG, PNG, or GIF
+		$wx = (100 / ($nanyHoyde / $nyHoyde)) * .01;
+		$wx = @round ($nanyBredde * $wx);
 
-if (!$im) {
-	// We get errors from PHP's ImageCreate functions...
-	// So let's echo back the contents of the actual image.
-	readfile ($img);
-} else {
-	// Create the resized image destination
-	$thumb = @ImageCreateTrueColor ($w, $h);
-	// Copy from image source, resize it, and paste to image destination
-	@ImageCopyResampled ($thumb, $im, 0, 0, 0, 0, $w, $h, $sw, $sh);
-	// Output resized image
-	@ImageJPEG ($thumb);
+		if ($hx < $nyHoyde)
+		{
+			$nyHoyde = (100 / ($nanyBredde / $nyBredde)) * .01;
+			$nyHoyde = @round ($nanyHoyde * $nyHoyde);
+		} 
+		else 
+		{
+			$nyBredde = (100 / ($nanyHoyde / $nyHoyde)) * .01;
+			$nyBredde = @round ($nanyBredde * $nyBredde);
+		}
+		
+		$bi = @ImageCreateFromJPEG ($bilde) or
+		$bi = @ImageCreateFromPNG ($bilde) or 
+		$bi = @ImageCreateFromGIF ($bilde) or
+		$bi = false;
+		
+		@unlink($bilde);
+		
+		if ($bi) 
+		{
+			$nyttBilde = @ImageCreateTrueColor ($nyBredde, $nyHoyde);
+			@ImageCopyResampled ($nyttBilde, $bi, 0, 0, 0, 0, $nyBredde, $nyHoyde, $nanyBredde, $nanyHoyde);
+			
+			$bilde = $this->fjernFilEndelse($bilde).".jpg";
+				
+			@Imagejpeg($nyttBilde, $bilde, 100);
+			
+			//Croppingen
+			$bi = @ImageCreateFromJPEG ($bilde);
+			
+			$thumb = @ImageCreateTrueColor($kroppBredde, $kroppHoyde);
+ 
+			$nyBreddeNy = $nyBredde / $kroppBredde;
+			$nyHoydeNy = $nyHoyde / $kroppHoyde;
+			 
+			$halvertHoyde = $kroppHoyde / 2;
+			$halvertBredde = $kroppBredde / 2;
+			
+			$bilde = $this->fjernFilEndelse($bilde)."_thumb.jpg";	
+			
+			if($nyBredde > $nyHoyde) 
+			{
+				$tilpassetBredde = $nyBredde / $nyHoydeNy;
+			    $halvBredde = $tilpassetBredde / 2;
+			    $intBredde = $halvBredde - $halvertBredde;
+			 
+			    @ImageCopyResampled($thumb,$bi,-$intBredde,0,0,0,$tilpassetBredde,$kroppHoyde,$nyBredde,$nyHoyde);
+			} 
+			elseif(($nyBredde < $nyHoyde) || ($nyBredde == $nyHoyde)) 
+			{
+			 	$tilPassetHoyde = $nyHoyde / $nyBreddeNy;
+			    $halvHoyde = $tilPassetHoyde / 2;
+			   	$intHoyde = $halvHoyde - $halvertHoyde;
+			 
+			 	@ImageCopyResampled($thumb,$bi,0,-$intHoyde,0,0,$kroppBredde,$tilPassetHoyde,$nyBredde,$nyHoyde);
+			}
+			else
+			{
+				@ImageCopyResampled($thumb,$bi,0,0,0,0,$kroppBredde,$kroppHoyde,$nyBredde,$nyHoyde);
+			}
+			
+						 	
+			@imagejpeg ($thumb, $bilde, 100);
+		}
+		else 
+		{	
+			echo "Feil type bilde";
+		} 
+	}
+
+	private function fjernFilEndelse($fil) 
+	{ 
+		$ext = strrchr($fil, '.'); 
+	
+		if($ext !== false) 
+		{ 
+			$fil = substr($fil, 0, -strlen($ext)); 
+		} 
+		
+		return $fil; 
+	} 
 }
