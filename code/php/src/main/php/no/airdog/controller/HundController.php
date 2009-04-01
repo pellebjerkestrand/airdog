@@ -32,7 +32,9 @@ class HundController
 	    	
 		   	foreach($resultat as $rad)
 		   	{   
-		   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+		   		//For treg
+		   		//$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+				$bilde = "";
 				$tmp = new AmfHund();
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
@@ -94,8 +96,10 @@ class HundController
 	    	
 	    	$rad = $hd->hentHund($hundId, $klubbId);   	
 			
-			$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg";
-		
+			//For treg
+			//$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+			$bilde = "";
+			
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];

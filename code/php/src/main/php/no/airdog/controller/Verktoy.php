@@ -25,7 +25,7 @@ class Verktoy
 		return $datoArray[2].".".$datoArray[1].".".$datoArray[0];
 	}
 	
-	
+	//FOR TREG
 	public static function hvilkeUrl() 
 	{
 		 $url = 'http://';
@@ -41,7 +41,7 @@ class Verktoy
 		 return $url;
 	}
 	
-	
+	//FOR TREG
 	public static function hoppBakover($url, $antall)
 	{	
 		$url = str_replace("\\","/",$url);
