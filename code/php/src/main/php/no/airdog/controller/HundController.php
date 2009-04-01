@@ -80,17 +80,26 @@ class HundController
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{	
 	    	$hd = new HundDatabase();
-	    	$rad = $hd->hentHund($hundId, $klubbId);
-	
-			$pd = new PersonDatabase();
-	
+	    	$pd = new PersonDatabase();
+	    	
+	    	$rad = $hd->hentHund($hundId, $klubbId);   	
+			
+			$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg";
+		
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
-			$tmp->bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . 
-				"/images/" . $rad['raseId'] . "/" . 
-				eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']);
+			
+			if (file_exists($bilde))
+			{
+				$tmp->bilde = $bilde;
+			}
+			else
+			{
+				$tmp->bilde = "";
+			}
+			
 			$tmp->morId = $rad["hundMorId"];
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];
