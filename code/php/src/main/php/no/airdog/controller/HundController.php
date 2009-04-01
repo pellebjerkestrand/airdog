@@ -31,12 +31,22 @@ class HundController
 	    	$ret = array();
 	    	
 		   	foreach($resultat as $rad)
-		   	{    	
+		   	{   
+		   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
 				$tmp = new AmfHund();
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
 				$tmp->navn = $rad["navn"];
-				$tmp->bilde = "";
+				
+				if (is_array(@getimagesize($bilde)))
+				{
+					$tmp->bilde = $bilde;
+				}
+				else
+				{
+					$tmp->bilde = "";
+				}
+			
 				$tmp->morId = $rad["hundMorId"];
 				$tmp->morNavn = $rad["hundMorNavn"];
 				$tmp->farId = $rad["hundFarId"];
@@ -91,7 +101,7 @@ class HundController
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
 			
-			if (file_exists($bilde))
+			if (is_array(@getimagesize($bilde)))
 			{
 				$tmp->bilde = $bilde;
 			}
