@@ -56,7 +56,7 @@
 </mx:Sequence>
 
 <mx:HBox width="100%">
-	<mx:Image id="Logo" source="no/airdog/view/assets/airdoglogo200clean.png" width="200" height="200"/>
+	<mx:Image id="Logo" source="no/airdog/view/assets/logo/airdoglogo200clean.png" width="200" height="200"/>
 
 	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}" width="350" height="100%">
 		<mx:VBox>
