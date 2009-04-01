@@ -82,6 +82,8 @@ class BildeendringController
 			
 						 	
 			@imagejpeg ($thumb, $bilde, 100);
+			
+			echo "Bilde filene er opprettet";
 		}
 		else 
 		{	
