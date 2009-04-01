@@ -59,4 +59,10 @@ class Verktoy
 		
 		return $sti;
 	}
+	
+	public static function url_finnes($url) 
+	{ 
+    	$hd = @get_headers($url); 
+    	return is_array($hd) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$hd[0]) : false; 
+	} 
 }
