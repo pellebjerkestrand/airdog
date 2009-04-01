@@ -20,7 +20,6 @@
 			
 			private function velgFil():void
 			{
-				Alert.show(Components.instance.session.hundprofil.bilde.toString());
 				Components.instance.session.bildeOpplastning.progressBar = pBar;
 				Components.instance.session.bildeOpplastning.type = "bilde";
             	Components.instance.controller.lastOpp(Components.instance.session.bildeOpplastning);
