@@ -24,7 +24,7 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 	$temp_navn = $_FILES['Filedata']['tmp_name'];
 	$fil_navn = $_FILES['Filedata']['name'];
 	$fil_storrelse = $_FILES['Filedata']['size'];
-	//$fil_type = $_FILES['Filedata']['type'];
+	$fil_type = $_FILES['Filedata']['type'];
 	
 	$info = pathinfo($fil_navn);
 	$fil_ext = strtolower($info['extension']);
