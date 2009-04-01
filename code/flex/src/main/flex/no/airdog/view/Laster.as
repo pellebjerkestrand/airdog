@@ -56,7 +56,7 @@ package no.airdog.view
 			// laster logoen vår
 			loadingImage = new flash.display.Loader();       
 			loadingImage.contentLoaderInfo.addEventListener( Event.COMPLETE, loader_completeHandler);
-			loadingImage.load(new URLRequest("no/airdog/view/assets/airdoglogo200clean.png")); // denne stien bør være relativ. kun absolutt hvis det er supernødvendig 
+			loadingImage.load(new URLRequest("no/airdog/view/assets/logo/airdoglogo200clean.png")); // denne stien bør være relativ. kun absolutt hvis det er supernødvendig 
         }
         
         private function loader_completeHandler(event:Event):void
