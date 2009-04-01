@@ -32,10 +32,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker` (
 -- Dataark for tabell `ad_bruker`
 --
 
-INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
-('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
-('admin', 'Administrator', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
-('test', 'test', 'tests', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
+
 
 -- --------------------------------------------------------
 
@@ -56,18 +53,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
 -- Dataark for tabell `ad_bruker_klubb_rolle_link`
 --
 
-INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `ad_klubb_raseid`) VALUES
-('admin', 'admin', 348),
-('gjest', 'gjest', 306),
-('gjest', 'gjest', 348),
-('admin', 'gjest', 348),
-('admin', 'admin', 306),
-('admin', 'test', 306),
-('admin', 'gjest', 306),
-('admin', 'test', 348),
-('gjest', 'test', 306),
-('gjest', 'admin', 348),
-('gjest', 'test', 348);
+
 
 -- --------------------------------------------------------
 
@@ -105,9 +91,6 @@ CREATE TABLE IF NOT EXISTS `ad_klubb` (
 -- Dataark for tabell `ad_klubb`
 --
 
-INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
-('Norsk Breton Klubb', NULL, 306),
-('Norsk Pointer Klubb', NULL, 348);
 
 -- --------------------------------------------------------
 
@@ -125,18 +108,7 @@ CREATE TABLE IF NOT EXISTS `ad_rettighet` (
 -- Dataark for tabell `ad_rettighet`
 --
 
-INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
-('lese', 'Utføre handlinger som ikke endrer på databasen'),
-('redigerHund', 'Redigere hunder'),
-('redigerJaktprove', 'Redigere jaktprøver'),
-('importerDatabase', 'Importere data fra NKK til databasen'),
-('leggInnJaktprove', 'Legge inn jaktprøver'),
-('slettJaktprove', 'Slette jaktprøver'),
-('rolleRettighetHandtering', 'Tildele rettigheter på roller'),
-('administrereBackup', 'Administrere Backup av databasen'),
-('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
-('redigerEgenBruker', 'En bruker skal kunne redigere seg selv'),
-('redigerUtstilling', 'Redigere utstillinger');
+
 
 -- --------------------------------------------------------
 
@@ -154,9 +126,7 @@ CREATE TABLE IF NOT EXISTS `ad_rolle` (
 -- Dataark for tabell `ad_rolle`
 --
 
-INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
-('admin', 'admin'),
-('gjest', 'gjest');
+
 
 -- --------------------------------------------------------
 
@@ -175,15 +145,6 @@ CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
 -- Dataark for tabell `ad_rolle_rettighet_link`
 --
 
-INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
-('gjest', 'klubbRolleBrukerHandtering'),
-('gjest', 'redigerJaktprove'),
-('admin', 'lese'),
-('gjest', 'leggInnJaktprove'),
-('gjest', 'administrereBackup'),
-('gjest', 'rolleRettighetHandtering'),
-('gjest', 'lese'),
-('gjest', 'slettJaktprove');
 
 -- --------------------------------------------------------
 
@@ -606,4 +567,3 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
 --
 -- Dataark for tabell `nkk_veteriner`
 --
-
