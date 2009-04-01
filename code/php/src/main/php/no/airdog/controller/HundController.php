@@ -4,6 +4,7 @@ require_once "no/airdog/model/AmfAvkom.php";
 require_once "no/airdog/controller/database/HundDatabase.php";
 require_once "no/airdog/controller/database/KullDatabase.php";
 require_once "no/airdog/controller/database/PersonDatabase.php";
+require_once "no/airdog/controller/Verktoy.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -87,7 +88,9 @@ class HundController
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
-			$tmp->bilde = "";
+			$tmp->bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . 
+				"/images/" . $rad['raseId'] . "/" . 
+				eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']);
 			$tmp->morId = $rad["hundMorId"];
 			$tmp->morNavn = $rad["hundMorNavn"];
 			$tmp->farId = $rad["hundFarId"];

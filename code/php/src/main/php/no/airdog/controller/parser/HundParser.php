@@ -1,6 +1,6 @@
 <?php
 require_once "no/airdog/controller/utf8Konverterer.php";
-require_once "Verktoy.php";
+require_once "no/airdog/controller/Verktoy.php";
 
 class HundParser
 {

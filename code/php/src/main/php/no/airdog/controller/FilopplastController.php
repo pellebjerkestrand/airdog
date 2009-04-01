@@ -14,12 +14,13 @@ Zend_Loader::registerAutoload();
 
 require_once "ImportParserController.php";
 require_once "FilopplastController.php";
+require_once "no/airdog/controller/Verktoy.php";
 
 if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['brukerPassord']) && isset($_GET['klubbId'])) 
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
 	$dat_upload_dir = dirname(__FILE__)."/temp_opplasting/";
-	$bilde_upload_dir = hoppBakover(3) . "/images/";
+	$bilde_upload_dir = Verktoy::hoppBakover(dirname(__FILE__),3) . "/images/";
 
 	$temp_navn = $_FILES['Filedata']['tmp_name'];
 	$fil_navn = $_FILES['Filedata']['name'];
@@ -91,20 +92,4 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 else
 {
 	echo 'Denne filen skal du ikke gå direkte til';
-}
-
-function hoppBakover($antall)
-{	
-	$mapper = dirname(__FILE__);
-	$mapper = str_replace("\\","/",$mapper);
-	
-	$mapper = split("/", $mapper);
-	$sti = "";
-	
-	for ($i = 1; $i < sizeof($mapper) - $antall; $i++)
-	{
-		$sti .= "/" . $mapper[$i];
-	}
-	
-	return $sti;
 }

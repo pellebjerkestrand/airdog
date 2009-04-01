@@ -11,6 +11,7 @@
 			import no.airdog.services.Components;
 			import mx.core.UIComponent;
 			import mx.utils.StringUtil;
+			import mx.controls.Alert;
 			
 			private function visRedigerHundVindu():void
 			{	
@@ -19,6 +20,7 @@
 			
 			private function velgFil():void
 			{
+				Alert.show(Components.instance.session.hundprofil.bilde.toString());
 				Components.instance.session.bildeOpplastning.progressBar = pBar;
 				Components.instance.session.bildeOpplastning.type = "bilde";
             	Components.instance.controller.lastOpp(Components.instance.session.bildeOpplastning);

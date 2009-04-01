@@ -1,6 +1,6 @@
 <?php
 
-require_once "Verktoy.php";
+require_once "no/airdog/controller/Verktoy.php";
 
 class OyesykdomParser
 {
