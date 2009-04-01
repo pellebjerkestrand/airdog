@@ -34,7 +34,7 @@ class HundController
 		   	{   
 		   		//For treg testet på server
 		   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
-				$bilde = "";
+		   		
 				$tmp = new AmfHund();
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
