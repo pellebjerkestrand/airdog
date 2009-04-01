@@ -101,7 +101,7 @@ class HundController
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
 			
-			if (is_array(@getimagesize($bilde)))
+			if (Verktoy::url_finnes($bilde))
 			{
 				$tmp->bilde = $bilde;
 			}
