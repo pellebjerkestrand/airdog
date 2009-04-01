@@ -13,6 +13,7 @@ require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
 require_once "ImportParserController.php";
+require_once "FilopplastController.php";
 
 if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['brukerPassord']) && isset($_GET['klubbId'])) 
 {
@@ -26,7 +27,7 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 	//$fil_type = $_FILES['Filedata']['type'];
 	
 	$info = pathinfo($fil_navn);
-	$fil_ext = $strtolower($info['extension']);
+	$fil_ext = strtolower($info['extension']);
 	
 	$klubb = $_GET['klubbId'];
 	$hund = $_GET['hundId'];
@@ -71,7 +72,8 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 			
 		if(move_uploaded_file($temp_navn, $bilde_fil_stien))
 		{
-			
+			$be = new BildeendringController();
+			echo $be->endreStorrelse($bilde_fil_stien, "200", "200", "50", "50");
 		}
 		else
 		{
