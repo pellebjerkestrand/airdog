@@ -150,6 +150,14 @@ package no.airdog.controller
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
 			url += "klubbId=" + Components.instance.session.bruker.sattKlubbId;
 			
+			if (laster.type == "bilde")
+			{
+				var regex:RegExp = new RegExp("[^a-zA-Z0-9]", "ig");
+				var id:String = Components.instance.session.hundprofil.hundId;
+				
+				url += "&hundId=" + id.replace(regex, "_");
+			}
+			
 			var datOpplaster:Filopplaster = new Filopplaster(url, laster);
 			datOpplaster.velgFil();
 		}

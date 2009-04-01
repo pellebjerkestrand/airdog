@@ -14,7 +14,7 @@ Zend_Loader::registerAutoload();
 
 require_once "ImportParserController.php";
 
-if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["brukerPassord"]) && isset($_GET["klubbId"])) 
+if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['brukerPassord']) && isset($_GET['klubbId'])) 
 {
 	$MAKSSTORRELSE = 1024 * 1024 * 50; // 50MB
 	$dat_upload_dir = dirname(__FILE__)."/temp_opplasting/";
@@ -26,9 +26,10 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 	//$fil_type = $_FILES['Filedata']['type'];
 	
 	$info = pathinfo($fil_navn);
-	$fil_ext = $info['extension'];
+	$fil_ext = $strtolower($info['extension']);
 	
-	$klubb = $_GET["klubbId"];
+	$klubb = $_GET['klubbId'];
+	$hund = $_GET['hundId'];
 	
 	$dat_fil_stien = $dat_upload_dir . $fil_navn;
 	
@@ -43,11 +44,11 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 		else
 		{
 			// Bør byttes ut med bedre informasjon.
-			echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
+			echo 'Klarte ikke laste opp filen til. ' . $_FILES['Filedata']['tmp_name'] .' - '. $fil_stien;
 		}
 
 	}
-	else if ($fil_storrelse <= $MAKSSTORRELSE)
+	else if ($fil_storrelse <= $MAKSSTORRELSE && ($fil_ext == 'jpg' || $fil_ext == 'jpeg' || $fil_ext == 'gif'  || $fil_ext == 'png' ))
 	{
 		if  (!file_exists($bilde_upload_dir))
 		{
@@ -63,7 +64,7 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 			chmod($bilde_upload_dir, 0777);
 		}
 		
-		$bilde_fil_stien = $bilde_upload_dir . $fil_navn;
+		$bilde_fil_stien = $bilde_upload_dir . $hund . "." . $fil_ext;
 		
 		if (file_exists($bilde_fil_stien))
 			unlink ($bilde_fil_stien);
@@ -75,18 +76,18 @@ if (isset($_FILES['Filedata']) && isset($_GET["brukerEpost"]) && isset($_GET["br
 		else
 		{
 			// Bør byttes ut med bedre informasjon.
-			echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
+			echo 'Klarte ikke laste opp filen til. ' . $_FILES['Filedata']['tmp_name'] .' - '. $fil_stien;
 		}
 	}
 	else
 	{
 		// Bør byttes ut med bedre informasjon.
-		echo "Klarte ikke laste opp filen til. " . $_FILES['Filedata']['tmp_name'] ." - ". $fil_stien;
+		echo 'Fil formatet stemmer ikke: ' . $fil_ext;
 	}
 }
 else
 {
-	echo "Denne filen skal du ikke gå direkte til";
+	echo 'Denne filen skal du ikke gå direkte til';
 }
 
 function hoppBakover($antall)
