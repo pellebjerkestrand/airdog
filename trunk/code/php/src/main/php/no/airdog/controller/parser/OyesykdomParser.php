@@ -8,7 +8,7 @@ class OyesykdomParser
 	{
 	}
 	
-	public function getOyesykdomArray($enOyesykdom)
+	public function getArray($enOyesykdom)
 	{
 		$oyesykdomArray = split('[|]', trim($enOyesykdom));
 		
@@ -46,7 +46,7 @@ class OyesykdomParser
 		}
 	}
 	
-	public function getOyesykdomlisteArray($oyesykdomliste)
+	public function getlisteArray($oyesykdomliste)
 	{
 		$oyesykdomliste = str_replace("\r\n", "\n", $oyesykdomliste);
 		$oyesykdomlisteArray = split("\n", $oyesykdomliste);
@@ -54,19 +54,19 @@ class OyesykdomParser
 		
 		for ($i = 1; $i < sizeof($oyesykdomlisteArray); $i++)
     	{
-    		$ret[] = $this->getOyesykdomArray($oyesykdomlisteArray[$i]);
+    		$ret[] = $this->getArray($oyesykdomlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getOyesykdomlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$oyesykdomliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getOyesykdomlisteArray($oyesykdomliste);
+		return $this->getlisteArray($oyesykdomliste);
 	}
 	
 	public function validerOyesykdomlisteFraFil($filnavn)
@@ -86,7 +86,7 @@ class OyesykdomParser
 		return false;
 	}
 	
-	public static function getOyesykdomDatabaseSomDat($oyesykdomArray)
+	public static function getDatabaseSomDat($oyesykdomArray)
 	{
 		$dat = "$oyesykdomArray[oyId]|" .
 			"$oyesykdomArray[hundId]|" .

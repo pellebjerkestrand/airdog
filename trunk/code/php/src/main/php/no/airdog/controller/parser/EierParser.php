@@ -6,7 +6,7 @@ class EierParser
 	{
 	}
 	
-	public function getEierArray($enEier)
+	public function getArray($enEier)
 	{
 		$eierArray = split('[|]', trim($enEier));
 		
@@ -20,7 +20,7 @@ class EierParser
 		}
 	}
 	
-	public function getEierlisteArray($eierliste)
+	public function getlisteArray($eierliste)
 	{
 		$eierliste = str_replace("\r\n", "\n", $eierliste);
 		$eierlisteArray = split("\n", $eierliste);
@@ -28,19 +28,19 @@ class EierParser
 		
 		for ($i = 1; $i < sizeof($eierlisteArray); $i++)
     	{
-    		$ret[] = $this->getEierArray($eierlisteArray[$i]);
+    		$ret[] = $this->getArray($eierlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getEierlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$eierliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getEierlisteArray($eierliste);
+		return $this->getlisteArray($eierliste);
 	}
 	
 	public function validerEierlisteFraFil($filnavn)
@@ -60,7 +60,7 @@ class EierParser
 		return false;
 	}
 	
-	public static function getEierDatabaseSomDat($personArray)
+	public static function getDatabaseSomDat($personArray)
 	{
 		$dat = "$personArray[eier]|" .
 	 		"$personArray[hundId]|" .

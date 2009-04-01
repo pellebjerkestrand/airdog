@@ -41,7 +41,7 @@ class PremieDatabase
 		return $this->database->fetchAll($select); 
 	}	
 	
-	public function settInnPremie($premiearray, $klubbId)
+	public function settInn($premiearray, $klubbId)
 	{
 		if ($premiearray["raseId"] == $klubbId)
 		{
@@ -58,7 +58,7 @@ class PremieDatabase
 			return "Arrayet er av feil størrelse. Fikk ".sizeof($premiearray).", forventet 30."; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(PremieParser::getPremieDatabaseSomDat($premiearray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(PremieParser::getDatabaseSomDat($premiearray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -97,11 +97,11 @@ class PremieDatabase
 			return $this->database->fetchRow($select); 
 	}
 	
-	public function overskrivPremie($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(PremieParser::getPremieDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(PremieParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(PremieParser::getPremieDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(PremieParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

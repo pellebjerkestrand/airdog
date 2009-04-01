@@ -8,7 +8,7 @@ class FuglParser
 	{
 	}
 	
-	public function getFuglArray($enFugl)
+	public function getArray($enFugl)
 	{
 		$fuglArray = split('[|]', trim($enFugl));
 		
@@ -60,7 +60,7 @@ class FuglParser
 		}
 	}
 	
-	public function getFugllisteArray($fuglliste)
+	public function getlisteArray($fuglliste)
 	{
 		$fuglliste = str_replace("\r\n", "\n", $fuglliste);
 		$fugllisteArray = split("\n", $fuglliste);
@@ -68,19 +68,19 @@ class FuglParser
 		
 		for ($i = 1; $i < sizeof($fugllisteArray); $i++)
     	{
-    		$ret[] = $this->getFuglArray($fugllisteArray[$i]);
+    		$ret[] = $this->getArray($fugllisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getFugllisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$fuglliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getFugllisteArray($fuglliste);
+		return $this->getlisteArray($fuglliste);
 	}
 	
 	public function validerFugllisteFraFil($filnavn)
@@ -100,7 +100,7 @@ class FuglParser
 		return false;
 	}
 	
-	public static function getFuglDatabaseSomDat($fuglArray)
+	public static function getDatabaseSomDat($fuglArray)
 	{
 		$dat = "$fuglArray[proveNr]|" .
 	 		Verktoy::konverterDatabaseTilDatDato($fuglArray['proveDato'])."|" .

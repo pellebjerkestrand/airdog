@@ -21,7 +21,7 @@ class HdsykdomDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnHdsykdom($hdsykdomArray, $klubbId)
+	public function settInn($hdsykdomArray, $klubbId)
 	{
 		if ($hdsykdomArray["raseId"] == $klubbId)
 		{
@@ -43,7 +43,7 @@ class HdsykdomDatabase
 			return "hofteDyId-verdien mangler."; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(HdsykdomParser::getHdsykdomDatabaseSomDat($hdsykdomArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(HdsykdomParser::getDatabaseSomDat($hdsykdomArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -68,11 +68,11 @@ class HdsykdomDatabase
 		}
 	}
 	
-	public function overskrivHdsykdom($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(HdsykdomParser::getHdsykdomDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(HdsykdomParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(HdsykdomParser::getHdsykdomDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(HdsykdomParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

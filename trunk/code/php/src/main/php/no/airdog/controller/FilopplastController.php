@@ -29,8 +29,6 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 	$info = pathinfo($fil_navn);
 	$fil_ext = strtolower($info['extension']);
 	
-	$klubb = $_GET['klubbId'];
-	$hund = $_GET['hundId'];
 	
 	$dat_fil_stien = $dat_upload_dir . $fil_navn;
 	
@@ -51,6 +49,9 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 	}
 	else if ($fil_storrelse <= $MAKSSTORRELSE && ($fil_ext == 'jpg' || $fil_ext == 'jpeg' || $fil_ext == 'gif'  || $fil_ext == 'png' ))
 	{
+		$klubb = $_GET['klubbId'];
+		$hund = $_GET['hundId'];
+		
 		if  (!file_exists($bilde_upload_dir))
 		{
 			mkdir($bilde_upload_dir);

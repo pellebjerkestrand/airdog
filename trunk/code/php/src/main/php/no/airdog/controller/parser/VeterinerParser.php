@@ -7,7 +7,7 @@ class VeterinerParser
 	{
 	}
 	
-	public function getVeterinerArray($enVeteriner)
+	public function getArray($enVeteriner)
 	{
 		$veterinerArray = split('[|]', $enVeteriner);
 		
@@ -30,7 +30,7 @@ class VeterinerParser
 		}
 	}
 	
-	public function getVeterinerlisteArray($veterinerliste)
+	public function getlisteArray($veterinerliste)
 	{
 		$veterinerliste = str_replace("\r\n", "\n", $veterinerliste);
 		$veterinerlisteArray = split("\n", $veterinerliste);
@@ -38,19 +38,19 @@ class VeterinerParser
 		
 		for ($i = 1; $i < sizeof($veterinerlisteArray); $i++)
     	{
-    		$ret[] = $this->getVeterinerArray($veterinerlisteArray[$i]);
+    		$ret[] = $this->getArray($veterinerlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getVeterinerlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$veterinerliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getVeterinerlisteArray($veterinerliste);
+		return $this->getlisteArray($veterinerliste);
 	}
 	
 	public function validerVeterinerlisteFraFil($filnavn)
@@ -70,7 +70,7 @@ class VeterinerParser
 		return false;
 	}
 	
-	public static function getVeterinerDatabaseSomDat($veterinerArray)
+	public static function getDatabaseSomDat($veterinerArray)
 	{
 		$dat = "$veterinerArray[veterinerId]|" .
 			"$veterinerArray[personId]|" .

@@ -32,7 +32,7 @@ class HundDatabase
 //		return $resultat;
 //	}
 	
-	public function settInnHund($hundArray, $klubbId)
+	public function settInn($hundArray, $klubbId)
 	{
 		if ($hundArray["raseId"] == $klubbId)
 		{
@@ -46,35 +46,35 @@ class HundDatabase
 	{
 		if (sizeof($hundArray) != 20)
 		{ 
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($hundArray).", forventet 20."; 
+			return 'Arrayet er av feil størrelse. Fikk ' . sizeof($hundArray) . ', forventet 20.'; 
 		}
 		
-		if (!isset($hundArray["hundId"]) || $hundArray["hundId"] == "")
+		if (!isset($hundArray['hundId']) || $hundArray['hundId'] == '')
 		{ 
-			return "hundId-verdien mangler."; 
+			return 'hundId-verdien mangler.'; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(HundParser::getHundDatabaseSomDat($hundArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(HundParser::getDatabaseSomDat($hundArray), $this->database) != null)
 		{
-			return "Finnes alt i DATreferanser tabellen.";
+			return 'Finnes alt i DATreferanser tabellen.';
 		}
 		
-		$dbHund = $this->hentKunHund($hundArray["hundId"], $hundArray["raseId"]);
+		$dbHund = $this->hentKunHund($hundArray['hundId'], $hundArray['raseId']);
 		
 		if ($dbHund == null)
 		{
 			$this->database->insert('nkk_hund', $hundArray);
-			return "Lagt til";
+			return 'Lagt til';
 		}
-		else if ($dbHund["manueltEndretAv"] != "")
+		else if ($dbHund['manueltEndretAv'] != '')
 		{
-			return "Manuelt endret, vil du overskrive?";
+			return 'Manuelt endret, vil du overskrive?';
 		}
 		else
 		{
-			$hvor = $this->database->quoteInto('hundId = ?', $hundArray["hundId"]) . $this->database->quoteInto('AND raseId = ?', $hundArray["raseId"]);
+			$hvor = $this->database->quoteInto('hundId = ?', $hundArray['hundId']) . $this->database->quoteInto('AND raseId = ?', $hundArray['raseId']);
 			$this->database->update('nkk_hund', $hundArray, $hvor);
-			return "Oppdatert";
+			return 'Oppdatert';
 		}
 	}
 	
@@ -203,11 +203,11 @@ class HundDatabase
 		return $this->database->update('nkk_hund', $hund, $hvor);
 	}
 	
-	public function overskrivHund($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(HundParser::getHundDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(HundParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(HundParser::getHundDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(HundParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

@@ -119,7 +119,7 @@ class JaktproveDatabase
 		return $this->database->fetchRow($select); 
 	}
 	
-	public function settInnJaktprove($jaktarray, $klubbId)
+	public function settInn($jaktarray, $klubbId)
 	{
 		if ($jaktarray["raseId"] == $klubbId)
 		{
@@ -141,7 +141,7 @@ class JaktproveDatabase
 			return "hundId-verdien mangler."; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(FuglParser::getFuglDatabaseSomDat($jaktarray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(FuglParser::getDatabaseSomDat($jaktarray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -183,11 +183,11 @@ class JaktproveDatabase
 			return $this->database->fetchRow($select); 
 	}
 	
-	public function overskrivJaktprove($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(FuglParser::getFuglDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(FuglParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(UtstillingParser::getFuglDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(UtstillingParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

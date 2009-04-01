@@ -21,7 +21,7 @@ class OyesykdomDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnOyesykdom($oyesykdomArray, $klubbId)
+	public function settInn($oyesykdomArray, $klubbId)
 	{
 		if ($oyesykdomArray["raseId"] == $klubbId)
 		{
@@ -43,7 +43,7 @@ class OyesykdomDatabase
 			return "oyId-verdien mangler."; 
 		}
 
-		if (DatReferanseDatabase::hentReferanse(OyesykdomParser::getOyesykdomDatabaseSomDat($oyesykdomArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(OyesykdomParser::getDatabaseSomDat($oyesykdomArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -68,11 +68,11 @@ class OyesykdomDatabase
 		}
 	}
 	
-	public function overskrivOyesykdom($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(OyesykdomParser::getOyesykdomDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(OyesykdomParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(OyesykdomParser::getOyesykdomDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(OyesykdomParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

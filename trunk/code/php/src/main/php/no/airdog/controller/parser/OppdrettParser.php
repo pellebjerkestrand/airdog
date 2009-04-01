@@ -5,7 +5,7 @@ class OppdrettParser
 	{
 	}
 	
-	public function getOppdrettArray($enOppdrett)
+	public function getArray($enOppdrett)
 	{
 		$oppdrettArray = split('[|]', trim($enOppdrett));
 		
@@ -19,7 +19,7 @@ class OppdrettParser
 		}
 	}
 	
-	public function getOppdrettlisteArray($oppdrettliste)
+	public function getlisteArray($oppdrettliste)
 	{
 		$oppdrettliste = str_replace("\r\n", "\n", $oppdrettliste);
 		$oppdrettlisteArray = split("\n", $oppdrettliste);
@@ -27,19 +27,19 @@ class OppdrettParser
 		
 		for ($i = 1; $i < sizeof($oppdrettlisteArray); $i++)
     	{
-    		$ret[] = $this->getOppdrettArray($oppdrettlisteArray[$i]);
+    		$ret[] = $this->getArray($oppdrettlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getOppdrettlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$kullliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getOppdrettlisteArray($kullliste);
+		return $this->getlisteArray($kullliste);
 	}
 	
 	public function validerOppdrettlisteFraFil($filnavn)

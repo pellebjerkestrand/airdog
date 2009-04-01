@@ -21,7 +21,7 @@ class VeterinerDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnVeteriner($veterinerArray, $klubbId)
+	public function settInn($veterinerArray, $klubbId)
 	{
 		$veterinerArray["raseId"] = $klubbId;
 		
@@ -40,7 +40,7 @@ class VeterinerDatabase
 			return "veterinerId-verdien mangler."; 
 		}
 
-		if (DatReferanseDatabase::hentReferanse(VeterinerParser::getVeterinerDatabaseSomDat($veterinerArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(VeterinerParser::getDatabaseSomDat($veterinerArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -65,11 +65,11 @@ class VeterinerDatabase
 		}
 	}
 	
-	public function overskrivVeteriner($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(VeterinerParser::getVeterinerDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(VeterinerParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(VeterinerParser::getVeterinerDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(VeterinerParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

@@ -8,7 +8,7 @@ class AasykdomParser
 	{
 	}
 	
-	public function getAasykdomArray($enAasykdom)
+	public function getArray($enAasykdom)
 	{
 		$aaSykdomArray = split('[|]', trim($enAasykdom));
 		
@@ -49,7 +49,7 @@ class AasykdomParser
 			//IdFeil|IdMerket|Kode|Lidelse|PEID|Purring|RAID|Retur|SekHoyre|
 			//SekVenstre|Sendes|AvlestDato|RontgenDato
 	
-	public function getAasykdomlisteArray($aaSykdomliste)
+	public function getlisteArray($aaSykdomliste)
 	{
 			$aaSykdomliste = str_replace("\r\n", "\n", $aaSykdomliste);
 			$aaSykdomListeArray = split("\n", $aaSykdomliste);
@@ -58,19 +58,19 @@ class AasykdomParser
 		
 		for ($i = 1; $i < sizeof($aaSykdomListeArray); $i++)
     	{
-    		$ret[] = $this->getAasykdomArray($aaSykdomListeArray[$i]);
+    		$ret[] = $this->getArray($aaSykdomListeArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getAasykdomlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$aasykdomliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getAasykdomlisteArray($aasykdomliste);
+		return $this->getlisteArray($aasykdomliste);
 	}
 	
 	public function validerAasykdomlisteFraFil($filnavn)
@@ -90,7 +90,7 @@ class AasykdomParser
 		return false;
 	}
 	
-	public static function getAasykdomDatabaseSomDat($aasykdomArray)
+	public static function getDatabaseSomDat($aasykdomArray)
 	{
 		$dat = "$aasykdomArray[veId]|" .
 			"$aasykdomArray[aaId]|" .

@@ -21,7 +21,7 @@ class PersonDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnPerson($personArray, $klubbId)
+	public function settInn($personArray, $klubbId)
 	{
 		if ($personArray["raseId"] == $klubbId)
 		{
@@ -43,7 +43,7 @@ class PersonDatabase
 			return "personId-verdien mangler."; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(PersonParser::getPersonDatabaseSomDat($personArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(PersonParser::getDatabaseSomDat($personArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -68,11 +68,11 @@ class PersonDatabase
 		}
 	}
 	
-	public function overskrivPerson($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(PersonParser::getPersonDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(PersonParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(PersonParser::getPersonDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(PersonParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";
