@@ -48,7 +48,7 @@ package no.airdog.controller
         		alleTyper = new Array(tekstTyper); 
         	}
         	else if (opplastning.type == "bilde")
-        	{
+        	{        		
         		bildeTyper = new FileFilter("Bilder (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg; *.jpeg; *.gif; *.png");
         		alleTyper = new Array(bildeTyper); 
         	}
