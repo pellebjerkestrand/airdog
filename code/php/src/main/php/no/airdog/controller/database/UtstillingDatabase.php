@@ -42,7 +42,7 @@ class UtstillingDatabase
 		return $this->database->fetchAll($select); 
 	}	
 	
-	public function settInnUtstilling($utstillingarray, $klubbId)
+	public function settInn($utstillingarray, $klubbId)
 	{
 		if (sizeof($utstillingarray) != 15)
 		{ 
@@ -51,7 +51,7 @@ class UtstillingDatabase
 		
 		$utstillingarray["raseId"] = $klubbId;
 		
-		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getUtstillingDatabaseSomDat($utstillingarray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getDatabaseSomDat($utstillingarray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -89,11 +89,11 @@ class UtstillingDatabase
 			return $this->database->fetchRow($select); 
 	}
 	
-	public function overskrivUtstilling($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getUtstillingDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(UtstillingParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(UtstillingParser::getUtstillingDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(UtstillingParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

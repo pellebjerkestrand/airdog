@@ -8,7 +8,7 @@ class UtstillingParser
 	{
 	}
 	
-	public function getUtstillingArray($enUtstilling)
+	public function getArray($enUtstilling)
 	{
 		$utstillingArray = split('[|]', trim($enUtstilling));
 		
@@ -35,7 +35,7 @@ class UtstillingParser
 	}
 
 	
-	public function getUtstillinglisteArray($utstillingliste)
+	public function getlisteArray($utstillingliste)
 	{
 			$utstillingliste = str_replace("\r\n", "\n", $utstillingliste);
 			$utstillingListeArray = split("\n", $utstillingliste);
@@ -45,19 +45,19 @@ class UtstillingParser
 		
 		for ($i = 1; $i < sizeof($utstillingListeArray); $i++)
     	{
-    		$ret[] = $this->getUtstillingArray($utstillingListeArray[$i]);
+    		$ret[] = $this->getArray($utstillingListeArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getUtstillinglisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$utstillingliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getUtstillinglisteArray($utstillingliste);
+		return $this->getlisteArray($utstillingliste);
 	}
 	
 	public function validerUtstillinglisteFraFil($filnavn)
@@ -77,7 +77,7 @@ class UtstillingParser
 		return false;
 	}
 	
-	public static function getUtstillingDatabaseSomDat($utstillingArray)
+	public static function getDatabaseSomDat($utstillingArray)
 	{
 		$dat = "$utstillingArray[utstillingId]|" .
 	 		"$utstillingArray[klasseId]|" .

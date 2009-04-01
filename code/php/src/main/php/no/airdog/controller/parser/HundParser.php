@@ -8,7 +8,7 @@ class HundParser
 	{
 	}
 	
-	public function getHundArray($enHund)
+	public function getArray($enHund)
 	{
 		$hundArray = split('[|]', utf8Konverterer::cp1252_to_utf8(trim($enHund)));
 		
@@ -39,7 +39,7 @@ class HundParser
 		}
 	}
 	
-	public function getHundelisteArray($hundeliste)
+	public function getelisteArray($hundeliste)
 	{
 		$hundeliste = str_replace("\r\n", "\n", $hundeliste);
 		$hundelisteArray = split("\n", $hundeliste);
@@ -48,19 +48,19 @@ class HundParser
 		// Hopper over den første linjen da denne inneholder kun tabellinformasjon.
 		for ($i = 1; $i < sizeof($hundelisteArray); $i++)
     	{
-    		$ret[] = $this->getHundArray($hundelisteArray[$i]);
+    		$ret[] = $this->getArray($hundelisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getHundelisteArrayFraFil($filnavn)
+	public function getelisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$hundeliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getHundelisteArray($hundeliste);
+		return $this->getelisteArray($hundeliste);
 	}
 	
 	public function validerHundelisteFraFil($filnavn)
@@ -80,28 +80,28 @@ class HundParser
 		return false;
 	}
 	
-	public static function getHundDatabaseSomDat($hundArray)
+	public static function getDatabaseSomDat($hundArray)
 	{
-		$dat = "$hundArray[raseId]|" .
-	 		"$hundArray[kullId]|" .
-	 		"$hundArray[hundId]|" .
-	 		"$hundArray[tittel]|" .
-	 		"$hundArray[navn]|" .
-	 		"$hundArray[hundFarId]|" .
-	 		"$hundArray[hundMorId]|" .
-	 		"$hundArray[idNr]|" .
-	 		"$hundArray[farge]|" .
-	 		"$hundArray[fargeVariant]|" .
-	 		"$hundArray[oyesykdom]|" .
-	 		"$hundArray[hoftesykdom]|" .
-	 		"$hundArray[haarlag]|" .
-	 		"$hundArray[idMerke]|" .
-	 		"$hundArray[kjonn]|" .
-	 		"$hundArray[eierId]|" .
-	 		"$hundArray[endretAv]|" .
-	 		Verktoy::konverterDatabaseTilDatDato($hundArray['endretDato'])."|" .
-	 		Verktoy::konverterDatabaseTilDatDato($hundArray['regDato'])."|" .
-	 		"$hundArray[storrelse]";
+		$dat = $hundArray[raseId] . '|' .
+	 		$hundArray[kullId] . '|' .
+	 		$hundArray[hundId] . '|' .
+	 		$hundArray[tittel] . '|' .
+	 		$hundArray[navn] . '|' .
+	 		$hundArray[hundFarId] . '|' .
+	 		$hundArray[hundMorId] . '|' .
+	 		$hundArray[idNr] . '|' .
+	 		$hundArray[farge] . '|' .
+	 		$hundArray[fargeVariant] . '|' .
+	 		$hundArray[oyesykdom] . '|' .
+	 		$hundArray[hoftesykdom] . '|' .
+	 		$hundArray[haarlag] . '|' .
+	 		$hundArray[idMerke] . '|' .
+	 		$hundArray[kjonn] . '|' .
+	 		$hundArray[eierId] . '|' .
+	 		$hundArray[endretAv] . '|' .
+	 		Verktoy::konverterDatabaseTilDatDato($hundArray['endretDato']) . '|' .
+	 		Verktoy::konverterDatabaseTilDatDato($hundArray['regDato']) . '|' .
+	 		$hundArray[storrelse];
 			 			
 			return $dat;
 	}

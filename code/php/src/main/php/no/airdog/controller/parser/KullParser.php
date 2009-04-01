@@ -8,7 +8,7 @@ class KullParser
 	{
 	}
 	
-	public function getKullArray($enKull)
+	public function getArray($enKull)
 	{
 		$kullArray = split('[|]', trim($enKull));
 		
@@ -26,7 +26,7 @@ class KullParser
 		}
 	}
 	
-	public function getKulllisteArray($kullliste)
+	public function getlisteArray($kullliste)
 	{
 		$kullliste = str_replace("\r\n", "\n", $kullliste);
 		$kulllisteArray = split("\n", $kullliste);
@@ -34,19 +34,19 @@ class KullParser
 		
 		for ($i = 1; $i < sizeof($kulllisteArray); $i++)
     	{
-    		$ret[] = $this->getKullArray($kulllisteArray[$i]);
+    		$ret[] = $this->getArray($kulllisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getKulllisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$kullliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getKulllisteArray($kullliste);
+		return $this->getlisteArray($kullliste);
 	}
 	
 	public function validerKulllisteFraFil($filnavn)

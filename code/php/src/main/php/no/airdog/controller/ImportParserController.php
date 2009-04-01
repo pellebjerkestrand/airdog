@@ -28,11 +28,12 @@ class importParserController
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 		
-		$this->svarListe[] = "";	// 0 = generelt resultat
-		$this->svarListe[] = "";	// 1 = filtype
-		$this->svarListe[] = 0;		// 2 = antall oppdaterte
-		$this->svarListe[] = 0;		// 3 = antall lagt til
-		$this->svarListe[] = 0;		// 4 = antall ignorerte
+		$this->svarListe[] = "";	// 0 = generelt søppel (Firefox hack ftw!!)
+		$this->svarListe[] = "";	// 1 = generelt resultat
+		$this->svarListe[] = "";	// 2 = filtype
+		$this->svarListe[] = 0;		// 3 = antall oppdaterte
+		$this->svarListe[] = 0;		// 4 = antall lagt til
+		$this->svarListe[] = 0;		// 5 = antall ignorerte
 	}
 
 	public function lagreDb($filSti, $epost, $passord, $klubbId)
@@ -40,132 +41,117 @@ class importParserController
 		if(ValiderBruker::validerBrukerRettighet($this->database, $epost, $passord, $klubbId, "importerDatabase"))
 		{
 			$valider = new FilvaliderController();
-			$filtype = $valider->getFiltypeFraFil($filSti);
 			
-			$handle = fopen($filSti, "rb");
-			$liste = utf8Konverterer::cp1252_to_utf8(fread($handle, filesize($filSti)));
-			fclose($handle);
 			
-			$liste = str_replace("\r\n", "\n", $liste);
-			$listeArray = split("\n", $liste);
 			
-			$ret = "";
-			$size = sizeof($listeArray);
 			
-			$this->svarListe[1] = $filtype;
+//			$liste = fread($handle, filesize($filSti));
+//			fclose($handle);
+//
+//			$liste = str_replace("\r\n", "\n", $liste);
+//			
+//			// utf8Konverterer::cp1252_to_utf8(
+//			$listeArray = @split("[|]", $liste);
+//			//echo $listeArray[0];
+//			echo "---";
+//			return;
+//			
+//			$size = sizeof($listeArray);
+    		
 			
-			switch($filtype)
+			
+			$handle = fopen($filSti, "r");
+			if ($handle) 
 			{
-				case "Eier":
-					$ep = new EierParser();
-					$hd = new EierDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnEier($ep->getEierArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-					
-				case "Fugl":
-					$ep = new FuglParser();
-					$hd = new JaktproveDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnJaktprove($ep->getFuglArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-			    	
-				case "Hdsykdom":
-					$ep = new HdsykdomParser();
-					$hd = new HdsykdomDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnHdsykdom($ep->getHdsykdomArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-					
-				case "Hund":
-					$ep = new HundParser();
-					$hd = new HundDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnHund($ep->getHundArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-					break;
-					
-				case "Kull":
-					return "Ikke implementert ennå.";
-					
-				case "Oppdrett":
-					return "Ikke implementert ennå.";
-					
-				case "Person":
-					$ep = new PersonParser();
-					$hd = new PersonDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnPerson($ep->getPersonArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-					break;
-					
-				case "Premie":
-					$ep = new PremieParser();
-					$hd = new PremieDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnPremie($ep->getPremieArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-					break;
-					
-				case "Utstilling":
-					$ep = new UtstillingParser();
-					$hd = new UtstillingDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnUtstilling($ep->getUtstillingArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-					break;
-					
-				case "Veteriner":
-					$ep = new VeterinerParser();
-					$hd = new VeterinerDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnVeteriner($ep->getVeterinerArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-					
-				case "Aasykdom":
-					$ep = new AasykdomParser();
-					$hd = new AasykdomDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnAasykdom($ep->getAasykdomArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-					
-				case "Oyesykdom":
-					$ep = new OyesykdomParser();
-					$hd = new OyesykdomDatabase();
-					for ($i = 1; $i < $size; $i++)
-			    	{
-			    		$svar = $hd->settInnOyesykdom($ep->getOyesykdomArray($listeArray[$i]), $klubbId);
-			    		$this->velgHandling($svar, $listeArray[$i]);
-			    	}
-			    	break;
-					
-				default:
-					return "Dette er en ukjent .dat fil";
-			}
+				$tekst = utf8Konverterer::cp1252_to_utf8(fgets($handle, 4096));
+				$filtype = $valider->getFiltype($tekst);
+				$ret = "";
+				$this->svarListe[1] = $filtype;
 			
+				switch($filtype)
+				{
+					case "Eier":
+						$ep = new EierParser();
+						$hd = new EierDatabase();
+				    	break;
+						
+					case "Fugl":
+						$ep = new FuglParser();
+						$hd = new JaktproveDatabase();
+				    	break;
+				    	
+					case "Hdsykdom":
+						$ep = new HdsykdomParser();
+						$hd = new HdsykdomDatabase();
+				    	break;
+						
+					case "Hund":
+						$ep = new HundParser();
+						$hd = new HundDatabase();
+						break;
+						
+					case "Kull":
+						return "Ikke implementert ennå.";
+						
+					case "Oppdrett":
+						return "Ikke implementert ennå.";
+						
+					case "Person":
+						$ep = new PersonParser();
+						$hd = new PersonDatabase();
+						break;
+						
+					case "Premie":
+						$ep = new PremieParser();
+						$hd = new PremieDatabase();
+						break;
+						
+					case "Utstilling":
+						$ep = new UtstillingParser();
+						$hd = new UtstillingDatabase();
+						break;
+						
+					case "Veteriner":
+						$ep = new VeterinerParser();
+						$hd = new VeterinerDatabase();
+				    	break;
+						
+					case "Aasykdom":
+						$ep = new AasykdomParser();
+						$hd = new AasykdomDatabase();
+				    	break;
+						
+					case "Oyesykdom":
+						$ep = new OyesykdomParser();
+						$hd = new OyesykdomDatabase();
+				    	break;
+						
+					default:
+						return "Dette er en ukjent .dat fil";
+				}
+			
+				$x = 0;
+		
+			    while (!feof($handle)) 
+			    {
+			        $tekst = utf8Konverterer::cp1252_to_utf8(fgets($handle, 4096));
+			        $tekst = str_replace("\r\n", "\n", $tekst);
+			        $tekst = str_replace("\n", "", $tekst);
+			        
+			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
+		    		$this->velgHandling($svar, $tekst);
+		    		
+		    		if ($x > 100)	// Spytt ut firefox "søppel" hver 100 rad for at tilkoblingen ikke skal stoppe.
+		    		{
+		    			echo ' ----- ';
+		    			$x = 0;
+		    		}
+		    		$x++;
+			    }
+			    
+			    fclose($handle);
+			}
+
 			$ret = "";
 			$splitter = "";
 			foreach ($this->svarListe as $svar)
@@ -181,26 +167,27 @@ class importParserController
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-/*	$this->svarListe[] = "";	// 0 = generelt resultat
-	$this->svarListe[] = "";	// 1 = filtype
-	$this->svarListe[] = 0;		// 2 = antall oppdaterte
-	$this->svarListe[] = 0;		// 3 = antall lagt til
-	$this->svarListe[] = 0;		// 4 = antall ignorerte*/
+/*	$this->svarListe[] = "";	// 0 = generelt søppel (Firefox hack ftw!!)
+	$this->svarListe[] = "";	// 1 = generelt resultat
+	$this->svarListe[] = "";	// 2 = filtype
+	$this->svarListe[] = 0;		// 3 = antall oppdaterte
+	$this->svarListe[] = 0;		// 4 = antall lagt til
+	$this->svarListe[] = 0;		// 5 = antall ignorerte*/
 		
 	private function velgHandling($svar, $verdi)
 	{
 		switch($svar)
 	    	{
 	    		case "Lagt til":
-	    			$this->svarListe[3]++;
+	    			$this->svarListe[4]++;
 	    			break;
 	    			
     			case "Oppdatert":
-	    			$this->svarListe[2]++;
+	    			$this->svarListe[3]++;
 	    			break;
 	    			
     			case "Finnes alt i DATreferanser tabellen.": 
-	    			$this->svarListe[4]++;
+	    			$this->svarListe[5]++;
 	    			break;
 	    			
 	    		case "Manuelt endret, vil du overskrive?":	    			
@@ -209,7 +196,8 @@ class importParserController
 	    			
 	    		default:
 	    			if ($verdi != "")
-	    				$this->svarListe[0] .= "\r" . $svar;
+	    				$this->svarListe[1] .= "\r" . $svar;
+    				break;
 	    	}
 	}
 }

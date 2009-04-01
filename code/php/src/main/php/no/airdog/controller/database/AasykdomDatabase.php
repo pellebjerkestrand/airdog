@@ -21,7 +21,7 @@ class AasykdomDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnAasykdom($aasykdomArray, $klubbId)
+	public function settInn($aasykdomArray, $klubbId)
 	{
 		if ($aasykdomArray["raseId"] == $klubbId)
 		{
@@ -43,7 +43,7 @@ class AasykdomDatabase
 			return "aaId-verdien mangler."; 
 		}
 
-		if (DatReferanseDatabase::hentReferanse(AasykdomParser::getAasykdomDatabaseSomDat($aasykdomArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(AasykdomParser::getDatabaseSomDat($aasykdomArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -68,11 +68,11 @@ class AasykdomDatabase
 		}
 	}
 	
-	public function overskrivAasykdom($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(AasykdomParser::getAasykdomDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(AasykdomParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(AasykdomParser::getAasykdomDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(AasykdomParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

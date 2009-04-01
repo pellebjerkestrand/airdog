@@ -7,7 +7,7 @@ class HdsykdomParser
 	{
 	}
 	
-	public function getHdsykdomArray($enHdsykdom)
+	public function getArray($enHdsykdom)
 	{
 		$hdsykdomArray = split('[|]', trim($enHdsykdom));
 		
@@ -41,7 +41,7 @@ class HdsykdomParser
 		}
 	}
 	
-	public function getHdsykdomlisteArray($hdsykdomliste)
+	public function getlisteArray($hdsykdomliste)
 	{
 		$hdsykdomliste = str_replace("\r\n", "\n", $hdsykdomliste);
 		$hdsykdomlisteArray = split("\n", $hdsykdomliste);
@@ -49,19 +49,19 @@ class HdsykdomParser
 		
 		for ($i = 1; $i < sizeof($hdsykdomlisteArray); $i++)
     	{
-    		$ret[] = $this->getHdsykdomArray($hdsykdomlisteArray[$i]);
+    		$ret[] = $this->getArray($hdsykdomlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getHdsykdomlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$hdsykdomliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getHdsykdomlisteArray($hdsykdomliste);
+		return $this->getlisteArray($hdsykdomliste);
 	}
 	
 	public function validerHdsykdomlisteFraFil($filnavn)
@@ -81,7 +81,7 @@ class HdsykdomParser
 		return false;
 	}
 	
-	public static function getHdsykdomDatabaseSomDat($hdsykdomArray)
+	public static function getDatabaseSomDat($hdsykdomArray)
 	{
 		$dat = "$hdsykdomArray[avlestAv]|" .
 			"$hdsykdomArray[betaling]|" .

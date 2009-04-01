@@ -8,7 +8,7 @@ class PersonParser
 	{
 	}
 	
-	public function getPersonArray($enPerson)
+	public function getArray($enPerson)
 	{
 		$personArray = split('[|]', trim($enPerson));
 		
@@ -32,7 +32,7 @@ class PersonParser
 		}
 	}
 	
-	public function getPersonlisteArray($personliste)
+	public function getlisteArray($personliste)
 	{
 		$personliste = str_replace("\r\n", "\n", $personliste);
 		$personlisteArray = split("\n", $personliste);
@@ -40,19 +40,19 @@ class PersonParser
 		
 		for ($i = 1; $i < sizeof($personlisteArray); $i++)
     	{
-    		$ret[] = $this->getPersonArray($personlisteArray[$i]);
+    		$ret[] = $this->getArray($personlisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getPersonlisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$personliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getPersonlisteArray($personliste);
+		return $this->getlisteArray($personliste);
 	}
 	
 	public function validerPersonlisteFraFil($filnavn)
@@ -72,7 +72,7 @@ class PersonParser
 		return false;
 	}
 	
-	public static function getPersonDatabaseSomDat($personArray)
+	public static function getDatabaseSomDat($personArray)
 	{
 		$dat = "$personArray[personId]|" .
 	 		"$personArray[navn]|" .

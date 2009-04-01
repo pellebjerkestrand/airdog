@@ -21,7 +21,7 @@ class EierDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-	public function settInnEier($eierArray, $klubbId)
+	public function settInn($eierArray, $klubbId)
 	{
 		if ($eierArray["raseId"] == $klubbId)
 		{
@@ -43,7 +43,7 @@ class EierDatabase
 			return "eier-verdien mangler."; 
 		}
 		
-		if (DatReferanseDatabase::hentReferanse(EierParser::getEierDatabaseSomDat($eierArray), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(EierParser::getDatabaseSomDat($eierArray), $this->database) != null)
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
@@ -68,11 +68,11 @@ class EierDatabase
 		}
 	}
 	
-	public function overskrivEier($verdier, $klubbId)
+	public function overskriv($verdier, $klubbId)
 	{
-		if (DatReferanseDatabase::hentReferanse(EierParser::getEierDatabaseSomDat($verdier), $this->database) != null)
+		if (DatReferanseDatabase::hentReferanse(EierParser::getDatabaseSomDat($verdier), $this->database) != null)
 		{
-			DatReferanseDatabase::slettReferanse(EierParser::getEierDatabaseSomDat($verdier), $this->database);
+			DatReferanseDatabase::slettReferanse(EierParser::getDatabaseSomDat($verdier), $this->database);
 		}
 		
 		$verdier['manueltEndretAv'] = "";

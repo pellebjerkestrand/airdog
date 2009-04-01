@@ -5,7 +5,7 @@ class PremieParser
 	{
 	}
 	
-	public function getPremieArray($enPremie)
+	public function getArray($enPremie)
 	{
 		$premieArray = split('[|]', trim($enPremie));
 		
@@ -46,7 +46,7 @@ class PremieParser
 		}
 	}
 	
-	public function getPremielisteArray($premieliste)
+	public function getlisteArray($premieliste)
 	{
 		$premieliste = str_replace("\r\n", "\n", $premieliste);
 		$premielisteArray = split("\n", $premieliste);
@@ -54,19 +54,19 @@ class PremieParser
 		
 		for ($i = 1; $i < sizeof($premielisteArray); $i++)
     	{
-    		$ret[] = $this->getPremieArray($premielisteArray[$i]);
+    		$ret[] = $this->getArray($premielisteArray[$i]);
     	}
     	
     	return $ret;
 	}
 	
-	public function getPremielisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$kullliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getPremielisteArray($kullliste);
+		return $this->getlisteArray($kullliste);
 	}
 	
 	public function validerPremielisteFraFil($filnavn)
@@ -86,7 +86,7 @@ class PremieParser
 		return false;
 	}
 	
-	public static function getPremieDatabaseSomDat($premieArray)
+	public static function getDatabaseSomDat($premieArray)
 	{
 		$dat = "$premieArray[doId]|" .
 	 		"$premieArray[utstillingId]|" .
