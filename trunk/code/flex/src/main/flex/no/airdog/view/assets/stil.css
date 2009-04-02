@@ -67,100 +67,6 @@ Button
 
 /*
 //------------------------------
-//  primaryButton
-//------------------------------
-*/
-.primaryButton
-{
-	color: #ffffff;
-	textRollOverColor: #ffffff;
-	textSelectedColor: #ffffff;
-	disabledSkin: Embed(source="skin/stil.swf", symbol="primaryButton_disabledSkin");
-	downSkin: Embed(source="skin/stil.swf", symbol="primaryButton_downSkin");
-	overSkin: Embed(source="skin/stil.swf", symbol="primaryButton_overSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="primaryButton_upSkin");
-	paddingTop: 2;
-}
-
-/* 
-//------------------------------ 
-//  ButtonBar 
-//------------------------------ 
-*/ 
-
-ButtonBar 
-{ 
-	buttonStyleName: "buttonBarButton"; 
-	firstButtonStyleName: "firstButtonBarButton"; 
-	lastButtonStyleName: "lastButtonBarButton";
-}
-
-ToggleButtonBar 
-{ 
-	buttonStyleName: "buttonBarButton"; 
-	firstButtonStyleName: "firstButtonBarButton"; 
-	lastButtonStyleName: "lastButtonBarButton";
-	
-}
-
-/* 
-//------------------------------ 
-//  ButtonBarButtons 
-//------------------------------ 
-*/ 
-
-.firstButtonBarButton 
-{ 
-	disabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstDisabledSkin"); 
-	downSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstDownSkin"); 
-	overSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstOverSkin"); 
-	selectedDisabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstSelectedDisabledSkin"); 
-	selectedDownSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstSelectedUpSkin"); 
-	selectedOverSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstSelectedUpSkin");
-	selectedUpSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstSelectedUpSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_firstUpSkin");
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-
-	
-}
-
-.buttonBarButton 
-{ 
-	disabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonDisabledSkin"); 
-	downSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonDownSkin"); 
-	overSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonOverSkin"); 
-	selectedDisabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonSelectedDisabledSkin"); 
-	selectedDownSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonSelectedUpSkin"); 
-	selectedOverSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonSelectedUpSkin");
-	selectedUpSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonSelectedUpSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_buttonUpSkin"); 
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-}
-
-.lastButtonBarButton 
-{ 
-	disabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastDisabledSkin"); 
-	downSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastDownSkin"); 
-	overSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastOverSkin"); 
-	selectedDisabledSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastSelectedDisabledSkin"); 
-	selectedDownSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastSelectedUpSkin"); 
-	selectedOverSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastSelectedUpSkin");
-	selectedUpSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastSelectedUpSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="ButtonBar_lastUpSkin"); 
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	paddingBottom: 0;
-}
-
-/*
-//------------------------------
 //  CheckBox
 //------------------------------
 */
@@ -210,6 +116,16 @@ ComboBox
 .myComboBoxDropDowns 
 {
    cornerRadius: 4;
+}
+
+/*
+//------------------------------
+//  Panel ControlBar
+//------------------------------
+*/
+ControlBar
+{
+	borderSkin: Embed(source="skin/stil.swf", symbol="Panel_controlBarBackgroundSkin");
 }
 
 /*
@@ -321,6 +237,44 @@ FormItem
 	indicatorSkin: Embed(source="skin/stil.swf",symbol="FormItem_indicatorSkin");  
 }
 
+.funksjon
+{
+	backgroundColor: #f5f5ff; 
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 6; 
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	paddingBottom: 4; 
+	paddingTop: 4;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+	horizontalAlign: center;
+}
+
+.hovedmenyTabsStil 
+{        
+	tabOffset: 15;
+	tabHeight: 30;
+	tabWidth: 200;
+	horizontalGap: 15;   
+	tabStyleName: "hovedmenyTabs";              
+}            
+
+.hovedmenyTabs 
+{
+    selected-up-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
+    selected-down-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
+    selected-over-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
+    cornerRadius: 10;
+    fontWeight: bold;            
+    fontSize: 12;
+    embedFonts: true;
+    themeColor: #ffffff;           
+}
+
 /*
 //------------------------------
 //  Image
@@ -328,9 +282,7 @@ FormItem
 */
 Image
 {
-
 	brokenImageSkin: Embed(source="skin/stil.swf",symbol="Loader_brokenImageSkin");
-
 }
 
 /*
@@ -346,11 +298,6 @@ LinkButton
 	upSkin: Embed(source="skin/stil.swf", symbol="LinkButton_upSkin");
 }
 
-.mainButtonLink
-{
-	upSkin:Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
-}
-
 /*
 //------------------------------
 //  Loader
@@ -360,6 +307,11 @@ Loader
 {
 	brokenImageSkin: Embed(source="skin/stil.swf",symbol="Loader_brokenImageSkin");
 
+}
+
+.mainButtonLink
+{
+	upSkin:Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
 }
 
 /*
@@ -396,14 +348,19 @@ MenuBar
 .notis
 {
 	backgroundColor: #ffffcc;
-	borderColor: #bbbbaa;
-	borderStyle: solid;
-	cornerRadius: 5;
-	paddingBottom: 10;
-	paddingLeft: 10;
-	paddingRight: 10;
-	paddingTop: 10;
 	backgroundAlpha: 0.7;
+	borderColor: #a3a3a3;
+	borderStyle: solid;
+	borderThickness: 1;
+	cornerRadius: 6;
+	paddingBottom: 4;
+	paddingLeft: 4;
+	paddingRight: 4;
+	paddingTop: 4;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+	horizontalAlign: center;
 }
 
 /*
@@ -464,16 +421,6 @@ Panel
 
 /*
 //------------------------------
-//  Panel ControlBar
-//------------------------------
-*/
-ControlBar
-{
-	borderSkin: Embed(source="skin/stil.swf", symbol="Panel_controlBarBackgroundSkin");
-}
-
-/*
-//------------------------------
 //  PopUpButton
 //------------------------------
 */
@@ -489,17 +436,29 @@ PopUpButton
 
 /*
 //------------------------------
+//  primaryButton
+//------------------------------
+*/
+.primaryButton
+{
+	color: #ffffff;
+	textRollOverColor: #ffffff;
+	textSelectedColor: #ffffff;
+	disabledSkin: Embed(source="skin/stil.swf", symbol="primaryButton_disabledSkin");
+	downSkin: Embed(source="skin/stil.swf", symbol="primaryButton_downSkin");
+	overSkin: Embed(source="skin/stil.swf", symbol="primaryButton_overSkin");
+	upSkin: Embed(source="skin/stil.swf", symbol="primaryButton_upSkin");
+	paddingTop: 2;
+}
+
+/*
+//------------------------------
 //  Stiler til HundeProfil.mxml
 //------------------------------
 */
-.profilBilde
-{
-	cachePolicy: off;	
-}
-
 .profilBildeHBox
 {
-	verticalAlign: middle;
+	verticalAlign: top;
 	horizontalAlign: center;
 	paddingBottom: 4; 
 	paddingLeft: 4;
@@ -514,12 +473,14 @@ PopUpButton
 	borderThickness: 1; 
 	borderColor: #a3a3a3; 
 	cornerRadius: 6; 
-	paddingLeft: 0; 
-	paddingRight: 0; 
-	paddingBottom: 0; 
-	paddingTop: 0;
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	paddingBottom: 4; 
+	paddingTop: 4;
 	horizontalGap: 4;
 	verticalGap: 4;
+	verticalAlign: middle;
+	horizontalAlign: center;
 }
 
 .profilGridBeskrivelse
@@ -582,7 +543,6 @@ RadioButton
 */
 HScrollBar
 {
-	
 	downArrowDisabledSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowRight_disabledSkin");
 	downArrowDownSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowRight_downSkin");
 	downArrowOverSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowRight_overSkin");
@@ -596,7 +556,6 @@ HScrollBar
 	upArrowDownSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowLeft_downSkin");
 	upArrowOverSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowLeft_overSkin");
 	upArrowUpSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowLeft_upSkin");
-
 }
 
 
@@ -698,6 +657,7 @@ VSlider
 	paddingBottom: 0;
 	paddingTop: 2;
 }
+
 .sokKnapp
 {
 	paddingBottom: 0;
@@ -739,19 +699,12 @@ TabNavigator
 	paddingLeft: 2;
 }
 
-.UnderMeny
-{
-	cornerRadius: 2;
-	themeColor: #FFFFFF;
-	leading: 0;
-	textAlign: left;
-	paddingTop: 0;
-	paddingBottom: 0;
-	paddingLeft: 5;
-	paddingRight: 5;
-	borderColor: #FFFFFF;
-	fontWeight: normal;
-}	
+ToggleButtonBar 
+{ 
+	buttonStyleName: "buttonBarButton"; 
+	firstButtonStyleName: "firstButtonBarButton"; 
+	lastButtonStyleName: "lastButtonBarButton";
+}
 
 /*
 //------------------------------
@@ -789,6 +742,20 @@ Tree
 	folderOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_folderOpenIcon");
 }
 
+.UnderMeny
+{
+	cornerRadius: 2;
+	themeColor: #FFFFFF;
+	leading: 0;
+	textAlign: left;
+	paddingTop: 0;
+	paddingBottom: 0;
+	paddingLeft: 5;
+	paddingRight: 5;
+	borderColor: #FFFFFF;
+	fontWeight: normal;
+}
+
 .widget
 {
 	backgroundColor: #f5f5ff;
@@ -801,75 +768,3 @@ Tree
 	paddingTop: 10;
 	backgroundAlpha: 0.7;
 }
-
-.hovedmenyTabsStil 
-{        
-       tabOffset: 15;
-       tabHeight: 30;
-       tabWidth: 200;
-       horizontalGap: 15;   
-       tabStyleName: "hovedmenyTabs";              
-}            
-
-.hovedmenyTabs 
-{
-    selected-up-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
-    selected-down-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
-    selected-over-skin: ClassReference("no.airdog.view.assets.skin.TabNavigatorSkin");
-    cornerRadius: 10;
-    fontWeight: bold;            
-    fontSize: 12;
-    embedFonts: true;
-    themeColor: #ffffff;
-                
-}
-
-/*
-.hovedmenyTabsStil {
-	backgroundColor: #FFFFFF;
-    cornerRadius: 0;
-    tabStyleName: "hovedmenyTabs";
-    firstTabStyleName: "hovedmenyTabsForste";
-    lastTabStyleName: "hovedmenyTabsSiste";
-    selectedTabTextStyleName: "hovedmenyTabsValgt";
-}
-
-.hovedmenyTabs {
-    backgroundColor: #FFFFFF;
-    cornerRadius: 0;
-    color: black;
-}
-
-.hovedmenyTabsForste,
-.hovedmenyTabsSiste {
-    backgroundColor: #FFFFFF;
-    cornerRadius: 0;
-    color: black;
-}
-
-.hovedmenyTabsValgt {
-    backgroundColor: haloBlue;
-    color: haloBlue;
-    textRollOverColor: haloBlue;
-}
-
-        hovedmenyTabsStil {        
-               tabOffset: 15;
-               tabHeight: 30;
-               tabWidth: 200;
-               horizontalGap: 15;                 
-        }            
-        
-        hovedmenyTabs {
-            selected-up-skin: ClassReference("com.figaro.components.TabNavigatorNiceSkin");
-            selected-down-skin: ClassReference("com.figaro.components.TabNavigatorNiceSkin");
-            selected-over-skin: ClassReference("com.figaro.components.TabNavigatorNiceSkin");
-            cornerRadius: 10;
-            fontFamily: TrebuchetMSBold;
-            fontWeight: bold;            
-            fontSize: 12;
-            embedFonts: true;
-            themeColor: #ffffff;
-                        
-        }
-*/

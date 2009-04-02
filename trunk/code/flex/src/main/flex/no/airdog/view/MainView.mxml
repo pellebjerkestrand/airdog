@@ -127,20 +127,20 @@
 			<mx:LinkButton id="brukeren" label="{Components.instance.session.bruker.epost}"
 				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
-				click="redigerBruker()" />
+				click="redigerBruker()"  tabEnabled="false"/>
 			<mx:Label text="|" />
 			<mx:Label text="{Components.instance.session.bruker.sattKlubb}"/>
 			<mx:Label text="|" />
-			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')" />
+			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')"  tabEnabled="false"/>
 		</mx:ApplicationControlBar>
 				
 		<mx:HBox width="100%" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 			paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4" verticalAlign="middle">
 			
 			<mx:HBox id="sokbar" styleName="sokBar" width="250">
-				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%"/>
+				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
 				<mx:LinkButton label="" click="sok()" width="26" height="100%" styleName="UnderMeny" 
-					icon="@Embed(source='assets/ikoner/magnifier.png')" toolTip="Søk"/>
+					icon="@Embed(source='assets/ikoner/magnifier.png')" toolTip="Søk" tabEnabled="false"/>
 			</mx:HBox>
 			
 			<mx:ViewStack id="meny" width="100%"
@@ -154,6 +154,18 @@
 		   				icon="@Embed(source='assets/ikoner/dog.png')" 
 		   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
 		   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
+		   				
+		   			<mx:Spacer width="100%"/>	
+		   			
+		   			<mx:Label text="Visning"
+		   				visible="{stack.selectedChild == hundesokview ? true : false}"
+		   				includeInLayout="{stack.selectedChild == hundesokview ? true : false}"/>
+		   			<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
+		   				visible="{stack.selectedChild == hundesokview ? true : false}"
+						includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visStorHundeliste()"/>
+					<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true"
+						visible="{stack.selectedChild == hundesokview ? true : false}"
+						includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visLitenHundeliste()"/>
 				</mx:HBox>
 				
 				<mx:HBox id="rapportmeny" width="100%" verticalAlign="middle">					
@@ -197,12 +209,7 @@
 			 			label="Backup" click="naviger(12)" styleName="UnderMeny" 
 			 			icon="@Embed(source='assets/ikoner/safe.png')"/>
 				</mx:HBox>
-			</mx:ViewStack>
-		
-			<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
-				includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visStorHundeliste()"/>
-			<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true"
-				includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visLitenHundeliste()"/>	
+			</mx:ViewStack>	
 		</mx:HBox>
 	</mx:VBox>
 	
