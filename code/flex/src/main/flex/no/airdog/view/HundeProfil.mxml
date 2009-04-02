@@ -125,11 +125,11 @@
 				<mx:Spacer height="4"/>
 					<mx:Grid height="100%" width="{info.width}" styleName="notis"
 						visible="{Components.instance.session.bildeOpplastning.startet == true ||
-							Components.instance.session.bildeOpplastning.ferdig == true
+							Components.instance.session.bildeOpplastning.resultat != ''
 							? true : false}"
 						includeInLayout="{Components.instance.session.bildeOpplastning.startet == true ||
-							Components.instance.session.bildeOpplastning.ferdig == true
-							 ? true : false}">
+							Components.instance.session.bildeOpplastning.resultat != ''
+							? true : false}">
 						<mx:GridRow>
 							<mx:GridItem>
 								<mx:Text id="feilmelding" text="Status: {Components.instance.session.bildeOpplastning.resultat}"/>
