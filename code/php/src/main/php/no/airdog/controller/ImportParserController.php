@@ -144,7 +144,7 @@ class importParserController
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 		    		
-    				echo "1 \r"; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
+    				echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			    }
 			    
 			    fclose($handle);
