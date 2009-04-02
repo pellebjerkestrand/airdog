@@ -122,22 +122,22 @@
 					</mx:Grid>
 				</mx:HBox>
 				<mx:Spacer height="4"/>
-					<mx:Grid height="100%" width="100%" styleName="notis"
-						visible="{Components.instance.session.bildeOpplastning.startet == false ||
+					<mx:Grid height="100%" width="{info.width}" styleName="notis"
+						visible="{Components.instance.session.bildeOpplastning.startet == true ||
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
 							? false : true}"
-						includeInLayout="{Components.instance.session.bildeOpplastning.startet == false ||
+						includeInLayout="{Components.instance.session.bildeOpplastning.startet == true ||
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
-							 ? false : true}">
+							 ? true : false}">
 						<mx:GridRow>
 							<mx:GridItem>
 								<mx:Text id="feilmelding" text="Status: {Components.instance.session.bildeOpplastning.resultat}"/>
 							</mx:GridItem>
 						</mx:GridRow>
-						<mx:GridRow>
-							<mx:GridItem>
+						<mx:GridRow width="100%">
+							<mx:GridItem width="100%">
 								<mx:ProgressBar id="pBar" mode="manual" width="100%" label="Laster opp" labelPlacement="center" trackHeight="10"/>
 							</mx:GridItem>
 						</mx:GridRow>
