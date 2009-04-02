@@ -58,5 +58,14 @@ class OppdrettParser
 		
 		return false;
 	}
+	
+	public static function getDatabaseSomDat($oppdrettArray)
+	{
+		$dat = $oppdrettArray[kullId]. '|' .
+	 		$oppdrettArray[oppdretter]. '|' .
+	 		$oppdrettArray[raseId];
+			 			
+			return $dat;
+	}
 }
 ?>

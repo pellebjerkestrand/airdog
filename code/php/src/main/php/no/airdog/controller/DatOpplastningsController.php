@@ -11,6 +11,7 @@ require_once "database/HdsykdomDatabase.php";
 require_once "database/AasykdomDatabase.php";
 require_once "database/OyesykdomDatabase.php";
 require_once "database/VeterinerDatabase.php";
+require_once "database/OppdrettDatabase.php";
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -57,7 +58,9 @@ class DatOpplastningsController
 					return;
 					
 				case "Oppdrett":
-					return;
+					$ep = new OppdrettParser();
+					$hd = new OppdrettDatabase();
+					break;
 					
 				case "Person":
 					$ep = new PersonParser();
