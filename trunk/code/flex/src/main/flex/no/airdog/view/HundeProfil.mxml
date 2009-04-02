@@ -29,120 +29,124 @@
 	
 	<mx:HBox styleName="profilBoxIngenRammer" width="100%">
 		<mx:HBox styleName="profilBildeHBox" height="100%">
-			<mx:Image id="hundbilde" cachePolicy="off"
-				source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
-					|| Components.instance.session.hundprofil.bilde == null
-					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
+			<mx:Box styleName="profilBoxIngenRammer" width="100%" height="100%" borderThickness="1" borderStyle="solid">
+				<mx:Image id="hundbilde" cachePolicy="off"
+					source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
+						|| Components.instance.session.hundprofil.bilde == null
+						? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
+			</mx:Box>
 		</mx:HBox>
 		
 		<mx:VBox styleName="profilBoxIngenRammer" width="100%" height="100%">
 			<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-10"/>
 			<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
 			
-			<mx:HBox styleName="profilBoxIngenRammer" verticalAlign="middle" width="100%">
-				<mx:Grid styleName="profilGrid">
-					<mx:GridRow>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" styleName="profilGridData"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="eier" text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
-													|| Components.instance.session.hundprofil.eier == null 
-													? Components.instance.session.hundprofil.eierId : Components.instance.session.hundprofil.eier}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" styleName="profilGridData"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridBeskrivelse">
-							<mx:Label text="Kjønn:" styleName="profilGridBeskrivelse"/>
-						</mx:GridItem>
-						<mx:GridItem styleName="profilGridData">
-							<mx:Text id="kjonn" text="{Components.instance.session.hundprofil.kjonn}" styleName="profilGridData"/>
-						</mx:GridItem>
-					</mx:GridRow>
-				</mx:Grid>
+			<mx:VBox styleName="profilBoxIngenRammer">
+				<mx:HBox id="info" styleName="profilBoxIngenRammer" verticalAlign="middle" width="100%">
+					<mx:Grid styleName="profilGrid">
+						<mx:GridRow>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="far" text="{Components.instance.session.hundprofil.farNavn}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="farge" text="{Components.instance.session.hundprofil.farge}" styleName="profilGridData"/>
+							</mx:GridItem>
+						</mx:GridRow>
+						<mx:GridRow>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="eier" text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
+														|| Components.instance.session.hundprofil.eier == null 
+														? Components.instance.session.hundprofil.eierId : Components.instance.session.hundprofil.eier}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="mor" text="{Components.instance.session.hundprofil.morNavn}" styleName="profilGridData"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridBeskrivelse">
+								<mx:Label text="Kjønn:" styleName="profilGridBeskrivelse"/>
+							</mx:GridItem>
+							<mx:GridItem styleName="profilGridData">
+								<mx:Text id="kjonn" text="{Components.instance.session.hundprofil.kjonn}" styleName="profilGridData"/>
+							</mx:GridItem>
+						</mx:GridRow>
+					</mx:Grid>
 				<mx:Spacer width="4"/>
-				<mx:Grid styleName="funksjon"
-					visible="{Components.instance.session.bruker.rettigheter.redigerHund}" 
-					includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}">
-					<mx:GridRow>
-						<mx:GridItem>
-							<mx:LinkButton label="Rediger hund" styleName="UnderMeny" click="visRedigerHundVindu()" 
-							icon="@Embed(source='assets/ikoner/report__pencil.png')"
-							visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
-							includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow>
-						<mx:GridItem>
-							<mx:LinkButton label="Legg til bilde" styleName="UnderMeny" click="velgFil()"
-								icon="@Embed(source='assets/ikoner/image_sunset.png')"
+					<mx:Grid styleName="funksjon"
+						visible="{Components.instance.session.bruker.rettigheter.redigerHund}" 
+						includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}">
+						<mx:GridRow>
+							<mx:GridItem>
+								<mx:LinkButton label="Rediger hund" styleName="UnderMeny" click="visRedigerHundVindu()" 
+								icon="@Embed(source='assets/ikoner/report__pencil.png')"
 								visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 								includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
-						</mx:GridItem>
-					</mx:GridRow>
-				</mx:Grid>
-				<mx:Spacer width="4"/>
-				<mx:Grid height="100%" styleName="notis"
-					visible="{Components.instance.session.bildeOpplastning.startet != true ||
-						Components.instance.session.bildeOpplastning.resultat == '' ||
-						Components.instance.session.bildeOpplastning.resultat == null
-						 ? false : true}"
-					includeInLayout="{Components.instance.session.bildeOpplastning.startet != true ||
-						Components.instance.session.bildeOpplastning.resultat == '' ||
-						Components.instance.session.bildeOpplastning.resultat == null
-						 ? false : true}">
-					<mx:GridRow>
-						<mx:GridItem>
-							<mx:Text id="feilmelding"
-								text="{Components.instance.session.bildeOpplastning.resultat}"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow>
-						<mx:GridItem>
-							<mx:ProgressBar id="pBar" mode="manual" width="100%" label="" labelPlacement="center" trackHeight="10" 
-								visible="{Components.instance.session.bildeOpplastning.startet}"
-								includeInLayout="{Components.instance.session.bildeOpplastning.startet}"/>
-						</mx:GridItem>
-					</mx:GridRow>
-				</mx:Grid>
-				<mx:Spacer width="4"/>
-			</mx:HBox>
+							</mx:GridItem>
+						</mx:GridRow>
+						<mx:GridRow>
+							<mx:GridItem>
+								<mx:LinkButton label="Legg til bilde" styleName="UnderMeny" click="velgFil()"
+									icon="@Embed(source='assets/ikoner/image_sunset.png')"
+									visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
+									includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
+							</mx:GridItem>
+						</mx:GridRow>
+					</mx:Grid>
+				</mx:HBox>
+				<mx:Spacer height="4"/>
+					<mx:Grid height="100%" width="100%" styleName="notis" visible="true">
+					<!--
+						visible="{Components.instance.session.bildeOpplastning.startet != true ||
+							Components.instance.session.bildeOpplastning.resultat == '' ||
+							Components.instance.session.bildeOpplastning.resultat == null
+							? false : true}"
+						includeInLayout="{Components.instance.session.bildeOpplastning.startet != true ||
+							Components.instance.session.bildeOpplastning.resultat == '' ||
+							Components.instance.session.bildeOpplastning.resultat == null
+							 ? false : true}">
+					-->
+						<mx:GridRow>
+							<mx:GridItem>
+								<mx:Text id="feilmelding" text="Status: {Components.instance.session.bildeOpplastning.resultat}"/>
+							</mx:GridItem>
+						</mx:GridRow>
+						<mx:GridRow>
+							<mx:GridItem>
+								<mx:ProgressBar id="pBar" mode="manual" width="100%" label="Laster opp" labelPlacement="center" trackHeight="10"
+									visible="{Components.instance.session.bildeOpplastning.startet}"/>
+							</mx:GridItem>
+						</mx:GridRow>
+					</mx:Grid>
+				<mx:Spacer height="4"/>
+			</mx:VBox>
 		</mx:VBox>
 	</mx:HBox>
 	
