@@ -138,8 +138,7 @@
 						</mx:GridRow>
 						<mx:GridRow>
 							<mx:GridItem>
-								<mx:ProgressBar id="pBar" mode="manual" width="100%" label="Laster opp" labelPlacement="center" trackHeight="10"
-									visible="{Components.instance.session.bildeOpplastning.startet}"/>
+								<mx:ProgressBar id="pBar" mode="manual" width="100%" label="Laster opp" labelPlacement="center" trackHeight="10"/>
 							</mx:GridItem>
 						</mx:GridRow>
 					</mx:Grid>
