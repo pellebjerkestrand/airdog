@@ -454,6 +454,16 @@ PopUpButton
 //  Stiler til HundeProfil.mxml
 //------------------------------
 */
+.profilBildeBox
+{
+	borderThickness: 1;
+	borderStyle: solid;
+	cornerRadius: 6;
+	backgroundColor: #666666;
+	horizontalAlign: center;
+	verticalAlign: middle;
+}
+ 
 .profilBildeHBox
 {
 	verticalAlign: top;
