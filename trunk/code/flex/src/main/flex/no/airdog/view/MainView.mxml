@@ -18,6 +18,10 @@
             {
 				naviger(0);
 				meny.selectedChild = sokemeny;
+				hjemLink.styleName = "mainButtonLink";
+				resultatLink.styleName = "";
+				rapporterLink.styleName = "";
+				adminLink.styleName = "";
             }
             
             private function naviger(barnNr:int):void
@@ -30,6 +34,10 @@
 				naviger(1);
 				meny.selectedChild = sokemeny;
 				Components.instance.controller.sokHund(sokefelt.text);
+				hjemLink.styleName = "";
+				resultatLink.styleName = "mainButtonLink";
+				rapporterLink.styleName = "";
+				adminLink.styleName = "";
 			}
             
             private function innloggingSprettOppVindu():void
@@ -73,6 +81,7 @@
 				else if(knapp == resultatLink)
 				{
 					meny.selectedChild = sokemeny;
+					hjemLink.styleName = "";
 					resultatLink.styleName = "mainButtonLink";
 					rapporterLink.styleName = "";
 					adminLink.styleName = "";
@@ -80,6 +89,7 @@
 				else if(knapp == rapporterLink)
 				{
 					meny.selectedChild = rapportmeny;
+					hjemLink.styleName = "";
 					resultatLink.styleName = "";
 					rapporterLink.styleName = "mainButtonLink";
 					adminLink.styleName = "";
@@ -87,6 +97,7 @@
 				else if(knapp == adminLink)
 				{
 					meny.selectedChild = adminmeny;
+					hjemLink.styleName = "";
 					resultatLink.styleName = "";
 					rapporterLink.styleName = "";
 					adminLink.styleName = "mainButtonLink";

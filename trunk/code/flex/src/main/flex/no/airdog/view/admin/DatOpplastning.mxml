@@ -189,7 +189,7 @@
     </mx:Panel>
 	
     <mx:Panel title="Resultat opplasting" visible="{Components.instance.session.datOpplastning.ferdig}" height="100%" width="100%">
-    	<mx:TextArea id="pText" width="100%" height="200" text="{Components.instance.session.datOpplastning.resultat}" />
+    	<mx:TextArea id="pText" width="100%" height="200" text="{Components.instance.session.datOpplastning.resultat}" editable="false"/>
     	<mx:DataGrid id="objektListe" cachePolicy="on" dataProvider="{Components.instance.session.datOpplastning.objektliste}" width="100%" height="100%" showHeaders="false">
 	    	<mx:columns>
 	    		<mx:DataGridColumn paddingLeft="5" headerText="Filer" itemRenderer="no.airdog.view.renderer.BackupVinduCheckboxRender"/>
