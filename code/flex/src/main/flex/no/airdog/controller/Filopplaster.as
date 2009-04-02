@@ -159,7 +159,7 @@ package no.airdog.controller
         	}
         	else
         	{
-        		opplastning.resultat += "\rGenerelt: " + event.data.toString();
+        		opplastning.resultat += event.data.toString();
         	}
         	
         	opplastning.ferdig = true;
