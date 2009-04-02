@@ -44,10 +44,7 @@ class importParserController
 		if(ValiderBruker::validerBrukerRettighet($this->database, $epost, $passord, $klubbId, "importerDatabase"))
 		{
 			$valider = new FilvaliderController();
-			
-			
-			
-			
+
 //			$liste = fread($handle, filesize($filSti));
 //			fclose($handle);
 //
@@ -60,6 +57,8 @@ class importParserController
 //			return;
 //			
 //			$size = sizeof($listeArray);
+
+		
 			
 			$handle = fopen($filSti, "r");
 			if ($handle) 
@@ -142,7 +141,7 @@ class importParserController
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 		    		
-    				echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
+    				//echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			    }
 			    
 			    fclose($handle);
