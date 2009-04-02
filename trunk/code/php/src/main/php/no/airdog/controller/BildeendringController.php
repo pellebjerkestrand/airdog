@@ -16,7 +16,7 @@ class BildeendringController
 			echo "Bildet er lastet opp";
 			
 			$this->lagBildeMedStorrelse($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_thumb.jpg", $kroppBredde, $kroppHoyde);
-			$this->cropBilde($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_crop.jpg", $kroppBredde, $kroppHoyde);
+			//$this->cropBilde($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_crop.jpg", $kroppBredde, $kroppHoyde);
 		}
 		
 	}
