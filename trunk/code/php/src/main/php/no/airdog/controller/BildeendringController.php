@@ -44,7 +44,7 @@ class BildeendringController
 			
 			$bilde = $this->fjernFilEndelse($bilde).".jpg";
 				
-			@Imagejpeg($nyttBilde, $bilde, 100);
+			@Imagejpeg($nyttBilde, $bilde, 50);
 			
 			//Croppingen
 			$bi = @ImageCreateFromJPEG ($bilde);
@@ -81,7 +81,7 @@ class BildeendringController
 			}
 			
 						 	
-			@imagejpeg ($thumb, $bilde, 100);
+			@imagejpeg ($thumb, $bilde, 50);
 			
 			echo "Bilde filene er opprettet";
 		}
