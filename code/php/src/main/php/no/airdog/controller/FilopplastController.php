@@ -30,14 +30,16 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 	
 	if ($fil_storrelse <= $MAKSSTORRELSE && $fil_ext == "dat")
 	{
+		
 		$sti = dirname(__FILE__)."/temp_opplasting/" . $fil_navn;
 		
-		if (file_exist($sti))
+		if (file_exists($sti))
 			unlink($sti);
 		
 		if(move_uploaded_file($temp_navn, $sti))
 		{
 			$ip = new importParserController();
+			
 	    	echo $ip->lagreDb($sti, $_GET["brukerEpost"], $_GET["brukerPassord"], $_GET["klubbId"]);
 	    	unlink($sti);
 		}
