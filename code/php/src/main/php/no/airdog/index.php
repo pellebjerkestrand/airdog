@@ -43,6 +43,7 @@ $server->setClassMap("AmfRettigheter", "AmfRettigheter");
 $server->setClassMap("AmfHund", "AmfHund");
 $server->setClassMap("AmfAvkom", "AmfAvkom");
 $server->setClassMap("AmfJaktprove", "AmfJaktprove");
+$server->setClassMap("AmfJaktproveSammendrag", "AmfJaktproveSammendrag");
 $server->setClassMap("AmfUtstilling", "AmfUtstilling");
 $server->setClassMap("AmfBruker","AmfBruker");
 $server->setClassMap("AmfPerson","AmfPerson");

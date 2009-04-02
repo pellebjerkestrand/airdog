@@ -13,7 +13,7 @@
     </mx:Script>
 	<mx:HBox>
 		<mx:FormItem label="År">
-			<mx:TextInput id="valgtAar" text="2002"/>
+			<mx:TextInput id="valgtAar" text="2008" enter="sokAar(valgtAar.text)"/>
 		</mx:FormItem>
 		<mx:FormItem>
 			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.text)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
@@ -23,7 +23,7 @@
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"
 		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 		<mx:columns>
-			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegradTekst"/>
+			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegrad" width="50" minWidth="50" textAlign="right" resizable="false"/>
 			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
 			<mx:DataGridColumn headerText="ES" width="50" minWidth="50" textAlign="right" dataField="egneStand" resizable="false"/>
 			<mx:DataGridColumn headerText="MS" width="50" minWidth="50" textAlign="right" dataField="makkerStand" resizable="false"/>
@@ -37,17 +37,26 @@
 			<mx:DataGridColumn headerText="SB" width="50" minWidth="50" textAlign="right" dataField="bredde" resizable="false"/>
 			<mx:DataGridColumn headerText="Rv" width="50" minWidth="50" textAlign="right" dataField="reviering" resizable="false"/>
 			<mx:DataGridColumn headerText="Sa" width="50" minWidth="50" textAlign="right" dataField="samarbeid" resizable="false"/>
-			<!--<mx:DataGridColumn headerText="Vf" width="50" minWidth="50" textAlign="right" datafield="vf" resizable="false"/>-->
+			<mx:DataGridColumn headerText="Vf" width="50" minWidth="50" textAlign="right" dataField="vf" resizable="false"/>				
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:DataGrid id="jaktProveTotaler" dataProvider="{Components.instance.session.jaktproveSammendragAar}"
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"
+		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Starter totalt" dataField="starterTotalt"/>
+			<mx:DataGridColumn headerText="Starter i UK" dataField="starterUK"/>
+			<mx:DataGridColumn headerText="Starter i UK" dataField="starterAK"/>
+			<mx:DataGridColumn headerText="Starter i UK" dataField="starterVK"/>
 		</mx:columns>
 	</mx:DataGrid>
 	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListeAar}"
 		height="100%" width="100%">
 		<mx:columns>
-			
-			<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
-			<mx:DataGridColumn headerText="Fart" dataField="fart"/>
+			<mx:DataGridColumn headerText="ID" dataField="hundId"/>
 			<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
-			<mx:DataGridColumn headerText="Hund ID" dataField="hundId"/>	
+			<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
+			<mx:DataGridColumn headerText="Premiering" dataField="premiegradTekst"/>					
 		</mx:columns>		
 	</mx:DataGrid>	
 </mx:VBox>
