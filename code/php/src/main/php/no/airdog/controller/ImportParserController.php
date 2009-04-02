@@ -58,7 +58,7 @@ class importParserController
 //			
 //			$size = sizeof($listeArray);
     		
-			
+			echo ' ----- '; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			
 			$handle = fopen($filSti, "r");
 			if ($handle) 
@@ -139,7 +139,7 @@ class importParserController
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 		    		
-	    			echo ' ----- '; // Spytt ut firefox "søppel" hver 100 rad for at tilkoblingen ikke skal stoppe.
+	    			echo ' ----- '; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			    }
 			    
 			    fclose($handle);

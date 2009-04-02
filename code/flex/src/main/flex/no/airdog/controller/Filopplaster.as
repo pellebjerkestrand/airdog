@@ -137,19 +137,27 @@ package no.airdog.controller
         {
         	var resultat:Array = event.data.split(/###/);
         	
-        	
-        	opplastning.resultat += "Lagt til: " + resultat[4];
-        	opplastning.resultat += "\rOppdatert: " + resultat[3];
-        	
-        	opplastning.resultat += "\rIgnorert: " + resultat[5];
-        	opplastning.resultat += "\r\rFiltype: " + resultat[2];
-        	opplastning.resultat += "\rGenerelt: " + resultat[1];
-     	
-     		opplastning.objektType = resultat[1];
-     	
-        	for(var i:int = 6; i < resultat.length; i++)
-        	{  		
-        		opplastning.objektliste.addItem(new Valg(resultat[i], false));
+        	if (resultat != null)
+        	{
+	        	opplastning.resultat += "Lagt til: " + resultat[4];
+	        	opplastning.resultat += "\rOppdatert: " + resultat[3];
+	        	
+	        	opplastning.resultat += "\rIgnorert: " + resultat[5];
+	        	opplastning.resultat += "\r\rFiltype: " + resultat[2];
+	        	
+	        	
+	        	opplastning.resultat += "\rGenerelt: " + resultat[1];
+	     	
+	     		opplastning.objektType = resultat[1];
+	     	
+	        	for(var i:int = 6; i < resultat.length; i++)
+	        	{  		
+	        		opplastning.objektliste.addItem(new Valg(resultat[i], false));
+	        	}
+        	}
+        	else
+        	{
+        		opplastning.resultat += "\rGenerelt: " + event.data.toString();
         	}
         	
         	opplastning.ferdig = true;
