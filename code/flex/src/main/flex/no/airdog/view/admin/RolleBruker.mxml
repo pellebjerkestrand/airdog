@@ -2,7 +2,7 @@
 <mx:VBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	height="100%" width="100%">
+	height="100%" width="100%" creationComplete="init()">
 	
 	<mx:Script>
 		<![CDATA[
@@ -37,6 +37,10 @@
 			[Bindable]
 			[Embed ("../assets/ikoner/cross_circle.png")]
             private var slett:Class;
+			
+			private function init():void
+			{
+			}
 			
             private var droppesHvor:String
 			
