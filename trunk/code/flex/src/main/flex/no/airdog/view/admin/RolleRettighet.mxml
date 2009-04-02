@@ -125,7 +125,6 @@
 	    			<mx:FormItem label="Beskrivelse" width="100%">
 	    				<mx:TextInput id="nyRolleBeskrivelse" width="100%" />
 	    			</mx:FormItem>
-    				<mx:Spacer width="100%"/>
     				<mx:LinkButton id="nyRolle" label="Legg til" click="leggInnNyRolle()" icon="@Embed(source='../assets/ikoner/plus_circle.png')"/>
     			</mx:HBox>
     		</mx:Panel>
