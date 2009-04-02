@@ -12,6 +12,7 @@ require_once "database/HdsykdomDatabase.php";
 require_once "database/AasykdomDatabase.php";
 require_once "database/OyesykdomDatabase.php";
 require_once "database/VeterinerDatabase.php";
+require_once "database/OppdrettDatabase.php";
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -66,7 +67,7 @@ class importParserController
 				$tekst = utf8Konverterer::cp1252_to_utf8(fgets($handle, 4096));
 				$filtype = $valider->getFiltype($tekst);
 				$ret = "";
-				$this->svarListe[1] = $filtype;
+				$this->svarListe[2] = $filtype;
 			
 				switch($filtype)
 				{
@@ -94,7 +95,9 @@ class importParserController
 						return "Ikke implementert ennå.";
 						
 					case "Oppdrett":
-						return "Ikke implementert ennå.";
+						$ep = new OppdrettParser();
+						$hd = new OppdrettDatabase();
+						break;
 						
 					case "Person":
 						$ep = new PersonParser();
@@ -189,7 +192,7 @@ class importParserController
 	    			
 	    		default:
 	    			if ($verdi != "")
-	    				$this->svarListe[1] .= "\r" . $svar;
+	    				$this->svarListe[1] .= "\r" . $svar . "\r - " . $verdi;
     				break;
 	    	}
 	}

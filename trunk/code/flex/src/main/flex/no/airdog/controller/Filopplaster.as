@@ -137,7 +137,7 @@ package no.airdog.controller
         {
         	var resultat:Array = event.data.split(/###/);
         	
-        	if (resultat != null)
+        	if (resultat[1] != null)
         	{
 	        	opplastning.resultat += "Lagt til: " + resultat[4];
 	        	opplastning.resultat += "\rOppdatert: " + resultat[3];
