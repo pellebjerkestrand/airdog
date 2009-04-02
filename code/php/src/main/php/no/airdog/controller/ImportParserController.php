@@ -60,8 +60,6 @@ class importParserController
 //			return;
 //			
 //			$size = sizeof($listeArray);
-    		
-			echo " \r"; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			
 			$handle = fopen($filSti, "r");
 			if ($handle) 
@@ -149,8 +147,6 @@ class importParserController
 			    
 			    fclose($handle);
 			}
-
-			echo "\rDebug: ferdig";
 			
 			$ret = "";
 			$splitter = "";
