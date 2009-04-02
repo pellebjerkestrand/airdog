@@ -23,6 +23,8 @@ class importParserController
 {
 	private $database;
 	private $svarListe = array();
+	private $maksFeil = 100;
+	private $antallFeil = 0;
 	
 	public function __construct()
 	{
@@ -59,12 +61,12 @@ class importParserController
 //			
 //			$size = sizeof($listeArray);
     		
-			echo ' ----- '; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
+			echo " \r"; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			
 			$handle = fopen($filSti, "r");
 			if ($handle) 
 			{
-				$tekst = utf8Konverterer::cp1252_to_utf8(fgets($handle, 4096));
+				$tekst = fgets($handle, 4096);
 				$filtype = $valider->getFiltype($tekst);
 				$ret = "";
 				$this->svarListe[2] = $filtype;
@@ -132,22 +134,24 @@ class importParserController
 					default:
 						return "Dette er en ukjent .dat fil";
 				}
-		
+				
 			    while (!feof($handle)) 
 			    {
-			        $tekst = utf8Konverterer::cp1252_to_utf8(fgets($handle, 4096));
+			        $tekst = fgets($handle, 4096);
 			        $tekst = str_replace("\r\n", "\n", $tekst);
 			        $tekst = str_replace("\n", "", $tekst);
 			        
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 		    		
-	    			echo ' ----- '; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
+    				echo "1 \r"; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
 			    }
 			    
 			    fclose($handle);
 			}
 
+			echo "\rDebug: ferdig";
+			
 			$ret = "";
 			$splitter = "";
 			foreach ($this->svarListe as $svar)
@@ -191,8 +195,26 @@ class importParserController
 	    			break;
 	    			
 	    		default:
-	    			if ($verdi != "")
-	    				$this->svarListe[1] .= "\r" . $svar . "\r - " . $verdi;
+	    			if ($verdi != "" && $this->maksFeil > $this->antallFeil)
+	    			{			
+	    				$this->svarListe[1] .= "\r" . $svar . "\r" . $verdi;
+	    				$this->antallFeil++;
+	    				
+	    				if ($this->maksFeil == $this->antallFeil)
+	    					$this->svarListe[1] = "\rMaksimalt antall ukjent feil (" . $this->maksFeil . ") nådd, script avsluttet.\r" . $this->svarListe[1];
+	    			}
+	    			else if ($this->maksFeil < $this->antallFeil)
+	    			{			    				
+	    				$ret = "";
+						$splitter = "";
+						foreach ($this->svarListe as $svar)
+						{
+							$ret .= $splitter . $svar;
+							$splitter = "###";
+						}
+			
+						return $ret;
+	    			}
     				break;
 	    	}
 	}
