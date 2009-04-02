@@ -28,8 +28,8 @@
     </mx:Script>
 	
 	<mx:HBox styleName="profilBoxIngenRammer" width="100%">
-		<mx:HBox styleName="profilBildeHBox" height="100%">
-			<mx:Box styleName="profilBoxIngenRammer" width="100%" height="100%" borderThickness="1" borderStyle="solid">
+		<mx:HBox styleName="profilBildeHBox" height="206" width="210">
+			<mx:Box styleName="profilBildeBox" width="100%" height="100%">
 				<mx:Image id="hundbilde" cachePolicy="off"
 					source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
 						|| Components.instance.session.hundprofil.bilde == null
