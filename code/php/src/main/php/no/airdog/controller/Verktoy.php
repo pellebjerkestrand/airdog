@@ -64,5 +64,17 @@ class Verktoy
 	{ 
     	$hd = @get_headers($url); 
     	return is_array($hd) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$hd[0]) : false; 
-	} 
+	}
+	
+	public static function fjernFilEndelse($fil) 
+	{ 
+		$ext = strrchr($fil, '.'); 
+	
+		if($ext !== false) 
+		{ 
+			$fil = substr($fil, 0, -strlen($ext)); 
+		} 
+		
+		return $fil; 
+	}  
 }

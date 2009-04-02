@@ -1,5 +1,5 @@
 <?php
-
+require_once "no/airdog/controller/Verktoy.php";
 class BildeendringController
 {
 	public function __construct()
@@ -7,99 +7,120 @@ class BildeendringController
 
 	}
 	
-	function endreStorrelse($bilde, $nyBredde, $nyHoyde, $kroppBredde, $kroppHoyde)
+	public function lagreBilde($sti, $filnavn, $nyBredde, $nyHoyde, $kroppBredde, $kroppHoyde)
 	{
-		$naStorrelse = @getimagesize($bilde);
-		$nanyBredde = $naStorrelse[0];
-		$nanyHoyde = $naStorrelse[1];
-		
-		$hx = (100 / ($nanyBredde / $nyBredde)) * .01;
-		$hx = @round ($nanyHoyde * $hx);
-
-		$wx = (100 / ($nanyHoyde / $nyHoyde)) * .01;
-		$wx = @round ($nanyBredde * $wx);
-
-		if ($hx < $nyHoyde)
+		$nyttFilnavn = $this->lagBildeMedStorrelse($sti, $filnavn, Verktoy::fjernFilEndelse($filnavn).".jpg", $nyBredde, $nyHoyde);
+				
+		if($nyttFilnavn != -1)
 		{
-			$nyHoyde = (100 / ($nanyBredde / $nyBredde)) * .01;
-			$nyHoyde = @round ($nanyHoyde * $nyHoyde);
-		} 
-		else 
-		{
-			$nyBredde = (100 / ($nanyHoyde / $nyHoyde)) * .01;
-			$nyBredde = @round ($nanyBredde * $nyBredde);
+			echo "Bildet er lastet opp";
+			
+			$this->lagBildeMedStorrelse($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_thumb.jpg", $kroppBredde, $kroppHoyde);
+			$this->cropBilde($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_crop.jpg", $kroppBredde, $kroppHoyde);
 		}
 		
-		$bi = @ImageCreateFromJPEG ($bilde) or
-		$bi = @ImageCreateFromPNG ($bilde) or 
-		$bi = @ImageCreateFromGIF ($bilde) or
+	}
+	
+	private function lagBildeMedStorrelse($sti, $filnavn, $nyttFilnavn, $nyBredde, $nyHoyde)
+	{	
+		$gammeltBilde = $sti.$filnavn;
+		
+		$bi = ImageCreateFromJPEG ($gammeltBilde) or
+		$bi = ImageCreateFromPNG ($gammeltBilde) or 
+		$bi = ImageCreateFromGIF ($gammeltBilde) or
 		$bi = false;
-		
-		@unlink($bilde);
-		
+
 		if ($bi) 
-		{
-			$nyttBilde = @ImageCreateTrueColor ($nyBredde, $nyHoyde);
-			@ImageCopyResampled ($nyttBilde, $bi, 0, 0, 0, 0, $nyBredde, $nyHoyde, $nanyBredde, $nanyHoyde);
+		{	
+			$naStorrelse = @getimagesize($gammeltBilde);
+			$bredde = $naStorrelse[0];
+			$hoyde = $naStorrelse[1];
 			
-			$bilde = $this->fjernFilEndelse($bilde).".jpg";
-				
-			@Imagejpeg($nyttBilde, $bilde, 50);
-			
-			//Croppingen
-			$bi = @ImageCreateFromJPEG ($bilde);
-			
-			$thumb = @ImageCreateTrueColor($kroppBredde, $kroppHoyde);
- 
-			$nyBreddeNy = $nyBredde / $kroppBredde;
-			$nyHoydeNy = $nyHoyde / $kroppHoyde;
-			 
-			$halvertHoyde = $kroppHoyde / 2;
-			$halvertBredde = $kroppBredde / 2;
-			
-			$bilde = $this->fjernFilEndelse($bilde)."_thumb.jpg";	
-			
-			if($nyBredde > $nyHoyde) 
+			$hx = (100 / ($bredde / $nyBredde)) * .01;
+			$hx = @round ($hoyde * $hx);
+	
+			$wx = (100 / ($hoyde / $nyHoyde)) * .01;
+			$wx = @round ($bredde * $wx);
+	
+			if ($hx < $nyHoyde)
 			{
-				$tilpassetBredde = $nyBredde / $nyHoydeNy;
-			    $halvBredde = $tilpassetBredde / 2;
-			    $intBredde = $halvBredde - $halvertBredde;
-			 
-			    @ImageCopyResampled($thumb,$bi,-$intBredde,0,0,0,$tilpassetBredde,$kroppHoyde,$nyBredde,$nyHoyde);
+				$nyHoyde = (100 / ($bredde / $nyBredde)) * .01;
+				$nyHoyde = @round ($hoyde * $nyHoyde);
 			} 
-			elseif(($nyBredde < $nyHoyde) || ($nyBredde == $nyHoyde)) 
+			else 
 			{
-			 	$tilPassetHoyde = $nyHoyde / $nyBreddeNy;
-			    $halvHoyde = $tilPassetHoyde / 2;
-			   	$intHoyde = $halvHoyde - $halvertHoyde;
-			 
-			 	@ImageCopyResampled($thumb,$bi,0,-$intHoyde,0,0,$kroppBredde,$tilPassetHoyde,$nyBredde,$nyHoyde);
+				$nyBredde = (100 / ($hoyde / $nyHoyde)) * .01;
+				$nyBredde = @round ($bredde * $nyBredde);
 			}
-			else
-			{
-				@ImageCopyResampled($thumb,$bi,0,0,0,0,$kroppBredde,$kroppHoyde,$nyBredde,$nyHoyde);
-			}
+		
+		
+			$resBilde = @ImageCreateTrueColor ($nyBredde, $nyHoyde);
+			@ImageCopyResampled ($resBilde, $bi, 0, 0, 0, 0, $nyBredde, $nyHoyde, $bredde, $hoyde);
 			
-						 	
-			@imagejpeg ($thumb, $bilde, 50);
+
+			@Imagejpeg($resBilde, $sti.$nyttFilnavn, 50);
 			
-			echo "Bilde filene er opprettet";
+
+			return $nyttFilnavn;
 		}
 		else 
 		{	
-			echo "Feil type bilde";
+			return -1;
 		} 
 	}
-
-	private function fjernFilEndelse($fil) 
-	{ 
-		$ext = strrchr($fil, '.'); 
 	
-		if($ext !== false) 
-		{ 
-			$fil = substr($fil, 0, -strlen($ext)); 
-		} 
+	private function cropBilde($sti, $filnavn, $nyttFilnavn, $cropBredde, $cropHoyde)
+	{
+		$gammeltBilde = $sti.$filnavn;
 		
-		return $fil; 
-	} 
+		$bi = @ImageCreateFromJPEG ($gammeltBilde) or
+		$bi = @ImageCreateFromPNG ($gammeltBilde) or 
+		$bi = @ImageCreateFromGIF ($gammeltBilde) or
+		$bi = false;
+		
+		if ($bi) 
+		{
+			$naStorrelse = @getimagesize($gammeltBilde);
+			
+			$bredde = $naStorrelse[0];
+			$hoyde = $naStorrelse[1];
+	 
+			$nyBreddeNy = $bredde / $cropBredde;
+			$nyHoydeNy = $hoyde / $cropHoyde;
+				 
+			$halvertHoyde = $cropHoyde / 2;
+			$halvertBredde = $cropBredde / 2;
+
+			$thumb = @ImageCreateTrueColor($cropBredde, $cropHoyde);	
+			
+			if($bredde > $hoyde) 
+			{
+				$tilpassetBredde = $bredde / $nyHoydeNy;
+			    $halvBredde = $tilpassetBredde / 2;
+			    $intBredde = $halvBredde - $halvertBredde;
+			 
+			    @ImageCopyResampled($thumb,$bi,-$intBredde,0,0,0,$tilpassetBredde,$cropHoyde,$bredde,$hoyde);
+			} 
+			elseif(($bredde < $hoyde) || ($bredde == $hoyde)) 
+			{
+			 	$tilPassetHoyde = $hoyde / $nyBreddeNy;
+			    $halvHoyde = $tilPassetHoyde / 2;
+			   	$intHoyde = $halvHoyde - $halvertHoyde;
+			 
+			 	@ImageCopyResampled($thumb,$bi,0,-$intHoyde,0,0,$cropBredde,$tilPassetHoyde,$bredde,$hoyde);
+			}
+			else
+			{
+				@ImageCopyResampled($thumb,$bi,0,0,0,0,$cropBredde,$cropHoyde,$bredde,$hoyde);
+			}
+						 	
+			@imagejpeg ($thumb, $sti.$nyttFilnavn, 50);
+			
+			return $nyttFilnavn;
+		}
+		else 
+		{	
+			return -1;
+		} 
+	}
 }
