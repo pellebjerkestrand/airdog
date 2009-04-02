@@ -41,6 +41,7 @@
 			<mx:ProgressBar id="pBar" mode="manual" width="300" label="" labelPlacement="center" trackHeight="10" 
 				visible="{Components.instance.session.bildeOpplastning.startet}"
 				includeInLayout="{Components.instance.session.bildeOpplastning.startet}"/>
+			<mx:TextArea id="feilmelding" height="50" width="100%" editable="false" text="{Components.instance.session.bildeOpplastning.resultat}"/>
 			
 			<mx:HBox styleName="profilBoxIngenRammer" verticalAlign="middle" width="100%">
 				<mx:Grid styleName="profilGrid">
