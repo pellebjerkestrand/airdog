@@ -3,7 +3,7 @@
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
 	xmlns:adminView="no.airdog.view.admin.*"
-    creationComplete="init()" styleName="MainView"
+    creationComplete="init()"
     width="100%" height="100%" minWidth="800" minHeight="500"
     paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
     verticalGap="0" horizontalGap="0">
@@ -125,7 +125,7 @@
 			
 			<mx:Spacer width="100%"/>	
 			<mx:LinkButton id="brukeren" label="Min profil"
-				icon="@Embed(source='assets/ikoner/user.png')"
+				icon="@Embed(source='assets/ikoner/user_green.png')"
 				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				click="redigerBruker()"  tabEnabled="false"/>
@@ -154,7 +154,7 @@
 		   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
 		   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
 		   				
-		   			<mx:Spacer width="100%"/>	
+		   			<!--<mx:Spacer width="100%"/>-->	
 		   			
 		   			<mx:Label text="Visning"
 		   				visible="{stack.selectedChild == hundesokview ? true : false}"
@@ -210,7 +210,7 @@
 				</mx:HBox>
 			</mx:ViewStack>
 			
-			<mx:Label text="Søk"/>
+			<mx:Label text="Søketekst" paddingBottom="-2"/>
 			<mx:HBox id="sokbar" styleName="sokBar" width="250">
 				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
 				<mx:LinkButton label="" click="sok()" width="26" height="100%" styleName="UnderMeny" 

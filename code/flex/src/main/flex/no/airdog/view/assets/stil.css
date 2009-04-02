@@ -624,7 +624,8 @@ VSlider
 
 .sokBar
 {
-	backgroundColor: #ffffff;  
+	backgroundAlpha: 1;
+	backgroundColor: #f5f5f5;
 	borderStyle: solid; 
 	borderThickness: 1; 
 	borderColor: #a3a3a3; 
