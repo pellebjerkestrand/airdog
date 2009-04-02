@@ -123,11 +123,11 @@
 				</mx:HBox>
 				<mx:Spacer height="4"/>
 					<mx:Grid height="100%" width="100%" styleName="notis"
-						visible="{Components.instance.session.bildeOpplastning.startet != true ||
+						visible="{Components.instance.session.bildeOpplastning.startet == false ||
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
 							? false : true}"
-						includeInLayout="{Components.instance.session.bildeOpplastning.startet != true ||
+						includeInLayout="{Components.instance.session.bildeOpplastning.startet == false ||
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
 							 ? false : true}">
