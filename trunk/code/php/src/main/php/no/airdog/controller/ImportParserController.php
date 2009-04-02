@@ -140,8 +140,8 @@ class importParserController
 			        
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
-		    		
-    				//echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe.
+
+    				//echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe. Safari kræsjer pga denne.		    			
 			    }
 			    
 			    fclose($handle);
@@ -149,12 +149,13 @@ class importParserController
 			
 			$ret = "";
 			$splitter = "";
+			
 			foreach ($this->svarListe as $svar)
-			{
+			{					
 				$ret .= $splitter . $svar;
 				$splitter = "###";
 			}
-			
+
 			return $ret;
 		}
 		
