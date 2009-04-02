@@ -14,9 +14,12 @@
             import no.airdog.services.Components;
         	import no.airdog.model.Bruker;
             
+            private var SOKEFELTTEKST:String = "Søk etter hund";
+            
             private function init():void
             {
 				naviger(0);
+				sokefeltsjekkUt();
 				meny.selectedChild = sokemeny;
 				hjemLink.styleName = "mainButtonLink";
 				resultatLink.styleName = "";
@@ -104,9 +107,27 @@
 				}		
 			}
 			
-			private function sokefeltTekst():void
+			private function sokefeltsjekkInn():void
 			{
-				sokefelt.text = "";
+				if(sokefelt.text == SOKEFELTTEKST)
+				{
+					sokefelt.text = "";
+					sokefelt.styleName = "sokFelt";
+				}
+			}
+			
+			private function sokefeltsjekkUt():void
+			{
+				if((sokefelt.text == "" && focusManager.getFocus() != sokefelt) || 
+					(sokefelt.text == SOKEFELTTEKST && focusManager.getFocus() == sokefelt))
+				{
+					sokefelt.text = SOKEFELTTEKST;
+					sokefelt.styleName = "sokFeltGhost"
+				}
+				else
+				{
+					sokefelt.styleName = "sokFelt";
+				}
 			}		
 			
         ]]>
@@ -140,13 +161,7 @@
 				
 		<mx:HBox width="100%" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 			paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4" verticalAlign="middle">
-			<!--
-			<mx:HBox id="sokbar" styleName="sokBar" width="250">
-				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
-				<mx:LinkButton label="" click="sok()" width="26" height="100%" styleName="UnderMeny" 
-					icon="@Embed(source='assets/ikoner/magnifier.png')" toolTip="Søk" tabEnabled="false"/>
-			</mx:HBox>
-			-->
+			
 			<mx:ViewStack id="meny" width="100%"
 				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" verticalGap="0" horizontalGap="0">
 				
@@ -159,7 +174,7 @@
 		   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
 		   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
 		   				
-		   			<!--<mx:Spacer width="100%"/>-->	
+		   			<mx:Spacer width="100%"/>	
 		   			
 		   			<mx:Label text="Visning"
 		   				visible="{stack.selectedChild == hundesokview ? true : false}"
@@ -216,7 +231,7 @@
 			</mx:ViewStack>
 			
 			<mx:HBox id="sokbar" styleName="sokBar" width="250">
-				<mx:TextInput id="sokefelt" text="Skriv inn tekst her..." click="sokefeltTekst()" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
+				<mx:TextInput id="sokefelt" text="" focusIn="sokefeltsjekkInn()" focusOut="sokefeltsjekkUt()" click="sokefeltsjekkInn()" change="sokefeltsjekkUt()" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
 				<mx:LinkButton label="" click="sok()" width="26" height="100%" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/magnifier.png')" toolTip="Søk" tabEnabled="false"/>
 			</mx:HBox>

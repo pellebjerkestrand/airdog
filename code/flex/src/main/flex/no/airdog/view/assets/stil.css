@@ -666,6 +666,25 @@ VSlider
 	paddingTop: 2;
 }
 
+.sokFeltGhost
+{
+	backgroundAlpha: 0;
+    backgroundColor: none;
+    borderColor: none;
+    borderSides: left top right bottom;
+    borderStyle: none;
+    borderThickness: 0;
+    dropShadowEnabled: false;
+    focusAlpha: 0;
+    fontSize: 13;
+    fontWeight: normal;
+    paddingLeft: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingTop: 2;
+	color: #a3a3a3;
+}
+
 .sokKnapp
 {
 	paddingBottom: 0;
