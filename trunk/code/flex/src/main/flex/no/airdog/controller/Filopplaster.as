@@ -135,10 +135,6 @@ package no.airdog.controller
 
         private function uploadCompleteHandler(event:DataEvent):void
         {
-        	opplastning.venterSQL = false; 
-        	opplastning.startet = false;
-	        opplastning.progressBar.setProgress(100, 100);
-        	
         	var resultat:Array = event.data.split(/###/);
         	
         	if (resultat[1] != null)
