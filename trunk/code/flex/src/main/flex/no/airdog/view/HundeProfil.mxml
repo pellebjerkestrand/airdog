@@ -38,9 +38,6 @@
 		<mx:VBox styleName="profilBoxIngenRammer" width="100%" height="100%">
 			<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-10"/>
 			<mx:Text id="navn" text="{Components.instance.session.hundprofil.navn}" fontSize="25"/>
-			<mx:ProgressBar id="pBar" mode="manual" width="300" label="" labelPlacement="center" trackHeight="10" 
-				visible="{Components.instance.session.bildeOpplastning.startet}"
-				includeInLayout="{Components.instance.session.bildeOpplastning.startet}"/>
 			
 			<mx:HBox styleName="profilBoxIngenRammer" verticalAlign="middle" width="100%">
 				<mx:Grid styleName="profilGrid">
@@ -122,14 +119,25 @@
 				</mx:Grid>
 				<mx:Spacer width="4"/>
 				<mx:Grid height="100%" styleName="notis"
-					visible="{Components.instance.session.bildeOpplastning.resultat == '' ||
-						Components.instance.session.bildeOpplastning.resultat == null ? false : true}"
-					includeInLayout="{Components.instance.session.bildeOpplastning.resultat == '' ||
-						Components.instance.session.bildeOpplastning.resultat == null ? false : true}">
+					visible="{Components.instance.session.bildeOpplastning.startet != true ||
+						Components.instance.session.bildeOpplastning.resultat == '' ||
+						Components.instance.session.bildeOpplastning.resultat == null
+						 ? false : true}"
+					includeInLayout="{Components.instance.session.bildeOpplastning.startet != true ||
+						Components.instance.session.bildeOpplastning.resultat == '' ||
+						Components.instance.session.bildeOpplastning.resultat == null
+						 ? false : true}">
 					<mx:GridRow>
 						<mx:GridItem>
 							<mx:Text id="feilmelding"
 								text="{Components.instance.session.bildeOpplastning.resultat}"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem>
+							<mx:ProgressBar id="pBar" mode="manual" width="300" label="" labelPlacement="center" trackHeight="10" 
+								visible="{Components.instance.session.bildeOpplastning.startet}"
+								includeInLayout="{Components.instance.session.bildeOpplastning.startet}"/>
 						</mx:GridItem>
 					</mx:GridRow>
 				</mx:Grid>
