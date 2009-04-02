@@ -1,5 +1,6 @@
 <?php
 require_once "no/airdog/model/AmfJaktprove.php";
+require_once "no/airdog/model/AmfJaktproveSammendrag.php";
 require_once "no/airdog/controller/database/JaktproveDatabase.php";
 
 require_once 'database/ValiderBruker.php';
@@ -74,8 +75,7 @@ class JaktproveController
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
 	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
 			$ret[] = $tmp;
-			
-			
+						
 	        return $ret;
 		}
 		
@@ -85,13 +85,15 @@ class JaktproveController
 
 public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $klubbId)
     {	    
+    	
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
-	    	$hd = new JaktproveDatabase();
+	    	
+			$hd = new JaktproveDatabase();
 			
 			$sammendrag = $hd->hentJaktproveSammendragAar($aar, $klubbId);
-			
-			$tmp = new AmfJaktprove();	    	
+				
+			$tmp = new AmfJaktproveSammendrag();	    	
 	    	$tmp->slippTid = sprintf("%u", $sammendrag['slippTid']);
 	    	$tmp->egneStand = $sammendrag['egneStand']; 	
 	    	$tmp->egneStokk = $sammendrag['egneStokk'];
@@ -106,16 +108,32 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
 	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
-	    	//$tmp->premiegradTekst = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
-			$ret[] = $tmp;
-			
-			
+    		$tmp->premiegrad = sprintf("%.2f", $sammendrag['premiegrad']);		
+    		$tmp->starterTotalt = $sammendrag['starterTotalt'];
+			    		
+   			
+    		$tmp->starterUK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '1');
+    		$tmp->starterAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '2');
+    		$tmp->starterUKAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '3');
+    		$tmp->starterVK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '4');
+    		$tmp->starterVKSEMIFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '5');
+    		$tmp->starterVKFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '6');
+    		$tmp->starterUKKVALIK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '7');
+    		$tmp->starterUKKFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '8');
+    		$tmp->starterDERBYKVALIK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '9');
+    		$tmp->starterDERBYSEMIFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '10');
+    		$tmp->starterDERBYFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '11');
+    		    		
+    		
+    		$ret[] = $tmp;
+
 	        return $ret;
 		}
 		
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
+    
  	public function hentJaktprover($hundId, $brukerEpost, $brukerPassord, $klubbId)
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))

@@ -95,7 +95,7 @@ class JaktproveDatabase
 	public function hentJaktproveSammendragAar($aar, $klubbId)
 	{
 		$select = $this->database->select()
-		->from('nkk_fugl', array(
+		->from('nkk_fugl', array(			
 			'slippTid' => 'AVG(slippTid)',
 			'egneStand' => 'SUM(egneStand)',
 			'egneStokk' => 'SUM(egneStokk)',
@@ -110,13 +110,31 @@ class JaktproveDatabase
 			'reviering' => 'AVG(reviering)',
 			'samarbeid' => 'AVG(samarbeid)',
 			'vf' => '(6 * SUM(egneStand) / (SUM(makkerStand) + SUM(egneStand)))',
-			'situasjoner' => 'SUM(egneStand) + SUM(makkerStand)'
+			'situasjoner' => 'SUM(egneStand) + SUM(makkerStand)', 
+			'premiegrad' => 'AVG(premiegrad)',
+			
+			'starterTotalt' => 'COUNT(*)'
+			
+		))
+		->where('proveDato LIKE ?', $aar.'%')
+		->where('raseId=?', $klubbId);
+		
+		return $this->database->fetchRow($select); 
+	}
+	
+	public function hentJaktproveSammendragAarKlasser($aar, $klubbId, $klasse)
+	{
+		$select = $this->database->select()
+		->from('nkk_fugl', array(			
+			'antall' => 'COUNT(*)'			
 		))
 		->where('proveDato LIKE ?', $aar.'%')
 		->where('raseId=?', $klubbId)
-		->group('hundId');; 
+		->where('klasse=?', $klasse);
 		
-		return $this->database->fetchRow($select); 
+		$antall = $this->database->fetchRow($select);
+		
+		return $antall['antall']; 		
 	}
 	
 	public function settInn($jaktarray, $klubbId)
