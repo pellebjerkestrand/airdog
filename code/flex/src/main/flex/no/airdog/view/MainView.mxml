@@ -102,6 +102,11 @@
 					rapporterLink.styleName = "";
 					adminLink.styleName = "mainButtonLink";
 				}		
+			}
+			
+			private function sokefeltTekst():void
+			{
+				sokefelt.text = "";
 			}		
 			
         ]]>
@@ -210,9 +215,8 @@
 				</mx:HBox>
 			</mx:ViewStack>
 			
-			<mx:Label text="Søketekst" paddingBottom="-2"/>
 			<mx:HBox id="sokbar" styleName="sokBar" width="250">
-				<mx:TextInput id="sokefelt" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
+				<mx:TextInput id="sokefelt" text="Skriv inn tekst her..." click="sokefeltTekst()" enter="sok()" styleName="sokFelt" width="100%" tabIndex="1"/>
 				<mx:LinkButton label="" click="sok()" width="26" height="100%" styleName="UnderMeny" 
 					icon="@Embed(source='assets/ikoner/magnifier.png')" toolTip="Søk" tabEnabled="false"/>
 			</mx:HBox>
