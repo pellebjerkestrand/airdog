@@ -164,7 +164,12 @@ package no.airdog.controller
         	
         	opplastning.ferdig = true;
         	
-        	Components.instance.controller.visHund(Components.instance.session.hundprofil.hundId);
+        	
+        	if (opplastning.type == "bilde")
+        	{        		
+        		Components.instance.controller.visHund(Components.instance.session.hundprofil.hundId);
+        	}
+        	
         }		
 
 	}
