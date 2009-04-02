@@ -251,7 +251,6 @@ FormItem
 	horizontalGap: 4;
 	verticalGap: 4;
 	verticalAlign: middle;
-	horizontalAlign: center;
 }
 
 .hovedmenyTabsStil 
@@ -360,7 +359,6 @@ MenuBar
 	horizontalGap: 4;
 	verticalGap: 4;
 	verticalAlign: middle;
-	horizontalAlign: center;
 }
 
 /*
@@ -480,7 +478,6 @@ PopUpButton
 	horizontalGap: 4;
 	verticalGap: 4;
 	verticalAlign: middle;
-	horizontalAlign: center;
 }
 
 .profilGridBeskrivelse
