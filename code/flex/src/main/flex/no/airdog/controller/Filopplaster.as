@@ -134,7 +134,7 @@ package no.airdog.controller
         private function uploadCompleteHandler(event:DataEvent):void
         {
         	opplastning.venterSQL = false; 
-        	opplastning.startet = false;
+        	
 	        opplastning.progressBar.setProgress(100, 100);
         	
         	var resultat:Array = event.data.split(/###/);
@@ -166,8 +166,18 @@ package no.airdog.controller
         	
         	
         	if (opplastning.type == "bilde")
-        	{        		
-        		Components.instance.controller.visHund(Components.instance.session.hundprofil.hundId);
+        	{  
+        		var b:String = Components.instance.session.hundprofil.bilde;
+        		
+        		if(b != null && b != "")
+        		{
+        			Components.instance.session.hundprofil.bilde = null;
+        			Components.instance.session.hundprofil.bilde = b;
+        		}
+        		else
+        		{
+        			Components.instance.controller.visHund(Components.instance.session.hundprofil.hundId);
+        		}
         	}
         	
         }		
