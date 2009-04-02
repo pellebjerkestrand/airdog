@@ -41,13 +41,16 @@ class RolleBrukerController
    			$tempRoller = array();
    			$roller = $dbRR->hentAlleRoller();
    			
+   			$tmp = array();
+   			
    			foreach($roller as $rolle)
    			{
    				$rolle['brukere'] = $db->hentRollesBrukere($rolle['navn'], $klubbId);
    				$tmp[] = $rolle;
    			}
-			
+		
 			return $tmp;
+
 		}
 
 		$feilkode = 1;
