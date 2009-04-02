@@ -393,6 +393,19 @@ MenuBar
 
 }
 
+.notis
+{
+	backgroundColor: #ffffcc;
+	borderColor: #bbbbaa;
+	borderStyle: solid;
+	cornerRadius: 5;
+	paddingBottom: 10;
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	backgroundAlpha: 0.7;
+}
+
 /*
 //------------------------------
 //  NumericStepper
@@ -474,12 +487,61 @@ PopUpButton
 	upSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_upSkin");
 }
 
+/*
+//------------------------------
+//  Stiler til HundeProfil.mxml
+//------------------------------
+*/
+.profilBilde
+{
+	cachePolicy: off;	
+}
+
+.profilBildeHBox
+{
+	verticalAlign: middle;
+	horizontalAlign: center;
+	paddingBottom: 4; 
+	paddingLeft: 4;
+	paddingRight: 4; 
+	paddingTop: 0;	
+}
+
+.profilGrid
+{
+	backgroundColor: #FFFFFF; 
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 6; 
+	paddingLeft: 0; 
+	paddingRight: 0; 
+	paddingBottom: 0; 
+	paddingTop: 0;
+	horizontalGap: 4;
+	verticalGap: 4;
+}
 
 .profilGridBeskrivelse
 {
-	color: #a3a3a3;	
+	color: #a3a3a3;
+	horizontalAlign: right;
 }
 
+.profilGridData
+{
+	horizontalAlign: left;
+}
+
+.profilBoxIngenRammer
+{
+	paddingLeft: 0; 
+	paddingRight: 0; 
+	paddingBottom: 0; 
+	paddingTop: 0; 
+	horizontalGap: 0; 
+	verticalGap: 0;
+}
 /*
 //------------------------------
 //  ProgressBar
@@ -726,9 +788,10 @@ Tree
 	folderClosedIcon: Embed(source="skin/stil.swf",symbol="Tree_folderClosedIcon");
 	folderOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_folderOpenIcon");
 }
-.notis
+
+.widget
 {
-	backgroundColor: #ffffcc;
+	backgroundColor: #f5f5ff;
 	borderColor: #bbbbaa;
 	borderStyle: solid;
 	cornerRadius: 5;
