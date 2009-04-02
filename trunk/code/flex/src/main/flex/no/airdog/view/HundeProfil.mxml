@@ -122,8 +122,7 @@
 					</mx:Grid>
 				</mx:HBox>
 				<mx:Spacer height="4"/>
-					<mx:Grid height="100%" width="100%" styleName="notis" visible="true">
-					<!--
+					<mx:Grid height="100%" width="100%" styleName="notis"
 						visible="{Components.instance.session.bildeOpplastning.startet != true ||
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
@@ -132,7 +131,6 @@
 							Components.instance.session.bildeOpplastning.resultat == '' ||
 							Components.instance.session.bildeOpplastning.resultat == null
 							 ? false : true}">
-					-->
 						<mx:GridRow>
 							<mx:GridItem>
 								<mx:Text id="feilmelding" text="Status: {Components.instance.session.bildeOpplastning.resultat}"/>
