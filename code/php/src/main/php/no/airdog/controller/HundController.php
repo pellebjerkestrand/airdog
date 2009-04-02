@@ -32,15 +32,17 @@ class HundController
 	    	
 		   	foreach($resultat as $rad)
 		   	{   
+		   		$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+		   		
 		   		//For treg testet på server
-		   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+		   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(), 3) . $bildeAdresse;
 		   		
 				$tmp = new AmfHund();
 				$tmp->hundId = $rad["hundId"];
 				$tmp->tittel = $rad["tittel"];
 				$tmp->navn = $rad["navn"];
 				
-				if (Verktoy::url_finnes($bilde))
+				if (file_exists(Verktoy::hoppBakover(dirname(__FILE__), 3) . $bildeAdresse))
 				{
 					$tmp->bilde = $bilde;
 				}
@@ -96,15 +98,17 @@ class HundController
 	    	
 	    	$rad = $hd->hentHund($hundId, $klubbId);   	
 			
-			//For treg testet på server
-			$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(),3) . "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . "_thumb.jpg";
+			$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg";
+		   		
+	   		//For treg testet på server
+	   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(), 3) . $bildeAdresse;;
 			
 			$tmp = new AmfHund();
 			$tmp->hundId = $rad["hundId"];
 			$tmp->tittel = $rad["tittel"];
 			$tmp->navn = $rad["navn"];
 			
-			if (Verktoy::url_finnes($bilde))
+			if (file_exists(Verktoy::hoppBakover(dirname(__FILE__), 3) . $bildeAdresse))
 			{
 				$tmp->bilde = $bilde;
 			}
