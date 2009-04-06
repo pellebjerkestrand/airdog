@@ -278,7 +278,6 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
 	    	$hd->redigerJaktprove($gammelJaktprove, $jaktprove, $klubbId);
 	    	
 	    	return $this->hentJaktprover($jaktprove->hundId, $brukerEpost, $brukerPassord, $klubbId);
-    	
     	}
 		
 		$feilkode = 1;	
@@ -290,8 +289,6 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "leggInnJaktprove"))
 		{	
 	    	$hd = new JaktproveDatabase();
-	    	
-	    	//throw(new Exception('Jeg bor i JaktproveController.php', 1));
 	    	
 	    	$resultat = $hd->leggInnJaktprove($jaktprove, $klubbId);
 	    	

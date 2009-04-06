@@ -3,6 +3,8 @@ package no.airdog.controller
 	import flash.display.DisplayObject;
 	
 	import mx.collections.ArrayCollection;
+	import mx.collections.SortField;
+	import mx.collections.Sort;
 	import mx.controls.Alert;
 	import mx.events.*;
 	import mx.managers.PopUpManager;
@@ -174,14 +176,25 @@ package no.airdog.controller
 			Components.instance.historie.settPunkt();
 		}
 		
-		public function hentCupListe(fra:String, til:String, limit:int):void
+		public function hentCupListe(fra:String, til:String):void
 		{
-			Components.instance.services.airdogService.hentCupListe(fra, til, limit, hentCupListeResultat);
+			Components.instance.services.airdogService.hentCupListe(fra, til, hentCupListeResultat);
 		}
 		
 		public function hentCupListeResultat(event:Object):void
 		{
 			Components.instance.session.cupListe = new ArrayCollection(event as Array);
+			
+			var sorteringsfelt:SortField = new SortField();
+			sorteringsfelt.name = "poeng";
+			sorteringsfelt.numeric = true;
+			sorteringsfelt.descending = true;
+			
+			var sortering:Sort = new Sort();
+			sortering.fields = [sorteringsfelt];
+			
+			Components.instance.session.cupListe.sort = sortering;
+			Components.instance.session.cupListe.refresh();
 		}
 		
 		public function hentAvkom(hundId:String):void
