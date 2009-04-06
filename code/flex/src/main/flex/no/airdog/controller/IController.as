@@ -15,7 +15,7 @@ package no.airdog.controller
 		function loggUt():void
 		function lastOpp(laster:Opplastning):void
 		function sokHund(soketekst:String):void
-		function hentCupListe(fra:String, til:String, limit:int):void
+		function hentCupListe(fra:String, til:String):void
 		function hentAvkom(hundId:String):void
 		function hentJaktprover(hundId:String):void
 		function hentAlleJaktproverAar(aar:String):void

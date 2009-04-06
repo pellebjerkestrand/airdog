@@ -23,10 +23,10 @@ package no.airdog.services
 			resultat, feil);
         }
         
-        public function hentCupListe(fra:String, til:String, limit:int, resultat:Function, feil:Function=null):void
+        public function hentCupListe(fra:String, til:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentCupListe(
-        		fra, til, limit,
+        		fra, til,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
     			Components.instance.session.bruker.sattKlubbId),
