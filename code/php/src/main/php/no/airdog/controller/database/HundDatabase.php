@@ -66,7 +66,7 @@ class HundDatabase
 			$this->database->insert('nkk_hund', $hundArray);
 			return 'Lagt til';
 		}
-		else if (isset($dbHund['manueltEndretAv']) && $dbHund['manueltEndretAv'] != '')
+		else if ($dbHund['manueltEndretAv'] != '')
 		{
 			return 'Manuelt endret, vil du overskrive?';
 		}
@@ -155,7 +155,7 @@ class HundDatabase
 	public function hentKunHund($hundId, $klubbId)
 	{
 		$select = $this->database->select()
-		->from('nkk_hund', array('hundId', 'raseId', 'navn', 'eierId', 'tittel'))
+		->from('nkk_hund', array('hundId', 'raseId', 'navn', 'eierId', 'tittel', 'manueltEndretAv'))
 		->where('hundId=?', $hundId)
 		->where('raseId=?', $klubbId)
 		->limit(1);
