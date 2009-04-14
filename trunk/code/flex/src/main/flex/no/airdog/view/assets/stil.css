@@ -769,7 +769,7 @@ Tree
 	folderOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_folderOpenIcon");
 }
 
-.UnderMeny
+LinkButton .underMeny
 {
 	cornerRadius: 2;
 	themeColor: #FFFFFF;
@@ -794,4 +794,11 @@ Tree
 	paddingRight: 10;
 	paddingTop: 10;
 	backgroundAlpha: 0.7;
+}
+
+.topBar
+{
+	backgroundColor: #c2c2c2;
+	color: #FFFFFF;
+	
 }
