@@ -76,5 +76,24 @@ class Verktoy
 		} 
 		
 		return $fil; 
-	}  
+	} 
+	
+	
+	public static function logging($var) 
+	{
+   		$filnavn = dirname(__FILE__) . PATH_SEPARATOR .'__log.txt';
+
+		if (!$fil = fopen($filnavn, 'a')) 
+		{
+			echo "Kan ikke lage filen ($filename)";
+			return;
+		}
+
+	    $innhold = var_export($var, true);
+	    fwrite($fil, "[" . date("y-m-d H:i:s") . "]");
+	   	fwrite($fil, "\n");
+	    fwrite($fil, $innhold);
+	    fwrite($fil, "\n");
+	    fclose($fil);
+ 	} 
 }
