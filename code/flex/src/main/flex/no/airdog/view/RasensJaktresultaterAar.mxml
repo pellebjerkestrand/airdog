@@ -50,6 +50,23 @@
 			<mx:DataGridColumn headerText="Starter i UK" dataField="starterVK"/>
 		</mx:columns>
 	</mx:DataGrid>
+	<mx:DataGrid id="jaktProvePremieTotaler" dataProvider="{Components.instance.session.jaktproveSammendragAar}"
+		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"
+		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Førsteplass UK" dataField="starterUKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass AK" dataField="starterAKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass UKAK" dataField="starterUKAKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass VK" dataField="starterVKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass VKSEMIFINALE" dataField="starterVKSEMIFINALEForste"/>
+			<mx:DataGridColumn headerText="Førsteplass VKFINALE" dataField="starterVKFINALEForste"/>
+			<mx:DataGridColumn headerText="Førsteplass UKKVALIK" dataField="starterUKKVALIKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass UKKFINALE" dataField="starterUKKFINALEForste"/>
+			<mx:DataGridColumn headerText="Førsteplass DERBYKVALIK" dataField="starterDERBYKVALIKForste"/>
+			<mx:DataGridColumn headerText="Førsteplass DERBYSEMIFINALE" dataField="starterDERBYSEMIFINALEForste"/>
+			<mx:DataGridColumn headerText="Førsteplass DERBYFINALE" dataField="starterDERBYFINALEForste"/>			
+		</mx:columns>
+	</mx:DataGrid>
 	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListeAar}"
 		height="100%" width="100%">
 		<mx:columns>

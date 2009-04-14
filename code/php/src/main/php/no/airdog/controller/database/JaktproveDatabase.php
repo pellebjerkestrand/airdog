@@ -137,6 +137,22 @@ class JaktproveDatabase
 		return $antall['antall']; 		
 	}
 	
+	public function hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, $klasse, $premiegrad)
+	{    		
+		$select = $this->database->select()
+		->from('nkk_fugl', array(			
+			'antall' => 'COUNT(*)'			
+		))
+		->where('proveDato LIKE ?', $aar.'%')
+		->where('raseId=?', $klubbId)
+		->where('klasse=?', $klasse)
+		->where('premiegrad=?', $premiegrad);
+		
+		$antall = $this->database->fetchRow($select);
+
+		return $antall['antall']; 
+	}
+	
 	public function settInn($jaktarray, $klubbId)
 	{
 		if ($jaktarray["raseId"] == $klubbId)
