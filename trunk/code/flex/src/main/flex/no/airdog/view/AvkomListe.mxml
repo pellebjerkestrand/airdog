@@ -2,6 +2,7 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
 	<mx:Script>
         <![CDATA[
+        	import mx.controls.DataGrid;
         	import mx.controls.LinkButton;
         	import mx.controls.Label;
         	import mx.controls.Alert;
@@ -32,9 +33,11 @@
 			{
 				var lb:LinkButton = event.target as LinkButton;
 				Components.instance.controller.visHund(lb.data.toString());
-			}     
+			}   
+			
         ]]>
     </mx:Script>
+    
     <mx:Repeater id="avkomRepeater" dataProvider="{Components.instance.session.avkomListe}" >
     	<mx:VBox width="100%" paddingBottom="20">
 	    	<mx:HBox>
@@ -42,7 +45,7 @@
 	    		<mx:LinkButton label="{avkomRepeater.currentItem.med}" click="visAvkomHund(event)" data="{avkomRepeater.currentItem.medId}"/>
 	    		<mx:Label text="Kull: {avkomRepeater.currentItem.kullId}"/>
 	    	</mx:HBox>
-    		
+
 	    	<mx:DataGrid height="{avkomRepeater.currentItem.liste.length * 30 + 25}"			
 				paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" rowHeight="30"
 				dataProvider="{avkomRepeater.currentItem.liste}" itemClick="visHund(event)" verticalAlign="middle">
