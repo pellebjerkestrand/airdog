@@ -796,7 +796,7 @@ LinkButton .underMeny
 	backgroundAlpha: 0.7;
 }
 
-.topBar
+VBox.topBar
 {
 	backgroundColor: #c2c2c2;
 	color: #FFFFFF;

@@ -45,35 +45,198 @@
 		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Starter totalt" dataField="starterTotalt"/>
-			<mx:DataGridColumn headerText="Starter i UK" dataField="starterUK"/>
-			<mx:DataGridColumn headerText="Starter i UK" dataField="starterAK"/>
-			<mx:DataGridColumn headerText="Starter i UK" dataField="starterVK"/>
+			<mx:DataGridColumn headerText="UK" dataField="starterUK"/>
+			<mx:DataGridColumn headerText="AK" dataField="starterAK"/>
+			<mx:DataGridColumn headerText="VK" dataField="starterVK"/>			
+			<mx:DataGridColumn headerText="VKFINALE" dataField="starterVKFINALE"/>
+			<mx:DataGridColumn headerText="UKAK" dataField="starterUKAK"/>
+			<mx:DataGridColumn headerText="UKKVALIK" dataField="starterUKKVALIK"/>
+			<mx:DataGridColumn headerText="UKKFINALE" dataField="starterUKKFINALE"/>
+			<mx:DataGridColumn headerText="DERBYKVALIK" dataField="starterDERBYKVALIK"/>
+			<mx:DataGridColumn headerText="DERBYSEMIFINALE" dataField="starterDERBYSEMIFINALE"/>
+			<mx:DataGridColumn headerText="DERBYFINALE" dataField="starterDERBYFINALE"/>
 		</mx:columns>
-	</mx:DataGrid>
-	<mx:DataGrid id="jaktProvePremieTotaler" dataProvider="{Components.instance.session.jaktproveSammendragAar}"
-		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"
-		verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-		<mx:columns>
-			<mx:DataGridColumn headerText="Førsteplass UK" dataField="starterUKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass AK" dataField="starterAKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass UKAK" dataField="starterUKAKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass VK" dataField="starterVKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass VKSEMIFINALE" dataField="starterVKSEMIFINALEForste"/>
-			<mx:DataGridColumn headerText="Førsteplass VKFINALE" dataField="starterVKFINALEForste"/>
-			<mx:DataGridColumn headerText="Førsteplass UKKVALIK" dataField="starterUKKVALIKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass UKKFINALE" dataField="starterUKKFINALEForste"/>
-			<mx:DataGridColumn headerText="Førsteplass DERBYKVALIK" dataField="starterDERBYKVALIKForste"/>
-			<mx:DataGridColumn headerText="Førsteplass DERBYSEMIFINALE" dataField="starterDERBYSEMIFINALEForste"/>
-			<mx:DataGridColumn headerText="Førsteplass DERBYFINALE" dataField="starterDERBYFINALEForste"/>			
-		</mx:columns>
-	</mx:DataGrid>
-	<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListeAar}"
-		height="100%" width="100%">
-		<mx:columns>
-			<mx:DataGridColumn headerText="ID" dataField="hundId"/>
-			<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
-			<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
-			<mx:DataGridColumn headerText="Premiering" dataField="premiegradTekst"/>					
-		</mx:columns>		
 	</mx:DataGrid>	
+	
+	<mx:HBox width="100%">
+		<mx:Grid horizontalGap="10" borderStyle="solid" borderThickness="0.5" borderColor="#666666" backgroundColor="#FFFFFF">
+			<mx:GridRow backgroundColor="#f5f5f5">
+				<mx:GridItem fontWeight="bold">
+                    <mx:Label text="Klasse" fontWeight="bold"/>
+                </mx:GridItem>
+				<mx:GridItem>
+                    <mx:Label text="Førsteplass" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="Andreplass" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="Tredjeplass" fontWeight="bold"/>
+                </mx:GridItem>
+			</mx:GridRow>
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="UK"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKTredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow backgroundColor="#f5f5f5">                
+            	<mx:GridItem>
+                    <mx:Label text="AK"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKTredje}"/>
+                </mx:GridItem>                
+            </mx:GridRow>
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="UKAK"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+            		<mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKTredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow backgroundColor="#f5f5f5">
+            	<mx:GridItem>
+                    <mx:Label text="VK"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKTredje}"/>
+                </mx:GridItem>                
+            </mx:GridRow>
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="VKFINALE"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALETredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>  
+            <mx:GridRow backgroundColor="#f5f5f5">
+            	<mx:GridItem>
+                    <mx:Label text="UKKVALIK"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKTredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>   
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="UKKFINALE"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALETredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>
+            <mx:GridRow backgroundColor="#f5f5f5">
+            	<mx:GridItem>
+                    <mx:Label text="DERBYKVALIK"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKTredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>                
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="DERBYSEMIFINALE"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEForste}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALETredje}"/>
+                </mx:GridItem>
+            </mx:GridRow>            	
+            <mx:GridRow backgroundColor="#f5f5f5">
+            	<mx:GridItem>
+                    <mx:Label text="DERBYFINALE"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEForste}"/>
+                </mx:GridItem> 
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALETredje}"/>
+                </mx:GridItem> 
+            </mx:GridRow>
+            <mx:GridRow>
+            	<mx:GridItem>
+                    <mx:Label text="Totalt"/>
+                </mx:GridItem>
+            	<mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltForste}"/>
+                </mx:GridItem> 
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltAndre}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltTredje}"/>
+                </mx:GridItem> 
+            </mx:GridRow>
+		</mx:Grid>
+		<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListeAar}"
+			height="100%" width="100%">
+			<mx:columns>
+				<mx:DataGridColumn headerText="ID" dataField="hundId"/>
+				<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
+				<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
+				<mx:DataGridColumn headerText="Premiering" dataField="premiegradTekst"/>					
+			</mx:columns>		
+		</mx:DataGrid>	
+	</mx:HBox>		
 </mx:VBox>
