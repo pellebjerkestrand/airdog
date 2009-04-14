@@ -4,6 +4,7 @@
 	xmlns:view="no.airdog.view.*">
     <mx:Script>
         <![CDATA[
+        	import mx.controls.Alert;
         	import no.airdog.model.Valg;
         	import mx.collections.ArrayCollection;
         	import no.airdog.model.OpplastningObjekt;
@@ -46,7 +47,6 @@
             	}
             	
             	// Valgte objekter blir lagt til slutt i arrayet slik at disse sletter duplikate datreferanse-hasher ved innlegging.
-            	
             	Components.instance.controller.overskrivDatInnlegg(array, Components.instance.session.datOpplastning.objektType);
             }
             

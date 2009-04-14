@@ -60,7 +60,10 @@
                 {
                 	for(var i:int = 0; i < data.length; i++)
                 	{ 
-						if(data[i].ad_bruker_epost == bruker[0].epost) ikkeLik = false;
+						if(data[i].ad_bruker_epost == bruker[0].epost) 
+						{
+							ikkeLik = false;
+						}
 					}
 					
 					if(ikkeLik)
