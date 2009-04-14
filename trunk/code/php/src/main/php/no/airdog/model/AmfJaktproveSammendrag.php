@@ -18,6 +18,7 @@ class AmfJaktproveSammendrag
 	public $premiegrad;		
 	public $premiegradTekst;
 	public $premieringsProsent;
+	
 	public $starterTotalt;
 	public $starterUK;
 	public $starterAK;
@@ -30,4 +31,43 @@ class AmfJaktproveSammendrag
 	public $starterDERBYKVALIK;
 	public $starterDERBYSEMIFINALE;
 	public $starterDERBYFINALE;
+	
+	public $starterTotaltForste;
+	public $starterUKForste;
+	public $starterAKForste;
+	public $starterUKAKForste;
+	public $starterVKForste;
+	public $starterVKSEMIFINALEForste;
+	public $starterVKFINALEForste;
+	public $starterUKKVALIKForste;
+	public $starterUKKFINALEForste;
+	public $starterDERBYKVALIKForste;
+	public $starterDERBYSEMIFINALEForste;
+	public $starterDERBYFINALEForste;
+	
+	public $starterTotaltAndre;
+	public $starterUKAndre;
+	public $starterAKAndre;
+	public $starterUKAKAndre;
+	public $starterVKAndre;
+	public $starterVKSEMIFINALEAndre;
+	public $starterVKFINALEAndre;
+	public $starterUKKVALIKAndre;
+	public $starterUKKFINALEAndre;
+	public $starterDERBYKVALIKAndre;
+	public $starterDERBYSEMIFINALEAndre;
+	public $starterDERBYFINALEAndre;
+	
+	public $starterTotaltTredje;
+	public $starterUKTredje;
+	public $starterAKTredje;
+	public $starterUKAKTredje;
+	public $starterVKTredje;
+	public $starterVKSEMIFINALETredje;
+	public $starterVKFINALETredje;
+	public $starterUKKVALIKTredje;
+	public $starterUKKFINALETredje;
+	public $starterDERBYKVALIKTredje;
+	public $starterDERBYSEMIFINALETredje;
+	public $starterDERBYFINALETredje;
 }

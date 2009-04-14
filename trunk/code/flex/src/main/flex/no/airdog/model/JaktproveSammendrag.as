@@ -21,6 +21,7 @@ package no.airdog.model
 		public var premiegrad:int;		
 		public var premiegradTekst:String;
 		public var premieringsProsent:String;
+		
 		public var starterTotalt:int;
 		public var starterUK:String;
 		public var starterAK:String;
@@ -32,6 +33,45 @@ package no.airdog.model
 		public var starterUKKFINALE:String;
 		public var starterDERBYKVALIK:String;
 		public var starterDERBYSEMIFINALE:String;
-		public var starterDERBYFINALE:String;		
+		public var starterDERBYFINALE:String;
+		
+		public var starterTotaltForste:String;
+		public var starterUKForste:String;
+		public var starterAKForste:String;
+		public var starterUKAKForste:String;
+		public var starterVKForste:String;
+		public var starterVKSEMIFINALEForste:String;
+		public var starterVKFINALEForste:String;
+		public var starterUKKVALIKForste:String;
+		public var starterUKKFINALEForste:String;
+		public var starterDERBYKVALIKForste:String;
+		public var starterDERBYSEMIFINALEForste:String;
+		public var starterDERBYFINALEForste:String;
+		
+		public var starterTotaltAndre:String;
+		public var starterUKAndre:String;
+		public var starterAKAndre:String;
+		public var starterUKAKAndre:String;
+		public var starterVKAndre:String;
+		public var starterVKSEMIFINALEAndre:String;
+		public var starterVKFINALEAndre:String;
+		public var starterUKKVALIKAndre:String;
+		public var starterUKKFINALEAndre:String;
+		public var starterDERBYKVALIKAndre:String;
+		public var starterDERBYSEMIFINALEAndre:String;
+		public var starterDERBYFINALEAndre:String;
+		
+		public var starterTotaltTredje:String;
+		public var starterUKTredje:String;
+		public var starterAKTredje:String;
+		public var starterUKAKTredje:String;
+		public var starterVKTredje:String;
+		public var starterVKSEMIFINALETredje:String;
+		public var starterVKFINALETredje:String;
+		public var starterUKKVALIKTredje:String;
+		public var starterUKKFINALETredje:String;
+		public var starterDERBYKVALIKTredje:String;
+		public var starterDERBYSEMIFINALETredje:String;
+		public var starterDERBYFINALETredje:String;		
 	}
 }
