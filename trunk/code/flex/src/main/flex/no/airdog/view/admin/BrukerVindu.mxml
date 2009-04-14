@@ -19,7 +19,7 @@
 			import no.airdog.controller.Verktoy;
 		
 			[Bindable]private var erTilbakestillt:Boolean = true;
-			[Bindable]private var erGodkjent:Boolean;
+			[Bindable]private var erGodkjent:Boolean = false;
 			
 			private var hvilkeKontroll:DisplayObject;
 			private var epostValidator:EmailValidator = new EmailValidator();

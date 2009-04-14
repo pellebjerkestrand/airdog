@@ -143,12 +143,11 @@ package no.airdog.controller
 	        	opplastning.resultat += "\rOppdatert: " + resultat[3];
 	        	
 	        	opplastning.resultat += "\rIgnorert: " + resultat[5];
-	        	opplastning.resultat += "\r\rFiltype: " + resultat[2];
-	        	
+	        	opplastning.resultat += "\r\rFiltype: " + resultat[2];	        	
 	        	
 	        	opplastning.resultat += "\rGenerelt: " + resultat[1];
 	     	
-	     		opplastning.objektType = resultat[1];
+	     		opplastning.objektType = resultat[2];
 	     	
 	        	for(var i:int = 6; i < resultat.length; i++)
 	        	{  		

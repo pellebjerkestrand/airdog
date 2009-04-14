@@ -1,6 +1,8 @@
 package no.airdog.controller
 {
 	import flash.utils.ByteArray;
+	import mx.controls.DataGrid;
+
 	
 	public class Verktoy
 	{	
@@ -29,5 +31,61 @@ package no.airdog.controller
 		    }
 		    return false;
 		}
+		
+		public static function eksporterDataGrid(dg:DataGrid):void
+        {
+            var str:String = new String();
+            var rows:Number = 0;
+                           
+            for(var i:int = 0; i < dg.columns.length; i++) 
+            {
+                str += dg.columns[i].headerText + "\t";
+            }
+            
+            str += "\n";
+            
+            for(var j:int =0; j < dg.dataProvider.length; j++) 
+            {                    
+                for(var k:int=0; k < dg.columns.length; k++) 
+                {                      
+                    if(dg.dataProvider.getItemAt(j) != undefined && dg.dataProvider.getItemAt(j) != null) 
+                    {
+                        if(dg.columns[k].labelFunction != undefined && dg.columns[k].labelFunction != null) 
+                        {
+                            str += dg.columns[k].labelFunction(dg.dataProvider.getItemAt(j),dg.columns[k]) + "\t";
+                        } 
+                        else 
+                        {
+                            var data:String = new String();
+                            if (dg.dataProvider.getItemAt(j)[dg.columns[k].dataField] == null)
+                            {
+                                data = "";
+                            }
+                            else
+                            {
+                                data = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
+                            }
+
+                            data = data.replace(/"/g, "");
+                            str += data + "\t";
+                        }
+                    }
+                }
+                
+                rows++;
+                str += "\n";
+            }
+            
+            var variables:URLVariables = new URLVariables(); 
+            variables.htmltable    = str;
+            
+            var urlExcelExport:String = Components.instance.services.rootPath + "controller/Excel.php";
+            
+            var u:URLRequest = new URLRequest(urlExcelExport);
+            u.method = URLRequestMethod.POST; 
+            u.data = variables; 
+            
+            navigateToURL(u,"_self");
+        }
 	}
 }
