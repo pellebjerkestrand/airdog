@@ -108,10 +108,9 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
 	    	$tmp->reviering = sprintf("%.2f", $sammendrag['reviering']); 	
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
-    		$tmp->premiegrad = sprintf("%.2f", $sammendrag['premiegrad']);		
-    		$tmp->starterTotalt = $sammendrag['starterTotalt'];
-			    		
-   			
+    		$tmp->premiegrad = sprintf("%.2f", $sammendrag['premiegrad']);	
+    		$tmp->starterTotalt = $sammendrag['starterTotalt'];	
+//klasser  		
     		$tmp->starterUK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '1');
     		$tmp->starterAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '2');
     		$tmp->starterUKAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '3');
@@ -123,6 +122,18 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
     		$tmp->starterDERBYKVALIK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '9');
     		$tmp->starterDERBYSEMIFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '10');
     		$tmp->starterDERBYFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '11');
+//premier
+    		$tmp->starterUKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '1', '1');
+    		$tmp->starterAKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '2', '1');
+    		$tmp->starterUKAKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '3', '1');
+    		$tmp->starterVKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '4', '1');
+    		$tmp->starterVKSEMIFINALEForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '5', '1');
+    		$tmp->starterVKFINALEForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '6', '1');
+    		$tmp->starterUKKVALIKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '7', '1');
+    		$tmp->starterUKKFINALEForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '8', '1');
+    		$tmp->starterDERBYKVALIKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '9', '1');
+    		$tmp->starterDERBYSEMIFINALEForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '10', '1');
+    		$tmp->starterDERBYFINALEForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '11', '1');
     		    		
     		
     		$ret[] = $tmp;
