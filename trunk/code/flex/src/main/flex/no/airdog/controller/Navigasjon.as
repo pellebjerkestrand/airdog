@@ -23,6 +23,10 @@ package no.airdog.controller
 				Components.instance.controller.hentAlleRettigheter();
 				Components.instance.controller.hentRollersRettigheter();
 			}
+			else if(barnNr == 12)
+			{
+				Components.instance.controller.hentKopier();
+			}
 			
 			Components.instance.historie.settPunkt();
 		}
