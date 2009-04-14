@@ -81,7 +81,7 @@ class Verktoy
 	
 	public static function logging($var) 
 	{
-   		$filnavn = dirname(__FILE__) . PATH_SEPARATOR .'__log.txt';
+   		$filnavn = dirname(__FILE__) . PATH_SEPARATOR .'__logg.txt';
 
 		if (!$fil = fopen($filnavn, 'a')) 
 		{
