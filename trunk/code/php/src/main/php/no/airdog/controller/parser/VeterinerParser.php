@@ -72,18 +72,18 @@ class VeterinerParser
 	
 	public static function getDatabaseSomDat($veterinerArray)
 	{
-		$dat = "$veterinerArray[veterinerId]|" .
-			"$veterinerArray[personId]|" .
-			"$veterinerArray[adresse1]|" .
-			"$veterinerArray[adresse2]|" .
-			"$veterinerArray[adresse3]|" .
-			"$veterinerArray[postNr]|" .
-			"$veterinerArray[telefon]|" .
-			"$veterinerArray[telefax]|" .
-			"$veterinerArray[klinikkNavn]|" .
-			Verktoy::konverterDatabaseTilDatDato($veterinerArray['regDato'])."|" .
-			"$veterinerArray[regAv]|" .
-			"$veterinerArray[endretAv]";
+		$dat = $veterinerArray['veterinerId'] . '|' .
+			$veterinerArray['personId'] . '|' .
+			$veterinerArray['adresse1'] . '|' .
+			$veterinerArray['adresse2'] . '|' .
+			$veterinerArray['adresse3'] . '|' .
+			$veterinerArray['postNr'] . '|' .
+			$veterinerArray['telefon'] . '|' .
+			$veterinerArray['telefax'] . '|' .
+			$veterinerArray['klinikkNavn'] . '|' .
+			Verktoy::konverterDatabaseTilDatDato($veterinerArray['regDato']) . '|' .
+			$veterinerArray['regAv'] . '|' .
+			$veterinerArray['endretAv'];
 			 			
 			return $dat;
 	}

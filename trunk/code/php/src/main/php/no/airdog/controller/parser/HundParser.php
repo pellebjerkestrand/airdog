@@ -82,26 +82,26 @@ class HundParser
 	
 	public static function getDatabaseSomDat($hundArray)
 	{
-		$dat = $hundArray[raseId] . '|' .
-	 		$hundArray[kullId] . '|' .
-	 		$hundArray[hundId] . '|' .
-	 		$hundArray[tittel] . '|' .
-	 		$hundArray[navn] . '|' .
-	 		$hundArray[hundFarId] . '|' .
-	 		$hundArray[hundMorId] . '|' .
-	 		$hundArray[idNr] . '|' .
-	 		$hundArray[farge] . '|' .
-	 		$hundArray[fargeVariant] . '|' .
-	 		$hundArray[oyesykdom] . '|' .
-	 		$hundArray[hoftesykdom] . '|' .
-	 		$hundArray[haarlag] . '|' .
-	 		$hundArray[idMerke] . '|' .
-	 		$hundArray[kjonn] . '|' .
-	 		$hundArray[eierId] . '|' .
-	 		$hundArray[endretAv] . '|' .
+		$dat = $hundArray['raseId'] . '|' .
+	 		$hundArray['kullId'] . '|' .
+	 		$hundArray['hundId'] . '|' .
+	 		$hundArray['tittel'] . '|' .
+	 		$hundArray['navn'] . '|' .
+	 		$hundArray['hundFarId'] . '|' .
+	 		$hundArray['hundMorId'] . '|' .
+	 		$hundArray['idNr'] . '|' .
+	 		$hundArray['farge'] . '|' .
+	 		$hundArray['fargeVariant'] . '|' .
+	 		$hundArray['oyesykdom'] . '|' .
+	 		$hundArray['hoftesykdom'] . '|' .
+	 		$hundArray['haarlag'] . '|' .
+	 		$hundArray['idMerke'] . '|' .
+	 		$hundArray['kjonn'] . '|' .
+	 		$hundArray['eierId'] . '|' .
+	 		$hundArray['endretAv'] . '|' .
 	 		Verktoy::konverterDatabaseTilDatDato($hundArray['endretDato']) . '|' .
 	 		Verktoy::konverterDatabaseTilDatDato($hundArray['regDato']) . '|' .
-	 		$hundArray[storrelse];
+	 		$hundArray['storrelse'];
 			 			
 			return $dat;
 	}
