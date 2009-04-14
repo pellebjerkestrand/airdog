@@ -66,7 +66,7 @@ class HundDatabase
 			$this->database->insert('nkk_hund', $hundArray);
 			return 'Lagt til';
 		}
-		else if ($dbHund['manueltEndretAv'] != '')
+		else if (isset($dbHund['manueltEndretAv']) && $dbHund['manueltEndretAv'] != '')
 		{
 			return 'Manuelt endret, vil du overskrive?';
 		}

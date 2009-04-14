@@ -23,7 +23,7 @@ class importParserController
 {
 	private $database;
 	private $svarListe = array();
-	private $maksFeil = 100;
+	private $maksFeil = 1000;
 	private $antallFeil = 0;
 	
 	public function __construct()

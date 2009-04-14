@@ -62,9 +62,9 @@ class EierParser
 	
 	public static function getDatabaseSomDat($personArray)
 	{
-		$dat = "$personArray[eier]|" .
-	 		"$personArray[hundId]|" .
-	 		"$personArray[raseId]";
+		$dat = $personArray['eier'] . '|' .
+	 		$personArray['hundId']. '|' .
+	 		$personArray['raseId'];
 			 			
 			return $dat;
 	}

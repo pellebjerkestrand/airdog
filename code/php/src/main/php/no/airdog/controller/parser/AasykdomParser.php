@@ -92,31 +92,31 @@ class AasykdomParser
 	
 	public static function getDatabaseSomDat($aasykdomArray)
 	{
-		$dat = "$aasykdomArray[veId]|" .
-			"$aasykdomArray[aaId]|" .
-			"$aasykdomArray[diagnoseKode]|" .
-			"$aasykdomArray[idmerketkode]|" .
-			"$aasykdomArray[lidelseKode]|" .
-			"$aasykdomArray[sekHoyreKode]|" .
-			"$aasykdomArray[sekVenstreKode]|" .
-			"$aasykdomArray[endretAv]|" .
-			"$aasykdomArray[regAv]|" .
-			"$aasykdomArray[avlestAv]|" .
-			"$aasykdomArray[betaling]|" .
-			"$aasykdomArray[diagnose]|" .
-			"$aasykdomArray[hundId]|" .
-			"$aasykdomArray[idFeil]|" .
-			"$aasykdomArray[idMerket]|" .
-			"$aasykdomArray[kode]|" .
-			"$aasykdomArray[lidelse]|" .
-			"$aasykdomArray[peId]|" .
-			"$aasykdomArray[purring]|" .
-			"$aasykdomArray[raseId]|" .
-			"$aasykdomArray[retur]|" .
-			"$aasykdomArray[sekHoyre]|" .
-			"$aasykdomArray[sekVenstre]|" .
-			"$aasykdomArray[sendes]|" .
-			Verktoy::konverterDatabaseTilDatDato($aasykdomArray['avlestDato'])."|" .
+		$dat = $aasykdomArray['veId'] . '|' .
+			$aasykdomArray['aaId'] . '|' .
+			$aasykdomArray['diagnoseKode'] . '|' .
+			$aasykdomArray['idmerketkode'] . '|' .
+			$aasykdomArray['lidelseKode'] . '|' .
+			$aasykdomArray['sekHoyreKode'] . '|' .
+			$aasykdomArray['sekVenstreKode'] . '|' .
+			$aasykdomArray['endretAv'] . '|' .
+			$aasykdomArray['regAv'] . '|' .
+			$aasykdomArray['avlestAv'] . '|' .
+			$aasykdomArray['betaling'] . '|' .
+			$aasykdomArray['diagnose'] . '|' .
+			$aasykdomArray['hundId'] . '|' .
+			$aasykdomArray['idFeil'] . '|' .
+			$aasykdomArray['idMerket'] . '|' .
+			$aasykdomArray['kode'] . '|' .
+			$aasykdomArray['lidelse'] . '|' .
+			$aasykdomArray['peId'] . '|' .
+			$aasykdomArray['purring'] . '|' .
+			$aasykdomArray['raseId'] . '|' .
+			$aasykdomArray['retur'] . '|' .
+			$aasykdomArray['sekHoyre'] . '|' .
+			$aasykdomArray['sekVenstre'] . '|' .
+			$aasykdomArray['sendes'] . '|' .
+			Verktoy::konverterDatabaseTilDatDato($aasykdomArray['avlestDato']) . '|' .
 			Verktoy::konverterDatabaseTilDatDato($aasykdomArray['rontgenDato']);
 			 			
 			return $dat;

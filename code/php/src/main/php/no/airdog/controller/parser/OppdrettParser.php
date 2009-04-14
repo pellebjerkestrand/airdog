@@ -61,9 +61,9 @@ class OppdrettParser
 	
 	public static function getDatabaseSomDat($oppdrettArray)
 	{
-		$dat = $oppdrettArray[kullId]. '|' .
-	 		$oppdrettArray[oppdretter]. '|' .
-	 		$oppdrettArray[raseId];
+		$dat = $oppdrettArray['kullId'] . '|' .
+	 		$oppdrettArray['oppdretter'] . '|' .
+	 		$oppdrettArray['raseId'];
 			 			
 			return $dat;
 	}

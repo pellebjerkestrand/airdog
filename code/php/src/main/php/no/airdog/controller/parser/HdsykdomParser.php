@@ -83,28 +83,28 @@ class HdsykdomParser
 	
 	public static function getDatabaseSomDat($hdsykdomArray)
 	{
-		$dat = "$hdsykdomArray[avlestAv]|" .
-			"$hdsykdomArray[betaling]|" .
-			"$hdsykdomArray[diagnose]|" .
-			"$hdsykdomArray[diagnoseKode]|" .
-			"$hdsykdomArray[endretAv]|" .
-			"$hdsykdomArray[hofteDyId]|" .
-			"$hdsykdomArray[hundId]|" .
-			"$hdsykdomArray[idmerket]|" .
-			"$hdsykdomArray[idmerketkode]|" .
-			"$hdsykdomArray[kode]|" .
-			"$hdsykdomArray[lidelse]|" .
-			"$hdsykdomArray[lidelsekode]|" .
-			"$hdsykdomArray[personId]|" .
-			"$hdsykdomArray[raseId]|" .
-			"$hdsykdomArray[registrertAv]|" .
-			"$hdsykdomArray[sekHoyre]|" .
-			"$hdsykdomArray[sekHoyreKode]|" .
-			"$hdsykdomArray[sekVenstre]|" .
-			"$hdsykdomArray[sekVenstreKode]|" .
-			"$hdsykdomArray[sendes]|" .
-			"$hdsykdomArray[veterinerId]|" .
-			Verktoy::konverterDatabaseTilDatDato($hdsykdomArray['rontgenDato'])."|" .
+		$dat = $hdsykdomArray['avlestAv'] . '|' .
+			$hdsykdomArray['betaling'] . '|' .
+			$hdsykdomArray['diagnose'] . '|' .
+			$hdsykdomArray['diagnoseKode'] . '|' .
+			$hdsykdomArray['endretAv'] . '|' .
+			$hdsykdomArray['hofteDyId'] . '|' .
+			$hdsykdomArray['hundId'] . '|' .
+			$hdsykdomArray['idmerket'] . '|' .
+			$hdsykdomArray['idmerketkode'] . '|' .
+			$hdsykdomArray['kode'] . '|' .
+			$hdsykdomArray['lidelse'] . '|' .
+			$hdsykdomArray['lidelsekode'] . '|' .
+			$hdsykdomArray['personId'] . '|' .
+			$hdsykdomArray['raseId'] . '|' .
+			$hdsykdomArray['registrertAv'] . '|' .
+			$hdsykdomArray['sekHoyre'] . '|' .
+			$hdsykdomArray['sekHoyreKode'] . '|' .
+			$hdsykdomArray['sekVenstre'] . '|' .
+			$hdsykdomArray['sekVenstreKode'] . '|' .
+			$hdsykdomArray['sendes'] . '|' .
+			$hdsykdomArray['veterinerId'] . '|' .
+			Verktoy::konverterDatabaseTilDatDato($hdsykdomArray['rontgenDato']) . '|' .
 			Verktoy::konverterDatabaseTilDatDato($hdsykdomArray['avlestDato']);
 			 			
 			return $dat;
