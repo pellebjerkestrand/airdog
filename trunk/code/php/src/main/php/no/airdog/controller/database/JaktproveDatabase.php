@@ -37,7 +37,8 @@ class JaktproveDatabase
 	{
 		$hvor = $this->database->quoteInto('proveNr = ? ', $jaktproveId).
 				$this->database->quoteInto('AND hundId = ? ', $hundId).
-				$this->database->quoteInto('AND proveDato = ?', $dato);
+				$this->database->quoteInto('AND proveDato = ?', $dato).
+				$this->database->quoteInto('AND raseId = ?', $klubbId);
 		
 		return $this->database->delete('nkk_fugl', $hvor);
 	}
