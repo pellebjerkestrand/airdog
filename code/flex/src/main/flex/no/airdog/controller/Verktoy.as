@@ -68,14 +68,14 @@ package no.airdog.controller
                         { 
                         	
                             var data:String = new String();
-                            if (dg.dataProvider.getItemAt(j) != null && dg.columns[k] != null && dg.dataProvider.getItemAt(j)[dg.columns[k].dataField] == null)
+                            
+                            if (dg.dataProvider.getItemAt(j) != null && dg.columns[k] != null && dg.columns[k].dataField != null && dg.dataProvider.getItemAt(j)[dg.columns[k].dataField] != null)
                             {
-                                data = "";
+                            	data = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
                             }
                             else
                             {
-                            	Alert.show(k.toString());
-                                data = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
+                                data = "";
                             }
 							 
                             data = data.replace("\"", "");
