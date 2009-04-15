@@ -106,6 +106,8 @@ class Verktoy
 
         $dokument = file_get_contents($rtf_fil);
         
+        
+        
         if(!$dokument) 
         {
             return false;
