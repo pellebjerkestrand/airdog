@@ -96,4 +96,33 @@ class Verktoy
 	    fwrite($fil, "\n");
 	    fclose($fil);
  	} 
+ 	
+ 	
+	public static function fyll_RTF($variabler, $rtf_fil) {
+
+        $regex = array('\\' => "\\\\",
+                       '{'  => "\{",
+                       '}'  => "\}");
+
+        $dokument = file_get_contents($rtf_fil);
+        
+        if(!$dokument) 
+        {
+            return false;
+        }
+
+        foreach($variabler as $nokkel => $v) 
+        {
+            $sok = "%%".strtoupper($nokkel)."%%";
+
+            foreach($regex as $verdi => $bytt) 
+            {
+                $value = str_replace($verdi, $bytt, $v);
+            }
+
+            $dokument = str_replace($sok, $v, $dokument);
+        }
+
+        return $dokument;
+    }
 }

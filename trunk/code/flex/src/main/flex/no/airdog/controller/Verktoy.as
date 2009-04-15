@@ -99,5 +99,21 @@ package no.airdog.controller
           
             navigateToURL(u,"_self");
         }
+        
+        public static function lagAarbok():void
+        {
+            var variabler:URLVariables = new URLVariables(); 
+            variabler.tekst = "Test";
+        	variabler.navn = "test";
+            
+            var urlLagArrbok:String = Components.instance.services.rootPath + "controller/Aarbok.php";
+            
+            var u:URLRequest =  new URLRequest(urlLagArrbok);
+            u.method = URLRequestMethod.POST; 
+            u.data = variabler; 
+          
+            navigateToURL(u,"_self");
+        }
+        
 	}
 }
