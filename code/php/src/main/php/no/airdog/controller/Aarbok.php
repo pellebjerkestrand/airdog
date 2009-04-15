@@ -3,7 +3,7 @@ header("Content-type: application/msword");
 header("Content-disposition: inline; filename=aarBok");
 header("Content-length: " . strlen($nyRTF));
 
-require_once "no/airdog/controller/Verktoy.php";
+require_once "Verktoy.php";
 
 $vars = array('dato'    =>	date("F d, Y"),
               'navn'	=>	'Hans Magnus',
