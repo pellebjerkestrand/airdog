@@ -1,4 +1,0 @@
-gjest	gjest	gjestdddf	9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051	1
-admin	admin	ddddhh	d033e22ae348aeb5660fc2140aec35850c4da997	1
-test	test	test	a94a8fe5ccb19ba61c4c0873d391e987982fbbd3	0
-hansmagnusinderberg@hotmail.com	Hans Magnus 	Tester om det er for langt	a94a8fe5ccb19ba61c4c0873d391e987982fbbd3	1
