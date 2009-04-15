@@ -2,30 +2,18 @@
 
 class Tilkobling
 {
-	private $dbServer;
-	private $dbNavn;
-	private $dbBrukernavn;
-	private $dbPassord;
+	private $config;
 	
 	public function __construct() 
 	{
-		$this->dbServer='localhost';
-		$this->dbNavn='airdog';
-		$this->dbBrukernavn ='airdog';
-		$this->dbPassord = 'air123dog';
+		$this->config = new Zend_Config(require 'no/airdog/config/db.php');
 	}
 
 	public function getTilkobling()
 	{
 		try 
 		{
-			$database = Zend_Db::factory('Mysqli',array(
-			'host' => $this->dbServer,
-			'dbname' => $this->dbNavn,
-			'username' => $this->dbBrukernavn,
-			'password' => $this->dbPassord,
-    		'profiler' => false));
-			
+			$database = Zend_Db::factory($this->config->database);  
 			$database->query('SET NAMES UTF8');
 			
 			return $database;
@@ -36,3 +24,5 @@ class Tilkobling
 		}
 	}
 }
+
+
