@@ -43,7 +43,7 @@ class JaktproveController
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "slettJaktprove"))
 		{
 			$hd = new JaktproveDatabase();
-    		return $hd->slettJaktprove($jaktproveId, $klubbId);
+    		return $hd->slettJaktprove($jaktproveId, $hundId, $dato, $klubbId);
 		}
 		
 		$feilkode = 1;
@@ -83,7 +83,7 @@ class JaktproveController
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
 
-public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $klubbId)
     {	    
     	
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
@@ -110,7 +110,7 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
     		$tmp->premiegrad = sprintf("%.2f", $sammendrag['premiegrad']);	
     		$tmp->starterTotalt = $sammendrag['starterTotalt'];	
-//klasser  		
+			//klasser  		
     		$tmp->starterUK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '1');
     		$tmp->starterAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '2');
     		$tmp->starterUKAK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '3');
@@ -122,7 +122,7 @@ public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $
     		$tmp->starterDERBYKVALIK = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '9');
     		$tmp->starterDERBYSEMIFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '10');
     		$tmp->starterDERBYFINALE = $hd->hentJaktproveSammendragAarKlasser($aar, $klubbId, '11');
-//premier
+			//premier
 			//$tmp->starterTotaltForste = $hd->hentJaktproveSammendragAarStarterTotaltPremie($aar, $klubbid, '1');
     		$tmp->starterUKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '1', '1');
     		$tmp->starterAKForste = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '2', '1');
