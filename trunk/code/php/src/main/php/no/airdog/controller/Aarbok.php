@@ -1,7 +1,6 @@
 <?php
-header("Content-type: application/msword");
-header("Content-disposition: inline; filename=aarBok");
-header("Content-length: " . strlen($nyRTF));
+header("Content-type: application/msword; charset=UTF-16LE"); 
+header("Content-Disposition: inline; filename=aarBok"); 
 
 require_once "Verktoy.php";
 
