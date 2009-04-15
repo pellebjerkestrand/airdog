@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/msword; charset=UTF-16LE"); 
-header("Content-Disposition: inline; filename=aarBok"); 
+header("Content-Disposition: inline; filename=aarBok.doc"); 
 
 require_once "Verktoy.php";
 
