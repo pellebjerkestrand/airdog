@@ -311,6 +311,7 @@ Loader
 .mainButtonLink
 {
 	upSkin:Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
+	/*#d8d8d8 */
 }
 
 /*
@@ -771,8 +772,9 @@ Tree
 
 LinkButton .underMeny
 {
+	color: #B7B7B7;
 	cornerRadius: 2;
-	themeColor: #FFFFFF;
+	themeColor: #d8d8d8;
 	leading: 0;
 	textAlign: left;
 	paddingTop: 0;
@@ -799,6 +801,6 @@ LinkButton .underMeny
 VBox.topBar
 {
 	backgroundColor: #c2c2c2;
-	color: #FFFFFF;
+	color: #ffffff;
 	
 }
