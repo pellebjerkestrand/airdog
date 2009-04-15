@@ -1,14 +1,23 @@
 <?php
-header("Content-type: application/rtf; charset=UTF-16LE"); 
-header ("Content-Disposition: inline; filename=aarBok.rtf"); 
+header("Content-type: application/msword");
+header("Content-disposition: inline; filename=aarBok");
+header("Content-length: " . strlen($nyRTF));
 
 require_once "no/airdog/controller/Verktoy.php";
 
 $vars = array('dato'    =>	date("F d, Y"),
               'navn'	=>	'John Coggeshall',
               'adresse' =>	'1210 Hancock');
+              
+$nyRTF = Verktoy::fyll_RTF($vars, "../assets/mal.rtf");
 
-$nyRTF = Verktoy::fyll_RTF($vars, "no/airdog/assets/mal.rtf");
-$dokument = fopen('no/airdog/assets/aarBok.rtf', 'w');
-fwrite($dokument, $nyRTF);
-fclose($dokument);
+if($nyRTF)
+{
+	echo $nyRTF;
+}
+else
+{
+	echo "Noe skjedde feil";
+}
+
+
