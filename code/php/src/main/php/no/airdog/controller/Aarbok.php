@@ -6,10 +6,10 @@ header("Content-length: " . strlen($nyRTF));
 require_once "no/airdog/controller/Verktoy.php";
 
 $vars = array('dato'    =>	date("F d, Y"),
-              'navn'	=>	'John Coggeshall',
-              'adresse' =>	'1210 Hancock');
+              'navn'	=>	'Hans Magnus',
+              'adresse' =>	'0356 KULT');
               
-$nyRTF = Verktoy::fyll_RTF($vars, "../assets/mal.rtf");
+$nyRTF = Verktoy::fyll_RTF($vars, "../assets/mal_funk.rtf");
 
 if($nyRTF)
 {
