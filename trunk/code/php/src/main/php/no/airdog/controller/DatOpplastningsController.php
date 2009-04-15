@@ -1,5 +1,6 @@
 <?php
 require_once "FilvaliderController.php";
+require_once 'utf8Konverterer.php';
 
 require_once "database/HundDatabase.php";
 require_once "database/UtstillingDatabase.php";
@@ -100,12 +101,12 @@ class DatOpplastningsController
 	    	{
 	    		if ($objekter[$i][1] == "true")
 	    		{
-		    		$verdier = $ep->getArray($objekter[$i][0]);
+		    		$verdier = $ep->getArray(utf8Konverterer::cp1252_to_utf8($objekter[$i][0]));
 		    		$svar = $hd->overskriv($verdier, $klubbId);
 	    		}
 	    		else if ($objekter[$i][1]== "false")
 	    		{
-    				DatReferanseDatabase::settReferanse($objekter[$i][0], $epost, $this->database);
+    				DatReferanseDatabase::settReferanse(utf8Konverterer::cp1252_to_utf8($objekter[$i][0]), $epost, $this->database);
 	    		}
 	    	}
 	    	

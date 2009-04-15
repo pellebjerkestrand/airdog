@@ -64,7 +64,7 @@ class importParserController
 			if ($handle) 
 			{
 				$tekst = fgets($handle, 4096);
-				$filtype = $valider->getFiltype($tekst);
+				$filtype = $valider->getFiltype(utf8Konverterer::cp1252_to_utf8($tekst));
 				$ret = "";
 				$this->svarListe[2] = $filtype;
 			
@@ -137,6 +137,7 @@ class importParserController
 			        $tekst = fgets($handle, 4096);
 			        $tekst = str_replace("\r\n", "\n", $tekst);
 			        $tekst = str_replace("\n", "", $tekst);
+			        $tekst = utf8Konverterer::cp1252_to_utf8($tekst);
 			        
 			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
 		    		$this->velgHandling($svar, $tekst);
