@@ -79,7 +79,7 @@ class HundController
 				$tmp->manueltEndretAv = $rad["manueltEndretAv"];
 				$tmp->manueltEndretDato = $rad["manueltEndretDato"];
 				
-				//$tmp->vf = sprintf("%.1f", $rad["vf"]);
+				//$tmp->vf = number_format($rad["vf"]);
 				$ret[] = $tmp;
 			}
 	    	
@@ -147,7 +147,7 @@ class HundController
 			$tmp->storrelse = $rad["storrelse"];
 			$tmp->manueltEndretAv = $rad["manueltEndretAv"];
 			$tmp->manueltEndretDato = $rad["manueltEndretDato"];
-			$tmp->vf = sprintf("%.1f", $rad["vf"]);
+			$tmp->vf = number_format($rad["vf"]);
 				
 	        return $tmp;
 		}
@@ -316,22 +316,22 @@ class HundController
 					$tmp->start = sprintf("%u", $rad["start"]);
 					
 				if ($rad["jl"] >> 0)	
-					$tmp->jl = sprintf("%.1f", $rad["jl"]);
+					$tmp->jl = number_format($rad["jl"], 1, ',', '');
 				
 				if ($rad["selv"] >> 0)	
-					$tmp->selv = sprintf("%.1f", $rad["selv"]);
+					$tmp->selv = number_format($rad["selv"], 1, ',', '');
 				
 				if ($rad["sok"] >> 0)	
-					$tmp->sok = sprintf("%.1f", $rad["sok"]);
+					$tmp->sok = number_format($rad["sok"], 1, ',', '');
 				
 				if ($rad["vf"] >> 0)	
-					$tmp->vf = sprintf("%.1f", $rad["vf"]);
+					$tmp->vf = number_format($rad["vf"], 1, ',', '');
 				
 				if ($rad["rev"] >> 0)	
-					$tmp->rev = sprintf("%.1f", $rad["rev"]);
+					$tmp->rev = number_format($rad["rev"], 1, ',', '');
 				
 				if ($rad["sam"] >> 0)	
-					$tmp->sam = sprintf("%.1f", $rad["sam"]);
+					$tmp->sam = number_format($rad["sam"], 1, ',', '');
 				
 				
 				if (sprintf("%u", $rad["bestPlUk"]) >> 0 && sprintf("%u", $rad["bestPlUk"]) << sprintf("%u", $rad["bestPlAk"]))
@@ -407,46 +407,46 @@ class HundController
 				$tmp["hundMorId"] = $rad["hundMorId"];
 				
 				if ($rad["es"] >> 0)
-					$tmp["es"] = sprintf("%.1f", $rad["es"]);
+					$tmp["es"] = number_format($rad["es"], 1, ',', '');
 					
 				if ($rad["ms"] >> 0)
-					$tmp["ms"] = sprintf("%.1f", $rad["ms"]);
+					$tmp["ms"] = number_format($rad["ms"], 1, ',', '');
 					
 				if ($rad["vf"] >> 0)
-					$tmp["vf"] = sprintf("%.1f", $rad["vf"]);
+					$tmp["vf"] = number_format($rad["vf"], 1, ',', '');
 					
 				if ($rad["eso"] >> 0)
-					$tmp["eso"] = sprintf("%.1f", $rad["eso"]);
+					$tmp["eso"] = number_format($rad["eso"], 1, ',', '');
 					
 				if ($rad["mso"] >> 0)
-					$tmp["mso"] = sprintf("%.1f", $rad["mso"]);
+					$tmp["mso"] = number_format($rad["mso"], 1, ',', '');
 					
 				if ($rad["ts"] >> 0)
-					$tmp["ts"] = sprintf("%.1f", $rad["ts"]);
+					$tmp["ts"] = number_format($rad["ts"], 1, ',', '');
 				
 		   		if ($rad["starter"] >> 0)
 					$tmp["starter"] = sprintf("%u", $rad["starter"]);
 					
 				if ($rad["jl"] >> 0)
-					$tmp["jl"] = sprintf("%.1f", $rad["jl"]);
+					$tmp["jl"] = number_format($rad["jl"], 1, ',', '');
 					
 				if ($rad["fa"] >> 0)
-					$tmp["fa"] = sprintf("%.1f", $rad["fa"]);
+					$tmp["fa"] = number_format($rad["fa"], 1, ',', '');
 					
 				if ($rad["st"] >> 0)
-					$tmp["st"] = sprintf("%.1f", $rad["st"]);
+					$tmp["st"] = number_format($rad["st"], 1, ',', '');
 					
 				if ($rad["selv"] >> 0)
-					$tmp["ss"] = sprintf("%.1f", $rad["selv"]);
+					$tmp["ss"] = number_format($rad["selv"], 1, ',', '');
 					
 				if ($rad["sok"] >> 0)
-					$tmp["sb"] = sprintf("%.1f", $rad["sok"]);
+					$tmp["sb"] = number_format($rad["sok"], 1, ',', '');
 					
 				if ($rad["rev"] >> 0)
-					$tmp["rv"] = sprintf("%.1f", $rad["rev"]);
+					$tmp["rv"] = number_format($rad["rev"], 1, ',', '');
 					
 				if ($rad["sam"] >> 0)
-					$tmp["sa"] = sprintf("%.1f", $rad["sam"]);
+					$tmp["sa"] = number_format($rad["sam"], 1, ',', '');
 				
 				if (sprintf("%u", $rad["bestePl"]) >> 0)
 				{

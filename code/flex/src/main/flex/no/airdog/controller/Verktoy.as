@@ -6,7 +6,6 @@ package no.airdog.controller
 	import flash.net.navigateToURL;
 	import flash.utils.ByteArray;
 	
-	import mx.controls.Alert;
 	import mx.controls.DataGrid;
 	
 	import no.airdog.services.Components;
@@ -40,7 +39,7 @@ package no.airdog.controller
 		    return false;
 		}
 		
-		public static function eksporterDataGrid(dg:DataGrid):void
+		public static function eksporterDataGrid(dg:DataGrid, navn:String):void
         {
             var str:String = new String();
             var rows:Number = 0;
@@ -89,7 +88,8 @@ package no.airdog.controller
             }
             
             var variables:URLVariables = new URLVariables(); 
-            variables.htmltable    = str;
+            variables.tekst = str;
+        	variables.navn = navn;
             
             var urlExcelExport:String = Components.instance.services.rootPath + "controller/Excel.php";
             

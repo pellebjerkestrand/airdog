@@ -4,6 +4,8 @@ error_reporting(E_ALL|E_STRICT);
 //Skru av før produktet skal lanseres
 ini_set("display_errors", "on");
 
+setlocale(LC_ALL, 'no_NO');
+
 ini_set("include_path", ini_get("include_path") .
 	PATH_SEPARATOR . dirname(__FILE__) . '/../../com/' .
 	PATH_SEPARATOR . dirname(__FILE__) . '/../../no/' .

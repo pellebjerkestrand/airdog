@@ -44,8 +44,18 @@
 				"Vil du slette " + utstillinger.selectedItem.utstillingId, "Slette?", 
 				Alert.OK | Alert.CANCEL, this, slett, null, Alert.OK);
 			}
+			
+			private function ekspoterUtstilling():void
+			{
+				Verktoy.eksporterDataGrid(utstillinger, "Utstillinger");
+			} 
         ]]>
     </mx:Script>
+    <mx:HBox width="100%" paddingRight="5" paddingTop="5">
+	    <mx:Spacer width="100%"/>
+	    <mx:LinkButton label="Eksporter" click="ekspoterUtstilling()"
+			icon="@Embed(source='assets/ikoner/table_excel.png')"/>
+	</mx:HBox>
 	<mx:DataGrid id="utstillinger" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.utstillingListe}" verticalAlign="middle">
 		<mx:columns>
