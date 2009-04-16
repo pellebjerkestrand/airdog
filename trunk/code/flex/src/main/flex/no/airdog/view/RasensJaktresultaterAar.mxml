@@ -6,19 +6,22 @@
 			import no.airdog.services.Components;
 			import mx.controls.*;	
 			 
-			private function sokAar(val:String):void
+			private function sokAar(val:int):void
 			{
-				Components.instance.controller.hentJaktproverSammendragAar(val);								
+				Components.instance.controller.hentJaktproverSammendragAar(val as String);								
 			}     
         ]]>
     </mx:Script>
 	<mx:HBox styleName="viewmeny" width="100%">
 		<mx:FormItem label="År">
-			<mx:TextInput id="valgtAar" text="2008" enter="sokAar(valgtAar.text)"/>
+			<mx:NumericStepper id="valgtAar" value="2008" maxChars="4" maximum="3000"/>
 		</mx:FormItem>
 		<mx:FormItem>
-			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.text)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		</mx:FormItem>		
+			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.value)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+		</mx:FormItem>
+		<mx:Spacer width="100%"/>
+		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="{hint.text}"/>
+		<mx:Label id="hint" text="Velg årstall og trykk på 'Hent resultater'."/>
 	</mx:HBox>
 	<mx:DataGrid id="jaktProveSammendrag" dataProvider="{Components.instance.session.jaktproveSammendragAar}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="50" width="100%" rowHeight="30"

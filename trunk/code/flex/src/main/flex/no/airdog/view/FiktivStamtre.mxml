@@ -29,8 +29,14 @@
     	<mx:FormItem>
     		<mx:LinkButton label="Generer" click="generer()" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
     	</mx:FormItem>
+    	<mx:Spacer width="100%"/>
+		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="{hint.text}"/>
+		<mx:Label id="hint" text="Fyll ut fars og mors ID, velg dybde og klikk på 'Generer'."/>
     </mx:HBox>
-    <mx:VBox width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+    <mx:VBox 
+    	paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4"
+		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
+		width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
     	<controller:HundeStamtre hund="{Components.instance.session.fiktivtStamtre}"/>
     </mx:VBox>
     
