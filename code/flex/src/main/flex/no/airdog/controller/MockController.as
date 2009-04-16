@@ -30,6 +30,12 @@ package no.airdog.controller
         	var tmpCollection:ArrayCollection = new ArrayCollection();
         }
         
+        public function visLagAarbok(hund:Hund):void
+        {
+        	Components.instance.session.aarbokHund = hund;
+        	Components.instance.session.hovedNavigasjon.nr = 14;
+        }
+        
         public function visLeggInnJaktproveVindu(parent:DisplayObject):void
         {	
     		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
