@@ -44,353 +44,356 @@
 			<mx:DataGridColumn headerText="Vf" width="50" minWidth="50" textAlign="right" dataField="vf" resizable="false"/>				
 		</mx:columns>
 	</mx:DataGrid>
+	
+	<mx:Spacer width="100%" height="4"/>		
+	
 	<mx:HBox width="100%">
-		<mx:Grid horizontalGap="10" borderStyle="solid" borderThickness="0.5" borderColor="#666666" backgroundColor="#FFFFFF">
-			<mx:GridRow backgroundColor="#f5f5f5">
-				<mx:GridItem fontWeight="bold">
+		<mx:Grid horizontalGap="10" borderStyle="solid" borderThickness="0.5" borderColor="#666666" backgroundColor="#FFFFFF" width="100%">
+			<mx:GridRow backgroundColor="#f5f5f5" width="100%">
+				<mx:GridItem fontWeight="bold"  width="100%">
                     <mx:Label text="Klasse" fontWeight="bold"/>
                 </mx:GridItem>
-				<mx:GridItem>
+				<mx:GridItem width="100%">
                     <mx:Label text="Førsteplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Andreplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Tredjeplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Fjerdeplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Femteplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Sjetteplass" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Upremiert" fontWeight="bold"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="Starter totalt" fontWeight="bold"/>
                 </mx:GridItem>
 			</mx:GridRow>
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow  width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="UK"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKSjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUK}"/>
                 </mx:GridItem>                
             </mx:GridRow>
-            <mx:GridRow backgroundColor="#f5f5f5">                
-            	<mx:GridItem>
+            <mx:GridRow backgroundColor="#f5f5f5" width="100%">                
+            	<mx:GridItem width="100%">
                     <mx:Label text="AK"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKSjette}"/>
                 </mx:GridItem>    
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterAK}"/>
                 </mx:GridItem>                          
             </mx:GridRow>
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="UKAK"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
             		<mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
             		<mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKSjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAK}"/>
                 </mx:GridItem>
             </mx:GridRow>
-            <mx:GridRow backgroundColor="#f5f5f5">
-            	<mx:GridItem>
+            <mx:GridRow backgroundColor="#f5f5f5" width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="VK"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKSjette}"/>
                 </mx:GridItem>                 
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVK}"/>
                 </mx:GridItem>
             </mx:GridRow>
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="VKFINALE"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALETredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALESjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALE}"/>
                 </mx:GridItem>
             </mx:GridRow>  
-            <mx:GridRow backgroundColor="#f5f5f5">
-            	<mx:GridItem>
+            <mx:GridRow backgroundColor="#f5f5f5" width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="UKKVALIK"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKSjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIK}"/>
                 </mx:GridItem>
             </mx:GridRow>   
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="UKKFINALE"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALETredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALESjette}"/>
                 </mx:GridItem>                
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALE}"/>
                 </mx:GridItem>
             </mx:GridRow>
-            <mx:GridRow backgroundColor="#f5f5f5">
-            	<mx:GridItem>
+            <mx:GridRow backgroundColor="#f5f5f5" width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="DERBYKVALIK"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKSjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIK}"/>
                 </mx:GridItem>
             </mx:GridRow>                            
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="DERBYSEMIFINALE"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEForste}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALETredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALESjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALE}"/>
                 </mx:GridItem>
             </mx:GridRow>            	
-            <mx:GridRow backgroundColor="#f5f5f5">
-            	<mx:GridItem>
+            <mx:GridRow backgroundColor="#f5f5f5" width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="DERBYFINALE"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEForste}"/>
                 </mx:GridItem> 
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALETredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEFjerde}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALESjette}"/>
                 </mx:GridItem> 
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALE}"/>
                 </mx:GridItem>
             </mx:GridRow>
-            <mx:GridRow>
-            	<mx:GridItem>
+            <mx:GridRow width="100%">
+            	<mx:GridItem width="100%">
                     <mx:Label text="Totalt"/>
                 </mx:GridItem>
-            	<mx:GridItem>
+            	<mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltForste}"/>
                 </mx:GridItem> 
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltAndre}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltTredje}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltFjerde}"/>
                 </mx:GridItem> 
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltFemte}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltSjette}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltUpremiert}"/>
                 </mx:GridItem>
-                <mx:GridItem>
+                <mx:GridItem width="100%">
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotalt}"/>
                 </mx:GridItem>                
             </mx:GridRow>
