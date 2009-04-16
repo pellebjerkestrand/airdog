@@ -114,9 +114,7 @@ class JaktproveDatabase
 			'vf' => '(6 * SUM(egneStand) / (SUM(makkerStand) + SUM(egneStand)))',
 			'situasjoner' => 'SUM(egneStand) + SUM(makkerStand)', 
 			'premiegrad' => 'AVG(premiegrad)',
-			
 			'starterTotalt' => 'COUNT(*)'
-			
 		))
 		->where('proveDato LIKE ?', $aar.'%')
 		->where('raseId=?', $klubbId);
