@@ -221,12 +221,12 @@
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
-			 			label="Last opp .DAT" click="naviger(10)" styleName="undermeny" 
+			 			label=".DAT" click="naviger(10)" styleName="undermeny" 
 			 			icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
-			 			label="Legg inn jaktprøve" click="naviger(11)" styleName="undermeny" 
+			 			label="Ny jaktprøve" click="naviger(11)" styleName="undermeny" 
 			 			icon="@Embed(source='assets/ikoner/report__plus.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
