@@ -112,5 +112,18 @@ package no.airdog.model
 		public var starterDERBYKVALIKSjette:String;
 		public var starterDERBYSEMIFINALESjette:String;
 		public var starterDERBYFINALESjette:String;
+		
+		public var starterTotaltUpremiert:String;
+		public var starterUKUpremiert:String
+		public var starterAKUpremiert:String
+		public var starterUKAKUpremiert:String
+		public var starterVKUpremiert:String
+		public var starterVKSEMIFINALEUpremiert:String
+		public var starterVKFINALEUpremiert:String
+		public var starterUKKVALIKUpremiert:String
+		public var starterUKKFINALEUpremiert:String
+		public var starterDERBYKVALIKUpremiert:String
+		public var starterDERBYSEMIFINALEUpremiert:String
+		public var starterDERBYFINALEUpremiert:String
 	}
 }

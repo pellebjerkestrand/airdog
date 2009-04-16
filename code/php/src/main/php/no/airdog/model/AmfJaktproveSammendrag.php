@@ -109,4 +109,17 @@ class AmfJaktproveSammendrag
 	public $starterDERBYKVALIKSjette;
 	public $starterDERBYSEMIFINALESjette;
 	public $starterDERBYFINALESjette;
+	
+	public $starterTotaltUpremiert;
+	public $starterUKUpremiert;
+	public $starterAKUpremiert;
+	public $starterUKAKUpremiert;
+	public $starterVKUpremiert;
+	public $starterVKSEMIFINALEUpremiert;
+	public $starterVKFINALEUpremiert;
+	public $starterUKKVALIKUpremiert;
+	public $starterUKKFINALEUpremiert;
+	public $starterDERBYKVALIKUpremiert;
+	public $starterDERBYSEMIFINALEUpremiert;
+	public $starterDERBYFINALEUpremiert;
 }

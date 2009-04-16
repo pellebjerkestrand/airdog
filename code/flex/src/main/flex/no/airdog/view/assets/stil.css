@@ -800,7 +800,20 @@ LinkButton .underMeny
 
 VBox.topBar
 {
-	backgroundColor: #c2c2c2;
+	backgroundColor: #acacac;
 	color: #ffffff;
 	
 }
+VBox.underMenyBar
+{	
+	color: #444444; 
+	backgroundColor: #cacaca;
+	borderStyle: solid; 
+	borderThickness: 1;
+	borderColor: #a3a3a3; 
+	paddingBottom: 4; 
+	paddingTop: 4;
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	verticalAlign: middle;
+}			
