@@ -37,7 +37,16 @@
 			{
 				naviger(1);
 				meny.selectedChild = sokemeny;
-				Components.instance.controller.sokHund(sokefelt.text);
+				
+				if(sokefelt.text == SOKEFELTTEKST)
+				{
+					Components.instance.controller.sokHund("");
+				}
+				else
+				{
+					Components.instance.controller.sokHund(sokefelt.text);
+				}
+				
 				hjemLink.styleName = "";
 				resultatLink.styleName = "mainButtonLink";
 				rapporterLink.styleName = "";
