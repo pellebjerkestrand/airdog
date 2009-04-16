@@ -16,7 +16,7 @@ class ArrangementController
 		$this->database = $tilkobling->getTilkobling();
 	}
     
-	public function settInn(AmfArrangement $arrangement, $brukerEpost, $brukerPassord, $klubbId)
+	public function leggInnArrangement(AmfArrangement $arrangement, $brukerEpost, $brukerPassord, $klubbId)
     {
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "arrangementer"))
 		{	

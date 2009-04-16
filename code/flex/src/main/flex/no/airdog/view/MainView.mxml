@@ -236,8 +236,8 @@
 		 			<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
-			 			label="Backup" click="naviger(13)" styleName="undermeny" 
-			 			icon="@Embed(source='assets/ikoner/safe.png')"/>
+			 			label="Arrangementer" click="naviger(13)" styleName="undermeny" 
+			 			icon="@Embed(source='assets/ikoner/table_excel.png')"/>
 			 		<mx:LinkButton
 			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"

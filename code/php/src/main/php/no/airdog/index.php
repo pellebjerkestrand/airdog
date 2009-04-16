@@ -28,6 +28,7 @@ require_once 'controller/RolleBrukerController.php';
 require_once 'controller/PersonController.php';
 require_once 'controller/DatOpplastningsController.php';
 require_once 'controller/CupController.php';
+require_once 'controller/ArrangementController.php';
 
 $server->setClass("HundController");
 $server->setClass("JaktproveController");
@@ -40,6 +41,7 @@ $server->setClass("RolleBrukerController");
 $server->setClass("PersonController");
 $server->setClass("DatOpplastningsController");
 $server->setClass("CupController");
+$server->setClass("ArrangementController");
 
 $server->setClassMap("AmfRettigheter", "AmfRettigheter");
 $server->setClassMap("AmfHund", "AmfHund");
