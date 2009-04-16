@@ -34,17 +34,6 @@ require_once "Verktoy.php";
  * 
  * jaktprove.rtf
  * IKKE FERDIG LAGET ENDA!
-
-
-
-
-
-
-
-
-
-
-
  */
 
 $vars = array('hundnavn'    =>	'HUNDENHUNDENSKALduhete',
