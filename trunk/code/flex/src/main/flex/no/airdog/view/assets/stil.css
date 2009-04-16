@@ -829,10 +829,16 @@ ViewStack .undermeny
 	verticalGap: 0;	
 }
 
-.undermenyBar
+VBox.topBar
+{
+	backgroundColor: #999999;
+	color: #ffffff;
+	
+}
+HBox.undermenyBar
 {	
-	color: #444444; 
-	backgroundColor: #cacaca;
+	color: #333333; 
+	backgroundColor: #bebebe;
 	borderStyle: solid; 
 	borderThickness: 1;
 	borderColor: #a3a3a3; 
