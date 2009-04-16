@@ -159,7 +159,7 @@
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')"  tabEnabled="false"/>
 		</mx:ApplicationControlBar>
 				
-		<mx:HBox width="100%" backgroundColor="#d6d6d6" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
+		<mx:HBox width="100%" color="#444444" backgroundColor="#d6d6d6" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3" 
 			paddingBottom="4" paddingTop="4" paddingLeft="4" paddingRight="4" verticalAlign="middle">
 			
 			<mx:ViewStack id="meny" width="100%"

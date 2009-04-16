@@ -161,7 +161,45 @@ class JaktproveController
     		$tmp->starterDERBYKVALIKTredje = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '9', '3');
     		$tmp->starterDERBYSEMIFINALETredje = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '10', '3');
     		$tmp->starterDERBYFINALETredje = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '11', '3');
+    		
+    		//$tmp->starterTotaltFjerde = $hd->hentJaktproveSammendragAarStarterTotaltPremie($aar, $klubbid, '4');
+    		$tmp->starterUKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '1', '4');
+    		$tmp->starterAKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '2', '4');
+    		$tmp->starterUKAKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '3', '4');
+    		$tmp->starterVKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '4', '4');
+    		$tmp->starterVKSEMIFINALEFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '5', '4');
+    		$tmp->starterVKFINALEFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '6', '4');
+    		$tmp->starterUKKVALIKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '7', '4');
+    		$tmp->starterUKKFINALEFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '8', '4');
+    		$tmp->starterDERBYKVALIKFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '9', '4');
+    		$tmp->starterDERBYSEMIFINALEFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '10', '4');
+    		$tmp->starterDERBYFINALEFjerde = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '11', '4');
     		    		    		
+    		//$tmp->starterTotaltFemte = $hd->hentJaktproveSammendragAarStarterTotaltPremie($aar, $klubbid, '5');
+    		$tmp->starterUKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '1', '5');
+    		$tmp->starterAKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '2', '5');
+    		$tmp->starterUKAKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '3', '5');
+    		$tmp->starterVKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '4', '5');
+    		$tmp->starterVKSEMIFINALEFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '5', '5');
+    		$tmp->starterVKFINALEFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '6', '5');
+    		$tmp->starterUKKVALIKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '7', '5');
+    		$tmp->starterUKKFINALEFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '8', '5');
+    		$tmp->starterDERBYKVALIKFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '9', '5');
+    		$tmp->starterDERBYSEMIFINALEFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '10', '5');
+    		$tmp->starterDERBYFINALEFemte = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '11', '5');
+    		
+    		//$tmp->starterTotaltSjette = $hd->hentJaktproveSammendragAarStarterTotaltPremie($aar, $klubbid, '6');
+    		$tmp->starterUKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '1', '6');
+    		$tmp->starterAKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '2', '6');
+    		$tmp->starterUKAKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '3', '6');
+    		$tmp->starterVKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '4', '6');
+    		$tmp->starterVKSEMIFINALESjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '5', '6');
+    		$tmp->starterVKFINALESjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '6', '6');
+    		$tmp->starterUKKVALIKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '7', '6');
+    		$tmp->starterUKKFINALESjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '8', '6');
+    		$tmp->starterDERBYKVALIKSjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '9', '6');
+    		$tmp->starterDERBYSEMIFINALESjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '10', '6');
+    		$tmp->starterDERBYFINALESjette = $hd->hentJaktproveSammendragAarStarterKlasserPremie($aar, $klubbId, '11', '6');
     		
     		$ret[] = $tmp;
 

@@ -19,6 +19,7 @@ package no.airdog.controller
 		function hentAvkom(hundId:String):void
 		function hentJaktprover(hundId:String):void
 		function hentAlleJaktproverAar(aar:String):void
+		function hentJaktproverSammendragAar(aar:String):void
 		function hentUtstillinger(hundId:String):void
 		function visHund(hundId:String):void
 		function hentHund(hundId:String, resultat:Function):void

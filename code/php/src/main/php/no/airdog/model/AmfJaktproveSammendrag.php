@@ -70,4 +70,43 @@ class AmfJaktproveSammendrag
 	public $starterDERBYKVALIKTredje;
 	public $starterDERBYSEMIFINALETredje;
 	public $starterDERBYFINALETredje;
+	
+	public $starterTotaltFjerde;
+	public $starterUKFjerde;
+	public $starterAKFjerde;
+	public $starterUKAKFjerde;
+	public $starterVKFjerde;
+	public $starterVKSEMIFINALEFjerde;
+	public $starterVKFINALEFjerde;
+	public $starterUKKVALIKFjerde;
+	public $starterUKKFINALEFjerde;
+	public $starterDERBYKVALIKFjerde;
+	public $starterDERBYSEMIFINALEFjerde;
+	public $starterDERBYFINALEFjerde;
+	
+	public $starterTotaltFemte;
+	public $starterUKFemte;
+	public $starterAKFemte;
+	public $starterUKAKFemte;
+	public $starterVKFemte;
+	public $starterVKSEMIFINALEFemte;
+	public $starterVKFINALEFemte;
+	public $starterUKKVALIKFemte;
+	public $starterUKKFINALEFemte;
+	public $starterDERBYKVALIKFemte;
+	public $starterDERBYSEMIFINALEFemte;
+	public $starterDERBYFINALEFemte;
+	
+	public $starterTotaltSjette;
+	public $starterUKSjette;
+	public $starterAKSjette;
+	public $starterUKAKSjette;
+	public $starterVKSjette;
+	public $starterVKSEMIFINALESjette;
+	public $starterVKFINALESjette;
+	public $starterUKKVALIKSjette;
+	public $starterUKKFINALESjette;
+	public $starterDERBYKVALIKSjette;
+	public $starterDERBYSEMIFINALESjette;
+	public $starterDERBYFINALESjette;
 }
