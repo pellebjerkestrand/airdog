@@ -598,5 +598,20 @@ package no.airdog.controller
 			Alert.show("Innlegging ble fullført" + event.toString(), "Dat-opplastning");
 		}
 		
+		public function slettArrangement(proveNr:String):void
+		{
+			
+		}
+		
+		public function leggInnArrangement(arrangement:Arrangement):void
+		{
+			
+		}
+		
+		public function hentArrangementer():void
+		{
+			
+		}
+		
 	}
 }
