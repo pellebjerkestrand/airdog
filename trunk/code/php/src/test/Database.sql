@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.1.1
+-- version 3.1.3
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 31. Mar, 2009 14:19 PM
--- Tjenerversjon: 5.1.30
--- PHP-Versjon: 5.2.8
+-- Generert den: 16. Apr, 2009 15:25 PM
+-- Tjenerversjon: 5.1.32
+-- PHP-Versjon: 5.2.9-1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -32,7 +32,10 @@ CREATE TABLE IF NOT EXISTS `ad_bruker` (
 -- Dataark for tabell `ad_bruker`
 --
 
-
+INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
+('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
+('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
+('test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
 
 -- --------------------------------------------------------
 
@@ -53,7 +56,14 @@ CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
 -- Dataark for tabell `ad_bruker_klubb_rolle_link`
 --
 
-
+INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `ad_klubb_raseid`) VALUES
+('admin', 'admin', 348),
+('gjest', 'gjest', 306),
+('gjest', 'gjest', 348),
+('admin', 'admin', 306),
+('admin', 'test', 306),
+('admin', 'gjest', 306),
+('gjest', 'test', 306);
 
 -- --------------------------------------------------------
 
@@ -91,6 +101,9 @@ CREATE TABLE IF NOT EXISTS `ad_klubb` (
 -- Dataark for tabell `ad_klubb`
 --
 
+INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
+('Norsk Breton Klubb', NULL, 306),
+('Norsk Pointer Klubb', NULL, 348);
 
 -- --------------------------------------------------------
 
@@ -108,7 +121,19 @@ CREATE TABLE IF NOT EXISTS `ad_rettighet` (
 -- Dataark for tabell `ad_rettighet`
 --
 
-
+INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
+('lese', 'Utføre handlinger som ikke endrer på databasen'),
+('redigerHund', 'Redigere hunder'),
+('redigerJaktprove', 'Redigere jaktprøver'),
+('importerDatabase', 'Importere data fra NKK til databasen'),
+('leggInnJaktprove', 'Legge inn jaktprøver'),
+('slettJaktprove', 'Slette jaktprøver'),
+('rolleRettighetHandtering', 'Tildele rettigheter på roller'),
+('administrereBackup', 'Administrere Backup av databasen'),
+('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
+('redigerUtstilling', 'Redigere utstillinger'),
+('arrangementer', 'Administrere arrangementer'),
+('lagAarbok', 'Lage årbok');
 
 -- --------------------------------------------------------
 
@@ -126,7 +151,9 @@ CREATE TABLE IF NOT EXISTS `ad_rolle` (
 -- Dataark for tabell `ad_rolle`
 --
 
-
+INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
+('admin', 'admin'),
+('gjest', 'gjest');
 
 -- --------------------------------------------------------
 
@@ -145,6 +172,38 @@ CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
 -- Dataark for tabell `ad_rolle_rettighet_link`
 --
 
+INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
+('admin', 'rolleRettighetHandtering'),
+('admin', 'lese'),
+('admin', 'redigerUtstilling'),
+('admin', 'slettJaktprove'),
+('gjest', 'lese'),
+('admin', 'redigerJaktprove'),
+('admin', 'redigerHund'),
+('admin', 'klubbRolleBrukerHandtering'),
+('admin', 'leggInnJaktprove'),
+('admin', 'importerDatabase'),
+('admin', 'administrereBackup'),
+('admin', 'arrangementer'),
+('admin', 'lagAarbok');
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.1.3
+-- http://www.phpmyadmin.net
+--
+-- Vert: localhost
+-- Generert den: 16. Apr, 2009 15:26 PM
+-- Tjenerversjon: 5.1.32
+-- PHP-Versjon: 5.2.9-1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `airdog`
+--
 
 -- --------------------------------------------------------
 
@@ -184,10 +243,18 @@ CREATE TABLE IF NOT EXISTS `nkk_aasykdom` (
   PRIMARY KEY (`aaId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dataark for tabell `nkk_aasykdom`
+-- Tabellstruktur for tabell `nkk_arrangement`
 --
 
+CREATE TABLE IF NOT EXISTS `nkk_arrangement` (
+  `proveNr` varchar(8) NOT NULL,
+  `sted` varchar(200) DEFAULT NULL,
+  `navn` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`proveNr`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -203,11 +270,6 @@ CREATE TABLE IF NOT EXISTS `nkk_eier` (
   `manueltEndretDato` date NOT NULL,
   PRIMARY KEY (`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dataark for tabell `nkk_eier`
---
-
 
 -- --------------------------------------------------------
 
@@ -260,11 +322,6 @@ CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   KEY `proveNr` (`proveNr`,`proveDato`,`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_fugl`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -300,11 +357,6 @@ CREATE TABLE IF NOT EXISTS `nkk_hdsykdom` (
   PRIMARY KEY (`hofteDyId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_hdsykdom`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -338,11 +390,6 @@ CREATE TABLE IF NOT EXISTS `nkk_hund` (
   KEY `hundId` (`hundId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_hund`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -361,11 +408,6 @@ CREATE TABLE IF NOT EXISTS `nkk_kull` (
   `manueltEndretDato` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_kull`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -379,11 +421,6 @@ CREATE TABLE IF NOT EXISTS `nkk_oppdrett` (
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dataark for tabell `nkk_oppdrett`
---
-
 
 -- --------------------------------------------------------
 
@@ -424,11 +461,6 @@ CREATE TABLE IF NOT EXISTS `nkk_oyesykdom` (
   PRIMARY KEY (`oyId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_oyesykdom`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -453,11 +485,6 @@ CREATE TABLE IF NOT EXISTS `nkk_person` (
   `manueltEndretDato` date NOT NULL,
   PRIMARY KEY (`personId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dataark for tabell `nkk_person`
---
-
 
 -- --------------------------------------------------------
 
@@ -501,11 +528,6 @@ CREATE TABLE IF NOT EXISTS `nkk_premie` (
   PRIMARY KEY (`utstillingId`,`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_premie`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -534,11 +556,6 @@ CREATE TABLE IF NOT EXISTS `nkk_utstilling` (
   PRIMARY KEY (`utstillingId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_utstilling`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -564,6 +581,3 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   PRIMARY KEY (`veterinerId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `nkk_veteriner`
---

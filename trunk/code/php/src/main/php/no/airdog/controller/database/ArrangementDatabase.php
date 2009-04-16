@@ -1,7 +1,7 @@
 <?php 
 require_once 'Tilkobling.php';
 
-class HundDatabase
+class ArrangementDatabase
 {
 	private $database;
 	
@@ -43,7 +43,7 @@ class HundDatabase
 		$select = $this->database->select()
 		->from(array('a'=>'nkk_arrangement'), array('a.*'));
 		
-		return $this->database->fetchRow($select);
+		return $this->database->fetchAll($select);
 	}
 	
 	public function hentArrangement($proveNr)

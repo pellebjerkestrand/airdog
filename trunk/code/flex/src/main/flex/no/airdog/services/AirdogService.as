@@ -2,6 +2,7 @@ package no.airdog.services
 {
 	import mx.collections.ArrayCollection;
 	
+	import no.airdog.model.Arrangement;
 	import no.airdog.model.Bruker;
 	import no.airdog.model.Hund;
 	import no.airdog.model.Jaktprove;
@@ -438,6 +439,35 @@ package no.airdog.services
         	callServiceFunction(service.overskrivDatInnlegg(
         		objekter.toArray(),
         		objektType,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function slettArrangement(proveNr:String, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.slettArrangement(
+        		proveNr,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function leggInnArrangement(arrangement:Arrangement, resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.leggInnArrangement(
+        		arrangement,
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubbId),
+        	resultat, feil);
+        }
+        
+        public function hentArrangementer(resultat:Function, feil:Function=null):void
+        {
+        	callServiceFunction(service.hentArrangementer(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubbId),

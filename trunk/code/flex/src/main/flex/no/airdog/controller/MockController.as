@@ -606,18 +606,33 @@ package no.airdog.controller
 		
 		public function slettArrangement(proveNr:String):void
 		{
-			
+			Components.instance.services.airdogService.slettArrangement(proveNr, slettArrangementResultat);
+		}
+		
+		public function slettArrangementResultat(event:Object):void
+		{
+			hentArrangementer();
 		}
 		
 		public function leggInnArrangement(arrangement:Arrangement):void
 		{
-			
+			Components.instance.services.airdogService.leggInnArrangement(arrangement, leggInnArrangementResultat);
+		}
+		
+		public function leggInnArrangementResultat(event:Object):void
+		{
+			//hentArrangementer();
 		}
 		
 		public function hentArrangementer():void
 		{
-			
+			Components.instance.services.airdogService.hentArrangementer(hentArrangementerResultat);
 		}
 		
+		public function hentArrangementerResultat(event:Object):void
+		{
+			Components.instance.session.arrangementer = new ArrayCollection(event as Array);
+			Components.instance.session.arrangementer.addItem(new Arrangement());
+		}
 	}
 }

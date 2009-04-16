@@ -2,17 +2,26 @@
 <mx:VBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	height="100%" width="100%">
+	height="100%" width="100%" creationComplete="init()">
 	
 	<mx:Script>
 		<![CDATA[
+			import no.airdog.model.Arrangement;
 			import no.airdog.model.Jaktprove;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
 			import mx.events.*;
 			import mx.collections.*;
 			import mx.controls.*;
-			import mx.core.UIComponent;
+			import mx.core.UIComponent; 
+			
+			private var tmpArr:Arrangement = null;
+			
+			private function init():void
+			{	
+				arrangementer.addEventListener(DataGridEvent.ITEM_EDIT_BEGIN, lagreTmp, false, 100);
+				arrangementer.addEventListener(DataGridEvent.ITEM_EDIT_END, lagre, false, -100);
+			}
 			
 			public function slettKlikk():void
 			{
@@ -31,19 +40,47 @@
 					}
 				}
 			}
+			
+			private function lagreTmp(evt:DataGridEvent):void 
+			{
+				if (tmpArr == null)
+				{
+					var tmp:Arrangement = arrangementer.dataProvider.getItemAt(evt.rowIndex);
+					
+					if (tmp != null)
+					{
+						tmpArr = tmp;
+					}
+				}
+            }
+            
+			private function lagre(evt:DataGridEvent):void 
+			{
+				if (evt.reason == "newRow" && tmpArr != null)
+				{
+					var arr:Arrangement = arrangementer.dataProvider.getItemAt(evt.rowIndex);
+					
+						Components.instance.controller.leggInnArrangement(arr);
+						
+						if (evt.rowIndex == arrangementer.dataProvider.length - 1)
+							Components.instance.session.arrangementer.addItem(new Arrangement());
+    			}
+    			tmpArr = null;
+            }
+
 		]]>
 	</mx:Script>
-	<mx:DataGrid id="arrangementer" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%"
+	<mx:DataGrid id="arrangementer" editable="true" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%"
 		dataProvider="{Components.instance.session.arrangementer}" verticalAlign="middle">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Prøve Nr" width="150" minWidth="150" dataField="proveNr"/>
-			<mx:DataGridColumn headerText="Navn" width="110" minWidth="110" dataField="navn" resizable="false"/>
 			<mx:DataGridColumn headerText="Sted" dataField="sted"/>
-			<mx:DataGridColumn headerText="" id="slettkolonne" 
+			<mx:DataGridColumn headerText="Navn" dataField="navn"/>
+			<mx:DataGridColumn headerText="" id="slettkolonne" editable="false" 
 				width="24" minWidth="24" resizable="false" sortable="false">
 				<mx:itemRenderer>
 					<mx:Component>
-						<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+						<mx:HBox width="100%" height="25" horizontalAlign="center" verticalAlign="middle"
 							paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
 							<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='/no/airdog/view/assets/ikoner/cross_circle.png')" toolTip="Slett"/>
 						</mx:HBox>
