@@ -4,13 +4,39 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.LinkButton;
 			import mx.collections.ArrayCollection;
-			import no.airdog.services.Components;
 			import mx.utils.StringUtil;
+			import no.airdog.model.Cup;
+			import no.airdog.services.Components;
 			
 			private function hentListe():void
 			{
 				Components.instance.controller.hentCupListe(fra.text, til.text);
+			}
+			
+			private function visHund(event:Event):void
+			{
+				Components.instance.controller.visHund(event.currentTarget.data);
+			}
+			
+			private function prover(event:Event):void
+			{
+				var knapp:LinkButton = event.target as LinkButton;
+				
+				var forelder:DisplayObjectContainer = knapp.parent.parent.parent.parent;
+				var liste:Box = forelder.getChildByName("proveliste") as Box;
+				
+				if(liste.visible == false)
+				{
+					liste.visible = true;
+					liste.includeInLayout = true;
+				}
+				else
+				{
+					liste.visible = false;
+					liste.includeInLayout = false;
+				}
 			}
 		]]>
 	</mx:Script>
@@ -36,18 +62,35 @@
 		width="100%" height="{this.height-32}" horizontalAlign="center">
 		<mx:VBox>
 			<mx:Repeater id="cup" dataProvider="{Components.instance.session.cupListe}">
-				<mx:VBox width="100%" styleName="funksjon">
-					<mx:HBox width="100%" height="100%" verticalAlign="middle">
-						<mx:Box width="50" height="100%" verticalAlign="middle" horizontalAlign="center" styleName="notis">
-							<mx:Label text="{cup.currentItem.poeng}" fontSize="20" fontWeight="bold"/>
-						</mx:Box>
-						<mx:VBox>
-							<mx:Text text="{cup.currentItem.hundId}" fontSize="10" minWidth="0"/>
-							<mx:Text text="{cup.currentItem.hundNavn}" fontSize="18" paddingBottom="-15" paddingTop="-15"/>
-							<mx:Text text="{cup.currentItem.eier}" fontSize="10"/>
+				<mx:Box paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%">
+					<mx:VBox width="100%" styleName="funksjon">
+						<mx:HBox width="100%" height="100%" verticalAlign="middle">
+							<mx:Box width="50" height="100%" verticalAlign="middle" horizontalAlign="center" styleName="notis">
+								<mx:Label text="{cup.currentItem.poeng}" fontSize="20" fontWeight="bold"/>
+							</mx:Box>
+							<mx:VBox>
+								<mx:Text text="{cup.currentItem.hundId}" fontSize="10" minWidth="0"/>
+								<mx:Text text="{cup.currentItem.hundNavn}" fontSize="18" paddingBottom="-15" paddingTop="-15"/>
+								<mx:Text text="{cup.currentItem.eier}" fontSize="10"/>
+							</mx:VBox>
+							<mx:Spacer width="100%"/>
+							<mx:HBox verticalAlign="middle">
+								<mx:LinkButton label="Profil"
+									data="{cup.currentItem.hundId}"
+									icon="@Embed(source='assets/ikoner/dog.png')"
+									click="visHund(event)"/>
+								<mx:LinkButton label="Plasseringer"
+									click="prover(event)"
+									icon="@Embed(source='assets/ikoner/trophy.png')"/>
+							</mx:HBox>
+						</mx:HBox>
+					</mx:VBox>
+					<mx:Box id="proveliste" styleName="funksjon" width="100%" visible="false" includeInLayout="false">
+						<mx:VBox width="100%" styleName="notis">
+							<mx:Text text="{cup.currentItem.prover}"/>
 						</mx:VBox>
-					</mx:HBox>	
-				</mx:VBox>
+					</mx:Box>
+				</mx:Box>
 			</mx:Repeater>
 		</mx:VBox>
 	</mx:HBox>

@@ -12,6 +12,6 @@ package no.airdog.model
 		public var eier:String;
 		public var poeng:int;
 		public var plass:int;
-		public var prover:ArrayCollection;
+		public var prover:String;
 	}
 }

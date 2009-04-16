@@ -3,8 +3,8 @@ package no.airdog.controller
 	import flash.display.DisplayObject;
 	
 	import mx.collections.ArrayCollection;
-	import mx.collections.SortField;
 	import mx.collections.Sort;
+	import mx.collections.SortField;
 	import mx.controls.Alert;
 	import mx.events.*;
 	import mx.managers.PopUpManager;
