@@ -4,7 +4,14 @@ header("Content-Disposition: inline; filename=aarBok.doc");
 
 require_once "Verktoy.php";
 
-/* hund.rft
+/* Parameter:
+ * En eller alle hunder som har deltatt på en jaktprøve et valgt
+ * År
+ * Hann/Tispe/Alle
+ * 
+ * avkom som har deltatt i jaktprøver det valgte året
+ * 
+ *  hund.rft
  * %%HUNDNAVN%%, %%HUNDID%%, %%EIER%%, %%EIERADRESSE%%, %%EIERPOSTNUMMER%%, %%EIERSTED%%, %%EIERTLF%%,
  * %%OPPDRETTER%%, %%OPPDRETTERADRESSE%%, %%OPPDRETTERPOSTNUMMER%%, %%OPPDRETTERSTED%%, %%OPPDRETTERTLF%%
  * %%AVLSTALL, %%HOFTER%%, %%JAKTLYST%%, %%VILTFINNEREVNE%%, %%FAR%%, %%FARFAR%%, %%FARMOR%%, %%MOR%%, %%%MORFAR%%, %%MORMOR%%
