@@ -1,6 +1,5 @@
 package no.airdog.controller
 {
-	import flash.external.ExternalInterface;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
@@ -101,11 +100,12 @@ package no.airdog.controller
             navigateToURL(u, "_self");
         }
         
-        public static function lagAarbok():void
+        public static function lagAarbok(hundId:String, aar:String, type:String):void
         {
             var variabler:URLVariables = new URLVariables(); 
-            variabler.tekst = "Test";
-        	variabler.navn = "test";
+            variabler.hundId = hundId;
+        	variabler.aar = aar;
+        	variabler.type = type;
             
             var urlLagArrbok:String = Components.instance.services.rootPath + "controller/Aarbok.php";
             
