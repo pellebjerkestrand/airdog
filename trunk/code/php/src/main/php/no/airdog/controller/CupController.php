@@ -92,7 +92,6 @@ class CupController
 		//går gjennom prøvene
 		foreach($prover as $prove)
 		{
-			$proveliste = array();
 			$finnes = false;
 			
 			//går gjennom lista over hunder som allerede er i cuplista
@@ -114,8 +113,6 @@ class CupController
 				$tmp->hundNavn = $hund['navn'];
 				$tmp->tittel = $hund['tittel'];
 				
-				$tmp->prover = $proveliste;
-				
 				if($hund['eierId'] != '')
 				{
 					$pdres = $pd->hentPerson($hund['eierId'], $klubbId);
@@ -135,12 +132,14 @@ class CupController
 	{	
 		foreach($cupliste as $cup)
 		{	
+			$splitter = "";
 			foreach($prover as $prove)
 			{
 				if($cup->hundId == $prove->hundId)
 				{
 					$tekst = $prove->premiegradTekst;
-					$cup->prover[] = $prove->proveDato . ", " . $tekst;
+					$cup->prover .= $splitter . $prove->proveDato . ", " . $tekst;
+					$splitter = "\n";
 					
 					if(stripos($tekst, 'VK') !== false)
 					{
