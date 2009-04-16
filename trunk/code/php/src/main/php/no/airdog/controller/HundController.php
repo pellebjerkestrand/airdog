@@ -44,7 +44,7 @@ class HundController
 				
 				if (file_exists(Verktoy::hoppBakover(dirname(__FILE__), 3) . $bildeAdresse))
 				{
-					$tmp->bilde = $bilde;
+					$tmp->bilde = $bilde."?id=".rand(1,100);
 				}
 				else
 				{
@@ -98,7 +98,7 @@ class HundController
 	    	
 	    	$rad = $hd->hentHund($hundId, $klubbId);   	
 			
-			$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg?id=".rand(1,1000);
+			$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg";
 		   		
 	   		//For treg testet på server
 	   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(), 3) . $bildeAdresse;;
@@ -110,7 +110,7 @@ class HundController
 			
 			if (file_exists(Verktoy::hoppBakover(dirname(__FILE__), 3) . $bildeAdresse))
 			{
-				$tmp->bilde = $bilde;
+				$tmp->bilde = $bilde."?id=".rand(1,100);
 			}
 			else
 			{
