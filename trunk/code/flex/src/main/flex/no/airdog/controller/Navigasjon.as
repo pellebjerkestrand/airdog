@@ -31,6 +31,10 @@ package no.airdog.controller
 			{
 				Components.instance.controller.hentArrangementer();
 			}
+			else if(barnNr == 14)
+			{
+				Components.instance.session.aarbokHund = null;
+			}
 			
 			Components.instance.historie.settPunkt();
 		}

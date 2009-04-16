@@ -13,10 +13,16 @@
 			import mx.core.UIComponent;
 			import mx.utils.StringUtil;
 			import mx.controls.Alert;
+			import no.airdog.controller.Navigasjon;
 			
 			private function visRedigerHundVindu():void
 			{	
 				Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
+			}
+			
+			private function lagAarbok():void
+			{
+				Components.instance.controller.visLagAarbok(Components.instance.session.hundprofil);
 			}
 			
 			private function velgFil():void
@@ -118,6 +124,14 @@
 									icon="@Embed(source='assets/ikoner/image_sunset.png')"
 									visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 									includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
+							</mx:GridItem>
+						</mx:GridRow>
+						<mx:GridRow>
+							<mx:GridItem>
+								<mx:LinkButton label="Lag årbok" styleName="UnderMeny" click="lagAarbok()"
+									icon="@Embed(source='assets/ikoner/image_sunset.png')"
+									visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
+									includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>
 							</mx:GridItem>
 						</mx:GridRow>
 					</mx:Grid>

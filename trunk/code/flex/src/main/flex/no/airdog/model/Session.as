@@ -35,6 +35,7 @@ package no.airdog.model
         public var rollersBrukere:ArrayCollection = new ArrayCollection();
         public var stamtre:Hund;
         public var utstillingListe:ArrayCollection = new ArrayCollection();
+        public var aarbokHund:Hund;
         
         public function clone():Session
 		{

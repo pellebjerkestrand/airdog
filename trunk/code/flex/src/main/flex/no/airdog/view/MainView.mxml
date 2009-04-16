@@ -275,6 +275,6 @@
 	    <!-- 11 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
 	    <!-- 12 -->	<adminView:BackupVindu id="backupvinduview"/>
 	    <!-- 13 -->	<adminView:Arrangementer id="arrangementer"/>
-	    <!-- 13 -->	<adminView:Aarbok id="aarbok"/>
+	    <!-- 14 -->	<adminView:Aarbok id="aarbok"/>
 	</mx:ViewStack>
 </mx:VBox>

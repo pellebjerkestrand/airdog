@@ -4,6 +4,8 @@
 	xmlns:view="no.airdog.view.*">
     <mx:Script>
         <![CDATA[
+        	import no.airdog.view.HundeProfil;
+        	import no.airdog.model.Hund;
         	import mx.controls.Alert;
         	import no.airdog.model.Valg;
         	import mx.collections.ArrayCollection;
@@ -11,6 +13,7 @@
         	import no.airdog.model.Opplastning;
 			import no.airdog.services.Components;
 			import no.airdog.controller.*;
+			
 			            		
 			private function lagAarbok():void
 			{
@@ -20,8 +23,11 @@
             
         ]]>
     </mx:Script>
-    
     <mx:Panel title="Lag årbok" height="100%">
+    	<mx:Text visible="{Components.instance.session.aarbokHund != null ? true : false }"
+    		includeInLayout="{Components.instance.session.aarbokHund != null ? true : false }"
+    		text="{'Du lager nå årbok for ' + Components.instance.session.aarbokHund.navn}" />
+    	
     	<mx:Text text="Gjør dine valg og klikk på 'Lag årbok'-knappen"/>
     	<mx:VBox horizontalAlign="center" width="100%">
 			<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
