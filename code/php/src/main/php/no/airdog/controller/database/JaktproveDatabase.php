@@ -155,6 +155,7 @@ class JaktproveDatabase
 	
 	public function hentJaktproveSammendragAarStarterTotaltPremie($aar, $klubbId, $premiegrad)
 	{    		
+		
 		$select = $this->database->select()
 		->from('nkk_fugl', array(			
 			'antall' => 'COUNT(*)'			
