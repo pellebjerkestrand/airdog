@@ -3,7 +3,54 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 16. Apr, 2009 15:25 PM
+-- Generert den: 16. Apr, 2009 15:51 PM
+-- Tjenerversjon: 5.1.32
+-- PHP-Versjon: 5.2.9-1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `airdog`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `ad_rettighet`
+--
+
+DROP TABLE IF EXISTS `ad_rettighet`;
+CREATE TABLE `ad_rettighet` (
+  `navn` varchar(50) NOT NULL,
+  `beskrivelse` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`navn`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dataark for tabell `ad_rettighet`
+--
+
+INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
+('lese', 'UtfÃ¸re handlinger som ikke endrer pÃ¥ databasen'),
+('redigerHund', 'Redigere hunder'),
+('redigerJaktprove', 'Redigere jaktprÃ¸ver'),
+('importerDatabase', 'Importere data fra NKK til databasen'),
+('leggInnJaktprove', 'Legge inn jaktprÃ¸ver'),
+('slettJaktprove', 'Slette jaktprÃ¸ver'),
+('rolleRettighetHandtering', 'Tildele rettigheter pÃ¥ roller'),
+('administrereBackup', 'Administrere Backup av databasen'),
+('klubbRolleBrukerHandtering', 'Legge en bruker pÃ¥ en rolle i en klubb'),
+('redigerUtstilling', 'Redigere utstillinger'),
+('arrangementer', 'Administrere arrangementer'),
+('lagAarbok', 'Lage Ã¥rbok');
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.1.3
+-- http://www.phpmyadmin.net
+--
+-- Vert: localhost
+-- Generert den: 16. Apr, 2009 15:51 PM
 -- Tjenerversjon: 5.1.32
 -- PHP-Versjon: 5.2.9-1
 
@@ -108,36 +155,6 @@ INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `ad_rettighet`
---
-
-CREATE TABLE IF NOT EXISTS `ad_rettighet` (
-  `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`navn`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dataark for tabell `ad_rettighet`
---
-
-INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
-('lese', 'Utføre handlinger som ikke endrer på databasen'),
-('redigerHund', 'Redigere hunder'),
-('redigerJaktprove', 'Redigere jaktprøver'),
-('importerDatabase', 'Importere data fra NKK til databasen'),
-('leggInnJaktprove', 'Legge inn jaktprøver'),
-('slettJaktprove', 'Slette jaktprøver'),
-('rolleRettighetHandtering', 'Tildele rettigheter på roller'),
-('administrereBackup', 'Administrere Backup av databasen'),
-('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
-('redigerUtstilling', 'Redigere utstillinger'),
-('arrangementer', 'Administrere arrangementer'),
-('lagAarbok', 'Lage årbok');
-
--- --------------------------------------------------------
-
---
 -- Tabellstruktur for tabell `ad_rolle`
 --
 
@@ -188,14 +205,12 @@ INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VAL
 ('admin', 'lagAarbok');
 
 
-
-
 -- phpMyAdmin SQL Dump
 -- version 3.1.3
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 16. Apr, 2009 15:26 PM
+-- Generert den: 16. Apr, 2009 15:51 PM
 -- Tjenerversjon: 5.1.32
 -- PHP-Versjon: 5.2.9-1
 
@@ -580,4 +595,3 @@ CREATE TABLE IF NOT EXISTS `nkk_veteriner` (
   `manueltEndretDato` date NOT NULL,
   PRIMARY KEY (`veterinerId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-

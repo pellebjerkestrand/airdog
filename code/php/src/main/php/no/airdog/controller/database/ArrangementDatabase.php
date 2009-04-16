@@ -18,7 +18,7 @@ class ArrangementDatabase
 			return 'Arrayet er av feil størrelse. Fikk ' . sizeof($arrangementArray) . ', forventet 3.'; 
 		}
 		
-		if (!isset($arrangementArray['proveNr']) || $arrangementArray['proveNr'] == '')
+		if (!isset($arrangementArray['proveNr']) || $arrangementArray['proveNr'] == "")
 		{ 
 			return 'proveNr-verdien mangler.'; 
 		}
