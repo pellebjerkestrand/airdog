@@ -138,12 +138,7 @@
 				{
 					sokefelt.styleName = "sokFelt";
 				}
-			}	
-			
-			private function lagAarbok():void
-			{
-				Verktoy.lagAarbok();
-			} 	
+			}
 			
         ]]>
     </mx:Script>
@@ -248,7 +243,7 @@
 			 		<mx:LinkButton
 			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"
-			 			label="Lag årbok" click="lagAarbok()" styleName="underMeny"
+			 			label="Lag årbok" click="naviger(14)" styleName="underMeny"
 						icon="@Embed(source='assets/ikoner/table_excel.png')"/>
 				</mx:HBox>
 			</mx:ViewStack>
@@ -280,5 +275,6 @@
 	    <!-- 11 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
 	    <!-- 12 -->	<adminView:BackupVindu id="backupvinduview"/>
 	    <!-- 13 -->	<adminView:Arrangementer id="arrangementer"/>
+	    <!-- 13 -->	<adminView:Aarbok id="aarbok"/>
 	</mx:ViewStack>
 </mx:VBox>
