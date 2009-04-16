@@ -1,6 +1,7 @@
 <?php
 header("Content-type: application/msword; charset=UTF-16LE"); 
-header("Content-Disposition: inline; filename=aarBok.doc"); 
+header("Content-Disposition: inline; filename=aarBok.doc"); //. $_POST["navn"] . ".csv"
+
 
 require_once "Verktoy.php";
 
