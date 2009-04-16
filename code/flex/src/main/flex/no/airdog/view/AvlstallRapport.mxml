@@ -9,14 +9,25 @@
         <![CDATA[
         	import no.airdog.model.Hund;
 			import no.airdog.services.Components;
+			import no.airdog.controller.*;
 			
 			private function init():void
 			{
 				
 			}
+			
+			private function ekspoterAvlstall():void
+			{
+				Verktoy.eksporterDataGrid(hundeGrid, "Avlstall");
+			} 
 					            
         ]]>
     </mx:Script>
+    <mx:HBox width="100%" paddingRight="5" paddingTop="5">
+	    <mx:Spacer width="100%"/>
+	    <mx:LinkButton label="Eksporter" click="ekspoterAvlstall()"
+			icon="@Embed(source='assets/ikoner/table_excel.png')"/>
+	</mx:HBox>
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 

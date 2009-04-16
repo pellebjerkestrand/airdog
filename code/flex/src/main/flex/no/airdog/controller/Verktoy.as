@@ -1,5 +1,6 @@
 package no.airdog.controller
 {
+	import flash.external.ExternalInterface;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
@@ -97,7 +98,7 @@ package no.airdog.controller
             u.method = URLRequestMethod.POST; 
             u.data = variables; 
           
-            navigateToURL(u,"_self");
+            navigateToURL(u, "_self");
         }
         
         public static function lagAarbok():void
@@ -112,8 +113,7 @@ package no.airdog.controller
             u.method = URLRequestMethod.POST; 
             u.data = variabler; 
           
-            navigateToURL(u,"_self");
+            navigateToURL(u, "_self");
         }
-        
 	}
 }
