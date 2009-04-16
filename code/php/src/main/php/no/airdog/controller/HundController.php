@@ -98,7 +98,7 @@ class HundController
 	    	
 	    	$rad = $hd->hentHund($hundId, $klubbId);   	
 			
-			$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg";
+			$bildeAdresse = "/images/" . $rad['raseId'] . "/" . eregi_replace('[^a-zA-Z0-9]','_',$rad['hundId']) . ".jpg?id=".rand(1,1000);
 		   		
 	   		//For treg testet på server
 	   		$bilde = Verktoy::hoppBakover(Verktoy::hvilkeUrl(), 3) . $bildeAdresse;;
