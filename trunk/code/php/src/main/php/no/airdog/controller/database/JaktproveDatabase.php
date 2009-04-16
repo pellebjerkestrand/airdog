@@ -46,10 +46,11 @@ class JaktproveDatabase
 	public function hentJaktprover($hundId, $klubbId)
 	{
 		$select = $this->database->select()
-		->from('nkk_fugl') 
-		->where('hundId=?',$hundId)
-		->where('raseId=?', $klubbId)
-		->order('proveDato DESC'); 
+		->from(array('f'=>'nkk_fugl'), array('navn'=>'a.navn', 'sted'=>'a.sted', 'f.*'))
+		->joinLeft(array('a'=>'nkk_arrangement'),'f.proveNr = a.proveNr', array())
+		->where('f.hundId=?',$hundId)
+		->where('f.raseId=?', $klubbId)
+		->order('f.proveDato DESC'); 
 	
 		return $this->database->fetchAll($select); 
 	}
@@ -57,11 +58,11 @@ class JaktproveDatabase
 	public function hentAlleJaktproverAar($aar, $klubbId)
 	{				
 		$select = $this->database->select()
-		->from('nkk_fugl') 		
-		//kan ikke bruke kun år+wildcard, blir FOR MANGE og flex får ikke svar tidsnok
+		->from(array('f'=>'nkk_fugl'), array('navn'=>'a.navn', 'sted'=>'a.sted', 'f.*'))
+		->joinLeft(array('a'=>'nkk_arrangement'),'f.proveNr = a.proveNr', array())
 		->where('proveDato LIKE ?', $aar.'%') 
-		->where('raseId=?', $klubbId)
-		->order('proveDato DESC'); 
+		->where('f.raseId=?', $klubbId)
+		->order('f.proveDato DESC'); 
 		
 		return $this->database->fetchAll($select);			
 	}

@@ -27,6 +27,10 @@ package no.airdog.controller
 			{
 				Components.instance.controller.hentKopier();
 			}
+			else if(barnNr == 13)
+			{
+				Components.instance.controller.hentArrangementer();
+			}
 			
 			Components.instance.historie.settPunkt();
 		}

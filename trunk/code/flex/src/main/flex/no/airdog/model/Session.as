@@ -11,6 +11,7 @@ package no.airdog.model
 	[Bindable]
 	public class Session
 	{
+		public var arrangementer:ArrayCollection = new ArrayCollection();
 		public var alleBrukere:ArrayCollection = new ArrayCollection();
         public var alleRettigheter:ArrayCollection = new ArrayCollection();   
 		public var arsgjennomsnitt:ArrayCollection = new ArrayCollection();  

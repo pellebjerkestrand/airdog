@@ -44,4 +44,8 @@ class AmfJaktprove
 	public $kritikk;
 	public $vf;	
 	public $premiegradTekst;
+	
+	public $navn;
+	public $sted;
+	public $proveTekst;
 }

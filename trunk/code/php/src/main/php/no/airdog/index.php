@@ -51,6 +51,7 @@ $server->setClassMap("AmfBruker","AmfBruker");
 $server->setClassMap("AmfPerson","AmfPerson");
 $server->setClassMap("AmfOpplastningObjekt","AmfOpplastningObjekt");
 $server->setClassMap("AmfCup","AmfCup");
+$server->setClassMap("AmfArrangement","AmfArrangement");
 
 //Bytt til true når det skal lanseres
 $server->setProduction(false);

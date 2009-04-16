@@ -12,6 +12,8 @@ class AmfRettigheter
 	public $klubbRolleBrukerHandtering;
 	public $administrereBackup;
 	public $redigerEgenBruker;
+	public $arrangementer;
+	public $lagAarbok;
 	
 	public $administrere;
 }

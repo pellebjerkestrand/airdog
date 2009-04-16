@@ -47,5 +47,10 @@ package no.airdog.model
 		public var kritikk:String;
 		public var vf:String;		
 		public var premiegradTekst:String;
+		
+		public var navn:String;
+		public var sted:String;
+		
+		public var proveTekst:String;
 	}
 }

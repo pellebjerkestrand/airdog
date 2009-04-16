@@ -15,6 +15,9 @@ package no.airdog.model
 		public var klubbRolleBrukerHandtering:Boolean;
 		public var administrereBackup:Boolean;
 		public var redigerEgenBruker:Boolean;
+		public var arrangementer:Boolean;
+		public var lagAarbok:Boolean;
+		
 		
 		public var administrere:Boolean;
 	}
