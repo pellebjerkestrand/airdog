@@ -9,7 +9,6 @@ require_once "Verktoy.php";
  * År
  * Hann/Tispe/Alle
  * 
- * avkom som har deltatt i jaktprøver det valgte året
  * 
  *  hund.rft
  * %%HUNDNAVN%%, %%HUNDID%%, %%EIER%%, %%EIERADRESSE%%, %%EIERPOSTNUMMER%%, %%EIERSTED%%, %%EIERTLF%%,
