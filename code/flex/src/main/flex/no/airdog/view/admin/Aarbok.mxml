@@ -17,8 +17,18 @@
 			            		
 			private function lagAarbok():void
 			{
-				Verktoy.lagAarbok();
-				venterPHP.visible = true;
+				if (Components.instance.session.aarbokHund != null)
+				{	
+					if (hann.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.text, hann.id);
+					if (tispe.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.text, tispe.id);
+					if (alle.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.text, alle.id);
+				}
+				else
+				{
+					if (hann.selected == true) Verktoy.lagAarbok(null, aar.text, hann.id);
+					if (tispe.selected == true) Verktoy.lagAarbok(null, aar.text, tispe.id);
+					if (alle.selected == true) Verktoy.lagAarbok(null, aar.text, alle.id);
+				}
 			} 	          
             
         ]]>
@@ -29,6 +39,14 @@
     		text="{'Du lager nå årbok for ' + Components.instance.session.aarbokHund.navn}" />
     	
     	<mx:Text text="Gjør dine valg og klikk på 'Lag årbok'-knappen"/>
+    	<mx:Text text="Skriv inn ønsket år: " />
+    	<mx:TextInput id="aar" />
+    	<mx:Text text="Velg kjønn: " />
+ 		
+ 		<mx:RadioButton groupName="kjonn" id="alle" label="Alle" selected="true" />
+        <mx:RadioButton groupName="kjonn" id="hann" label="Hann" /> 
+        <mx:RadioButton groupName="kjonn" id="tispe" label="Tispe" />
+       
     	<mx:VBox horizontalAlign="center" width="100%">
 			<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
    		</mx:VBox>
