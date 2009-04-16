@@ -13,6 +13,7 @@
         	import no.airdog.controller.Navigasjon;
             import no.airdog.services.Components;
         	import no.airdog.model.Bruker;
+			import no.airdog.controller.*;
             
             private var SOKEFELTTEKST:String = "Søk etter hund";
             
@@ -128,7 +129,12 @@
 				{
 					sokefelt.styleName = "sokFelt";
 				}
-			}		
+			}	
+			
+			private function lagAarbok():void
+			{
+				Verktoy.lagAarbok();
+			} 	
 			
         ]]>
     </mx:Script>
@@ -232,6 +238,11 @@
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			label="Backup" click="naviger(13)" styleName="underMeny" 
 			 			icon="@Embed(source='assets/ikoner/safe.png')"/>
+			 		<mx:LinkButton
+			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
+			 			includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"
+			 			label="Lag årbok" click="lagAarbok()" styleName="underMeny"
+						icon="@Embed(source='assets/ikoner/table_excel.png')"/>
 				</mx:HBox>
 			</mx:ViewStack>
 			
