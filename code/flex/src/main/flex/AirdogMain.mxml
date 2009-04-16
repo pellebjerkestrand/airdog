@@ -26,6 +26,6 @@
 	<!-- <services:MainComponents id="components"/> -->
 	<services:MockComponents id="components"/>
 
-	<view:MainView visible="{Components.instance.session.bruker.sattKlubb ? true : false}"/>
+	<view:MainView id="mainview" visible="{Components.instance.session.bruker.sattKlubb ? true : false}"/>
 
 </mx:Application>
