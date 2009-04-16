@@ -206,7 +206,7 @@
 						icon="@Embed(source='assets/ikoner/crown.png')"/>
 				</mx:HBox>
 				
-				<mx:HBox id="adminmeny" width="100%" verticalAlign="middle"
+				<mx:HBox id="adminmeny" width="100%" verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off"
 					enabled="{Components.instance.session.bruker.rettigheter.administrere}">
 					<mx:LinkButton 
 						visible="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
