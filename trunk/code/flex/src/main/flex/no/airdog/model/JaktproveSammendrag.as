@@ -73,5 +73,44 @@ package no.airdog.model
 		public var starterDERBYKVALIKTredje:String;
 		public var starterDERBYSEMIFINALETredje:String;
 		public var starterDERBYFINALETredje:String;		
+		
+		public var starterTotaltFjerde:String;
+		public var starterUKFjerde:String;
+		public var starterAKFjerde:String;
+		public var starterUKAKFjerde:String;
+		public var starterVKFjerde:String;
+		public var starterVKSEMIFINALEFjerde:String;
+		public var starterVKFINALEFjerde:String;
+		public var starterUKKVALIKFjerde:String;
+		public var starterUKKFINALEFjerde:String;
+		public var starterDERBYKVALIKFjerde:String;
+		public var starterDERBYSEMIFINALEFjerde:String;
+		public var starterDERBYFINALEFjerde:String;
+		
+		public var starterTotaltFemte:String;
+		public var starterUKFemte:String;
+		public var starterAKFemte:String;
+		public var starterUKAKFemte:String;
+		public var starterVKFemte:String;
+		public var starterVKSEMIFINALEFemte:String;
+		public var starterVKFINALEFemte:String;
+		public var starterUKKVALIKFemte:String;
+		public var starterUKKFINALEFemte:String;
+		public var starterDERBYKVALIKFemte:String;
+		public var starterDERBYSEMIFINALEFemte:String;
+		public var starterDERBYFINALEFemte:String;
+		
+		public var starterTotaltSjette:String;
+		public var starterUKSjette:String;
+		public var starterAKSjette:String;
+		public var starterUKAKSjette:String;
+		public var starterVKSjette:String;
+		public var starterVKSEMIFINALESjette:String;
+		public var starterVKFINALESjette:String;
+		public var starterUKKVALIKSjette:String;
+		public var starterUKKFINALESjette:String;
+		public var starterDERBYKVALIKSjette:String;
+		public var starterDERBYSEMIFINALESjette:String;
+		public var starterDERBYFINALESjette:String;
 	}
 }

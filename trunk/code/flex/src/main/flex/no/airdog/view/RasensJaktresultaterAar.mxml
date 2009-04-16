@@ -7,7 +7,7 @@
 			 
 			private function sokAar(val:String):void
 			{
-				Components.instance.controller.hentAlleJaktproverAar(val);								
+				Components.instance.controller.hentJaktproverSammendragAar(val);								
 			}     
         ]]>
     </mx:Script>
@@ -73,6 +73,15 @@
                 <mx:GridItem>
                     <mx:Label text="Tredjeplass" fontWeight="bold"/>
                 </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="Fjerdeplass" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="Femteplass" fontWeight="bold"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="Sjetteplass" fontWeight="bold"/>
+                </mx:GridItem>
 			</mx:GridRow>
             <mx:GridRow>
             	<mx:GridItem>
@@ -86,6 +95,15 @@
                 </mx:GridItem>
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKTredje}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKSjette}"/>
                 </mx:GridItem>
             </mx:GridRow>
             <mx:GridRow backgroundColor="#f5f5f5">                
@@ -115,6 +133,15 @@
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKTredje}"/>
                 </mx:GridItem>
+                <mx:GridItem>
+            		<mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKAKSjette}"/>
+                </mx:GridItem>
             </mx:GridRow>
             <mx:GridRow backgroundColor="#f5f5f5">
             	<mx:GridItem>
@@ -128,7 +155,16 @@
                 </mx:GridItem>
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKTredje}"/>
-                </mx:GridItem>                
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKSjette}"/>
+                </mx:GridItem>                 
             </mx:GridRow>
             <mx:GridRow>
             	<mx:GridItem>
@@ -142,6 +178,15 @@
                 </mx:GridItem>
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALETredje}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALEFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterVKFINALESjette}"/>
                 </mx:GridItem>
             </mx:GridRow>  
             <mx:GridRow backgroundColor="#f5f5f5">
@@ -157,6 +202,15 @@
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKTredje}"/>
                 </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKVALIKSjette}"/>
+                </mx:GridItem>
             </mx:GridRow>   
             <mx:GridRow>
             	<mx:GridItem>
@@ -171,6 +225,15 @@
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALETredje}"/>
                 </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALEFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterUKKFINALESjette}"/>
+                </mx:GridItem>                
             </mx:GridRow>
             <mx:GridRow backgroundColor="#f5f5f5">
             	<mx:GridItem>
@@ -185,7 +248,16 @@
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKTredje}"/>
                 </mx:GridItem>
-            </mx:GridRow>                
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYKVALIKSjette}"/>
+                </mx:GridItem>
+            </mx:GridRow>                            
             <mx:GridRow>
             	<mx:GridItem>
                     <mx:Label text="DERBYSEMIFINALE"/>
@@ -198,6 +270,15 @@
                 </mx:GridItem>
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALETredje}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALEFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYSEMIFINALESjette}"/>
                 </mx:GridItem>
             </mx:GridRow>            	
             <mx:GridRow backgroundColor="#f5f5f5">
@@ -212,6 +293,15 @@
                 </mx:GridItem>
                 <mx:GridItem>
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALETredje}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEFjerde}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALEFemte}"/>
+                </mx:GridItem>
+                <mx:GridItem>
+                    <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterDERBYFINALESjette}"/>
                 </mx:GridItem> 
             </mx:GridRow>
             <mx:GridRow>
@@ -228,15 +318,6 @@
                     <mx:Label text="{Components.instance.session.jaktproveSammendragAar.getItemAt(0).starterTotaltTredje}"/>
                 </mx:GridItem> 
             </mx:GridRow>
-		</mx:Grid>
-		<mx:DataGrid id="alleJaktprover" dataProvider="{Components.instance.session.jaktproveListeAar}"
-			height="100%" width="100%">
-			<mx:columns>
-				<mx:DataGridColumn headerText="ID" dataField="hundId"/>
-				<mx:DataGridColumn headerText="Prøvedato" dataField="proveDato"/>
-				<mx:DataGridColumn headerText="Prøvenummer" dataField="proveNr" />
-				<mx:DataGridColumn headerText="Premiering" dataField="premiegradTekst"/>					
-			</mx:columns>		
-		</mx:DataGrid>	
+		</mx:Grid>		
 	</mx:HBox>		
 </mx:VBox>

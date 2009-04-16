@@ -223,8 +223,7 @@ package no.airdog.controller
 		public function hentAlleJaktproverAar(aar:String):void
 		{
 			Components.instance.session.jaktproveListe = null;
-			Components.instance.services.airdogService.hentAlleJaktproverAar(aar, hentAlleJaktproverAarResultat);
-			Components.instance.services.airdogService.hentJaktproveSammendragAar(aar, hentJaktproveSammendragAarResultat);
+			Components.instance.services.airdogService.hentAlleJaktproverAar(aar, hentAlleJaktproverAarResultat);			
 		}
 		public function hentAlleJaktproverAarResultat(event:Object):void
 		{
@@ -234,6 +233,11 @@ package no.airdog.controller
 		public function hentJaktproveSammendragResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveSammendrag = new ArrayCollection(event as Array);
+		}
+		
+		public function hentJaktproverSammendragAar(aar:String):void
+		{
+			Components.instance.services.airdogService.hentJaktproveSammendragAar(aar, hentJaktproveSammendragAarResultat);
 		}
 		
 		public function hentJaktproveSammendragAarResultat(event:Object):void
