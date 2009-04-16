@@ -75,14 +75,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker` (
   PRIMARY KEY (`epost`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `ad_bruker`
---
 
-INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
-('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
-('admin', 'admin', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
-('test', 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
 
 -- --------------------------------------------------------
 
@@ -99,18 +92,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
   KEY `AD_klubb_navn` (`ad_klubb_raseid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `ad_bruker_klubb_rolle_link`
---
 
-INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `ad_klubb_raseid`) VALUES
-('admin', 'admin', 348),
-('gjest', 'gjest', 306),
-('gjest', 'gjest', 348),
-('admin', 'admin', 306),
-('admin', 'test', 306),
-('admin', 'gjest', 306),
-('gjest', 'test', 306);
 
 -- --------------------------------------------------------
 
@@ -148,9 +130,7 @@ CREATE TABLE IF NOT EXISTS `ad_klubb` (
 -- Dataark for tabell `ad_klubb`
 --
 
-INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`) VALUES
-('Norsk Breton Klubb', NULL, 306),
-('Norsk Pointer Klubb', NULL, 348);
+
 
 -- --------------------------------------------------------
 
@@ -168,9 +148,6 @@ CREATE TABLE IF NOT EXISTS `ad_rolle` (
 -- Dataark for tabell `ad_rolle`
 --
 
-INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
-('admin', 'admin'),
-('gjest', 'gjest');
 
 -- --------------------------------------------------------
 
@@ -185,24 +162,7 @@ CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
   KEY `AD_rettighet_navn` (`ad_rettighet_navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dataark for tabell `ad_rolle_rettighet_link`
---
 
-INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
-('admin', 'rolleRettighetHandtering'),
-('admin', 'lese'),
-('admin', 'redigerUtstilling'),
-('admin', 'slettJaktprove'),
-('gjest', 'lese'),
-('admin', 'redigerJaktprove'),
-('admin', 'redigerHund'),
-('admin', 'klubbRolleBrukerHandtering'),
-('admin', 'leggInnJaktprove'),
-('admin', 'importerDatabase'),
-('admin', 'administrereBackup'),
-('admin', 'arrangementer'),
-('admin', 'lagAarbok');
 
 
 -- phpMyAdmin SQL Dump
