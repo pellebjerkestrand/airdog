@@ -52,13 +52,14 @@
 		    		<mx:Button click="lagFullKopi()" width="100%" label="Ta sikkerhetskopi" icon="@Embed(source='../assets/ikoner/server__arrow.png')"/>
 		    	</mx:FormItem>
 		    </mx:Form>
-	    
+	    	<mx:Spacer height="100%"/>
 		   	<mx:VBox styleName="notis" height="200" width="100%">
-
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-				<mx:TextArea styleName="notis" borderThickness="0" editable="false" width="100%" height="100%"
+		   		<mx:HBox>
+		   			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+		   			<mx:Label text="Informasjon" fontWeight="bold"/>
+		   		</mx:HBox>
+				<mx:TextArea borderThickness="0" editable="false" width="100%" height="100%"
 					text="Ta backup av databasen slik at du på et senere tidspunkt kan gjenopprette de tabellene du skulle ønske" />
-
 		    </mx:VBox>
 	    </mx:Panel>
 	    <mx:Panel title="Sikkerhetskopier" height="100%" width="100%">
