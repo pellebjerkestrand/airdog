@@ -61,6 +61,8 @@ class ACLController
 			$tmp->administrereBackup = true;
 			$tmp->importerDatabase = true;
 			$tmp->redigerEgenBruker = true;
+			$tmp->arrangementer = true;
+			$tmp->lagAarbok = true;
 			
 			$tmp->administrere = true;
   				
@@ -88,12 +90,14 @@ class ACLController
 	   			if($r['navn'] == "administrereBackup") $tmp->administrereBackup = true;
 	   			if($r['navn'] == "importerDatabase") $tmp->importerDatabase = true;
 	   			if($r['navn'] == "redigerEgenBruker") $tmp->redigerEgenBruker = true;
+	   			if($r['navn'] == "arrangementer") $tmp->arrangementer = true;
+	   			if($r['navn'] == "lagAarbok") $tmp->lagAarbok = true;
 	   			
 	   		}
 	   		
 	   		if($tmp->redigerHund || $tmp->importerDatabase || $tmp->leggInnJaktprove ||
 	   		$tmp->rolleRettighetHandtering || $tmp->klubbRolleBrukerHandtering  || 
-	   		$tmp->administrereBackup || $tmp->importerDatabase) $tmp->administrere = true;
+	   		$tmp->administrereBackup || $tmp->importerDatabase || $tmp->arrangementer || $tmp->lagAarbok) $tmp->administrere = true;
 	   		
 			return $tmp;
 		}

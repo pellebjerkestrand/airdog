@@ -264,6 +264,14 @@ class JaktproveController
 		    	$tmp->kritikk = $rad['kritikk'];
 		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
 		    	
+		    	$tmp->sted = $rad['sted'];
+		    	$tmp->navn = $rad['navn'];
+		    	
+		    	if ($rad['sted'] != "")
+		    		$tmp->proveTekst = $rad['sted'] . ' ' . $rad['navn'];
+	    		else
+		    		$tmp->proveTekst = $rad['proveNr'];
+		    		
 				$ret[] = $tmp;
 			}
 			
@@ -325,6 +333,14 @@ class JaktproveController
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->kritikk = $rad['kritikk'];
 		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
+		    	
+		    	$tmp->sted = $rad['sted'];
+		    	$tmp->navn = $rad['navn'];
+		    	
+		    	if ($rad['sted'] != "")
+		    		$tmp->proveTekst = $rad['sted'] . ' ' . $rad['navn'];
+	    		else
+		    		$tmp->proveTekst = $rad['proveNr'];
 		    				
    				$ret[] = $tmp;   							
 			}	        

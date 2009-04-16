@@ -227,6 +227,11 @@
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
 			 			label="Backup" click="naviger(12)" styleName="underMeny" 
 			 			icon="@Embed(source='assets/ikoner/safe.png')"/>
+		 			<mx:LinkButton 
+			 			visible="{Components.instance.session.bruker.rettigheter.arrangementer}" 
+			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
+			 			label="Backup" click="naviger(13)" styleName="underMeny" 
+			 			icon="@Embed(source='assets/ikoner/safe.png')"/>
 				</mx:HBox>
 			</mx:ViewStack>
 			
@@ -256,5 +261,6 @@
 	    <!-- 10 -->	<adminView:DatOpplastning id="datopplastningview"/>
 	    <!-- 11 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
 	    <!-- 12 -->	<adminView:BackupVindu id="backupvinduview"/>
+	    <!-- 13 -->	<adminView:Arrangementer id="arrangementer"/>
 	</mx:ViewStack>
 </mx:VBox>

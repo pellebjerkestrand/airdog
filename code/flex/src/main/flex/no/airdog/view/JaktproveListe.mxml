@@ -53,7 +53,7 @@
 	<mx:DataGrid id="jaktprover" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
 		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
 		<mx:columns>
-			<mx:DataGridColumn headerText="Prøve" width="100" minWidth="100" dataField="proveNr" resizable="false"/>
+			<mx:DataGridColumn headerText="Prøve" width="150" minWidth="150" dataField="proveTekst"/>
 			<mx:DataGridColumn headerText="Dato" width="110" minWidth="110" dataField="proveDato" resizable="false"/>
 			<mx:DataGridColumn headerText="Premiegrad" dataField="premiegradTekst"/>
 			<mx:DataGridColumn headerText="ST" width="50" minWidth="50" textAlign="right" dataField="slippTid" resizable="false"/>
