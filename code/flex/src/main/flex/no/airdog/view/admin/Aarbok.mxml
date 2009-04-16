@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:view="no.airdog.view.*">
+    <mx:Script>
+        <![CDATA[
+        	import mx.controls.Alert;
+        	import no.airdog.model.Valg;
+        	import mx.collections.ArrayCollection;
+        	import no.airdog.model.OpplastningObjekt;
+        	import no.airdog.model.Opplastning;
+			import no.airdog.services.Components;
+			import no.airdog.controller.*;
+			            		
+			private function lagAarbok():void
+			{
+				Verktoy.lagAarbok();
+				venterPHP.visible = true;
+			} 	          
+            
+        ]]>
+    </mx:Script>
+    
+    <mx:Panel title="Lag årbok" height="100%">
+    	<mx:Text text="Gjør dine valg og klikk på 'Lag årbok'-knappen"/>
+    	<mx:VBox horizontalAlign="center" width="100%">
+			<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
+   		</mx:VBox>
+    	<mx:HBox width="100%">
+    		<mx:Spacer width="100%"/>
+    		<mx:Button label="Lag årbok" click="lagAarbok()" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_skip_090.png')"/>
+    	</mx:HBox>
+   		<!-- HER SKAL DET KOMME EN INFORMASJONBOKS -->
+    </mx:Panel>
+	
+    <mx:Panel title="Resultat årbok" height="100%" width="100%">
+	    <mx:TextArea id="pText" width="100%" height="100%" text="Kommer tekst fra php..." editable="false"/>
+    </mx:Panel>
+</mx:HBox>
