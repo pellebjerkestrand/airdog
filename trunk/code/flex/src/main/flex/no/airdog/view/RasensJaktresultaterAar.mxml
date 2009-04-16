@@ -6,7 +6,7 @@
 			import no.airdog.services.Components;
 			import mx.controls.*;	
 			 
-			private function sokAar(val:int):void
+			private function sokAar(val:String):void
 			{
 				Components.instance.controller.hentJaktproverSammendragAar(val as String);								
 			}     
@@ -17,7 +17,7 @@
 			<mx:NumericStepper id="valgtAar" value="2008" maxChars="4" maximum="3000"/>
 		</mx:FormItem>
 		<mx:FormItem>
-			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.value)" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+			<mx:LinkButton label="Hent resultater" click="sokAar(valgtAar.value.toString())" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
 		</mx:FormItem>
 		<mx:Spacer width="100%"/>
 		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="{hint.text}"/>

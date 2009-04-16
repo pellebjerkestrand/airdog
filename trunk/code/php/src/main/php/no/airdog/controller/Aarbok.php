@@ -2,8 +2,12 @@
 header("Content-type: application/msword; charset=UTF-16LE"); 
 header("Content-Disposition: inline; filename=aarBok.doc"); //. $_POST["navn"] . ".csv"
 
-
+require_once "HundController.php";
 require_once "Verktoy.php";
+
+$varer = new HundController();
+
+$varer->hentHund();
 
 /* Parameter:
  * En eller alle hunder som har deltatt på en jaktprøve et valgt

@@ -84,11 +84,12 @@ class JaktproveController
     }
 
 	public function hentJaktproveSammendragAar($aar, $brukerEpost, $brukerPassord, $klubbId)
-    {	    
-    	
+    {	        	
     	if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 	    	
+
+			
 			$hd = new JaktproveDatabase();
 			
 			$sammendrag = $hd->hentJaktproveSammendragAar($aar, $klubbId);
