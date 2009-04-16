@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	styleName="nopaddingorborderorgap">
 	<mx:Script>
         <![CDATA[
 			import no.airdog.services.Components;
@@ -11,7 +12,7 @@
 			}     
         ]]>
     </mx:Script>
-	<mx:HBox>
+	<mx:HBox styleName="viewmeny" width="100%">
 		<mx:FormItem label="År">
 			<mx:TextInput id="valgtAar" text="2008" enter="sokAar(valgtAar.text)"/>
 		</mx:FormItem>

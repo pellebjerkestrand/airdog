@@ -49,6 +49,7 @@ ApplicationControlBar.applicationBar
 	paddingLeft: 4;
 	paddingRight: 4;
 	paddingTop: 4;
+	verticalAlign: middle;
 }
 
 /*
@@ -360,6 +361,26 @@ MenuBar
 	horizontalGap: 4;
 	verticalGap: 4;
 	verticalAlign: middle;
+}
+
+.nopaddingorborder
+{
+	borderThickness: 0;
+	paddingBottom: 0;
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+}
+
+.nopaddingorborderorgap
+{
+	borderThickness: 0;
+	paddingBottom: 0;
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	horizontalGap: 0;
+	verticalGap: 0;	
 }
 
 /*
@@ -746,6 +767,19 @@ ToolTip
 	fontSize: 11px;
 }
 
+.topBar
+{
+	color: #ffffff;
+	backgroundColor: #acacac;
+	paddingBottom: 0; 
+	paddingTop: 0;
+	paddingLeft: 0; 
+	paddingRight: 0;
+	verticalAlign: middle;
+	verticalGap: 0;
+	horizontalGap: 0;
+}
+
 /*
 //------------------------------
 //  TitleWindow
@@ -770,7 +804,7 @@ Tree
 	folderOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_folderOpenIcon");
 }
 
-LinkButton .underMeny
+LinkButton .undermeny
 {
 	color: #B7B7B7;
 	cornerRadius: 2;
@@ -785,26 +819,17 @@ LinkButton .underMeny
 	fontWeight: normal;
 }
 
-.widget
+ViewStack .undermeny
 {
-	backgroundColor: #f5f5ff;
-	borderColor: #bbbbaa;
-	borderStyle: solid;
-	cornerRadius: 5;
-	paddingBottom: 10;
-	paddingLeft: 10;
-	paddingRight: 10;
-	paddingTop: 10;
-	backgroundAlpha: 0.7;
+	paddingBottom: 0;
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	horizontalGap: 0;
+	verticalGap: 0;	
 }
 
-VBox.topBar
-{
-	backgroundColor: #acacac;
-	color: #ffffff;
-	
-}
-VBox.underMenyBar
+.undermenyBar
 {	
 	color: #444444; 
 	backgroundColor: #cacaca;
@@ -816,4 +841,27 @@ VBox.underMenyBar
 	paddingLeft: 4; 
 	paddingRight: 4; 
 	verticalAlign: middle;
+}
+
+.viewmeny
+{
+	backgroundColor: #f0f0f0;
+	paddingBottom: 4; 
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	paddingTop: 4;
+	verticalAlign: middle;
+}
+
+.widget
+{
+	backgroundColor: #f5f5ff;
+	borderColor: #bbbbaa;
+	borderStyle: solid;
+	cornerRadius: 5;
+	paddingBottom: 10;
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	backgroundAlpha: 0.7;
 }			

@@ -2,6 +2,7 @@
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	creationComplete="init()"
+	styleName="nopaddingorborderorgap"
 	width="100%" height="100%">
 	
 	<mx:Script>
@@ -65,7 +66,7 @@
 		]]>
 	</mx:Script>
 	
-	<mx:HBox paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0" verticalAlign="middle" width="100%">
+	<mx:HBox styleName="viewmeny" width="100%">
 		<mx:FormItem label="Fra">
 			<mx:DateField id="fra" editable="false" formatString="{datoformat}" yearNavigationEnabled="true" width="100"/>	
 		</mx:FormItem>
@@ -83,7 +84,7 @@
 	<mx:HBox
 		paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4"
 		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
-		width="100%" height="{this.height-32}" horizontalAlign="center">
+		width="100%" height="{this.height - 34}" horizontalAlign="center">
 		<mx:VBox>
 			<mx:Repeater id="cup" dataProvider="{Components.instance.session.cupListe}">
 				<mx:Box paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%">
