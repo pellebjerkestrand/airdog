@@ -62,8 +62,10 @@
 					
 						Components.instance.controller.leggInnArrangement(arr);
 						
-						if (evt.rowIndex == arrangementer.dataProvider.length - 1)
+						if (evt.rowIndex == arrangementer.dataProvider.length - 1 && arr.proveNr != "" && arr.proveNr != null)
+						{
 							Components.instance.session.arrangementer.addItem(new Arrangement());
+						}
     			}
     			tmpArr = null;
             }
