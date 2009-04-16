@@ -13,19 +13,25 @@ require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
 require_once 'Tilkobling.php';
+require_once "no/airdog/controller/Verktoy.php";
 
 class Backup
 {	
+	private $sti;
+	
 	public function __construct()
 	{
 		date_default_timezone_set('Europe/Oslo');
 		mysql_connect("localhost", "airdog", "air123dog") or die(mysql_error());
-		mysql_select_db("airdog") or die(mysql_error());		
+		mysql_select_db("airdog") or die(mysql_error());	
+		
+		$this->sti = Verktoy::hoppBakover(dirname(__FILE__),4) . "/backup/";
+
 	}
 	
 	private function lagKopi($tabell, $navn)
 	{
-		$mappe = dirname(__FILE__) . "/backup/" . date("d-m-Y") . " - $navn/";
+		$mappe = $this->sti . date("d-m-Y") . " - $navn/";
 		
 		if  (!file_exists($mappe))
 		{
@@ -52,7 +58,7 @@ class Backup
 	
 	public function lastKopi($tabell, $mappe)
 	{
-		$filnavn = dirname(__FILE__) . "/backup/" . $mappe . "/" . $tabell . ".sql";
+		$filnavn = $this->sti . $mappe . "/" . $tabell . ".sql";
 			
 		if (!file_exists($filnavn))
 			return "Finner ikke filen: $filnavn";
@@ -87,14 +93,13 @@ class Backup
 	
 	public function hentKopier()
 	{
-		$mappe = dirname(__FILE__) . "/backup/";
-		$handle = opendir($mappe);
+		$handle = opendir($this->sti);
 		
 		$ret = array();
 		
 		while ($fil = readdir($handle)) 
 		{
-			if ($fil != "." && $fil != ".." && is_dir($mappe . $fil))
+			if ($fil != "." && $fil != ".." && is_dir($this->sti . $fil))
 	        	$ret[] = $fil;
 	    }
 	    
@@ -103,7 +108,7 @@ class Backup
 	
 	public function hentFiler($mappe)
 	{
-		$mappe = dirname(__FILE__) . "/backup/" . $mappe . "/";
+		$mappe = $this->sti . $mappe . "/";
 		
 		if (!file_exists($mappe))
 			return "Finner ikke mappen: $mappe";
