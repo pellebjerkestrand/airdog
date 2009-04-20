@@ -18,13 +18,13 @@
     
     <mx:HBox styleName="viewmeny" width="100%">
     	<mx:FormItem label="Fars ID">
-    		<mx:TextInput id="hundIdFar" enter="generer()"/>
+    		<mx:TextInput id="hundIdFar" styleName="tekstboksRund" enter="generer()"/>
     	</mx:FormItem>
     	<mx:FormItem label="Mors ID">
-    		<mx:TextInput id="hundIdMor" enter="generer()"/>
+    		<mx:TextInput id="hundIdMor" styleName="tekstboksRund" enter="generer()"/>
     	</mx:FormItem>
     	<mx:FormItem label="Dybde">
-    		<mx:NumericStepper value="3" minimum="1" maximum="20" id="dybde"/>
+    		<mx:NumericStepper styleName="tekstboksRund" value="3" minimum="1" maximum="20" id="dybde"/>
     	</mx:FormItem>
     	<mx:FormItem>
     		<mx:LinkButton label="Generer" click="generer()" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
