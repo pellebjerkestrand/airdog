@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `nkk_arrangement` (
   `sted` varchar(200) DEFAULT NULL,
   `navn` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`proveNr`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
