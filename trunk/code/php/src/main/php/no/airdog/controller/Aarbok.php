@@ -21,6 +21,9 @@ require_once "Verktoy.php";
 
 $varer = new HundController();
 
+$tilkobling = new Tilkobling();
+$database = $tilkobling->getTilkobling();
+
 //$varer->hentHund();
 
 /* Parameter:
@@ -104,7 +107,7 @@ $nyRTF = "";
 $hundeliste = array();
 
 
-if(ValiderBruker::validerBrukerRettighet($this->database, $_POST['brukerEpost'], $_POST['brukerPassord'], $_POST['klubbId'], "lagAarbok"))
+if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POST['brukerPassord'], $_POST['klubbId'], "lagAarbok"))
 {
 	if (isset($hundId))
 	{
@@ -145,9 +148,7 @@ if(ValiderBruker::validerBrukerRettighet($this->database, $_POST['brukerEpost'],
 		}
 		
 		$nyRTF .= Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
-	}
-	
-	
+	}	
 	
 	if($nyRTF)
 	{
