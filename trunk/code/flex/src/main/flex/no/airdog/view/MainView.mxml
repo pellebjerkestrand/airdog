@@ -196,15 +196,15 @@
 				<mx:HBox id="rapportmeny" width="100%" verticalAlign="middle">					
 					<mx:LinkButton label="Årsgjennomsnitt" styleName="undermeny" click="naviger(3)" 
 						icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
+					<mx:LinkButton label="Jaktresultater" styleName="undermeny" click="naviger(5)" 
+						icon="@Embed(source='assets/ikoner/flag.png')"/>
 					<mx:LinkButton label="Fiktivt stamtre" styleName="undermeny" click="naviger(4)" 
 						icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
-					<mx:LinkButton label="Rasens jaktresultater" styleName="undermeny" click="naviger(5)" 
-						icon="@Embed(source='assets/ikoner/flag.png')"/>
 					<mx:LinkButton label="Avlstall" styleName="undermeny" click="naviger(6)"
 						icon="@Embed(source='assets/ikoner/dog_many.png')"/>
-					<mx:LinkButton label="Rankingliste" styleName="undermeny" click="naviger(7)" 
+					<mx:LinkButton label="Cup" styleName="undermeny" click="naviger(7)" 
 						icon="@Embed(source='assets/ikoner/crown.png')"/>
-				</mx:HBox>
+				</mx:HBox>	
 				
 				<mx:HBox id="adminmeny" width="100%" verticalAlign="middle" horizontalScrollPolicy="off" verticalScrollPolicy="off"
 					enabled="{Components.instance.session.bruker.rettigheter.administrere}">
@@ -236,7 +236,7 @@
 		 			<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
-			 			label="Arrangementer" click="naviger(13)" styleName="undermeny" 
+			 			label="Arrangement" click="naviger(13)" styleName="undermeny" 
 			 			icon="@Embed(source='assets/ikoner/map_pin.png')"/>
 			 		<mx:LinkButton
 			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
