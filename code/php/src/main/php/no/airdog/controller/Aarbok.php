@@ -71,12 +71,27 @@ $varer = new HundController();
 
 function hentHunder($aar, $kjonn)
 {
-	
+	return array();
 }
 
 function hentHundArray($hundId, $aar)
 {
-	
+	return array();
+}
+
+function hentKullArray($hundId)
+{
+	return array();
+}
+
+function hentAvkomArray($etKull)
+{
+	return array();
+}
+
+function hentJaktproveArray($hundId, $aar)
+{
+	return array();
 }
 
 
@@ -100,19 +115,18 @@ else
 
 foreach ($hundeliste as $enHund)
 {
-	$kullArray = array();
+	$kullArray = hentKullArray($enHund['hundId']);
 	$enHund['kulltittelliste'] = "";
 	$enHund['kulllisteutvidet'] = "";
 
 	foreach($kullArray as $etKull)
 	{   
-		$avkomArray = array();
+		$avkomArray = hentAvkomArray($etKull);
 		$etKull['avkom'] = "";
-		
 		
 		foreach($avkomArray as $etAvkom)
 		{
-			$jaktproveArray = array();
+			$jaktproveArray = hentJaktproveArray($etAvkom, $aar);
 			$etAvkom['jaktproveliste'] = "";
 			
 			foreach($jaktproveArray as $enJaktprove)
