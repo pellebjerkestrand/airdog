@@ -100,12 +100,12 @@ package no.airdog.controller
             navigateToURL(u, "_self");
         }
         
-        public static function lagAarbok(hundId:String, aar:String, type:String):void
+        public static function lagAarbok(hundId:String, aar:String, kjonn:String):void
         {
             var variabler:URLVariables = new URLVariables(); 
             variabler.hundId = hundId;
         	variabler.aar = aar;
-        	variabler.type = type;
+        	variabler.kjonn = kjonn;
             
             var urlLagArrbok:String = Components.instance.services.rootPath + "controller/Aarbok.php";
             
