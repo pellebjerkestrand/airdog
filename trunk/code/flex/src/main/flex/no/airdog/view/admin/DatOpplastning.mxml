@@ -64,128 +64,127 @@
     		<mx:Spacer width="100%"/>
     		<mx:Button label="Last opp" click="velgFil()" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_skip_090.png')"/>
     	</mx:HBox>
-   		
-   		<mx:Box height="100%" verticalAlign="bottom">
-	   		<mx:Grid styleName="notis">
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-		    			<mx:Label text="Filnavn" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem>
-		    			<mx:Label text="Forklaring"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Aasykdom.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Røntgenresultat fra veterinær"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Eier.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Hundeeiere (navn, hund-ID, rase)"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Fugl.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Jaktprøver"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Hdsykdom.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Hoftedysplasi"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Hund.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Hunder"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Kull.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Kull"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Oppdrett.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Oppdrettere"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Oyesykdom.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Øyesykdommer"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Person.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Personer (omfangsrik)"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Premie.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Premier"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Utstilling.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Utstillinger"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    	<mx:GridRow verticalAlign="middle">
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
-		    			<mx:Label text="Veteriner.dat" fontWeight="bold"/>
-		    		</mx:GridItem>
-		    		<mx:GridItem verticalAlign="middle">
-		    			<mx:Label text="Veterinærer (omfangsrik)"/>
-		    		</mx:GridItem>
-		    	</mx:GridRow>
-		    </mx:Grid>
-	    </mx:Box>
+   		<mx:Spacer height="100%"/>
+   		<mx:Grid styleName="notis">
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+	    			<mx:Label text="Filnavn" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem>
+	    			<mx:Label text="Forklaring"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Aasykdom.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Røntgenresultat fra veterinær"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Eier.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Hundeeiere (navn, hund-ID, rase)"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Fugl.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Jaktprøver"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Hdsykdom.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Hoftedysplasi"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Hund.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Hunder"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Kull.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Kull"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Oppdrett.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Oppdrettere"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Oyesykdom.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Øyesykdommer"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Person.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Personer (omfangsrik)"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Premie.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Premier"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Utstilling.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Utstillinger"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    	<mx:GridRow verticalAlign="middle">
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
+	    			<mx:Label text="Veteriner.dat" fontWeight="bold"/>
+	    		</mx:GridItem>
+	    		<mx:GridItem verticalAlign="middle">
+	    			<mx:Label text="Veterinærer (omfangsrik)"/>
+	    		</mx:GridItem>
+	    	</mx:GridRow>
+	    </mx:Grid>
+	    <mx:Spacer height="100%"/>
     </mx:Panel>
 	
     <mx:Panel title="Resultat opplasting" height="100%" width="100%">

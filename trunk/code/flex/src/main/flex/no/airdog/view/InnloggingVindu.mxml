@@ -65,11 +65,11 @@
 				<mx:Text text="Skriv inn brukernavn (e-post) og passord."/>
 				<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
 				<mx:FormItem label="Brukernavn">
-					<mx:TextInput id="brukernavn" styleName="tekstboksRund" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+					<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
 				</mx:FormItem>
 				
 				<mx:FormItem label="Passord">
-					<mx:TextInput id="passord" styleName="tekstboksRund" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+					<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
 				</mx:FormItem>
 			
 				<mx:FormItem horizontalAlign="right" width="100%">

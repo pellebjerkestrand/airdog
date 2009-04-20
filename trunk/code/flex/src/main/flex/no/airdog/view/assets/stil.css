@@ -717,7 +717,7 @@ VSlider
 	paddingBottom: 0;
 }
 
-.tekstboksRund
+TextInput
 {
 	backgroundAlpha: 1;
 	backgroundColor: #ffffff;
@@ -733,6 +733,13 @@ VSlider
 	paddingTop: 2;
 	verticalAlign: middle;
 	horizontalGap: 0;	
+}
+
+TextInput.firkanta
+{
+	fontSize: 11;
+	paddingLeft: 0;
+	paddingTop: 0;
 }
 
 /*
