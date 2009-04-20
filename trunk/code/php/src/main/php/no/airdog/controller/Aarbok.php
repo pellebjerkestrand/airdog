@@ -2,12 +2,25 @@
 header("Content-type: application/msword; charset=UTF-16LE"); 
 header("Content-Disposition: inline; filename=aarBok.doc"); //. $_POST["navn"] . ".csv"
 
+set_time_limit(600);
+ini_set('post_max_size', '50M');
+ini_set('upload_max_filesize', '50M');
+ini_set('LimitRequestBody ', '16777216');
+
+ini_set("include_path", ini_get("include_path") .
+	PATH_SEPARATOR . dirname(__FILE__) . '/../../../com/' .
+	PATH_SEPARATOR . dirname(__FILE__) . '/../../../no/' .
+	PATH_SEPARATOR . dirname(__FILE__) . '/../../../'); 
+	
+require_once 'Zend/Loader.php';
+Zend_Loader::registerAutoload();
+
 require_once "HundController.php";
 require_once "Verktoy.php";
 
 $varer = new HundController();
 
-$varer->hentHund();
+//$varer->hentHund();
 
 /* Parameter:
  * En eller alle hunder som har deltatt på en jaktprøve et valgt
@@ -50,16 +63,18 @@ $varer->hentHund();
 $vars = array('hundnavn'    =>	'HUNDENHUNDENSKALduhete',
               'hundid'	=>	'233233/37336',
               'eier' =>	'Hans Magnus');
-              
-$nyRTF = Verktoy::fyll_RTF($vars, "../assets/hund.rtf");
 
-if($nyRTF)
-{
-	echo $nyRTF;
-}
-else
-{
-	echo "Noe skjedde feil";
-}
+$hundArray = array();
+$kullArray = array();
+$avkomArray = array();
+$jaktproveArray = array();
+
+$nyRTF = "";
+$nyRTF .= Verktoy::fyll_RTF($hundArray, "../assets/hund.rtf");
+$nyRTF .= Verktoy::fyll_RTF($kullArray, "../assets/kullliste.rtf");
+$nyRTF .= Verktoy::fyll_RTF($avkomArray, "../assets/avkom.rtf");
+$nyRTF .= Verktoy::fyll_RTF($jaktproveArray, "../assets/jaktprove.rtf");
+
+echo $nyRTF;
 
 
