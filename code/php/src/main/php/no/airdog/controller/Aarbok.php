@@ -58,6 +58,15 @@ $varer = new HundController();
  * 
  * jaktprove.rtf
  * IKKE FERDIG LAGET ENDA!
+ * 
+ * <hund>
+ * <for:kull->kullltittelliste />
+ * <for:kull->kulllisteutvidet>
+ * 		<for:avkom->avkominfo>
+ * 			<for:jaktprove->jaktproveliste />
+ * 		</avkom>
+ * </kulllisteutvidet>
+ * </hund>
  */
 
 $hundArray = array();
@@ -65,18 +74,46 @@ $kullArray = array();
 $avkomArray = array();
 $jaktproveArray = array();
 
+$kullArray[] = null;
+$kullArray[] = null;
+
+$avkomArray[] = null;
+$avkomArray[] = null;
+$avkomArray[] = null;
+
+$jaktproveArray[] = null;
+$jaktproveArray[] = null;
+$jaktproveArray[] = null;
+$jaktproveArray[] = null;
+
 foreach($kullArray as $etKull)
 {   
+	foreach($avkomArray as $etAvkom)
+	{
+		foreach($jaktproeArray as $enJaktprove)
+		{
+			$etAvkom['jaktproveliste'] .= Verktoy::fyllRTF($enJaktprove, "../assets/jaktprove.rtf");
+		}
+		
+		$etKull['avkom'] .= Verktoy::fyllRTF($etAvkom, "../assets/avkom.rtf");
+	}
+	
 	$hundArray['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
-	$hundArray['KULLLISTEUTVIDET'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+	$hundArray['kulllisteutvdiet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+
 }
 
-$nyRTF = "";
-$nyRTF .= Verktoy::fyll_RTF($hundArray, "../assets/hund.rtf");
-$nyRTF .= Verktoy::fyll_RTF($kullArray, "../assets/kullliste.rtf");
-$nyRTF .= Verktoy::fyll_RTF($avkomArray, "../assets/avkom.rtf");
-$nyRTF .= Verktoy::fyll_RTF($jaktproveArray, "../assets/jaktprove.rtf");
+$nyRTF = Verktoy::fyll_RTF($hundArray, "../assets/hund.rtf");
 
-echo $nyRTF;
+if($nyRTF)
+{
+	echo $nyRTF;
+}
+else
+{
+	echo "Det har skjedd noe feil med genereringen av årboken";
+}
+
+
 
 
