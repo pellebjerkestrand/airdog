@@ -54,13 +54,13 @@ class HundParser
     	return $ret;
 	}
 	
-	public function getelisteArrayFraFil($filnavn)
+	public function getlisteArrayFraFil($filnavn)
 	{
 		$handle = fopen($filnavn, "rb");
 		$hundeliste = fread($handle, filesize($filnavn));
 		fclose($handle);
 
-		return $this->getelisteArray($hundeliste);
+		return $this->getlisteArray($hundeliste);
 	}
 	
 	public function validerHundelisteFraFil($filnavn)
