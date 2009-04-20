@@ -106,6 +106,9 @@ package no.airdog.controller
             variabler.hundId = hundId;
         	variabler.aar = aar;
         	variabler.kjonn = kjonn;
+        	variabler.brukerEpost = Components.instance.session.bruker.epost;
+        	variabler.brukerPassord = Components.instance.session.bruker.passord;
+        	variabler.klubbId = Components.instance.session.bruker.sattKlubbId;
             
             var urlLagArrbok:String = Components.instance.services.rootPath + "controller/Aarbok.php";
             
