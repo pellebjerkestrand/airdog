@@ -18,7 +18,6 @@ package no.airdog.model
 		public var arrangementer:Boolean;
 		public var lagAarbok:Boolean;
 		
-		
 		public var administrere:Boolean;
 	}
 }

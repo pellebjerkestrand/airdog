@@ -35,7 +35,6 @@ package no.airdog.controller
 		function sokArsgjennomsnitt(hund:String, ar:String):void
 		function slettJaktprove(jaktproveId:String, hundId:String, proveDato:String):void
 		function leggInnJaktprove(jaktprove:Jaktprove):void
-//		function visLeggInnJaktproveVindu(parent:DisplayObject):void
 		function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
 		function fjernJaktproveVindu():void
 		function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
@@ -49,10 +48,8 @@ package no.airdog.controller
 		function slettRolle(rolle:String):void
 		function hentTabeller():void
 		function hentKopier():void
-//		function lagKopi(tabell:String):void
 		function lagFullKopi(navn:String):void
 		function hentFiler(mappe:String):void
-//		function lastKopi(tabell:String, mappe:String):void
 		function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		function hentRollersBrukere():void
 		function hentAlleBrukere():void

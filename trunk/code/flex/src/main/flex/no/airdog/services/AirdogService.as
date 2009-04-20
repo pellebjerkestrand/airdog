@@ -53,6 +53,7 @@ package no.airdog.services
     			Components.instance.session.bruker.sattKlubbId), 
 			resultat, feil);
         }
+        
         public function hentAlleJaktproverAar(aar:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentAlleJaktproverAar(
@@ -72,6 +73,7 @@ package no.airdog.services
     			Components.instance.session.bruker.sattKlubbId), 
 			resultat, feil);
         }
+        
         public function hentJaktproveSammendragAar(aar:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentJaktproveSammendragAar(
@@ -301,16 +303,6 @@ package no.airdog.services
         	resultat, feil);
         }
         
-//        public function lagKopi(tabell:String, resultat:Function, feil:Function=null):void
-//        {
-//        	callServiceFunction(service.lagKopi(
-//        		tabell,
-//        		Components.instance.session.bruker.epost,
-//        		Components.instance.session.bruker.passord,
-//        		Components.instance.session.bruker.sattKlubbId),
-//        	resultat, feil);
-//        }
-        
         public function lagFullKopi(navn:String, resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.lagFullKopi(
@@ -330,17 +322,6 @@ package no.airdog.services
         		Components.instance.session.bruker.sattKlubbId),
         	resultat, feil);
         }
-        
-//        public function lastKopi(tabell:String, mappe:String, resultat:Function, feil:Function=null):void
-//        {
-//        	callServiceFunction(service.lastKopi(
-//        		tabell,
-//        		mappe,
-//        		Components.instance.session.bruker.epost,
-//        		Components.instance.session.bruker.passord,
-//        		Components.instance.session.bruker.sattKlubbId),
-//        	resultat, feil);
-//        }
         
         public function lastKopier(tabeller:ArrayCollection, mappe:String, resultat:Function, feil:Function=null):void
         {

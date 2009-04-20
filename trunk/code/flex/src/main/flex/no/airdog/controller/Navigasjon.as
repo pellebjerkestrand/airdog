@@ -8,7 +8,6 @@ package no.airdog.controller
 	
 	public class Navigasjon
 	{
-		//Fungerte ikke med Containers. Magic numbers hentet fra ViewStack 'stack' i MainView.mxml
 		public static function naviger(barnNr:int):void
 		{
 			Components.instance.session.hovedNavigasjon.nr = barnNr;
