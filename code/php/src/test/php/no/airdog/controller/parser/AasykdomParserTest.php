@@ -11,7 +11,7 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new AasykdomParser();
     	$parseString = "9711|0201417|2|fooa|foob|fooc|food|tonn|gl|fooe|3|A|21787/89|foof|K|foo1|foo2|3426653|foo3|348|foo4|foo5|foo6|foo7|20.07.2010|04.07.2010";
-        $pa = $hp->getAasykdomArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("9711", $pa["veId"]);
     	$this->assertEquals("0201417", $pa["aaId"]);

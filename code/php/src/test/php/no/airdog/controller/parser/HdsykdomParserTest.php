@@ -9,7 +9,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new HdsykdomParser();
     	$parseString = "testNr|100|Pa|1|hundsomharnr|223321|231212855/9128|i|||||14823320706|3423238|sin||||||0022332|30.11.2020|01.04.2040";
-        $pa = $hp->getHdsykdomArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("testNr", $pa["avlestAv"]);
     	$this->assertEquals("100", $pa["betaling"]);

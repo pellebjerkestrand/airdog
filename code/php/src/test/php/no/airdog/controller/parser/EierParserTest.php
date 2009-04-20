@@ -9,7 +9,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new EierParser();
     	$parseString = "PETTER HANSEN|02033/89|348";
-        $pa = $hp->getEierArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("PETTER HANSEN", $pa["eier"]);			// Toppen i arrayet
     	$this->assertEquals("02033/89", $pa["hundId"]);				// Midten

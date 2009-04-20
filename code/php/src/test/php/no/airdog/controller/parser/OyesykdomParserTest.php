@@ -9,7 +9,7 @@ class OyesykdomParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new OyesykdomParser();
     	$parseString = "0000421|11111/97|0049|03|16.11.1999|3|M|1|318|3|4|0|5|16|2|3|1|ta|17.03.2000|ta|4|3099999|2|4|2|2|X";
-        $pa = $hp->getOyesykdomArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("0000421", $pa["oyId"]);
     	$this->assertEquals("11111/97", $pa["hundId"]);

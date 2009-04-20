@@ -9,7 +9,7 @@ class KullParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new KullParser();
     	$parseString = "665525|11111/96|03225/97|3074574|20.04.2001|19.09.2000|348";
-        $pa = $hp->getKullArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("665525", $pa["kullId"]);
     	$this->assertEquals("11111/96", $pa["hundIdFar"]);
