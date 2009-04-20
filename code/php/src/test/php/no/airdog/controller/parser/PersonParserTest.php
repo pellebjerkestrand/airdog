@@ -33,7 +33,7 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     					2459202|Petter, Svein Hansen|En gate. 2 A|3. b|4 a|4323|N|349|lol|112|05.02.2008|22.09.1993|19.09.1950';
     	
         $hp = new PersonParser();
-        $pa = $hp->getPersonlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

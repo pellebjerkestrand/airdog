@@ -44,7 +44,7 @@ class KullParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new KullParser();
     	
-    	$pa = $hp->getKulllisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Kull.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Kull.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         

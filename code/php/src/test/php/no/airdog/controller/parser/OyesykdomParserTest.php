@@ -47,7 +47,7 @@ class OyesykdomParserTest extends PHPUnit_Framework_TestCase
     					0000422|11111/97|0049|03|16.11.1999|3|M|1|319|3|4|0|5|16|2|3|1|ta|17.03.2000|ta|4|3099999|2|4|2|2|Y';
     	
         $hp = new OyesykdomParser();
-        $pa = $hp->getOyesykdomlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

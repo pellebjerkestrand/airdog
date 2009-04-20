@@ -48,7 +48,7 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     					0202|0302989|1|lol|1|lol|lol|gl|saa|HKAS|8|A1|s28391/2005|lol|+|lol|C|3221747|lol|348|lol|lol|lol|lol|23.12.2009|16.11.2009';
     	
         $hp = new AasykdomParser();
-        $pa = $hp->getAasykdomlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

@@ -43,7 +43,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
 						tre|12214|A12121|121|teir|122112|1212/212112|M|||||12112|12122|gfffl||||||12112|08.03.2000|09.03.2000';
     	
         $hp = new HdsykdomParser();
-        $pa = $hp->getHdsykdomlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

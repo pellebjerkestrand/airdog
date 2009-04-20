@@ -38,7 +38,7 @@ class UtstillignParserTest extends PHPUnit_Framework_TestCase
 						100006|014100|2594871|03.11.1999|sb|PETTERSEN, TORILL|SORLAND|foo|3538|foo|16.01.2010|GLOMMA, DAL|NORSK POLAREHUNDKLUBB|foo|21.02.2010';
     	
         $hp = new UtstillingParser();
-        $pa = $hp->getUtstillinglisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	
