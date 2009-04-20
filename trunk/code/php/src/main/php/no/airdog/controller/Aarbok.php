@@ -76,7 +76,7 @@ function hentHunder($aar, $kjonn)
 
 function hentHundArray($hundId, $aar)
 {
-	return array();
+	return array('hundId' => '');
 }
 
 function hentKullArray($hundId)
