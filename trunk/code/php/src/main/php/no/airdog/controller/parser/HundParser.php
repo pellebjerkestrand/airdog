@@ -39,7 +39,7 @@ class HundParser
 		}
 	}
 	
-	public function getelisteArray($hundeliste)
+	public function getlisteArray($hundeliste)
 	{
 		$hundeliste = str_replace("\r\n", "\n", $hundeliste);
 		$hundelisteArray = split("\n", $hundeliste);

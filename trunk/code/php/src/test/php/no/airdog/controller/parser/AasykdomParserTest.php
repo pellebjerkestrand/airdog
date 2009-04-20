@@ -65,7 +65,7 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new AasykdomParser();
     	
-    	$pa = $hp->getAasykdomlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Aasykdom.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Aasykdom.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         

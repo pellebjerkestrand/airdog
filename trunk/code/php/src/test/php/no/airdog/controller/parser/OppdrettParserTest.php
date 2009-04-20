@@ -23,7 +23,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
 						244234|Mansen Hasen|12212';
     	
         $hp = new OppdrettParser();
-        $pa = $hp->getOppdrettlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

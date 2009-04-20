@@ -64,7 +64,7 @@ class OyesykdomParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new OyesykdomParser();
     	
-    	$pa = $hp->getOyesykdomlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oyesykdom.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oyesykdom.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
