@@ -28,7 +28,7 @@
             [Bindable]private var erDommerId2Korrekt:Boolean = false;
             [Bindable]private var erHundIdKorrekt:Boolean = false;
     		
-    		[Bindable]private var premier:ArrayCollection = new ArrayCollection(
+    		private var premier:ArrayCollection = new ArrayCollection(
                 [ {label:"Ingen"}, 
                   {label:"CK"}, 
                   {label:"CERT"},
@@ -36,7 +36,7 @@
                   {label:"ResCacit"},
                   {label:"ÆP Skog"} ]);
                   
-            [Bindable]private var klasser:ArrayCollection = new ArrayCollection(
+            private var klasser:ArrayCollection = new ArrayCollection(
                 [ {label:"UK"}, 
                   {label:"AK"}, 
                   {label:"UK/AK"},
@@ -48,6 +48,18 @@
                   {label:"Derby Kvalik"},
                   {label:"Derby Semi"},
                   {label:"Derby Finale"} ]);
+                  
+            [Embed("../assets/intetbilde.png")]
+           	private var ikon_ingenHund:Class;
+           	
+           	[Embed("../assets/ikoner/dog.png")]
+           	private var ikon_hund:Class;
+           	
+           	[Embed("../assets/ikoner/user_silhouette.png")]
+           	private var ikon_ingenPerson:Class;
+           	
+           	[Embed("../assets/ikoner/user.png")]
+           	private var ikon_person:Class;
     
             private var hvilkeKontroll:DisplayObject;
             
@@ -573,7 +585,7 @@
             	}
             	else
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
+            		hundIdIkon.source = ikon_ingenHund;
             		hundNavn.text = "Ukjent";
             		hundNavn.toolTip = "Ukjent";
             	}
@@ -583,12 +595,12 @@
             {
             	if((StringUtil.trim(event.navn) == ""))
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/intetbilde.png";
+            		hundIdIkon.source = ikon_ingenHund;
             		hundNavn.toolTip = "Ukjent";
             	}
             	else
             	{
-            		hundIdIkon.source = "no/airdog/view/assets/ikoner/dog.png";
+            		hundIdIkon.source = ikon_hund;
             		hundNavn.toolTip = StringUtil.trim(event.navn);
             	}
             	hundNavn.text = StringUtil.trim(event.navn);
@@ -603,14 +615,16 @@
             {
             	if(StringUtil.trim(event.navn) == "")
             	{
-            		dommer1Ikon.source = "no/airdog/view/assets/ikoner/user_silhouette.png";
+            		dommer1Ikon.source = ikon_ingenPerson;
             		dommer1Label.text = "Ukjent";
+            		dommer1Label.toolTip = "Ukjent";
             	}
             	else
             	{
-            		dommer1Ikon.source = "no/airdog/view/assets/ikoner/user.png";
+            		dommer1Ikon.source = ikon_person;
             		dommer1Label.text = StringUtil.trim(event.navn);
             		dommer1Ikon.toolTip = dommer1Label.text;
+            		dommer1Label.toolTip = dommer1Label.text;
             	}
             }
 			
@@ -623,14 +637,16 @@
             {
             	if(StringUtil.trim(event.navn) == "")
             	{
-            		dommer2Ikon.source = "no/airdog/view/assets/ikoner/user_silhouette.png";
+            		dommer2Ikon.source = ikon_ingenPerson;
             		dommer2Label.text = "Ukjent";
+            		dommer2Label.toolTip = "Ukjent";
             	}
             	else
             	{
-            		dommer2Ikon.source = "no/airdog/view/assets/ikoner/user.png";
+            		dommer2Ikon.source = ikon_person;
             		dommer2Label.text = StringUtil.trim(event.navn);
             		dommer2Ikon.toolTip = dommer2Label.text;
+            		dommer2Label.toolTip = dommer2Label.text;
             	}
             }
             
@@ -766,14 +782,14 @@
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">
 							<mx:TextInput id="dommerId1" focusOut="dommerId1Sjekk()" change="validering(event)" width="84" height="20"/>
 							<mx:Image id="dommer1Ikon" width="16" height="16"/>
-							<mx:Text id="dommer1Label" width="75" maxWidth="75"/>
+							<mx:Text id="dommer1Label" width="75" maxWidth="75" height="20" maxHeight="20"/>
 						</mx:HBox>
 					</mx:FormItem>
 					<mx:FormItem label="2">	
 						<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" horizontalGap="0" verticalAlign="middle">		
 							<mx:TextInput id="dommerId2" focusOut="dommerId2Sjekk()" change="validering(event)" width="84" height="20"/>
 							<mx:Image id="dommer2Ikon" width="16" height="16"/>
-							<mx:Text id="dommer2Label" width="75" maxWidth="75"/>
+							<mx:Text id="dommer2Label" width="75" maxWidth="75" height="20" maxHeight="20"/>
 						</mx:HBox>
 					</mx:FormItem>
 				</mx:Form>

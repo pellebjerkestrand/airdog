@@ -21,13 +21,13 @@
     
     <mx:HBox styleName="viewmeny" width="100%">
     	<mx:FormItem label="Navn">
-    		<mx:TextInput id="hundNavn" enter="sok()"/>
+    		<mx:TextInput id="hundNavn" styleName="tekstboksRund" enter="sok()"/>
     	</mx:FormItem>
     	<mx:FormItem label="År">
-    		<mx:TextInput id="hundAr" enter="sok()"/>
+    		<mx:TextInput id="hundAr" styleName="tekstboksRund" enter="sok()"/>
     	</mx:FormItem>
     	<mx:FormItem>
-    		<mx:LinkButton label="Søk" click="sok()" icon="@Embed(source='assets/ikoner/magnifier.png')"/>
+    		<mx:LinkButton label="Søk" styleName="tekstboksRund" click="sok()" icon="@Embed(source='assets/ikoner/magnifier.png')"/>
     	</mx:FormItem>
 	    <mx:Spacer width="100%"/>
 	    <mx:LinkButton label="Eksporter" click="ekspoterGjennomsnitt()"

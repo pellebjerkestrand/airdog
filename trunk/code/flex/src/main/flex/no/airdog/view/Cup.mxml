@@ -13,7 +13,7 @@
 			import no.airdog.model.Cup;
 			import no.airdog.services.Components;
 			
-			private var datoformat:String = "YYYY-MM-DD";
+			[Bindable]private var datoformat:String = "YYYY-MM-DD";
 			
 			private function init():void
 			{
@@ -68,10 +68,10 @@
 	
 	<mx:HBox styleName="viewmeny" width="100%">
 		<mx:FormItem label="Fra">
-			<mx:DateField id="fra" editable="false" formatString="{datoformat}" yearNavigationEnabled="true" width="100"/>	
+			<mx:DateField id="fra" styleName="tekstboksRund" editable="false" formatString="{datoformat}" yearNavigationEnabled="true" width="100"/>	
 		</mx:FormItem>
 		<mx:FormItem label="Til">
-			<mx:DateField id="til" editable="false" formatString="{datoformat}" yearNavigationEnabled="true" width="100"/>
+			<mx:DateField id="til" styleName="tekstboksRund" editable="false" formatString="{datoformat}" yearNavigationEnabled="true" width="100"/>
 		</mx:FormItem>
 		<mx:FormItem>
 			<mx:LinkButton label="Hent liste" click="hentListe()" icon="@Embed(source='/no/airdog/view/assets/ikoner/report_paper.png')"/>
