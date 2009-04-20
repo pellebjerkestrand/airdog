@@ -47,7 +47,9 @@
 	    	<mx:FormItem label="År">
 	    		<mx:NumericStepper id="aar" value="2008" maxChars="4" maximum="3000"/>
 	    	</mx:FormItem>
-	    	<mx:FormItem label="Kjønn">
+	    	<mx:FormItem label="Kjønn"
+	    		visible="{Components.instance.session.aarbokHund == null ? true : false }"
+    			includeInLayout="{Components.instance.session.aarbokHund == null ? true : false }">
 	    		<mx:RadioButton groupName="kjonn" id="alle" label="Alle" selected="true" />
 			    <mx:RadioButton groupName="kjonn" id="hann" label="Hann" /> 
 			    <mx:RadioButton groupName="kjonn" id="tispe" label="Tispe" />
