@@ -51,8 +51,8 @@
 	    		visible="{Components.instance.session.aarbokHund == null ? true : false }"
     			includeInLayout="{Components.instance.session.aarbokHund == null ? true : false }">
 	    		<mx:RadioButton groupName="kjonn" id="alle" label="Alle" selected="true" />
-			    <mx:RadioButton groupName="kjonn" id="hann" label="Hann" /> 
-			    <mx:RadioButton groupName="kjonn" id="tispe" label="Tispe" />
+			    <mx:RadioButton groupName="kjonn" id="h" label="Hann" /> 
+			    <mx:RadioButton groupName="kjonn" id="t" label="Tispe" />
 	    	</mx:FormItem>
 	    	<mx:VBox horizontalAlign="center" width="100%">
 				<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
