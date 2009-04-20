@@ -16,7 +16,7 @@ class AasykdomParserTest extends PHPUnit_Framework_TestCase
     	$this->assertEquals("9711", $pa["veId"]);
     	$this->assertEquals("0201417", $pa["aaId"]);
     	$this->assertEquals("2", $pa["diagnoseKode"]);
-    	$this->assertEquals("fooa", $pa["idMerkerKode"]);
+    	$this->assertEquals("fooa", $pa["idmerketkode"]);
     	$this->assertEquals("foob", $pa["lidelseKode"]);
     	$this->assertEquals("fooc", $pa["sekHoyreKode"]);
     	$this->assertEquals("food", $pa["sekVenstreKode"]);
