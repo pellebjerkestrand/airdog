@@ -68,7 +68,7 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new PremieParser();
     	
-    	$pa = $hp->getPremielisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Premie.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Premie.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         

@@ -27,7 +27,7 @@ class KullParserTest extends PHPUnit_Framework_TestCase
 						775525|11111/96|03225/97|3074575|20.04.2001|19.09.2000|349';
     	
         $hp = new KullParser();
-        $pa = $hp->getKulllisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

@@ -50,7 +50,7 @@ class PersonParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new PersonParser();
     	
-    	$pa = $hp->getPersonlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Person.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Person.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         

@@ -23,7 +23,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
 						TORE OG PELLE|00222/92|348';
     	
         $hp = new EierParser();
-        $pa = $hp->getEierlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	
