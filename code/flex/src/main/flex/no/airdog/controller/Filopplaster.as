@@ -74,7 +74,7 @@ package no.airdog.controller
 			}
 			catch (io:IllegalOperationError)
 			{
-				Alert.show( String(io.message), "feil fil format", 0);
+				Alert.show( String(io.message), "feil filformat", 0);
 			}	
         }
 		
@@ -98,7 +98,7 @@ package no.airdog.controller
 			} 
 			else {
 				Alert.show(String("Filen er for stor! \n\nVelg en fil som er mindre "+ filstorrelse + "KB" ), 
-				"Filstørrelse feil", Alert.OK);
+				"Filstørrelsefeil", Alert.OK);
 			} 
         }
 		
@@ -109,7 +109,7 @@ package no.airdog.controller
         
        	private function ioErrorHandler( event:IOErrorEvent ):void 
 		{
-			Alert.show( "Kan ikke koble til server", "Server feil");
+			Alert.show( "Kan ikke koble til server", "Serverfeil");
 			opplastning.progressBar.label = "Kan ikke koble til server";
 		}
 		

@@ -34,17 +34,7 @@ package no.airdog.controller
         {
         	Components.instance.session.aarbokHund = hund;
         	Components.instance.session.hovedNavigasjon.nr = 14;
-        }
-        
-//        public function visLeggInnJaktproveVindu(parent:DisplayObject):void
-//        {	
-//    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
-//    		jaktproveVindu.width = 900;
-//    		jaktproveVindu.height = 580;
-//    		jaktproveVindu.isPopUp = false;
-//        	PopUpManager.centerPopUp(jaktproveVindu);
-//			PopUpManager.bringToFront(jaktproveVindu);
-//        }      
+        }     
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
         {
@@ -476,16 +466,6 @@ package no.airdog.controller
 			Components.instance.session.backupKopier = new ArrayCollection(event as Array);
 		}
 		
-//		public function lagKopi(tabell:String):void
-//		{
-//			Components.instance.services.airdogService.lagKopi(tabell, lagKopiResultat);
-//		}
-//		
-//		public function lagKopiResultat(event:Object):void
-//		{
-//			
-//		}
-		
 		public function lagFullKopi(navn:String):void
 		{
 			Components.instance.services.airdogService.lagFullKopi(navn, lagFullKopiResultat);
@@ -512,16 +492,6 @@ package no.airdog.controller
    			}
 			Components.instance.session.backupFiler = filer;
 		}
-		
-//		public function lastKopi(tabell:String, mappe:String):void
-//		{
-//			Components.instance.services.airdogService.lastKopi(tabell, mappe, lastKopiResultat);
-//		}
-//		
-//		public function lastKopiResultat(event:Object):void
-//		{
-//			
-//		}
 		
 		public function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		{

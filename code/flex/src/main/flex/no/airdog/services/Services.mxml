@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:services="no.airdog.services.*">
-        
-        <mx:RemoteObject
-                id="airdogAmfService"
-                destination="zend"
-                endpoint="{rootPath}{messageBrokerPath}"
-                showBusyCursor="true" />
+<Object xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:services="no.airdog.services.*">        
+    <mx:RemoteObject
+        id="airdogAmfService"
+        destination="zend"
+        endpoint="{rootPath}{messageBrokerPath}"
+        showBusyCursor="true" />
+            
+    <services:AirdogService id="airdogService" service="{airdogAmfService}"/>
+            
+    <mx:Script>
+        [Bindable]
+        public var rootPath:String;
                 
-        <services:AirdogService id="airdogService" service="{airdogAmfService}"/>
-                
-        <mx:Script>
-                [Bindable]
-                public var rootPath:String;
-                        
-                [Bindable]
-                private var messageBrokerPath:String = "";
-        </mx:Script>
+        [Bindable]
+        private var messageBrokerPath:String = "";
+    </mx:Script>
 </Object>
