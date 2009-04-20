@@ -36,14 +36,15 @@ package no.airdog.controller
         	Components.instance.session.hovedNavigasjon.nr = 14;
         }
         
-        public function visLeggInnJaktproveVindu(parent:DisplayObject):void
-        {	
-    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
-    		jaktproveVindu.width = 900;
-    		jaktproveVindu.height = 580;
-        	PopUpManager.centerPopUp(jaktproveVindu);
-			PopUpManager.bringToFront(jaktproveVindu);
-        }      
+//        public function visLeggInnJaktproveVindu(parent:DisplayObject):void
+//        {	
+//    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+//    		jaktproveVindu.width = 900;
+//    		jaktproveVindu.height = 580;
+//    		jaktproveVindu.isPopUp = false;
+//        	PopUpManager.centerPopUp(jaktproveVindu);
+//			PopUpManager.bringToFront(jaktproveVindu);
+//        }      
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
         {
@@ -51,6 +52,7 @@ package no.airdog.controller
     		jaktproveVindu.aktivJaktprove = jaktprove;
     		jaktproveVindu.width = 900;
     		jaktproveVindu.height = 580;
+    		jaktproveVindu.isPopUp = true;
         	PopUpManager.centerPopUp(jaktproveVindu);
 			PopUpManager.bringToFront(jaktproveVindu);
         }
@@ -224,6 +226,11 @@ package no.airdog.controller
 		public function hentJaktproverResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveListe = new ArrayCollection(event as Array);
+			
+			if(jaktproveVindu && jaktproveVindu.isPopUp)
+			{
+				PopUpManager.removePopUp(jaktproveVindu);
+			}
 		}
 		
 		public function hentAlleJaktproverAar(aar:String):void
