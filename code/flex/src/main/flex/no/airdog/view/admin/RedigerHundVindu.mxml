@@ -19,6 +19,7 @@
 			import mx.collections.*;
 			import mx.controls.*;
 			import mx.events.*;
+			import mx.utils.StringUtil;
 			import mx.validators.Validator;
 			
 			[Bindable]public var erGodkjent:Boolean;
@@ -127,6 +128,7 @@
 				manueltEndretDato.text = Components.instance.session.hundprofil.manueltEndretDato;
 				
 				erTilbakestillt = true;
+				erGodkjent = false;
 			}
 			
 			private function valider(validerer:Validator):Boolean
@@ -193,6 +195,7 @@
              	if(likTest)
              	{
              		erTilbakestillt = true;
+             		erGodkjent = false;
              	}
              	
              	erGodkjent = true;
@@ -217,123 +220,120 @@
 				hundIdValidator.requiredFieldError = "Hund-ID er påkrevd";
 			}
 			
-//			private function hundIdSjekk(id:Event):void
-//           {
-//            	if(valider(hundIdValidator))
-//            	{
-//            		Components.instance.controller.hentHund(hundId.text, hundIdSjekkResultat);
-//            	}
-//            	else
-//           	{
-//            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_cirle.png";
-//            	}
-//            }
+			private function sjekkIdMor():void
+			{
+				Components.instance.controller.hentHund(morId.text.toString(), sjekkMorIdResultat);
+			}
             
-//            private function hundIdSjekkResultat(event:Hund):void
-//            {
-//            	if((StringUtil.trim(event.navn) == ""))
-//            	{
-//            		hundIdIkon.source = "no/airdog/view/assets/ikoner/cross_circle.png";
-//            	}
-//            	else
-//            	{
-//            		hundIdIkon.source = "no/airdog/view/assets/ikoner/tick_circle.png";
-//            	}
-            	
-//           	hundNavn.text = StringUtil.trim(event.navn);
-//            }
-		
+            private function sjekkMorIdResultat(event:Hund):void
+            {
+            	if(StringUtil.trim(event.navn) == "")
+            	{
+            		morNavn.text = "Ukjent";
+            	}
+            	else
+            	{
+            		morNavn.text = StringUtil.trim(event.navn);
+            	}
+            	morNavn.toolTip = morNavn.text;
+            }
+            
+            private function sjekkIdFar():void
+			{
+				Components.instance.controller.hentHund(farId.text.toString(), sjekkFarIdResultat);
+			}
+            
+            private function sjekkFarIdResultat(event:Hund):void
+            {
+            	if(StringUtil.trim(event.navn) == "")
+            	{
+            		farNavn.text = "Ukjent";
+            	}
+            	else
+            	{
+            		farNavn.text = StringUtil.trim(event.navn);
+            	}
+            	farNavn.toolTip = farNavn.text;
+            }
 		]]>
 	</mx:Script>	
 	
 	<mx:HBox>
-		<mx:Form>
+		<mx:Form id="primaerform">
 			<mx:FormItem label="Hund-ID">
-				<mx:TextInput id="hundId" change="validering(event)" />
+				<mx:TextInput id="hundId" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Tittel">
-				<mx:TextInput id="tittel" change="validering(event)" />
+				<mx:TextInput id="tittel" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Navn">
-				<mx:TextInput id="navn" change="validering(event)" />
+				<mx:TextInput id="navn" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Mors ID">
-				<mx:TextInput id="morId" change="validering(event)"/>
+				<mx:TextInput id="morId" change="validering(event)" focusOut="sjekkIdMor()" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Navn">
-				<mx:TextInput id="morNavn" enabled="false"/>
-				<mx:Image id="morIkon"/>
+				<mx:TextInput id="morNavn" enabled="false" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Fars ID">			
-				<mx:TextInput id="farId" change="validering(event)"/>
+				<mx:TextInput id="farId" change="validering(event)" focusOut="sjekkIdFar()" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Navn">
-				<mx:TextInput id="farNavn" enabled="false" />
-				<mx:Image id="farIkon"/>
-			</mx:FormItem>
-		</mx:Form>
-		<mx:Form>
-			<mx:FormItem label="Kjønn">
-				<mx:HBox>
-					<mx:RadioButton groupName="kjonnValg" id="radioHann" label="Hann" value="H"/>
-					<mx:RadioButton groupName="kjonnValg" id="radioTispe" label="Tispe" value="T"/>		
-				</mx:HBox>
+				<mx:TextInput id="farNavn" enabled="false" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Eier-ID">
-				<mx:TextInput id="eierId" change="validering(event)" />
+				<mx:TextInput id="eierId" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Rase-ID">
-				<mx:TextInput id="raseId" enabled="false" />
+				<mx:TextInput id="raseId" enabled="false" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Kull-ID">
-				<mx:TextInput id="kullId" change="validering(event)" />
+				<mx:TextInput id="kullId" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="ID-nummer">
-				<mx:TextInput id="idNr" change="validering(event)" />
+				<mx:TextInput id="idNr" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="ID-merke">
-				<mx:TextInput id="idMerke" change="validering(event)" />
+				<mx:TextInput id="idMerke" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 		</mx:Form>
-	</mx:HBox>
-	<mx:HBox label="Fysikk og metadata">
 		<mx:Form>
-			<mx:FormHeading label="Fysikk"/>
+			<mx:FormItem label="Kjønn" direction="horizontal">
+				<mx:RadioButton groupName="kjonnValg" id="radioHann" label="Hann" value="H" change="validering(event)"/>
+				<mx:RadioButton groupName="kjonnValg" id="radioTispe" label="Tispe" value="T" change="validering(event)"/>		
+			</mx:FormItem>
 			<mx:FormItem label="Øyesykdom">
-				<mx:TextInput id="oyesykdom" change="validering(event)" />
+				<mx:TextInput id="oyesykdom" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Hoftesykdom">
-				<mx:TextInput id="hoftesykdom" change="validering(event)"/>
+				<mx:TextInput id="hoftesykdom" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Hårlag">
-				<mx:TextInput id="haarlag" change="validering(event)" />
+				<mx:TextInput id="haarlag" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Farge">
-				<mx:TextInput id="farge" change="validering(event)"/>
+				<mx:TextInput id="farge" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Fargevariant">
-				<mx:TextInput id="fargevariant" change="validering(event)"/>
+				<mx:TextInput id="fargevariant" change="validering(event)" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Størrelse">
-				<mx:TextInput id="storrelse" change="validering(event)"/>
-			</mx:FormItem>				
-		</mx:Form>
-		<mx:Form>
-			<mx:FormHeading label="Metadata"/>
+				<mx:TextInput id="storrelse" change="validering(event)" width="175" maxWidth="175"/>
+			</mx:FormItem>
 			<mx:FormItem label="Endret av">
-				<mx:TextInput id="endretAv" enabled="false" />
+				<mx:TextInput id="endretAv" enabled="false" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Dato endret">
-				<mx:DateField id="endretDato" enabled="false" formatString="YYYY-MM-DD" /> 
+				<mx:DateField id="endretDato" enabled="false" formatString="YYYY-MM-DD" width="175" maxWidth="175"/> 
 			</mx:FormItem>
 			<mx:FormItem label="Dato registrert">
-				<mx:DateField id="regDato" enabled="false" formatString="YYYY-MM-DD" />
+				<mx:DateField id="regDato" enabled="false" formatString="YYYY-MM-DD" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Manuelt endret av">
-				<mx:TextInput id="manueltEndretAv" enabled="false" />
+				<mx:TextInput id="manueltEndretAv" enabled="false" width="175" maxWidth="175"/>
 			</mx:FormItem>
 			<mx:FormItem label="Dato manuelt endret">
-				<mx:DateField id="manueltEndretDato" enabled="false" formatString="YYYY-MM-DD" />				
+				<mx:DateField id="manueltEndretDato" enabled="false" formatString="YYYY-MM-DD" width="175" maxWidth="175"/>				
 			</mx:FormItem>	
 		</mx:Form>
 	</mx:HBox>
