@@ -9,7 +9,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new HundParser();
     	$parseString = "323|345453|&15335/4354|Tittel|hunden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor";
-        $pa = $hp->getHundArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("323", $pa["raseId"]);
     	$this->assertEquals("345453", $pa["kullId"]);

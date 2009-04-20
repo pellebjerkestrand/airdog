@@ -9,7 +9,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new FuglParser();
     	$parseString = "50-95042|01.04.1995|L1|4|1355668|2425066|20466/90|8|1|0|1|2|3|5|4|3|2|1|2|3|4|5|6|5|4|3|2|1|2|3|4|5|6|5|4|TA|13.05.1995|348";
-        $pa = $hp->getFuglArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("50-95042", $pa["proveNr"]);
     	$this->assertEquals("1995-04-01", $pa["proveDato"]);

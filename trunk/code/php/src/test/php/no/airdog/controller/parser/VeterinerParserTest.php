@@ -9,7 +9,7 @@ class VeterinerParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new VeterinerParser();
     	$parseString = "9000|1000|Veien 1|Svingen 2|Kroken 3|6666|22225555|55552222|Ze Name|Ze Date|Ze Germans!|Jackie Chan";
-        $pa = $hp->getVeterinerArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("9000", $pa["veterinerId"]);
     	$this->assertEquals("1000", $pa["personId"]);

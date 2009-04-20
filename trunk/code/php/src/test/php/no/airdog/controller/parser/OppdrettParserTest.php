@@ -9,7 +9,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {
     	$hp = new OppdrettParser();
     	$parseString = "544|Svein, Geir Svein|33348";
-        $pa = $hp->getOppdrettArray($parseString);
+        $pa = $hp->getArray($parseString);
         
     	$this->assertEquals("544", $pa["kullId"]);
     	$this->assertEquals("Svein, Geir Svein", $pa["oppdretter"]);
