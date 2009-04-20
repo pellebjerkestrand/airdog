@@ -40,7 +40,7 @@ class EierParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new EierParser();
     	
-    	$pa = $hp->getEierlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Eier.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Eier.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         

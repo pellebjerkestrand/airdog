@@ -40,7 +40,7 @@ class HundParserTest extends PHPUnit_Framework_TestCase
         				3232|345453|&15335/4354|Tittel|Hei&HåHuden|&1212/2323|&213/57213270|1032332303067|Farge M/Svart|gra2|ja|kanskje|skallet|1337|H|21232123323|tore|idag|igar|stor2';
     	
         $hp = new HundParser();
-        $pa = $hp->getHundelisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
     	
         $this->assertEquals("2", sizeof($pa));
         

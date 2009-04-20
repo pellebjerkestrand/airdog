@@ -32,7 +32,7 @@ class VeterinerParserTest extends PHPUnit_Framework_TestCase
     					9000|1000|Veien 1|Svingen 2|Kroken 3|6666|22225555|55552222|Ze Name|Ze Date|Ze Germans!|Jackie Chan';
     	
         $hp = new VeterinerParser();
-        $pa = $hp->getVeterinerlisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

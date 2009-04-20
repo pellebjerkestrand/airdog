@@ -51,7 +51,7 @@ class PremieParserTest extends PHPUnit_Framework_TestCase
     	
     	
         $hp = new PremieParser();
-        $pa = $hp->getPremielisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

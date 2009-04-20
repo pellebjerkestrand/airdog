@@ -58,7 +58,7 @@ class FuglParserTest extends PHPUnit_Framework_TestCase
     					50-95044|01.04.1995|L1|4|1355668|2425066|20466/90|8|1|0|1|2|3|5|4|3|2|1|2|3|4|9|6|5|4|3|2|1|2|3|4|5|6|5|4|TA|13.05.1995|349';
     	
         $hp = new FuglParser();
-        $pa = $hp->getFugllisteArray($parseString);
+        $pa = $hp->getlisteArray($parseString);
         
         $this->assertEquals("2", sizeof($pa));
     	

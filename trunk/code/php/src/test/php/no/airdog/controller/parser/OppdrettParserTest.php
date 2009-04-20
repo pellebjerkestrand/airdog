@@ -40,7 +40,7 @@ class OppdrettParserTest extends PHPUnit_Framework_TestCase
     {	
     	$hp = new OppdrettParser();
     	
-    	$pa = $hp->getOppdrettlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oppdrett.dat');
+    	$pa = $hp->getlisteArrayFraFil(dirname(__FILE__).'/../../../../../dummyfiler/Oppdrett.dat');
     	
         $this->assertEquals("2", sizeof($pa));
         
