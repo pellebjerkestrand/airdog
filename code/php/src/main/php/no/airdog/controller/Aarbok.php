@@ -15,12 +15,11 @@ ini_set("include_path", ini_get("include_path") .
 require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
-require_once "HundController.php";
+require_once "database/HundDatabase.php";
 require_once 'database/ValiderBruker.php';
 require_once "Verktoy.php";
 
-$varer = new HundController();
-
+$hd = "";
 $tilkobling = new Tilkobling();
 $database = $tilkobling->getTilkobling();
 
@@ -72,15 +71,21 @@ $database = $tilkobling->getTilkobling();
  * </kulllisteutvidet>
  * </hund>
  */
+ 
+$hundId = $_POST['hundId'];
+$aar = $_POST['aar'];
+$kjonn = $_POST['kjonn'];
+$klubbId = $_POST['klubbId'];
 
-function hentHunder($aar, $kjonn)
+function hentHunder($aar, $kjonn, $klubbId)
 {
 	return array();
 }
 
-function hentHundArray($hundId, $aar)
+function hentHundArray($hundId, $aar, $klubbId)
 {
-	return array('hundId' => '');
+	$hd = new HundDatabase();
+	return $hd->hentHund($hundId, $klubbId);
 }
 
 function hentKullArray($hundId)
@@ -98,24 +103,19 @@ function hentJaktproveArray($hundId, $aar)
 	return array();
 }
 
-
-$hundId = $_POST['hundId'];
-$aar = $_POST['aar'];
-$kjonn = $_POST['kjonn'];
-
 $nyRTF = "";
 $hundeliste = array();
 
 
-if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POST['brukerPassord'], $_POST['klubbId'], "lagAarbok"))
+if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POST['brukerPassord'], $klubbId, "lagAarbok"))
 {
 	if (isset($hundId))
 	{
-		$hundeliste[] = hentHundArray($hundId, $aar);
+		$hundeliste[] = hentHundArray($hundId, $aar, $klubbId);
 	}
 	else
 	{
-		$hundeliste = hentHunder($aar, $kjonn);
+		$hundeliste = hentHunder($aar, $kjonn, $klubbId);
 	}
 	
 	
