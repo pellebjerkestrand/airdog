@@ -16,6 +16,7 @@ require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
 require_once "HundController.php";
+require_once 'database/ValiderBruker.php';
 require_once "Verktoy.php";
 
 $varer = new HundController();
@@ -103,58 +104,63 @@ $nyRTF = "";
 $hundeliste = array();
 
 
-if (isset($hundId))
+if(ValiderBruker::validerBrukerRettighet($this->database, $_POST['brukerEpost'], $_POST['brukerPassord'], $_POST['klubbId'], "lagAarbok"))
 {
-	$hundeliste[] = hentHundArray($hundId, $aar);
-}
-else
-{
-	$hundeliste = hentHunder($aar, $kjonn);
-}
-
-
-foreach ($hundeliste as $enHund)
-{
-	$kullArray = hentKullArray($enHund['hundId']);
-	$enHund['kulltittelliste'] = "";
-	$enHund['kulllisteutvidet'] = "";
-
-	foreach($kullArray as $etKull)
-	{   
-		$avkomArray = hentAvkomArray($etKull);
-		$etKull['avkom'] = "";
-		
-		foreach($avkomArray as $etAvkom)
-		{
-			$jaktproveArray = hentJaktproveArray($etAvkom, $aar);
-			$etAvkom['jaktproveliste'] = "";
-			
-			foreach($jaktproveArray as $enJaktprove)
-			{
-				$etAvkom['jaktproveliste'] .= Verktoy::fyll_RTF($enJaktprove, "../assets/jaktprove.rtf");
-			}
-			
-			$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
-		}
-		
-		$enHund['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
-		$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+	if (isset($hundId))
+	{
+		$hundeliste[] = hentHundArray($hundId, $aar);
+	}
+	else
+	{
+		$hundeliste = hentHunder($aar, $kjonn);
 	}
 	
-	$nyRTF .= Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
-}
-
-
-
-if($nyRTF)
-{
-	echo $nyRTF;
+	
+	foreach ($hundeliste as $enHund)
+	{
+		$kullArray = hentKullArray($enHund['hundId']);
+		$enHund['kulltittelliste'] = "";
+		$enHund['kulllisteutvidet'] = "";
+	
+		foreach($kullArray as $etKull)
+		{   
+			$avkomArray = hentAvkomArray($etKull);
+			$etKull['avkom'] = "";
+			
+			foreach($avkomArray as $etAvkom)
+			{
+				$jaktproveArray = hentJaktproveArray($etAvkom, $aar);
+				$etAvkom['jaktproveliste'] = "";
+				
+				foreach($jaktproveArray as $enJaktprove)
+				{
+					$etAvkom['jaktproveliste'] .= Verktoy::fyll_RTF($enJaktprove, "../assets/jaktprove.rtf");
+				}
+				
+				$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
+			}
+			
+			$enHund['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
+			$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+		}
+		
+		$nyRTF .= Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
+	}
+	
+	
+	
+	if($nyRTF)
+	{
+		echo $nyRTF;
+	}
+	else
+	{
+		echo "Det har skjedd noe feil med genereringen av årboken";
+	}
 }
 else
 {
-	echo "Det har skjedd noe feil med genereringen av årboken";
+	echo "Ingen tilgang";
 }
-
-
 
 
