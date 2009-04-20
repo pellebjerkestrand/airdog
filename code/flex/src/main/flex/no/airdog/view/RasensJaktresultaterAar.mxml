@@ -7,7 +7,8 @@
 			import mx.controls.*;	
 			 
 			private function sokAar(val:String):void
-			{
+			{	
+				Components.instance.controller.fjernJaktproverSammendragAar();
 				Components.instance.controller.hentJaktproverSammendragAar(val as String);								
 			}     
         ]]>
