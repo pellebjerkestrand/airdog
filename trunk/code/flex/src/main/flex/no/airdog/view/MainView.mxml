@@ -226,7 +226,7 @@
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
-			 			label="Ny jaktprøve" click="naviger(11)" styleName="undermeny" 
+			 			label="Jaktprøve" click="naviger(11)" styleName="undermeny" 
 			 			icon="@Embed(source='assets/ikoner/report__plus.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
@@ -237,12 +237,12 @@
 			 			visible="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			label="Arrangementer" click="naviger(13)" styleName="undermeny" 
-			 			icon="@Embed(source='assets/ikoner/table_excel.png')"/>
+			 			icon="@Embed(source='assets/ikoner/map_pin.png')"/>
 			 		<mx:LinkButton
 			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"
-			 			label="Lag årbok" click="naviger(14)" styleName="undermeny"
-						icon="@Embed(source='assets/ikoner/table_excel.png')"/>
+			 			label="Årbok" click="naviger(14)" styleName="undermeny"
+						icon="@Embed(source='assets/ikoner/book_open.png')"/>
 				</mx:HBox>
 			</mx:ViewStack>
 			

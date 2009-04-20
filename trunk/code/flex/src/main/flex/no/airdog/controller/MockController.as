@@ -353,7 +353,10 @@ package no.airdog.controller
 		
 		public function redigerHundResultat(event:Object):void
 		{
-			
+			if(redigerHundVindu && redigerHundVindu.isPopUp)
+			{
+				lukkRedigerHundVindu();
+			}
 		}
 		
 		public function visRedigerHundVindu(parent:DisplayObject, hund:Object):void
@@ -361,8 +364,7 @@ package no.airdog.controller
         	Components.instance.session.hundprofil = hund as Hund;
         	
     		redigerHundVindu = PopUpManager.createPopUp(parent, RedigerHundVindu, true) as RedigerHundVindu;
-    		redigerHundVindu.width = 900;
-    		redigerHundVindu.height = 580;
+			redigerHundVindu.isPopUp = true;
         	PopUpManager.centerPopUp(redigerHundVindu);
 			PopUpManager.bringToFront(redigerHundVindu);
         }
