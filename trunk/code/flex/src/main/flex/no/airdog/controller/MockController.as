@@ -248,6 +248,11 @@ package no.airdog.controller
 			Components.instance.session.jaktproveSammendragAar = new ArrayCollection(event as Array);
 		}
 		
+		public function fjernJaktproverSammendragAar():void
+		{
+			Components.instance.session.jaktproveSammendragAar = null;
+		}
+		
 		public function hentUtstillinger(hundId:String):void
 		{
 			Components.instance.session.utstillingListe = null;

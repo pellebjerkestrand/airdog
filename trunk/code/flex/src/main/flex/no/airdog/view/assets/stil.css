@@ -134,12 +134,12 @@ ControlBar
 //------------------------------
 //  CursorManager
 //------------------------------
-*/
+
 CursorManager
 {
 	busyCursor: Embed(source="skin/stil.swf", symbol="BusyCursor");
 	busyCursorBackground: Embed(source="skin/stil.swf",symbol="BusyCursor");
-}
+}*/
 
 /*
 //------------------------------
