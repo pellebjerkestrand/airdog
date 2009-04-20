@@ -42,7 +42,7 @@ $varer = new HundController();
  * %%KULLBOKSTAV%%, %%PARTNERNAVN%%, %%PARTNERID%%, %%ANTALLVALPER%%, %%FODT%%
  * 
  * kullliste.rtf
- * %%KULLTITTEL%% (genereres utifra filen avkomtittel.rtf)
+ * %%KULLTITTELLISTE%% (genereres utifra filen avkomtittel.rtf)
  * %%OPPDRETTERNAVN%%, %%OPPDRETTERPERSON%%, %%OPPDRETTERADRESSE%%, %%OPPDRETTERPOSTNR%%, %%OPPDRETTERSTED%%, %%OPPDRETTERTLF%%
  * %%KULLAVLSTALL%%, %%KULLHOFTER%%, %%KULLJAKTLYST%%, %%KULLVF%%, %%KULLFAR%%, %%KULLFARFAR%%, %%KULLFARMOR%%, %%KULLMOR%%
  * %%KULLMORFAR%%, %%KULLMORMOR%%
@@ -69,41 +69,68 @@ $varer = new HundController();
  * </hund>
  */
 
-$hundArray = array();
-$kullArray = array();
-$avkomArray = array();
-$jaktproveArray = array();
-
-$kullArray[] = null;
-$kullArray[] = null;
-
-$avkomArray[] = null;
-$avkomArray[] = null;
-$avkomArray[] = null;
-
-$jaktproveArray[] = null;
-$jaktproveArray[] = null;
-$jaktproveArray[] = null;
-$jaktproveArray[] = null;
-
-foreach($kullArray as $etKull)
-{   
-	foreach($avkomArray as $etAvkom)
-	{
-		foreach($jaktproeArray as $enJaktprove)
-		{
-			$etAvkom['jaktproveliste'] .= Verktoy::fyllRTF($enJaktprove, "../assets/jaktprove.rtf");
-		}
-		
-		$etKull['avkom'] .= Verktoy::fyllRTF($etAvkom, "../assets/avkom.rtf");
-	}
+function hentHunder($aar, $kjonn)
+{
 	
-	$hundArray['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
-	$hundArray['kulllisteutvdiet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
-
 }
 
-$nyRTF = Verktoy::fyll_RTF($hundArray, "../assets/hund.rtf");
+function hentHundArray($hundId, $aar)
+{
+	
+}
+
+
+$hundId = $_POST['hundId'];
+$aar = $_POST['aar'];
+$kjonn = $_POST['kjonn'];
+
+$nyRTF = "";
+$hundeliste = array();
+
+
+if (isset($hundId))
+{
+	$hundeliste[] = hentHundArray($hundId, $aar);
+}
+else
+{
+	$hundeliste = hentHunder($aar, $kjonn);
+}
+
+
+foreach ($hundeliste as $enHund)
+{
+	$kullArray = array();
+	$enHund['kulltittelliste'] = "";
+	$enHund['kulllisteutvidet'] = "";
+
+	foreach($kullArray as $etKull)
+	{   
+		$avkomArray = array();
+		$etKull['avkom'] = "";
+		
+		
+		foreach($avkomArray as $etAvkom)
+		{
+			$jaktproveArray = array();
+			$etAvkom['jaktproveliste'] = "";
+			
+			foreach($jaktproveArray as $enJaktprove)
+			{
+				$etAvkom['jaktproveliste'] .= Verktoy::fyll_RTF($enJaktprove, "../assets/jaktprove.rtf");
+			}
+			
+			$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
+		}
+		
+		$enHund['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
+		$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+	}
+	
+	$nyRTF .= Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
+}
+
+
 
 if($nyRTF)
 {
