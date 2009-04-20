@@ -35,7 +35,7 @@ $varer = new HundController();
  * %%HUNDENAVN%%, %%ANTALLVALPER%%, %%MOTSATTKJONN%%, %%GJNAVK%%, %%GJNVF%%, %%GJNJAKTLYST%%, %%GJNFART%%, %%GJNSTIL%%, %%GJNSELVST%%
  * %%GJNSOKBR%%, %%GJNREV%%, %%GJNSAMAR%%
  * 
- * %%KULLLISTE%% (en liste som genereres utifra filen kulltittel.rtf)
+ * %%KULLTITTELLISTE%% (en liste som genereres utifra filen kulltittel.rtf)
  * %%KULLLISTEUTVIDET%% (en liste som genereres utifra filen kullliste.rtf)
  * 
  * kulltittel.rtf
@@ -60,14 +60,16 @@ $varer = new HundController();
  * IKKE FERDIG LAGET ENDA!
  */
 
-$vars = array('hundnavn'    =>	'HUNDENHUNDENSKALduhete',
-              'hundid'	=>	'233233/37336',
-              'eier' =>	'Hans Magnus');
-
 $hundArray = array();
 $kullArray = array();
 $avkomArray = array();
 $jaktproveArray = array();
+
+foreach($kullArray as $etKull)
+{   
+	$hundArray['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
+	$hundArray['KULLLISTEUTVIDET'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
+}
 
 $nyRTF = "";
 $nyRTF .= Verktoy::fyll_RTF($hundArray, "../assets/hund.rtf");
