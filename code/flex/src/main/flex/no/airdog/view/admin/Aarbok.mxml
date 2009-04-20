@@ -18,14 +18,14 @@
 			{
 				if (Components.instance.session.aarbokHund != null)
 				{	
-					if (hann.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.value.toString(), hann.id);
-					if (tispe.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.value.toString(), tispe.id);
+					if (h.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.value.toString(), h.id);
+					if (t.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.value.toString(), t.id);
 					if (alle.selected == true) Verktoy.lagAarbok(Components.instance.session.aarbokHund.hundId, aar.value.toString(), alle.id);
 				}
 				else
 				{
-					if (hann.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), hann.id);
-					if (tispe.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), tispe.id);
+					if (h.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), h.id);
+					if (t.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), t.id);
 					if (alle.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), alle.id);
 				}
 			} 	          
