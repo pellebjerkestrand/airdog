@@ -79,7 +79,8 @@ $klubbId = $_POST['klubbId'];
 
 function hentHunder($aar, $kjonn, $klubbId)
 {
-	return array();
+	$hd = new HundDatabase();
+	return $hd->sokHund("", $klubbId);
 }
 
 function hentHundArray($hundId, $aar, $klubbId)
@@ -109,7 +110,7 @@ $hundeliste = array();
 
 if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POST['brukerPassord'], $klubbId, "lagAarbok"))
 {
-	if (isset($hundId))
+	if ($hundId != "")
 	{
 		$hundeliste[] = hentHundArray($hundId, $aar, $klubbId);
 	}

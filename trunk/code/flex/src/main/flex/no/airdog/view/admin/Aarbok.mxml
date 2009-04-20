@@ -24,9 +24,9 @@
 				}
 				else
 				{
-					if (h.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), h.id);
-					if (t.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), t.id);
-					if (alle.selected == true) Verktoy.lagAarbok(null, aar.value.toString(), alle.id);
+					if (h.selected == true) Verktoy.lagAarbok("", aar.value.toString(), h.id);
+					if (t.selected == true) Verktoy.lagAarbok("", aar.value.toString(), t.id);
+					if (alle.selected == true) Verktoy.lagAarbok("", aar.value.toString(), alle.id);
 				}
 			} 	          
             
