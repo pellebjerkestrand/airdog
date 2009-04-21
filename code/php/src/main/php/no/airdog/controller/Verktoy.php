@@ -112,20 +112,24 @@ class Verktoy
 		
         foreach($variabler as $nokkel => $v) 
         {
-            $sok = "%%".strtoupper($nokkel)."%%";
-                  
-//            //Gjør spesialtegn leslige
-//            foreach($regex as $verdi => $bytt) 
-//            {
-//                $v = str_replace($verdi, $bytt, $v);
-//            }
-                        	
-			$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å");
-			$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5");
-        	
-        	$v = str_replace($utf8,$rtftegn, $v);
-			
-            $dokument = str_replace($sok, $v, $dokument);
+        	if (!is_array($v))
+        	{
+	            $sok = "%%".strtoupper($nokkel)."%%";
+	                  
+//            	//Gjør spesialtegn leslige
+//            	foreach($regex as $verdi => $bytt) 
+//            	{
+//                	$v = str_replace($verdi, $bytt, $v);
+//            	}
+
+	            //$v = mb_convert_case($v, MB_CASE_TITLE, "UTF-8");
+
+				$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å");
+				$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5");
+	        	$v = str_replace($utf8,$rtftegn, $v);
+				
+	            $dokument = str_replace($sok, $v, $dokument);
+        	}
         }
 		
 		return $dokument;

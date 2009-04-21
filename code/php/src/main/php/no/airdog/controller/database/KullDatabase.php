@@ -150,4 +150,23 @@ class KullDatabase
 	
 		return $this->database->fetchAll($select);
 	}
+	
+	public function hentAarbokAvkom($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array(
+			'h.*', 
+			'hundMorNavn' => 'hMor.navn', 
+			'hundFarNavn' => 'hFar.navn',
+			'fodt' => 'kull.fodt'
+		))
+		->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('kull' => 'nkk_kull'), 'h.kullId = kull.kullId', array())
+		->where($this->database->quoteInto('h.hundFarId=?', $hundId) . ' OR ' . $this->database->quoteInto('h.hundMorId=?', $hundId))
+		->where('h.raseId=?', $klubbId)
+		->group('h.hundId');
+	
+		return $this->database->fetchAll($select);
+	}
 }
