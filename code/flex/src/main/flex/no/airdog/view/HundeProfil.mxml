@@ -36,11 +36,11 @@
     </mx:Script>
     
     <mx:HBox styleName="viewmeny" width="100%">
-    	<mx:LinkButton label="Hovedprofil" click="{profilstack.selectedChild = profil}" icon="@Embed(source='assets/ikoner/dog.png')"/>
+    	<mx:LinkButton label="Hovedprofil" click="{profilstack.selectedChild = profil}" icon="@Embed(source='assets/ikoner/card_address.png')"/>
     	<mx:LinkButton label="Jaktprøver" click="{profilstack.selectedChild = jaktproveliste}" icon="@Embed(source='assets/ikoner/flag.png')"/>
     	<mx:LinkButton label="Avkom" click="{profilstack.selectedChild = avkomliste}" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
     	<mx:LinkButton label="Stamtre" click="{profilstack.selectedChild = stamtre}" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
-    	<mx:LinkButton label="Ustilling" click="{profilstack.selectedChild = utstillingliste}" icon="@Embed(source='assets/ikoner/trophy.png')"/>
+    	<mx:LinkButton label="Ustilling" click="{profilstack.selectedChild = utstillingliste}" icon="@Embed(source='assets/ikoner/bookmark.png')"/>
     </mx:HBox>
     
     <mx:ViewStack id="profilstack" creationPolicy="auto"

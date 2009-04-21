@@ -142,7 +142,7 @@
 			<mx:LinkButton id="hjemLink" label="Hjem" icon="@Embed(source='assets/ikoner/airdog_logo_light.png')" 
 				click="klikkHovedMeny(event)" width="74"
 				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
-			<mx:LinkButton id="resultatLink" label="Resultat" icon="@Embed(source='assets/ikoner/dog.png')" 
+			<mx:LinkButton id="resultatLink" label="Hunder" icon="@Embed(source='assets/ikoner/dog_many.png')" 
 				click="klikkHovedMeny(event)"
 				visible="{Components.instance.session.bruker.rettigheter.lese}"/>
 			<mx:LinkButton id="rapporterLink" label="Rapporter" icon="@Embed(source='assets/ikoner/reports.png')" 
@@ -166,7 +166,7 @@
 				
 				<mx:HBox id="sokemeny" width="100%" verticalAlign="middle">
 					<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="undermeny" 
-						icon="@Embed(source='assets/ikoner/dog_many.png')"
+						icon="@Embed(source='assets/ikoner/menu.png')"
 						enabled="{Components.instance.session.hundesokListe.provider != null ? true : false}"/>
 		   			<mx:LinkButton styleName="undermeny" click="naviger(2)"
 		   				label="{Components.instance.session.hundprofil != null ? Verktoy.ucwords(Components.instance.session.hundprofil.navn) : 'Ingen aktiv hund'}"
@@ -181,11 +181,13 @@
 					<mx:LinkButton label="Årsgjennomsnitt" styleName="undermeny" click="naviger(3)" 
 						icon="@Embed(source='assets/ikoner/calendar_month.png')"/>
 					<mx:LinkButton label="Jaktresultater" styleName="undermeny" click="naviger(5)" 
-						icon="@Embed(source='assets/ikoner/flag.png')"/>
+						icon="@Embed(source='assets/ikoner/target.png')"/>
 					<mx:LinkButton label="Fiktivt stamtre" styleName="undermeny" click="naviger(4)" 
-						icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
+						icon="@Embed(source='assets/ikoner/arrow_join_180_fictual.png')"/>
+					<!--
 					<mx:LinkButton label="Avlstall" styleName="undermeny" click="naviger(6)"
 						icon="@Embed(source='assets/ikoner/dog_many.png')"/>
+					-->
 					<mx:LinkButton label="Cup" styleName="undermeny" click="naviger(7)" 
 						icon="@Embed(source='assets/ikoner/crown.png')"/>
 				</mx:HBox>	
@@ -206,7 +208,7 @@
 			 			visible="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
 			 			label=".DAT" click="naviger(10)" styleName="undermeny" 
-			 			icon="@Embed(source='assets/ikoner/envelope__plus.png')"/>
+			 			icon="@Embed(source='assets/ikoner/envelope__arrow.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 

@@ -34,9 +34,9 @@
     	<mx:Label text="Fant {Components.instance.session.hundesokListe.provider.length} hunder i søket" 
     		includeInLayout="{Components.instance.session.hundesokListe.provider.length != 0 ? true : false}"
     		visible="{Components.instance.session.hundesokListe.provider.length != 0 ? true : false}" />    		
-    	<mx:HBox visible="{Components.instance.session.tomtSok}">
+    	<mx:HBox visible="{Components.instance.session.tomtSok}" includeInLayout="{Components.instance.session.tomtSok}">
     		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/exclamation.png')"/>
-    		<mx:Text color="red" text="Det finnes ingen hunder som møter søkekriteriet"/>
+    		<mx:Label color="red" text="Det finnes ingen hunder som møter søkekriteriet"/>
     	</mx:HBox>    		
     	<mx:Spacer width="100%"/>    	
 	   	<mx:LinkButton label="Detaljert" icon="@Embed(source='no/airdog/view/assets/ikoner/toggle.png')" click="visStorHundeliste()"/>
