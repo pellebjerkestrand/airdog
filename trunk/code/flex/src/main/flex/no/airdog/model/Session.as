@@ -36,6 +36,7 @@ package no.airdog.model
         public var stamtre:Hund;
         public var utstillingListe:ArrayCollection = new ArrayCollection();
         public var aarbokHund:Hund;
+        public var tomtSok:Boolean;
         
         public function clone():Session
 		{

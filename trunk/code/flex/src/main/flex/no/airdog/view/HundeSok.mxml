@@ -3,11 +3,12 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:controller="no.airdog.controller.*"
 	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
-	width="100%" height="100%">
+	verticalGap="0" width="100%" height="100%">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Hund;
 			import no.airdog.services.Components;
+			import no.airdog.controller.Navigasjon;			
 			
 			private function visHund(kolonnenr:int):void
 			{	
@@ -16,19 +17,44 @@
 					var hund:Hund = hundeGrid.selectedItem as Hund;
 					Components.instance.controller.visHund(hund.hundId);
 				}
+			}
+			
+			private function visStorHundeliste():void
+			{
+				Navigasjon.visStorHundeliste();
+			}
+			
+			private function visLitenHundeliste():void
+			{
+				Navigasjon.visLitenHundeliste();
 			}		            
         ]]>
     </mx:Script>
+    <mx:HBox styleName="viewmeny" width="100%">
+    	<mx:Label text="Fant {Components.instance.session.hundesokListe.provider.length} hunder i søket" 
+    		includeInLayout="{Components.instance.session.hundesokListe.provider.length != 0 ? true : false}"
+    		visible="{Components.instance.session.hundesokListe.provider.length != 0 ? true : false}" />    		
+    	<mx:HBox visible="{Components.instance.session.tomtSok}">
+    		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/exclamation.png')"/>
+    		<mx:Text color="red" text="Det finnes ingen hunder som møter søkekriteriet"/>
+    	</mx:HBox>    		
+    	<mx:Spacer width="100%"/>
+    	<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="+ for bilde, - for enkeltlinjer"/>
+    	<mx:Label text="Velg visningstype"/>
+   	<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true" click="visStorHundeliste()"/>
+	<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true" click="visLitenHundeliste()"/>
+		    	
+    </mx:HBox>
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}"
 		itemClick="visHund(event.columnIndex)"
 		rowHeight="{Components.instance.session.hundesokListe.rendererHoyde}"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
-		width="100%" height="100%" verticalAlign="middle">
+		width="100%" height="100%">
 		
 		<mx:columns>
 			<mx:DataGridColumn
-				headerText="Hunder ({Components.instance.session.hundesokListe.provider.length})" 
+				headerText="Navn" 
 				dataField="navn" width="525"
 				itemRenderer="{Components.instance.session.hundesokListe.renderer}"/>
 			<mx:DataGridColumn width="60" minWidth="60" headerText="ID" dataField="hundId">
