@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="init()">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" show="init()">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Jaktprove;
@@ -10,16 +10,22 @@
 			import mx.controls.*;
 			import mx.core.UIComponent;
 			
+			private var gammelHundId:String = null;
+			
 			private function init():void
 			{				
 				adminPanel.visible = Components.instance.session.bruker.rettigheter.redigerUtstilling;
+				hentUtstillinger();
 			}
 			
-			public function set hundId(val:String):void
+			private function hentUtstillinger():void
 			{
-				if (val != null)
+				var hundId:String = Components.instance.session.hundprofil.hundId;
+				
+				if(gammelHundId == null || gammelHundId != hundId)
 				{
-					Components.instance.controller.hentUtstillinger(val);
+					gammelHundId = hundId;
+					Components.instance.controller.hentUtstillinger(hundId);
 				}
 			} 
 			

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" show="hentAvkom()">
 	<mx:Script>
         <![CDATA[
         	import mx.controls.LinkBar;
@@ -12,12 +12,17 @@
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
 			
-			public function set hundId(val:String):void
+			private var gammelHundId:String = null;
+			
+			private function hentAvkom():void
 			{
-				if (val != null)
+				var hundId:String = Components.instance.session.hundprofil.hundId;
+				
+				if(gammelHundId == null || gammelHundId != hundId)
 				{
-					Components.instance.controller.hentAvkom(val);
-				}	
+					gammelHundId = hundId;
+					Components.instance.controller.hentAvkom(hundId);
+				}
 			}
 			
 			public function visHund(event:Event):void

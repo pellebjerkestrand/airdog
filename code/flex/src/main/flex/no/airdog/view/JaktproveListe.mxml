@@ -11,7 +11,7 @@
 			import mx.core.UIComponent;
 			
 			private var gammelHundId:String = null;
-
+			
 			private function hentProver():void
 			{
 				var hundId:String = Components.instance.session.hundprofil.hundId;

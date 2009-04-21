@@ -24,10 +24,10 @@
     <mx:ViewStack id="profilstack" creationPolicy="auto"
     	width="100%" height="100%" styleName="nopaddingorborder"
 		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3">
-    	<view:HovedProfil id="hovedprofil"/>
+    	<view:HovedProfil id="hovedprofil" />
     	<view:JaktproveListe id="jaktproveliste"/>            
-  		<view:AvkomListe id="avkomliste" hundId="{Components.instance.session.hundprofil.hundId}"/>
-		<view:Stamtre id="stamtre" width="100%" hundId="{Components.instance.session.hundprofil.hundId}" dybde="3"/>
-		<view:UtstillingListe id="utstillingliste" hundId="{Components.instance.session.hundprofil.hundId}"/>   			
+  		<view:AvkomListe id="avkomliste"/>
+		<view:Stamtre id="stamtre"/>
+		<view:UtstillingListe id="utstillingliste"/>   			
     </mx:ViewStack>
 </mx:VBox>
