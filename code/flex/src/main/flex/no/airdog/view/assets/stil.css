@@ -294,6 +294,7 @@ Image
 */
 LinkButton
 {
+	
 	disabledSkin: Embed(source="skin/stil.swf", symbol="LinkButton_disabledSkin");
 	downSkin: Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
 	overSkin: Embed(source="skin/stil.swf", symbol="LinkButton_overSkin");
@@ -351,7 +352,6 @@ MenuBar
 
 .notis
 {
-	/*backgroundColor: #ffffcc;*/
 	backgroundColor: #FBEF9A;
 	backgroundAlpha: 0.7;
 	borderColor: #a3a3a3;
@@ -837,10 +837,8 @@ Tree
 
 LinkButton .undermeny
 {
-	/*color: #B7B7B7;*/
 	color: #3B5912;
 	cornerRadius: 2;
-	themeColor: #d8d8d8;
 	leading: 0;
 	textAlign: left;
 	paddingTop: 0;
@@ -849,6 +847,7 @@ LinkButton .undermeny
 	paddingRight: 5;
 	borderColor: #FFFFFF;
 	fontWeight: normal;
+	textDisabledColor: #ff0000;
 }
 
 ViewStack .undermeny

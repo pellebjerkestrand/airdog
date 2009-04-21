@@ -165,13 +165,23 @@ package no.airdog.controller
 		public function sokHund(soketekst:String):void
 		{
 			Components.instance.session.hundesokListe.provider = new ArrayCollection();
-			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);
+			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);		
 		}
 		
 		public function hundesokResultat(event:Object):void
 		{
 			Components.instance.session.hundesokListe.provider = new ArrayCollection(event as Array);
 			Components.instance.historie.settPunkt();
+			
+			if(Components.instance.session.hundesokListe.provider.length == 0)
+			{				
+				Components.instance.session.tomtSok = true;				
+			}
+			else
+			{
+				Components.instance.session.tomtSok = false;
+			}
+								
 		}
 		
 		public function hentCupListe(fra:String, til:String):void
