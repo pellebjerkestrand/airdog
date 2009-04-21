@@ -106,19 +106,19 @@ class Verktoy
             return false;
         }
 		
-        $regex = array('\\' => "\\\\",
-       '{'  => "\{",
-       '}'  => "\}");   
+//        $regex = array('\\' => "\\\\",
+//       '{'  => "\{",
+//       '}'  => "\}");   
 		
         foreach($variabler as $nokkel => $v) 
         {
             $sok = "%%".strtoupper($nokkel)."%%";
                   
-            //Gjør spesialtegn leslige
-            foreach($regex as $verdi => $bytt) 
-            {
-                $v = str_replace($verdi, $bytt, $v);
-            }
+//            //Gjør spesialtegn leslige
+//            foreach($regex as $verdi => $bytt) 
+//            {
+//                $v = str_replace($verdi, $bytt, $v);
+//            }
                         	
 			$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å");
 			$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5");
