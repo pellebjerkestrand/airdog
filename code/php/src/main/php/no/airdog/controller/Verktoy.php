@@ -97,17 +97,10 @@ class Verktoy
 	    fclose($fil);
  	} 	
  	
-	public static function fyll_RTF($variabler, $rtf_fil) {
-
-        $regex = array('\\' => "\\\\",
-                       '{'  => "\{",
-                       '}'  => "\}");
-                       
-
+	public static function fyll_RTF($variabler, $rtf_fil) 
+	{                     
         $dokument = file_get_contents($rtf_fil);
-        
-        
-        
+
         if(!$dokument) 
         {
             return false;
@@ -116,13 +109,16 @@ class Verktoy
         foreach($variabler as $nokkel => $v) 
         {
             $sok = "%%".strtoupper($nokkel)."%%";
-            
-            
-            //Gjør spesialtegn leslige
-            foreach($regex as $verdi => $bytt) 
-            {
-                $value = str_replace($verdi, $bytt, $v);
-            }
+        
+        
+//            $regex = array('\\' => "\\\\",
+//                   '{'  => "\{",
+//                   '}'  => "\}");             
+//            //Gjør spesialtegn leslige
+//            foreach($regex as $verdi => $bytt) 
+//            {
+//                $value = str_replace($verdi, $bytt, $v);
+//            }
                         	
 			$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å");
 			$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5");
