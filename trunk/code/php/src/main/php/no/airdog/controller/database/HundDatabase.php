@@ -218,4 +218,43 @@ class HundDatabase
 		
 		return $this->database->update('nkk_hund', $verdier, $hvor);
 	}
+	
+	public function hentAarbokHund($hundId, $kjonn, $aar, $klubbId)
+	{
+		$aar = $this->database->quoteInto('hFugl.proveDato LIKE ?', $aar.'%');
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array(
+		'h.*',
+		'hundMorNavn'=>'hMor.navn',
+		'hundFarNavn'=>'hFar.navn',
+		'eier'=>'eier.navn',
+		'eieradresse'=>'eier.adresse1',
+		'eierpostnummer'=>'eier.postNr',
+		'eiersted'=>'eier.adresse3',
+		'eiertlf'=>'eier.telefon1',
+		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('eier'=>'nkk_person'),'h.eierId = eier.personId', array())
+		->join(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId AND ' . $aar, array())
+		->where('h.raseId=?', $klubbId)
+		->group('h.hundId')
+		->order('h.navn ASC');;
+		
+		if ($hundId != "")
+		{
+			$select = $select->group('h.hundId')
+			->where('h.hundId=?', $hundId)
+			->limit(1);
+		}
+		else if ($kjonn != "alle")
+		{
+			$select = $select->where('h.kjonn=?', $kjonn);
+		}
+		
+		// HUSK Å FJERNE
+		$select = $select->limit(100);
+		
+		return $this->database->fetchAll($select);
+	}
 }
