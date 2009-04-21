@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" width="100%" xmlns:view="no.airdog.view.stamtre*" horizontalAlign="center" verticalAlign="middle" cornerRadius="0" xmlns:controller="no.airdog.controller.*">
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:view="no.airdog.view.stamtre*"
+	xmlns:controller="no.airdog.controller.*"
+	paddingLeft="2" paddingTop="2" paddingBottom="2" height="100%" width="100%"  
+	horizontalAlign="center" verticalAlign="middle" cornerRadius="0"
+	show="hentStamtre()">
 	<mx:Script>
         <![CDATA[
+			import mx.controls.*;
         	import mx.core.UIComponent;
         	import no.airdog.model.Hund;
 			import no.airdog.services.Components;      
 			import no.airdog.controller.*;
+
+			private var dybde:int = 3;
+			private var gammelHundId:String = null;
 			
-			import mx.controls.*;
-			
-			private var _hundId:String;
-			private var _dybde:int;
-			
-			public function set hundId(val:String):void
+			private function hentStamtre():void
 			{
-				_hundId = val;
+				var hundId:String = Components.instance.session.hundprofil.hundId;
 				
-				if (_dybde != 0 && _hundId != null)
+				if(gammelHundId == null || gammelHundId != hundId && dybde != 0)
 				{
-					hentHund();
+					gammelHundId = hundId;
+					Components.instance.controller.hentStamtre(hundId, dybde);
 				}
-			}   
-			
-			public function set dybde(val:int):void
-			{
-				_dybde = val;
-				
-				if (_hundId != null)
-				{
-					hentHund();
-				}
-			}        
-			
-			private function hentHund():void
-			{
-				Components.instance.controller.hentStamtre(_hundId, _dybde);
 			}
         ]]>
     </mx:Script>
-    <controller:HundeStamtre hund="{Components.instance.session.stamtre}" />
+    <controller:HundeStamtre hund="{Components.instance.session.stamtre}"/>
 </mx:HBox>
