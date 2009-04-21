@@ -151,7 +151,6 @@
 			<mx:LinkButton id="adminLink" label="Admin" icon="@Embed(source='assets/ikoner/user_business.png')" 
 				click="klikkHovedMeny(event)"
 				visible="{Components.instance.session.bruker.rettigheter.administrere}"/>
-			
 			<mx:Spacer width="100%"/>	
 			<mx:LinkButton id="brukeren" label="Min profil"
 				icon="@Embed(source='assets/ikoner/user_green.png')"
@@ -169,10 +168,11 @@
 					<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="undermeny" 
 						icon="@Embed(source='assets/ikoner/dog_many.png')"
 						enabled="{Components.instance.session.hundesokListe.provider != null ? true : false}"/>
-		   			<mx:LinkButton label="Aktiv hund" styleName="undermeny" click="naviger(2)"
+		   			<mx:LinkButton styleName="undermeny" click="naviger(2)"
+		   				label="{Components.instance.session.hundprofil != null ? Verktoy.ucwords(Components.instance.session.hundprofil.navn) : 'Ingen aktiv hund'}"
 		   				icon="@Embed(source='assets/ikoner/dog.png')" 
 		   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
-		   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
+		   				toolTip="{Components.instance.session.hundprofil != null ? Verktoy.ucwords(Components.instance.session.hundprofil.navn) : ''}"/>
 		   				
 		   			<mx:Spacer width="100%"/>			   			
 				</mx:HBox>
