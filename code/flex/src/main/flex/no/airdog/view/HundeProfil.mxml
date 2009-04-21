@@ -15,7 +15,7 @@
     	<mx:LinkButton label="Stamtre" click="{profilstack.selectedChild = stamtre}" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
     	<mx:LinkButton label="Ustilling" click="{profilstack.selectedChild = utstillingliste}" icon="@Embed(source='assets/ikoner/bookmark.png')"/>
     </mx:HBox>
-    <mx:ViewStack id="profilstack" creationPolicy="auto" selectedIndex="1"
+    <mx:ViewStack id="profilstack" creationPolicy="auto" selectedIndex="0"
     	width="100%" height="100%" styleName="nopaddingorborder"
 		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3">
     	<view:HovedProfil id="hovedprofil" />
