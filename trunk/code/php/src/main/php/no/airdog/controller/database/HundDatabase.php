@@ -227,19 +227,34 @@ class HundDatabase
 		'h.*',
 		'hundMorNavn' => 'hMor.navn',
 		'hundFarNavn' => 'hFar.navn',
+		'mormor' => 'mMor.navn',
+		'morfar' => 'mFar.navn',
+		'farmor' => 'fMor.navn',
+		'farfar' => 'fFar.navn',
 		'eier' => 'eier.navn',
 		'eieradresse' => 'eier.adresse1',
 		'eierpostnummer' => 'eier.postNr',
 		'eiersted' => 'eier.adresse3',
 		'eiertlf' => 'eier.telefon1',
+		'oppdretter' => 'oppdretter.navn',
+		'oppdretteradresse' => 'oppdretter.adresse1',
+		'oppdretterpostnummer' => 'oppdretter.postNr',
+		'oppdrettersted' => 'oppdretter.adresse3',
+		'oppdrettertlf' => 'oppdretter.telefon1',
 		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
 		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('mMor'=>'nkk_hund'),'hMor.hundMorId = mMor.hundId', array())
+		->joinLeft(array('mFar'=>'nkk_hund'),'hMor.hundFarId = mFar.hundId', array())
+		->joinLeft(array('fMor'=>'nkk_hund'),'hFar.hundMorId = fMor.hundId', array())
+		->joinLeft(array('fFar'=>'nkk_hund'),'hFar.hundFarId = fFar.hundId', array())
 		->joinLeft(array('eier'=>'nkk_person'),'h.eierId = eier.personId', array())
+		->joinLeft(array('kull'=>'nkk_kull'),'h.kullId = kull.kullId', array())
+		->joinLeft(array('oppdretter'=>'nkk_person'),'kull.oppdretterId = oppdretter.personId', array())
 		->join(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId AND ' . $aar, array())
 		->where('h.raseId=?', $klubbId)
 		->group('h.hundId')
-		->order('h.navn ASC');;
+		->order('h.navn ASC');
 		
 		if ($hundId != "")
 		{
@@ -256,5 +271,22 @@ class HundDatabase
 		$select = $select->limit(100);
 		
 		return $this->database->fetchAll($select);
+	}
+	
+	public function hentAarbokKullHund($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+		->from(array('h'=>'nkk_hund'), array(
+		'h.*',
+		'hundMorNavn' => 'hMor.navn',
+		'hundFarNavn' => 'hFar.navn'))
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->where('h.raseId=?', $klubbId)
+		->group('h.hundId')
+		->where('h.hundId=?', $hundId)
+		->limit(1);
+		
+		return $this->database->fetchRow($select);
 	}
 }

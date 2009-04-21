@@ -58,6 +58,7 @@
  */
 
 require_once "database/HundDatabase.php";
+require_once "database/KullDatabase.php";
 require_once 'database/ValiderBruker.php';
 require_once "Verktoy.php";
 
@@ -83,9 +84,81 @@ class AarbokController
 		return $hd->hentAarbokHund($hundId, "", $aar, $klubbId);
 	}
 	
-	private function hentKullArray($hundId)
+	private function hentKullArray($hundId, $klubbId)
 	{
-		return array();
+		$kd = new KullDatabase();
+		$hundListe = $kd->hentAarbokAvkom($hundId, $klubbId);
+		$avkomListe = array();
+		
+	    foreach($hundListe as $tmp)
+	   	{    				
+			$avkomFinnes = false;
+			
+			for($i = 0; $i < sizeof($avkomListe); $i++)
+			{
+				if ($avkomListe[$i]['kullId'] == $tmp['kullId'] && 
+				($avkomListe[$i]['partnerid'] == $tmp['hundMorId'] || $avkomListe[$i]['partnerid'] == $tmp['hundFarId']))
+				{
+					$avkomFinnes = true;
+					$avkomListe[$i]['liste'][] = $tmp;
+					$avkomListe[$i]['antallvalper']++;
+				}
+			}
+			
+			if (!$avkomFinnes)
+			{
+				$avkom = array();
+				
+				if ($hundId == $tmp['hundMorId'])
+				{
+					$avkom['partnernavn'] = $tmp['hundFarNavn'];
+					$avkom['partnerid'] = $tmp['hundFarId'];
+					$avkom['morId'] = $tmp['hundMorId'];
+				}
+				else
+				{
+					$avkom['partnernavn'] = $tmp['hundMorNavn'];
+					$avkom['partnerid'] = $tmp['hundMorId'];
+					$avkom['farId'] = $tmp['hundFarId'];
+				}
+				
+				$avkom['kullfar'] = $tmp['hundFarNavn'];
+				$avkom['kullmor'] = $tmp['hundMorNavn'];
+				
+				$avkom['fodt'] = Verktoy::konverterDatabaseTilDatDato($tmp['fodt']);
+				$avkom['kullId'] = $tmp['kullId'];
+				$avkom['liste'] = array();
+				$avkom['antallvalper'] = 1;
+				$avkom['liste'][] = $tmp;
+				
+				$avkomListe[] = $avkom;
+			}
+		}
+		
+		$hd = new HundDatabase();
+		$kullbokstav = "A";
+		for($i = 0; $i < sizeof($avkomListe); $i++)
+		{
+		    $avkomListe[$i]['kullbokstav'] = $kullbokstav++;
+		    
+		    if ($hundId == $avkomListe[$i]['morId'])
+		    {
+		   		$far = $hd->hentAarbokKullHund($avkomListe[$i]['partnerid'], $klubbId);
+		   		$mor = $hd->hentAarbokKullHund($hundId, $klubbId);
+		    }
+		    else
+		    {
+		    	$far = $hd->hentAarbokKullHund($hundId, $klubbId);
+		   		$mor = $hd->hentAarbokKullHund($avkomListe[$i]['partnerid'], $klubbId);
+		    }
+		    
+		    $avkomListe[$i]['kullfarfar'] = $far['hundFarNavn'];
+		    $avkomListe[$i]['kullfarmor'] = $far['hundMorNavn'];
+		    $avkomListe[$i]['kullmormor'] = $mor['hundFarNavn'];
+		    $avkomListe[$i]['kullmorfar'] = $mor['hundMorNavn'];
+		}
+		
+        return $avkomListe;
 	}
 	
 	private function hentAvkomArray($etKull)
@@ -118,18 +191,29 @@ class AarbokController
 			$sidedeler = "";
 			foreach ($hundeliste as $enHund)
 			{
-				$kullArray = $this->hentKullArray($enHund['hundId']);
+				$kullArray = $this->hentKullArray($enHund['hundId'], $klubbId);
 				$enHund['kulltittelliste'] = "";
 				$enHund['kulllisteutvidet'] = "";
-			
+				
+				if ($enHund['vf'] >= 0)	
+					$enHund['vf'] = number_format($enHund['vf'], 1, ',', '');
+					
+				if ($enHund['kjonn'] == "H")	
+					$enHund['motsattkjonn'] = "tispene";
+				else
+					$enHund['motsattkjonn'] = "hannene";
+					
+				$antallvalper = 0;
+					
 				foreach($kullArray as $etKull)
 				{   
-					$avkomArray = $this->hentAvkomArray($etKull);
+					$antallvalper += sizeof($etKull['liste']);
+					
 					$etKull['avkom'] = "";
 					
-					foreach($avkomArray as $etAvkom)
+					foreach($etKull['liste'] as $etAvkom)
 					{
-						$jaktproveArray = $this->hentJaktproveArray($etAvkom, $aar);
+						$jaktproveArray = array(); //$this->hentJaktproveArray($etAvkom, $aar);
 						$etAvkom['jaktproveliste'] = "";
 						
 						foreach($jaktproveArray as $enJaktprove)
@@ -138,11 +222,16 @@ class AarbokController
 						}
 						
 						$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
+						
+						$etKull['kulltittel'] = $etKull['kullbokstav'] . ". " . $etKull['partnernavn'] . " " . 
+						$etKull['partnerid'] . ", " . $etKull['antallvalper'] . " valp(er) - " . $etKull['fodt'];
 					}
 					
 					$enHund['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
 					$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
 				}
+				
+				$enHund['antallvalper'] = $antallvalper;
 				
 				$nyRTF .= $sidedeler . Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
 				$sidedeler = '\page';
