@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" show="hentProver()">
 	<mx:Script>
         <![CDATA[
         	import no.airdog.model.Jaktprove;
@@ -10,13 +10,18 @@
 			import mx.controls.*;
 			import mx.core.UIComponent;
 			
-			public function set hundId(val:String):void
+			private var gammelHundId:String = null;
+
+			private function hentProver():void
 			{
-				if (val != null)
+				var hundId:String = Components.instance.session.hundprofil.hundId;
+				
+				if(gammelHundId == null || gammelHundId != hundId)
 				{
-					Components.instance.controller.hentJaktprover(val);
+					gammelHundId = hundId;
+					Components.instance.controller.hentJaktprover(hundId);
 				}
-			} 
+			}
 			
  			private function slett(eventObj:CloseEvent):void {
 				if (eventObj.detail==Alert.YES) {
