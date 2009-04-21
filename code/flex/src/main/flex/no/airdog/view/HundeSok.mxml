@@ -38,12 +38,9 @@
     		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/exclamation.png')"/>
     		<mx:Text color="red" text="Det finnes ingen hunder som møter søkekriteriet"/>
     	</mx:HBox>    		
-    	<mx:Spacer width="100%"/>
-    	<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="+ for bilde, - for enkeltlinjer"/>
-    	<mx:Label text="Velg visningstype"/>
-   	<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true" click="visStorHundeliste()"/>
-	<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true" click="visLitenHundeliste()"/>
-		    	
+    	<mx:Spacer width="100%"/>    	
+	   	<mx:LinkButton label="Detaljert" icon="@Embed(source='no/airdog/view/assets/ikoner/toggle.png')" click="visStorHundeliste()"/>
+		<mx:LinkButton label="Kompakt" icon="@Embed(source='no/airdog/view/assets/ikoner/toggle_collapse.png')" click="visLitenHundeliste()"/>		    	
     </mx:HBox>
 	<mx:DataGrid id="hundeGrid"			 
 		dataProvider="{Components.instance.session.hundesokListe.provider}"
