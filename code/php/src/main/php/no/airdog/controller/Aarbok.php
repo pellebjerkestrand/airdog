@@ -15,157 +15,17 @@ ini_set("include_path", ini_get("include_path") .
 require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
-require_once "database/HundDatabase.php";
-require_once 'database/ValiderBruker.php';
-require_once "Verktoy.php";
-
-$hd = "";
-$tilkobling = new Tilkobling();
-$database = $tilkobling->getTilkobling();
-
-//$varer->hentHund();
-
-/* Parameter:
- * En eller alle hunder som har deltatt på en jaktprøve et valgt
- * År
- * Hann/Tispe/Alle
- * 
- * 
- * hund.rft
- * %%HUNDNAVN%%, %%HUNDID%%, %%EIER%%, %%EIERADRESSE%%, %%EIERPOSTNUMMER%%, %%EIERSTED%%, %%EIERTLF%%,
- * %%OPPDRETTER%%, %%OPPDRETTERADRESSE%%, %%OPPDRETTERPOSTNUMMER%%, %%OPPDRETTERSTED%%, %%OPPDRETTERTLF%%
- * %%AVLSTALL%%, %%HOFTER%%, %%JAKTLYST%%, %%VILTFINNEREVNE%%, %%FAR%%, %%FARFAR%%, %%FARMOR%%, %%MOR%%, %%%MORFAR%%, %%MORMOR%%
- * %%HUNDENAVN%%, %%ANTALLVALPER%%, %%MOTSATTKJONN%%, %%GJNAVK%%, %%GJNVF%%, %%GJNJAKTLYST%%, %%GJNFART%%, %%GJNSTIL%%, %%GJNSELVST%%
- * %%GJNSOKBR%%, %%GJNREV%%, %%GJNSAMAR%%
- * 
- * %%KULLTITTELLISTE%% (en liste som genereres utifra filen kulltittel.rtf)
- * %%KULLLISTEUTVIDET%% (en liste som genereres utifra filen kullliste.rtf)
- * 
- * kulltittel.rtf
- * %%KULLBOKSTAV%%, %%PARTNERNAVN%%, %%PARTNERID%%, %%ANTALLVALPER%%, %%FODT%%
- * 
- * kullliste.rtf
- * %%KULLTITTELLISTE%% (genereres utifra filen avkomtittel.rtf)
- * %%OPPDRETTERNAVN%%, %%OPPDRETTERPERSON%%, %%OPPDRETTERADRESSE%%, %%OPPDRETTERPOSTNR%%, %%OPPDRETTERSTED%%, %%OPPDRETTERTLF%%
- * %%KULLAVLSTALL%%, %%KULLHOFTER%%, %%KULLJAKTLYST%%, %%KULLVF%%, %%KULLFAR%%, %%KULLFARFAR%%, %%KULLFARMOR%%, %%KULLMOR%%
- * %%KULLMORFAR%%, %%KULLMORMOR%%
- * 
- * %%AVKOM%% (genereres utifra filen avkom.rtf)
- * 
- * avkom.rtf
- * %%AVKOMNAVN%%, %%AVKOMID%%, %%HDSTATUS%%, %%HQSTATUS, %%EIERNAVN%%
- * 
- * %%JAKTPROVELISTE%% (en liste genereres utifra jaktprove.rtf)
- * 
- * %%GJNVF%%, %%GJNJAKTLYST%%, %%GJNFART%%, %%GJNSTIL%%, %%GJNSELVST%%, %%GJNSOKBR%%, %%GJNREV%%, %%GJNSAMAR%%
- * 
- * jaktprove.rtf
- * IKKE FERDIG LAGET ENDA!
- * 
- * <hund>
- * <for:kull->kullltittelliste />
- * <for:kull->kulllisteutvidet>
- * 		<for:avkom->avkominfo>
- * 			<for:jaktprove->jaktproveliste />
- * 		</avkom>
- * </kulllisteutvidet>
- * </hund>
- */
+require_once 'AarbokController.php';
  
 $hundId = $_POST['hundId'];
 $aar = $_POST['aar'];
 $kjonn = $_POST['kjonn'];
 $klubbId = $_POST['klubbId'];
 
-function hentHunder($aar, $kjonn, $klubbId)
-{
-	$hd = new HundDatabase();
-	return $hd->sokHund("", $klubbId);
-}
+$aarbokController = new AarbokController();
 
-function hentHundArray($hundId, $aar, $klubbId)
-{
-	$hd = new HundDatabase();
-	return $hd->hentHund($hundId, $klubbId);
-}
+$nyRTF = $aarbokController->lag_RTF($hundId, $klubbId, $aar, $kjonn);
+echo $nyRTF;	
 
-function hentKullArray($hundId)
-{
-	return array();
-}
-
-function hentAvkomArray($etKull)
-{
-	return array();
-}
-
-function hentJaktproveArray($hundId, $aar)
-{
-	return array();
-}
-
-$nyRTF = Verktoy::fyll_RTF(array(), "../assets/header.rtf");
-$hundeliste = array();
-
-
-if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POST['brukerPassord'], $klubbId, "lagAarbok"))
-{
-	if ($hundId != "")
-	{
-		$hundeliste = hentHundArray($hundId, $aar, $klubbId);
-	}
-	else
-	{
-		$hundeliste = hentHunder($aar, $kjonn, $klubbId);
-	}
-	
-	$sidedeler = "";
-	foreach ($hundeliste as $enHund)
-	{
-		$kullArray = hentKullArray($enHund['hundId']);
-		$enHund['kulltittelliste'] = "";
-		$enHund['kulllisteutvidet'] = "";
-	
-		foreach($kullArray as $etKull)
-		{   
-			$avkomArray = hentAvkomArray($etKull);
-			$etKull['avkom'] = "";
-			
-			foreach($avkomArray as $etAvkom)
-			{
-				$jaktproveArray = hentJaktproveArray($etAvkom, $aar);
-				$etAvkom['jaktproveliste'] = "";
-				
-				foreach($jaktproveArray as $enJaktprove)
-				{
-					$etAvkom['jaktproveliste'] .= Verktoy::fyll_RTF($enJaktprove, "../assets/jaktprove.rtf");
-				}
-				
-				$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
-			}
-			
-			$enHund['kulltittelliste'] .= Verktoy::fyll_RTF($etKull, "../assets/kulltittel.rtf");
-			$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
-		}
-		
-		$nyRTF .= $sidedeler . Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
-		$sidedeler = '\page';
-	}	
-	
-	$nyRTF .= Verktoy::fyll_RTF(array(), "../assets/footer.rtf");
-	
-	if($nyRTF)
-	{
-		echo $nyRTF;
-	}
-	else
-	{
-		echo "Det har skjedd noe feil med genereringen av årboken";
-	}
-}
-else
-{
-	echo "Ingen tilgang";
-}
 
 
