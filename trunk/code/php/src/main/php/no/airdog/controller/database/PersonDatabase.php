@@ -35,7 +35,7 @@ class PersonDatabase
 	{
 		if (sizeof($personArray) != 13)
 		{ 
-			return "Arrayet er av feil størrelse. Fikk ".sizeof($personArray).", forventet 20."; 
+			return "Arrayet er av feil størrelse. Fikk ".sizeof($personArray).", forventet 13."; 
 		}
 		
 		if (!isset($personArray["personId"]) || $personArray["personId"] == "")
