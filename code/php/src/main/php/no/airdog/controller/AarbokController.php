@@ -91,7 +91,16 @@ class AarbokController
 		$avkomListe = array();
 		
 	    foreach($hundListe as $tmp)
-	   	{    				
+	   	{    	
+	   		if ($tmp['GJNVF'] >= 0)	
+				$tmp['GJNVF'] = number_format($tmp['GJNVF'], 1, ',', '');
+					
+			if ($tmp['GJNREV'] >= 0)	
+				$tmp['GJNREV'] = number_format($tmp['GJNREV'], 1, ',', '');
+				
+			if ($tmp['GJNSAMAR'] >= 0)	
+				$tmp['GJNSAMAR'] = number_format($tmp['GJNSAMAR'], 1, ',', '');
+	   					
 			$avkomFinnes = false;
 			
 			for($i = 0; $i < sizeof($avkomListe); $i++)
@@ -141,7 +150,7 @@ class AarbokController
 		{
 		    $avkomListe[$i]['kullbokstav'] = $kullbokstav++;
 		    
-		    if ($hundId == $avkomListe[$i]['morId'])
+		    if (isset($avkomListe[$i]['morId']) && $hundId == $avkomListe[$i]['morId'])
 		    {
 		   		$far = $hd->hentAarbokKullHund($avkomListe[$i]['partnerid'], $klubbId);
 		   		$mor = $hd->hentAarbokKullHund($hundId, $klubbId);
@@ -156,6 +165,17 @@ class AarbokController
 		    $avkomListe[$i]['kullfarmor'] = $far['hundMorNavn'];
 		    $avkomListe[$i]['kullmormor'] = $mor['hundFarNavn'];
 		    $avkomListe[$i]['kullmorfar'] = $mor['hundMorNavn'];
+
+		    //$kull = $kd->hentAarbokKullOppdretter($avkomListe[$i]['kullId'], $klubbId);
+		    
+//		    if ($kull != null)
+//		    {
+//		    	$avkomListe[$i]['OPPDRETTERNAVN'] = $kull['OPPDRETTERNAVN'];
+//		    	$avkomListe[$i]['OPPDRETTERADRESSE'] = $kull['OPPDRETTERADRESSE'];
+//		    	$avkomListe[$i]['OPPDRETTERPOSTNR'] = $kull['OPPDRETTERPOSTNR'];
+//		    	$avkomListe[$i]['OPPDRETTERSTED'] = $kull['OPPDRETTERSTED'];
+//		    	$avkomListe[$i]['OPPDRETTERTLF'] = $kull['OPPDRETTERTLF'];
+//		    }
 		}
 		
         return $avkomListe;

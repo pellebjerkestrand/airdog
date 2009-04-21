@@ -268,7 +268,7 @@ class HundDatabase
 		}
 		
 		// HUSK Å FJERNE
-		$select = $select->limit(100);
+		$select = $select->limit(10);
 		
 		return $this->database->fetchAll($select);
 	}
