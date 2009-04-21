@@ -104,7 +104,7 @@ function hentJaktproveArray($hundId, $aar)
 	return array();
 }
 
-$nyRTF = "";
+$nyRTF = Verktoy::fyll_RTF(array(), "../assets/header.rtf");
 $hundeliste = array();
 
 
@@ -112,14 +112,14 @@ if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POS
 {
 	if ($hundId != "")
 	{
-		$hundeliste[] = hentHundArray($hundId, $aar, $klubbId);
+		$hundeliste = hentHundArray($hundId, $aar, $klubbId);
 	}
 	else
 	{
 		$hundeliste = hentHunder($aar, $kjonn, $klubbId);
 	}
 	
-	
+	$sidedeler = "";
 	foreach ($hundeliste as $enHund)
 	{
 		$kullArray = hentKullArray($enHund['hundId']);
@@ -148,8 +148,11 @@ if(ValiderBruker::validerBrukerRettighet($database, $_POST['brukerEpost'], $_POS
 			$enHund['kulllisteutvidet'] .= Verktoy::fyll_RTF($etKull, "../assets/kullliste.rtf");
 		}
 		
-		$nyRTF .= Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
+		$nyRTF .= $sidedeler . Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
+		$sidedeler = '\page';
 	}	
+	
+	$nyRTF .= Verktoy::fyll_RTF(array(), "../assets/footer.rtf");
 	
 	if($nyRTF)
 	{
