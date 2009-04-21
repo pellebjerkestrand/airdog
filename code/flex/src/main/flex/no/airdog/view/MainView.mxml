@@ -14,6 +14,7 @@
             import no.airdog.services.Components;
         	import no.airdog.model.Bruker;
 			import no.airdog.controller.*;
+			import mx.controls.Alert;
             
             private var SOKEFELTTEKST:String = "Søk etter hund";
             
@@ -40,11 +41,14 @@
 				
 				if(sokefelt.text == SOKEFELTTEKST)
 				{
-					Components.instance.controller.sokHund("");
+					Components.instance.controller.sokHund("");						
 				}
 				else
 				{
-					Components.instance.controller.sokHund(sokefelt.text);
+						
+					Components.instance.controller.sokHund(sokefelt.text)
+					
+									
 				}
 				
 				hjemLink.styleName = "";
@@ -59,17 +63,7 @@
             	Components.instance.controller.loggUt();
             	Components.instance.controller.visLoggInnVindu(this);
             	sokefelt.text = '';
-            }
-            
-            private function visStorHundeliste():void
-			{
-				Navigasjon.visStorHundeliste();
-			}
-			
-			private function visLitenHundeliste():void
-			{
-				Navigasjon.visLitenHundeliste();
-			}
+            }            
 			
 			private function redigerBruker():void
 			{
@@ -180,17 +174,7 @@
 		   				enabled="{Components.instance.session.hundprofil != null ? true : false}"
 		   				toolTip="{Components.instance.session.hundprofil != null ? Components.instance.session.hundprofil.navn : ''}"/>
 		   				
-		   			<mx:Spacer width="100%"/>	
-		   			
-		   			<mx:Label text="Visning"
-		   				visible="{stack.selectedChild == hundesokview ? true : false}"
-		   				includeInLayout="{stack.selectedChild == hundesokview ? true : false}"/>
-		   			<mx:Image source="no/airdog/view/assets/ikoner/toggle.png" buttonMode="true"
-		   				visible="{stack.selectedChild == hundesokview ? true : false}"
-						includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visStorHundeliste()"/>
-					<mx:Image source="no/airdog/view/assets/ikoner/toggle_collapse.png" buttonMode="true"
-						visible="{stack.selectedChild == hundesokview ? true : false}"
-						includeInLayout="{stack.selectedChild == hundesokview ? true : false}" click="visLitenHundeliste()"/>
+		   			<mx:Spacer width="100%"/>			   			
 				</mx:HBox>
 				
 				<mx:HBox id="rapportmeny" width="100%" verticalAlign="middle">					
