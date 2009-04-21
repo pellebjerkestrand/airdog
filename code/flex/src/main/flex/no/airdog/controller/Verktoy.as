@@ -39,6 +39,21 @@ package no.airdog.controller
 		    return false;
 		}
 		
+		public static function ucfirst(str:String):String
+		{
+			return str.substr(0,1).toUpperCase()+str.substr(1).toLowerCase();
+		}
+		
+		public static function ucwords(str:String):String
+		{
+			var myArr:Array = str.split(' ');
+			for (var i:int = 0; i < myArr.length; i++)
+			{
+				myArr[i] = ucfirst(myArr[i]);
+			}
+			return myArr.join(' ');
+		}
+		
 		public static function eksporterDataGrid(dg:DataGrid, navn:String):void
         {
             var str:String = new String();
