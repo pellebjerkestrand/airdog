@@ -61,15 +61,23 @@
     </mx:HBox>
 		
 	<mx:HBox styleName="nopaddingorborder" horizontalGap="4" verticalGap="4">
-		<mx:Box id="bildeboks"
-			styleName="profilBildeBox"
-			height="202" width="202">
-			<mx:Image id="hundbilde" cachePolicy="off"
-			source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
-				|| Components.instance.session.hundprofil.bilde == null
-				? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
-		</mx:Box>
-		
+		<mx:VBox styleName="nopaddingorborder" horizontalGap="4" verticalGap="4">
+			<mx:Box id="bildeboks"
+				styleName="profilBildeBox"
+				height="202" width="202">
+				<mx:Image id="hundbilde" cachePolicy="off"
+				source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
+					|| Components.instance.session.hundprofil.bilde == null
+					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
+			</mx:Box>
+			
+			<mx:VBox id="opplasting" styleName="notis" width="202"
+				visible="{Components.instance.session.bildeOpplastning.startet == true ? true : false}"
+				includeInLayout="{Components.instance.session.bildeOpplastning.startet == true ? true : false}">
+				<mx:ProgressBar id="pBar" mode="manual" width="100%" labelPlacement="center" trackHeight="10"/>
+			</mx:VBox>
+		</mx:VBox>
+				
 		<mx:Grid styleName="profilGrid">
 			<mx:GridRow>
 				<mx:GridItem styleName="profilGridBeskrivelse">
@@ -140,25 +148,6 @@
 				</mx:GridItem>
 			</mx:GridRow>
 		</mx:Grid>
-	</mx:HBox>
-
-	<mx:Box id="opplasting">
-		<mx:Grid height="100%" width="100%" styleName="notis"
-			visible="{Components.instance.session.bildeOpplastning.startet == true
-				? true : false}"
-			includeInLayout="{Components.instance.session.bildeOpplastning.startet == true
-				? true : false}">
-			<mx:GridRow>
-				<mx:GridItem>
-					<mx:Text id="feilmelding" text="Status: {Components.instance.session.bildeOpplastning.resultat}"/>
-				</mx:GridItem>
-			</mx:GridRow>
-			<mx:GridRow width="100%">
-				<mx:GridItem width="100%">
-					<mx:ProgressBar id="pBar" mode="manual" width="100%" label="Laster opp" labelPlacement="center" trackHeight="10"/>
-				</mx:GridItem>
-			</mx:GridRow>
-		</mx:Grid>
-	</mx:Box>   
+	</mx:HBox>   
     
 </mx:VBox>
