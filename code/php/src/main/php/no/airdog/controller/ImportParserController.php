@@ -13,6 +13,8 @@ require_once "database/AasykdomDatabase.php";
 require_once "database/OyesykdomDatabase.php";
 require_once "database/VeterinerDatabase.php";
 require_once "database/OppdrettDatabase.php";
+require_once "database/KullDatabase.php";
+
 
 require_once "database/ValiderBruker.php";
 require_once 'database/Tilkobling.php';
@@ -91,7 +93,9 @@ class importParserController
 						break;
 						
 					case "Kull":
-						return "Ikke implementert ennå.";
+						$ep = new KullParser();
+						$hd = new KullDatabase();
+						break;
 						
 					case "Oppdrett":
 						$ep = new OppdrettParser();

@@ -65,5 +65,18 @@ class KullParser
 		
 		return false;
 	}
+	
+	public static function getDatabaseSomDat($kullArray)
+	{
+		$dat = $kullArray['kullId'] . '|' .
+	 		$kullArray['hundIdFar'] . '|' .
+	 		$kullArray['hundIdMor'] . '|' .
+	 		$kullArray['oppdretterId'] . '|' .
+	 		Verktoy::konverterDatabaseTilDatDato($kullArray['endretDato']) . '|' .
+	 		Verktoy::konverterDatabaseTilDatDato($kullArray['fodt']) . '|' .
+	 		$kullArray['raseId'];
+			 			
+		return $dat;
+	}
 }
 ?>

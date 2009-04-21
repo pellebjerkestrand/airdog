@@ -10,26 +10,78 @@ class KullDatabase
 		$this->database = $tilkobling->getTilkobling();
 	}
 
+	public function hentKull($kullId, $klubbId)
+	{	
+		$select = $this->database->select()
+		->from(array('p'=>'nkk_kull'), 'p.*')
+		->where('p.kullId=?', $kullId)
+		->where('p.raseId=?', $klubbId)
+		->limit(1);
+		
+		return $this->database->fetchRow($select);
+	}
 	
-	public function settInnKull($kullArray)
+	public function settInn($kullArray, $klubbId)
 	{
-		if (sizeof($kullArray) != 7) 
-		{ 
-			return "Arrayet er av feil st�rrelse. Fikk ".sizeof($kullArray)." forventet 7."; 
+		if ($kullArray["raseId"] == $klubbId)
+		{
+			return $this->_settInnKull($kullArray);
 		}
-		if (!isset($kullArray["kullId"]) || $kullArray["kullId"] == "") 
+
+		return "RaseID " . $kullArray["raseId"] . " stemmer ikke med klubbId $klubbId";
+	}
+	
+	private function _settInnKull($kullArray)
+	{
+		if (sizeof($kullArray) != 7)
+		{ 
+			return "Arrayet er av feil størrelse. Fikk ".sizeof($kullArray).", forventet 7."; 
+		}
+		
+		if (!isset($kullArray["kullId"]) || $kullArray["kullId"] == "")
 		{ 
 			return "kullId-verdien mangler."; 
 		}
 		
-		//mysql_query("INSERT INTO kull (kullId, hundIdFar, hundIdMor, oppdretterId, endretDato, fodt, raseId) 
-		//	VALUES('".$kullArray["kullId"]."', '".$kullArray["hundIdFar"]."', '".$kullArray["hundIdMor"]."', '".$kullArray["oppdretterId"]."', '".$kullArray["endretDato"]."', 
-		//		'".$kullArray["fodt"]."', '".$kullArray["raseId"]."') ") 
-		//or die(mysql_error());  
+		if (DatReferanseDatabase::hentReferanse(KullParser::getDatabaseSomDat($kullArray), $this->database) != null)
+		{
+			return "Finnes alt i DATreferanser tabellen.";
+		}
 		
-		$this->database->insert('kull', $kullArray);
-					
-		return true;
+		$dbKull = $this->hentKull($kullArray["kullId"], $kullArray["raseId"]);
+		
+		if ($dbKull == null)
+		{
+			$this->database->insert('nkk_kull', $kullArray);
+			return "Lagt til";
+		}
+		else if ($dbKull["manueltEndretAv"] != "")
+		{
+			return "Manuelt endret, vil du overskrive?";
+		}
+		else
+		{
+			$hvor = $this->database->quoteInto('kullId = ?', $kullArray["kullId"]) . 
+				$this->database->quoteInto('AND raseId = ?', $kullArray["raseId"]);
+			$this->database->update('nkk_kull', $kullArray, $hvor);
+			return "Oppdatert";
+		}
+	}
+	
+	public function overskriv($verdier, $klubbId)
+	{
+		if (DatReferanseDatabase::hentReferanse(KullParser::getDatabaseSomDat($verdier), $this->database) != null)
+		{
+			DatReferanseDatabase::slettReferanse(KullParser::getDatabaseSomDat($verdier), $this->database);
+		}
+		
+		$verdier['manueltEndretAv'] = "";
+		$verdier['manueltEndretDato'] = "";
+		
+		$hvor = $this->database->quoteInto('kullId = ?', $verdier['kullId']).
+			$this->database->quoteInto('AND raseId = ?', $klubbId);
+		
+		return $this->database->update('nkk_kull', $verdier, $hvor);
 	}
 	
 	public function oppdaterKull($kullArray, $endretAv)

@@ -225,13 +225,13 @@ class HundDatabase
 		$select = $this->database->select()
 		->from(array('h'=>'nkk_hund'), array(
 		'h.*',
-		'hundMorNavn'=>'hMor.navn',
-		'hundFarNavn'=>'hFar.navn',
-		'eier'=>'eier.navn',
-		'eieradresse'=>'eier.adresse1',
-		'eierpostnummer'=>'eier.postNr',
-		'eiersted'=>'eier.adresse3',
-		'eiertlf'=>'eier.telefon1',
+		'hundMorNavn' => 'hMor.navn',
+		'hundFarNavn' => 'hFar.navn',
+		'eier' => 'eier.navn',
+		'eieradresse' => 'eier.adresse1',
+		'eierpostnummer' => 'eier.postNr',
+		'eiersted' => 'eier.adresse3',
+		'eiertlf' => 'eier.telefon1',
 		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
 		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
