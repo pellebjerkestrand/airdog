@@ -1,6 +1,7 @@
 <?php
 require_once "no/airdog/model/AmfJaktprove.php";
 require_once "no/airdog/model/AmfJaktproveSammendrag.php";
+require_once "no/airdog/model/AmfProvestatestikk.php";
 require_once "no/airdog/controller/database/JaktproveDatabase.php";
 
 require_once 'database/ValiderBruker.php';
@@ -48,6 +49,24 @@ class JaktproveController
 		
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
+	public function hentProvestatestikk($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{			
+			$hd = new JaktproveDatabase();
+										
+			$tmp = new AmfProvestatestikk();
+			//throw(new Exception('failz'));			
+			$tmp->starterUK = $hd->hentStarterHundKlasse($hundId, '1', $klubbId);
+			
+			$ret[] = $tmp;
+			
+			return $ret;			
+		}
+		$feilkode = 1;	
+   		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
 	public function hentJaktproveSammendrag($hundId, $brukerEpost, $brukerPassord, $klubbId)

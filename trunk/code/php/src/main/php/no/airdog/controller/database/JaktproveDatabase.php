@@ -67,6 +67,8 @@ class JaktproveDatabase
 		return $this->database->fetchAll($select);			
 	}
 	
+	
+	
 	public function hentJaktproveSammendrag($hundId, $klubbId)
 	{
 		$select = $this->database->select()
@@ -167,6 +169,21 @@ class JaktproveDatabase
 		$antall = $this->database->fetchRow($select);
 
 		return $antall['antall']; 
+	}
+	
+public function hentStarterHundKlasse($hundId, $klasse,$klubbId)
+	{
+		$select = $this->database->select()
+			->from('nkk_fugl', array(
+				'antall' => 'COUNT(*)'
+			))
+			->where('hundId LIKE ?', $hundId)
+			->where('klasse LIKE ?', $klasse)
+			->where('raseId=?', $klubbId);
+			
+			$antall = $this->database->fetchRow($select);
+		
+		return $antall['antall'];
 	}
 	
 	public function settInn($jaktarray, $klubbId)
