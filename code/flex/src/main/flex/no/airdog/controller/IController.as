@@ -5,7 +5,6 @@ package no.airdog.controller
 	import mx.collections.ArrayCollection;
 	
 	import no.airdog.model.*;
-	import no.airdog.view.HundeProfil;
 	
 	public interface IController
 	{
@@ -67,5 +66,6 @@ package no.airdog.controller
 		function leggInnArrangement(arrangement:Arrangement):void
 		function hentArrangementer():void
 		function visLagAarbok(hund:Hund):void
+		function hentProvestatestikk(id:String):void
 	}
 }

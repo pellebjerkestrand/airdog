@@ -258,11 +258,21 @@ package no.airdog.controller
 		public function hentJaktproveSammendragAarResultat(event:Object):void
 		{
 			Components.instance.session.jaktproveSammendragAar = new ArrayCollection(event as Array);
-		}
+		}		
 		
 		public function fjernJaktproverSammendragAar():void
 		{
 			Components.instance.session.jaktproveSammendragAar = null;
+		}
+		
+		public function hentProvestatestikk(id:String):void
+		{
+			Components.instance.services.airdogService.hentProvestatestikk(id, hentProvestatestikkResultat);
+		}
+		
+		public function hentProvestatestikkResultat(event:Object):void
+		{
+			Components.instance.session.provestatestikk = new ArrayCollection(event as Array);
 		}
 		
 		public function hentUtstillinger(hundId:String):void
@@ -629,6 +639,6 @@ package no.airdog.controller
 		{
 			Components.instance.session.arrangementer = new ArrayCollection(event as Array);
 			Components.instance.session.arrangementer.addItem(new Arrangement());
-		}
+		}		
 	}
 }
