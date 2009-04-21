@@ -13,10 +13,14 @@ class BildeendringController
 				
 		if($nyttFilnavn != -1)
 		{
-			echo "Bildet er lastet opp";
+			echo "Bilde endret";
 			
 			$this->lagBildeMedStorrelse($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_thumb.jpg", $kroppBredde, $kroppHoyde);
 			//$this->cropBilde($sti, $nyttFilnavn, Verktoy::fjernFilEndelse($nyttFilnavn)."_crop.jpg", $kroppBredde, $kroppHoyde);
+		}
+		else
+		{
+			echo "Feil i opplasting";
 		}
 		
 	}

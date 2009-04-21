@@ -121,7 +121,14 @@ package no.airdog.controller
             
             if(opplastning.progressBar.value == opplastning.progressBar.maximum)
             {
-        		opplastning.progressBar.label = "Filen " + fr.name + " ble lastet opp"; 
+            	if(opplastning.type == 'bilde')
+            	{
+            		opplastning.progressBar.label = "Bilde endret";
+            	}
+        		else
+        		{
+        			opplastning.progressBar.label = fr.name + " lastet opp";
+        		} 
             	opplastning.venterSQL = true;
             }
         }

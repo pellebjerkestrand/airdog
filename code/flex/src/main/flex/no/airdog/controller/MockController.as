@@ -143,7 +143,7 @@ package no.airdog.controller
 		}
 		
 		public function lastOpp(laster:Opplastning):void
-		{
+		{	
 			var url:String = Components.instance.services.rootPath + "controller/FilopplastController.php?";
 			
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
@@ -152,6 +152,8 @@ package no.airdog.controller
 			
 			if (laster.type == "bilde")
 			{
+				Components.instance.session.bildeOpplastning.resultat = null;
+				
 				var regex:RegExp = new RegExp("[^a-zA-Z0-9]", "ig");
 				var id:String = Components.instance.session.hundprofil.hundId;
 				
