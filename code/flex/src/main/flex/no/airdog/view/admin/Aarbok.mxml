@@ -38,7 +38,7 @@
 			}
         ]]>
     </mx:Script>
-    <mx:Panel title="Lag årbok" height="100%">
+    <mx:Panel title="Lag årbok" height="100%" width="100%">
     	<mx:Text visible="{Components.instance.session.aarbokHund != null ? true : false }"
     		includeInLayout="{Components.instance.session.aarbokHund != null ? true : false }"
     		text="{'Du lager nå årbok for ' + Components.instance.session.aarbokHund.navn}" />
@@ -71,9 +71,5 @@
 				text="Gjør dine valg og klikk på 'Lag årbok'-knappen."/>
 	    </mx:VBox>
 	    <mx:Spacer height="100%"/>
-    </mx:Panel>
-	
-    <mx:Panel title="Resultat" height="100%" width="100%">
-	    <mx:TextArea id="pText" width="100%" height="100%" text="Kommer tekst fra php..." editable="false"/>
     </mx:Panel>
 </mx:HBox>
