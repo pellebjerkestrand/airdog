@@ -46,6 +46,15 @@
  * 		</avkom>
  * </kulllisteutvidet>
  * </hund>
+ * 
+ * 
+ * RTF Tegnsett:
+ * å \'e5
+ * Å \'c5
+ * ø \'f8
+ * Ø \'d8
+ * æ \'e6
+ * Æ \'c6
  */
 
 require_once "database/HundDatabase.php";
@@ -62,16 +71,16 @@ class AarbokController
 		$this->database = $tilkobling->getTilkobling();
 	}
 	
-	private function hentHunder($aar, $kjonn, $klubbId)
+	private function hentHunder($kjonn, $aar, $klubbId)
 	{
 		$hd = new HundDatabase();
-		return $hd->sokHund("", $klubbId);
+		return $hd->hentAarbokHund("", $kjonn, $aar, $klubbId);
 	}
 	
 	private function hentHundArray($hundId, $aar, $klubbId)
 	{
 		$hd = new HundDatabase();
-		return $hd->hentHund($hundId, $klubbId);
+		return $hd->hentAarbokHund($hundId, "", $aar, $klubbId);
 	}
 	
 	private function hentKullArray($hundId)
@@ -103,7 +112,7 @@ class AarbokController
 			}
 			else
 			{
-				$hundeliste = $this->hentHunder($aar, $kjonn, $klubbId);
+				$hundeliste = $this->hentHunder($kjonn, $aar, $klubbId);
 			}
 			
 			$sidedeler = "";
