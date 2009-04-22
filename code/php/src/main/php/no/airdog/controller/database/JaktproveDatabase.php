@@ -171,7 +171,7 @@ class JaktproveDatabase
 		return $antall['antall']; 
 	}
 	
-public function hentStarterHundKlasse($hundId, $klasse,$klubbId)
+	public function hentStarterHundKlasse($hundId, $klasse,$klubbId)
 	{
 		$select = $this->database->select()
 			->from('nkk_fugl', array(
@@ -179,6 +179,51 @@ public function hentStarterHundKlasse($hundId, $klasse,$klubbId)
 			))
 			->where('hundId LIKE ?', $hundId)
 			->where('klasse LIKE ?', $klasse)
+			->where('raseId=?', $klubbId);
+			
+			$antall = $this->database->fetchRow($select);
+		
+		return $antall['antall'];
+	}
+	
+	public function hentStarterHund($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+			->from('nkk_fugl', array(
+				'antall' => 'COUNT(*)'
+			))
+			->where('hundId LIKE ?', $hundId)
+			->where('raseId=?', $klubbId);
+			
+			$antall = $this->database->fetchRow($select);
+		
+		return $antall['antall'];
+	}
+	
+	public function hentPremierHundKlasse($hundId, $klasse, $klubbId)
+	{
+		$select = $this->database->select()
+			->from('nkk_fugl', array(
+				'antall' => 'COUNT(*)'
+			))
+			->where('hundId LIKE ?', $hundId)
+			->where('klasse LIKE ?', $klasse)
+			->where('premiegrad NOT LIKE ?', '0')
+			->where('raseId=?', $klubbId);
+			
+			$antall = $this->database->fetchRow($select);
+		
+		return $antall['antall'];
+	}
+	
+	public function hentPremierHund($hundId, $klubbId)
+	{
+		$select = $this->database->select()
+			->from('nkk_fugl', array(
+				'antall' => 'COUNT(*)'
+			))
+			->where('hundId LIKE ?', $hundId)			
+			->where('premiegrad NOT LIKE ?', '0')
 			->where('raseId=?', $klubbId);
 			
 			$antall = $this->database->fetchRow($select);

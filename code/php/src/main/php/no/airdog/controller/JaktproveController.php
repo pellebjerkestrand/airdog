@@ -1,7 +1,7 @@
 <?php
 require_once "no/airdog/model/AmfJaktprove.php";
 require_once "no/airdog/model/AmfJaktproveSammendrag.php";
-require_once "no/airdog/model/AmfProvestatestikk.php";
+require_once "no/airdog/model/AmfProvestatistikk.php";
 require_once "no/airdog/controller/database/JaktproveDatabase.php";
 
 require_once 'database/ValiderBruker.php';
@@ -51,22 +51,73 @@ class JaktproveController
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
 	
-	public function hentProvestatestikk($hundId, $brukerEpost, $brukerPassord, $klubbId)
+	public function hentProvestatistikk($hundId, $brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{			
 			$hd = new JaktproveDatabase();
 										
-			$tmp = new AmfProvestatestikk();
-			//throw(new Exception('failz'));			
-			$tmp->starterUK = $hd->hentStarterHundKlasse($hundId, '1', $klubbId);
-			
+			$tmp = new AmfProvestatistikk();			
+		//klasser			
+    		$tmp->starterUK = $hd->hentStarterHundKlasse($hundId, '1', $klubbId);
+    		$tmp->starterAK = $hd->hentStarterHundKlasse($hundId, '2', $klubbId); 
+    		$tmp->starterUKAK = $hd->hentStarterHundKlasse($hundId, '3', $klubbId);
+    		$tmp->starterVK = $hd->hentStarterHundKlasse($hundId, '4', $klubbId); 
+    		$tmp->starterVKSEMIFINALE = $hd->hentStarterHundKlasse($hundId, '5', $klubbId);
+    		$tmp->starterVKFINALE = $hd->hentStarterHundKlasse($hundId, '6', $klubbId); 
+    		$tmp->starterUKKVALIK = $hd->hentStarterHundKlasse($hundId, '7', $klubbId);
+    		$tmp->starterUKKFINALE = $hd->hentStarterHundKlasse($hundId, '8', $klubbId);
+    		$tmp->starterDERBYKVALIK = $hd->hentStarterHundKlasse($hundId, '9', $klubbId); 
+    		$tmp->starterDERBYSEMIFINALE = $hd->hentStarterHundKlasse($hundId, '10', $klubbId);
+    		$tmp->starterDERBYFINALE = $hd->hentStarterHundKlasse($hundId, '11', $klubbId);
+    	//premier
+    		$tmp->premierUK = $hd->hentPremierHundKlasse($hundId, '1', $klubbId);
+    		$tmp->premierAK = $hd->hentPremierHundKlasse($hundId, '2', $klubbId); 
+    		$tmp->premierUKAK = $hd->hentPremierHundKlasse($hundId, '3', $klubbId);
+    		$tmp->premierVK = $hd->hentPremierHundKlasse($hundId, '4', $klubbId); 
+    		$tmp->premierVKSEMIFINALE = $hd->hentPremierHundKlasse($hundId, '5', $klubbId);
+    		$tmp->premierVKFINALE = $hd->hentPremierHundKlasse($hundId, '6', $klubbId); 
+    		$tmp->premierUKKVALIK = $hd->hentPremierHundKlasse($hundId, '7', $klubbId);
+    		$tmp->premierUKKFINALE = $hd->hentPremierHundKlasse($hundId, '8', $klubbId);
+    		$tmp->premierDERBYKVALIK = $hd->hentPremierHundKlasse($hundId, '9', $klubbId); 
+    		$tmp->premierDERBYSEMIFINALE = $hd->hentPremierHundKlasse($hundId, '10', $klubbId);
+    		$tmp->premierDERBYFINALE = $hd->hentPremierHundKlasse($hundId, '11', $klubbId);
+    	//premieprosent    	
+    		$tmp->prosentUK = $this->premieringProsentStarter($tmp->premierUK, $tmp->starterUK);    		
+	   		$tmp->prosentAK = $this->premieringProsentStarter($tmp->premierAK, $tmp->starterAK);
+    		$tmp->prosentUKAK = $this->premieringProsentStarter($tmp->premierUKAK, $tmp->starterUKAK);
+    		$tmp->prosentVK = $this->premieringProsentStarter($tmp->premierUK, $tmp->starterVK);
+    		$tmp->prosentVKSEMIFINALE = $this->premieringProsentStarter($tmp->premierVKSEMIFINALE, $tmp->starterVKSEMIFINALE);
+    		$tmp->prosentVKFINALE = $this->premieringProsentStarter($tmp->premierVKFINALE, $tmp->starterVKFINALE);
+    		$tmp->prosentUKKVALIK = $this->premieringProsentStarter($tmp->premierUKKVALIK, $tmp->starterUKKVALIK);
+    		$tmp->prosentUKKFINALE = $this->premieringProsentStarter($tmp->premierUKKFINALE, $tmp->starterUKKFINALE);
+    		$tmp->prosentDERBYKVALIK = $this->premieringProsentStarter($tmp->premierDERBYKVALIK, $tmp->starterDERBYKVALIK);
+    		$tmp->prosentDERBYSEMIFINALE = $this->premieringProsentStarter($tmp->premierDERBYSEMIFINALE, $tmp->starterDERBYSEMIFINALE);
+    		$tmp->prosentDERBYFINALE = $this->premieringProsentStarter($tmp->premierDERBYFINALE, $tmp->starterDERBYFINALE);
+    	//totalt	
+    		$tmp->starterTotalt = $hd->hentStarterHund($hundId, $klubbId);
+    		$tmp->premierTotalt = $hd->hentPremierHund($hundId, $klubbId);
+    		$tmp->prosentTotalt = $this->premieringProsentStarter($tmp->premierTotalt, $tmp->starterTotalt);
+		
 			$ret[] = $tmp;
 			
 			return $ret;			
 		}
 		$feilkode = 1;	
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+	}
+	
+	private function premieringProsentStarter($premier, $starter)
+	{		
+		if($starter != 0 && $premier != 0)
+		{
+			$premieprosent = sprintf("%.2f", $premier/$starter*100);									
+			return $premieprosent;			
+		}
+		else
+		{		
+			return 0;
+		}		
 	}
 	
 	public function hentJaktproveSammendrag($hundId, $brukerEpost, $brukerPassord, $klubbId)

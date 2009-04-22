@@ -32,7 +32,7 @@ package no.airdog.model
         public var jaktproveListeAar:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendrag:Jaktprove = new Jaktprove();
         public var jaktproveSammendragAar:ArrayCollection = new ArrayCollection();
-        public var provestatestikk:ArrayCollection = new ArrayCollection();
+        public var provestatistikk:ArrayCollection = new ArrayCollection();
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
         public var rollersBrukere:ArrayCollection = new ArrayCollection();
         public var stamtre:Hund;

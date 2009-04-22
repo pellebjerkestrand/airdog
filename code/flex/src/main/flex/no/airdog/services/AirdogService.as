@@ -84,9 +84,9 @@ package no.airdog.services
 			resultat, feil);
         }
         
-        public function hentProvestatestikk(id:String, resultat:Function, feil:Function=null):void
+        public function hentProvestatistikk(id:String, resultat:Function, feil:Function=null):void
         {
-        	callServiceFunction(service.hentProvestatestikk(
+        	callServiceFunction(service.hentProvestatistikk(
         		id,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
