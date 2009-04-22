@@ -14,11 +14,11 @@
 			import no.airdog.controller.Verktoy;
 			
 			[Bindable]
-			[Embed("assets/ikoner/gender_blue.png")]
+			[Embed("assets/ikoner/gender.png")]
            	private var hannIkon:Class;
            	
            	[Bindable]
-           	[Embed("assets/ikoner/gender_female_pink.png")]
+           	[Embed("assets/ikoner/gender_female.png")]
            	private var hunnIkon:Class;
 			
 			private function visRedigerHundVindu():void
@@ -40,17 +40,22 @@
 		]]>
     </mx:Script>
     <mx:HBox id="topplinje" width="100%" verticalAlign="bottom">
-		<mx:Text id="navn" text="{Verktoy.ucwords(Components.instance.session.hundprofil.navn)}" fontSize="25" />
-		<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" styleName="profilGridBeskrivelse" fontSize="20"
-			visible="{StringUtil.trim(Components.instance.session.hundprofil.tittel) != '' ? true : false }"  />
-		<mx:Box paddingBottom="6" styleName="nopaddingorborderorgap">
+		<mx:Text id="navn" text="{Verktoy.ucwords(Components.instance.session.hundprofil.navn)}" fontSize="25"/>
+		
+		<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" styleName="profilGridBeskrivelse" fontSize="19" paddingBottom="1"
+			visible="{StringUtil.trim(Components.instance.session.hundprofil.tittel) != '' ? true : false }"
+			includeInLayout="{StringUtil.trim(Components.instance.session.hundprofil.tittel) != '' ? true : false }"/>
+			
+		<mx:Box paddingBottom="8" styleName="nopaddingorborderorgap">
 			<mx:Image id="kjonn" cachePolicy="off" 
-				source="{Components.instance.session.hundprofil.kjonn == 'H' 
-				? hannIkon : hunnIkon}" />
+				source="{Components.instance.session.hundprofil.kjonn == 'H' ? hannIkon : hunnIkon}" 
+				visible="{StringUtil.trim(Components.instance.session.hundprofil.kjonn) != '' ? true : false }"
+				includeInLayout="{StringUtil.trim(Components.instance.session.hundprofil.kjonn) != '' ? true : false }"/>
 		</mx:Box>
     </mx:HBox>
 		
 	<mx:HBox styleName="nopaddingorborder" horizontalGap="4" verticalGap="4" width="100%">
+	
 		<mx:VBox styleName="nopaddingorborder" horizontalGap="4" verticalGap="4">
 			<mx:Box id="bildeboks"
 				styleName="profilBildeBox"
@@ -67,133 +72,128 @@
 				<mx:ProgressBar id="pBar" mode="manual" width="100%" labelPlacement="center" trackHeight="10"/>
 			</mx:VBox>
 		</mx:VBox>
+		
 		<mx:HBox styleName="profilGrid" height="232">
-		<mx:VBox>
-			<mx:HBox>
-				<mx:Label text="Generelt" fontWeight="bold"/>							
-
-			</mx:HBox>
-
-			<mx:Grid>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>			
-					</mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="far" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farNavn)}" styleName="profilGridData"/>
-					</mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="eier" text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
-												|| Components.instance.session.hundprofil.eier == null 
-												? Components.instance.session.hundprofil.eierId : Verktoy.ucwords(Components.instance.session.hundprofil.eier)}" styleName="profilGridData"/>
-					</mx:GridItem>	
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="mor" text="{Verktoy.ucwords(Components.instance.session.hundprofil.morNavn)}" styleName="profilGridData"/>
-					</mx:GridItem>	
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
-					</mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="farge" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farge)}" styleName="profilGridData"/>
-					</mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
-					</mx:GridItem>
-				</mx:GridRow>
-			</mx:Grid>
-	
-				
-			</mx:VBox>		
-			
 			<mx:VBox>
-				
-
-			<mx:Label text="Jaktprøver sammendrag" fontWeight="bold"/>	
-			<mx:Grid>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Premiegrad:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.premiegrad}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ST:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.slippTid}" styleName="profilGridData"/></mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ES:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.egneStand}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="MS:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.makkerStand}" styleName="profilGridData"/></mx:GridItem>		
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ESø:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.egneStokk}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="MSø:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.makkerStokk}" styleName="profilGridData"/></mx:GridItem>	
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="TS:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.tomStand}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="JL:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.jaktlyst}" styleName="profilGridData"/></mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Fa:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.fart}" styleName="profilGridData"/></mx:GridItem>			
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="St:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.stil}" styleName="profilGridData"/></mx:GridItem>
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Ss:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.selvstendighet}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="SB:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.bredde}" styleName="profilGridData"/></mx:GridItem>			
-				</mx:GridRow>
-				<mx:GridRow>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Rv:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.reviering}" styleName="profilGridData"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Sa:" styleName="profilGridBeskrivelse"/></mx:GridItem>
-					<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.samarbeid}" styleName="profilGridData"/></mx:GridItem>
-				</mx:GridRow>
-			</mx:Grid>
+				<mx:HBox>
+					<mx:Label text="Generelt" fontWeight="bold"/>
+				</mx:HBox>
+				<mx:Grid>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>			
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="far" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farNavn)}" styleName="profilGridData"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="eier" styleName="profilGridData"
+								text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
+										|| Components.instance.session.hundprofil.eier == null 
+										? Components.instance.session.hundprofil.eierId : Verktoy.ucwords(Components.instance.session.hundprofil.eier)}"/>
+						</mx:GridItem>	
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="mor" text="{Verktoy.ucwords(Components.instance.session.hundprofil.morNavn)}" styleName="profilGridData"/>
+						</mx:GridItem>	
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="farge" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farge)}" styleName="profilGridData"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse">
+							<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
+						</mx:GridItem>
+						<mx:GridItem styleName="profilGridData">
+							<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
+						</mx:GridItem>
+					</mx:GridRow>
+				</mx:Grid>
 			</mx:VBox>
-			
+			<mx:VBox>
+				<mx:Label text="Jaktprøvesammendrag" fontWeight="bold"/>	
+				<mx:Grid>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Premiegrad:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.premiegrad}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ST:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.slippTid}" styleName="profilGridData"/></mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ES:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.egneStand}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="MS:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.makkerStand}" styleName="profilGridData"/></mx:GridItem>		
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="ESø:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.egneStokk}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="MSø:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.makkerStokk}" styleName="profilGridData"/></mx:GridItem>	
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="TS:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.tomStand}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="JL:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.jaktlyst}" styleName="profilGridData"/></mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Fa:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.fart}" styleName="profilGridData"/></mx:GridItem>			
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="St:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.stil}" styleName="profilGridData"/></mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Ss:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.selvstendighet}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="SB:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.bredde}" styleName="profilGridData"/></mx:GridItem>			
+					</mx:GridRow>
+					<mx:GridRow>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Rv:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.reviering}" styleName="profilGridData"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridBeskrivelse"><mx:Label text="Sa:" styleName="profilGridBeskrivelse"/></mx:GridItem>
+						<mx:GridItem styleName="profilGridData"><mx:Text text="{Components.instance.session.jaktproveSammendrag.samarbeid}" styleName="profilGridData"/></mx:GridItem>
+					</mx:GridRow>
+				</mx:Grid>
+			</mx:VBox>
 		</mx:HBox>
 		
-		<mx:VBox id="funksjoner" verticalAlign="top" width="100%"
-			styleName="funksjon"
+		<mx:VBox id="funksjoner"
+			styleName="funksjon" height="232" verticalAlign="top"
 			visible="{Components.instance.session.bruker.rettigheter.redigerHund || Components.instance.session.bruker.rettigheter.lagAarbok}" 
 			includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund || Components.instance.session.bruker.rettigheter.lagAarbok}">
+			<mx:Label text="Funksjoner" fontWeight="bold"/>
 			<mx:LinkButton label="Rediger hund" 
 				styleName="UnderMeny" click="visRedigerHundVindu()" 
 				icon="@Embed(source='assets/ikoner/report__pencil.png')"
@@ -208,7 +208,8 @@
 				styleName="UnderMeny" click="lagAarbok()"
 				icon="@Embed(source='/no/airdog/view/assets/ikoner/document_word_text.png')"
 				visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
-				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>	
+				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>
 		</mx:VBox>
-	</mx:HBox>    
+	</mx:HBox>
+	<view:Provestatestikk/>
 </mx:VBox>
