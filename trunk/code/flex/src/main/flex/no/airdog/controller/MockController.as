@@ -220,9 +220,7 @@ package no.airdog.controller
 		public function hentJaktprover(hundId:String):void
 		{
 			Components.instance.session.jaktproveListe = null;
-			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.services.airdogService.hentJaktprover(hundId, hentJaktproverResultat);
-			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
 		}
 		
 		public function hentJaktproverResultat(event:Object):void
@@ -287,10 +285,9 @@ package no.airdog.controller
 		}
 		
 		public function visHund(hundId:String):void
-		{
-			//Components.instance.session.hundprofil = null;
-			
+		{	Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
+			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
 		}
 		
 		public function visHundResultat(event:Hund):void
@@ -302,7 +299,9 @@ package no.airdog.controller
 		
 		public function hentHund(hundId:String, resultat:Function):void
 		{
+			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.services.airdogService.hentHund(hundId, resultat);
+			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
 		}
 		
 		public function hentPerson(personId:String, resultat:Function):void
