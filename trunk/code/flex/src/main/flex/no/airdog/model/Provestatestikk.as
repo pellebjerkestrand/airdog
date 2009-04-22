@@ -17,18 +17,31 @@ package no.airdog.model
 			public var starterDERBYSEMIFINALE:String;
 			public var starterDERBYFINALE:String;
 			
-			public var prosentTotalt:String;
-			public var prosentUK:String;
-			public var prosentAK:String;
-			public var prosentUKAK:String;
-			public var prosentVK:String;
-			public var prosentVKSEMIFINALE:String;
-			public var prosentVKFINALE:String;
-			public var prosentUKKVALIK:String;
-			public var prosentUKKFINALE:String;
-			public var prosentDERBYKVALIK:String;
-			public var prosentDERBYSEMIFINALE:String;
-			public var prosentDERBYFINALE:String;
+			public var premierTotalt:String;
+			public var premierUK:String;
+			public var premierAK:String;
+			public var premierUKAK:String;
+			public var premierVK:String;
+			public var premierVKSEMIFINALE:String;
+			public var premierVKFINALE:String;
+			public var premierUKKVALIK:String;
+			public var premierUKKFINALE:String;
+			public var premierDERBYKVALIK:String;
+			public var premierDERBYSEMIFINALE:String;
+			public var premierDERBYFINALE:String;
+			
+			public var prosentTotalt:int;
+			public var prosentUK:int;
+			public var prosentAK:int;
+			public var prosentUKAK:int;
+			public var prosentVK:int;
+			public var prosentVKSEMIFINALE:int;
+			public var prosentVKFINALE:int;
+			public var prosentUKKVALIK:int;
+			public var prosentUKKFINALE:int;
+			public var prosentDERBYKVALIK:int;
+			public var prosentDERBYSEMIFINALE:int;
+			public var prosentDERBYFINALE:int;
 		}
 	}
 }

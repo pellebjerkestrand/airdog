@@ -210,7 +210,5 @@
 				visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>	
 		</mx:VBox>
-	</mx:HBox>
-	<view:Provestatestikk/>
-    
+	</mx:HBox>    
 </mx:VBox>

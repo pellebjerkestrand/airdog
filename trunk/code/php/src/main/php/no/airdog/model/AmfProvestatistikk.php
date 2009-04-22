@@ -1,5 +1,5 @@
 <?php
-class AmfProvestatestikk
+class AmfProvestatistikk
 {
 	public $starterTotalt;
 	public $starterUK;
@@ -13,6 +13,19 @@ class AmfProvestatestikk
 	public $starterDERBYKVALIK;
 	public $starterDERBYSEMIFINALE;
 	public $starterDERBYFINALE;
+	
+	public $premierTotalt;
+	public $premierUK;
+	public $premierAK;
+	public $premierUKAK;
+	public $premierVK;
+	public $premierVKSEMIFINALE;
+	public $premierVKFINALE;
+	public $premierUKKVALIK;
+	public $premierUKKFINALE;
+	public $premierDERBYKVALIK;
+	public $premierDERBYSEMIFINALE;
+	public $premierDERBYFINALE;
 	
 	public $prosentTotalt;
 	public $prosentUK;
