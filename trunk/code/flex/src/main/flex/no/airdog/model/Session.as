@@ -24,9 +24,10 @@ package no.airdog.model
         public var bildeOpplastning:Opplastning = new Opplastning();
         public var fiktivtStamtre:Hund;
      	public var hovedNavigasjon:Navigasjon = new Navigasjon();
+     	public var hundNavigasjon:Navigasjon = new Navigasjon();
+		public var hundprofil:Hund;
      	public var cupListe:ArrayCollection;
      	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor));
-        public var hundprofil:Hund;
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
         public var jaktproveListeAar:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendrag:Jaktprove = new Jaktprove();
@@ -39,15 +40,18 @@ package no.airdog.model
         public var aarbokHund:Hund;
         public var tomtSok:Boolean;
         
-        public function clone():Session
-		{
-			registerClassAlias("no.airdog.model.Session", Session);
+        public function Session()
+        {
+        	registerClassAlias("no.airdog.model.Session", Session);
 			registerClassAlias("no.airdog.model.Hundeliste", Hundeliste);
 			registerClassAlias("no.airdog.model.Navigasjon", Navigasjon);
 			
 			registerClassAlias("mx.collections.ArrayCollection", ArrayCollection);
 			registerClassAlias("mx.core.int", int);
-			
+        }
+        
+        public function clone():Session
+		{	
 		    var myBA:ByteArray = new ByteArray();
 		    myBA.writeObject(this);
 		    myBA.position = 0;

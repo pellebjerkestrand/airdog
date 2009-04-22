@@ -285,7 +285,8 @@ package no.airdog.controller
 		}
 		
 		public function visHund(hundId:String):void
-		{	Components.instance.session.jaktproveSammendrag = null;
+		{
+			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.session.hundprofil = null;
 			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
 			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
@@ -295,6 +296,7 @@ package no.airdog.controller
 		{
 			Components.instance.session.hundprofil = event;
 			Components.instance.session.hovedNavigasjon.nr = 2;
+			Components.instance.session.hundNavigasjon.nr = 0;
 			Components.instance.historie.settPunkt();
 		}
 		

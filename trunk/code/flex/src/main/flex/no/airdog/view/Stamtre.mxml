@@ -16,7 +16,7 @@
 
 			private var dybde:int = 3;
 			private var gammelHundId:String = null;
-			
+
 			private function hentStamtre():void
 			{
 				var hundId:String = Components.instance.session.hundprofil.hundId;

@@ -56,7 +56,7 @@
 			icon="@Embed(source='assets/ikoner/table_excel.png')"/>
 	</mx:HBox>
 	<mx:DataGrid id="jaktprover" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%" rowHeight="30"
-		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle">
+		dataProvider="{Components.instance.session.jaktproveListe}" verticalAlign="middle" cachePolicy="off">
 		<mx:columns>
 			<mx:DataGridColumn headerText="Prøve" width="150" minWidth="150" dataField="proveTekst"/>
 			<mx:DataGridColumn headerText="Dato" width="110" minWidth="110" dataField="proveDato" resizable="false"/>
