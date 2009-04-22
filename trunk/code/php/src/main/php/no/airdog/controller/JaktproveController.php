@@ -93,9 +93,8 @@ class JaktproveController
 	    	$tmp->samarbeid = sprintf("%.2f", $sammendrag['samarbeid']);
     		$tmp->vf = sprintf("%.2f", $sammendrag['vf']);
 	    	$tmp->premiegrad = "Viltfinnerevne: " . sprintf("%.2f", $sammendrag['vf']) . ", Situasjoner: " . $sammendrag['situasjoner'];
-			$ret[] = $tmp;
 						
-	        return $ret;
+	        return $tmp;
 		}
 		
 		$feilkode = 1;	

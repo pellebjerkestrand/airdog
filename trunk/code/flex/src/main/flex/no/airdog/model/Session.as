@@ -29,7 +29,7 @@ package no.airdog.model
         public var hundprofil:Hund;
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
         public var jaktproveListeAar:ArrayCollection = new ArrayCollection();
-        public var jaktproveSammendrag:ArrayCollection = new ArrayCollection();
+        public var jaktproveSammendrag:Jaktprove = new Jaktprove();
         public var jaktproveSammendragAar:ArrayCollection = new ArrayCollection();
         public var provestatestikk:ArrayCollection = new ArrayCollection();
         public var rollersRettigheter:ArrayCollection = new ArrayCollection();
