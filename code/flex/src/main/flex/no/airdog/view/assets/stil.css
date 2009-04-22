@@ -141,6 +141,54 @@ CursorManager
 	busyCursorBackground: Embed(source="skin/stil.swf",symbol="BusyCursor");
 }*/
 
+.cupbakgrunn
+{
+	backgroundColor: #e5ecf3;
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 6; 
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	paddingBottom: 4; 
+	paddingTop: 4;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+}
+
+.cupplassering
+{
+	backgroundColor: #ffffff;
+	borderColor: #a3a3a3;
+	borderStyle: solid;
+	borderThickness: 1;
+	cornerRadius: 6;
+	paddingBottom: 4;
+	paddingLeft: 4;
+	paddingRight: 4;
+	paddingTop: 4;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+}
+
+.cuppoeng
+{
+	backgroundColor: #FFF5B5;
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 6; 
+	paddingLeft: 4; 
+	paddingRight: 4; 
+	paddingBottom: 4; 
+	paddingTop: 4;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+}
+
 /*
 //------------------------------
 //  DataGrid
@@ -485,7 +533,8 @@ PopUpButton
 	borderThickness: 1;
 	borderStyle: solid;
 	cornerRadius: 6;
-	backgroundColor: #e5ecf3;
+	/*backgroundColor: #e5ecf3;*/
+	backgroundColor: #FFF5B5;
 	horizontalAlign: center;
 	verticalAlign: middle;
 }

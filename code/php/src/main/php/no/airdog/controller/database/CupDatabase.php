@@ -17,10 +17,10 @@ class CupDatabase
 	{	
 		$hvor = $this->database->select()
 				->from('nkk_fugl')
-				->where('proveDato > ?', $fra)
-				->where('proveDato < ?', $til)
+				->where('proveDato >= ?', $fra)
+				->where('proveDato <= ?', $til)
 				->where('premiegrad != 0')
-				->order('hundId ASC');
+				->order('proveDato DESC');
 		
 		$resultat = $this->database->fetchAll($hvor);
 		
