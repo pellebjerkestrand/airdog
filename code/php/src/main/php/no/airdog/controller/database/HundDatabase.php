@@ -241,7 +241,14 @@ class HundDatabase
 		'oppdretterpostnummer' => 'oppdretter.postNr',
 		'oppdrettersted' => 'oppdretter.adresse3',
 		'oppdrettertlf' => 'oppdretter.telefon1',
-		'vf' => '(6 * (hFugl.egneStand) / ((hFugl.makkerStand) + (hFugl.egneStand)))'))
+		'GJVF' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
+		'GJJAKTL' => 'AVG(hFugl.jaktlyst)',
+		'GJFART' => 'AVG(hFugl.fart)',
+		'GJSTIL' => 'AVG(hFugl.stil)',
+		'GJSELVST' => 'AVG(hFugl.selvstendighet)',
+		'GJSOKBR' => 'AVG(hFugl.bredde)',
+		'GJREV' => 'AVG(hFugl.reviering)',
+		'GJSAMAR' => 'AVG(hFugl.samarbeid)'))
 		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 		->joinLeft(array('mMor'=>'nkk_hund'),'hMor.hundMorId = mMor.hundId', array())
@@ -251,7 +258,8 @@ class HundDatabase
 		->joinLeft(array('eier'=>'nkk_person'),'h.eierId = eier.personId', array())
 		->joinLeft(array('kull'=>'nkk_kull'),'h.kullId = kull.kullId', array())
 		->joinLeft(array('oppdretter'=>'nkk_person'),'kull.oppdretterId = oppdretter.personId', array())
-		->join(array('hFugl'=>'nkk_fugl'),'h.hundId = hFugl.hundId AND ' . $aar, array())
+		->join(array('avkom'=>'nkk_hund'),'h.hundId = avkom.hundMorId OR h.hundId = avkom.hundFarId', array())
+		->join(array('hFugl'=>'nkk_fugl'),'avkom.hundId = hFugl.hundId AND ' . $aar, array())
 		->where('h.raseId=?', $klubbId)
 		->group('h.hundId')
 		->order('h.navn ASC');
@@ -268,14 +276,14 @@ class HundDatabase
 		}
 		
 		// HUSK Å FJERNE
-		$select = $select->limit(10);
+		//$select = $select->limit(100);
 		
 		return $this->database->fetchAll($select);
 	}
 	
-	public function hentAarbokKullHund($hundId, $klubbId)
+	public static function hentAarbokKullHund($hundId, $klubbId, $database)
 	{
-		$select = $this->database->select()
+		$select = $database->select()
 		->from(array('h'=>'nkk_hund'), array(
 		'h.*',
 		'hundMorNavn' => 'hMor.navn',
@@ -287,6 +295,6 @@ class HundDatabase
 		->where('h.hundId=?', $hundId)
 		->limit(1);
 		
-		return $this->database->fetchRow($select);
+		return $database->fetchRow($select);
 	}
 }

@@ -124,13 +124,15 @@ class Verktoy
 
 	            //$v = mb_convert_case($v, MB_CASE_TITLE, "UTF-8");
 
-				$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å");
-				$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5");
+				$utf8 = array("æ", "ø", "å", "Æ", "Ø", "Å", "ö", "ä", "ô", "â", "Ö", "Ä", "Ô", "Â");
+				$rtftegn   = array("\\'e6", "\\'f8", "\\'e5", "\\'c6", "\\'d8", "\\'c5", "\\'f6", "\\'e4", "\\'f4", "\\'e2", "\\'d6", "\\'c4", "\\'d4", "\\'c2");
 	        	$v = str_replace($utf8,$rtftegn, $v);
 				
 	            $dokument = str_replace($sok, $v, $dokument);
         	}
         }
+        
+        //$dokument = ereg_replace("%%[A-Z0-9]+%%", "", $dokument);
 		
 		return $dokument;
 
