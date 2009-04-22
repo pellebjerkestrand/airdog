@@ -151,36 +151,75 @@ class KullDatabase
 		return $this->database->fetchAll($select);
 	}
 	
-	public function hentAarbokAvkom($hundId, $klubbId)
+	public static function hentAarbokAvkom($hundId, $klubbId, $aar, $database)
 	{
-		$select = $this->database->select()
+		$aar = $database->quoteInto('aarFugl.proveDato LIKE ?', $aar.'%');
+		
+		$select = $database->select()
 		->from(array('h'=>'nkk_hund'), array(
 			'h.*', 
 			'hundMorNavn' => 'hMor.navn', 
 			'hundFarNavn' => 'hFar.navn',
 			'fodt' => 'kull.fodt',
-			'GJNVF' => '(6 * SUM(hFugl.egneStand) / (SUM(hFugl.makkerStand) + SUM(hFugl.egneStand)))',
-			'GJNREV' => 'AVG(reviering)',
-			'GJNSAMAR' => 'AVG(samarbeid)',
+			'AARVF' => '(6 * SUM(aarFugl.egneStand) / (SUM(aarFugl.makkerStand) + SUM(aarFugl.egneStand)))',
+			'AARJAKTL' => 'AVG(aarFugl.jaktlyst)',
+			'AARFART' => 'AVG(aarFugl.fart)',
+			'AARSTIL' => 'AVG(aarFugl.stil)',
+			'AARSELVST' => 'AVG(aarFugl.selvstendighet)',
+			'AARSOKBR' => 'AVG(aarFugl.bredde)',
+			'AARREV' => 'AVG(aarFugl.reviering)',
+			'AARSAMAR' => 'AVG(aarFugl.samarbeid)',
+			'TOTALVF' => '(6 * SUM(totalFugl.egneStand) / (SUM(totalFugl.makkerStand) + SUM(totalFugl.egneStand)))',
+			'TOTALJAKTL' => 'AVG(totalFugl.jaktlyst)',
+			'TOTALFART' => 'AVG(totalFugl.fart)',
+			'TOTALSTIL' => 'AVG(totalFugl.stil)',
+			'TOTALSELVST' => 'AVG(totalFugl.selvstendighet)',
+			'TOTALSOKBR' => 'AVG(totalFugl.bredde)',
+			'TOTALREV' => 'AVG(totalFugl.reviering)',
+			'TOTALSAMAR' => 'AVG(totalFugl.samarbeid)',
 			'avkomnavn' => 'h.navn',
-			'avkomid' => 'hMor.hundId',
+			'avkomid' => 'h.hundId',
 			'eiernavn' => 'eier.navn'  
 		))
 		->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
 		->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
 		->joinLeft(array('kull' => 'nkk_kull'), 'h.kullId = kull.kullId', array())
-		->joinLeft(array('hFugl' => 'nkk_fugl'), 'h.hundId = hFugl.hundId', array())
+		->join(array('aarFugl' => 'nkk_fugl'), 'h.hundId = aarFugl.hundId AND ' . $aar, array())
+		->join(array('totalFugl' => 'nkk_fugl'), 'h.hundId = totalFugl.hundId', array())
 		->joinLeft(array('eier'=>'nkk_person'),'h.eierId = eier.personId', array())
-		->where($this->database->quoteInto('h.hundFarId=?', $hundId) . ' OR ' . $this->database->quoteInto('h.hundMorId=?', $hundId))
+		->where($database->quoteInto('h.hundFarId=?', $hundId) . ' OR ' . $database->quoteInto('h.hundMorId=?', $hundId))
 		->where('h.raseId=?', $klubbId)
 		->group('h.hundId');
 	
-		return $this->database->fetchAll($select);
+		return $database->fetchAll($select);
 	}
 	
-	public function hentAarbokKullOppdretter($kullId, $klubbId)
+	public static function hentAarbokAvkomTittel($hundId, $klubbId, $aar, $database)
 	{
-		$select = $this->database->select()
+		$select = $database->select()
+		->from(array('h'=>'nkk_hund'), array(
+			'h.*', 
+			'hundMorNavn' => 'hMor.navn', 
+			'hundFarNavn' => 'hFar.navn',
+			'fodt' => 'kull.fodt',
+			'avkomnavn' => 'h.navn',
+			'avkomid' => 'h.hundId',
+			'eiernavn' => 'eier.navn'  
+		))
+		->joinLeft(array('hMor' => 'nkk_hund'), 'h.hundMorId = hMor.hundId', array())
+		->joinLeft(array('hFar' => 'nkk_hund'), 'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('kull' => 'nkk_kull'), 'h.kullId = kull.kullId', array())
+		->joinLeft(array('eier'=>'nkk_person'),'h.eierId = eier.personId', array())
+		->where($database->quoteInto('h.hundFarId=?', $hundId) . ' OR ' . $database->quoteInto('h.hundMorId=?', $hundId))
+		->where('h.raseId=?', $klubbId)
+		->group('h.hundId');
+	
+		return $database->fetchAll($select);
+	}
+	
+	public static function hentAarbokKullOppdretter($kullId, $klubbId, $database)
+	{
+		$select = $database->select()
 		->from(array('k'=>'nkk_kull'), array(
 			'OPPDRETTERNAVN' => 'p.navn', 
 			'OPPDRETTERADRESSE' => 'p.adresse1', 
@@ -193,6 +232,6 @@ class KullDatabase
 		->where('k.raseId=?', $klubbId)
 		->limit(1);
 	
-		return $this->database->fetchRow($select);
+		return $database->fetchRow($select);
 	}
 }

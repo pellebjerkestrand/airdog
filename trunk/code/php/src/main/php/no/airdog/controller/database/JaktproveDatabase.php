@@ -67,7 +67,29 @@ class JaktproveDatabase
 		return $this->database->fetchAll($select);			
 	}
 	
+	public static function hentAarbokJaktprover($hundId, $aar, $klubbId, $database)
+	{				
+		$select = $database->select()
+		->from(array('f'=>'nkk_fugl'), array('navn'=>'a.navn', 'sted'=>'a.sted', 'f.*'))
+		->joinLeft(array('a'=>'nkk_arrangement'),'f.proveNr = a.proveNr', array())
+		->where('proveDato LIKE ?', $aar.'%') 
+		->where('f.raseId=?', $klubbId)
+		->where('f.hundId=?', $hundId)
+		->order('f.proveDato DESC'); 
+		
+		return $database->fetchAll($select);			
+	}
 	
+	public static function hentAarbokJaktproverTotalt($hundId, $klubbId, $database)
+	{				
+		$select = $database->select()
+		->from(array('f'=>'nkk_fugl'), array('total'=>'count(*)'))
+		->where('f.raseId=?', $klubbId)
+		->where('f.hundId=?', $hundId)
+		->group('f.hundId');
+		
+		return $database->fetchRow($select);			
+	}
 	
 	public function hentJaktproveSammendrag($hundId, $klubbId)
 	{

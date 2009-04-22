@@ -348,7 +348,7 @@ class JaktproveController
 		    	$tmp->manueltEndretAv = $rad['manueltEndretAv']; 	
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->kritikk = $rad['kritikk'];
-		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
+		    	$tmp->premiegradTekst = $this->hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
 		    	
 		    	$tmp->sted = $rad['sted'];
 		    	$tmp->navn = $rad['navn'];
@@ -418,7 +418,7 @@ class JaktproveController
 		    	$tmp->manueltEndretAv = $rad['manueltEndretAv']; 	
 		    	$tmp->manueltEndretDato = $rad['manueltEndretDato'];
 		    	$tmp->kritikk = $rad['kritikk'];
-		    	$tmp->premiegradTekst = $this->_hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
+		    	$tmp->premiegradTekst = $this->hentPremiegrad($rad['premiegrad'], $rad['klasse'], $rad['certifikat'], $rad['proveDato']);
 		    	
 		    	$tmp->sted = $rad['sted'];
 		    	$tmp->navn = $rad['navn'];
@@ -438,7 +438,7 @@ class JaktproveController
    		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
     }
     
-    private function _hentPremiegrad($premieGrad, $klasse, $sertifikat, $proveDato)
+    public function hentPremiegrad($premieGrad, $klasse, $sertifikat, $proveDato)
     {
     	$sert = "";
     	
