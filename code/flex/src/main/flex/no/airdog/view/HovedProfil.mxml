@@ -54,7 +54,7 @@
 				includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
 			<mx:LinkButton label="Lag årbok" 
 				styleName="UnderMeny" click="lagAarbok()"
-				icon="@Embed(source='assets/ikoner/image_sunset.png')"
+				icon="@Embed(source='/no/airdog/view/assets/ikoner/document_word_text.png')"
 				visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>	
 		</mx:HBox>
