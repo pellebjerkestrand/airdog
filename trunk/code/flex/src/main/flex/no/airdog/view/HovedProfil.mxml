@@ -13,6 +13,14 @@
 			import no.airdog.controller.Navigasjon;
 			import no.airdog.controller.Verktoy;
 			
+			[Bindable]
+			[Embed("assets/ikoner/gender.png")]
+           	private var hannIkon:Class;
+           	
+           	[Bindable]
+           	[Embed("assets/ikoner/gender_female.png")]
+           	private var hunnIkon:Class;
+			
 			private function visRedigerHundVindu():void
 			{	
 				Components.instance.controller.visRedigerHundVindu(UIComponent(this.parentApplication), Components.instance.session.hundprofil);				
@@ -34,7 +42,11 @@
     <mx:HBox id="topplinje" width="100%">
     	<mx:Box id="tittelboks"
 			styleName="nopaddingorborderorgap">
-			<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-10"/>
+
+			<mx:HBox>
+				<mx:Text id="tittel" text="{Components.instance.session.hundprofil.tittel}" paddingBottom="-10"/>
+			</mx:HBox>
+
 			<mx:Text id="navn" text="{Verktoy.ucwords(Components.instance.session.hundprofil.navn)}" fontSize="25"/>
 		</mx:Box>
 		<mx:Spacer width="100%"/>
@@ -66,7 +78,7 @@
 				styleName="profilBildeBox"
 				height="202" width="202">
 				<mx:Image id="hundbilde" cachePolicy="off"
-				source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
+					source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
 					|| Components.instance.session.hundprofil.bilde == null
 					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
 			</mx:Box>
@@ -84,19 +96,21 @@
 						<mx:Label text="ID:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
-						<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/>
+						<mx:Text text="{Components.instance.session.hundprofil.hundId}" styleName="profilGridData"/><mx:Spacer width="100%"/>				
+						<mx:Image id="kjonn" cachePolicy="off" 
+							source="{Components.instance.session.hundprofil.kjonn == 'H' 
+							? hannIkon : hunnIkon}" />
 					</mx:GridItem>
-					
+				</mx:GridRow>
+				<mx:GridRow>
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="Far:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
 						<mx:Text id="far" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farNavn)}" styleName="profilGridData"/>
 					</mx:GridItem>
-					
 				</mx:GridRow>
 				<mx:GridRow>
-					
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label id="eierLabel" text="Eier:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
@@ -104,47 +118,38 @@
 						<mx:Text id="eier" text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
 												|| Components.instance.session.hundprofil.eier == null 
 												? Components.instance.session.hundprofil.eierId : Verktoy.ucwords(Components.instance.session.hundprofil.eier)}" styleName="profilGridData"/>
-					</mx:GridItem>
-					
+					</mx:GridItem>	
+				</mx:GridRow>
+				<mx:GridRow>
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="Mor:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
 						<mx:Text id="mor" text="{Verktoy.ucwords(Components.instance.session.hundprofil.morNavn)}" styleName="profilGridData"/>
-					</mx:GridItem>
-					
+					</mx:GridItem>	
 				</mx:GridRow>
 				<mx:GridRow>
-					
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="Kull:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
 						<mx:Text id="kull" text="{Components.instance.session.hundprofil.kullId}" styleName="profilGridData"/>
 					</mx:GridItem>
-					
+				</mx:GridRow>
+				<mx:GridRow>
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="Farge:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
 						<mx:Text id="farge" text="{Verktoy.ucwords(Components.instance.session.hundprofil.farge)}" styleName="profilGridData"/>
 					</mx:GridItem>
-					
 				</mx:GridRow>
 				<mx:GridRow>
-					
 					<mx:GridItem styleName="profilGridBeskrivelse">
 						<mx:Label text="VF:" styleName="profilGridBeskrivelse"/>
 					</mx:GridItem>
 					<mx:GridItem styleName="profilGridData">
 						<mx:Text id="vf" text="{Components.instance.session.hundprofil.vf}" styleName="profilGridData"/>
-					</mx:GridItem>
-					
-					<mx:GridItem styleName="profilGridBeskrivelse">
-						<mx:Label text="Kjønn:" styleName="profilGridBeskrivelse"/>
-					</mx:GridItem>
-					<mx:GridItem styleName="profilGridData">
-						<mx:Text id="kjonn" text="{Verktoy.ucwords(Components.instance.session.hundprofil.kjonn)}" styleName="profilGridData"/>
 					</mx:GridItem>
 				</mx:GridRow>
 			</mx:Grid>
