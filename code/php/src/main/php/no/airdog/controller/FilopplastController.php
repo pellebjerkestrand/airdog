@@ -78,7 +78,7 @@ if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['br
 		if(move_uploaded_file($temp_navn, $fil_sti))
 		{
 			$be = new BildeendringController();
-			echo $be->lagreBilde($sti, $filnavn, "200", "200", "50", "50");
+			echo $be->lagreBilde($sti, $filnavn, "230", "230", "50", "50");
 		}
 		else
 		{
