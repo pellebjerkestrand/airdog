@@ -357,7 +357,6 @@ LinkButton
 Loader
 {
 	brokenImageSkin: Embed(source="skin/stil.swf",symbol="Loader_brokenImageSkin");
-
 }
 
 .mainButtonLink
@@ -442,7 +441,6 @@ MenuBar
 */
 NumericStepper
 {
-
 	downArrowDisabledSkin: Embed(source="skin/stil.swf", symbol="NumericStepperDownArrow_disabledSkin");
 	downArrowDownSkin: Embed(source="skin/stil.swf", symbol="NumericStepperDownArrow_downSkin");
 	downArrowOverSkin: Embed(source="skin/stil.swf", symbol="NumericStepperDownArrow_overSkin");
@@ -451,7 +449,6 @@ NumericStepper
 	upArrowDownSkin: Embed(source="skin/stil.swf", symbol="NumericStepperUpArrow_downSkin");
 	upArrowOverSkin: Embed(source="skin/stil.swf", symbol="NumericStepperUpArrow_overSkin");
 	upArrowUpSkin: Embed(source="skin/stil.swf", symbol="NumericStepperUpArrow_upSkin");
-
 }
 
 /*
@@ -485,7 +482,8 @@ Panel
 	cornerRadius: 0;
 }
 
-.panelTitle {
+.panelTitle 
+{
     fontSize: 15;
 	fontWeight: bold;
 	color: #ffffff;
@@ -534,7 +532,8 @@ PopUpButton
 	borderStyle: solid;
 	cornerRadius: 6;
 	/*backgroundColor: #e5ecf3;*/
-	backgroundColor: #FFF5B5;
+	/*backgroundColor: #FFF5B5;*/
+	backgroundColor: #B8D085;
 	horizontalAlign: center;
 	verticalAlign: middle;
 }
@@ -918,9 +917,7 @@ VBox.topBar
 }
 HBox.undermenyBar
 {	
-	/*color: #333333;*/
 	color: #4d4d4d;
-	/*backgroundColor: #bebebe;*/
 	backgroundColor: #B8D085;
 	borderStyle: solid; 
 	borderThickness: 0;

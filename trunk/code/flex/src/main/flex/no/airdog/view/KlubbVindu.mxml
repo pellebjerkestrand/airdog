@@ -13,14 +13,14 @@
 				Components.instance.controller.settBrukersKlubb(knapp.label, knapp.data.toString());
 			}
 			
-			private function tilbake(event:Event):void
+			private function tilbake():void
 			{
 				Components.instance.controller.loggUt();
 			}
 		]]>
 	</mx:Script>
 	
-	<mx:Label text="Velg klubb"/>
+	<mx:Label text="Velg klubb" fontWeight="bold"/>
 	<mx:VBox height="100%" width="100%" verticalAlign="middle">
 		<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
 			<mx:LinkButton id="knapp" 
@@ -31,5 +31,5 @@
 		</mx:Repeater>	
 	</mx:VBox>
 	
-	<mx:LinkButton label="Tilbake" click="tilbake(event)" icon="@Embed(source='assets/ikoner/arrow_180_medium.png')"/>
+	<mx:Button label="Tilbake" click="tilbake()" icon="@Embed(source='assets/ikoner/arrow_180_medium.png')"/>
 </mx:VBox>
