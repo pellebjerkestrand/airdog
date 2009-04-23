@@ -67,5 +67,6 @@ package no.airdog.controller
 		function hentArrangementer():void
 		function visLagAarbok(hund:Hund):void
 		function hentProvestatistikk(id:String):void
+		function hentNyheter():void;
 	}
 }
