@@ -10,7 +10,7 @@
 		]]>
 	</mx:Script>
 	<mx:HBox verticalAlign="middle">
-		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogostorst318.png')"/>
+		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogo_light_storst.png')"/>
 	
 		<mx:VBox styleName="notis">
 			<mx:HBox verticalAlign="middle">
