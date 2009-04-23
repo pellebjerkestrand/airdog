@@ -219,10 +219,11 @@ class HundDatabase
 		return $this->database->update('nkk_hund', $verdier, $hvor);
 	}
 	
-	public function hentAarbokHund($hundId, $kjonn, $aar, $klubbId)
+	public static function hentAarbokHund($hundId, $kjonn, $aar, $klubbId, $database)
 	{
-		$aar = $this->database->quoteInto('hFugl.proveDato LIKE ?', $aar.'%');
-		$select = $this->database->select()
+		$aar = $database->quoteInto('hFugl.proveDato LIKE ?', $aar.'%');
+		
+		$select = $database->select()
 		->from(array('h'=>'nkk_hund'), array(
 		'h.*',
 		'hundMorNavn' => 'hMor.navn',
@@ -275,7 +276,7 @@ class HundDatabase
 			$select = $select->where('h.kjonn=?', $kjonn);
 		}
 		
-		return $this->database->fetchAll($select);
+		return $database->fetchAll($select);
 	}
 	
 	public static function hentAarbokKullHund($hundId, $klubbId, $database)

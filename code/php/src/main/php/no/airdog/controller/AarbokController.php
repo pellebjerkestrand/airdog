@@ -76,14 +76,12 @@ class AarbokController
 	
 	private function hentHunder($kjonn, $aar, $klubbId)
 	{
-		$hd = new HundDatabase();
-		return $hd->hentAarbokHund("", $kjonn, $aar, $klubbId);
+		return HundDatabase::hentAarbokHund("", $kjonn, $aar, $klubbId, $this->database);
 	}
 	
 	private function hentHundArray($hundId, $aar, $klubbId)
 	{
-		$hd = new HundDatabase();
-		return $hd->hentAarbokHund($hundId, "", $aar, $klubbId);
+		return HundDatabase::hentAarbokHund($hundId, "", $aar, $klubbId, $this->database);
 	}
 	
 	private function hentKullTittelArray($hundId, $klubbId, $aar)
@@ -407,7 +405,7 @@ class AarbokController
 					$sidedeler = '\par';
 				}
 			}	
-			
+
 			$nyRTF .= Verktoy::fyll_RTF(array(), "../assets/footer.rtf");
 			
 			if($nyRTF)
