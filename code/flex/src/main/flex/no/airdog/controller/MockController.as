@@ -293,7 +293,8 @@ package no.airdog.controller
 			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.session.hundprofil = null;
 			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
-			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
+			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);					
+			Components.instance.controller.hentProvestatistikk(hundId);		
 		}
 		
 		public function visHundResultat(event:Hund):void

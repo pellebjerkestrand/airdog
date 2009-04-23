@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
-	styleName="nopaddingorborder" 
-	show="init()">
+	styleName="nopaddingorborder">
 	<mx:Script>
         <![CDATA[
-			import no.airdog.services.Components;		
-			 
-			private function init():void
-			{			
-				var val:String = Components.instance.session.hundprofil.hundId as String;		
-				Components.instance.controller.hentProvestatistikk(val as String);							
-			}     
+			import no.airdog.services.Components;			   
         ]]>
 	</mx:Script>
 	
-	<mx:Grid verticalGap="0" horizontalGap="0" width="100%">
+	<mx:Grid verticalGap="0" horizontalGap="0" width="100%" styleName="profilGridStatistikk">
 		<mx:GridRow width="100%">			
-			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
-				<mx:Grid width="100%">
-					<mx:GridRow width="100%">
+			<mx:GridItem width="100%">
+				<mx:Grid width="100%" borderSides="right" borderColor="#cccccc" borderStyle="solid" borderThickness="1">
+					<mx:GridRow width="100%" paddingLeft="4">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="UK"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5" paddingLeft="4">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
@@ -34,7 +27,7 @@
 							<mx:Text text="%"/>							
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%">
+					<mx:GridRow width="100%" paddingLeft="4">
 						<mx:GridItem width="100%">
 							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierUK}"/>							
 						</mx:GridItem>
@@ -47,14 +40,14 @@
 					</mx:GridRow>					
 				</mx:Grid>				
 			</mx:GridItem>
-			<mx:GridItem width="100%" borderStyle="solid" borderThickness="0.5">
-				<mx:Grid width="100%">
+			<mx:GridItem width="100%">
+				<mx:Grid width="100%" borderSides="right" borderColor="#cccccc" borderStyle="solid" borderThickness="1">
 					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="DERBY"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%"  backgroundColor="#f5f5f5">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
@@ -78,8 +71,8 @@
 					</mx:GridRow>					
 				</mx:Grid>				
 			</mx:GridItem>			
-			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
-				<mx:Grid width="100%">
+			<mx:GridItem width="100%">
+				<mx:Grid width="100%" borderSides="right" borderColor="#cccccc" borderStyle="solid" borderThickness="1">
 					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="AK"/>
@@ -109,8 +102,8 @@
 					</mx:GridRow>					
 				</mx:Grid>				
 			</mx:GridItem>			
-			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
-				<mx:Grid width="100%">
+			<mx:GridItem width="100%">
+				<mx:Grid width="100%" borderSides="right" borderColor="#cccccc" borderStyle="solid" borderThickness="1">
 					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="VK"/>
@@ -140,7 +133,7 @@
 					</mx:GridRow>					
 				</mx:Grid>				
 			</mx:GridItem>						
-			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
+			<mx:GridItem width="100%">
 				<mx:Grid width="100%">
 					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">

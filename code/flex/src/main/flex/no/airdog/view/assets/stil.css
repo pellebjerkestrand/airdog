@@ -564,6 +564,18 @@ PopUpButton
 	verticalAlign: middle;
 }
 
+.profilGridStatistikk
+{
+	backgroundColor: #FFFFFF; 
+	borderStyle: solid; 
+	borderThickness: 1; 
+	borderColor: #a3a3a3; 
+	cornerRadius: 6;
+	horizontalGap: 4;
+	verticalGap: 4;
+	verticalAlign: middle;
+}
+
 .profilGridBeskrivelse
 {
 	color: #a3a3a3;
