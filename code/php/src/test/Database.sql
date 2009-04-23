@@ -380,7 +380,8 @@ CREATE TABLE IF NOT EXISTS `nkk_kull` (
   `fodt` date NOT NULL,
   `raseId` int(3) NOT NULL,
   `manueltEndretAv` varchar(20) NOT NULL,
-  `manueltEndretDato` date NOT NULL
+  `manueltEndretDato` date NOT NULL,
+  PRIMARY KEY (`kullId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
