@@ -228,12 +228,14 @@ class AarbokController
 				if ($hundId == $tmp['hundMorId'])
 				{
 					$avkom['partnernavn'] = $tmp['hundFarNavn'];
+					$avkom['partnertittel'] = $tmp['hundFarTittel'];
 					$avkom['partnerid'] = $tmp['hundFarId'];
 					$avkom['morId'] = $tmp['hundMorId'];
 				}
 				else
 				{
 					$avkom['partnernavn'] = $tmp['hundMorNavn'];
+					$avkom['partnertittel'] = $tmp['hundMorTittel'];
 					$avkom['partnerid'] = $tmp['hundMorId'];
 					$avkom['farId'] = $tmp['hundFarId'];
 				}
@@ -382,7 +384,7 @@ class AarbokController
 						$etKull['avkom'] .= Verktoy::fyll_RTF($etAvkom, "../assets/avkom.rtf");
 					}
 					
-					$etKull['kulltittel'] = $etKull['partnernavn'] . " " . 
+					$etKull['kulltittel'] = $etKull['partnertittel'] . " " . $etKull['partnernavn'] . " " . 
 						$etKull['partnerid'] . ", " . 
 						$etKull['antallvalper'] . " valp(er) - " . 
 						$etKull['fodt'];
@@ -402,7 +404,7 @@ class AarbokController
 				if ($enHund['kulllisteutvidet'] != "")
 				{
 					$nyRTF .= $sidedeler . Verktoy::fyll_RTF($enHund, "../assets/hund.rtf");
-					$sidedeler = '\page';
+					$sidedeler = '\par';
 				}
 			}	
 			
