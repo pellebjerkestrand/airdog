@@ -318,6 +318,8 @@ class AarbokController
 				$enHund['kulltittelliste'] = "";
 				$enHund['kulllisteutvidet'] = "";
 				$enHund['aar'] = $aar;
+				$enHund['gjstart'] = 0;
+				$enHund['gjavk'] = 0;
 					
 				if ($enHund['kjonn'] == "H")	
 					$enHund['motsattkjonn'] = "tispene";
@@ -353,12 +355,14 @@ class AarbokController
 				foreach($kullArray as $etKull)
 				{   					
 					$etKull['avkom'] = "";
+					$enHund['gjavk'] += sizeof($etKull['liste']);
 					
 					foreach($etKull['liste'] as $etAvkom)
 					{
 						$jaktproveArray = $this->hentJaktproveArray($etAvkom['hundId'], $aar, $klubbId);
 						$etAvkom['jaktproveliste'] = "";
 						$etAvkom['AARSTART'] = sizeof($jaktproveArray);
+						$enHund['gjstart'] += $etAvkom['AARSTART'];
 						
 						foreach($jaktproveArray as $enJaktprove)
 						{

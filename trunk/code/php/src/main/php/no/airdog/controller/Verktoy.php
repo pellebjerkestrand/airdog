@@ -132,7 +132,7 @@ class Verktoy
         	}
         }
         
-        //$dokument = ereg_replace("%%[A-Z0-9]+%%", "", $dokument);
+        $dokument = ereg_replace("%%[A-Z0-9]+%%", "", $dokument);
 		
 		return $dokument;
 
