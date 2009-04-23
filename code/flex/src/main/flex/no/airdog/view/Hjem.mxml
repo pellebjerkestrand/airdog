@@ -2,7 +2,7 @@
 <mx:HBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:view="no.airdog.view.*"
-	paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4"
+	paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4" horizontalGap="4" verticalGap="4"
 	backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
 	width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
 	<mx:Script>
@@ -35,56 +35,73 @@
             }
 		]]>
 	</mx:Script>
-	<mx:HBox verticalAlign="middle" horizontalAlign="center" width="100%">
-		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogo_light_storst.png')"/>
+	<mx:VBox styleName="cupbakgrunn" width="100%" height="100%">
 	
-		<mx:VBox styleName="notis">
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"/>
-				<mx:Label text="Her kan du" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
-				<mx:Label text="Søke etter hunder" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/flag.png')"/>
-				<mx:Label text="Se jaktprøveresultater" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-				<mx:Label text="Se jaktprøvekritikker" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
-				<mx:Label text="Se avkom" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
-				<mx:Label text="Se stamtrær" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/trophy.png')"/>
-				<mx:Label text="Se utstillingsresultater" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
-				<mx:Label text="Søke i årsgjennomsnitt" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
-				<mx:Label text="Lage fiktive stamtrær" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
-				<mx:Label text="Se rankinglister" fontWeight="bold"/>
-			</mx:HBox>
-			<mx:HBox verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/newspaper.png')"/>
-				<mx:Label text="Lese nyheter fra klubben" fontWeight="bold"/>
-			</mx:HBox>
-		</mx:VBox>
-	</mx:HBox>
+		<mx:HBox styleName="nopaddingorborderorgap" width="100%">
+			<mx:Label text="Velkommen, {Components.instance.session.bruker.fornavn} {Components.instance.session.bruker.etternavn}" fontWeight="bold" fontSize="18"/>
+			<mx:Spacer width="100%"/>
+		</mx:HBox>
+		
+		<mx:HBox id="hjemboks"
+			horizontalAlign="left" verticalAlign="top"
+			horizontalScrollPolicy="off" verticalScrollPolicy="off"
+			styleName="cupplassering" cornerRadius="0" width="100%" height="100%">
+		
+			<mx:VBox id="infoboks">
+				<mx:HBox verticalAlign="middle">
+					<!--
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"/>
+					-->
+					<mx:Label text="Her kan du" fontWeight="bold"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+					<mx:Label text="Søke etter hunder"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/target.png')"/>
+					<mx:Label text="Se jaktprøveresultater"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+					<mx:Label text="Lese kritikker"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
+					<mx:Label text="Finne avkom"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+					<mx:Label text="Se stamtrær"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/bookmark.png')"/>
+					<mx:Label text="Se utstillingsresultater"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
+					<mx:Label text="Søke i årsgjennomsnitt"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180_fictual.png')"/>
+					<mx:Label text="Lage fiktive stamtrær"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
+					<mx:Label text="Se plasseringer i cupen"/>
+				</mx:HBox>
+				<mx:HBox verticalAlign="middle">
+					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/newspaper.png')"/>
+					<mx:Label text="Lese nyheter fra klubben"/>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:VRule height="{infoboks.height}"/>
+			<mx:VBox width="100%" height="100%">
+				<mx:TextArea id="infotekst" editable="false" width="100%" height="100%" borderThickness="0"
+					text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from 'de Finibus Bonorum et Malorum' by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."/>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
 	
 	<mx:VBox id="nyheter"
 		horizontalScrollPolicy="off" verticalScrollPolicy="off" 
@@ -93,7 +110,11 @@
 		<mx:HBox styleName="nopaddingorborderorgap" width="100%" horizontalAlign="left" verticalAlign="middle">
 			<mx:Label id="nyheteroverskrift" text="Siste nyheter fra klubben" fontWeight="bold" fontSize="18"/>
 			<mx:Spacer width="100%"/>
+			<mx:LinkButton label="Hent nyheter (alpha)" click="hentNyheter()" icon="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')"/>
+			<!--
+			<mx:Spacer width="100%"/>
 			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
+			-->
 		</mx:HBox>
 		
 		<mx:Box id="listeboks"

@@ -27,7 +27,7 @@
     		<mx:NumericStepper value="3" minimum="1" maximum="20" id="dybde"/>
     	</mx:FormItem>
     	<mx:FormItem>
-    		<mx:LinkButton label="Generer" click="generer()" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
+    		<mx:LinkButton label="Generer" click="generer()" icon="@Embed(source='assets/ikoner/arrow_join_180_fictual.png')"/>
     	</mx:FormItem>
     	<mx:Spacer width="100%"/>
 		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="Fyll ut fars og mors ID, velg antall generasjoner og klikk på 'Generer'."/>
