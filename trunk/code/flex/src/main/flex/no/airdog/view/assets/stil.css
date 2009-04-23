@@ -532,9 +532,7 @@ PopUpButton
 	borderThickness: 1;
 	borderStyle: solid;
 	cornerRadius: 6;
-	/*backgroundColor: #e5ecf3;*/
-	/*backgroundColor: #FFF5B5;*/
-	backgroundColor: #B8D085;
+	backgroundColor: #e5ecf3;
 	horizontalAlign: center;
 	verticalAlign: middle;
 }

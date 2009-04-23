@@ -98,7 +98,7 @@ package no.airdog.controller
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
-			hentNyheter();
+//			hentNyheter();
         }
 		
 		public function loggInn(bruker:Bruker):void
