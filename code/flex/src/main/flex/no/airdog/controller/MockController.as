@@ -98,6 +98,7 @@ package no.airdog.controller
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
+			hentNyheter();
         }
 		
 		public function loggInn(bruker:Bruker):void
@@ -644,6 +645,16 @@ package no.airdog.controller
 		{
 			Components.instance.session.arrangementer = new ArrayCollection(event as Array);
 			Components.instance.session.arrangementer.addItem(new Arrangement());
-		}		
+		}
+		
+		public function hentNyheter():void
+		{
+			Components.instance.services.airdogService.hentNyheter(hentNyheterResultat);
+		}
+		
+		private function hentNyheterResultat(event:Object):void
+		{
+			Components.instance.session.nyheter = new ArrayCollection(event as Array);
+		}
 	}
 }

@@ -29,6 +29,7 @@ require_once 'controller/PersonController.php';
 require_once 'controller/DatOpplastningsController.php';
 require_once 'controller/CupController.php';
 require_once 'controller/ArrangementController.php';
+require_once 'controller/NyhetController.php';
 
 $server->setClass("HundController");
 $server->setClass("JaktproveController");
@@ -42,6 +43,7 @@ $server->setClass("PersonController");
 $server->setClass("DatOpplastningsController");
 $server->setClass("CupController");
 $server->setClass("ArrangementController");
+$server->setClass("NyhetController");
 
 $server->setClassMap("AmfRettigheter", "AmfRettigheter");
 $server->setClassMap("AmfHund", "AmfHund");
@@ -54,6 +56,7 @@ $server->setClassMap("AmfPerson","AmfPerson");
 $server->setClassMap("AmfOpplastningObjekt","AmfOpplastningObjekt");
 $server->setClassMap("AmfCup","AmfCup");
 $server->setClassMap("AmfArrangement","AmfArrangement");
+$server->setClassMap("AmfNyhet","AmfNyhet");
 
 //Bytt til true når det skal lanseres
 $server->setProduction(false);

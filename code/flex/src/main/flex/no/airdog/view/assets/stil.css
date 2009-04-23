@@ -171,6 +171,7 @@ CursorManager
 	horizontalGap: 4;
 	verticalGap: 4;
 	verticalAlign: middle;
+	horizontalAlign: center;
 }
 
 .cuppoeng
