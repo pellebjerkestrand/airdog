@@ -16,14 +16,14 @@
 	
 	<mx:Grid verticalGap="0" horizontalGap="0" width="100%">
 		<mx:GridRow width="100%">			
-			<mx:GridItem width="100%">
+			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
 				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
+					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="UK"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
@@ -46,15 +46,46 @@
 						</mx:GridItem>
 					</mx:GridRow>					
 				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
+			</mx:GridItem>
+			<mx:GridItem width="100%" borderStyle="solid" borderThickness="0.5">
 				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
+					<mx:GridRow width="100%">
+						<mx:GridItem width="100%">
+							<mx:Label fontWeight="bold" text="DERBY"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%"  backgroundColor="#f5f5f5">											
+						<mx:GridItem  width="100%">
+							<mx:Text text="Premier"/>							
+						</mx:GridItem>
+						<mx:GridItem  width="100%">
+							<mx:Text text="Starter"/>							
+						</mx:GridItem>
+						<mx:GridItem  width="100%">
+							<mx:Text text="%"/>							
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%">
+						<mx:GridItem width="100%">
+							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierDERBY}"/>							
+						</mx:GridItem>
+						<mx:GridItem width="100%">
+							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterDERBY}"/>							
+						</mx:GridItem>
+						<mx:GridItem width="100%">
+							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentDERBY}"/>							
+						</mx:GridItem>
+					</mx:GridRow>					
+				</mx:Grid>				
+			</mx:GridItem>			
+			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
+				<mx:Grid width="100%">
+					<mx:GridRow width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="AK"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
@@ -77,46 +108,15 @@
 						</mx:GridItem>
 					</mx:GridRow>					
 				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
+			</mx:GridItem>			
+			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
 				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="UKAK"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
 					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierUKAK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterUKAK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentUKAK}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="VK"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
@@ -139,234 +139,15 @@
 						</mx:GridItem>
 					</mx:GridRow>					
 				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
+			</mx:GridItem>						
+			<mx:GridItem width="100%" borderColor="#cccccc" borderStyle="solid" borderThickness="0.5">
 				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="VKSEMIFINALE"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
 					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierVKSEMIFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterVKSEMIFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentVKSEMIFINALE}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="VKFINALE"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierVKFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterVKFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentVKFINALE}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>			
-		</mx:GridRow>		
-		<mx:GridRow width="100%">
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="UKKVALIK"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierUKKVALIK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterUKKVALIK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentUKKVALIK}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="UKKFINALE"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierUKKFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterUKKFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentUKKFINALE}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="DERBYKVALIK"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierDERBYKVALIK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterDERBYKVALIK}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentDERBYKVALIK}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>	
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="DERBYSEMIFINALE"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierDERBYSEMIFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterDERBYSEMIFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentDERBYSEMIFINALE}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
-						<mx:GridItem width="100%">
-							<mx:Label fontWeight="bold" text="DERBYFINALE"/>
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">											
-						<mx:GridItem  width="100%">
-							<mx:Text text="Premier"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="Starter"/>							
-						</mx:GridItem>
-						<mx:GridItem  width="100%">
-							<mx:Text text="%"/>							
-						</mx:GridItem>
-					</mx:GridRow>
-					<mx:GridRow width="100%">
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).premierDERBYFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).starterDERBYFINALE}"/>							
-						</mx:GridItem>
-						<mx:GridItem width="100%">
-							<mx:Text text="{Components.instance.session.provestatistikk.getItemAt(0).prosentDERBYFINALE}"/>							
-						</mx:GridItem>
-					</mx:GridRow>					
-				</mx:Grid>				
-			</mx:GridItem>
-			<mx:GridItem width="100%">
-				<mx:Grid width="100%">
-					<mx:GridRow backgroundColor="#f5f5f5" width="100%">
 						<mx:GridItem width="100%">
 							<mx:Label fontWeight="bold" text="Totalt"/>
 						</mx:GridItem>
 					</mx:GridRow>
-					<mx:GridRow width="100%">											
+					<mx:GridRow width="100%" backgroundColor="#f5f5f5">											
 						<mx:GridItem  width="100%">
 							<mx:Text text="Premier"/>							
 						</mx:GridItem>
