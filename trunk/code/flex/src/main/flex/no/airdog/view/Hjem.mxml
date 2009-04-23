@@ -7,6 +7,8 @@
 	width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.LinkButton;
+			import flash.net.navigateToURL;
 			import no.airdog.services.Components;
 			import mx.controls.TextArea;
 			
@@ -24,9 +26,16 @@
 					felt.height = felt.mx_internal::getTextField().height;
 				}
 			}
+
+            private function lesNyhet(event:Event):void {
+            	var knapp:LinkButton = event.target as LinkButton;
+            	
+                var urlRequest:URLRequest = new URLRequest(knapp.data.toString());
+                navigateToURL(urlRequest, '_blank');
+            }
 		]]>
 	</mx:Script>
-	<mx:HBox verticalAlign="middle">
+	<mx:HBox verticalAlign="middle" horizontalAlign="center" width="100%">
 		<mx:Image source="@Embed(source='/no/airdog/view/assets/logo/airdoglogo_light_storst.png')"/>
 	
 		<mx:VBox styleName="notis">
@@ -98,7 +107,7 @@
 							<mx:Text text="{nyhet.currentItem.tittel}" fontSize="18" paddingTop="0"/>
 							<mx:Spacer width="100%"/>
 							<mx:LinkButton label="Les"
-										data="{nyhet.currentItem.url}"
+										data="{nyhet.currentItem.url}" click="lesNyhet(event)"
 										icon="@Embed(source='assets/ikoner/newspaper.png')"/>
 						</mx:HBox>
 						<mx:TextArea id="tekstfelt"
