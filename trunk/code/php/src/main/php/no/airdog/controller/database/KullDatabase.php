@@ -159,7 +159,9 @@ class KullDatabase
 		->from(array('h'=>'nkk_hund'), array(
 			'h.*', 
 			'hundMorNavn' => 'hMor.navn', 
-			'hundFarNavn' => 'hFar.navn',
+			'hundMorTittel' => 'hMor.tittel',
+			'hundFarNavn' => 'hFar.navn', 
+			'hundFarTittel' => 'hFar.tittel',
 			'fodt' => 'kull.fodt',
 			'AARVF' => '(6 * SUM(aarFugl.egneStand) / (SUM(aarFugl.makkerStand) + SUM(aarFugl.egneStand)))',
 			'AARJAKTL' => 'AVG(aarFugl.jaktlyst)',
@@ -200,7 +202,9 @@ class KullDatabase
 		->from(array('h'=>'nkk_hund'), array(
 			'h.*', 
 			'hundMorNavn' => 'hMor.navn', 
-			'hundFarNavn' => 'hFar.navn',
+			'hundMorTittel' => 'hMor.tittel',
+			'hundFarNavn' => 'hFar.navn', 
+			'hundFarTittel' => 'hFar.tittel',
 			'fodt' => 'kull.fodt',
 			'avkomnavn' => 'h.navn',
 			'avkomid' => 'h.hundId',

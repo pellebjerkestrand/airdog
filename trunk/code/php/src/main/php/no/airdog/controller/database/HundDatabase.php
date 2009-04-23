@@ -275,9 +275,6 @@ class HundDatabase
 			$select = $select->where('h.kjonn=?', $kjonn);
 		}
 		
-		// HUSK Å FJERNE
-		//$select = $select->limit(100);
-		
 		return $this->database->fetchAll($select);
 	}
 	
