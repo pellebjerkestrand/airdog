@@ -30,27 +30,37 @@ class NyhetController
 			
 			try
 			{
-				$feed = Zend_Feed::import($rss['rss']);	
+				$feed = new Zend_Feed_Rss($rss['rss']);	
 			}
 			catch (Zend_Feed_Exception $e)
 			{
-				echo "Feil ved importering av klubbens RSS";
+				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
 				exit;	
+			}
+			catch (Zend_Exception $e)
+			{
+				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
+				exit;
+			}
+			catch (Exception $e)
+			{
+				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
+				exit;
 			}
 			
 			foreach($feed as $nyhet)
 			{
 				$tmp = new AmfNyhet();
 				$tmp->tittel = $nyhet->title();
-				if(trim($nyhet->description) != '')
+				if(trim($nyhet->description()) != '')
 				{
-					$tmp->tekst = substr(trim(strip_tags($nyhet->description)), 0, 197).'...';	
+					$tmp->tekst = substr(trim(strip_tags($nyhet->description())), 0, 197).'...';	
 				}
 				else
 				{
 					$tmp->tekst = null;
 				}
-				$tmp->dato = $nyhet->published();
+				$tmp->dato = $nyhet->pubDate();
 				$tmp->url = $nyhet->link();
 				
 				$ret[] = $tmp;
