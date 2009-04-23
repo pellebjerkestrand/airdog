@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TitleWindow
+<mx:HBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
 	xmlns:view="no.airdog.view.*"
-	layout="vertical" title="Innlogging"
-	width="100%" height="100%">
+	width="100%" height="100%" xmlns:utils="flash.utils.*">
 
-<mx:Script>
-	<![CDATA[
-		import no.airdog.model.Bruker;
-		import no.airdog.services.Components;
-		import mx.events.CloseEvent;
-		import mx.managers.FocusManager;
-		
-		private function avbryt():void
-		{
-			Components.instance.controller.fjernLoggInnVindu();
-		}
-		
-        private function loggInn():void 
-        {
-        	var bruker:Bruker = new Bruker();
-        	bruker.epost = brukernavn.text;
-        	bruker.passord = passord.text;
-			Components.instance.controller.loggInn(bruker);
-        }
-        
-        public function ristVindu():void
-        {
-        	melding.text = "Feil brukernavn/passord";
-        	rister.stop();
-			rister.duration = 55;
-			rister.play([this]);
-        }
-        
-        private function gjest():void
-        {
-        	var bruker:Bruker = new Bruker();
-        	bruker.epost = "gjest";
-        	bruker.passord = "gjest";
-        	Components.instance.controller.loggInn(bruker);
-        }
-	]]>
-</mx:Script>
+	<mx:Script>
+		<![CDATA[
+			import no.airdog.model.Bruker;
+			import no.airdog.services.Components;
+			import mx.events.CloseEvent;
+			import mx.managers.FocusManager;
+			
+			[Bindable]public var feil:Boolean = false;
+			
+			public function ristVindu():void
+	        {
+	        	feil = true;
+	        	rister.stop();
+				rister.duration = 55;
+				rister.play([stack]);
+	        }
+			
+			private function avbryt():void
+			{
+				Components.instance.controller.fjernLoggInnVindu();
+			}
+			
+	        private function loggInn():void 
+	        {
+	        	var bruker:Bruker = new Bruker();
+	        	bruker.epost = brukernavn.text;
+	        	bruker.passord = passord.text;
+				Components.instance.controller.loggInn(bruker);
+	        }
+	        
+	        private function gjest():void
+	        {
+	        	var bruker:Bruker = new Bruker();
+	        	bruker.epost = "gjest";
+	        	bruker.passord = "gjest";
+	        	Components.instance.controller.loggInn(bruker);
+	        }
+		]]>
+	</mx:Script>
+	
+	<mx:Sequence id="rister">
+		<mx:Move xBy="-5"/>
+		<mx:Move xBy="10"/>
+		<mx:Move xBy="-10"/>
+		<mx:Move xBy="10"/>
+		<mx:Move xBy="-10"/>
+		<mx:Move xBy="10"/>
+		<mx:Move xBy="-10"/>
+		<mx:Move xBy="5"/>
+	</mx:Sequence>
 
-<mx:Sequence id="rister">
-	<mx:Move xBy="-5"/>
-	<mx:Move xBy="10"/>
-	<mx:Move xBy="-10"/>
-	<mx:Move xBy="10"/>
-	<mx:Move xBy="-10"/>
-	<mx:Move xBy="10"/>
-	<mx:Move xBy="-10"/>
-	<mx:Move xBy="5"/>
-</mx:Sequence>
-
-<mx:HBox width="100%">
-	<mx:Image id="Logo" source="no/airdog/view/assets/logo/airdoglogo200clean.png" width="200" height="200"/>
-
-	<mx:ViewStack id="stack" selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}" width="350" height="100%">
+	<mx:Box>
+		<mx:Image id="Logo" source="no/airdog/view/assets/logo/airdoglogo_light200.png" width="200" height="200"/>
+	</mx:Box>
+	
+	<mx:ViewStack id="stack"
+		width="350" height="100%" styleName="profilGrid"
+		selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
 		<mx:VBox>
-			<mx:Text id="melding" text="" textAlign="center" color="red" paddingBottom="0" height="20" width="100%" fontWeight="bold"/>
+			<mx:HBox styleName="nopaddingorborder" width="100%">
+				<mx:Label text="Logg inn" fontWeight="bold"/>
+				<mx:Label id="melding" text="Feil brukernavn/passord" textAlign="center" width="100%" color="red" fontWeight="bold" visible="{feil == true ? true : false}" includeInLayout="{feil == true ? true : false}"/>
+			</mx:HBox>
 			<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
-				<mx:Text text="Skriv inn brukernavn (e-post) og passord."/>
-				<mx:Text text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+				<mx:Label text="Skriv inn brukernavn (e-post) og passord."/>
+				<mx:Label text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
 				<mx:FormItem label="Brukernavn">
 					<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
 				</mx:FormItem>
@@ -83,5 +90,3 @@
 		<view:KlubbVindu/>
 	</mx:ViewStack>
 </mx:HBox>
-
-</mx:TitleWindow>

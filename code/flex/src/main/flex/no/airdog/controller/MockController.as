@@ -111,6 +111,7 @@ package no.airdog.controller
 			{	
 				if(bruker.toString() == "FEIL_BRUKERNAVN_PASSORD")
 				{
+					vindu.feil = true;
 					vindu.ristVindu();
 					loggUt();
 					return;
@@ -120,9 +121,12 @@ package no.airdog.controller
 				Components.instance.session.bruker.innlogget = true;
 							
 				hentBrukersKlubber();
+				
+				vindu.feil = false;
 			}
 			else
 			{
+				vindu.feil = true;
 				vindu.ristVindu();
 				loggUt();
 			}

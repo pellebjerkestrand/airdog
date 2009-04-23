@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox
+<mx:HBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	height="100%" width="100%" creationComplete="init()">
+	height="100%" width="100%" horizontalAlign="center"
+	creationComplete="init()">
 	
 	<mx:Script>
 		<![CDATA[
@@ -153,71 +154,68 @@
 		<mx:Move yBy="-10" />
 	</mx:Sequence>
     
-    <mx:HBox width="100%" horizontalAlign="center">
-    
-    	<mx:VBox width="100%" height="{this.height}">
-				<mx:Repeater id="rolle" dataProvider="{Components.instance.session.rollersBrukere}">
-					<mx:Panel title="{rolle.currentItem.navn} - {rolle.currentItem.beskrivelse}" width="100%" data="{rolle.currentItem.navn}">								
-						<mx:DataGrid id="rolleBruker"
-							height="{rolle.currentItem.brukere.length * 22 + 25}"			
-							paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
-							width="100%"
-							dataProvider="{rolle.currentItem.brukere}" 
-							verticalAlign="middle"
-				            dragEnter="sjekkBruker(event);"                      
-				            dragDrop="leggBrukerTilRollePaKlubb(event)"
-				            dragEnabled="true"
-				            mouseDown="settDroppesHvor(event, 'sletting')">
-				         	<mx:columns>
-				         		<mx:DataGridColumn headerText="Brukere" dataField="ad_bruker_epost" />
-				         	</mx:columns>
-						</mx:DataGrid>
-					</mx:Panel>
-				</mx:Repeater>
-		</mx:VBox>
-		
-		<mx:Panel id="gridPanel" title="Alle brukere" width="100%" height="{this.height}">
-			<mx:HBox width="100%">
-			<mx:HBox width="100%" styleName="notis" paddingBottom="2" paddingLeft="2" paddingRight="2" paddingTop="2" verticalAlign="middle">
-				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-				<mx:Label text="Dra og slipp brukere på roller. Dra tilbake for å fjerne."/>
-			</mx:HBox>				
-				<mx:Spacer width="100%"/>
-				<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='../assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
-			</mx:HBox>
-			<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="{this.height - 76}"
-				rowCount="{Components.instance.session.alleBrukere.length}"
-				dragEnabled="true"
-				mouseDown="settDroppesHvor(event, 'rolleBruker');"
-				dragEnter="sjekkSlett(event);"
-              	dragDrop="slettBrukerPaRolle(event);">
-				<mx:columns>
-					<mx:DataGridColumn headerText="E-post" dataField="epost"/>
-					<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
-					<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
-					<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
-					<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false">
-						<mx:itemRenderer>
-							<mx:Component>
-								<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
-									paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-									<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='../assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
-								</mx:HBox>
-							</mx:Component>
-						</mx:itemRenderer>
-					</mx:DataGridColumn>
-					<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false">
-						<mx:itemRenderer>
-							<mx:Component>
-								<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
-									paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
-									<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='../assets/ikoner/cross_circle.png')" toolTip="Slett"/>
-								</mx:HBox>
-							</mx:Component>
-						</mx:itemRenderer>
-					</mx:DataGridColumn>
-				</mx:columns>
-			</mx:DataGrid>
-		</mx:Panel>
-	</mx:HBox>
-</mx:VBox>
+	<mx:VBox width="100%" height="{this.height}">
+			<mx:Repeater id="rolle" dataProvider="{Components.instance.session.rollersBrukere}">
+				<mx:Panel title="{rolle.currentItem.navn} - {rolle.currentItem.beskrivelse}" width="100%" data="{rolle.currentItem.navn}">								
+					<mx:DataGrid id="rolleBruker"
+						height="{rolle.currentItem.brukere.length * 22 + 25}"			
+						paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+						width="100%"
+						dataProvider="{rolle.currentItem.brukere}" 
+						verticalAlign="middle"
+			            dragEnter="sjekkBruker(event);"                      
+			            dragDrop="leggBrukerTilRollePaKlubb(event)"
+			            dragEnabled="true"
+			            mouseDown="settDroppesHvor(event, 'sletting')">
+			         	<mx:columns>
+			         		<mx:DataGridColumn headerText="Brukere" dataField="ad_bruker_epost" />
+			         	</mx:columns>
+					</mx:DataGrid>
+				</mx:Panel>
+			</mx:Repeater>
+	</mx:VBox>
+	
+	<mx:Panel id="gridPanel" title="Alle brukere" width="100%" height="{this.height}">
+		<mx:HBox width="100%">
+		<mx:HBox width="100%" styleName="notis" paddingBottom="2" paddingLeft="2" paddingRight="2" paddingTop="2" verticalAlign="middle">
+			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+			<mx:Label text="Dra og slipp brukere på roller. Dra tilbake for å fjerne."/>
+		</mx:HBox>				
+			<mx:Spacer width="100%"/>
+			<mx:LinkButton id="nyBruker" label="Legg til bruker" icon="@Embed(source='../assets/ikoner/plus_circle.png')" click="leggTilBruker();"/>	
+		</mx:HBox>
+		<mx:DataGrid id="alleBrukere" dataProvider="{Components.instance.session.alleBrukere}" width="100%" height="{this.height - 76}"
+			rowCount="{Components.instance.session.alleBrukere.length}"
+			dragEnabled="true"
+			mouseDown="settDroppesHvor(event, 'rolleBruker');"
+			dragEnter="sjekkSlett(event);"
+          	dragDrop="slettBrukerPaRolle(event);">
+			<mx:columns>
+				<mx:DataGridColumn headerText="E-post" dataField="epost"/>
+				<mx:DataGridColumn headerText="Fornavn" dataField="fornavn"/>
+				<mx:DataGridColumn headerText="Etternavn" dataField="etternavn"/>
+				<mx:DataGridColumn headerText="Superadmin" dataField="superadmin"/>
+				<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false">
+					<mx:itemRenderer>
+						<mx:Component>
+							<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+								paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
+								<mx:Image buttonMode="true" click="outerDocument.redigerKlikk()" source="@Embed(source='../assets/ikoner/report__pencil.png')" toolTip="Rediger"/>
+							</mx:HBox>
+						</mx:Component>
+					</mx:itemRenderer>
+				</mx:DataGridColumn>
+				<mx:DataGridColumn headerText="" width="24" minWidth="24" resizable="false">
+					<mx:itemRenderer>
+						<mx:Component>
+							<mx:HBox width="100%" height="30" horizontalAlign="center" verticalAlign="middle"
+								paddingBottom="0" paddingLeft="4" paddingRight="4" paddingTop="0">
+								<mx:Image buttonMode="true" click="outerDocument.slettKlikk()" source="@Embed(source='../assets/ikoner/cross_circle.png')" toolTip="Slett"/>
+							</mx:HBox>
+						</mx:Component>
+					</mx:itemRenderer>
+				</mx:DataGridColumn>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:Panel>
+</mx:HBox>

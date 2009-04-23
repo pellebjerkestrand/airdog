@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Box 
+<mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:view="no.airdog.view.*">
+	xmlns:view="no.airdog.view.*"
+	title="Årbok" width="100%" height="100%" 
+	horizontalAlign="center" layout="horizontal">
     <mx:Script>
         <![CDATA[
         	import no.airdog.view.HundeProfil;
@@ -39,40 +41,38 @@
 			}
         ]]>
     </mx:Script>
-    <mx:Panel title="Årbok" width="100%" height="100%" horizontalAlign="center" layout="horizontal">
-    	<mx:VBox id="valg" styleName="funksjon">
-	    	<mx:Text visible="{Components.instance.session.aarbokHund != null ? true : false }"
-	    		includeInLayout="{Components.instance.session.aarbokHund != null ? true : false }"
-	    		text="{'Årbok for ' + Verktoy.ucwords(Components.instance.session.aarbokHund.navn)}" />
-	    	
-	    	<mx:Form width="100%" styleName="nopaddingorborder">
-		    	<mx:FormItem label="År">
-		    		<mx:NumericStepper id="aar" value="2008" maxChars="4" maximum="3000"/>
-		    	</mx:FormItem>
-		    	<mx:FormItem label="Kjønn"
-		    		visible="{Components.instance.session.aarbokHund == null ? true : false }"
-	    			includeInLayout="{Components.instance.session.aarbokHund == null ? true : false }">
-		    		<mx:RadioButton groupName="kjonn" id="alle" label="Alle" selected="true" />
-				    <mx:RadioButton groupName="kjonn" id="h" label="Hann" /> 
-				    <mx:RadioButton groupName="kjonn" id="t" label="Tispe" />
-		    	</mx:FormItem>
-		    	<mx:VBox horizontalAlign="center" width="100%">
-					<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
-		   		</mx:VBox>
-		    	<mx:FormItem width="100%" horizontalAlign="right">
-		    		<mx:Button label="Lag årbok" click="lagAarbok()" icon="@Embed(source='/no/airdog/view/assets/ikoner/document_word_text.png')"/>
-		    	</mx:FormItem>
-	    	</mx:Form>
-    	</mx:VBox>
-    	<mx:VBox styleName="notis" width="{valg.width}">
-	   		<mx:HBox verticalAlign="middle" width="100%">
-	   			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-	   			<mx:Label text="Informasjon" fontWeight="bold"/>
-	   		</mx:HBox>
-			<mx:TextArea id="tekstboks1" backgroundAlpha="0" borderThickness="0" editable="false" width="100%" creationComplete="riktigHoyde(this.tekstboks1)"
-				text="Gjør dine valg og klikk på 'Lag årbok'-knappen."/>
-			<mx:TextArea id="tekstboks2" backgroundAlpha="0" borderThickness="0" editable="false" width="100%" creationComplete="riktigHoyde(this.tekstboks2)"
-				text="Årboka vil lages som en .doc-fil og du vil få mulighet til å laste den ned."/>
-	    </mx:VBox>
-    </mx:Panel>
-</mx:Box>
+	<mx:VBox id="valg" styleName="funksjon">
+    	<mx:Text visible="{Components.instance.session.aarbokHund != null ? true : false }"
+    		includeInLayout="{Components.instance.session.aarbokHund != null ? true : false }"
+    		text="{'Årbok for ' + Verktoy.ucwords(Components.instance.session.aarbokHund.navn)}" />
+    	
+    	<mx:Form width="100%" styleName="nopaddingorborder">
+	    	<mx:FormItem label="År">
+	    		<mx:NumericStepper id="aar" value="2008" maxChars="4" maximum="3000"/>
+	    	</mx:FormItem>
+	    	<mx:FormItem label="Kjønn"
+	    		visible="{Components.instance.session.aarbokHund == null ? true : false }"
+    			includeInLayout="{Components.instance.session.aarbokHund == null ? true : false }">
+	    		<mx:RadioButton groupName="kjonn" id="alle" label="Alle" selected="true" />
+			    <mx:RadioButton groupName="kjonn" id="h" label="Hann" /> 
+			    <mx:RadioButton groupName="kjonn" id="t" label="Tispe" />
+	    	</mx:FormItem>
+	    	<mx:VBox horizontalAlign="center" width="100%">
+				<mx:ProgressBar indeterminate="true" id="venterPHP" width="100%" label="Lager årbok..." labelPlacement="center" visible="false" />
+	   		</mx:VBox>
+	    	<mx:FormItem width="100%" horizontalAlign="right">
+	    		<mx:Button label="Lag årbok" click="lagAarbok()" icon="@Embed(source='/no/airdog/view/assets/ikoner/document_word_text.png')"/>
+	    	</mx:FormItem>
+    	</mx:Form>
+	</mx:VBox>
+	<mx:VBox styleName="notis" width="{valg.width}">
+   		<mx:HBox verticalAlign="middle" width="100%">
+   			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+   			<mx:Label text="Informasjon" fontWeight="bold"/>
+   		</mx:HBox>
+		<mx:TextArea id="tekstboks1" backgroundAlpha="0" borderThickness="0" editable="false" width="100%" creationComplete="riktigHoyde(this.tekstboks1)"
+			text="Gjør dine valg og klikk på 'Lag årbok'-knappen."/>
+		<mx:TextArea id="tekstboks2" backgroundAlpha="0" borderThickness="0" editable="false" width="100%" creationComplete="riktigHoyde(this.tekstboks2)"
+			text="Årboka vil lages som en .doc-fil og du vil få mulighet til å laste den ned."/>
+    </mx:VBox>
+</mx:Panel>

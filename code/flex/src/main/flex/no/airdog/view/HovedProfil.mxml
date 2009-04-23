@@ -66,14 +66,14 @@
 					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
 			</mx:Box>
 			
-			<mx:VBox id="opplasting" styleName="notis" width="202"
+			<mx:VBox id="opplasting" styleName="notis" width="{bildeboks.width}"
 				visible="{Components.instance.session.bildeOpplastning.startet == true ? true : false}"
 				includeInLayout="{Components.instance.session.bildeOpplastning.startet == true ? true : false}">
 				<mx:ProgressBar id="pBar" mode="manual" width="100%" labelPlacement="center" trackHeight="10"/>
 			</mx:VBox>
 		</mx:VBox>
 		
-		<mx:HBox styleName="profilGrid" height="232">
+		<mx:HBox styleName="profilGrid" height="{bildeboks.height}">
 			<mx:VBox>
 				<mx:HBox>
 					<mx:Label text="Generelt" fontWeight="bold"/>
@@ -101,8 +101,7 @@
 						</mx:GridItem>
 						<mx:GridItem styleName="profilGridData">
 							<mx:Text id="eier" styleName="profilGridData"
-								text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' 
-										|| Components.instance.session.hundprofil.eier == null 
+								text="{StringUtil.trim(Components.instance.session.hundprofil.eier) == '' || Components.instance.session.hundprofil.eier == null 
 										? Components.instance.session.hundprofil.eierId : Verktoy.ucwords(Components.instance.session.hundprofil.eier)}"/>
 						</mx:GridItem>	
 					</mx:GridRow>
@@ -190,7 +189,7 @@
 		</mx:HBox>
 		
 		<mx:VBox id="funksjoner"
-			styleName="funksjon" height="232" verticalAlign="top"
+			styleName="funksjon" height="{bildeboks.height}" verticalAlign="top"
 			visible="{Components.instance.session.bruker.rettigheter.redigerHund || Components.instance.session.bruker.rettigheter.lagAarbok}" 
 			includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund || Components.instance.session.bruker.rettigheter.lagAarbok}">
 			<mx:Label text="Funksjoner" fontWeight="bold"/>
@@ -211,5 +210,5 @@
 				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>
 		</mx:VBox>
 	</mx:HBox>
-	<view:Provestatestikk/>
+	<view:Provestatistikk/>
 </mx:VBox>

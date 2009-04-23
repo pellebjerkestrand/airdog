@@ -35,7 +35,7 @@
                   {label:"CACIT"},
                   {label:"ResCacit"},
                   {label:"ÆP Skog"} ]);
-                  
+                
             private var klasser:ArrayCollection = new ArrayCollection(
                 [ {label:"UK"}, 
                   {label:"AK"}, 
@@ -793,8 +793,7 @@
 						</mx:HBox>
 					</mx:FormItem>
 				</mx:Form>
-			</mx:HBox>
-			
+			</mx:HBox>	
 		</mx:VBox>
 		
 		<mx:HBox paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0">

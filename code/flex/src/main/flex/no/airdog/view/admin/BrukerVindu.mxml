@@ -3,7 +3,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	title="Bruker"
 	creationComplete="init()"
-	layout="vertical"
+	layout="vertical" horizontalAlign="center"
 	height="100%" width="100%">
 	
 	<mx:Script>
@@ -163,29 +163,26 @@
 			 }
 		]]>
 	</mx:Script>
-	
-	<mx:VBox horizontalAlign="center">
-		<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
-			<mx:FormItem label="E-post">
-				<mx:TextInput id="epost" change="validering(event)"/>
-			</mx:FormItem>
-			<mx:FormItem label="Fornavn">
-				<mx:TextInput id="fornavn" change="validering(event)"/>
-			</mx:FormItem>
-			<mx:FormItem label="Etternavn">
-				<mx:TextInput id="etternavn" change="validering(event)"/>
-			</mx:FormItem>
-			<mx:FormItem label="Passord">
-				<mx:TextInput id="passord" displayAsPassword="true"/>
-			</mx:FormItem>
-			<mx:FormItem label="Bekreft passord">
-				<mx:TextInput id="passord2" displayAsPassword="true"/>
-			</mx:FormItem>
-			<mx:FormItem label="Superadmin" id="superAdminFelt">
-				<mx:CheckBox id="superadmin" change="validering(event)"/>
-			</mx:FormItem>
-		</mx:Form>
-	</mx:VBox>
+	<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+		<mx:FormItem label="E-post">
+			<mx:TextInput id="epost" change="validering(event)"/>
+		</mx:FormItem>
+		<mx:FormItem label="Fornavn">
+			<mx:TextInput id="fornavn" change="validering(event)"/>
+		</mx:FormItem>
+		<mx:FormItem label="Etternavn">
+			<mx:TextInput id="etternavn" change="validering(event)"/>
+		</mx:FormItem>
+		<mx:FormItem label="Passord">
+			<mx:TextInput id="passord" displayAsPassword="true"/>
+		</mx:FormItem>
+		<mx:FormItem label="Bekreft passord">
+			<mx:TextInput id="passord2" displayAsPassword="true"/>
+		</mx:FormItem>
+		<mx:FormItem label="Superadmin" id="superAdminFelt">
+			<mx:CheckBox id="superadmin" change="validering(event)"/>
+		</mx:FormItem>
+	</mx:Form>
 	
 	<mx:ControlBar horizontalAlign="center">
         <mx:Button label="Lagre" enabled="{erGodkjent}" click="lagre()"/>
