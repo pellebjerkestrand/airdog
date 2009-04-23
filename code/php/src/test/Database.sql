@@ -116,15 +116,24 @@ CREATE TABLE IF NOT EXISTS `ad_datreferanser` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `ad_klubb`
+-- Table structure for table `ad_klubb`
 --
 
-CREATE TABLE IF NOT EXISTS `ad_klubb` (
+DROP TABLE IF EXISTS `ad_klubb`;
+CREATE TABLE `ad_klubb` (
   `navn` varchar(50) NOT NULL,
-  `beskrivelse` varchar(50) DEFAULT NULL,
+  `beskrivelse` varchar(50) default NULL,
   `raseid` int(3) NOT NULL,
-  PRIMARY KEY (`raseid`)
+  `rss` mediumtext,
+  PRIMARY KEY  (`raseid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ad_klubb`
+--
+
+INSERT INTO `ad_klubb` VALUES('Norsk Breton Klubb', NULL, 306, 'http://breton.no/index.php/weblog/rss_2.0/');
+INSERT INTO `ad_klubb` VALUES('Norsk Pointerklub', NULL, 348, 'http://pointer.no/index.php?format=feed&amp;type=rss');
 
 --
 -- Dataark for tabell `ad_klubb`
