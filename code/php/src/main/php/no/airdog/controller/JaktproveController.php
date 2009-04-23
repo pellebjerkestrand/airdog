@@ -15,7 +15,7 @@ class JaktproveController
 		'0' => '',
     	'1' => 'UK',
 		'2' => 'AK',
-		'3' => 'UK/AK',
+		'3' => 'UK/	AK',
 		'4' => 'VK',
 		'5' => 'VK SEMIFINALE',
 		'6' => 'VK FINALE',
@@ -61,39 +61,32 @@ class JaktproveController
 		//klasser			
     		$tmp->starterUK = $hd->hentStarterHundKlasse($hundId, '1', $klubbId);
     		$tmp->starterAK = $hd->hentStarterHundKlasse($hundId, '2', $klubbId); 
-    		$tmp->starterUKAK = $hd->hentStarterHundKlasse($hundId, '3', $klubbId);
+    		$tmp->starterAK += $hd->hentStarterHundKlasse($hundId, '3', $klubbId);
     		$tmp->starterVK = $hd->hentStarterHundKlasse($hundId, '4', $klubbId); 
-    		$tmp->starterVKSEMIFINALE = $hd->hentStarterHundKlasse($hundId, '5', $klubbId);
-    		$tmp->starterVKFINALE = $hd->hentStarterHundKlasse($hundId, '6', $klubbId); 
-    		$tmp->starterUKKVALIK = $hd->hentStarterHundKlasse($hundId, '7', $klubbId);
-    		$tmp->starterUKKFINALE = $hd->hentStarterHundKlasse($hundId, '8', $klubbId);
-    		$tmp->starterDERBYKVALIK = $hd->hentStarterHundKlasse($hundId, '9', $klubbId); 
-    		$tmp->starterDERBYSEMIFINALE = $hd->hentStarterHundKlasse($hundId, '10', $klubbId);
-    		$tmp->starterDERBYFINALE = $hd->hentStarterHundKlasse($hundId, '11', $klubbId);
+    		$tmp->starterVK += $hd->hentStarterHundKlasse($hundId, '5', $klubbId);
+    		$tmp->starterVK += $hd->hentStarterHundKlasse($hundId, '6', $klubbId); 
+    		$tmp->starterDERBY = $hd->hentStarterHundKlasse($hundId, '7', $klubbId);
+    		$tmp->starterDERBY += $hd->hentStarterHundKlasse($hundId, '8', $klubbId);
+    		$tmp->starterDERBY += $hd->hentStarterHundKlasse($hundId, '9', $klubbId); 
+    		$tmp->starterDERBY += $hd->hentStarterHundKlasse($hundId, '10', $klubbId);
+    		$tmp->starterDERBY += $hd->hentStarterHundKlasse($hundId, '11', $klubbId);
     	//premier
     		$tmp->premierUK = $hd->hentPremierHundKlasse($hundId, '1', $klubbId);
     		$tmp->premierAK = $hd->hentPremierHundKlasse($hundId, '2', $klubbId); 
-    		$tmp->premierUKAK = $hd->hentPremierHundKlasse($hundId, '3', $klubbId);
+    		$tmp->premierAK += $hd->hentPremierHundKlasse($hundId, '3', $klubbId);
     		$tmp->premierVK = $hd->hentPremierHundKlasse($hundId, '4', $klubbId); 
-    		$tmp->premierVKSEMIFINALE = $hd->hentPremierHundKlasse($hundId, '5', $klubbId);
-    		$tmp->premierVKFINALE = $hd->hentPremierHundKlasse($hundId, '6', $klubbId); 
-    		$tmp->premierUKKVALIK = $hd->hentPremierHundKlasse($hundId, '7', $klubbId);
-    		$tmp->premierUKKFINALE = $hd->hentPremierHundKlasse($hundId, '8', $klubbId);
-    		$tmp->premierDERBYKVALIK = $hd->hentPremierHundKlasse($hundId, '9', $klubbId); 
-    		$tmp->premierDERBYSEMIFINALE = $hd->hentPremierHundKlasse($hundId, '10', $klubbId);
-    		$tmp->premierDERBYFINALE = $hd->hentPremierHundKlasse($hundId, '11', $klubbId);
+    		$tmp->premierVK += $hd->hentPremierHundKlasse($hundId, '5', $klubbId);
+    		$tmp->premierVK += $hd->hentPremierHundKlasse($hundId, '6', $klubbId); 
+    		$tmp->premierDERBY = $hd->hentPremierHundKlasse($hundId, '7', $klubbId);
+    		$tmp->premierDERBY += $hd->hentPremierHundKlasse($hundId, '8', $klubbId);
+    		$tmp->premierDERBY += $hd->hentPremierHundKlasse($hundId, '9', $klubbId); 
+    		$tmp->premierDERBY += $hd->hentPremierHundKlasse($hundId, '10', $klubbId);
+    		$tmp->premierDERBY += $hd->hentPremierHundKlasse($hundId, '11', $klubbId);    		
     	//premieprosent    	
     		$tmp->prosentUK = $this->premieringProsentStarter($tmp->premierUK, $tmp->starterUK);    		
 	   		$tmp->prosentAK = $this->premieringProsentStarter($tmp->premierAK, $tmp->starterAK);
-    		$tmp->prosentUKAK = $this->premieringProsentStarter($tmp->premierUKAK, $tmp->starterUKAK);
-    		$tmp->prosentVK = $this->premieringProsentStarter($tmp->premierUK, $tmp->starterVK);
-    		$tmp->prosentVKSEMIFINALE = $this->premieringProsentStarter($tmp->premierVKSEMIFINALE, $tmp->starterVKSEMIFINALE);
-    		$tmp->prosentVKFINALE = $this->premieringProsentStarter($tmp->premierVKFINALE, $tmp->starterVKFINALE);
-    		$tmp->prosentUKKVALIK = $this->premieringProsentStarter($tmp->premierUKKVALIK, $tmp->starterUKKVALIK);
-    		$tmp->prosentUKKFINALE = $this->premieringProsentStarter($tmp->premierUKKFINALE, $tmp->starterUKKFINALE);
-    		$tmp->prosentDERBYKVALIK = $this->premieringProsentStarter($tmp->premierDERBYKVALIK, $tmp->starterDERBYKVALIK);
-    		$tmp->prosentDERBYSEMIFINALE = $this->premieringProsentStarter($tmp->premierDERBYSEMIFINALE, $tmp->starterDERBYSEMIFINALE);
-    		$tmp->prosentDERBYFINALE = $this->premieringProsentStarter($tmp->premierDERBYFINALE, $tmp->starterDERBYFINALE);
+    		$tmp->prosentVK = $this->premieringProsentStarter($tmp->premierVK, $tmp->starterVK);
+    		$tmp->prosentDERBY = $this->premieringProsentStarter($tmp->premierDERBY, $tmp->starterDERBY);
     	//totalt	
     		$tmp->starterTotalt = $hd->hentStarterHund($hundId, $klubbId);
     		$tmp->premierTotalt = $hd->hentPremierHund($hundId, $klubbId);
