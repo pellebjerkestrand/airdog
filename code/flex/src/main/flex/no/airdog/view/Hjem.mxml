@@ -79,6 +79,10 @@
 				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
 				<mx:Label text="Se rankinglister" fontWeight="bold"/>
 			</mx:HBox>
+			<mx:HBox verticalAlign="middle">
+				<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/newspaper.png')"/>
+				<mx:Label text="Lese nyheter fra klubben" fontWeight="bold"/>
+			</mx:HBox>
 		</mx:VBox>
 	</mx:HBox>
 	
