@@ -114,7 +114,7 @@
 									icon="@Embed(source='assets/ikoner/trophy.png')"/>
 							</mx:HBox>
 						</mx:HBox>
-						<mx:VBox id="proveliste" styleName="cupplassering" width="100%" visible="false" includeInLayout="false">
+						<mx:VBox id="proveliste" styleName="cupplassering" width="100%" horizontalAlign="left" visible="false" includeInLayout="false">
 							<mx:Text text="{cup.currentItem.prover}"/>
 						</mx:VBox>
 					</mx:VBox>
