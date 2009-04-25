@@ -19,7 +19,7 @@ package no.airdog.view
     public class Laster extends Sprite implements IPreloaderDisplay
     {
     	// venter så lenge som det her (millisekunder) selv om lastinga er ferdig
-        private var _minimumDuration:Number = 0;
+        private var _minimumDuration:Number = 5000;
 
         // implementasjonsvariabler så alt fungerer som det skal
         private var _IsInitComplete		: Boolean = false;
@@ -31,16 +31,17 @@ package no.airdog.view
         private var _currentStatus		: String;			// statusen: laster, kjører osv
         
         // visningsinstillinger, settes egentlig i mx:Application, men det funker ikke alltid
-        private var _backgroundColor	: uint = 0x000000;
+        private var _backgroundColor	: uint = 0xeeeeee; 	//mx:Application overrider denne
         private var _stageHeight		: Number = 1;
         private var _stageWidth			: Number = 1;
-        private var _loadingBarColour	: uint = 0x8a0000;
+        private var _loadingBarColour	: uint = 0xA81A14;
         
         // elementer i visninga
         private var _loadingBar 		: Rectangle;		// lastestolpa
         private var loadingImage 		: flash.display.Loader;
         private var progressText		: TextField;
         private var statusText			: TextField;
+        private var labelText			: TextField;
         private var textFormat			: TextFormat;
         
         public function Laster()
@@ -56,43 +57,65 @@ package no.airdog.view
 			// laster logoen vår
 			loadingImage = new flash.display.Loader();       
 			loadingImage.contentLoaderInfo.addEventListener( Event.COMPLETE, loader_completeHandler);
-			loadingImage.load(new URLRequest("no/airdog/view/assets/logo/airdoglogo200clean.png")); // denne stien bør være relativ. kun absolutt hvis det er supernødvendig 
+			loadingImage.load(new URLRequest("no/airdog/view/assets/logo/airdoglogo_light200.png")); // denne stien bør være relativ. kun absolutt hvis det er supernødvendig 
         }
         
         private function loader_completeHandler(event:Event):void
         {
         	// logoen er ferdiglasta
         	
+            var stolpew:int = 340;
+            var offsetw:int = 10;
+        	
         	// tegner loadingImage (logoen som er satt i funksjonen over)
-            addChild(loadingImage);
             loadingImage.width = 200;
             loadingImage.height= 200;
-            loadingImage.x = Math.round(parent.width / 2) - Math.round(loadingImage.width / 2);
+            loadingImage.x = Math.round(parent.width / 2) - Math.round((loadingImage.width + stolpew + offsetw) / 2);
             loadingImage.y = Math.round(parent.height / 2) - Math.round(loadingImage.height / 2);
+            addChild(loadingImage);
+            
+            // verdier til lastestolpe, tekst, offset
+            var stolpeh:int = 15;
+            var teksth:int = 30;
+            var offseth:int = 20;
+            var stolpex:int = loadingImage.x + loadingImage.width + offsetw;
+            var stolpey:int = loadingImage.y + ((loadingImage.height / 2));
             
 			// tegner lastestolpa - x,y,width,height
-            _loadingBar = new Rectangle(loadingImage.x, (loadingImage.y + loadingImage.height + 5), loadingImage.width, 12);
+            _loadingBar = new Rectangle(stolpex, stolpey, stolpew, stolpeh);
             
             // formatterer teksten
             textFormat = new TextFormat();
-            textFormat.color = 0x8a0000;
-            textFormat.font = "Verdana";
+            textFormat.color = 0xA81A14;
+            textFormat.font = "Arial";
+            textFormat.size = 14;
+            textFormat.bold = true;
+            
+            // lager tekstfelt for labelText
+            labelText = new TextField();
+            labelText.x = _loadingBar.x;
+            labelText.y = _loadingBar.y - _loadingBar.height*2 - offseth*2;
+            labelText.width = _loadingBar.width;
+            labelText.height = teksth;
+            labelText.defaultTextFormat = textFormat;
+            labelText.text = "AirDog laster, vennligst vent";
+            addChild(labelText);
             
             // lager tekstfelt for progressText
             progressText = new TextField(); 
-            progressText.x = loadingImage.x;    
-            progressText.y = _loadingBar.y + 15;
-            progressText.width = loadingImage.width;
-            progressText.height = 20;
+            progressText.x = _loadingBar.x;    
+            progressText.y = _loadingBar.y + offseth;
+            progressText.width = _loadingBar.width;
+            progressText.height = teksth;
             progressText.defaultTextFormat = textFormat;
             addChild(progressText);
 			
 			// lager tekstfelt for statusText
             statusText = new TextField(); 
-            statusText.x = loadingImage.x;    
-            statusText.y = progressText.y + 15;
-            statusText.width = loadingImage.width;
-            statusText.height = 20;
+            statusText.x = _loadingBar.x;    
+            statusText.y = progressText.y + offseth;
+            statusText.width = _loadingBar.width;
+            statusText.height = teksth;
             statusText.defaultTextFormat = textFormat;
             addChild(statusText);
             
@@ -112,8 +135,8 @@ package no.airdog.view
             graphics.drawRect(_loadingBar.x, _loadingBar.y, _loadingBar.width * _fractionLoaded, _loadingBar.height);
             graphics.endFill();
             progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + 
-            					(Math.round(_bytesExpected / 1024)).toString() + ' KB (' +
-            					((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100) + "%)";
+            					(Math.round(_bytesExpected / 1024)).toString() + ' KB ( ' +
+            					((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100) + "% )";
             statusText.text = _currentStatus;
         }
         
@@ -179,7 +202,7 @@ package no.airdog.view
         {
         	if( !_IsInitComplete)
         	{
-            	_currentStatus = 'AirDog starter';
+            	_currentStatus = 'Starter';
             	trace(_currentStatus);
          	}
         }
@@ -187,7 +210,7 @@ package no.airdog.view
         // kalles når nedlasting og kjøring er ferdig
         private function initCompleteHandler(event:Event):void
         {
-        	_currentStatus = 'AirDog klar';
+        	_currentStatus = 'Klar';
         	trace(_currentStatus);
             _IsInitComplete = true;
             

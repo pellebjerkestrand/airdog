@@ -4,8 +4,8 @@
     xmlns:view="no.airdog.view.*"
     preloader="no.airdog.view.Laster"
     creationComplete="init()"
-    layout="absolute" verticalGap="0" horizontalGap="0"
-    minWidth="960" backgroundColor="#000000">
+    layout="absolute" verticalGap="0" horizontalGap="0" 
+    minWidth="960" backgroundColor="#eeeeee">
     
     <mx:Script>
     	<![CDATA[
