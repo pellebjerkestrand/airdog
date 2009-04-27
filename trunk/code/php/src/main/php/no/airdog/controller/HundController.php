@@ -5,6 +5,7 @@ require_once "no/airdog/controller/database/HundDatabase.php";
 require_once "no/airdog/controller/database/KullDatabase.php";
 require_once "no/airdog/controller/database/PersonDatabase.php";
 require_once "no/airdog/controller/Verktoy.php";
+//require_once "BildeendringController.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -17,6 +18,10 @@ class HundController
 	{
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
+		
+//		$be = new BildeendringController();
+//		echo $be->erlendParser();
+		
 	}
 
 	public function sokHund($soketekst, $brukerEpost, $brukerPassord, $klubbId)
