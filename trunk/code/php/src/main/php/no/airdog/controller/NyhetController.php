@@ -1,4 +1,6 @@
 <?php
+ini_set('allow_url_fopen', 'On');
+
 require_once "no/airdog/model/AmfNyhet.php";
 require_once "no/airdog/controller/database/NyhetDatabase.php";
 require_once "com/RSS_PHP/rss_php.php";
@@ -17,7 +19,7 @@ class NyhetController
 	}
 	
 	public function hentNyheter($brukerEpost, $brukerPassord, $klubbId)
-	{
+	{		
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
 			$nd	= new NyhetDatabase();
@@ -28,8 +30,12 @@ class NyhetController
 				return null;
 			}
 			
+			$innhold = file_get_contents("http://breton.no/index.php/weblog/rss_2.0/");
+			
 			$rss = new rss_php;
-    		$rss->load($rssSti['rss']);
+			
+    		$rss->loadRSS($innhold);
+    		throw new Exception("Feil ved importering av klubbens RSS");
 			$nyheter = $rss->getItems();
 			$ret = array();
 			
