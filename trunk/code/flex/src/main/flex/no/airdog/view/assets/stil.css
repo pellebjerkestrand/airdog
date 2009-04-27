@@ -860,7 +860,7 @@ ToolTip
 {
 	/*color: #ffffff;*/
 	color: #4d4d4d;
-	backgroundColor: #acacac;
+	backgroundColor: #1775a0;
 	paddingBottom: 0; 
 	paddingTop: 0;
 	paddingLeft: 0; 
@@ -929,7 +929,7 @@ VBox.topBar
 HBox.undermenyBar
 {	
 	color: #4d4d4d;
-	backgroundColor: #B8D085;
+	backgroundColor: #a1cd86;
 	borderStyle: solid; 
 	borderThickness: 0;
 	borderColor: #a3a3a3; 
