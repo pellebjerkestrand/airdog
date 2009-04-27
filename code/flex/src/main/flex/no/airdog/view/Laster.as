@@ -136,7 +136,7 @@ package no.airdog.view
             graphics.endFill();
             progressText.text = (Math.round(_bytesLoaded / 1024)).toString() + ' KB av ' + 
             					(Math.round(_bytesExpected / 1024)).toString() + ' KB ( ' +
-            					((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100) + "% )";
+            					(Math.round((Math.round(_bytesLoaded))/(Math.round(_bytesExpected))*100)) + "% )";
             statusText.text = _currentStatus;
         }
         
