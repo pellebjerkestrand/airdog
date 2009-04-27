@@ -2,7 +2,7 @@
 <mx:HBox
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controls="flexunit.flexui.controls.*"
-	height="100%" width="100%" horizontalAlign="center"
+	height="100%" width="100%" horizontalAlign="center" horizontalGap="4"
 	creationComplete="init()">
 	
 	<mx:Script>
