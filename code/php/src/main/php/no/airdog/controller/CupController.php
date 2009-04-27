@@ -264,7 +264,7 @@ class CupController
 						$cup->poeng += 10;
 					}
 					
-					if(stripos($tekst, 'PL') !== false)
+					if(stripos($tekst, 'derby') !== false)
 					{
 						if(stripos($tekst, '1') !== false)
 						{
