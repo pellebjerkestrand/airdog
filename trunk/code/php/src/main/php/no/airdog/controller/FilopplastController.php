@@ -13,7 +13,7 @@ require_once 'Zend/Loader.php';
 Zend_Loader::registerAutoload();
 
 require_once "ImportParserController.php";
-require_once "FilopplastController.php";
+require_once "BildeendringController.php";
 require_once "no/airdog/controller/Verktoy.php";
 
 if (isset($_FILES['Filedata']) && isset($_GET['brukerEpost']) && isset($_GET['brukerPassord']) && isset($_GET['klubbId'])) 

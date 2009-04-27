@@ -25,6 +25,19 @@ class BildeendringController
 		
 	}
 	
+	public function erlendParser()
+ 	{
+ 		$sti = Verktoy::hoppBakover(dirname(__FILE__),3) . "/images/348/";
+ 		$handle = opendir($sti);
+		
+		while ($fil = readdir($handle)) 
+		{
+			if (!is_dir($sti . $fil) && !file_exists($sti . $fil))
+				$this->lagreBilde($sti, $fil, "230", "230", "50", "50");
+	        	
+	    }
+	}
+	
 	private function lagBildeMedStorrelse($sti, $filnavn, $nyttFilnavn, $nyBredde, $nyHoyde)
 	{	
 		$gammeltBilde = $sti.$filnavn;
