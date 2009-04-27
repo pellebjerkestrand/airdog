@@ -3,6 +3,10 @@
 error_reporting(E_ALL|E_STRICT);
 //Skru av før produktet skal lanseres
 ini_set("display_errors", "on");
+set_time_limit(600);
+ini_set('post_max_size', '50M');
+ini_set('upload_max_filesize', '50M');
+ini_set('LimitRequestBody ', '16777216');
 
 setlocale(LC_ALL, 'no_NO');
 
