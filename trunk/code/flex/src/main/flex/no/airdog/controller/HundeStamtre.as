@@ -19,8 +19,10 @@ package no.airdog.controller
 		{
 			this.setStyle("horizontalAlign", "center");
 			this.setStyle("verticalAlign", "middle");
-			this.setStyle("width", "100%");
-			this.setStyle("height", "100%");
+//			this.setStyle("width", );
+//			this.setStyle("height", );
+//			this.setStyle("horizontalScrollPolicy", "auto");
+//			this.setStyle("verticalScrollPolicy", "auto");
 		}
 		
 		public function set hund(val:Hund):void

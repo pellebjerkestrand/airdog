@@ -3,7 +3,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:controller="no.airdog.controller.*"
 	styleName="nopaddingorborderorgap" 
-	width="100%" height="100%">
+	width="100%" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 	<mx:Script>
         <![CDATA[
 			import no.airdog.services.Components;      
@@ -32,11 +32,13 @@
     	<mx:Spacer width="100%"/>
 		<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')" toolTip="Fyll ut fars og mors ID, velg antall generasjoner og klikk på 'Generer'."/>
     </mx:HBox>
-    <mx:VBox 
-    	paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4"
-		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3"
-		width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-    	<controller:HundeStamtre hund="{Components.instance.session.fiktivtStamtre}"/>
-    </mx:VBox>
+   
+    <mx:Box id="box1" width="100%" height="100%" styleName="nopaddingorborderorgap" horizontalScrollPolicy="off" verticalScrollPolicy="off"
+    	borderStyle="solid" borderThickness="1" borderColor="#a3a3a3">
+    	<mx:Box id="box2" width="{box1.width - 2}" height="{box1.height - 2}" horizontalScrollPolicy="auto" verticalScrollPolicy="auto"
+    		paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">
+    		<controller:HundeStamtre hund="{Components.instance.session.fiktivtStamtre}" width="100%" height="100%"/>
+    	</mx:Box>
+    </mx:Box>
     
 </mx:VBox>
