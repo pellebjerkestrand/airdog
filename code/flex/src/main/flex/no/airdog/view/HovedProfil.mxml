@@ -210,5 +210,4 @@
 				includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"/>
 		</mx:VBox>
 	</mx:HBox>
-	<view:Provestatistikk/>
 </mx:VBox>

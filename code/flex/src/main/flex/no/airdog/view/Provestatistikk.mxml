@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
-	styleName="nopaddingorborder">
+	styleName="nopaddingorborder" show="hentProvestatistikk()">
 	<mx:Script>
         <![CDATA[
-			import no.airdog.services.Components;			   
+			import no.airdog.services.Components;
+			
+			public function hentProvestatistikk():void
+			{
+				var hundId:String = Components.instance.session.hundprofil.hundId;
+				Components.instance.controller.hentProvestatistikk(hundId);
+			}			   
         ]]>
 	</mx:Script>
 	
