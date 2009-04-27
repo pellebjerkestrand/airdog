@@ -1,9 +1,6 @@
 <?php
-ini_set('allow_url_fopen', 'On');
-
 require_once "no/airdog/model/AmfNyhet.php";
 require_once "no/airdog/controller/database/NyhetDatabase.php";
-require_once "com/RSS_PHP/rss_php.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -19,49 +16,6 @@ class NyhetController
 	}
 	
 	public function hentNyheter($brukerEpost, $brukerPassord, $klubbId)
-	{		
-		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
-		{
-			$nd	= new NyhetDatabase();
-			$rssSti = $nd->hentRSS($klubbId);
-			
-			if($rssSti['rss'] == null)
-			{
-				return null;
-			}
-			
-			$innhold = file_get_contents("http://breton.no/index.php/weblog/rss_2.0/");
-			
-			$rss = new rss_php;
-			
-    		$rss->loadRSS($innhold);
-    		throw new Exception("Feil ved importering av klubbens RSS");
-			$nyheter = $rss->getItems();
-			$ret = array();
-			
-			foreach($nyheter as $index => $nyhet)
-			{
-				$tmp = new AmfNyhet();
-				$tmp->tittel = $nyhet['title'];
-				if(trim($nyhet['description']) != '')
-				{
-					$tmp->tekst = substr(trim(strip_tags($nyhet['description'])), 0, 197).'...';	
-				}
-				else
-				{
-					$tmp->tekst = null;
-				}
-				$tmp->dato = $nyhet['pubDate'];
-				$tmp->url = $nyhet['link'];
-				
-				$ret[] = $tmp;
-			}
-			
-			return $ret;
-		}
-	}
-	
-	public function hentNyheterZend($brukerEpost, $brukerPassord, $klubbId)
 	{
 		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
 		{
@@ -69,50 +23,39 @@ class NyhetController
 			$rss = $nd->hentRSS($klubbId);
 			$ret = array();
 			
-			if($rss['rss'] == null)
+			if(trim($rss['rss']) != '')
 			{
-				return null;
-			}
-			
-			try
-			{
-				$feed = new Zend_Feed_Rss($rss['rss']);	
-			}
-			catch (Zend_Feed_Exception $e)
-			{
-				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
-				exit;	
-			}
-			catch (Zend_Exception $e)
-			{
-				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
-				exit;
-			}
-			catch (Exception $e)
-			{
-				throw new Exception("Feil ved importering av klubbens RSS\n{$e->getMessage()}");
-				exit;
-			}
-			
-			foreach($feed as $nyhet)
-			{
-				$tmp = new AmfNyhet();
-				$tmp->tittel = $nyhet->title();
-				if(trim($nyhet->description()) != '')
+				try
 				{
-					$tmp->tekst = substr(trim(strip_tags($nyhet->description())), 0, 197).'...';	
+					$feed = new Zend_Feed_RSS($rss['rss']);
 				}
-				else
+				catch (Exception $e)
 				{
-					$tmp->tekst = null;
+					throw new Exception("Feil ved henting av klubbens nyheter\n{$e->getMessage()}");
+					exit;
 				}
-				$tmp->dato = $nyhet->pubDate();
-				$tmp->url = $nyhet->link();
 				
-				$ret[] = $tmp;
+				foreach($feed as $nyhet)
+				{
+					$tmp = new AmfNyhet();
+					$tmp->tittel = $nyhet->title();
+					if(trim($nyhet->description()) != '')
+					{
+						$tmp->tekst = substr(trim(strip_tags($nyhet->description())), 0, 197).'...';	
+					}
+					else
+					{
+						$tmp->tekst = null;
+					}
+					$tmp->dato = $nyhet->pubDate();
+					$tmp->url = $nyhet->link();
+					
+					$ret[] = $tmp;
+				}
+				
+				return $ret;
 			}
-			
-			return $ret;
+			return null;
 		}
 	}
 }
