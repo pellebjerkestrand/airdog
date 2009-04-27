@@ -27,16 +27,23 @@ class BildeendringController
 	
 	public function erlendParser()
  	{
- 		$sti = Verktoy::hoppBakover(dirname(__FILE__),3) . "/images/348/";
+ 		$sti = Verktoy::hoppBakover(dirname(__FILE__),3) . "/images/";
  		$handle = opendir($sti);
 		
 		while ($fil = readdir($handle)) 
 		{
-			if (!is_dir($sti . $fil) && !file_exists($sti . $fil))
+			if(!is_dir($sti . $fil))
+			{
 				$this->lagreBilde($sti, $fil, "230", "230", "50", "50");
-	        	
+				copy($sti . Verktoy::fjernFilEndelse($fil).".jpg", $sti . "348/".Verktoy::fjernFilEndelse($fil).".jpg");
+				copy($sti . Verktoy::fjernFilEndelse($fil)."_thumb.jpg", $sti . "348/".Verktoy::fjernFilEndelse($fil)."_thumb.jpg");
+				unlink($sti . Verktoy::fjernFilEndelse($fil).".jpg");
+				unlink($sti . Verktoy::fjernFilEndelse($fil)."_thumb.jpg");
+			}	
 	    }
 	}
+	
+	
 	
 	private function lagBildeMedStorrelse($sti, $filnavn, $nyttFilnavn, $nyBredde, $nyHoyde)
 	{	
