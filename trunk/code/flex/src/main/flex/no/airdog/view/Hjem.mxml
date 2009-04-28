@@ -7,32 +7,7 @@
 	width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
 	<mx:Script>
 		<![CDATA[
-			import mx.controls.LinkButton;
-			import flash.net.navigateToURL;
 			import no.airdog.services.Components;
-			import mx.controls.TextArea;
-			
-			private function hentNyheter():void
-			{
-				Components.instance.controller.hentNyheter();
-			}
-			
-			private function riktigHoyde(felter:Array):void
-			{
-				for each(var felt:TextArea in felter)
-				{
-					felt.validateNow();
-					felt.mx_internal::getTextField().autoSize = TextFieldAutoSize.LEFT;
-					felt.height = felt.mx_internal::getTextField().height;
-				}
-			}
-
-            private function lesNyhet(event:Event):void {
-            	var knapp:LinkButton = event.target as LinkButton;
-            	
-                var urlRequest:URLRequest = new URLRequest(knapp.data.toString());
-                navigateToURL(urlRequest, '_blank');
-            }
 		]]>
 	</mx:Script>
 	<mx:VBox styleName="cupbakgrunn" width="100%" height="100%">
@@ -103,52 +78,6 @@
 		</mx:HBox>
 	</mx:VBox>
 	
-	<mx:VBox id="nyheter"
-		horizontalScrollPolicy="off" verticalScrollPolicy="off" 
-		styleName="cupbakgrunn" width="600" height="{this.height - 10}">
-		
-		<mx:HBox styleName="nopaddingorborderorgap" width="100%" horizontalAlign="left" verticalAlign="middle">
-			<mx:Label id="nyheteroverskrift" text="Siste nyheter fra klubben" fontWeight="bold" fontSize="18"/>
-			<mx:Spacer width="100%"/>
-			<mx:LinkButton label="Hent nyheter (alpha)" click="hentNyheter()" icon="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')"/>
-			<!--
-			<mx:Spacer width="100%"/>
-			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
-			-->
-		</mx:HBox>
-		
-		<mx:Box id="listeboks"
-			horizontalScrollPolicy="off" verticalScrollPolicy="off" 
-			styleName="cupplassering" cornerRadius="0" width="{nyheter.width - 10}" height="{nyheter.height - nyheteroverskrift.height - 14}">
-			<mx:VBox id="liste"
-				horizontalScrollPolicy="off" verticalScrollPolicy="on"
-				styleName="nopaddingorborderorgap" width="{listeboks.width - 0}" height="{listeboks.height - 0}">
-				
-			<mx:Repeater id="nyhet" dataProvider="{Components.instance.session.nyheter}">
-				<mx:Box width="100%">
-					<mx:VBox width="100%" 
-						verticalGap="4" paddingLeft="4" paddingRight="4" paddingTop="4" paddingBottom="4">
-						<mx:HBox styleName="nopaddingorborderorgap" verticalAlign="middle" width="100%">
-							<mx:Text text="{nyhet.currentItem.tittel}" fontSize="18" paddingTop="0"/>
-							<mx:Spacer width="100%"/>
-							<mx:LinkButton label="Les"
-										data="{nyhet.currentItem.url}" click="lesNyhet(event)"
-										icon="@Embed(source='assets/ikoner/newspaper.png')"/>
-						</mx:HBox>
-						<mx:TextArea id="tekstfelt"
-							styleName="nopaddingorborder" width="100%" height="100%"
-							text="{nyhet.currentItem.tekst}" editable="false"
-							includeInLayout="{nyhet.currentItem.tekst.toString() != '' ? true : false}"
-							visible="{nyhet.currentItem.tekst.toString() != '' ? true : false}"
-							creationComplete="riktigHoyde(this.tekstfelt)"/>
-						<mx:HRule width="100%"/>
-					</mx:VBox>
-				</mx:Box>
-			</mx:Repeater>
-			
-			</mx:VBox>
-		</mx:Box>
-		
-	</mx:VBox>
+	<view:Nyheter/>
 	
 </mx:HBox>
