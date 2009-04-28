@@ -10,7 +10,7 @@
 			
 			private function hentNyheter():void
 			{
-				Components.instance.controller.hentNyheter();
+				Components.instance.controller.hentNyheterDirekte();
 			}
 			
 			private function riktigHoyde(felter:Array):void
@@ -38,12 +38,12 @@
 		
 		<mx:HBox styleName="nopaddingorborderorgap" width="100%" horizontalAlign="left" verticalAlign="middle">
 			<mx:Label id="nyheteroverskrift" text="Siste nyheter fra klubben" fontWeight="bold" fontSize="18"/>
-			<mx:Spacer width="100%"/>
-			<mx:LinkButton label="Hent nyheter (alpha)" click="hentNyheter()" icon="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')"/>
 			<!--
 			<mx:Spacer width="100%"/>
-			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
+			<mx:LinkButton label="Hent nyheter (alpha)" click="hentNyheter()" icon="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')"/>
 			-->
+			<mx:Spacer width="100%"/>
+			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
 		</mx:HBox>
 		
 		<mx:Box id="listeboks"
@@ -77,7 +77,5 @@
 			
 			</mx:VBox>
 		</mx:Box>
-		
 	</mx:VBox>
-	
 </mx:Box>

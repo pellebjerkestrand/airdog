@@ -98,7 +98,7 @@ package no.airdog.controller
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
-//			hentNyheter();
+//			hentNyheterDirekte();
         }
 		
 		public function loggInn(bruker:Bruker):void
@@ -646,14 +646,26 @@ package no.airdog.controller
 			Components.instance.session.arrangementer.addItem(new Arrangement());
 		}
 		
-		public function hentNyheter():void
+		public function hentNyheterFraServer():void
 		{
-			Components.instance.services.airdogService.hentNyheter(hentNyheterResultat);
+			Components.instance.services.airdogService.hentNyheter(hentNyheterFraServerResultat);
 		}
 		
-		private function hentNyheterResultat(event:Object):void
+		private function hentNyheterFraServerResultat(event:Object):void
 		{
 			Components.instance.session.nyheter = new ArrayCollection(event as Array);
+		}
+		
+		public function hentNyheterDirekte():void
+		{
+			Components.instance.services.airdogService.hentRSSFeed(hentNyheterDirekteResultat);
+		}
+		
+		private function hentNyheterDirekteResultat(event:Object):void
+		{
+			var rss:RSS = new RSS();
+			rss.lagNyheterFraRSS(event as String);
+//			Alert.show(event as String);
 		}
 	}
 }
