@@ -3,15 +3,72 @@
 	width="600" height="100%" styleName="nopaddingorborderorgap">
 	<mx:Script>
 		<![CDATA[
-			import mx.controls.LinkButton;
-			import flash.net.navigateToURL;
-			import no.airdog.services.Components;
-			import mx.controls.TextArea;
+			import com.adobe.utils.XMLUtil;
+			import com.adobe.xml.syndication.rss.Item20;
+			import com.adobe.xml.syndication.rss.RSS20;
 			
-			private function hentNyheter():void
+			import flash.net.navigateToURL;
+			
+			import mx.rpc.http.HTTPService;
+			import mx.controls.LinkButton;
+			import mx.controls.TextArea;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			
+			import no.airdog.services.Components;
+			import no.airdog.model.Nyhet;
+			import no.airdog.controller.Verktoy;
+			
+			[Bindable]
+			private var nyhetsliste:ArrayCollection = new ArrayCollection;
+			
+			private function rss_handler(event:ResultEvent):void 
 			{
-				Components.instance.controller.hentNyheterDirekte();
-			}
+				var xmlString:String = event.message.body.toString();
+				
+				if(XMLUtil.isValidXML(xmlString))
+				{	
+					var rss:RSS20 = new RSS20;
+					rss.parse(xmlString);
+				
+					var items:Array = rss.items;
+					
+					nyhetsliste.removeAll();
+					
+					for each(var item:Item20 in items)
+					{
+						var tmp:Nyhet = new Nyhet;
+						tmp.tittel = Verktoy.stripHTML(item.title);
+						tmp.tekst = Verktoy.stripHTML(item.description).substr(0, 195) + "[...]";
+						tmp.url = Verktoy.stripHTML(item.link);
+						tmp.dato = Verktoy.stripHTML(item.pubDate.toLocaleDateString());
+						nyhetsliste.addItem(tmp);
+					}
+				}
+				else
+				{
+					nyhetsliste.removeAll();
+					var tom:Nyhet = new Nyhet;
+					tom.tittel = "Feil";
+					tom.tekst = "Klubbens XML er ikke velformet";
+					tom.url = "";
+					tom.dato = "";
+					nyhetsliste.addItem(tom);
+				}
+            }
+            
+            private function rss_fault_handler(event:FaultEvent):void 
+            {
+				nyhetsliste.removeAll();
+				var tom:Nyhet = new Nyhet;
+				tom.tittel = "Feil";
+				tom.tekst = event.message.toString();
+				tom.url = "";
+				tom.dato = "";
+				nyhetsliste.addItem(tom);
+            }
 			
 			private function riktigHoyde(felter:Array):void
 			{
@@ -32,18 +89,16 @@
 		]]>
 	</mx:Script>
 	
+	<mx:HTTPService id="rssParse" url="{Components.instance.session.bruker.sattKlubb.rss}" result="rss_handler(event)" fault="rss_fault_handler(event)"/>
+	
 	<mx:VBox id="nyheter"
 		horizontalScrollPolicy="off" verticalScrollPolicy="off" 
 		styleName="cupbakgrunn" width="{this.width}" height="{this.height}">
 		
 		<mx:HBox styleName="nopaddingorborderorgap" width="100%" horizontalAlign="left" verticalAlign="middle">
 			<mx:Label id="nyheteroverskrift" text="Siste nyheter fra klubben" fontWeight="bold" fontSize="18"/>
-			<!--
 			<mx:Spacer width="100%"/>
-			<mx:LinkButton label="Hent nyheter (alpha)" click="hentNyheter()" icon="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')"/>
-			-->
-			<mx:Spacer width="100%"/>
-			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
+			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="{rssParse.send()}"/>
 		</mx:HBox>
 		
 		<mx:Box id="listeboks"
@@ -53,7 +108,7 @@
 				horizontalScrollPolicy="off" verticalScrollPolicy="on"
 				styleName="nopaddingorborderorgap" width="{listeboks.width - 0}" height="{listeboks.height - 0}">
 				
-			<mx:Repeater id="nyhet" dataProvider="{Components.instance.session.nyheter}">
+			<mx:Repeater id="nyhet" dataProvider="{nyhetsliste}">
 				<mx:Box width="100%">
 					<mx:VBox width="100%" 
 						verticalGap="4" paddingLeft="4" paddingRight="4" paddingTop="4" paddingBottom="4">

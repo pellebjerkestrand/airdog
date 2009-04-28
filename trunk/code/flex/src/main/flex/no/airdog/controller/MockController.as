@@ -682,17 +682,5 @@ package no.airdog.controller
 		{
 			Components.instance.session.nyheter = new ArrayCollection(event as Array);
 		}
-		
-		public function hentNyheterDirekte():void
-		{
-			Components.instance.services.airdogService.hentRSSFeed(hentNyheterDirekteResultat);
-		}
-		
-		private function hentNyheterDirekteResultat(event:Object):void
-		{
-			var rss:RSS = new RSS();
-			rss.lagNyheterFraRSS(event as String);
-//			Alert.show(event as String);
-		}
 	}
 }
