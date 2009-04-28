@@ -58,4 +58,14 @@ class NyhetController
 			return null;
 		}
 	}
+	
+	public function hentRSSFeed($brukerEpost, $brukerPassord, $klubbId)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $klubbId, "lese"))
+		{
+			$nd	= new NyhetDatabase();
+			$rss = $nd->hentRSS($klubbId);
+			return $rss['rss'];	
+		}
+	}
 }
