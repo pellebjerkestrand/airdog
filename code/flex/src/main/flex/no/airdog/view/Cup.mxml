@@ -38,7 +38,9 @@
 			
 			private function hentListe():void
 			{
-				Components.instance.session.cupListe.removeAll();
+				if (Components.instance.session.cupListe != null)
+					Components.instance.session.cupListe.removeAll();
+					
 				Components.instance.controller.hentCupListe(fra.text, til.text);
 			}
 			
