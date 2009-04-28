@@ -25,105 +25,49 @@ package no.airdog.model
 		public var starterTotalt:int;
 		public var starterUK:String;
 		public var starterAK:String;
-		public var starterUKAK:String;
 		public var starterVK:String;		
-		public var starterVKSEMIFINALE:String;
-		public var starterVKFINALE:String;
-		public var starterUKKVALIK:String;
-		public var starterUKKFINALE:String;
-		public var starterDERBYKVALIK:String;
-		public var starterDERBYSEMIFINALE:String;
-		public var starterDERBYFINALE:String;
+		public var starterDERBY:String;
 		
 		public var starterTotaltForste:String;
 		public var starterUKForste:String;
 		public var starterAKForste:String;
-		public var starterUKAKForste:String;
 		public var starterVKForste:String;
-		public var starterVKSEMIFINALEForste:String;
-		public var starterVKFINALEForste:String;
-		public var starterUKKVALIKForste:String;
-		public var starterUKKFINALEForste:String;
-		public var starterDERBYKVALIKForste:String;
-		public var starterDERBYSEMIFINALEForste:String;
-		public var starterDERBYFINALEForste:String;
+		public var starterDERBYForste:String;
 		
 		public var starterTotaltAndre:String;
 		public var starterUKAndre:String;
 		public var starterAKAndre:String;
-		public var starterUKAKAndre:String;
 		public var starterVKAndre:String;
-		public var starterVKSEMIFINALEAndre:String;
-		public var starterVKFINALEAndre:String;
-		public var starterUKKVALIKAndre:String;
-		public var starterUKKFINALEAndre:String;
-		public var starterDERBYKVALIKAndre:String;
-		public var starterDERBYSEMIFINALEAndre:String;
-		public var starterDERBYFINALEAndre:String;
+		public var starterDERBYAndre:String;
 		
 		public var starterTotaltTredje:String;
 		public var starterUKTredje:String;
 		public var starterAKTredje:String;
-		public var starterUKAKTredje:String;
 		public var starterVKTredje:String;
-		public var starterVKSEMIFINALETredje:String;
-		public var starterVKFINALETredje:String;
-		public var starterUKKVALIKTredje:String;
-		public var starterUKKFINALETredje:String;
-		public var starterDERBYKVALIKTredje:String;
-		public var starterDERBYSEMIFINALETredje:String;
-		public var starterDERBYFINALETredje:String;		
+		public var starterDERBYTredje:String;	
 		
 		public var starterTotaltFjerde:String;
 		public var starterUKFjerde:String;
 		public var starterAKFjerde:String;
-		public var starterUKAKFjerde:String;
 		public var starterVKFjerde:String;
-		public var starterVKSEMIFINALEFjerde:String;
-		public var starterVKFINALEFjerde:String;
-		public var starterUKKVALIKFjerde:String;
-		public var starterUKKFINALEFjerde:String;
-		public var starterDERBYKVALIKFjerde:String;
-		public var starterDERBYSEMIFINALEFjerde:String;
-		public var starterDERBYFINALEFjerde:String;
+		public var starterDERBYFjerde:String;
 		
 		public var starterTotaltFemte:String;
 		public var starterUKFemte:String;
 		public var starterAKFemte:String;
-		public var starterUKAKFemte:String;
 		public var starterVKFemte:String;
-		public var starterVKSEMIFINALEFemte:String;
-		public var starterVKFINALEFemte:String;
-		public var starterUKKVALIKFemte:String;
-		public var starterUKKFINALEFemte:String;
-		public var starterDERBYKVALIKFemte:String;
-		public var starterDERBYSEMIFINALEFemte:String;
-		public var starterDERBYFINALEFemte:String;
+		public var starterDERBYFemte:String;
 		
 		public var starterTotaltSjette:String;
 		public var starterUKSjette:String;
 		public var starterAKSjette:String;
-		public var starterUKAKSjette:String;
 		public var starterVKSjette:String;
-		public var starterVKSEMIFINALESjette:String;
-		public var starterVKFINALESjette:String;
-		public var starterUKKVALIKSjette:String;
-		public var starterUKKFINALESjette:String;
-		public var starterDERBYKVALIKSjette:String;
-		public var starterDERBYSEMIFINALESjette:String;
-		public var starterDERBYFINALESjette:String;
+		public var starterDERBYSjette:String;
 		
 		public var starterTotaltUpremiert:String;
 		public var starterUKUpremiert:String
 		public var starterAKUpremiert:String
-		public var starterUKAKUpremiert:String
 		public var starterVKUpremiert:String
-		public var starterVKSEMIFINALEUpremiert:String
-		public var starterVKFINALEUpremiert:String
-		public var starterUKKVALIKUpremiert:String
-		public var starterUKKFINALEUpremiert:String
-		public var starterDERBYKVALIKUpremiert:String
-		public var starterDERBYSEMIFINALEUpremiert:String
-		public var starterDERBYFINALEUpremiert:String
+		public var starterDERBYUpremiert:String;
 	}
 }
