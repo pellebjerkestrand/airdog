@@ -12,26 +12,7 @@ class HundDatabase
 		$tilkobling = new Tilkobling();
 		$this->database = $tilkobling->getTilkobling();
 	}
-	
-//	public function settInnHundArray($hunderArray, $klubbId)
-//	{
-//		$resultat = "";
-//		
-//		foreach($hunderArray as $hundArray)
-//		{
-//			if ($hundArray["raseId"] != $klubbId)
-//			{
-//				$resultat .= "\nRaseID stemmer ikke.";
-//			}
-//			else
-//			{
-//				$resultat .= $this->_settInnHund($hundArray);
-//			}
-//		}
-//		
-//		return $resultat;
-//	}
-	
+		
 	public function settInn($hundArray, $klubbId)
 	{
 		if ($hundArray["raseId"] == $klubbId)
@@ -77,16 +58,6 @@ class HundDatabase
 			return 'Oppdatert';
 		}
 	}
-	
-//	//må testes
-//	public function slettHund($hundId, $klubbId)
-//	{
-//			$hvor = $this->database->quoteInto('hundId = ?', $hundId);
-//	
-//			$this->database->delete('nkk_hund', $hvor);
-//	}
-//	
-
 	
 	public function sokHund($soketekst, $klubbId)
 	{		
@@ -163,17 +134,6 @@ class HundDatabase
 		return $this->database->fetchRow($select);
 	}
 	
-//	private function _hentHund($hundId, $klubbId)
-//	{
-//		$select = $this->database->select()
-//		->from(array('h'=>'nkk_hund'), array('h.*'))
-//		->where('h.hundId=?', $hundId)
-//		->where('h.raseId=?', $klubbId)
-//		->limit(1);
-//		
-//		return $this->database->fetchRow($select);
-//	}
-	
 	public function hentStamtreHund($hundId, $klubbId)
 	{
 		$select = $this->database->select()
@@ -186,15 +146,6 @@ class HundDatabase
 		$this->database->closeConnection(); 
 		return $ret;
 	}
-	
-//	public function hentHunder($klubbId)
-//	{
-//		$select = $this->database->select()
-//		->from('nkk_hund', array('nkk_hund.*'))
-//		->where('h.raseId=?', $klubbId);
-//		
-//		return $this->database->fetchAll($select);
-//	}
 	
 	public function redigerHund($hund)
 	{

@@ -98,11 +98,6 @@ class KullDatabase
 		{
 			return "endret av bruker mangler";
 		}
-		
-		//mysql_query("UPDATE kull SET hundIdFar='".$kullArray["hundIdFar"]."', hundIdMor='".$kullArray["hundIdMor"]."', oppdretterId='".$kullArray["oppdretterId"]."', endretDato='".$kullArray["endretDato"]."', 
-		//	fodt='".$kullArray["fodt"]."', raseId='".$kullArray["raseId"]."', manueltEndretAv='".$endretAv."', manueltEndretDato=NOW() 
-		//	WHERE kullId='".$kullArray["kullId"]."' LIMIT 1") 
-		//or die(mysql_error());
 
 		$this->database->update('kull', $kullArray);
 		return true;
@@ -110,8 +105,6 @@ class KullDatabase
 	
 	public function slettKull($kullId)
 	{
-		//return mysql_query("DELETE FROM kull WHERE kullId='".$kullId."' LIMIT 1") 
-		//or die(mysql_error());
 		$this->database->delete('kull', 'kullId = $kullId');
 	}
 	
