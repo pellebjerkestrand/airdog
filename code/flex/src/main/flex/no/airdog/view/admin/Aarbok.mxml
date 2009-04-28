@@ -48,7 +48,7 @@
     	
     	<mx:Form width="100%" styleName="nopaddingorborder">
 	    	<mx:FormItem label="År">
-	    		<mx:NumericStepper id="aar" value="2008" maxChars="4" maximum="3000"/>
+	    		<mx:NumericStepper id="aar" value="2008" maxChars="4" maximum="3000" minimum="1800"/>
 	    	</mx:FormItem>
 	    	<mx:FormItem label="Kjønn"
 	    		visible="{Components.instance.session.aarbokHund == null ? true : false }"
