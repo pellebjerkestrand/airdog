@@ -23,7 +23,7 @@
 				tilbakestillForm();
 			}
 			
-			private function formVerdier()
+			private function formVerdier():Klubb
 			{
 				var klubb:Klubb = new Klubb();			
 				

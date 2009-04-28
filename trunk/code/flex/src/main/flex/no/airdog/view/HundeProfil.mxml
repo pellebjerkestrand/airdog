@@ -20,12 +20,12 @@
 		]]>
     </mx:Script>
     <mx:HBox styleName="viewmeny" width="100%">
-    	<mx:LinkButton label="Hovedprofil" click="naviger(0)" icon="@Embed(source='assets/ikoner/card_address.png')"/>
-    	<mx:LinkButton label="Jaktprøver" click="naviger(1)" icon="@Embed(source='assets/ikoner/flag.png')"/>
-    	<mx:LinkButton label="Avkom" click="naviger(2)" icon="@Embed(source='assets/ikoner/dog_many.png')"/>
-    	<mx:LinkButton label="Stamtre" click="naviger(3)" icon="@Embed(source='assets/ikoner/arrow_join_180.png')"/>
-    	<mx:LinkButton label="Utstilling" click="naviger(4)" icon="@Embed(source='assets/ikoner/bookmark.png')"/>
-    	<mx:LinkButton label="Prøvestatistikk" click="naviger(5)" icon="@Embed(source='assets/ikoner/calculator.png')"/>
+    	<mx:LinkButton label="Hovedprofil" click="naviger(0)" icon="@Embed(source='/no/airdog/view/assets/ikoner/card_address.png')"/>
+    	<mx:LinkButton label="Jaktprøver" click="naviger(1)" icon="@Embed(source='/no/airdog/view/assets/ikoner/flag.png')"/>
+    	<mx:LinkButton label="Avkom" click="naviger(2)" icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
+    	<mx:LinkButton label="Stamtre" click="naviger(3)" icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+    	<mx:LinkButton label="Utstilling" click="naviger(4)" icon="@Embed(source='/no/airdog/view/assets/ikoner/bookmark.png')"/>
+    	<mx:LinkButton label="Prøvestatistikk" click="naviger(5)" icon="@Embed(source='/no/airdog/view/assets/ikoner/calculator.png')"/>
     </mx:HBox>
     <mx:ViewStack id="profilstack" creationPolicy="auto" selectedIndex="{Components.instance.session.hundNavigasjon.nr}"
     	width="100%" height="100%" styleName="nopaddingorborder"
