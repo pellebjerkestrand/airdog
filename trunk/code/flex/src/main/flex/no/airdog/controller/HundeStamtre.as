@@ -15,6 +15,12 @@ package no.airdog.controller
 	{
 		private var _box:HBox;
 		
+		[Embed('/no/airdog/view/assets/ikoner/gender.png')]
+		private var hann:Class;
+		
+		[Embed('/no/airdog/view/assets/ikoner/gender_female.png')]
+		private var tispe:Class;
+		
 		public function HundeStamtre()
 		{
 			this.setStyle("horizontalAlign", "center");
@@ -91,12 +97,12 @@ package no.airdog.controller
 			
 			if(hund.kjonn == "H")
 			{
-				kjonnIkon.source = "no/airdog/view/assets/ikoner/gender.png";
+				kjonnIkon.source = hann;
 				hundNodeHBox.setStyle("backgroundColor", "#ceceff");
 			}
 			else if(hund.kjonn == "T")
 			{
-				kjonnIkon.source = "no/airdog/view/assets/ikoner/gender_female.png";
+				kjonnIkon.source = tispe;
 				hundNodeHBox.setStyle("backgroundColor", "#ffcece");
 			}
 			
