@@ -1,6 +1,7 @@
 <?php
 require_once "no/airdog/controller/database/ACLDatabase.php";
 require_once "no/airdog/model/AmfRettigheter.php";
+require_once "no/airdog/model/AmfKlubb.php";
 
 require_once 'database/ValiderBruker.php';
 require_once 'database/Tilkobling.php';
@@ -20,7 +21,7 @@ class ACLController
 		$db = new ACLDatabase();
 		if(ValiderBruker::validerSuperadmin($this->database, $brukerEpost, $brukerPassord))
 		{
-			return $db->hentAlleKlubber();
+			 return $db->hentAlleKlubber();
 		}
 
 		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $brukerPassord))
@@ -30,6 +31,28 @@ class ACLController
 
 		$feilkode = 1;
 		throw(new Exception('Du har ingen klubber', $feilkode));		
+	}
+	
+	public function settBrukersKlubb($raseid, $brukerEpost, $brukerPassord)
+	{
+		if(ValiderBruker::validerBrukeren($this->database, $brukerEpost, $brukerPassord))
+		{
+			$db = new ACLDatabase();
+			$klubb =  $db->settBrukersKlubb($raseid);
+			
+			$tmp = new AmfKlubb();
+			
+			$tmp->navn = $klubb['navn'];
+			$tmp->beskrivelse = $klubb['beskrivelse'];
+			$tmp->raseid = $klubb['raseid'];
+			$tmp->rss = $klubb['rss'];
+			$tmp->forsidetekst = $klubb['forsidetekst'];
+			
+			return $tmp;
+		}
+		
+		$feilkode = 1;
+		throw(new Exception('Du er ikke medlem av denne klubben', $feilkode));
 	}
 	
 	public function hentBrukersRoller($brukerEpost, $brukerPassord, $klubbId)

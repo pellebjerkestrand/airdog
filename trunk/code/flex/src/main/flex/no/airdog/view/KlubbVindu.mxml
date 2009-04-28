@@ -10,7 +10,7 @@
 			{
 				var knapp:LinkButton = event.target as LinkButton;
 				
-				Components.instance.controller.settBrukersKlubb(knapp.label, knapp.data.toString());
+				Components.instance.controller.settBrukersKlubb(knapp.data.toString());
 			}
 			
 			private function tilbake():void

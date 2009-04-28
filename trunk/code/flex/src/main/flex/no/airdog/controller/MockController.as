@@ -90,16 +90,26 @@ package no.airdog.controller
         	PopUpManager.removePopUp(vindu);
         }
         
-        public function settBrukersKlubb(klubb:String, klubbId:String):void
+        public function settBrukersKlubb(raseid:String):void
         {
-        	Components.instance.session.bruker.sattKlubb = klubb;
-        	Components.instance.session.bruker.sattKlubbId = klubbId;
+        	Components.instance.services.airdogService.settBrukersKlubb(raseid, settBrukersKlubbResultat);
+        }
+        
+        public function settBrukersKlubbResultat(event:Object):void
+        {
+        	Components.instance.session.bruker.sattKlubb = event as Klubb;        	
+        	
         	fjernLoggInnVindu();
         	
         	hentBrukersRettigheter();
 			hentBrukersRoller();
 //			hentNyheterDirekte();
         }
+		
+		public function hentKlubbForsidetekstResultat(event:Object):void
+		{
+			Components.instance.session.bruker.roller = new ArrayCollection(event as Array);
+		}
 		
 		public function loggInn(bruker:Bruker):void
 		{
@@ -153,7 +163,7 @@ package no.airdog.controller
 			
 			url += "brukerEpost=" + Components.instance.session.bruker.epost + "&";
 			url += "brukerPassord=" + Components.instance.session.bruker.passord + "&";
-			url += "klubbId=" + Components.instance.session.bruker.sattKlubbId;
+			url += "klubbId=" + Components.instance.session.bruker.sattKlubb.raseid;
 			
 			if (laster.type == "bilde")
 			{
@@ -328,7 +338,6 @@ package no.airdog.controller
 		
 		public function hentBrukersRoller():void
 		{
-			//Components.instance.session.bruker.roller = new ArrayCollection();
 			Components.instance.services.airdogService.hentBrukersRoller(hentBrukersRollerResultat);
 		}
 		
@@ -339,7 +348,6 @@ package no.airdog.controller
 		
 		public function hentBrukersRettigheter():void
 		{
-			//Components.instance.session.bruker.rettigheter = new ArrayCollection();
 			Components.instance.services.airdogService.hentBrukersRettigheter(hentBrukersRettigheterResultat);
 		}
 		
