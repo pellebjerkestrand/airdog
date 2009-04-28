@@ -9,6 +9,7 @@
 		
 			public function sok():void
 			{
+				Components.instance.session.arsgjennomsnitt.removeAll();
 				Components.instance.controller.sokArsgjennomsnitt(hundNavn.text, hundAr.text);
 			}
 			
