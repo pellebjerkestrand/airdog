@@ -54,6 +54,11 @@ package no.airdog.controller
 			return myArr.join(' ');
 		}
 		
+		public static function stripHTML(html:String):String
+		{
+			return html.replace(/<.*?>/g, "");
+		}
+		
 		public static function eksporterDataGrid(dg:DataGrid, navn:String):void
         {
             var str:String = new String();

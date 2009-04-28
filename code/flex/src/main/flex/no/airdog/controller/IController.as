@@ -68,7 +68,6 @@ package no.airdog.controller
 		function visLagAarbok(hund:Hund):void
 		function hentProvestatistikk(id:String):void
 		function hentNyheterFraServer():void;
-		function hentNyheterDirekte():void;
 		function visRedigerKlubbVindu(parent:DisplayObject):void;
 		function fjernRedigerKlubbVindu():void;
 		function redigerKlubb(klubb:Klubb):void;
