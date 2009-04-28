@@ -14,6 +14,7 @@ class AmfRettigheter
 	public $redigerEgenBruker;
 	public $arrangementer;
 	public $lagAarbok;
+	public $redigerKlubb;
 	
 	public $administrere;
 }

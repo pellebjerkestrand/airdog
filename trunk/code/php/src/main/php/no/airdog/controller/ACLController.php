@@ -86,6 +86,7 @@ class ACLController
 			$tmp->redigerEgenBruker = true;
 			$tmp->arrangementer = true;
 			$tmp->lagAarbok = true;
+			$tmp->redigerKlubb = true;
 			
 			$tmp->administrere = true;
   				
@@ -115,6 +116,7 @@ class ACLController
 	   			if($r['navn'] == "redigerEgenBruker") $tmp->redigerEgenBruker = true;
 	   			if($r['navn'] == "arrangementer") $tmp->arrangementer = true;
 	   			if($r['navn'] == "lagAarbok") $tmp->lagAarbok = true;
+	   			if($r['navn'] == "redigerKlubb") $tmp->redigerKlubb = true;
 	   			
 	   		}
 	   		

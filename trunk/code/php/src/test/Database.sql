@@ -119,7 +119,10 @@ INSERT INTO `ad_rettighet` (`navn`, `beskrivelse`) VALUES
 ('administrereBackup', 'Administrere Backup av databasen'),
 ('klubbRolleBrukerHandtering', 'Legge en bruker på en rolle i en klubb'),
 ('redigerEgenBruker', 'En bruker skal kunne redigere seg selv'),
-('redigerUtstilling', 'Redigere utstillinger');
+('redigerUtstilling', 'Redigere utstillinger'),
+('arrangementer', ''),
+('lagAarbok', ''),
+('redigerKlubb', '');
 
 -- --------------------------------------------------------
 
