@@ -24,6 +24,23 @@
 			[Bindable]
 			private var nyhetsliste:ArrayCollection = new ArrayCollection;
 			
+			[Bindable]
+			private var _rssURL:String;
+			
+			public function set rssURL(url:String):void
+			{
+				_rssURL = url;
+				hentNyheter();
+			}
+			
+			public function hentNyheter():void
+			{
+				if(_rssURL != null)
+				{
+					rssParse.send();	
+				}
+			}
+			
 			private function rss_handler(event:ResultEvent):void 
 			{
 				var xmlString:String = event.message.body.toString();
@@ -64,7 +81,7 @@
 				nyhetsliste.removeAll();
 				var tom:Nyhet = new Nyhet;
 				tom.tittel = "Feil";
-				tom.tekst = event.message.toString();
+				tom.tekst = "Klubben har en ugyldig RSS";
 				tom.url = "";
 				tom.dato = "";
 				nyhetsliste.addItem(tom);
@@ -89,7 +106,7 @@
 		]]>
 	</mx:Script>
 	
-	<mx:HTTPService id="rssParse" url="{Components.instance.session.bruker.sattKlubb.rss}" result="rss_handler(event)" fault="rss_fault_handler(event)"/>
+	<mx:HTTPService id="rssParse" url="{_rssURL}" result="rss_handler(event)" fault="rss_fault_handler(event)"/>
 	
 	<mx:VBox id="nyheter"
 		horizontalScrollPolicy="off" verticalScrollPolicy="off" 
@@ -98,7 +115,7 @@
 		<mx:HBox styleName="nopaddingorborderorgap" width="100%" horizontalAlign="left" verticalAlign="middle">
 			<mx:Label id="nyheteroverskrift" text="Siste nyheter fra klubben" fontWeight="bold" fontSize="18"/>
 			<mx:Spacer width="100%"/>
-			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="{rssParse.send()}"/>
+			<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/feed.png')" buttonMode="true" click="hentNyheter()"/>
 		</mx:HBox>
 		
 		<mx:Box id="listeboks"
