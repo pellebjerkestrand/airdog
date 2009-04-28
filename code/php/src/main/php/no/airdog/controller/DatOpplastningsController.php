@@ -105,6 +105,13 @@ class DatOpplastningsController
 	    		if ($objekter[$i][1] == "true")
 	    		{
 		    		$verdier = $ep->getArray(utf8Konverterer::cp1252_to_utf8($objekter[$i][0]));
+		    		
+		    		foreach($verdier as $nokkel => $v) 
+			        {
+			        	if ($v == "")
+			        		$verdier[$nokkel] = null;
+			        }
+		    		
 		    		$svar = $hd->overskriv($verdier, $klubbId);
 	    		}
 	    		else if ($objekter[$i][1]== "false")

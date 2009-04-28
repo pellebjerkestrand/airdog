@@ -55,6 +55,11 @@ class UtstillingDatabase
 		{
 			return "Finnes alt i DATreferanser tabellen.";
 		}
+		
+		if (!isset($utstillingarray["utstillingId"]) || $utstillingarray["utstillingId"] == "")
+		{ 
+			return "utstillingId-verdien mangler."; 
+		}
 
 		$dbUtstilling = $this->_hentUtstilling($utstillingarray["utstillingId"], $utstillingarray["raseId"]);
 		

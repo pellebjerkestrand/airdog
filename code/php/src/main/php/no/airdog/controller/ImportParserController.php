@@ -143,7 +143,15 @@ class importParserController
 			        $tekst = str_replace("\n", "", $tekst);
 			        $tekst = utf8Konverterer::cp1252_to_utf8($tekst);
 			        
-			        $svar = $hd->settInn($ep->getArray($tekst), $klubbId);
+			        $verdier = $ep->getArray($tekst);
+			        
+			    	foreach($verdier as $nokkel => $v) 
+			        {
+			        	if ($v == "")
+			        		$verdier[$nokkel] = null;
+			        }
+			        
+			        $svar = $hd->settInn($verdier, $klubbId);
 		    		$this->velgHandling($svar, $tekst);
 
     				//echo true; // Spytt ut firefox "søppel" for at tilkoblingen ikke skal stoppe. Safari kræsjer pga denne.		    			
