@@ -121,4 +121,18 @@ class ACLDatabase
 		return $tilBruker;
 	}
 	
+	public function redigerKlubb($klubb, $raseid)
+	{
+		$redigertKlubb = array();
+		$redigertKlubb['navn'] = $klubb->navn;
+    	$redigertKlubb['beskrivelse'] = $klubb->beskrivelse;
+    	$redigertKlubb['rss'] = $klubb->rss;
+    	$redigertKlubb['forsidetekst'] = $klubb->forsidetekst;
+		
+		$hvor = $this->database->quoteInto('raseid = ?', $raseid);			
+		$this->database->update('ad_klubb', $redigertKlubb, $hvor);	
+		
+		return $klubb;
+	}
+	
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="Rediger klubb"
+	creationComplete="init()"
+	layout="vertical" horizontalAlign="center"
+	height="100%" width="100%">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.validators.EmailValidator;
+			import no.airdog.model.Klubb;
+			import no.airdog.controller.*;
+			import no.airdog.services.Components;
+			import mx.controls.Alert;
+			import mx.utils.StringUtil;
+			import mx.validators.Validator;
+			import mx.events.ValidationResultEvent;
+			import no.airdog.controller.Verktoy;
+			
+			private function init():void
+			{	
+				tilbakestillForm();
+			}
+			
+			private function formVerdier()
+			{
+				var klubb:Klubb = new Klubb();			
+				
+				klubb.navn = navn.text;
+				klubb.beskrivelse = beskrivelse.text;
+				klubb.rss = rss.text;
+				klubb.forsidetekst = forsidetekst.text;
+				
+				return klubb;
+			}
+			
+			private function lagre():void
+			{
+				Components.instance.controller.redigerKlubb(formVerdier());
+			}
+			
+			private function tilbakestillForm():void
+			{
+				navn.text = Components.instance.session.bruker.sattKlubb.navn;
+				beskrivelse.text = Components.instance.session.bruker.sattKlubb.beskrivelse;
+				rss.text = Components.instance.session.bruker.sattKlubb.rss;
+				forsidetekst.text = Components.instance.session.bruker.sattKlubb.forsidetekst;
+			}
+			
+			private function avbryt():void
+			{
+				Components.instance.controller.fjernRedigerKlubbVindu();
+			}
+ 
+		]]>
+	</mx:Script>
+	<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+		<mx:FormItem label="Navn">
+			<mx:TextInput id="navn" />
+		</mx:FormItem>
+		<mx:FormItem label="Beskrivelse">
+			<mx:TextArea id="beskrivelse" />
+		</mx:FormItem>
+		<mx:FormItem label="RSS">
+			<mx:TextInput id="rss" />
+		</mx:FormItem>
+		<mx:FormItem label="Forsidetekst">
+			<mx:TextArea id="forsidetekst"/>
+		</mx:FormItem>
+	</mx:Form>
+	
+	<mx:ControlBar horizontalAlign="center">
+        <mx:Button label="Lagre" click="lagre()"/>
+        <mx:Button label="Tilbakestill" click="tilbakestillForm()"/>
+        <mx:Button label="Avbryt" click="avbryt()"/>
+	</mx:ControlBar>
+</mx:TitleWindow>

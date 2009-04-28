@@ -77,6 +77,11 @@
 				Components.instance.controller.visRedigerBrukerVindu(UIComponent(this.parentApplication), bruker);
 			}	
 			
+			private function redigerKlubb():void
+			{				
+				Components.instance.controller.visRedigerKlubbVindu(UIComponent(this.parentApplication));
+			}
+			
 			private function klikkHovedMeny(event:Event):void
 			{
 				var knapp:LinkButton = event.currentTarget as LinkButton;
@@ -157,7 +162,10 @@
 				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				click="redigerBruker()"  tabEnabled="false"/>
-			<mx:Label text="{Components.instance.session.bruker.sattKlubb.navn}"/>
+			<mx:LinkButton id="klubb" label="{Components.instance.session.bruker.sattKlubb.navn}"
+				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
+				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
+				click="redigerKlubb()"  tabEnabled="false"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')"  tabEnabled="false"/>
 		</mx:ApplicationControlBar>
 				
