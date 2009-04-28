@@ -67,7 +67,7 @@ class HundDatabase
 		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
 		->where('h.raseId=?', $klubbId)
 		->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
-		->limit(500, 0)
+		->limit(100, 0)
 		->order('h.navn ASC');
 
 		return $this->database->fetchAll($select);
