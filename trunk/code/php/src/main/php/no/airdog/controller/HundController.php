@@ -315,8 +315,11 @@ class HundController
 				$tmp->farNavn = $rad["hundFarNavn"];
 				$tmp->eierId = $rad["eierId"];
 				
-				$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
-				$tmp->eier = $pdres["navn"];
+				if ($rad["eierId"] != null)
+				{
+					$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
+					$tmp->eier = $pdres["navn"];
+				}
 				
 				$tmp->kjonn = $rad["kjonn"];
 				$tmp->rase = $rad["raseId"];
