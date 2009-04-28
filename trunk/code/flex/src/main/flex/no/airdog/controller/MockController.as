@@ -254,7 +254,7 @@ package no.airdog.controller
 		
 		public function hentJaktprover(hundId:String):void
 		{
-			Components.instance.session.jaktproveListe = null;
+			//Components.instance.session.jaktproveListe = new ArrayCollection();
 			Components.instance.services.airdogService.hentJaktprover(hundId, hentJaktproverResultat);
 		}
 		
