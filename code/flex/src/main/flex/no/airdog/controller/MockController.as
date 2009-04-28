@@ -56,6 +56,7 @@ package no.airdog.controller
         public function visRedigerKlubbVindu(parent:DisplayObject):void
         {
     		redigerKlubbVindu = PopUpManager.createPopUp(parent, RedigerKlubbVindu, true) as RedigerKlubbVindu;
+    		redigerKlubbVindu.isPopUp = true;
         	PopUpManager.centerPopUp(redigerKlubbVindu);
 			PopUpManager.bringToFront(redigerKlubbVindu);
         }

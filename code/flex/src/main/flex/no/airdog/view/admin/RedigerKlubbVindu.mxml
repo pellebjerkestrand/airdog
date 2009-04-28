@@ -58,16 +58,16 @@
 	</mx:Script>
 	<mx:Form paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
 		<mx:FormItem label="Navn">
-			<mx:TextInput id="navn" />
+			<mx:TextInput id="navn" width="300"/>
 		</mx:FormItem>
 		<mx:FormItem label="Beskrivelse">
-			<mx:TextArea id="beskrivelse" />
+			<mx:TextArea id="beskrivelse" width="300" height="100" cornerRadius="6"/>
 		</mx:FormItem>
 		<mx:FormItem label="RSS">
-			<mx:TextInput id="rss" />
+			<mx:TextInput id="rss" width="300"/>
 		</mx:FormItem>
 		<mx:FormItem label="Forsidetekst">
-			<mx:TextArea id="forsidetekst"/>
+			<mx:TextArea id="forsidetekst" width="300" height="200" cornerRadius="6"/>
 		</mx:FormItem>
 	</mx:Form>
 	
