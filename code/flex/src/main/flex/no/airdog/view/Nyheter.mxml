@@ -53,8 +53,6 @@
 				
 					var items:Array = rss.items;
 					
-					nyhetsliste.removeAll();
-					
 					for each(var item:Item20 in items)
 					{
 						var tmp:Nyhet = new Nyhet;
@@ -67,7 +65,6 @@
 				}
 				else
 				{
-					nyhetsliste.removeAll();
 					var tom:Nyhet = new Nyhet;
 					tom.tittel = "Feil";
 					tom.tekst = "Klubbens XML er ikke velformet";
@@ -79,7 +76,6 @@
             
             private function rss_fault_handler(event:FaultEvent):void 
             {
-				nyhetsliste.removeAll();
 				var tom:Nyhet = new Nyhet;
 				tom.tittel = "Feil";
 				tom.tekst = "Klubben har en ugyldig RSS";
