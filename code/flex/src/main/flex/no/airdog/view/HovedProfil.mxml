@@ -14,12 +14,16 @@
 			import no.airdog.controller.Verktoy;
 			
 			[Bindable]
-			[Embed("assets/ikoner/gender.png")]
+			[Embed("/no/airdog/view/assets/ikoner/gender.png")]
            	private var hannIkon:Class;
            	
            	[Bindable]
-           	[Embed("assets/ikoner/gender_female.png")]
+           	[Embed("/no/airdog/view/assets/ikoner/gender_female.png")]
            	private var hunnIkon:Class;
+           	
+           	[Bindable]
+           	[Embed("no/airdog/view/assets/intetbilde.png")]
+           	private var intetbilde:Class;
 			
 			private function visRedigerHundVindu():void
 			{	
@@ -63,7 +67,7 @@
 				<mx:Image id="hundbilde" cachePolicy="off"
 					source="{StringUtil.trim(Components.instance.session.hundprofil.bilde) == '' 
 					|| Components.instance.session.hundprofil.bilde == null
-					? 'no/airdog/view/assets/intetbilde.png' : Components.instance.session.hundprofil.bilde}"/>
+					? intetbilde : Components.instance.session.hundprofil.bilde}"/>
 			</mx:Box>
 			
 			<mx:VBox id="opplasting" styleName="notis" width="{bildeboks.width}"
@@ -195,12 +199,12 @@
 			<mx:Label text="Funksjoner" fontWeight="bold"/>
 			<mx:LinkButton label="Rediger hund" 
 				styleName="UnderMeny" click="visRedigerHundVindu()" 
-				icon="@Embed(source='assets/ikoner/report__pencil.png')"
+				icon="@Embed(source='/no/airdog/view/assets/ikoner/report__pencil.png')"
 				visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 				includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
 			<mx:LinkButton label="Legg til bilde" 
 				styleName="UnderMeny" click="velgFil()"
-				icon="@Embed(source='assets/ikoner/image_sunset.png')"
+				icon="@Embed(source='/no/airdog/view/assets/ikoner/image_sunset.png')"
 				visible="{Components.instance.session.bruker.rettigheter.redigerHund}"
 				includeInLayout="{Components.instance.session.bruker.rettigheter.redigerHund}"/>
 			<mx:LinkButton label="Lag årbok" 
