@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `ad_klubb` (
 --
 
 INSERT INTO `ad_klubb` (`navn`, `beskrivelse`, `raseid`, `rss`, `forsidetekst`) VALUES
-('Norsk Breton Klubb', NULL, 306, 'http://pipes.yahooapis.com/pipes/pipe.run?_id= Jowwq8wz3hGrvLIjPm7D0g&_render=rss&rssurl=http://breton.no/index.php/weblog/rss_2.0/', ''),
-('Norsk Pointer Klubb', NULL, 348, 'http://pipes.yahooapis.com/pipes/pipe.run?_id= Jowwq8wz3hGrvLIjPm7D0g&_render=rss&rssurl=http://pointer.no/index.php?format=feed&type=rss', '');
+('Norsk Breton Klubb', NULL, 306, 'http://pipes.yahooapis.com/pipes/pipe.run?_id=Jowwq8wz3hGrvLIjPm7D0g&_render=rss&rssurl=http://breton.no/index.php/weblog/rss_2.0/', ''),
+('Norsk Pointer Klubb', NULL, 348, 'http://pipes.yahooapis.com/pipes/pipe.run?_id=Jowwq8wz3hGrvLIjPm7D0g&_render=rss&rssurl=http://pointer.no/index.php?format=feed&type=rss', '');
 
 -- --------------------------------------------------------
 
