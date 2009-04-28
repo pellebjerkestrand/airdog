@@ -1,11 +1,14 @@
 package no.airdog.services
 {
+	import flash.events.FullScreenEvent;
+	
 	import mx.collections.ArrayCollection;
 	
 	import no.airdog.model.Arrangement;
 	import no.airdog.model.Bruker;
 	import no.airdog.model.Hund;
 	import no.airdog.model.Jaktprove;
+	import no.airdog.model.Klubb;
 	  
 	public class AirdogService extends AbstraktServiceobjekt
 	{		
@@ -487,6 +490,16 @@ package no.airdog.services
         public function hentRSSFeed(resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(service.hentRSSFeed(
+        		Components.instance.session.bruker.epost,
+        		Components.instance.session.bruker.passord,
+        		Components.instance.session.bruker.sattKlubb.raseid),
+        	resultat, feil);
+        }
+        
+        public function redigerKlubb(klubb:Klubb, resultat:Function, feil:Function=null):void
+        {
+       		callServiceFunction(service.redigerKlubb(
+       			klubb,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
         		Components.instance.session.bruker.sattKlubb.raseid),

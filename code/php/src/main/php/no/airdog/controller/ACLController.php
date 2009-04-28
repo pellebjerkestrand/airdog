@@ -142,4 +142,18 @@ class ACLController
 		$feilkode = 1;
 		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
 	}
+	
+	public function redigerKlubb($klubb, $brukerEpost, $brukerPassord, $raseid)
+	{
+		if(ValiderBruker::validerBrukerRettighet($this->database, $brukerEpost, $brukerPassord, $raseid, "redigerKlubb"))
+		{
+			$db = new ACLDatabase();
+
+			return $db->redigerKlubb($klubb, $raseid);
+		}
+
+		$feilkode = 1;
+		throw(new Exception('Du har ikke denne rettigheten', $feilkode));
+		
+	}
 }

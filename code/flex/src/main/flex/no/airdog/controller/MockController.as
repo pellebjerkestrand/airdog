@@ -24,6 +24,7 @@ package no.airdog.controller
 		private var brukerVindu:BrukerVindu;
 		private var redigerHundVindu:RedigerHundVindu;
 		private var redigerEgenBrukerVindu:RedigerEgenBrukerVindu;
+		private var redigerKlubbVindu:RedigerKlubbVindu;
 		
         public function MockController()
         {
@@ -52,6 +53,24 @@ package no.airdog.controller
         	PopUpManager.removePopUp(jaktproveVindu);
         }
         
+        public function visRedigerKlubbVindu(parent:DisplayObject):void
+        {
+    		redigerKlubbVindu = PopUpManager.createPopUp(parent, RedigerKlubbVindu, true) as RedigerKlubbVindu;
+        	PopUpManager.centerPopUp(redigerKlubbVindu);
+			PopUpManager.bringToFront(redigerKlubbVindu);
+        }
+        
+        public function fjernRedigerKlubbVindu():void
+        {
+        	PopUpManager.removePopUp(redigerKlubbVindu);
+        }
+        
+        public function redigerKlubb(klubb:Klubb):void
+        {
+       		Components.instance.services.airdogService.redigerKlubb(klubb, new Function());
+       		Components.instance.session.bruker.sattKlubb = klubb;
+        }
+
         public function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
         {
     		brukerVindu = PopUpManager.createPopUp(parent, BrukerVindu, true) as BrukerVindu;
