@@ -44,7 +44,12 @@ class HundController
 		   		
 				$tmp = new AmfHund();
 				$tmp->hundId = $rad["hundId"];
-				$tmp->tittel = $rad["tittel"];
+				
+				if ($rad["tittel"] != null)
+					$tmp->tittel = $rad["tittel"];
+				else
+					$tmp->tittel = "";
+				
 				$tmp->navn = $rad["navn"];
 				
 				if (file_exists(Verktoy::hoppBakover(dirname(__FILE__), 3) . $bildeAdresse))
@@ -65,8 +70,11 @@ class HundController
 				$tmp->oppdretter = "oppdretter";
 				$tmp->eierId = $rad["eierId"];
 				
-				$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
-				$tmp->eier = $pdres["navn"];
+				if ($rad["eierId"] != null)
+				{
+					$pdres = $pd->hentPerson($rad["eierId"], $klubbId);
+					$tmp->eier = $pdres["navn"];
+				}
 				
 				$tmp->kjonn = $rad["kjonn"];
 				$tmp->raseId = $rad["raseId"];

@@ -39,6 +39,9 @@ class JaktproveDatabase
 				$this->database->quoteInto('AND hundId = ? ', $hundId).
 				$this->database->quoteInto('AND proveDato = ?', $dato).
 				$this->database->quoteInto('AND raseId = ?', $klubbId);
+				
+		$dbJaktprove = $this->_hentJaktprove($jaktproveId, $dato, $hundId, $klubbId);
+		DatReferanseDatabase::settReferanse(FuglParser::getDatabaseSomDat($dbJaktprove), "", $this->database);
 		
 		return $this->database->delete('nkk_fugl', $hvor);
 	}
