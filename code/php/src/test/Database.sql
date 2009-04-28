@@ -34,8 +34,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker` (
 
 INSERT INTO `ad_bruker` (`epost`, `fornavn`, `etternavn`, `passord`, `superadmin`) VALUES
 ('gjest', 'gjest', 'gjest', '9195bf0c194e9e0b8fff4bbcdfe89298e1ecb051', 0),
-('admin', 'Administrator', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
-('test@lcd.no', 'test', 'tester', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 0);
+('admin', 'Administrator', '', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1);
 
 -- --------------------------------------------------------
 
@@ -62,12 +61,8 @@ INSERT INTO `ad_bruker_klubb_rolle_link` (`ad_rolle_navn`, `ad_bruker_epost`, `a
 ('gjest', 'gjest', 348),
 ('admin', 'gjest', 348),
 ('admin', 'admin', 306),
-('admin', 'test@lcd.no', 306),
 ('admin', 'gjest', 306),
-('admin', 'test@lcd.no', 348),
-('gjest', 'test@lcd.no', 306),
-('gjest', 'admin', 348),
-('gjest', 'test@lcd.no', 348);
+('gjest', 'admin', 348);
 
 -- --------------------------------------------------------
 
@@ -162,15 +157,7 @@ CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
 --
 
 INSERT INTO `ad_rolle_rettighet_link` (`ad_rolle_navn`, `ad_rettighet_navn`) VALUES
-('gjest', 'klubbRolleBrukerHandtering'),
-('gjest', 'redigerJaktprove'),
-('admin', 'lese'),
-('gjest', 'leggInnJaktprove'),
-('gjest', 'administrereBackup'),
-('gjest', 'rolleRettighetHandtering'),
-('gjest', 'lese'),
-('gjest', 'slettJaktprove'),
-('gjest', 'importerDatabase');
+('gjest', 'lese');
 
 
 -- phpMyAdmin SQL Dump

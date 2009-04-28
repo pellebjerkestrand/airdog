@@ -19,6 +19,7 @@
 				if(gammelHundId == null || gammelHundId != hundId)
 				{
 					gammelHundId = hundId;
+					Components.instance.session.jaktproveListe.removeAll();
 					Components.instance.controller.hentJaktprover(hundId);
 				}
 			}
