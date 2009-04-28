@@ -21,6 +21,7 @@
 				if(gammelHundId == null || gammelHundId != hundId)
 				{
 					gammelHundId = hundId;
+					Components.instance.session.avkomListe.removeAll();
 					Components.instance.controller.hentAvkom(hundId);
 				}
 			}

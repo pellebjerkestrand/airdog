@@ -25,6 +25,7 @@
 				if(gammelHundId == null || gammelHundId != hundId)
 				{
 					gammelHundId = hundId;
+					Components.instance.session.utstillingListe.removeAll();
 					Components.instance.controller.hentUtstillinger(hundId);
 				}
 			} 

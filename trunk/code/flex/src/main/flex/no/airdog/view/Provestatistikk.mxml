@@ -8,6 +8,7 @@
 			public function hentProvestatistikk():void
 			{
 				var hundId:String = Components.instance.session.hundprofil.hundId;
+				Components.instance.session.provestatistikk.removeAll();
 				Components.instance.controller.hentProvestatistikk(hundId);
 			}			   
         ]]>
