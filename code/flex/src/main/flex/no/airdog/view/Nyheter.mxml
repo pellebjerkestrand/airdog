@@ -37,6 +37,7 @@
 			{
 				if(_rssURL != null)
 				{
+					nyhetsliste.removeAll();
 					rssParse.send();	
 				}
 			}
