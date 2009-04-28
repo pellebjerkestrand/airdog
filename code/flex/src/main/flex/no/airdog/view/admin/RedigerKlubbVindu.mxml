@@ -31,6 +31,7 @@
 				klubb.beskrivelse = beskrivelse.text;
 				klubb.rss = rss.text;
 				klubb.forsidetekst = forsidetekst.text;
+				klubb.raseid = Components.instance.session.bruker.sattKlubb.raseid;
 				
 				return klubb;
 			}
