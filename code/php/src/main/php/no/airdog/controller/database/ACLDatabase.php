@@ -33,6 +33,17 @@ class ACLDatabase
 		return $this->database->fetchAll($hent);
 	}
 	
+	public function settBrukersKlubb($raseid)
+	{
+		$klubb = $this->database->quoteInto('raseid=?', $raseid);
+		
+		$hent = $this->database->select()
+		->from(array('a'=>'ad_klubb'), array('a.*'))
+		->where($klubb);
+		
+		return $this->database->fetchRow($hent);
+	}
+	
 	public function hentBrukersRoller($brukerEpost, $klubbId)
 	{	
 		$bruker = $this->database->quoteInto('a.ad_bruker_epost=?', $brukerEpost);

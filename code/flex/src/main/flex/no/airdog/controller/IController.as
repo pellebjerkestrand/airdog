@@ -10,7 +10,7 @@ package no.airdog.controller
 	{
 		function visLoggInnVindu(parent:DisplayObject):void
 		function fjernLoggInnVindu():void
-		function settBrukersKlubb(klubb:String, klubbId:String):void;
+		function settBrukersKlubb(raseid:String):void;
 		function loggInn(bruker:Bruker):void
 		function loggUt():void
 		function lastOpp(laster:Opplastning):void

@@ -20,7 +20,7 @@ package no.airdog.services
         		soketekst,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);			
         }
         
@@ -30,7 +30,7 @@ package no.airdog.services
         		fra, til,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId),
+    			Components.instance.session.bruker.sattKlubb.raseid),
     		resultat, feil);
         }
         
@@ -40,7 +40,7 @@ package no.airdog.services
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -50,7 +50,7 @@ package no.airdog.services
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -60,7 +60,7 @@ package no.airdog.services
         		aar,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -70,7 +70,7 @@ package no.airdog.services
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -80,7 +80,7 @@ package no.airdog.services
         		aar,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -90,7 +90,7 @@ package no.airdog.services
         		id,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -100,7 +100,7 @@ package no.airdog.services
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -110,7 +110,7 @@ package no.airdog.services
         		hundId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -120,7 +120,7 @@ package no.airdog.services
         		personId,
         		Components.instance.session.bruker.epost,
     			Components.instance.session.bruker.passord,
-    			Components.instance.session.bruker.sattKlubbId), 
+    			Components.instance.session.bruker.sattKlubb.raseid), 
 			resultat, feil);
         }
         
@@ -133,13 +133,23 @@ package no.airdog.services
         		resultat, feil);
         }
         
+        public function settBrukersKlubb(raseid:String, resultat:Function, feil:Function=null):void
+        {
+       		callServiceFunction(
+        		service.settBrukersKlubb(
+        			raseid,
+        			Components.instance.session.bruker.epost,
+        			Components.instance.session.bruker.passord),
+        		resultat, feil);
+        }
+        
         public function hentBrukersRoller(resultat:Function, feil:Function=null):void
         {
         	callServiceFunction(
         		service.hentBrukersRoller(
         			Components.instance.session.bruker.epost,
         			Components.instance.session.bruker.passord,
-        			Components.instance.session.bruker.sattKlubbId),
+        			Components.instance.session.bruker.sattKlubb.raseid),
         		resultat, feil);
         }
         
@@ -149,7 +159,7 @@ package no.airdog.services
         		service.hentBrukersRettigheter(
         			Components.instance.session.bruker.epost,
         			Components.instance.session.bruker.passord,
-        			Components.instance.session.bruker.sattKlubbId),
+        			Components.instance.session.bruker.sattKlubb.raseid),
         		resultat, feil);
         }
         
@@ -165,7 +175,7 @@ package no.airdog.services
         		dybde,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -177,7 +187,7 @@ package no.airdog.services
         		dybde,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -187,7 +197,7 @@ package no.airdog.services
         		hund,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);        	
         }
         
@@ -199,7 +209,7 @@ package no.airdog.services
         		ar,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -209,7 +219,7 @@ package no.airdog.services
         		gammelJaktprove, jaktprove,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);        	
         }
 
@@ -219,7 +229,7 @@ package no.airdog.services
         		jaktproveId, hundId, jaktproveDato,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         	
         }
@@ -230,7 +240,7 @@ package no.airdog.services
         		jaktprove,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);        	
         }
               
@@ -239,7 +249,7 @@ package no.airdog.services
         	callServiceFunction(service.hentAlleRettigheter(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -248,7 +258,7 @@ package no.airdog.services
         	callServiceFunction(service.hentRollersRettigheter(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -259,7 +269,7 @@ package no.airdog.services
         		rettighet,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -270,7 +280,7 @@ package no.airdog.services
         		rettighet,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -281,7 +291,7 @@ package no.airdog.services
         		beskrivelse,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -291,7 +301,7 @@ package no.airdog.services
         		rolle,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -300,7 +310,7 @@ package no.airdog.services
         	callServiceFunction(service.hentTabeller(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -309,7 +319,7 @@ package no.airdog.services
         	callServiceFunction(service.hentKopier(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -319,7 +329,7 @@ package no.airdog.services
         		navn,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -329,7 +339,7 @@ package no.airdog.services
         		mappe,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -340,7 +350,7 @@ package no.airdog.services
         		mappe,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -349,7 +359,7 @@ package no.airdog.services
         	callServiceFunction(service.hentRollersBrukere(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -358,7 +368,7 @@ package no.airdog.services
         	callServiceFunction(service.hentAlleBrukere(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -369,7 +379,7 @@ package no.airdog.services
         		bruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -380,7 +390,7 @@ package no.airdog.services
         		bruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -390,7 +400,7 @@ package no.airdog.services
         		epost,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
 		}
         
@@ -400,7 +410,7 @@ package no.airdog.services
         		bruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -410,7 +420,7 @@ package no.airdog.services
         		fraBruker, tilBruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -421,7 +431,7 @@ package no.airdog.services
         		tilBruker,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -432,7 +442,7 @@ package no.airdog.services
         		objektType,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -442,7 +452,7 @@ package no.airdog.services
         		proveNr,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -452,7 +462,7 @@ package no.airdog.services
         		arrangement,
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -461,7 +471,7 @@ package no.airdog.services
         	callServiceFunction(service.hentArrangementer(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -470,7 +480,7 @@ package no.airdog.services
         	callServiceFunction(service.hentNyheter(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
         
@@ -479,7 +489,7 @@ package no.airdog.services
         	callServiceFunction(service.hentRSSFeed(
         		Components.instance.session.bruker.epost,
         		Components.instance.session.bruker.passord,
-        		Components.instance.session.bruker.sattKlubbId),
+        		Components.instance.session.bruker.sattKlubb.raseid),
         	resultat, feil);
         }
 	}

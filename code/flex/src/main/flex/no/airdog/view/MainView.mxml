@@ -157,7 +157,7 @@
 				buttonMode="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				enabled="{Components.instance.session.bruker.rettigheter.redigerEgenBruker}"
 				click="redigerBruker()"  tabEnabled="false"/>
-			<mx:Label text="{Components.instance.session.bruker.sattKlubb}"/>
+			<mx:Label text="{Components.instance.session.bruker.sattKlubb.navn}"/>
 			<mx:LinkButton label="Logg ut" click="innloggingSprettOppVindu()" icon="@Embed(source='assets/ikoner/door_open_out.png')"  tabEnabled="false"/>
 		</mx:ApplicationControlBar>
 				

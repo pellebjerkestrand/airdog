@@ -10,11 +10,13 @@ package no.airdog.model
 		public var fornavn:String;
 		public var etternavn:String;
 		public var passord:String;
-		public var superadmin:Boolean;
+	
 		public var innlogget:Boolean = false;
-		public var sattKlubb:String;
-		public var sattKlubbId:String;
+		
+		public var sattKlubb:Klubb;
 		public var klubber:ArrayCollection;
+		
+		public var superadmin:Boolean;
 		public var roller:ArrayCollection;
 		public var rettigheter:Rettigheter;
 	}

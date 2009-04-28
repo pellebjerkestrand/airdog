@@ -724,7 +724,7 @@
 					proveNr.text = "";
 					rappInnkalt.text = "";
 					rappSpont.text = "";
-					raseId.text = Components.instance.session.bruker.sattKlubbId;
+					raseId.text = Components.instance.session.bruker.sattKlubb.raseid;
 					regAv.text = "";
 					regDato.text = "";
 					reisDjerv.text = "";

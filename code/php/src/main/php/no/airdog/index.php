@@ -61,6 +61,7 @@ $server->setClassMap("AmfOpplastningObjekt","AmfOpplastningObjekt");
 $server->setClassMap("AmfCup","AmfCup");
 $server->setClassMap("AmfArrangement","AmfArrangement");
 $server->setClassMap("AmfNyhet","AmfNyhet");
+$server->setClassMap("AmfKlubb","AmfKlubb");
 
 //Bytt til true når det skal lanseres
 $server->setProduction(false);
