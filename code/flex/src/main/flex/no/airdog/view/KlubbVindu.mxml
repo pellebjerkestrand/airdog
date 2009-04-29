@@ -21,7 +21,7 @@
 	</mx:Script>
 	
 	<mx:Label text="Velg klubb" fontWeight="bold"/>
-	<mx:VBox height="100%" width="100%" verticalAlign="middle">
+	<mx:VBox height="100%" width="100%">
 		<mx:Repeater id="klubbListe" dataProvider="{Components.instance.session.bruker.klubber}">
 			<mx:LinkButton id="knapp" 
 				label="{klubbListe.currentItem.navn}" 
