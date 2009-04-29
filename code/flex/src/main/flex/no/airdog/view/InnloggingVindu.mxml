@@ -98,9 +98,9 @@
 		
 		<mx:VBox styleName="funksjon" width="100%" horizontalAlign="center">
 			<mx:VBox verticalGap="0">
-				<mx:Text text="Hovedprosjekt ved Høgskolen i Oslo, våren 2009"/>
+				<mx:Label text="Hovedprosjekt ved Høgskolen i Oslo, våren 2009"/>
 				<mx:HBox styleName="nopaddingorborderorgap">
-					<mx:Text text="Veiledet av Bekk Consulting"/> <mx:Text text="bekk.no" styleName="profilGridBeskrivelse"/>
+					<mx:Label text="Veiledet av Bekk Consulting"/> <mx:Text text="bekk.no" styleName="profilGridBeskrivelse"/>
 				</mx:HBox>
 			</mx:VBox>
 			<mx:Grid width="100%" horizontalAlign="center">
