@@ -6,7 +6,7 @@ package no.airdog.model
 	import mx.collections.ArrayCollection;
 	import mx.core.*;
 	
-	import no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor;
+	import no.airdog.view.renderer.hundeliste.NavnRendererStor;
 	
 	[Bindable]
 	public class Session
@@ -27,7 +27,7 @@ package no.airdog.model
      	public var hundNavigasjon:Navigasjon = new Navigasjon();
 		public var hundprofil:Hund;
      	public var cupListe:ArrayCollection;
-     	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.renderer.hundeListeRenderer.NavnRendererStor));
+     	public var hundesokListe:Hundeliste = new Hundeliste(60, new ClassFactory(no.airdog.view.renderer.hundeliste.NavnRendererStor));
         public var jaktproveListe:ArrayCollection = new ArrayCollection();
         public var jaktproveListeAar:ArrayCollection = new ArrayCollection();
         public var jaktproveSammendrag:Jaktprove = new Jaktprove();

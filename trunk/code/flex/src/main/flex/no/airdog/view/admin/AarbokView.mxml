@@ -6,7 +6,7 @@
 	horizontalAlign="center" layout="horizontal">
     <mx:Script>
         <![CDATA[
-        	import no.airdog.view.HundeProfil;
+        	import no.airdog.view.ProfilView;
         	import no.airdog.model.Hund;
         	import mx.controls.Alert;
         	import no.airdog.model.Valg;

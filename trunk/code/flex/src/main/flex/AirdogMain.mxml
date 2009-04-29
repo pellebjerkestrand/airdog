@@ -23,8 +23,7 @@
     </mx:Script>
 	<mx:Style source="/no/airdog/view/assets/stil.css"/>
 	
-	<!-- <services:MainComponents id="components"/> -->
-	<services:MockComponents id="components"/>
+	<services:MainComponents id="components"/>
 
 	<view:MainView id="mainview" visible="{Components.instance.session.bruker.sattKlubb ? true : false}"/>
 

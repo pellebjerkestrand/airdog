@@ -2,7 +2,7 @@ package no.airdog.model
 {
 	[RemoteClass(alias="AmfJaktproveSammendrag")]
 	[Bindable]
-	public class JaktproveSammendrag
+	public class Jaktprovesammendrag
 	{
 		public var slippTid:String;
 		public var egneStand:String;

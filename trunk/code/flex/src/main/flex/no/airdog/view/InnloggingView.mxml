@@ -95,7 +95,7 @@
 						</mx:Form>
 					</mx:VBox>
 				</mx:VBox>
-				<view:KlubbVindu/>
+				<view:KlubbvalgView/>
 			</mx:ViewStack>
 		</mx:HBox>
 	</mx:HBox>
