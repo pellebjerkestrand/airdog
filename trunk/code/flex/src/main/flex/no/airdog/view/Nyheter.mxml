@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Box xmlns:mx="http://www.adobe.com/2006/mxml"
-	width="600" height="100%" styleName="nopaddingorborderorgap">
+	width="400" height="100%" styleName="nopaddingorborderorgap">
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.utils.XMLUtil;
