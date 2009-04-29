@@ -46,9 +46,7 @@ CREATE TABLE IF NOT EXISTS `ad_bruker_klubb_rolle_link` (
   `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
   `ad_bruker_epost` varchar(50) NOT NULL DEFAULT '',
   `ad_klubb_raseid` int(3) NOT NULL,
-  KEY `AD_rolle_navn` (`ad_rolle_navn`),
-  KEY `AD_bruker_epost` (`ad_bruker_epost`),
-  KEY `AD_klubb_navn` (`ad_klubb_raseid`)
+  PRIMARY KEY  (`ad_rolle_navn`,`ad_bruker_epost`,`ad_klubb_raseid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -148,8 +146,7 @@ INSERT INTO `ad_rolle` (`navn`, `beskrivelse`) VALUES
 CREATE TABLE IF NOT EXISTS `ad_rolle_rettighet_link` (
   `ad_rolle_navn` varchar(50) NOT NULL DEFAULT '',
   `ad_rettighet_navn` varchar(50) NOT NULL DEFAULT '',
-  KEY `AD_rolle_navn` (`ad_rolle_navn`),
-  KEY `AD_rettighet_navn` (`ad_rettighet_navn`)
+  PRIMARY KEY  (`ad_rolle_navn`,`ad_rettighet_navn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -303,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `nkk_fugl` (
   `manueltEndretAv` varchar(20) NOT NULL,
   `manueltEndretDato` date NOT NULL,
   `kritikk` mediumtext,
-  KEY `proveNr` (`proveNr`,`proveDato`,`hundId`,`raseId`)
+  PRIMARY KEY  (`proveNr`,`proveDato`,`hundId`,`raseId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
