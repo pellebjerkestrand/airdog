@@ -272,6 +272,7 @@ class AarbokController
 		    $avkomListe[$i]['kullmormor'] = $mor['hundFarNavn'];
 		    $avkomListe[$i]['kullmorfar'] = $mor['hundMorNavn'];
 
+		    $kull = null;
 		    if ($avkomListe[$i]['kullId'] != null)
 		    	$kull = KullDatabase::hentAarbokKullOppdretter($avkomListe[$i]['kullId'], $klubbId, $this->database);
 		    
