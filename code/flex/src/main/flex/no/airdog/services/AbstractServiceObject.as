@@ -6,12 +6,12 @@ package no.airdog.services
     import mx.rpc.IResponder;
     import mx.rpc.remoting.RemoteObject;
 
-	public class AbstraktServiceobjekt
+	public class AbstractServiceObject
 	{
 		private var _faultHandler:Function = getDefaultFaultHandler();
 		
 		public var service:Object;
-	    public var getDataSomEvent:Boolean = false;
+	    public var getDataAsEvent:Boolean = false;
 	    
         public function get faultHandler( ) : Function
         {
@@ -48,7 +48,7 @@ package no.airdog.services
 
         private function getResultHandler( func:Function ) : Function
         {
-            if (getDataSomEvent) 
+            if (getDataAsEvent) 
             {
                 return func;
             }

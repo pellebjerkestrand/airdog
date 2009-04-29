@@ -78,6 +78,6 @@
 		</mx:HBox>
 	</mx:VBox>
 	
-	<view:Nyheter rssURL="{Components.instance.session.bruker.sattKlubb.rss}"/>
+	<view:NyheterView rssURL="{Components.instance.session.bruker.sattKlubb.rss}"/>
 	
 </mx:HBox>

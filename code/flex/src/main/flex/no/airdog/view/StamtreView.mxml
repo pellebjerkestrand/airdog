@@ -29,5 +29,5 @@
 			}
         ]]>
     </mx:Script>
-    <controller:HundeStamtre hund="{Components.instance.session.stamtre}"/>
+    <controller:Stamtre hund="{Components.instance.session.stamtre}"/>
 </mx:HBox>

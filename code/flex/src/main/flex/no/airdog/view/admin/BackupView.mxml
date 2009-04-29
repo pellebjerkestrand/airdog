@@ -83,7 +83,7 @@
 		    <mx:VBox visible="{Components.instance.session.backupFiler ? true : false}" width="100%" height="100%">
 		    	<mx:DataGrid id="backupfilerListe" cachePolicy="on" dataProvider="{Components.instance.session.backupFiler}" width="100%" height="100%">
 			    	<mx:columns>
-			    		<mx:DataGridColumn paddingLeft="5" id="filer" itemRenderer="no.airdog.view.renderer.BackupVinduCheckboxRender"/>
+			    		<mx:DataGridColumn paddingLeft="5" id="filer" itemRenderer="no.airdog.view.renderer.BackupViewCheckboxRender"/>
 			    	</mx:columns>
 			    </mx:DataGrid>
 		    	<mx:Button label="Gjennopprett merkede tabeller" width="100%" click="gjennopprettFiler(event)"/>

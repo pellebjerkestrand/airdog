@@ -11,7 +11,7 @@ package no.airdog.controller
 	import no.airdog.model.Hund;
 	import no.airdog.services.Components;
 	
-	public class HundeStamtre extends HBox
+	public class Stamtre extends HBox
 	{
 		private var _box:HBox;
 		
@@ -21,14 +21,10 @@ package no.airdog.controller
 		[Embed('/no/airdog/view/assets/ikoner/gender_female.png')]
 		private var tispe:Class;
 		
-		public function HundeStamtre()
+		public function Stamtre()
 		{
 			this.setStyle("horizontalAlign", "center");
 			this.setStyle("verticalAlign", "middle");
-//			this.setStyle("width", );
-//			this.setStyle("height", );
-//			this.setStyle("horizontalScrollPolicy", "auto");
-//			this.setStyle("verticalScrollPolicy", "auto");
 		}
 		
 		public function set hund(val:Hund):void

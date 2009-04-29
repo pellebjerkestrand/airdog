@@ -30,11 +30,11 @@
     <mx:ViewStack id="profilstack" creationPolicy="auto" selectedIndex="{Components.instance.session.hundNavigasjon.nr}"
     	width="100%" height="100%" styleName="nopaddingorborder"
 		backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#a3a3a3">
-    	<view:HovedProfil id="hovedprofil" />
-    	<view:JaktproveListe id="jaktproveliste"/>            
-  		<view:AvkomListe id="avkomliste"/>
-		<view:Stamtre id="stamtre"/>
-		<view:UtstillingListe id="utstillingliste"/>   	
-		<view:Provestatistikk id="provestatestikk"/>		
+    	<view:ProfilHovedView id="hovedprofil" />
+    	<view:JaktproveListeView id="jaktproveliste"/>            
+  		<view:AvkomListeView id="avkomliste"/>
+		<view:StamtreView id="stamtre"/>
+		<view:UtstillingListeView id="utstillingliste"/>   	
+		<view:ProvestatistikkView id="provestatestikk"/>		
     </mx:ViewStack>
 </mx:VBox>

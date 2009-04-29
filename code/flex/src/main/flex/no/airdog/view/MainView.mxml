@@ -192,11 +192,7 @@
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/target.png')"/>
 					<mx:LinkButton label="Fiktivt stamtre" styleName="undermeny" click="naviger(4)" 
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180_fictual.png')"/>
-					<!--
-					<mx:LinkButton label="Avlstall" styleName="undermeny" click="naviger(6)"
-						icon="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
-					-->
-					<mx:LinkButton label="Cup" styleName="undermeny" click="naviger(7)" 
+					<mx:LinkButton label="Cup" styleName="undermeny" click="naviger(6)" 
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
 				</mx:HBox>	
 				
@@ -205,37 +201,37 @@
 					<mx:LinkButton 
 						visible="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
 						includeInLayout="{Components.instance.session.bruker.rettigheter.klubbRolleBrukerHandtering}" 
-						label="Brukere" click="naviger(8)" styleName="undermeny" 
+						label="Brukere" click="naviger(7)" styleName="undermeny" 
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/users.png')"/>
 					<mx:LinkButton
 						visible="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
 						includeInLayout="{Components.instance.session.bruker.rettigheter.rolleRettighetHandtering}" 
-						label="Roller" click="naviger(9)" styleName="undermeny" 
+						label="Roller" click="naviger(8)" styleName="undermeny" 
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/cards_address.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.importerDatabase}" 
-			 			label=".DAT" click="naviger(10)" styleName="undermeny" 
+			 			label=".DAT" click="naviger(9)" styleName="undermeny" 
 			 			icon="@Embed(source='/no/airdog/view/assets/ikoner/envelope__arrow.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.leggInnJaktprove}" 
-			 			label="Jaktprøve" click="naviger(11)" styleName="undermeny" 
+			 			label="Jaktprøve" click="naviger(10)" styleName="undermeny" 
 			 			icon="@Embed(source='/no/airdog/view/assets/ikoner/report__plus.png')"/>
 			 		<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.administrereBackup}" 
-			 			label="Backup" click="naviger(12)" styleName="undermeny" 
+			 			label="Backup" click="naviger(11)" styleName="undermeny" 
 			 			icon="@Embed(source='/no/airdog/view/assets/ikoner/safe.png')"/>
 		 			<mx:LinkButton 
 			 			visible="{Components.instance.session.bruker.rettigheter.arrangementer}" 
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.arrangementer}" 
-			 			label="Arrangement" click="naviger(13)" styleName="undermeny" 
+			 			label="Arrangement" click="naviger(12)" styleName="undermeny" 
 			 			icon="@Embed(source='/no/airdog/view/assets/ikoner/map_pin.png')"/>
 			 		<mx:LinkButton
 			 			visible="{Components.instance.session.bruker.rettigheter.lagAarbok}"
 			 			includeInLayout="{Components.instance.session.bruker.rettigheter.lagAarbok}"
-			 			label="Årbok" click="naviger(14)" styleName="undermeny"
+			 			label="Årbok" click="naviger(13)" styleName="undermeny"
 						icon="@Embed(source='/no/airdog/view/assets/ikoner/book_open.png')"/>
 				</mx:HBox>
 			</mx:ViewStack>
@@ -252,20 +248,19 @@
 	<mx:ViewStack id="stack" width="100%" height="100%"
 		paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 		selectedIndex="{Components.instance.session.hovedNavigasjon.nr}">
-	    <!--  0 -->	<view:Hjem id="hjemview"/>
-	    <!--  1 -->	<view:HundeSok id="hundesokview"/>
-	    <!--  2 -->	<view:HundeProfil id="hundprofilview"/>
-	    <!--  3 -->	<view:Arsgjennomsnitt id="arsgjennomsnittview"/>
-	    <!--  4 -->	<view:FiktivStamtre id="fiktivstamtreview"/>
-	    <!--  5 -->	<view:RasensJaktresultaterAar id="rasensjaktresultateraarview"/>
-	    <!--  6 -->	<view:AvlstallRapport id="avlstallRapport" />
-		<!--  7 -->	<view:Cup id="cup"/>
-	    <!--  8 -->	<adminView:RolleBruker id="rollebrukerview"/>
-	    <!--  9 -->	<adminView:RolleRettighet id="rollerettighetview"/>
-	    <!-- 10 -->	<adminView:DatOpplastning id="datopplastningview"/>
-	    <!-- 11 -->	<adminView:JaktproveVindu id="jaktprovevinduview"/>
-	    <!-- 12 -->	<adminView:BackupVindu id="backupvinduview"/>
-	    <!-- 13 -->	<adminView:Arrangementer id="arrangementer"/>
-	    <!-- 14 -->	<adminView:Aarbok id="aarbok"/>
+	    <!--  0 -->	<view:HjemView id="hjemview"/>
+	    <!--  1 -->	<view:SokView id="hundesokview"/>
+	    <!--  2 -->	<view:ProfilView id="hundprofilview"/>
+	    <!--  3 -->	<view:ArsgjennomsnittView id="arsgjennomsnittview"/>
+	    <!--  4 -->	<view:FiktivStamtreView id="fiktivstamtreview"/>
+	    <!--  5 -->	<view:RasensJaktresultaterAarView id="rasensjaktresultateraarview"/>
+		<!--  6 -->	<view:CupView id="cup"/>
+	    <!--  7 -->	<adminView:BrukereOgRollerView id="rollebrukerview"/>
+	    <!--  8 -->	<adminView:RollerOgRettigheterView id="rollerettighetview"/>
+	    <!--  9 -->	<adminView:DatOpplastingView id="datopplastningview"/>
+	    <!-- 10 -->	<adminView:JaktproveView id="jaktprovevinduview"/>
+	    <!-- 11 -->	<adminView:BackupView id="backupvinduview"/>
+	    <!-- 12 -->	<adminView:ArrangementerView id="arrangementer"/>
+	    <!-- 13 -->	<adminView:AarbokView id="aarbok"/>
 	</mx:ViewStack>
 </mx:VBox>

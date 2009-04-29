@@ -1,8 +1,8 @@
 package no.airdog.model
 {
-	public class Provestatestikk
+	public class Provestatistikk
 	{
-		public function Provestatestikk()
+		public function Provestatistikk()
 		{
 			public var starterTotalt:String;
 			public var starterUK:String;

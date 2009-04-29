@@ -61,16 +61,15 @@
 				{
 					var arr:Arrangement = arrangementer.dataProvider.getItemAt(evt.rowIndex);
 					
-						Components.instance.controller.leggInnArrangement(arr);
-						
-						if (evt.rowIndex == arrangementer.dataProvider.length - 1 && arr.proveNr != "" && arr.proveNr != null)
-						{
-							Components.instance.session.arrangementer.addItem(new Arrangement());
-						}
+					Components.instance.controller.leggInnArrangement(arr);
+					
+					if (evt.rowIndex == arrangementer.dataProvider.length - 1 && arr.proveNr != "" && arr.proveNr != null)
+					{
+						Components.instance.session.arrangementer.addItem(new Arrangement());
+					}
     			}
     			tmpArr = null;
             }
-
 		]]>
 	</mx:Script>
 	<mx:DataGrid id="arrangementer" editable="true" verticalScrollPolicy="on" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" width="100%" height="100%"

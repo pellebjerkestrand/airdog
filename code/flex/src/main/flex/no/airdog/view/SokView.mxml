@@ -54,11 +54,11 @@
 				headerText="Navn" 
 				dataField="navn" width="525"
 				itemRenderer="{Components.instance.session.hundesokListe.renderer}"/>
-			<mx:DataGridColumn width="60" minWidth="60" headerText="ID" dataField="hundId" itemRenderer="no.airdog.view.renderer.hundeListeRenderer.HundIdRenderer"/>
-			<mx:DataGridColumn width="60" minWidth="60" headerText="Eier" dataField="eierId" itemRenderer="no.airdog.view.renderer.hundeListeRenderer.EierRenderer"/>
-			<mx:DataGridColumn width="150" minWidth="150" headerText="Far" dataField="farNavn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeListeRenderer.FarRenderer"/>
-			<mx:DataGridColumn width="150" minWidth="150" headerText="Mor" dataField="morNavn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeListeRenderer.MorRenderer"/>
-			<mx:DataGridColumn width="40" headerText="Kjønn" dataField="kjonn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeListeRenderer.KjonnRenderer"/>
+			<mx:DataGridColumn width="60" minWidth="60" headerText="ID" dataField="hundId" itemRenderer="no.airdog.view.renderer.hundeliste.HundIdRenderer"/>
+			<mx:DataGridColumn width="60" minWidth="60" headerText="Eier" dataField="eierId" itemRenderer="no.airdog.view.renderer.hundeliste.EierRenderer"/>
+			<mx:DataGridColumn width="150" minWidth="150" headerText="Far" dataField="farNavn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeliste.FarRenderer"/>
+			<mx:DataGridColumn width="150" minWidth="150" headerText="Mor" dataField="morNavn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeliste.MorRenderer"/>
+			<mx:DataGridColumn width="40" headerText="Kjønn" dataField="kjonn" sortable="false" itemRenderer="no.airdog.view.renderer.hundeliste.KjonnRenderer"/>
 		</mx:columns>
 	</mx:DataGrid>
 </mx:VBox>

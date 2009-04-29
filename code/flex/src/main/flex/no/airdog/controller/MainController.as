@@ -16,17 +16,17 @@ package no.airdog.controller
 	import no.airdog.view.admin.*;
 
 	
-	public class MockController implements IController
+	public class MainController implements IController
 	{     
-		private var vindu:InnloggingVindu;
-		private var klubb:KlubbVindu;
-		private var jaktproveVindu:JaktproveVindu;
-		private var brukerVindu:BrukerVindu;
-		private var redigerHundVindu:RedigerHundVindu;
-		private var redigerEgenBrukerVindu:RedigerEgenBrukerVindu;
-		private var redigerKlubbVindu:RedigerKlubbVindu;
+		private var innloggingVindu:InnloggingView;
+		private var klubb:KlubbvalgView;
+		private var jaktproveVindu:JaktproveView;
+		private var brukerVindu:BrukerView;
+		private var redigerHundVindu:RedigerHundView;
+		private var redigerEgenBrukerVindu:RedigerEgenBrukerView;
+		private var redigerKlubbVindu:RedigerKlubbView;
 		
-        public function MockController()
+        public function MainController()
         {
         	var tmpCollection:ArrayCollection = new ArrayCollection();
         }
@@ -39,7 +39,7 @@ package no.airdog.controller
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
         {
-    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveVindu, true) as JaktproveVindu;
+    		jaktproveVindu = PopUpManager.createPopUp(parent, JaktproveView, true) as JaktproveView;
     		jaktproveVindu.aktivJaktprove = jaktprove;
     		jaktproveVindu.width = 900;
     		jaktproveVindu.height = 580;
@@ -55,7 +55,7 @@ package no.airdog.controller
         
         public function visRedigerKlubbVindu(parent:DisplayObject):void
         {
-    		redigerKlubbVindu = PopUpManager.createPopUp(parent, RedigerKlubbVindu, true) as RedigerKlubbVindu;
+    		redigerKlubbVindu = PopUpManager.createPopUp(parent, RedigerKlubbView, true) as RedigerKlubbView;
     		redigerKlubbVindu.isPopUp = true;
         	PopUpManager.centerPopUp(redigerKlubbVindu);
 			PopUpManager.bringToFront(redigerKlubbVindu);
@@ -68,13 +68,13 @@ package no.airdog.controller
         
         public function redigerKlubb(klubb:Klubb):void
         {
-       		Components.instance.services.airdogService.redigerKlubb(klubb, new Function());
+       		Components.instance.services.airDogService.redigerKlubb(klubb, new Function());
        		Components.instance.session.bruker.sattKlubb = klubb;
         }
 
         public function visRedigerBrukerVindu(parent:DisplayObject, bruker:Bruker):void
         {
-    		brukerVindu = PopUpManager.createPopUp(parent, BrukerVindu, true) as BrukerVindu;
+    		brukerVindu = PopUpManager.createPopUp(parent, BrukerView, true) as BrukerView;
         	PopUpManager.centerPopUp(brukerVindu);
 			PopUpManager.bringToFront(brukerVindu);
 			brukerVindu.aktivBruker = bruker;
@@ -87,7 +87,7 @@ package no.airdog.controller
         
         public function visRedigerEgenBrukerVindu(parent:DisplayObject):void
         {
-    		redigerEgenBrukerVindu = PopUpManager.createPopUp(parent, RedigerEgenBrukerVindu, true) as RedigerEgenBrukerVindu;
+    		redigerEgenBrukerVindu = PopUpManager.createPopUp(parent, RedigerEgenBrukerView, true) as RedigerEgenBrukerView;
         	PopUpManager.centerPopUp(redigerEgenBrukerVindu);
 			PopUpManager.bringToFront(redigerEgenBrukerVindu);
         }
@@ -99,20 +99,20 @@ package no.airdog.controller
         
         public function visLoggInnVindu(parent:DisplayObject):void
         {
-        	vindu = PopUpManager.createPopUp(parent, InnloggingVindu, true) as InnloggingVindu;
-			PopUpManager.centerPopUp(vindu);
-			PopUpManager.bringToFront(vindu);
-    		vindu.isPopUp = false;
+        	innloggingVindu = PopUpManager.createPopUp(parent, InnloggingView, true) as InnloggingView;
+			PopUpManager.centerPopUp(innloggingVindu);
+			PopUpManager.bringToFront(innloggingVindu);
+    		innloggingVindu.isPopUp = false;
         }
         
         public function fjernLoggInnVindu():void
         {
-        	PopUpManager.removePopUp(vindu);
+        	PopUpManager.removePopUp(innloggingVindu);
         }
         
         public function settBrukersKlubb(raseid:String):void
         {
-        	Components.instance.services.airdogService.settBrukersKlubb(raseid, settBrukersKlubbResultat);
+        	Components.instance.services.airDogService.settBrukersKlubb(raseid, settBrukersKlubbResultat);
         }
         
         public function settBrukersKlubbResultat(event:Object):void
@@ -133,7 +133,7 @@ package no.airdog.controller
 		
 		public function loggInn(bruker:Bruker):void
 		{
-			Components.instance.services.airdogService.loggInn(bruker, loggInnResultEvent, loggInnFaultEvent);
+			Components.instance.services.airDogService.loggInn(bruker, loggInnResultEvent, loggInnFaultEvent);
 		}
 		
 		private function loggInnResultEvent(bruker:Object):void
@@ -142,8 +142,8 @@ package no.airdog.controller
 			{	
 				if(bruker.toString() == "FEIL_BRUKERNAVN_PASSORD")
 				{
-					vindu.feil = true;
-					vindu.ristVindu();
+					innloggingVindu.feil = true;
+					innloggingVindu.ristVindu();
 					loggUt();
 					return;
 				}	
@@ -153,19 +153,19 @@ package no.airdog.controller
 							
 				hentBrukersKlubber();
 				
-				vindu.feil = false;
+				innloggingVindu.feil = false;
 			}
 			else
 			{
-				vindu.feil = true;
-				vindu.ristVindu();
+				innloggingVindu.feil = true;
+				innloggingVindu.ristVindu();
 				loggUt();
 			}
 		}
 		
 		private function loggInnFaultEvent(event:FaultEvent):void
 		{
-			vindu.ristVindu();
+			innloggingVindu.ristVindu();
 			Alert.show( "Klarer ikke å koble til server\n" + event.fault.message.toString(), "Innlogging mislyktes", 0);
 			loggUt();
 		}
@@ -173,7 +173,7 @@ package no.airdog.controller
 		public function loggUt():void
 		{	
 			Components.instance.session = new Session();	
-			Components.instance.services.airdogService.loggUt(new Function());
+			Components.instance.services.airDogService.loggUt(new Function());
 			Components.instance.historie.nullstill();
 		}
 		
@@ -202,7 +202,7 @@ package no.airdog.controller
 		public function sokHund(soketekst:String):void
 		{
 			Components.instance.session.hundesokListe.provider = new ArrayCollection();
-			Components.instance.services.airdogService.sokHund(soketekst, hundesokResultat);		
+			Components.instance.services.airDogService.sokHund(soketekst, hundesokResultat);		
 		}
 		
 		public function hundesokResultat(event:Object):void
@@ -223,7 +223,7 @@ package no.airdog.controller
 		
 		public function hentCupListe(fra:String, til:String):void
 		{
-			Components.instance.services.airdogService.hentCupListe(fra, til, hentCupListeResultat);
+			Components.instance.services.airDogService.hentCupListe(fra, til, hentCupListeResultat);
 		}
 		
 		public function hentCupListeResultat(event:Object):void
@@ -244,7 +244,7 @@ package no.airdog.controller
 		
 		public function hentAvkom(hundId:String):void
 		{
-			Components.instance.services.airdogService.hentAvkom(hundId, hentAvkomResultat);
+			Components.instance.services.airDogService.hentAvkom(hundId, hentAvkomResultat);
 		}
 		
 		public function hentAvkomResultat(event:Object):void
@@ -255,7 +255,7 @@ package no.airdog.controller
 		public function hentJaktprover(hundId:String):void
 		{
 			//Components.instance.session.jaktproveListe = new ArrayCollection();
-			Components.instance.services.airdogService.hentJaktprover(hundId, hentJaktproverResultat);
+			Components.instance.services.airDogService.hentJaktprover(hundId, hentJaktproverResultat);
 		}
 		
 		public function hentJaktproverResultat(event:Object):void
@@ -271,7 +271,7 @@ package no.airdog.controller
 		public function hentAlleJaktproverAar(aar:String):void
 		{
 			Components.instance.session.jaktproveListe = null;
-			Components.instance.services.airdogService.hentAlleJaktproverAar(aar, hentAlleJaktproverAarResultat);			
+			Components.instance.services.airDogService.hentAlleJaktproverAar(aar, hentAlleJaktproverAarResultat);			
 		}
 		public function hentAlleJaktproverAarResultat(event:Object):void
 		{
@@ -285,7 +285,7 @@ package no.airdog.controller
 		
 		public function hentJaktproverSammendragAar(aar:String):void
 		{
-			Components.instance.services.airdogService.hentJaktproveSammendragAar(aar, hentJaktproveSammendragAarResultat);
+			Components.instance.services.airDogService.hentJaktproveSammendragAar(aar, hentJaktproveSammendragAarResultat);
 		}
 		
 		public function hentJaktproveSammendragAarResultat(event:Object):void
@@ -300,7 +300,7 @@ package no.airdog.controller
 		
 		public function hentProvestatistikk(id:String):void
 		{
-			Components.instance.services.airdogService.hentProvestatistikk(id, hentProvestatistikkResultat);
+			Components.instance.services.airDogService.hentProvestatistikk(id, hentProvestatistikkResultat);
 		}
 		
 		public function hentProvestatistikkResultat(event:Object):void
@@ -311,7 +311,7 @@ package no.airdog.controller
 		public function hentUtstillinger(hundId:String):void
 		{
 			Components.instance.session.utstillingListe = null;
-			Components.instance.services.airdogService.hentUtstillinger(hundId, hentUtstillingerResultat);
+			Components.instance.services.airDogService.hentUtstillinger(hundId, hentUtstillingerResultat);
 		}
 		
 		public function hentUtstillingerResultat(event:Object):void
@@ -323,8 +323,8 @@ package no.airdog.controller
 		{
 			Components.instance.session.jaktproveSammendrag = null;
 			Components.instance.session.hundprofil = null;
-			Components.instance.services.airdogService.hentHund(hundId, visHundResultat);
-			Components.instance.services.airdogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
+			Components.instance.services.airDogService.hentHund(hundId, visHundResultat);
+			Components.instance.services.airDogService.hentJaktproveSammendrag(hundId, hentJaktproveSammendragResultat);
 		}
 		
 		public function visHundResultat(event:Hund):void
@@ -337,18 +337,18 @@ package no.airdog.controller
 		
 		public function hentHund(hundId:String, resultat:Function):void
 		{
-			Components.instance.services.airdogService.hentHund(hundId, resultat);
+			Components.instance.services.airDogService.hentHund(hundId, resultat);
 		}
 		
 		public function hentPerson(personId:String, resultat:Function):void
 		{
-			Components.instance.services.airdogService.hentPerson(personId, resultat);
+			Components.instance.services.airDogService.hentPerson(personId, resultat);
 		}
 		
 		public function hentBrukersKlubber():void
 		{
 			//Components.instance.session.bruker.klubber = new ArrayCollection();
-			Components.instance.services.airdogService.hentBrukersKlubber(hentBrukersKlubberResultat);
+			Components.instance.services.airDogService.hentBrukersKlubber(hentBrukersKlubberResultat);
 		}
 		
 		public function hentBrukersKlubberResultat(event:Object):void
@@ -358,7 +358,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRoller():void
 		{
-			Components.instance.services.airdogService.hentBrukersRoller(hentBrukersRollerResultat);
+			Components.instance.services.airDogService.hentBrukersRoller(hentBrukersRollerResultat);
 		}
 		
 		public function hentBrukersRollerResultat(event:Object):void
@@ -368,7 +368,7 @@ package no.airdog.controller
 		
 		public function hentBrukersRettigheter():void
 		{
-			Components.instance.services.airdogService.hentBrukersRettigheter(hentBrukersRettigheterResultat);
+			Components.instance.services.airDogService.hentBrukersRettigheter(hentBrukersRettigheterResultat);
 		}
 		
 		public function hentBrukersRettigheterResultat(event:Object):void
@@ -380,7 +380,7 @@ package no.airdog.controller
 		public function hentStamtre(hundId:String, dybde:int):void
 		{
 			Components.instance.session.stamtre = null;
-			Components.instance.services.airdogService.hentStamtre(hundId, dybde, hentStamtreResultat);
+			Components.instance.services.airDogService.hentStamtre(hundId, dybde, hentStamtreResultat);
 		}
 		
 		public function hentStamtreResultat(event:Object):void
@@ -391,7 +391,7 @@ package no.airdog.controller
 		public function hentFiktivtStamtre(hundIdFar:String, hundIdMor:String, dybde:int):void
 		{
 			Components.instance.session.fiktivtStamtre = null;
-			Components.instance.services.airdogService.hentFiktivtStamtre(hundIdFar, hundIdMor, dybde, hentFiktivtStamtreResultat);
+			Components.instance.services.airDogService.hentFiktivtStamtre(hundIdFar, hundIdMor, dybde, hentFiktivtStamtreResultat);
 		}
 		
 		public function hentFiktivtStamtreResultat(event:Object):void
@@ -403,7 +403,7 @@ package no.airdog.controller
 		public function redigerHund(hund:Hund):void
 		{
 			
-			Components.instance.services.airdogService.redigerHund(hund, redigerHundResultat);			
+			Components.instance.services.airDogService.redigerHund(hund, redigerHundResultat);			
 		}
 		
 		public function redigerHundResultat(event:Object):void
@@ -418,7 +418,7 @@ package no.airdog.controller
         {
         	Components.instance.session.hundprofil = hund as Hund;
         	
-    		redigerHundVindu = PopUpManager.createPopUp(parent, RedigerHundVindu, true) as RedigerHundVindu;
+    		redigerHundVindu = PopUpManager.createPopUp(parent, RedigerHundView, true) as RedigerHundView;
 			redigerHundVindu.isPopUp = true;
         	PopUpManager.centerPopUp(redigerHundVindu);
 			PopUpManager.bringToFront(redigerHundVindu);
@@ -433,7 +433,7 @@ package no.airdog.controller
 		{
 			
 			Components.instance.session.arsgjennomsnitt = new ArrayCollection();
-			Components.instance.services.airdogService.sokArsgjennomsnitt(hund, ar, sokArsgjennomsnittResultat);
+			Components.instance.services.airDogService.sokArsgjennomsnitt(hund, ar, sokArsgjennomsnittResultat);
 		}
 		
 		public function sokArsgjennomsnittResultat(event:Object):void
@@ -444,12 +444,12 @@ package no.airdog.controller
 		
 		public function redigerJaktprove(gammelJaktprove:Jaktprove, jaktprove:Jaktprove):void
 		{
-			Components.instance.services.airdogService.redigerJaktprove(gammelJaktprove, jaktprove, hentJaktproverResultat);
+			Components.instance.services.airDogService.redigerJaktprove(gammelJaktprove, jaktprove, hentJaktproverResultat);
 		}
 		
 		public function slettJaktprove(jaktproveId:String, hundId:String, jaktproveDato:String):void
 		{
-			Components.instance.services.airdogService.slettJaktprove(jaktproveId, hundId, jaktproveDato, slettJaktproveResultat);
+			Components.instance.services.airDogService.slettJaktprove(jaktproveId, hundId, jaktproveDato, slettJaktproveResultat);
 		}
 		
 		public function slettJaktproveResultat(event:Object):void
@@ -459,7 +459,7 @@ package no.airdog.controller
 		
 		public function leggInnJaktprove(jaktprove:Jaktprove):void
 		{	
-			Components.instance.services.airdogService.leggInnJaktprove(jaktprove, leggInnJaktproveResultat);
+			Components.instance.services.airDogService.leggInnJaktprove(jaktprove, leggInnJaktproveResultat);
 		}
 		
 		public function leggInnJaktproveResultat(event:Object):void
@@ -469,7 +469,7 @@ package no.airdog.controller
 				
 		public function hentAlleRettigheter():void
 		{
-			Components.instance.services.airdogService.hentAlleRettigheter(hentAlleRettigheterResultat);
+			Components.instance.services.airDogService.hentAlleRettigheter(hentAlleRettigheterResultat);
 		}
 		
 		public function hentAlleRettigheterResultat(event:Object):void
@@ -479,7 +479,7 @@ package no.airdog.controller
 		
 		public function hentRollersRettigheter():void
 		{
-			Components.instance.services.airdogService.hentRollersRettigheter(hentRollersRettigheterResultat);
+			Components.instance.services.airDogService.hentRollersRettigheter(hentRollersRettigheterResultat);
 		}
 		
 		public function hentRollersRettigheterResultat(event:Object):void
@@ -489,28 +489,28 @@ package no.airdog.controller
 		
 		public function leggtilRettighetPaRolle(rolle:String, rettighet:String):void
 		{
-			Components.instance.services.airdogService.leggtilRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
+			Components.instance.services.airDogService.leggtilRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
 		}
 		
 		public function slettRettighetPaRolle(rolle:String, rettighet:String):void
 		{
-			Components.instance.services.airdogService.slettRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
+			Components.instance.services.airDogService.slettRettighetPaRolle(rolle, rettighet, hentRollersRettigheterResultat);
 		}
 		
 		public function leggInnNyRolle(rolle:String, beskrivelse:String):void
 		{
-			Components.instance.services.airdogService.leggInnNyRolle(rolle, beskrivelse, hentRollersRettigheterResultat);
+			Components.instance.services.airDogService.leggInnNyRolle(rolle, beskrivelse, hentRollersRettigheterResultat);
 		}
 		
 		public function slettRolle(rolle:String):void
 		{
-			Components.instance.services.airdogService.slettRolle(rolle, hentRollersRettigheterResultat);
+			Components.instance.services.airDogService.slettRolle(rolle, hentRollersRettigheterResultat);
 		}
 		
 		
 		public function hentTabeller():void
 		{
-			Components.instance.services.airdogService.hentTabeller(hentTabellerResultat);
+			Components.instance.services.airDogService.hentTabeller(hentTabellerResultat);
 		}
 		
 		public function hentTabellerResultat(event:Object):void
@@ -520,7 +520,7 @@ package no.airdog.controller
 		
 		public function hentKopier():void
 		{
-			Components.instance.services.airdogService.hentKopier(hentKopierResultat);
+			Components.instance.services.airDogService.hentKopier(hentKopierResultat);
 		}
 		
 		public function hentKopierResultat(event:Object):void
@@ -530,7 +530,7 @@ package no.airdog.controller
 		
 		public function lagFullKopi(navn:String):void
 		{
-			Components.instance.services.airdogService.lagFullKopi(navn, lagFullKopiResultat);
+			Components.instance.services.airDogService.lagFullKopi(navn, lagFullKopiResultat);
 		}
 		
 		public function lagFullKopiResultat(event:Object):void
@@ -540,7 +540,7 @@ package no.airdog.controller
 		
 		public function hentFiler(mappe:String):void
 		{
-			Components.instance.services.airdogService.hentFiler(mappe, hentFilerResultat);
+			Components.instance.services.airDogService.hentFiler(mappe, hentFilerResultat);
 		}
 		
 		public function hentFilerResultat(event:Object):void
@@ -557,7 +557,7 @@ package no.airdog.controller
 		
 		public function lastKopier(tabeller:ArrayCollection, mappe:String):void
 		{
-			Components.instance.services.airdogService.lastKopier(tabeller, mappe, lastKopierResultat);
+			Components.instance.services.airDogService.lastKopier(tabeller, mappe, lastKopierResultat);
 		}
 		
 		public function lastKopierResultat(event:Object):void
@@ -567,7 +567,7 @@ package no.airdog.controller
 		
 		public function hentRollersBrukere():void
 		{
-			Components.instance.services.airdogService.hentRollersBrukere(hentRollersBrukereResultat);
+			Components.instance.services.airDogService.hentRollersBrukere(hentRollersBrukereResultat);
 		}
 		
 		public function hentRollersBrukereResultat(event:Object):void
@@ -577,7 +577,7 @@ package no.airdog.controller
 			
 		public function hentAlleBrukere():void
 		{
-			Components.instance.services.airdogService.hentAlleBrukere(hentAlleBrukereResultat);
+			Components.instance.services.airDogService.hentAlleBrukere(hentAlleBrukereResultat);
 		}
 		
 		public function hentAlleBrukereResultat(event:Object):void
@@ -588,22 +588,22 @@ package no.airdog.controller
 		
 		public function leggBrukerTilRolle(rolle:String, bruker:String):void
 		{
-			Components.instance.services.airdogService.leggBrukerTilRolle(rolle, bruker, hentRollersBrukereResultat);
+			Components.instance.services.airDogService.leggBrukerTilRolle(rolle, bruker, hentRollersBrukereResultat);
 		}
 		
 		public function slettBrukerFraRolle(rolle:String, bruker:String):void
 		{
-			Components.instance.services.airdogService.slettBrukerFraRolle(rolle, bruker, hentRollersBrukereResultat);
+			Components.instance.services.airDogService.slettBrukerFraRolle(rolle, bruker, hentRollersBrukereResultat);
 		}
 		
 		public function slettBruker(epost:String):void
 		{
-			Components.instance.services.airdogService.slettBruker(epost, hentAlleBrukereResultat);
+			Components.instance.services.airDogService.slettBruker(epost, hentAlleBrukereResultat);
 		}
 		
 		public function redigerBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerBruker(fraBruker, tilBruker, redigerBrukerResultat);
+			Components.instance.services.airDogService.redigerBruker(fraBruker, tilBruker, redigerBrukerResultat);
 		}
 		
 		public function redigerBrukerResultat(brukere:Object):void
@@ -614,12 +614,12 @@ package no.airdog.controller
 		
 		public function leggInnBruker(bruker:Bruker):void
 		{
-			Components.instance.services.airdogService.leggInnBruker(bruker, hentAlleBrukereResultat);
+			Components.instance.services.airDogService.leggInnBruker(bruker, hentAlleBrukereResultat);
 		}
 		
 		public function redigerEgenBruker(fraBruker:Bruker, tilBruker:Bruker):void
 		{
-			Components.instance.services.airdogService.redigerEgenBruker(fraBruker, tilBruker, redigerEgenBrukerResultat);
+			Components.instance.services.airDogService.redigerEgenBruker(fraBruker, tilBruker, redigerEgenBrukerResultat);
 		}
 		
 		public function redigerEgenBrukerResultat(bruker:Object):void
@@ -635,7 +635,7 @@ package no.airdog.controller
 		
 		public function overskrivDatInnlegg(objekter:ArrayCollection, objektType:String):void
 		{
-			Components.instance.services.airdogService.overskrivDatInnlegg(objekter, objektType, overskrivDatInnleggResultat);
+			Components.instance.services.airDogService.overskrivDatInnlegg(objekter, objektType, overskrivDatInnleggResultat);
 		}
 		
 		public function overskrivDatInnleggResultat(event:Object):void
@@ -645,7 +645,7 @@ package no.airdog.controller
 		
 		public function slettArrangement(proveNr:String):void
 		{
-			Components.instance.services.airdogService.slettArrangement(proveNr, slettArrangementResultat);
+			Components.instance.services.airDogService.slettArrangement(proveNr, slettArrangementResultat);
 		}
 		
 		public function slettArrangementResultat(event:Object):void
@@ -655,7 +655,7 @@ package no.airdog.controller
 		
 		public function leggInnArrangement(arrangement:Arrangement):void
 		{
-			Components.instance.services.airdogService.leggInnArrangement(arrangement, leggInnArrangementResultat);
+			Components.instance.services.airDogService.leggInnArrangement(arrangement, leggInnArrangementResultat);
 		}
 		
 		public function leggInnArrangementResultat(event:Object):void
@@ -665,7 +665,7 @@ package no.airdog.controller
 		
 		public function hentArrangementer():void
 		{
-			Components.instance.services.airdogService.hentArrangementer(hentArrangementerResultat);
+			Components.instance.services.airDogService.hentArrangementer(hentArrangementerResultat);
 		}
 		
 		public function hentArrangementerResultat(event:Object):void
@@ -676,7 +676,7 @@ package no.airdog.controller
 		
 		public function hentNyheterFraServer():void
 		{
-			Components.instance.services.airdogService.hentNyheter(hentNyheterFraServerResultat);
+			Components.instance.services.airDogService.hentNyheter(hentNyheterFraServerResultat);
 		}
 		
 		private function hentNyheterFraServerResultat(event:Object):void

@@ -10,7 +10,7 @@ package no.airdog.services
 	import no.airdog.model.Jaktprove;
 	import no.airdog.model.Klubb;
 	  
-	public class AirdogService extends AbstraktServiceobjekt
+	public class AirDogService extends AbstractServiceObject
 	{		
 		public function loggInn(bruker:Bruker, resultat:Function, feil:Function=null):void
         {
