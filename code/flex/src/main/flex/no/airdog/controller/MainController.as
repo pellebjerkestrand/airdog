@@ -34,7 +34,7 @@ package no.airdog.controller
         public function visLagAarbok(hund:Hund):void
         {
         	Components.instance.session.aarbokHund = hund;
-        	Components.instance.session.hovedNavigasjon.nr = 14;
+        	Components.instance.session.hovedNavigasjon.nr = 13;
         }     
         
         public function visRedigerJaktproveVindu(parent:DisplayObject, jaktprove:Jaktprove):void
