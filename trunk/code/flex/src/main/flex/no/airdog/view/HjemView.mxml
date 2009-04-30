@@ -20,59 +20,59 @@
 		<mx:HBox id="hjemboks"
 			horizontalAlign="left" verticalAlign="top"
 			horizontalScrollPolicy="off" verticalScrollPolicy="off"
+			paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 			styleName="cupplassering" cornerRadius="0" width="100%" height="100%">
-		
-			<mx:VBox id="infoboks">
-				<mx:HBox verticalAlign="middle">
-					<!--
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/user.png')"/>
-					-->
-					<mx:Label text="Her kan du" fontWeight="bold"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
-					<mx:Label text="Søke etter hunder"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/target.png')"/>
-					<mx:Label text="Se jaktprøveresultater"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
-					<mx:Label text="Lese kritikker"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
-					<mx:Label text="Finne avkom"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
-					<mx:Label text="Se stamtrær"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/bookmark.png')"/>
-					<mx:Label text="Se utstillingsresultater"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
-					<mx:Label text="Søke i årsgjennomsnitt"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180_fictual.png')"/>
-					<mx:Label text="Lage fiktive stamtrær"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
-					<mx:Label text="Se plasseringer i cupen"/>
-				</mx:HBox>
-				<mx:HBox verticalAlign="middle">
-					<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/newspaper.png')"/>
-					<mx:Label text="Lese nyheter fra klubben"/>
-				</mx:HBox>
-			</mx:VBox>
-			<mx:VRule height="{infoboks.height}"/>
+			
+			<mx:HBox paddingBottom="4" paddingLeft="4" paddingRight="4" paddingTop="4">	
+				<mx:VBox id="infoboks">
+					<mx:HBox verticalAlign="middle">
+						<mx:Label text="Her kan du" fontWeight="bold"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog.png')"/>
+						<mx:Label text="Søke etter hunder"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/target.png')"/>
+						<mx:Label text="Se jaktprøveresultater"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/information.png')"/>
+						<mx:Label text="Lese kritikker"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/dog_many.png')"/>
+						<mx:Label text="Finne avkom"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180.png')"/>
+						<mx:Label text="Se stamtrær"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/bookmark.png')"/>
+						<mx:Label text="Se utstillingsresultater"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/calendar_month.png')"/>
+						<mx:Label text="Søke i årsgjennomsnitt"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/arrow_join_180_fictual.png')"/>
+						<mx:Label text="Lage fiktive stamtrær"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/crown.png')"/>
+						<mx:Label text="Se plasseringer i cupen"/>
+					</mx:HBox>
+					<mx:HBox verticalAlign="middle">
+						<mx:Image source="@Embed(source='/no/airdog/view/assets/ikoner/newspaper.png')"/>
+						<mx:Label text="Lese nyheter fra klubben"/>
+					</mx:HBox>
+				</mx:VBox>
+				<mx:VRule height="100%"/>
+			</mx:HBox>
 			<mx:VBox width="100%" height="100%">
-				<mx:TextArea id="infotekst" editable="false" width="100%" height="100%" borderThickness="0"
+				<mx:TextArea id="infotekst" editable="false" width="100%" height="100%" borderThickness="0" paddingTop="4"
 					htmlText="{Components.instance.session.bruker.sattKlubb.forsidetekst}"/>
 			</mx:VBox>
 		</mx:HBox>
