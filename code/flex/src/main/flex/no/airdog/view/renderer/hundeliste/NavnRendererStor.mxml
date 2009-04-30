@@ -9,6 +9,7 @@
 			import mx.utils.StringUtil;
 			import no.airdog.controller.Verktoy;
 			
+			[Bindable]
 			[Embed("no/airdog/view/assets/intetbilde.png")]
            	private var intetbilde:Class;
 		]]>
@@ -17,8 +18,7 @@
 	    width="60" height="60" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0"
 	    horizontalAlign="center" verticalAlign="middle">    
 	    <mx:Image id="hundbilde" maxWidth="50" maxHeight="50"
-	    	source="{StringUtil.trim(data.bilde) == '' || data.bilde == null 
-					? intetbilde : data.bilde}"/>
+	    	source="{StringUtil.trim(data.bilde) == '' || data.bilde == null ? intetbilde : data.bilde}"/>
 	</mx:VBox>
 	
 	<mx:VBox 

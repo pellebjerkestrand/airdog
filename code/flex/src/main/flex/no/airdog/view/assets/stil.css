@@ -1,12 +1,3 @@
-/*
-    Copyright (c) 2007 Yahoo! Inc.  All rights reserved. 
-    The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license
-*/
-/*
-//------------------------------
-//  global
-//------------------------------
-*/
 global
 {
    	color: #4d4d4d;
@@ -15,28 +6,6 @@ global
 	themeColor: #69bDFF;
 }
 
-/*
-//------------------------------
-//  AccordionHeader
-//------------------------------
-*/
-AccordionHeader
-{
-	disabledSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_disabledSkin");
-	downSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_downSkin");
-	overSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_overSkin");
-	selectedDisabledSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_disabledSkin");
-	selectedDownSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_downSkin");
-	selectedOverSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_overSkin");
-	selectedUpSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_selectedSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="AccordionHeader_upSkin");
-}
-
-/*
-//------------------------------
-//  Application
-//------------------------------
-*/
 Application
 {
 	backgroundImage: Embed(source="skin/stil.swf",symbol="BackgroundImage");
@@ -53,11 +22,6 @@ ApplicationControlBar.applicationBar
 	verticalAlign: middle;
 }
 
-/*
-//------------------------------
-//  Button
-//------------------------------
-*/
 Button
 {
 	disabledSkin: Embed(source="skin/stil.swf", symbol="Button_disabledSkin");
@@ -67,11 +31,6 @@ Button
 	paddingTop: 2;
 }
 
-/*
-//------------------------------
-//  CheckBox
-//------------------------------
-*/
 CheckBox
 {
 	disabledIcon: Embed(source="skin/stil.swf", symbol="CheckBox_disabledIcon");
@@ -84,24 +43,6 @@ CheckBox
 	upIcon: Embed(source="skin/stil.swf", symbol="CheckBox_upIcon");
 }		
 
-/*
-//------------------------------
-//  ColorPicker
-//------------------------------
-*/
-ColorPicker
-{
-	disabledSkin: Embed(source="skin/stil.swf", symbol="ColorPicker_disabledSkin");
-	downSkin: Embed(source="skin/stil.swf", symbol="ColorPicker_downSkin");
-	overSkin: Embed(source="skin/stil.swf", symbol="ColorPicker_overSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="ColorPicker_upSkin");
-}		
-
-/*
-//------------------------------
-//  ComboBox
-//------------------------------
-*/
 ComboBox
 {
 	disabledSkin: Embed(source="skin/stil.swf", symbol="ComboBoxArrow_disabledSkin");
@@ -120,26 +61,10 @@ ComboBox
    cornerRadius: 4;
 }
 
-/*
-//------------------------------
-//  Panel ControlBar
-//------------------------------
-*/
 ControlBar
 {
 	borderSkin: Embed(source="skin/stil.swf", symbol="Panel_controlBarBackgroundSkin");
 }
-
-/*
-//------------------------------
-//  CursorManager
-//------------------------------
-
-CursorManager
-{
-	busyCursor: Embed(source="skin/stil.swf", symbol="BusyCursor");
-	busyCursorBackground: Embed(source="skin/stil.swf",symbol="BusyCursor");
-}*/
 
 .cupbakgrunn
 {
@@ -190,11 +115,6 @@ CursorManager
 	verticalAlign: middle;
 }
 
-/*
-//------------------------------
-//  DataGrid
-//------------------------------
-*/
 DataGrid
 {
 
@@ -205,11 +125,6 @@ DataGrid
 	stretchCursor: Embed(source="skin/stil.swf",symbol="DataGrid_stretchCursor");
 }
 
-/*
-//------------------------------
-//  DateChooser
-//------------------------------
-*/
 DateChooser
 {
 	nextMonthDisabledSkin: Embed(source="skin/stil.swf", symbol="DateChooser_nextMonthDisabledSkin");
@@ -237,11 +152,6 @@ DateChooser
 	
 }
 
-/*
-//------------------------------
-//  DateField
-//------------------------------
-*/
 DateField
 {
 	disabledSkin: Embed(source="skin/stil.swf",symbol="DateField_disabledSkin"); 
@@ -250,23 +160,6 @@ DateField
 	upSkin: Embed(source="skin/stil.swf",symbol="DateField_upSkin"); 
 }
 
-/*
-//------------------------------
-//  DividedBox
-//------------------------------
-*/
-DividedBox
-{
-	dividerSkin: Embed(source="skin/stil.swf",symbol="DividedBox_dividerSkin");
-	horizontalCursor: Embed(source="skin/stil.swf",symbol="DividedBox_horizontalCursor");
-	verticalCursor: Embed(source="skin/stil.swf",symbol="DividedBox_verticalCursor");
-}
-
-/*
-//------------------------------
-//  DragManager
-//------------------------------
-*/
 DragManager
 {
 	copyCursor: Embed(source="skin/stil.swf",symbol="DragManager_copyCursor");
@@ -278,11 +171,6 @@ DragManager
 	rejectCursor: Embed(source="skin/stil.swf",symbol="DragManager_rejectCursor");
 }
 
-/*
-//------------------------------
-//  FormItem
-//------------------------------
-*/
 FormItem
 {
 	indicatorSkin: Embed(source="skin/stil.swf",symbol="FormItem_indicatorSkin");  
@@ -290,7 +178,6 @@ FormItem
 
 .funksjon
 {
-	/*backgroundColor: #f5f5ff;*/
 	backgroundColor: #e5ecf3;
 	borderStyle: solid; 
 	borderThickness: 1; 
@@ -326,21 +213,11 @@ FormItem
     themeColor: #ffffff;           
 }
 
-/*
-//------------------------------
-//  Image
-//------------------------------
-*/
 Image
 {
 	brokenImageSkin: Embed(source="skin/stil.swf",symbol="Loader_brokenImageSkin");
 }
 
-/*
-//------------------------------
-//  LinkButton
-//------------------------------
-*/
 LinkButton
 {
 	
@@ -350,11 +227,6 @@ LinkButton
 	upSkin: Embed(source="skin/stil.swf", symbol="LinkButton_upSkin");
 }
 
-/*
-//------------------------------
-//  Loader
-//------------------------------
-*/
 Loader
 {
 	brokenImageSkin: Embed(source="skin/stil.swf",symbol="Loader_brokenImageSkin");
@@ -363,39 +235,7 @@ Loader
 .mainButtonLink
 {
 	upSkin:Embed(source="skin/stil.swf", symbol="LinkButton_downSkin");
-	/*#d8d8d8 */
 	color: #ffffff;
-}
-
-/*
-//------------------------------
-//  Menu
-//------------------------------
-*/
-Menu
-{
-	branchIcon: Embed(source="skin/stil.swf",symbol="Menu_branchIcon");
-	branchDisabledIcon: Embed(source="skin/stil.swf",symbol="Menu_branchDisabledIcon");
-	checkIcon: Embed(source="skin/stil.swf",symbol="Menu_checkIcon");
-	checkDisabledIcon: Embed(source="skin/stil.swf",symbol="Menu_checkDisabledIcon");
-	radioIcon: Embed(source="skin/stil.swf",symbol="Menu_radioIcon");
-	radioDisabledIcon: Embed(source="skin/stil.swf",symbol="Menu_radioDisabledIcon");
-	separatorSkin: Embed(source="skin/stil.swf",symbol="Menu_separatorSkin");
-}
-
-/*
-//------------------------------
-//  MenuBar
-//------------------------------
-*/
-MenuBar
-{
-
-	backgroundSkin: Embed(source="skin/stil.swf", symbol="MenuBar_backgroundSkin");
-	itemUpSkin: Embed(source="skin/stil.swf", symbol="MenuBar_itemUpSkin");
-	itemOverSkin: Embed(source="skin/stil.swf", symbol="MenuBar_itemOverSkin");
-	itemDownSkin: Embed(source="skin/stil.swf", symbol="MenuBar_itemDownSkin");
-
 }
 
 .notis
@@ -435,11 +275,6 @@ MenuBar
 	verticalGap: 0;	
 }
 
-/*
-//------------------------------
-//  NumericStepper
-//------------------------------
-*/
 NumericStepper
 {
 	downArrowDisabledSkin: Embed(source="skin/stil.swf", symbol="NumericStepperDownArrow_disabledSkin");
@@ -452,18 +287,12 @@ NumericStepper
 	upArrowUpSkin: Embed(source="skin/stil.swf", symbol="NumericStepperUpArrow_upSkin");
 }
 
-/*
-//------------------------------
-//  Panel
-//------------------------------
-*/
 Panel
 {
 	closeButtonDisabledSkin: Embed(source="skin/stil.swf",symbol="Panel_closeButtonDisabledSkin");
 	closeButtonDownSkin: Embed(source="skin/stil.swf",symbol="Panel_closeButtonDownSkin");
 	closeButtonOverSkin: Embed(source="skin/stil.swf",symbol="Panel_closeButtonOverSkin");
 	closeButtonUpSkin: Embed(source="skin/stil.swf",symbol="Panel_closeButtonUpSkin");
-	/*titleBackgroundSkin: Embed(source="skin/stil.swf", symbol="Panel_titleBackgroundSkin");*/
 	borderThicknessLeft: 1;
 	borderThicknessRight: 1;
 	borderThicknessTop: 1;
@@ -490,26 +319,6 @@ Panel
 	color: #ffffff;
 }
 
-/*
-//------------------------------
-//  PopUpButton
-//------------------------------
-*/
-PopUpButton
-{
-	disabledSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_disabledSkin");
-	downSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_downLeftSkin");
-	overSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_overLeftSkin");	
-	popUpDownSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_downRightSkin");
-	popUpOverSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_overRightSkin");
-	upSkin: Embed(source="skin/stil.swf", symbol="PopUpButton_upSkin");
-}
-
-/*
-//------------------------------
-//  primaryButton
-//------------------------------
-*/
 .primaryButton
 {
 	color: #ffffff;
@@ -522,11 +331,6 @@ PopUpButton
 	paddingTop: 2;
 }
 
-/*
-//------------------------------
-//  Stiler til HundeProfil.mxml
-//------------------------------
-*/
 .profilBildeBox
 {
 	borderThickness: 1;
@@ -595,25 +399,7 @@ PopUpButton
 	horizontalGap: 0; 
 	verticalGap: 0;
 }
-/*
-//------------------------------
-//  ProgressBar
-//------------------------------
-*/
-ProgressBar
-{
 
-	/*barSkin: Embed(source="skin/stil.swf", symbol="ProgressBarSkin");
-	indeterminateSkin: Embed(source="skin/stil.swf", symbol="ProgressIndeterminateSkin");
-	trackSkin: Embed(source="skin/stil.swf", symbol="ProgressTrackSkin");*/
-
-}
-
-/*
-//------------------------------
-//  RadioButton
-//------------------------------
-*/
 RadioButton
 {
 
@@ -628,11 +414,6 @@ RadioButton
 
 }
 
-/*
-//------------------------------
-//  HorizontalScrollBar
-//------------------------------
-*/
 HScrollBar
 {
 	downArrowDisabledSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowRight_disabledSkin");
@@ -650,12 +431,6 @@ HScrollBar
 	upArrowUpSkin: Embed(source="skin/stil.swf", symbol="HScrollArrowLeft_upSkin");
 }
 
-
-/*
-//------------------------------
-//  VerticalScrollBar
-//------------------------------
-*/
 VScrollBar
 {
 
@@ -675,53 +450,10 @@ VScrollBar
 
 }
 
-/*
-//------------------------------
-//  Slider
-//------------------------------
-*/
-Slider
-{
-	thumbDisabledSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_disabledSkin");
-	thumbDownSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_downSkin");
-	thumbOverSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_overSkin");
-	thumbUpSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_upSkin");
-	trackHighlightSkin: Embed(source="skin/stil.swf", symbol="SliderHighlight_Skin");
-	trackSkin: Embed(source="skin/stil.swf", symbol="SliderTrack_Skin");
-	thumbOffset: 8;
-}
-
-HSlider
-{
-	thumbDisabledSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_disabledSkin");
-	thumbDownSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_downSkin");
-	thumbOverSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_overSkin");
-	thumbUpSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_upSkin");
-	trackHighlightSkin: Embed(source="skin/stil.swf", symbol="SliderHighlight_Skin");
-	trackSkin: Embed(source="skin/stil.swf", symbol="SliderTrack_Skin");
-}
-
-VSlider
-{
-	thumbDisabledSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_disabledSkin");
-	thumbDownSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_downSkin");
-	thumbOverSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_overSkin");
-	thumbUpSkin: Embed(source="skin/stil.swf", symbol="SliderThumb_upSkin");
-	trackHighlightSkin: Embed(source="skin/stil.swf", symbol="SliderHighlight_Skin");
-	trackSkin: Embed(source="skin/stil.swf", symbol="SliderTrack_Skin");
-}
-
-/* 
-//------------------------------ 
-//  Sokefelt 
-//------------------------------ 
-*/ 
-
 .sokBar
 {
 	backgroundAlpha: 1;
 	backgroundColor: #ffffff;
-	/*backgroundColor: #f5f5f5;*/
 	borderStyle: solid; 
 	borderThickness: 1; 
 	borderColor: #a3a3a3; 
@@ -801,18 +533,6 @@ TextInput.firkanta
 	paddingTop: 0;
 }
 
-/*
-//------------------------------
-//  Tab
-//------------------------------
-*/
-TabBar
-{
-	firstButtonStyleName: "tabStyle";
-	tabStyleName: "tabStyle";
-	lastButtonStyleName: "tabStyle";
-}
-
 .tabStyle {
 	disabledSkin: Embed(source="skin/stil.swf", symbol="Tab_disabledSkin");
 	downSkin: Embed(source="skin/stil.swf", symbol="Tab_downSkin");
@@ -824,31 +544,6 @@ TabBar
 	upSkin: Embed(source="skin/stil.swf", symbol="Tab_upSkin");
 }
 
-/*
-//------------------------------
-//  TabNavigator
-//------------------------------
-*/
-TabNavigator
-{
-	borderColor: #a3a3a3;
-	paddingBottom: 4;
-	paddingTop: 4;
-	paddingLeft: 2;
-}
-
-ToggleButtonBar 
-{ 
-	buttonStyleName: "buttonBarButton"; 
-	firstButtonStyleName: "firstButtonBarButton"; 
-	lastButtonStyleName: "lastButtonBarButton";
-}
-
-/*
-//------------------------------
-//  ToolTip
-//------------------------------
-*/
 ToolTip
 {
 	backgroundColor: #ffffcc;
@@ -858,7 +553,6 @@ ToolTip
 
 .topBar
 {
-	/*color: #ffffff;*/
 	color: #4d4d4d;
 	backgroundColor: #1775a0;
 	paddingBottom: 0; 
@@ -870,31 +564,12 @@ ToolTip
 	horizontalGap: 0;
 }
 
-/*
-//------------------------------
-//  TitleWindow
-//------------------------------
-*/
 TitleWindow
 {
 	cornerRadius: 0;
 }
-/*
-//------------------------------
-//  Tree
-//------------------------------
-*/
 
-Tree
-{
-	defaultLeafIcon: Embed(source="skin/stil.swf",symbol="Tree_defaultLeafIcon");
-	disclosureClosedIcon: Embed(source="skin/stil.swf",symbol="Tree_disclosureClosedIcon");
-	disclosureOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_disclosureOpenIcon");
-	folderClosedIcon: Embed(source="skin/stil.swf",symbol="Tree_folderClosedIcon");
-	folderOpenIcon: Embed(source="skin/stil.swf",symbol="Tree_folderOpenIcon");
-}
-
-LinkButton .undermeny
+.undermeny
 {
 	color: #3B5912;
 	cornerRadius: 2;
@@ -905,27 +580,17 @@ LinkButton .undermeny
 	paddingLeft: 5;
 	paddingRight: 5;
 	borderColor: #FFFFFF;
-	fontWeight: normal;
+	fontWeight: bold;
 	textDisabledColor: #ff0000;
-}
-
-ViewStack .undermeny
-{
-	paddingBottom: 0;
-	paddingLeft: 0;
-	paddingRight: 0;
-	paddingTop: 0;
-	horizontalGap: 0;
-	verticalGap: 0;	
 }
 
 VBox.topBar
 {
-	/*backgroundColor: #999999;*/
 	backgroundColor: #2C568D;
 	color: #ffffff;
 	
 }
+
 HBox.undermenyBar
 {	
 	color: #4d4d4d;
@@ -942,7 +607,6 @@ HBox.undermenyBar
 
 .viewmeny
 {
-	/*backgroundColor: #97B35C;*/
 	backgroundColor: #e5ecf3;
 	paddingBottom: 4; 
 	paddingLeft: 4; 

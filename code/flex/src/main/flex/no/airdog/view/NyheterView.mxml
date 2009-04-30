@@ -57,7 +57,15 @@
 					{
 						var tmp:Nyhet = new Nyhet;
 						tmp.tittel = Verktoy.stripHTML(item.title);
-						tmp.tekst = Verktoy.stripHTML(item.description).substr(0, 195) + "[...]";
+						if(tmp.tittel.length > 30)
+						{
+							tmp.tittel = tmp.tittel.substr(0, 25) + "[...]";
+						}
+						tmp.tekst = Verktoy.stripHTML(item.description);
+						if(tmp.tekst.length > 200)
+						{
+							tmp.tekst = tmp.tekst.substr(0, 195) + "[...]"
+						}
 						tmp.url = Verktoy.stripHTML(item.link);
 						tmp.dato = Verktoy.stripHTML(item.pubDate.toLocaleDateString());
 						nyhetsliste.addItem(tmp);
@@ -126,7 +134,7 @@
 				<mx:Box width="100%">
 					<mx:VBox width="100%" 
 						verticalGap="4" paddingLeft="4" paddingRight="4" paddingTop="4" paddingBottom="4">
-						<mx:HBox styleName="nopaddingorborderorgap" verticalAlign="middle" width="100%">
+						<mx:HBox id="tittelboks" styleName="nopaddingorborderorgap" verticalAlign="middle" width="100%">
 							<mx:Text text="{nyhet.currentItem.tittel}" fontSize="18" paddingTop="0"/>
 							<mx:Spacer width="100%"/>
 							<mx:LinkButton label="Les"
