@@ -4,7 +4,7 @@
 	xmlns:controls="flexunit.flexui.controls.*"
 	xmlns:view="no.airdog.view.*"
 	xmlns:utils="flash.utils.*"
-	verticalGap="0" horizontalGap="0"
+	verticalGap="4" horizontalGap="0"
 	width="100%" height="100%">
 
 	<mx:Script>
@@ -67,33 +67,31 @@
 		<mx:HBox styleName="nopaddingorborderorgap">
 			<mx:Image id="logo" source="@Embed('no/airdog/view/assets/logo/airdoglogo_light200.png')" width="200" height="200"/>
 			<mx:ViewStack id="stack"
-				width="370" height="100%" 
+				width="370" height="200" 
 				selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
-				<mx:VBox height="100%">
-					<mx:VBox styleName="profilGrid" width="100%">
-						<mx:HBox styleName="nopaddingorborder" width="100%">
-							<mx:Label text="Logg inn" fontWeight="bold"/>
-							<mx:Label id="melding" text="Feil brukernavn/passord" textAlign="center" width="100%" color="red" fontWeight="bold" visible="{feil == true ? true : false}" includeInLayout="{feil == true ? true : false}"/>
-						</mx:HBox>
-						<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
-							<mx:Label text="Skriv inn brukernavn (e-post) og passord."/>
-							<mx:Label text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
-							<mx:FormItem label="Brukernavn">
-								<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
-							</mx:FormItem>
-							
-							<mx:FormItem label="Passord">
-								<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
-							</mx:FormItem>
+				<mx:VBox styleName="profilGrid" width="100%" height="100%">
+					<mx:HBox styleName="nopaddingorborder" width="100%">
+						<mx:Label text="Logg inn" fontWeight="bold"/>
+						<mx:Label id="melding" text="Feil brukernavn/passord" textAlign="center" width="100%" color="red" fontWeight="bold" visible="{feil == true ? true : false}" includeInLayout="{feil == true ? true : false}"/>
+					</mx:HBox>
+					<mx:Form id="logginnform" defaultButton="{loggInnKnapp}" paddingTop="0">
+						<mx:Label text="Skriv inn brukernavn (e-post) og passord."/>
+						<mx:Label text="Trykk så på 'Logg inn'-knappen for å få tilgang."/>
+						<mx:FormItem label="Brukernavn">
+							<mx:TextInput id="brukernavn" width="210" toolTip="Skriv inn brukernavnet ditt her"/>
+						</mx:FormItem>
 						
-							<mx:FormItem horizontalAlign="right" width="100%">
-								<mx:HBox>
-									<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='/no/airdog/view/assets/ikoner/user_silhouette.png')"/>
-									<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_in.png')"/>
-								</mx:HBox>
-							</mx:FormItem>
-						</mx:Form>
-					</mx:VBox>
+						<mx:FormItem label="Passord">
+							<mx:TextInput id="passord" width="210" toolTip="Skriv inn passordet ditt her" displayAsPassword="true"/>
+						</mx:FormItem>
+					
+						<mx:FormItem horizontalAlign="right" width="100%">
+							<mx:HBox>
+								<mx:Button id="gjestKnapp" label="Gjest" click="gjest()" icon="@Embed(source='/no/airdog/view/assets/ikoner/user_silhouette.png')"/>
+								<mx:Button id="loggInnKnapp" label="Logg inn" click="loggInn()" icon="@Embed(source='/no/airdog/view/assets/ikoner/door_open_in.png')"/>
+							</mx:HBox>
+						</mx:FormItem>
+					</mx:Form>
 				</mx:VBox>
 				<view:KlubbvalgView/>
 			</mx:ViewStack>
