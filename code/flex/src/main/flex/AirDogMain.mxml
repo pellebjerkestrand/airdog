@@ -15,8 +15,8 @@
     		private function init():void
     		{
     			// Hvis applikasjonen kjører på airdog.no
-    			if (mx.core.Application.application.url.indexOf("airdog.no/AirdogMain.swf") != -1)
-    				Components.instance.services.rootPath = mx.core.Application.application.url.replace("AirdogMain.swf", "") + "backend/no/airdog/";
+    			if (mx.core.Application.application.url.indexOf("airdog.no/AirDogMain.swf") != -1)
+    				Components.instance.services.rootPath = mx.core.Application.application.url.replace("AirDogMain.swf", "") + "backend/no/airdog/";
     			
     			Components.instance.controller.visLoggInnVindu(this);
     		}
