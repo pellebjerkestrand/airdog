@@ -28,6 +28,7 @@
             [Bindable]private var erDommerId2Korrekt:Boolean = false;
             [Bindable]private var erHundIdKorrekt:Boolean = false;
     		
+    		[Bindable]
     		private var premier:ArrayCollection = new ArrayCollection(
                 [ {label:"Ingen"}, 
                   {label:"CK"}, 
@@ -35,7 +36,8 @@
                   {label:"CACIT"},
                   {label:"ResCacit"},
                   {label:"ÆP Skog"} ]);
-                
+            
+            [Bindable] 
             private var klasser:ArrayCollection = new ArrayCollection(
                 [ {label:"UK"}, 
                   {label:"AK"}, 

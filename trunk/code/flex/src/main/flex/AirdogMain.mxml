@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:services="no.airdog.services.*"
     xmlns:view="no.airdog.view.*"
     preloader="no.airdog.view.Laster"

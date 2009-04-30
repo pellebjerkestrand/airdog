@@ -170,7 +170,7 @@
 		</mx:ApplicationControlBar>
 				
 		<mx:HBox styleName="undermenyBar" width="100%">			
-			<mx:ViewStack id="meny" width="100%" styleName="undermeny">
+			<mx:ViewStack id="meny" width="100%" styleName="nopaddingorborderorgap">
 				
 				<mx:HBox id="sokemeny" width="100%" verticalAlign="middle">
 					<mx:LinkButton id="sokeresultat" label="Søkeresultat" click="naviger(1)" styleName="undermeny" 

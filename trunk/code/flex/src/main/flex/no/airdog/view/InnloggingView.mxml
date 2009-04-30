@@ -65,7 +65,7 @@
 	
 	<mx:HBox width="100%" horizontalAlign="center" styleName="nopaddingorborderorgap">
 		<mx:HBox styleName="nopaddingorborderorgap">
-			<mx:Image id="logo" source="no/airdog/view/assets/logo/airdoglogo_light200.png" width="200" height="200"/>
+			<mx:Image id="logo" source="@Embed('no/airdog/view/assets/logo/airdoglogo_light200.png')" width="200" height="200"/>
 			<mx:ViewStack id="stack"
 				width="370" height="100%" 
 				selectedIndex="{Components.instance.session.bruker.innlogget ? 1 : 0}">
