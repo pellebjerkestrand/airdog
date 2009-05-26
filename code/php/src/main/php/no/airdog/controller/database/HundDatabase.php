@@ -63,8 +63,8 @@ class HundDatabase
 	{		
 		$select = $this->database->select()
 		->from(array('h'=>'nkk_hund'), array('hundMorNavn'=>'hMor.navn', 'hundFarNavn'=>'hFar.navn', 'h.*'))
-		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId', array())
-		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId', array())
+		->joinLeft(array('hMor'=>'nkk_hund'),'h.hundMorId = hMor.hundId AND h.raseId = hMor.raseId', array())
+		->joinLeft(array('hFar'=>'nkk_hund'),'h.hundFarId = hFar.hundId AND h.raseId = hFar.raseId', array())
 		->where('h.raseId=?', $klubbId)
 		->where('h.navn LIKE "%"?"%" OR h.hundId LIKE "%"?"%"', $soketekst)
 		->limit(100, 0)
